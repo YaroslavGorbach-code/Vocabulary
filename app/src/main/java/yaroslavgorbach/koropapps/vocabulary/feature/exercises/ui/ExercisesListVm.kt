@@ -1,15 +1,13 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exercises.ui
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.launch
-import yaroslavgorbach.koropapps.vocabulary.business.usecase.GetExercisesUseCase
-import yaroslavgorbach.koropapps.vocabulary.data.vocabulary.local.model.Exercise
-import yaroslavgorbach.koropapps.vocabulary.data.vocabulary.repo.RepoImp
+import yaroslavgorbach.koropapps.vocabulary.business.exercises.usecase.GetExercisesUseCase
+import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.Exercise
+import yaroslavgorbach.koropapps.vocabulary.data.exercises.repo.RepoExercisesImp
 
 class ExercisesListVm : ViewModel() {
-    private val getExercisesUseCase = GetExercisesUseCase(RepoImp())
+    private val getExercisesUseCase = GetExercisesUseCase(RepoExercisesImp())
 
     suspend fun getExercises(): Flow<List<Exercise>>{
         return getExercisesUseCase()

@@ -1,7 +1,7 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exercises.ui
 
 import androidx.recyclerview.widget.LinearLayoutManager
-import yaroslavgorbach.koropapps.vocabulary.data.vocabulary.local.model.Exercise
+import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.Exercise
 import yaroslavgorbach.koropapps.vocabulary.databinding.ExercisesListFragmentBinding
 
 class ExercisesListView(private val binding: ExercisesListFragmentBinding) {

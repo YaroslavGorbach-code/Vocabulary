@@ -1,11 +1,11 @@
-package yaroslavgorbach.koropapps.vocabulary.data.vocabulary.repo
+package yaroslavgorbach.koropapps.vocabulary.data.exercises.repo
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import yaroslavgorbach.koropapps.vocabulary.business.repo.Repo
-import yaroslavgorbach.koropapps.vocabulary.data.vocabulary.local.model.Exercise
+import yaroslavgorbach.koropapps.vocabulary.business.exercises.repo.RepoExercises
+import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.Exercise
 
-class RepoImp : Repo {
+class RepoExercisesImp : RepoExercises {
     private val exercises: MutableStateFlow<List<Exercise>> = MutableStateFlow(emptyList())
 
     init {

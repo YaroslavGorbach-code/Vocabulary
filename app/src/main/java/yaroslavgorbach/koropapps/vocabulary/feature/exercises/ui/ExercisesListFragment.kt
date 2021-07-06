@@ -15,6 +15,7 @@ class ExercisesListFragment: Fragment(R.layout.exercises_list_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         // init view
         val v = ExercisesListView(ExercisesListFragmentBinding.bind(view))
         lifecycleScope.launch {

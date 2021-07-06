@@ -3,7 +3,7 @@ package yaroslavgorbach.koropapps.vocabulary.feature.exercises.ui
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import yaroslavgorbach.koropapps.vocabulary.data.vocabulary.local.model.Exercise
+import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.Exercise
 import yaroslavgorbach.koropapps.vocabulary.databinding.ItemExerciseBinding
 
 class ExercisesListAdapter : RecyclerView.Adapter<ExercisesListAdapter.Vh>() {
