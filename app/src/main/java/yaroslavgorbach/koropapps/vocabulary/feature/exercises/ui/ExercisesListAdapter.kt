@@ -8,7 +8,8 @@ import yaroslavgorbach.koropapps.vocabulary.databinding.ItemExerciseBinding
 import yaroslavgorbach.koropapps.vocabulary.util.getDrawable
 import yaroslavgorbach.koropapps.vocabulary.util.getString
 
-class ExercisesListAdapter : RecyclerView.Adapter<ExercisesListAdapter.Vh>() {
+class ExercisesListAdapter(private val onExercise: (exercise: Exercise) -> Unit) :
+    RecyclerView.Adapter<ExercisesListAdapter.Vh>() {
     private var list: List<Exercise> = emptyList()
 
     fun setData(data: List<Exercise>) {
@@ -28,8 +29,13 @@ class ExercisesListAdapter : RecyclerView.Adapter<ExercisesListAdapter.Vh>() {
 
     inner class Vh(private val binding: ItemExerciseBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        init {
+            binding.item.setOnClickListener {
+                onExercise(list[adapterPosition])
+            }
+        }
         fun bind(exercise: Exercise) {
-            binding.name.text = binding.getString(exercise.name)
+            binding.name.text = binding.getString(exercise.name.id)
             binding.image.setImageDrawable(binding.getDrawable(exercise.icon))
         }
     }

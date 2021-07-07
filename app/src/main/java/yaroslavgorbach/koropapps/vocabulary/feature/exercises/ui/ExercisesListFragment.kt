@@ -8,16 +8,29 @@ import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import yaroslavgorbach.koropapps.vocabulary.R
-import yaroslavgorbach.koropapps.vocabulary.databinding.ExercisesListFragmentBinding
+import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.Exercise
+import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExercisesListBinding
+import yaroslavgorbach.koropapps.vocabulary.util.host
 
-class ExercisesListFragment: Fragment(R.layout.exercises_list_fragment) {
-    private val vm by viewModels<ExercisesListVm>()
+class ExercisesListFragment : Fragment(R.layout.fragment_exercises_list) {
+    interface Router{
+        fun openDescription(exercise: Exercise)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // init vm
+        val vm by viewModels<ExercisesListVm>()
+
         // init view
-        val v = ExercisesListView(ExercisesListFragmentBinding.bind(view))
+        val v = ExercisesListView(
+            FragmentExercisesListBinding.bind(view), object : ExercisesListView.Callback {
+                override fun onExercise(exercise: Exercise) {
+                    host<Router>().openDescription(exercise)
+                }
+            })
+
         lifecycleScope.launch {
             vm.getExercises().collect(v::setExercises)
         }

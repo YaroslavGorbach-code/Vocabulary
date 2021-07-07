@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="alphabet_description">Алфавит</string>
+    <string name="monophonic_description">Монофон</string>
+    <string name="noun_description">Существительное</string>
+    <string name="verbs_description">Глаголы</string>
+    <string name="antonyms_and_synonyms_description">Антонимы и синонимы</string>
+    <string name="ten_description">Десяточка</string>
+    <string name="associations_description">Ассоциации</string>
+    <string name="remember_all_description">Вспомнить все</string>
+    <string name="lists_description">Списки</string>
+    <string name="adjectives_description">Прилагательные</string>
+</resources>
