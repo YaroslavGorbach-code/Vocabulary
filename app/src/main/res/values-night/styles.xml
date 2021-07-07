@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="BaseAppTheme.DayNight">
+        <item name="colorPrimary">#ff7043</item>
+        <item name="colorPrimaryVariant">#ffa270</item>
+        <item name="colorPrimarySurface">#161616</item>
+        <item name="colorSecondary">#fdd835</item>
+        <item name="colorSecondaryVariant">#ffff6b</item>
+        <item name="colorOnPrimary">#fafafa</item>
+        <item name="colorOnSecondary">#fafafa</item>
+    </style>
+</resources>

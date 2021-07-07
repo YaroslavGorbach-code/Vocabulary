@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Vocabulary" parent="BaseAppTheme.DayNight" />
+
+    <style name="BaseAppTheme.DayNight" />
+
+    <style name="BaseAppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#ff5722</item>
+        <item name="colorPrimaryVariant">#ff8a50</item>
+        <item name="colorSecondary">#ffc107</item>
+        <item name="colorSecondaryVariant">#fff350</item>
+        <item name="colorPrimarySurface">#fff</item>
+        <item name="android:statusBarColor">#222</item>
+        <item name="appBarLayoutStyle">@style/Vocabulary.AppBar</item>
+    </style>
+
+    <style name="Vocabulary.AppBar" parent="@style/Widget.MaterialComponents.AppBarLayout.Primary">
+        <item name="android:background">?colorPrimarySurface</item>
+        <item name="android:elevation">4dp</item>
+    </style>
+
+</resources>
