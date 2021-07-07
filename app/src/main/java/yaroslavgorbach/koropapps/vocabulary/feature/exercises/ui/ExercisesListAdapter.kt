@@ -5,6 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.Exercise
 import yaroslavgorbach.koropapps.vocabulary.databinding.ItemExerciseBinding
+import yaroslavgorbach.koropapps.vocabulary.util.getDrawable
+import yaroslavgorbach.koropapps.vocabulary.util.getString
 
 class ExercisesListAdapter : RecyclerView.Adapter<ExercisesListAdapter.Vh>() {
     private var list: List<Exercise> = emptyList()
@@ -27,9 +29,8 @@ class ExercisesListAdapter : RecyclerView.Adapter<ExercisesListAdapter.Vh>() {
     inner class Vh(private val binding: ItemExerciseBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(exercise: Exercise) {
-            binding.exerciseName.text = exercise.name
+            binding.name.text = binding.getString(exercise.name)
+            binding.image.setImageDrawable(binding.getDrawable(exercise.icon))
         }
-
     }
-
 }

@@ -1,3 +1,6 @@
 package yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model
 
-data class Exercise(val id: Long, val name: String, val icon: Int)
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
+
+data class Exercise(val id: Long, @StringRes val name: Int, @DrawableRes val icon: Int)
