@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="alphabet_description">Алфавит</string>
+    <string name="alphabet_adjectives_description">Алфавит (прилагательные)</string>
+    <string name="alphabet_verbs_description">Алфавит (глаголы)</string>
+    <string name="alphabet_noun_description">Алфавит (существительное)</string>
     <string name="monophonic_description">Монофон</string>
     <string name="noun_description">Существительное</string>
     <string name="verbs_description">Глаголы</string>
@@ -10,4 +12,6 @@
     <string name="remember_all_description">Вспомнить все</string>
     <string name="lists_description">Списки</string>
     <string name="adjectives_description">Прилагательные</string>
+    <string name="game_i_know_5_names_description">Игра «Я знаю 5 имен»</string>
+    <string name="three_liter_jar_description">Трехлитровая банка</string>
 </resources>

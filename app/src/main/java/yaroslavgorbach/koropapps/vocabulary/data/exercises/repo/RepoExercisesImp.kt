@@ -12,7 +12,9 @@ class RepoExercisesImp : RepoExercises {
 
     init {
         exercises.value = listOf(
-            Exercise(ExerciseName.ALPHABET, R.drawable.ic_test),
+            Exercise(ExerciseName.ALPHABET_ADJECTIVES, R.drawable.ic_test),
+            Exercise(ExerciseName.ALPHABET_NOUN, R.drawable.ic_test),
+            Exercise(ExerciseName.ALPHABET_VERBS, R.drawable.ic_test),
             Exercise(ExerciseName.MONOPHONIC, R.drawable.ic_test),
             Exercise(ExerciseName.NOUN, R.drawable.ic_test),
             Exercise(ExerciseName.VERBS, R.drawable.ic_test),
@@ -21,8 +23,10 @@ class RepoExercisesImp : RepoExercises {
             Exercise(ExerciseName.ASSOCIATIONS, R.drawable.ic_test),
             Exercise(ExerciseName.REMEMBER_ALL, R.drawable.ic_test),
             Exercise(ExerciseName.LISTS, R.drawable.ic_test),
-            Exercise(ExerciseName.ADJECTIVES, R.drawable.ic_test)
-        )
+            Exercise(ExerciseName.ADJECTIVES, R.drawable.ic_test),
+            Exercise(ExerciseName.GAME_I_KNOW_5_NAMES, R.drawable.ic_test),
+            Exercise(ExerciseName.THREE_LITER_JAR, R.drawable.ic_test),
+            )
     }
 
     override suspend fun getExercises(): Flow<List<Exercise>> {

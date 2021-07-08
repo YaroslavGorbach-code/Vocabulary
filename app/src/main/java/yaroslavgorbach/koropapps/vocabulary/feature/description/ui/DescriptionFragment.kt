@@ -29,10 +29,9 @@ class DescriptionFragment : Fragment(R.layout.fragment_description) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         // init vm
-
         val vm by viewModels<DescriptionVm>()
-        // init view
 
+        // init view
         val v = DescriptionView(FragmentDescriptionBinding.bind(view))
         lifecycleScope.launch {
             v.setDescription(vm.getDescription(exName))

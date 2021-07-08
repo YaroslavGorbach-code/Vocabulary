@@ -7,7 +7,9 @@ import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseN
 
 class RepoDescriptionImp : RepoDescription {
     private val descriptions = listOf(
-        Description(ExerciseName.ALPHABET, R.string.alphabet_description),
+        Description(ExerciseName.ALPHABET_VERBS, R.string.alphabet_verbs_description),
+        Description(ExerciseName.ALPHABET_NOUN, R.string.alphabet_noun_description),
+        Description(ExerciseName.ALPHABET_ADJECTIVES, R.string.alphabet_adjectives_description),
         Description(ExerciseName.MONOPHONIC, R.string.monophonic_description),
         Description(ExerciseName.NOUN, R.string.noun_description),
         Description(ExerciseName.VERBS, R.string.verbs_description),
