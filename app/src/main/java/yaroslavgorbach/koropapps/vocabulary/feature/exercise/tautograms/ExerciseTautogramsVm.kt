@@ -1,4 +1,4 @@
-package yaroslavgorbach.koropapps.vocabulary.feature.exercise.alphabet
+package yaroslavgorbach.koropapps.vocabulary.feature.exercise.tautograms
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,19 +7,19 @@ import yaroslavgorbach.koropapps.vocabulary.business.exercise.model.Letter
 import yaroslavgorbach.koropapps.vocabulary.business.exercise.usecase.GetLettersUseCase
 import yaroslavgorbach.koropapps.vocabulary.data.exercise.repo.RepoExerciseImp
 
-class ExerciseAlphabetVm : ViewModel() {
+class ExerciseTautogramsVm : ViewModel() {
     private val letters = MutableLiveData(GetLettersUseCase(RepoExerciseImp()).invoke())
     private val currentLetter = MutableLiveData<Letter>()
+
     fun getLetter(): LiveData<Letter> {
         return currentLetter
     }
 
     init {
-        setNewLetter()
+        setRandomLetter()
     }
 
-    fun setNewLetter() {
-        currentLetter.value = letters.value?.first()
-            .also { letter -> letters.value = letters.value?.filter { it != letter } }
+    fun setRandomLetter() {
+        currentLetter.value = letters.value?.random()
     }
 }

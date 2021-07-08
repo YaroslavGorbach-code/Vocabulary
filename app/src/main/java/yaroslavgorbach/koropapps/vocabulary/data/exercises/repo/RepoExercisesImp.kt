@@ -15,7 +15,7 @@ class RepoExercisesImp : RepoExercises {
             Exercise(ExerciseName.ALPHABET_ADJECTIVES, R.drawable.ic_test),
             Exercise(ExerciseName.ALPHABET_NOUN, R.drawable.ic_test),
             Exercise(ExerciseName.ALPHABET_VERBS, R.drawable.ic_test),
-            Exercise(ExerciseName.MONOPHONIC, R.drawable.ic_test),
+            Exercise(ExerciseName.TAUTOGRAMS, R.drawable.ic_test),
             Exercise(ExerciseName.NOUN, R.drawable.ic_test),
             Exercise(ExerciseName.VERBS, R.drawable.ic_test),
             Exercise(ExerciseName.ANTONYMS_AND_SYNONYMS, R.drawable.ic_test),

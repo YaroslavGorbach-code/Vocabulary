@@ -3,7 +3,7 @@
     <string name="alphabet_adjectives_description">Алфавит (прилагательные)</string>
     <string name="alphabet_verbs_description">Алфавит (глаголы)</string>
     <string name="alphabet_noun_description">Алфавит (существительное)</string>
-    <string name="monophonic_description">Монофон</string>
+    <string name="tautograms_description">Тавтограммы</string>
     <string name="noun_description">Существительное</string>
     <string name="verbs_description">Глаголы</string>
     <string name="antonyms_and_synonyms_description">Антонимы и синонимы</string>

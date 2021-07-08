@@ -1,7 +1,7 @@
 package yaroslavgorbach.koropapps.vocabulary.data.exercise.repo
 
 import yaroslavgorbach.koropapps.vocabulary.R
-import yaroslavgorbach.koropapps.vocabulary.business.exercise.alphabet.model.Letter
+import yaroslavgorbach.koropapps.vocabulary.business.exercise.model.Letter
 import yaroslavgorbach.koropapps.vocabulary.business.exercise.repo.RepoExercise
 
 class RepoExerciseImp: RepoExercise {

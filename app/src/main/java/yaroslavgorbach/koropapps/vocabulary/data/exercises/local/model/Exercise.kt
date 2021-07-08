@@ -8,7 +8,7 @@ enum class ExerciseName(@StringRes val id: Int) {
     ALPHABET_ADJECTIVES(R.string.alphabet_adjectives),
     ALPHABET_NOUN(R.string.alphabet_noun),
     ALPHABET_VERBS(R.string.alphabet_verbs),
-    MONOPHONIC(R.string.monophonic),
+    TAUTOGRAMS(R.string.tautograms),
     NOUN(R.string.noun),
     VERBS(R.string.verbs),
     ANTONYMS_AND_SYNONYMS(R.string.antonyms_and_synonyms),

@@ -9,6 +9,7 @@ import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.Exercise
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.feature.description.ui.DescriptionFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.alphabet.ExerciseAlphabetFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.tautograms.ExerciseTautogramsFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercises.ui.ExercisesListFragment
 
 @FlowPreview
@@ -45,7 +46,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), ExercisesListFra
             ExerciseName.ALPHABET_VERBS -> {
                 fragment = ExerciseAlphabetFragment.getInstance(exerciseName)
             }
-            ExerciseName.MONOPHONIC -> {
+            ExerciseName.TAUTOGRAMS -> {
+                fragment = ExerciseTautogramsFragment()
             }
             ExerciseName.NOUN -> {
             }

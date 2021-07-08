@@ -10,7 +10,7 @@ class RepoDescriptionImp : RepoDescription {
         Description(ExerciseName.ALPHABET_VERBS, R.string.alphabet_verbs_description),
         Description(ExerciseName.ALPHABET_NOUN, R.string.alphabet_noun_description),
         Description(ExerciseName.ALPHABET_ADJECTIVES, R.string.alphabet_adjectives_description),
-        Description(ExerciseName.MONOPHONIC, R.string.monophonic_description),
+        Description(ExerciseName.TAUTOGRAMS, R.string.tautograms_description),
         Description(ExerciseName.NOUN, R.string.noun_description),
         Description(ExerciseName.VERBS, R.string.verbs_description),
         Description(ExerciseName.ANTONYMS_AND_SYNONYMS, R.string.antonyms_and_synonyms_description),
