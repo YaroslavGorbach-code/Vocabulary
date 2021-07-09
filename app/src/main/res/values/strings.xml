@@ -1,4 +1,22 @@
 <resources>
     <string name="app_name">Vocabulary</string>
     <string name="description">Описание</string>
+
+    <string name="narrator_adjectives_text">
+        Придумайте историю и расскажите ее,
+        подбирая только слова прилагательные(какой? какое?).
+        История должна состоять из %1$d слов
+    </string>
+
+    <string name="narrator_verbs_text">
+        Придумайте историю и расскажите ее,
+        подбирая только слова глаголы(что делать? что сделать?).
+        История должна состоять из %1$d слов
+    </string>
+
+    <string name="narrator_noun_text">
+        Придумайте историю и расскажите ее,
+        подбирая только слова существительные.
+        История должна состоять из %1$d слов
+    </string>
 </resources>

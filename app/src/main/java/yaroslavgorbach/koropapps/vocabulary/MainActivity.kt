@@ -9,6 +9,7 @@ import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.Exercise
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.feature.description.ui.DescriptionFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.alphabet.ExerciseAlphabetFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.narrator.ExerciseNarratorFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.tautograms.ExerciseTautogramsFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercises.ui.ExercisesListFragment
 
@@ -49,9 +50,14 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), ExercisesListFra
             ExerciseName.TAUTOGRAMS -> {
                 fragment = ExerciseTautogramsFragment()
             }
-            ExerciseName.NOUN -> {
+            ExerciseName.NARRATOR_ADJECTIVES -> {
+                fragment = ExerciseNarratorFragment.getInstance(exerciseName)
             }
-            ExerciseName.VERBS -> {
+            ExerciseName.NARRATOR_NOUN -> {
+                fragment = ExerciseNarratorFragment.getInstance(exerciseName)
+            }
+            ExerciseName.NARRATOR_VERBS -> {
+                fragment = ExerciseNarratorFragment.getInstance(exerciseName)
             }
             ExerciseName.ANTONYMS_AND_SYNONYMS -> {
             }
@@ -62,8 +68,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), ExercisesListFra
             ExerciseName.REMEMBER_ALL -> {
             }
             ExerciseName.LISTS -> {
-            }
-            ExerciseName.ADJECTIVES -> {
             }
             ExerciseName.GAME_I_KNOW_5_NAMES -> {
             }

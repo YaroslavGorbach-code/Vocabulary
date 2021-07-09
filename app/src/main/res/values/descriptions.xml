@@ -4,14 +4,16 @@
     <string name="alphabet_verbs_description">Алфавит (глаголы)</string>
     <string name="alphabet_noun_description">Алфавит (существительное)</string>
     <string name="tautograms_description">Тавтограммы</string>
-    <string name="noun_description">Существительное</string>
-    <string name="verbs_description">Глаголы</string>
+
+    <string name="narrator_adjectives_description">Рассказчик (прилагательные)</string>
+    <string name="narrator_verbs_description">Рассказчик (глаголы)</string>
+    <string name="narrator_noun_description">Рассказчик (существительное)</string>
+
     <string name="antonyms_and_synonyms_description">Антонимы и синонимы</string>
     <string name="ten_description">Десяточка</string>
     <string name="associations_description">Ассоциации</string>
     <string name="remember_all_description">Вспомнить все</string>
     <string name="lists_description">Списки</string>
-    <string name="adjectives_description">Прилагательные</string>
     <string name="game_i_know_5_names_description">Игра «Я знаю 5 имен»</string>
     <string name="three_liter_jar_description">Трехлитровая банка</string>
 </resources>

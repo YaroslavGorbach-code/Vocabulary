@@ -3,11 +3,12 @@
     <string name="alphabet_adjectives">Алфавит (прилагательные)</string>
     <string name="alphabet_verbs">Алфавит (глаголы)</string>
     <string name="alphabet_noun">Алфавит (существительное)</string>
-
     <string name="tautograms">Тавтограммы</string>
-    <string name="noun">Существительное</string>
-    <string name="verbs">Глаголы</string>
-    <string name="adjectives">Прилагательные</string>
+
+    <string name="narrator_adjectives">Рассказчик (прилагательные)</string>
+    <string name="narrator_verbs">Рассказчик (глаголы)</string>
+    <string name="narrator_noun">Рассказчик (существительное)</string>
+
     <string name="antonyms_and_synonyms">Антонимы и синонимы</string>
     <string name="ten">Десяточка</string>
     <string name="associations">Ассоциации</string>
