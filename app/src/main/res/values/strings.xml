@@ -35,4 +35,9 @@
     <string name="associations_text">
         Придумайте пять ассоциаций для слова %1$s
     </string>
+
+    <string name="remember_all_text">
+        Назовите десять слов которые начинаются с буквы %1$s
+    </string>
+
 </resources>

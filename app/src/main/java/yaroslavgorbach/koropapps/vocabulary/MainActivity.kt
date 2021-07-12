@@ -12,6 +12,7 @@ import yaroslavgorbach.koropapps.vocabulary.feature.exercise.alphabet.ExerciseAl
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.antonimssininims.ExerciseAntonymsSynonymsFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.associations.ExerciseAssociationsFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.narrator.ExerciseNarratorFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.rememberall.ExerciseRememberAllFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.tautograms.ExerciseTautogramsFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.ten.ExerciseTenFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercises.ui.ExercisesListFragment
@@ -72,6 +73,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), ExercisesListFra
                 fragment = ExerciseAssociationsFragment()
             }
             ExerciseName.REMEMBER_ALL -> {
+                fragment = ExerciseRememberAllFragment()
             }
             ExerciseName.LISTS -> {
             }
