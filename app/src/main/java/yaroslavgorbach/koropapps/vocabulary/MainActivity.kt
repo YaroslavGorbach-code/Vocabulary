@@ -9,7 +9,8 @@ import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.Exercise
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.feature.description.ui.DescriptionFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.alphabet.ExerciseAlphabetFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.antonimssininims.AntonymsSynonymsFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.antonimssininims.ExerciseAntonymsSynonymsFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.associations.ExerciseAssociationsFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.narrator.ExerciseNarratorFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.tautograms.ExerciseTautogramsFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.ten.ExerciseTenFragment
@@ -62,12 +63,13 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), ExercisesListFra
                 fragment = ExerciseNarratorFragment.getInstance(exerciseName)
             }
             ExerciseName.ANTONYMS_AND_SYNONYMS -> {
-                fragment = AntonymsSynonymsFragment()
+                fragment = ExerciseAntonymsSynonymsFragment()
             }
             ExerciseName.TEN -> {
                 fragment = ExerciseTenFragment()
             }
             ExerciseName.ASSOCIATIONS -> {
+                fragment = ExerciseAssociationsFragment()
             }
             ExerciseName.REMEMBER_ALL -> {
             }

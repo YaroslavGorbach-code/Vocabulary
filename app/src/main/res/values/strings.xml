@@ -32,4 +32,7 @@
         Придумайте десять предложений на тему %1$s
     </string>
 
+    <string name="associations_text">
+        Придумайте пять ассоциаций для слова %1$s
+    </string>
 </resources>

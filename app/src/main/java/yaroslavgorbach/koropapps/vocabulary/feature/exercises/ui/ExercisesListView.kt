@@ -4,7 +4,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.Exercise
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExercisesListBinding
-import yaroslavgorbach.koropapps.vocabulary.feature.base.LineDecorator
+import yaroslavgorbach.koropapps.vocabulary.feature.common.LineDecorator
 
 class ExercisesListView(
     private val binding: FragmentExercisesListBinding,

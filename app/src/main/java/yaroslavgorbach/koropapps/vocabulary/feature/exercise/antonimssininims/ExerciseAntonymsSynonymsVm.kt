@@ -9,7 +9,7 @@ import yaroslavgorbach.koropapps.vocabulary.business.exercise.usecase.GetWordsFi
 import yaroslavgorbach.koropapps.vocabulary.data.exercise.repo.RepoExerciseImp
 import kotlin.random.Random
 
-class AntonymsSynonymsVm(application: Application) : AndroidViewModel(application) {
+class ExerciseAntonymsSynonymsVm(application: Application) : AndroidViewModel(application) {
     private val text = MutableLiveData<String>()
     private val getWordsFillingsUseCase: GetWordsFillingsUseCase = GetWordsFillingsUseCase(RepoExerciseImp(application))
 

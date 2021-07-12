@@ -2,7 +2,7 @@ package yaroslavgorbach.koropapps.vocabulary.feature.exercise.antonimssininims
 
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentAntonymsSynonymsBinding
 
-class AntonymsSynonymsView(
+class ExerciseAntonymsSynonymsView(
     private val binding: FragmentAntonymsSynonymsBinding,
     private val callback: Callback
 ) {

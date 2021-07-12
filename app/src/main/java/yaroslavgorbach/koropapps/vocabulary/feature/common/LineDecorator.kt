@@ -1,4 +1,4 @@
-package yaroslavgorbach.koropapps.vocabulary.feature.base
+package yaroslavgorbach.koropapps.vocabulary.feature.common
 
 import android.content.Context
 import android.graphics.Canvas
