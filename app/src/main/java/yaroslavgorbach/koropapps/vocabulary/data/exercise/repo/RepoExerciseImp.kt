@@ -6,13 +6,18 @@ import yaroslavgorbach.koropapps.vocabulary.business.exercise.repo.RepoExercise
 
 class RepoExerciseImp(context: Context) : RepoExercise {
     private val letters = context.resources.getStringArray(R.array.letters).toList()
-    private val words = context.resources.getStringArray(R.array.words).toList()
+    private val wordsFillings = context.resources.getStringArray(R.array.fillings).toList()
+    private val wordsNouns = context.resources.getStringArray(R.array.nouns).toList()
 
     override fun getLetters(): List<String> {
         return letters
     }
 
-    override fun getWords(): List<String> {
-        return words
+    override fun getWordsFillings(): List<String> {
+        return wordsFillings
+    }
+
+    override fun getWordsNouns(): List<String> {
+        return wordsNouns
     }
 }

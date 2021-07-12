@@ -12,6 +12,7 @@ import yaroslavgorbach.koropapps.vocabulary.feature.exercise.alphabet.ExerciseAl
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.antonimssininims.AntonymsSynonymsFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.narrator.ExerciseNarratorFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.tautograms.ExerciseTautogramsFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.ten.ExerciseTenFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercises.ui.ExercisesListFragment
 
 @FlowPreview
@@ -64,6 +65,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), ExercisesListFra
                 fragment = AntonymsSynonymsFragment()
             }
             ExerciseName.TEN -> {
+                fragment = ExerciseTenFragment()
             }
             ExerciseName.ASSOCIATIONS -> {
             }
