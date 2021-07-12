@@ -1,6 +1,5 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exercise.alphabet
 
-import yaroslavgorbach.koropapps.vocabulary.business.exercise.model.Letter
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseAlphabetBinding
 import yaroslavgorbach.koropapps.vocabulary.util.getString
 
@@ -18,8 +17,8 @@ class ExerciseAlphabetView(
         }
     }
 
-    fun setLetter(letter: Letter) {
-        binding.letter.text = binding.getString(letter.letter)
+    fun setLetter(letter: String) {
+        binding.letter.text = letter
     }
 
 }

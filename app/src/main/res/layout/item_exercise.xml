@@ -14,7 +14,7 @@
         android:layout_height="match_parent"
         android:padding="8dp"
         tool:ignore="ContentDescription"
-        tool:src="@tools:sample/avatars" />
+        tool:src="@drawable/ic_alphabet_a" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/name"

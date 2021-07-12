@@ -1,6 +1,5 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exercise.tautograms
 
-import yaroslavgorbach.koropapps.vocabulary.business.exercise.model.Letter
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentTautogramsExerciseBinding
 import yaroslavgorbach.koropapps.vocabulary.util.getString
 
@@ -18,7 +17,7 @@ class ExerciseTautogramsView(
         }
     }
 
-    fun setLetter(letter: Letter){
-        bing.letter.text = bing.getString(letter.letter)
+    fun setLetter(letter: String){
+        bing.letter.text = letter
     }
 }

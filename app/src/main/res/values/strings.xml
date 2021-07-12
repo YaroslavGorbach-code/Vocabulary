@@ -19,4 +19,13 @@
         подбирая только слова существительные.
         История должна состоять из %1$d слов
     </string>
+
+    <string name="antonyms_text">
+        Придумайте антоним для слова %1$s
+    </string>
+
+    <string name="synonyms_text">
+        Придумайте синоним для слова %1$s
+    </string>
+
 </resources>

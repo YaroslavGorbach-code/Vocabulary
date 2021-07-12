@@ -12,13 +12,13 @@ class RepoExercisesImp : RepoExercises {
 
     init {
         exercises.value = listOf(
-            Exercise(ExerciseName.ALPHABET_ADJECTIVES, R.drawable.ic_test),
-            Exercise(ExerciseName.ALPHABET_NOUN, R.drawable.ic_test),
-            Exercise(ExerciseName.ALPHABET_VERBS, R.drawable.ic_test),
-            Exercise(ExerciseName.TAUTOGRAMS, R.drawable.ic_test),
-            Exercise(ExerciseName.NARRATOR_NOUN, R.drawable.ic_test),
-            Exercise(ExerciseName.NARRATOR_ADJECTIVES, R.drawable.ic_test),
-            Exercise(ExerciseName.NARRATOR_VERBS, R.drawable.ic_test),
+            Exercise(ExerciseName.ALPHABET_ADJECTIVES, R.drawable.ic_alphabet_a),
+            Exercise(ExerciseName.ALPHABET_NOUN, R.drawable.ic_alphabet_n),
+            Exercise(ExerciseName.ALPHABET_VERBS, R.drawable.ic_alphabet_v),
+            Exercise(ExerciseName.TAUTOGRAMS, R.drawable.ic_promotional_n),
+            Exercise(ExerciseName.NARRATOR_NOUN, R.drawable.ic_narrator_n),
+            Exercise(ExerciseName.NARRATOR_ADJECTIVES, R.drawable.ic_narrator_a),
+            Exercise(ExerciseName.NARRATOR_VERBS, R.drawable.ic_narrator_v),
             Exercise(ExerciseName.ANTONYMS_AND_SYNONYMS, R.drawable.ic_test),
             Exercise(ExerciseName.TEN, R.drawable.ic_test),
             Exercise(ExerciseName.ASSOCIATIONS, R.drawable.ic_test),
