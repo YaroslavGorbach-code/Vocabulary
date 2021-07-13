@@ -12,6 +12,7 @@ import yaroslavgorbach.koropapps.vocabulary.feature.exercise.alphabet.ExerciseAl
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.antonimssininims.ExerciseAntonymsSynonymsFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.associations.ExerciseAssociationsFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.game.ExerciseGameFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.jar.ExerciseJarFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.narrator.ExerciseNarratorFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.rememberall.ExerciseRememberAllFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.tautograms.ExerciseTautogramsFragment
@@ -80,7 +81,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), ExercisesListFra
                 fragment = ExerciseGameFragment()
             }
             ExerciseName.THREE_LITER_JAR -> {
-
+                fragment = ExerciseJarFragment()
             }
         }
         supportFragmentManager.commit {
