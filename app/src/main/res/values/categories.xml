@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="categories">
+        <item>Марки машин</item>
+        <item>Породы животных</item>
+        <item>Страны</item>
+        <item>Еда</item>
+        <item>Чувства</item>
+        <item>Напитки</item>
+        <item>Имена</item>
+        <item>Фильмы</item>
+    </string-array>
+</resources>

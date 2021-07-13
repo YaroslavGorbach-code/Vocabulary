@@ -11,6 +11,7 @@ import yaroslavgorbach.koropapps.vocabulary.feature.description.ui.DescriptionFr
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.alphabet.ExerciseAlphabetFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.antonimssininims.ExerciseAntonymsSynonymsFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.associations.ExerciseAssociationsFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.lists.ExerciseListsFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.narrator.ExerciseNarratorFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.rememberall.ExerciseRememberAllFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.tautograms.ExerciseTautogramsFragment
@@ -76,8 +77,10 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), ExercisesListFra
                 fragment = ExerciseRememberAllFragment()
             }
             ExerciseName.LISTS -> {
+                fragment = ExerciseListsFragment()
             }
             ExerciseName.GAME_I_KNOW_5_NAMES -> {
+
             }
             ExerciseName.THREE_LITER_JAR -> {
             }

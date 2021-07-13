@@ -8,6 +8,7 @@ class RepoExerciseImp(context: Context) : RepoExercise {
     private val letters = context.resources.getStringArray(R.array.letters).toList()
     private val wordsFillings = context.resources.getStringArray(R.array.fillings).toList()
     private val wordsNouns = context.resources.getStringArray(R.array.nouns).toList()
+    private val wordsCategory = context.resources.getStringArray(R.array.categories).toList()
 
     override fun getLetters(): List<String> {
         return letters
@@ -19,5 +20,9 @@ class RepoExerciseImp(context: Context) : RepoExercise {
 
     override fun getWordsNouns(): List<String> {
         return wordsNouns
+    }
+
+    override fun getWordsCategory(): List<String> {
+        return wordsCategory
     }
 }
