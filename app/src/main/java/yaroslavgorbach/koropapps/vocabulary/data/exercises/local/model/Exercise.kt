@@ -17,7 +17,6 @@ enum class ExerciseName(@StringRes val id: Int) {
     TEN(R.string.ten),
     ASSOCIATIONS(R.string.associations),
     REMEMBER_ALL(R.string.remember_all),
-    LISTS(R.string.lists),
     GAME_I_KNOW_5_NAMES(R.string.game_i_know_5_names),
     THREE_LITER_JAR(R.string.three_liter_jar)
 }

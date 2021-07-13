@@ -19,7 +19,7 @@ class RepoDescriptionImp : RepoDescription {
         Description(ExerciseName.TEN, R.string.ten_description),
         Description(ExerciseName.ASSOCIATIONS, R.string.associations_description),
         Description(ExerciseName.REMEMBER_ALL, R.string.remember_all_description),
-        Description(ExerciseName.LISTS, R.string.lists_description),
+        Description(ExerciseName.GAME_I_KNOW_5_NAMES, R.string.game_i_know_5_names_description),
     )
 
     override suspend fun getDescription(exerciseName: ExerciseName): Description {

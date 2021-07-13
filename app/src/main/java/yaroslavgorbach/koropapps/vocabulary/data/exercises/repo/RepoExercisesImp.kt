@@ -23,7 +23,6 @@ class RepoExercisesImp : RepoExercises {
             Exercise(ExerciseName.TEN, R.drawable.ic_test),
             Exercise(ExerciseName.ASSOCIATIONS, R.drawable.ic_test),
             Exercise(ExerciseName.REMEMBER_ALL, R.drawable.ic_test),
-            Exercise(ExerciseName.LISTS, R.drawable.ic_test),
             Exercise(ExerciseName.GAME_I_KNOW_5_NAMES, R.drawable.ic_test),
             Exercise(ExerciseName.THREE_LITER_JAR, R.drawable.ic_test),
             )
