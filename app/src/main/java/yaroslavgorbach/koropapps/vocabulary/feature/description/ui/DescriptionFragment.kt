@@ -44,8 +44,12 @@ class DescriptionFragment : Fragment(R.layout.fragment_description) {
             }
 
         })
+
         lifecycleScope.launch {
             v.setDescription(vm.getDescription(exName))
         }
+
+        v.setExName(requireContext().getString(exName.id))
+        v.setExerciseIcon(requireContext().getDrawable(vm.getExerciseIconId(exName)))
     }
 }

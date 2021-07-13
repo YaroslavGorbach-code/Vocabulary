@@ -25,10 +25,14 @@ class RepoExercisesImp : RepoExercises {
             Exercise(ExerciseName.REMEMBER_ALL, R.drawable.ic_test),
             Exercise(ExerciseName.GAME_I_KNOW_5_NAMES, R.drawable.ic_test),
             Exercise(ExerciseName.THREE_LITER_JAR, R.drawable.ic_test),
-            )
+        )
     }
 
     override suspend fun getExercises(): Flow<List<Exercise>> {
         return exercises
+    }
+
+    override fun getExercise(exerciseName: ExerciseName): Exercise {
+       return exercises.value.find { exercise -> exercise.name == exerciseName }!!
     }
 }
