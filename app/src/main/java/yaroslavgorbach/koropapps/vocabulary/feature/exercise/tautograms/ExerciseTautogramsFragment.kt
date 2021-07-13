@@ -25,5 +25,6 @@ class ExerciseTautogramsFragment : Fragment(R.layout.fragment_tautograms_exercis
             })
 
         vm.getLetter().observe(viewLifecycleOwner, v::setLetter)
+        v.setText(vm.getText())
     }
 }

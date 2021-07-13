@@ -47,8 +47,13 @@
     <string name="three_liter_jar_text">
         Назовите предмет на букву %1$s который поместиться в трехлитровую банку
     </string>
+
     <string name="alphabet_a_text">Назовите прилагательное на букву</string>
     <string name="alphabet_n_text">Назовите существительное на букву</string>
     <string name="alphabet_v_text">Назовите прилагательное на букву</string>
+
+    <string name="tautograms_text">
+        Составте предложение в котором все слова будут начинаться на букву
+    </string>
 
 </resources>

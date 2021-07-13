@@ -20,4 +20,8 @@ class ExerciseTautogramsView(
     fun setLetter(letter: String){
         bing.letter.text = letter
     }
+
+    fun setText(text: String){
+        bing.text.text = text
+    }
 }
