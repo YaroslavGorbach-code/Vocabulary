@@ -1,7 +1,6 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exercise.alphabet
 
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseAlphabetBinding
-import yaroslavgorbach.koropapps.vocabulary.util.getString
 
 class ExerciseAlphabetView(
     private val binding: FragmentExerciseAlphabetBinding,
@@ -19,6 +18,10 @@ class ExerciseAlphabetView(
 
     fun setLetter(letter: String) {
         binding.letter.text = letter
+    }
+
+    fun setText(text: String) {
+        binding.text.text = text
     }
 
 }

@@ -44,5 +44,6 @@ class ExerciseAlphabetFragment : Fragment(R.layout.fragment_exercise_alphabet) {
         vm.getLetter().observe(viewLifecycleOwner){letter->
             v.setLetter(letter)
         }
+        v.setText(vm.getText(exName))
     }
 }
