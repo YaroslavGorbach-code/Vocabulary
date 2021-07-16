@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="LetterProgressView">
+        <attr name="progressStrokeWidth" format="dimension"/>
+        <attr name="outlineColor" format="color"/>
+        <attr name="progressColor" format="color"/>
+        <attr name="outlineStrokeWidth" format="dimension"/>
+        <attr name="progress" format="integer"/>
+        <attr name="textSize" format="dimension"/>
+
+    </declare-styleable>
+</resources>

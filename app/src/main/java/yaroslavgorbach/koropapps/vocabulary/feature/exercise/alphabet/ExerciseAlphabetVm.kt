@@ -1,10 +1,12 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exercise.alphabet
 
 import android.app.Application
-import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.business.exercise.usecase.GetLettersUseCase
 import yaroslavgorbach.koropapps.vocabulary.data.exercise.repo.RepoExerciseImp
@@ -13,6 +15,8 @@ import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseN
 class ExerciseAlphabetVm(application: Application) : AndroidViewModel(application) {
     private val letters = MutableLiveData(GetLettersUseCase(RepoExerciseImp(application)).invoke())
     private val currentLetter = MutableLiveData<String>()
+    private val progress = MutableLiveData<Int>()
+
 
     fun getLetter(): LiveData<String> {
         return currentLetter
@@ -40,5 +44,17 @@ class ExerciseAlphabetVm(application: Application) : AndroidViewModel(applicatio
     fun setNewLetter() {
         currentLetter.value = letters.value?.first()
             .also { letter -> letters.value = letters.value?.filter { it != letter } }
+        startProgress()
     }
+
+    private fun startProgress() {
+        viewModelScope.launch {
+            (0..100).forEach {
+                delay(50)
+                progress.value = it
+            }
+        }
+    }
+
+    fun getProgress(): LiveData<Int> = progress
 }

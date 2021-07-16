@@ -13,8 +13,8 @@ import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseAlphabet
 
 class ExerciseAlphabetFragment : Fragment(R.layout.fragment_exercise_alphabet) {
 
-    companion object{
-        fun getInstance(exerciseName: ExerciseName): ExerciseAlphabetFragment{
+    companion object {
+        fun getInstance(exerciseName: ExerciseName): ExerciseAlphabetFragment {
             return ExerciseAlphabetFragment().apply {
                 arguments = bundleOf("exerciseName" to exerciseName)
             }
@@ -41,9 +41,8 @@ class ExerciseAlphabetFragment : Fragment(R.layout.fragment_exercise_alphabet) {
                 }
             })
 
-        vm.getLetter().observe(viewLifecycleOwner){letter->
-            v.setLetter(letter)
-        }
-        v.setText(vm.getText(exName))
+        vm.getLetter().observe(viewLifecycleOwner, v::setLetter)
+        v.descriptionText(vm.getText(exName))
+        vm.getProgress().observe(viewLifecycleOwner, v::setProgress)
     }
 }

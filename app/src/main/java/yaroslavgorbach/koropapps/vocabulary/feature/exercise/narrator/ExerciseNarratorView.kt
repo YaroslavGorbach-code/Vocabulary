@@ -21,4 +21,5 @@ class ExerciseNarratorView(
         binding.text.text = text
     }
 
+
 }
