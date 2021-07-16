@@ -48,12 +48,14 @@
         Назовите предмет на букву %1$s который поместиться в трехлитровую банку
     </string>
 
-    <string name="alphabet_a_text">Назовите прилагательное на букву</string>
-    <string name="alphabet_n_text">Назовите существительное на букву</string>
-    <string name="alphabet_v_text">Назовите прилагательное на букву</string>
+    <string name="alphabet_a_text">Назовите прилагательное на букву.</string>
+    <string name="alphabet_n_text">Назовите существительное на букву.\n</string>
+    <string name="alphabet_v_text">Назовите глагол на букву.\n</string>
 
-    <string name="tautograms_text">
-        Составте предложение в котором все слова будут начинаться на букву
-    </string>
+    <style name="click_on_screen_text">После названого слова, нажниме на экран, для учета результата</style>
+
+    <string name="tautograms_text">Составте предложение в котором все слова будут начинаться на букву</string>
+    <string name="end_of_time">Время закончилось</string>
+    <string name="result"> Ваш резуьтат %1$d</string>
 
 </resources>

@@ -11,7 +11,7 @@ import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseAlphabetBinding
 
-class ExerciseAlphabetFragment : Fragment(R.layout.fragment_exercise_alphabet) {
+class ExerciseAlphabetFragment : Fragment(R.layout.fragment_exercise_alphabet), TimeEndDialog.Host {
 
     companion object {
         fun getInstance(exerciseName: ExerciseName): ExerciseAlphabetFragment {
@@ -39,10 +39,22 @@ class ExerciseAlphabetFragment : Fragment(R.layout.fragment_exercise_alphabet) {
                         vm.setNewLetter()
                     }
                 }
+
+                override fun onTimeEnd() {
+                    TimeEndDialog.newInstance(vm.getNumberOfLetters()).show(childFragmentManager, null)
+                }
+
+                override fun onGameEnd() {
+                    // TODO: 7/16/2021 show on game end dialog
+                }
             })
 
         vm.getLetter().observe(viewLifecycleOwner, v::setLetter)
         v.descriptionText(vm.getText(exName))
         vm.getProgress().observe(viewLifecycleOwner, v::setProgress)
+    }
+
+    override fun onNavigateBack() {
+        requireActivity().onBackPressed()
     }
 }

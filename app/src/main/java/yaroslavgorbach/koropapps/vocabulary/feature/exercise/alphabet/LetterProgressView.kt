@@ -76,7 +76,6 @@ class LetterProgressView @JvmOverloads constructor(
         addView(textView)
     }
 
-
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         size = min(getSpecSize(widthMeasureSpec), getSpecSize(heightMeasureSpec)).toFloat()
         if (size != prevSize) {

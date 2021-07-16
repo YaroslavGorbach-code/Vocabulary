@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/text"
+        android:id="@+id/description"
         tools:text="text"
         android:textSize="50sp"
         android:layout_width="wrap_content"

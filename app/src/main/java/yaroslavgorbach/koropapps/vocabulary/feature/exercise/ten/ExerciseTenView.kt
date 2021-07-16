@@ -14,6 +14,6 @@ class ExerciseTenView(private val binding: FragmentExerciseTenBinding, callback:
     }
 
     fun setText(text: String){
-        binding.text.text = text
+        binding.description.text = text
     }
 }

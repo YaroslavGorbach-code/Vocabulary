@@ -20,7 +20,7 @@ class DescriptionView(
     }
 
     fun setDescription(description: Description) {
-        binding.text.text = binding.getString(description.text)
+        binding.description.text = binding.getString(description.text)
     }
 
     fun setExName(string: String) {

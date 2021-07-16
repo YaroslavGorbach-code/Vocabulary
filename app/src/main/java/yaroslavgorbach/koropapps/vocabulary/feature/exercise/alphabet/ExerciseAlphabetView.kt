@@ -8,20 +8,31 @@ class ExerciseAlphabetView(
 ) {
     interface Callback {
         fun onNewLetter()
+        fun onTimeEnd()
+        fun onGameEnd()
     }
 
+    init {
+        binding.root.setOnClickListener {
+            callback.onNewLetter()
+        }
+    }
 
-    fun setLetter(letter: String) {
-        binding.letterProgress.setLetter(letter)
+    fun setLetter(letter: String?) {
+        if (letter!=null){
+            binding.letterProgress.setLetter(letter)
+        }else{
+            callback.onGameEnd()
+        }
     }
 
     fun descriptionText(text: String) {
-        binding.text.text = text
+        binding.description.text = text
     }
 
-    fun setProgress(progress: Int){
-        if (progress==100){
-            callback.onNewLetter()
+    fun setProgress(progress: Int) {
+        if (progress == 100) {
+            callback.onTimeEnd()
         }
         binding.letterProgress.setProgress(progress)
     }

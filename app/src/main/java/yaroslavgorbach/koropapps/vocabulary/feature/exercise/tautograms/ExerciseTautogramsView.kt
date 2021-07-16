@@ -22,6 +22,6 @@ class ExerciseTautogramsView(
     }
 
     fun setText(text: String){
-        bing.text.text = text
+        bing.description.text = text
     }
 }

@@ -17,6 +17,6 @@ class ExerciseAntonymsSynonymsView(
     }
 
     fun setTaskText(text: String) {
-        binding.text.text = text
+        binding.description.text = text
     }
 }
