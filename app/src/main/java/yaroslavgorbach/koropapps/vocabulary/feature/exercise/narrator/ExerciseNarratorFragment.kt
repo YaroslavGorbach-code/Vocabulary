@@ -34,13 +34,13 @@ class ExerciseNarratorFragment : Fragment(R.layout.fragment_exercise_narrator) {
             FragmentExerciseNarratorBinding.bind(view),
             object : ExerciseNarratorView.Callback {
                 override fun onNext() {
-                    vm.generateText(exName)
+                    vm.generateNumberOfWords()
                 }
             })
 
-        vm.generateText(exName)
-        vm.getText().observe(viewLifecycleOwner) {
-            v.setText(it)
+        vm.getNumberOfWords().observe(viewLifecycleOwner) {
+            v.setLetter(it.toString())
         }
+        v.setDescriptionText(vm.getDescriptionText(exName))
     }
 }

@@ -9,27 +9,30 @@ import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseN
 import kotlin.random.Random
 
 class ExerciseNarratorVm(private val app: Application) : AndroidViewModel(app) {
-    private val text = MutableLiveData<String>()
+    private val numberOfWords = MutableLiveData<Int>()
 
-    fun getText(): LiveData<String> {
-        return text
+    init {
+        generateNumberOfWords()
     }
 
-    fun generateText(exName: ExerciseName) {
-        val randomNumber = Random.nextInt(3, 15)
-        when (exName) {
+    fun getDescriptionText(exName: ExerciseName): String {
+        return when (exName) {
             ExerciseName.NARRATOR_NOUN -> {
-                text.value = app.applicationContext.getString(R.string.narrator_noun_text, randomNumber)
+                app.applicationContext.getString(R.string.narrator_noun_text)
             }
             ExerciseName.NARRATOR_ADJECTIVES -> {
-                text.value = app.applicationContext.getString(R.string.narrator_adjectives_text, randomNumber)
+                app.applicationContext.getString(R.string.narrator_adjectives_text)
             }
             ExerciseName.NARRATOR_VERBS -> {
-                text.value = app.applicationContext.getString(R.string.narrator_verbs_text, randomNumber)
+                app.applicationContext.getString(R.string.narrator_verbs_text)
             }
-            else -> {}
+            else -> ""
         }
-
     }
 
+    fun generateNumberOfWords() {
+        numberOfWords.value = Random.nextInt(3, 15)
+    }
+
+    fun getNumberOfWords(): LiveData<Int> = numberOfWords
 }

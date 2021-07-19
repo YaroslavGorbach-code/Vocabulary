@@ -12,14 +12,17 @@ class ExerciseNarratorView(
     }
 
     init {
-        binding.button.setOnClickListener {
+        binding.next.button.setOnClickListener {
             callback.onNext()
         }
     }
 
-    fun setText(text: String) {
-        binding.description.text = text
+    fun setLetter(text: String) {
+        binding.letter.letter.setLetter(text)
     }
 
+    fun setDescriptionText(descriptionText: String) {
+        binding.description.text = descriptionText
+    }
 
 }
