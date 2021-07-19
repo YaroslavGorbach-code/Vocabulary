@@ -9,27 +9,27 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.util.host
 
-class TimeEndDialog : DialogFragment() {
+class ExerciseFinishDialog : DialogFragment() {
     interface Host {
         fun onDialogCancel()
     }
 
     companion object {
-        const val NUMBER_OF_LETTERS_ARG = "NUMBER_OF_LETTERS_ARG"
+        const val WORD_AVERAGE_TIME_ARG = "WORD_AVERAGE_TIME_ARG"
         const val DEFAULT_ARG = 0
-        fun newInstance(numberOfWords: Int) = TimeEndDialog().apply {
-            arguments = bundleOf(NUMBER_OF_LETTERS_ARG to numberOfWords)
+        fun newInstance(averageTime: Int) = ExerciseFinishDialog().apply {
+            arguments = bundleOf(WORD_AVERAGE_TIME_ARG to averageTime)
         }
 
     }
 
-    private val numberOfLetters: Int
-        get() = requireArguments().getInt(NUMBER_OF_LETTERS_ARG, DEFAULT_ARG)
+    private val averageTime: Int
+        get() = requireArguments().getInt(WORD_AVERAGE_TIME_ARG, DEFAULT_ARG)
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return MaterialAlertDialogBuilder(requireContext())
-            .setTitle(R.string.end_of_time)
-            .setMessage(getString(R.string.result, numberOfLetters))
+            .setTitle(R.string.finish_of_exercise)
+            .setMessage(getString(R.string.average_time_on_word, averageTime))
             .create()
     }
 

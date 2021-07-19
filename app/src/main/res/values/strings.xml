@@ -57,5 +57,7 @@
     <string name="tautograms_text">Составте предложение в котором все слова будут начинаться на букву</string>
     <string name="end_of_time">Время закончилось</string>
     <string name="result"> Ваш резуьтат %1$d</string>
+    <string name="finish_of_exercise">Упражнение закончено</string>
+    <string name="average_time_on_word">Среднее время потраченое на одно слово %1$d секунд</string>
 
 </resources>

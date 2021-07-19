@@ -5,10 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.cancelChildren
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.business.exercise.usecase.GetLettersUseCase
 import yaroslavgorbach.koropapps.vocabulary.data.exercise.repo.RepoExerciseImp
@@ -48,10 +45,10 @@ class ExerciseAlphabetVm(application: Application) : AndroidViewModel(applicatio
         lettersCount++
         currentLetter.value = letters.value?.firstOrNull()
             .also { letter -> letters.value = letters.value?.filter { it != letter } }
-        startProgress()
+        startProgressTimer()
     }
 
-    private fun startProgress() {
+    private fun startProgressTimer() {
         processScope.coroutineContext.cancelChildren()
         processScope.launch {
             (0..100).forEach {
@@ -62,6 +59,10 @@ class ExerciseAlphabetVm(application: Application) : AndroidViewModel(applicatio
     }
 
     fun getProgress(): LiveData<Int> = progress
-
     fun getNumberOfLetters() = lettersCount
+    fun stopTimer(){
+        processScope.cancel()
+        progress.value = 0
+    }
+
 }
