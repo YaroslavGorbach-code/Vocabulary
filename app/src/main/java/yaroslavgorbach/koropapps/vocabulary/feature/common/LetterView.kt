@@ -18,7 +18,8 @@ class LetterView @JvmOverloads constructor(
         setTextColor(Color.WHITE)
     }
 
-    fun setLetter(letter: String){
+
+    fun setLetter(letter: String) {
         textView.text = letter
 
     }

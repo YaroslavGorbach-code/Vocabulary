@@ -11,11 +11,20 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:gravity="center"
+        android:visibility="gone"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/letter"
         app:layout_constraintEnd_toEndOf="@+id/letter"
         app:layout_constraintStart_toStartOf="@+id/letter"
         tools:text="@string/narrator_adjectives_text" />
+
+    <yaroslavgorbach.koropapps.vocabulary.feature.common.DescriptionWindowView
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/letter"
+        app:layout_constraintEnd_toEndOf="@+id/letter"
+        app:layout_constraintStart_toStartOf="@+id/letter" />
 
     <include
         android:id="@+id/letter"
