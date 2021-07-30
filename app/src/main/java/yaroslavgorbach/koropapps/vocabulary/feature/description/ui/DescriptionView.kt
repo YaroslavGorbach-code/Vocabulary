@@ -1,8 +1,8 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.description.ui
 
-import android.graphics.drawable.Drawable
-import yaroslavgorbach.koropapps.vocabulary.data.description.local.model.Description
+import yaroslavgorbach.koropapps.vocabulary.data.description.local.model.DescriptionLocal
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentDescriptionBinding
+import yaroslavgorbach.koropapps.vocabulary.util.getDrawable
 import yaroslavgorbach.koropapps.vocabulary.util.getString
 
 class DescriptionView(
@@ -14,20 +14,22 @@ class DescriptionView(
     }
 
     init {
+        initActions()
+    }
+
+    private fun initActions() {
         binding.openExercise.setOnClickListener {
             callback.onOpenExercise()
         }
     }
 
-    fun setDescription(description: Description) {
-        binding.description.text = binding.getString(description.text)
+    fun setDescription(descriptionLocal: DescriptionLocal) {
+        binding.description.text = binding.getString(descriptionLocal.descriptionTextRes)
+        binding.icon.setImageDrawable(binding.getDrawable(descriptionLocal.exerciseIconRes))
     }
 
     fun setExName(string: String) {
         binding.toolbar.title = string
     }
 
-    fun setExerciseIcon(drawable: Drawable?) {
-        binding.icon.setImageDrawable(drawable)
-    }
 }

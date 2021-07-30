@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), ExercisesListFra
     }
 
     override fun openDescription(exercise: Exercise) {
-        val fragment = DescriptionFragment.getInstance(exercise.name)
+        val fragment = DescriptionFragment.newInstance(exercise.name)
         supportFragmentManager.commit {
             replace(R.id.main_container, fragment)
             addToBackStack(null)
@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), ExercisesListFra
     }
 
     override fun openExercise(exerciseName: ExerciseName) {
-        var fragment: Fragment = DescriptionFragment.getInstance(exerciseName)
+        var fragment: Fragment = DescriptionFragment.newInstance(exerciseName)
         when (exerciseName) {
             ExerciseName.ALPHABET_ADJECTIVES -> {
                 fragment = ExerciseAlphabetFragment.getInstance(exerciseName)
