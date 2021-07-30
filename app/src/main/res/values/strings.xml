@@ -1,60 +1,6 @@
 <resources>
     <string name="app_name">Vocabulary</string>
     <string name="description">Описание</string>
-
-    <string name="narrator_adjectives_text">
-        Придумайте историю и расскажите ее,
-        подбирая только слова прилагательные (какой? какое?).\n
-        Количество слов в истории
-    </string>
-
-    <string name="narrator_verbs_text">
-        Придумайте историю и расскажите ее,
-        подбирая только слова глаголы (что делать? что сделать?).\n
-        Количество слов в истории
-    </string>
-
-    <string name="narrator_noun_text">
-        Придумайте историю и расскажите ее,
-        подбирая только слова существительные (кто? что?).\n
-        Количество слов в истории
-    </string>
-
-    <string name="antonyms_text">
-        Придумайте антоним для слова %1$s
-    </string>
-
-    <string name="synonyms_text">
-        Придумайте синоним для слова %1$s
-    </string>
-
-    <string name="ten_text">
-        Придумайте минимум десять предложений на тему %1$s
-    </string>
-
-    <string name="associations_text">
-        Придумайте минимум пять ассоциаций для слова %1$s
-    </string>
-
-    <string name="remember_all_text">
-        Назовите минимум десять слов которые начинаются с буквы %1$s
-    </string>
-
-    <string name="game_text">
-        Назовите как можно больше слов которые относяться к категори %1$s
-    </string>
-
-    <string name="three_liter_jar_text">
-        Назовите предмет на букву %1$s который поместиться в трехлитровую банку
-    </string>
-
-    <string name="alphabet_a_text">Назовите прилагательное на букву</string>
-    <string name="alphabet_n_text">Назовите существительное на букву</string>
-    <string name="alphabet_v_text">Назовите глагол на букву</string>
-
-    <style name="click_on_screen_text">После названого слова, нажниме на экран, для учета результата</style>
-
-    <string name="tautograms_text">Составте предложение в котором все слова будут начинаться на букву</string>
     <string name="end_of_time">Время закончилось</string>
     <string name="result"> Ваш резуьтат %1$d</string>
     <string name="finish_of_exercise">Упражнение закончено</string>

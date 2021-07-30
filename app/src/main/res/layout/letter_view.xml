@@ -8,7 +8,6 @@
     android:layout_height="wrap_content"
     app:cardBackgroundColor="?colorPrimary"
     app:cardCornerRadius="6dp"
-    app:cardElevation="8dp"
     app:letterSize="40sp"
     tools:letter="A" />
 
