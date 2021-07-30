@@ -23,7 +23,7 @@ class ExerciseTenVm(application: Application) : AndroidViewModel(application) {
 
     fun generateText() {
         text.value = getApplication<Application>().applicationContext.getString(
-            R.string.ten_text,
+            R.string.desc_short_ten,
             getWordsNounsUseCase.invoke().random()
         )
     }

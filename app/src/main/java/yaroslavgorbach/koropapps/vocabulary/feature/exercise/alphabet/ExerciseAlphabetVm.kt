@@ -29,13 +29,13 @@ class ExerciseAlphabetVm(application: Application) : AndroidViewModel(applicatio
     fun getText(exerciseName: ExerciseName): String {
         return when (exerciseName) {
             ExerciseName.ALPHABET_ADJECTIVES -> {
-                getApplication<Application>().getString(R.string.alphabet_a_text)
+                getApplication<Application>().getString(R.string.desc_short_alphabet_a)
             }
             ExerciseName.ALPHABET_NOUN -> {
-                getApplication<Application>().getString(R.string.alphabet_n_text)
+                getApplication<Application>().getString(R.string.desc_short_alphabet_n)
             }
             ExerciseName.ALPHABET_VERBS -> {
-                getApplication<Application>().getString(R.string.alphabet_v_text)
+                getApplication<Application>().getString(R.string.desc_short_alphabet_v)
             }
             else -> ""
         }

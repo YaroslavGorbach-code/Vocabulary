@@ -18,13 +18,13 @@ class ExerciseNarratorVm(private val app: Application) : AndroidViewModel(app) {
     fun getDescriptionText(exName: ExerciseName): String {
         return when (exName) {
             ExerciseName.NARRATOR_NOUN -> {
-                app.applicationContext.getString(R.string.narrator_noun_text)
+                app.applicationContext.getString(R.string.desc_short_narrator_noun)
             }
             ExerciseName.NARRATOR_ADJECTIVES -> {
-                app.applicationContext.getString(R.string.narrator_adjectives_text)
+                app.applicationContext.getString(R.string.desc_short_narrator_adjectives)
             }
             ExerciseName.NARRATOR_VERBS -> {
-                app.applicationContext.getString(R.string.narrator_verbs_text)
+                app.applicationContext.getString(R.string.desc_short_narrator_verbs)
             }
             else -> ""
         }

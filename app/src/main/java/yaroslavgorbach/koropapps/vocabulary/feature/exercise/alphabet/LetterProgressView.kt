@@ -17,7 +17,7 @@ class LetterProgressView @JvmOverloads constructor(
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
     companion object {
-        private const val DEF_SIZE = 100
+        private const val DEF_SIZE = 20
     }
     private var progressStrokeWidth: Float = 16f
     private var outlineStrokeWidth: Float = 4f

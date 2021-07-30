@@ -6,15 +6,18 @@
     android:layout_height="match_parent"
     android:background="?selectableItemBackgroundBorderless">
 
-    <TextView
+    <yaroslavgorbach.koropapps.vocabulary.feature.common.DescriptionWindowView
         android:id="@+id/description"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:gravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Description" />
+        app:backgroundColor="?colorPrimary"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/letterProgress"
+        app:layout_constraintEnd_toEndOf="@+id/letterProgress"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/letterProgress"
+        app:layout_constraintTop_toTopOf="@+id/guideline11"
+        app:layout_constraintVertical_chainStyle="packed" />
 
 
     <yaroslavgorbach.koropapps.vocabulary.feature.exercise.alphabet.LetterProgressView
@@ -23,6 +26,7 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline10"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline7"
         app:layout_constraintTop_toTopOf="@+id/guideline9"
         app:progressColor="?colorPrimary"
@@ -49,12 +53,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.3" />
+        app:layout_constraintGuide_percent="0.4" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.7" />
+        app:layout_constraintGuide_percent="0.8" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.20" />
 </androidx.constraintlayout.widget.ConstraintLayout>

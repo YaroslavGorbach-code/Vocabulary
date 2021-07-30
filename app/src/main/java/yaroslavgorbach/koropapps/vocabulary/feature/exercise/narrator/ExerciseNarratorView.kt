@@ -22,7 +22,7 @@ class ExerciseNarratorView(
     }
 
     fun setDescriptionText(descriptionText: String) {
-        binding.description.text = descriptionText
+        binding.description.descriptionText = descriptionText
     }
 
 }

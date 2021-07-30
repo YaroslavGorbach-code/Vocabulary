@@ -19,15 +19,15 @@ class ExerciseAlphabetView(
     }
 
     fun setLetter(letter: String?) {
-        if (letter!=null){
+        if (letter != null) {
             binding.letterProgress.setLetter(letter)
-        }else{
+        } else {
             callback.onGameEnd()
         }
     }
 
     fun descriptionText(text: String) {
-        binding.description.text = text
+        binding.description.descriptionText = text
     }
 
     fun setProgress(progress: Int) {

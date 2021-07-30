@@ -21,7 +21,7 @@ class ExerciseTautogramsVm(application: Application) : AndroidViewModel(applicat
     }
 
     fun getText(): String{
-        return getApplication<Application>().getString(R.string.tautograms_text)
+        return getApplication<Application>().getString(R.string.desc_short_tautograms)
     }
 
     fun setRandomLetter() {

@@ -23,7 +23,7 @@ class ExerciseGameVm(application: Application) : AndroidViewModel(application) {
 
     fun generateText() {
         text.value = getApplication<Application>().applicationContext.getString(
-            R.string.game_text,
+            R.string.desc_short_game,
             getWordsCategoryUseCase.invoke().random()
         )
     }

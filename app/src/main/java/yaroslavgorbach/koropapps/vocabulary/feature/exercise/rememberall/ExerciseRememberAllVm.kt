@@ -6,7 +6,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.business.exercise.usecase.GetLettersUseCase
-import yaroslavgorbach.koropapps.vocabulary.business.exercise.usecase.GetWordsNounsUseCase
 import yaroslavgorbach.koropapps.vocabulary.data.exercise.repo.RepoExerciseImp
 
 class ExerciseRememberAllVm(application: Application) : AndroidViewModel(application) {
@@ -24,7 +23,7 @@ class ExerciseRememberAllVm(application: Application) : AndroidViewModel(applica
 
     fun generateText() {
         text.value = getApplication<Application>().applicationContext.getString(
-            R.string.remember_all_text,
+            R.string.desc_short_remember_all,
             getLettersUseCase.invoke().random()
         )
     }

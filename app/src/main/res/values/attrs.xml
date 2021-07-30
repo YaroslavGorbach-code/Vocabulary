@@ -13,4 +13,8 @@
         <attr name="letterSize" format="dimension" />
         <attr name="letter" format="string" />
     </declare-styleable>
+
+    <declare-styleable name="DescriptionWindowView">
+        <attr name="backgroundColor" format="color" />
+    </declare-styleable>
 </resources>

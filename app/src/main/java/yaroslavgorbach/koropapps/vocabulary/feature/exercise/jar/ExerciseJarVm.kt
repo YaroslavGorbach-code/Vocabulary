@@ -23,7 +23,7 @@ class ExerciseJarVm(application: Application) : AndroidViewModel(application) {
 
     fun generateText() {
         text.value = getApplication<Application>().applicationContext.getString(
-            R.string.three_liter_jar_text,
+            R.string.desc_short_three_liter_jar,
             getLettersUseCase.invoke().random()
         )
     }

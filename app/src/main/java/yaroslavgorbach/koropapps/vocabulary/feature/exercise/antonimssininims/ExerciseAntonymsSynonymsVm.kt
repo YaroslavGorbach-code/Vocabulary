@@ -25,13 +25,13 @@ class ExerciseAntonymsSynonymsVm(application: Application) : AndroidViewModel(ap
         when (Random.nextInt(1, 2)) {
             1 -> {
                 text.value = getApplication<Application>().applicationContext.getString(
-                    R.string.antonyms_text,
+                    R.string.desc_short_antonyms,
                     getWordsFillingsUseCase.invoke().random()
                 )
             }
             2 -> {
                 text.value = getApplication<Application>().applicationContext.getString(
-                    R.string.synonyms_text,
+                    R.string.desc_short_synonyms,
                     getWordsFillingsUseCase.invoke().random()
                 )
             }
