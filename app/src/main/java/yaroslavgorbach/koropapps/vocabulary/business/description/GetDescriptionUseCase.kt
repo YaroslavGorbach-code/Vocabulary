@@ -1,6 +1,6 @@
-package yaroslavgorbach.koropapps.vocabulary.business.description.usecase
+package yaroslavgorbach.koropapps.vocabulary.business.description
 
-import yaroslavgorbach.koropapps.vocabulary.business.description.repo.RepoDescription
+import yaroslavgorbach.koropapps.vocabulary.data.description.repo.RepoDescription
 import yaroslavgorbach.koropapps.vocabulary.data.description.local.model.Description
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 

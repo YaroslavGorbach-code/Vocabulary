@@ -1,6 +1,6 @@
-package yaroslavgorbach.koropapps.vocabulary.business.exercise.usecase
+package yaroslavgorbach.koropapps.vocabulary.business.exercise
 
-import yaroslavgorbach.koropapps.vocabulary.business.exercise.repo.RepoExercise
+import yaroslavgorbach.koropapps.vocabulary.data.exercise.repo.RepoExercise
 
 class GetWordsNounsUseCase(private val repoExercise: RepoExercise) {
     operator fun invoke(): List<String> {

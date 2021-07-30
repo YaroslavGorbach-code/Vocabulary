@@ -1,4 +1,4 @@
-package yaroslavgorbach.koropapps.vocabulary.business.exercise.repo
+package yaroslavgorbach.koropapps.vocabulary.data.exercise.repo
 
 interface RepoExercise {
     fun getLetters(): List<String>

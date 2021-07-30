@@ -7,7 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.*
 import yaroslavgorbach.koropapps.vocabulary.R
-import yaroslavgorbach.koropapps.vocabulary.business.exercise.usecase.GetLettersUseCase
+import yaroslavgorbach.koropapps.vocabulary.business.exercise.GetLettersUseCase
 import yaroslavgorbach.koropapps.vocabulary.data.exercise.repo.RepoExerciseImp
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 

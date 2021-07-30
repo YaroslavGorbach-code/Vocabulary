@@ -1,9 +1,7 @@
 package yaroslavgorbach.koropapps.vocabulary.data.description.repo
 
 import yaroslavgorbach.koropapps.vocabulary.R
-import yaroslavgorbach.koropapps.vocabulary.business.description.repo.RepoDescription
 import yaroslavgorbach.koropapps.vocabulary.data.description.local.model.Description
-import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.Exercise
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 
 class RepoDescriptionImp : RepoDescription {

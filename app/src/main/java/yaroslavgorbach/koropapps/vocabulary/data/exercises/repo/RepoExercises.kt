@@ -1,4 +1,4 @@
-package yaroslavgorbach.koropapps.vocabulary.business.exercises.repo
+package yaroslavgorbach.koropapps.vocabulary.data.exercises.repo
 
 import kotlinx.coroutines.flow.Flow
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.Exercise

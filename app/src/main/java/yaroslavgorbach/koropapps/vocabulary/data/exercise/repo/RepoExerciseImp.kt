@@ -2,7 +2,6 @@ package yaroslavgorbach.koropapps.vocabulary.data.exercise.repo
 
 import android.content.Context
 import yaroslavgorbach.koropapps.vocabulary.R
-import yaroslavgorbach.koropapps.vocabulary.business.exercise.repo.RepoExercise
 
 class RepoExerciseImp(context: Context) : RepoExercise {
     private val letters = context.resources.getStringArray(R.array.letters).toList()

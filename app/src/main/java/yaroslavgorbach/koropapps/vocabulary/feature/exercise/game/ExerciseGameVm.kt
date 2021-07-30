@@ -5,7 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import yaroslavgorbach.koropapps.vocabulary.R
-import yaroslavgorbach.koropapps.vocabulary.business.exercise.usecase.GetWordsCategoryUseCase
+import yaroslavgorbach.koropapps.vocabulary.business.exercise.GetWordsCategoryUseCase
 import yaroslavgorbach.koropapps.vocabulary.data.exercise.repo.RepoExerciseImp
 
 class ExerciseGameVm(application: Application) : AndroidViewModel(application) {
