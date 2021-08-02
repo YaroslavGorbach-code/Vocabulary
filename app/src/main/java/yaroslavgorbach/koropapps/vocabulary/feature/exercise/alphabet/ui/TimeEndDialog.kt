@@ -1,4 +1,4 @@
-package yaroslavgorbach.koropapps.vocabulary.feature.exercise.alphabet
+package yaroslavgorbach.koropapps.vocabulary.feature.exercise.alphabet.ui
 
 import android.app.Dialog
 import android.content.DialogInterface
@@ -10,6 +10,7 @@ import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.util.host
 
 class TimeEndDialog : DialogFragment() {
+
     interface Host {
         fun onDialogCancel()
     }
@@ -18,7 +19,9 @@ class TimeEndDialog : DialogFragment() {
         const val NUMBER_OF_LETTERS_ARG = "NUMBER_OF_LETTERS_ARG"
         const val DEFAULT_ARG = 0
         fun newInstance(numberOfWords: Int) = TimeEndDialog().apply {
-            arguments = bundleOf(NUMBER_OF_LETTERS_ARG to numberOfWords)
+            arguments = bundleOf(
+                NUMBER_OF_LETTERS_ARG to numberOfWords
+            )
         }
 
     }

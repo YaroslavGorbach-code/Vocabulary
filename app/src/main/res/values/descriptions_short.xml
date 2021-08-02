@@ -19,38 +19,38 @@
     </string>
 
     <string name="desc_short_antonyms">
-        Придумайте антоним для слова %1$s
+        Придумайте антоним для данного слова
     </string>
 
     <string name="desc_short_synonyms">
-        Придумайте синоним для слова %1$s
+        Придумайте синоним для данного слова
     </string>
 
     <string name="desc_short_ten">
-        Придумайте минимум десять предложений на тему %1$s
+        Придумайте минимум десять предложений на данную тему
     </string>
 
     <string name="desc_short_associations">
-        Придумайте минимум пять ассоциаций для слова %1$s
+        Придумайте минимум пять ассоциаций для данного слова
     </string>
 
     <string name="desc_short_remember_all">
-        Назовите минимум десять слов которые начинаются с буквы %1$s
+        Назовите минимум десять слов которые начинаются с данной буквы
     </string>
 
     <string name="desc_short_game">
-        Назовите как можно больше слов которые относяться к категори %1$s
+        Назовите как можно больше слов которые относяться к данной категори
     </string>
 
     <string name="desc_short_three_liter_jar">
-        Назовите предмет на букву %1$s который поместиться в трехлитровую банку
+        Назовите предмет на данную букву который поместиться в трехлитровую банку
     </string>
 
-    <string name="desc_short_alphabet_a">Назовите прилагательное на букву</string>
-    <string name="desc_short_alphabet_n">Назовите существительное на букву</string>
-    <string name="desc_short_alphabet_v">Назовите глагол на букву</string>
+    <string name="desc_short_alphabet_a">Назовите прилагательное на данную букву</string>
+    <string name="desc_short_alphabet_n">Назовите существительное на данную букву</string>
+    <string name="desc_short_alphabet_v">Назовите глагол на данную букву</string>
 
     <style name="desc_short_click_on_screen">После названого слова, нажниме на экран, для учета результата</style>
 
-    <string name="desc_short_tautograms">Составте предложение в котором все слова будут начинаться на букву</string>
+    <string name="desc_short_tautograms">Составте предложение в котором все слова будут начинаться на данную букву</string>
 </resources>
