@@ -1,4 +1,4 @@
-package yaroslavgorbach.koropapps.vocabulary.feature.exercise.alphabet
+package yaroslavgorbach.koropapps.vocabulary.feature.exercise.alphabet.ui
 
 import android.app.Dialog
 import android.content.DialogInterface
@@ -18,7 +18,9 @@ class ExerciseFinishDialog : DialogFragment() {
         const val WORD_AVERAGE_TIME_ARG = "WORD_AVERAGE_TIME_ARG"
         const val DEFAULT_ARG = 0
         fun newInstance(averageTime: Int) = ExerciseFinishDialog().apply {
-            arguments = bundleOf(WORD_AVERAGE_TIME_ARG to averageTime)
+            arguments = bundleOf(
+                WORD_AVERAGE_TIME_ARG to averageTime
+            )
         }
 
     }
