@@ -8,7 +8,7 @@ import androidx.fragment.app.viewModels
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseBinding
-import yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.ExerciseView
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.ExerciseView
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.narrator.presentation.ExerciseNarratorViewModel
 
 
@@ -44,6 +44,10 @@ class ExerciseNarratorFragment : Fragment(R.layout.fragment_exercise) {
                 }
             })
         exerciseView.setDescriptionText(viewModel.getDescriptionText(exName))
+        exerciseView.setExerciseName(exName)
+        exerciseView.setShortDescriptionText(
+            requireContext().getString(R.string.number_of_words_in_story)
+        )
     }
 
     private fun initObservers() {

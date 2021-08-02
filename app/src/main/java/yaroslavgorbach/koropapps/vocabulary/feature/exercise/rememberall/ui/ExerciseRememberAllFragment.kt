@@ -5,8 +5,10 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import yaroslavgorbach.koropapps.vocabulary.R
+import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.Exercise
+import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseBinding
-import yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.ExerciseView
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.ExerciseView
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.rememberall.presentation.ExerciseRememberAllViewModel
 
 class ExerciseRememberAllFragment : Fragment(R.layout.fragment_exercise) {
@@ -33,6 +35,7 @@ class ExerciseRememberAllFragment : Fragment(R.layout.fragment_exercise) {
                     viewModel.generateWord()
                 }
             })
+        exerciseView.setExerciseName(ExerciseName.REMEMBER_ALL)
         exerciseView.setDescriptionText(viewModel.descriptionText)
     }
 }

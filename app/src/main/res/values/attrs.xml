@@ -12,6 +12,8 @@
     <declare-styleable name="LetterView">
         <attr name="letterSize" format="dimension" />
         <attr name="letter" format="string" />
+        <attr name="description" format="string" />
+        <attr name="descriptionSize" format="dimension" />
     </declare-styleable>
 
     <declare-styleable name="DescriptionWindowView">
