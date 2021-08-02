@@ -1,4 +1,4 @@
-package yaroslavgorbach.koropapps.vocabulary.feature.description.ui
+package yaroslavgorbach.koropapps.vocabulary.feature.description.presentation
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.FlowPreview
@@ -12,7 +12,7 @@ import yaroslavgorbach.koropapps.vocabulary.data.exercises.repo.RepoExercises
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.repo.RepoExercisesImp
 
 @FlowPreview
-class DescriptionVm : ViewModel() {
+class DescriptionViewModel : ViewModel() {
     private val repoExercises: RepoExercises
         get() = RepoExercisesImp()
 

@@ -1,4 +1,4 @@
-package yaroslavgorbach.koropapps.vocabulary.feature.common
+package yaroslavgorbach.koropapps.vocabulary.feature.common.uikit
 
 import android.content.Context
 import android.graphics.Canvas
@@ -31,6 +31,7 @@ class DescriptionWindowView @JvmOverloads constructor(
         gravity = Gravity.CENTER
         setPadding(5, 0, 5, 100)
         setTextColor(Color.WHITE)
+        textSize = 20f
         addView(this)
     }
 
