@@ -5,20 +5,22 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.InternalCoroutinesApi
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.Exercise
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.feature.description.ui.DescriptionFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.alphabet.ExerciseAlphabetFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.antonimssininims.ExerciseAntonymsSynonymsFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.associations.ExerciseAssociationsFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.game.ExerciseGameFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.jar.ExerciseJarFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.narrator.ExerciseNarratorFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.rememberall.ExerciseRememberAllFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.tautograms.ExerciseTautogramsFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.ten.ExerciseTenFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.alphabet.ui.ExerciseAlphabetFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.antonimssininims.ui.ExerciseAntonymsSynonymsFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.associations.ui.ExerciseAssociationsFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.game.ui.ExerciseGameFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.jar.ui.ExerciseJarFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.narrator.ui.ExerciseNarratorFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.rememberall.ui.ExerciseRememberAllFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.tautograms.ui.ExerciseTautogramsFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.ten.ui.ExerciseTenFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercises.ui.ExercisesListFragment
 
+@InternalCoroutinesApi
 @FlowPreview
 class MainActivity : AppCompatActivity(R.layout.activity_main), ExercisesListFragment.Router,
     DescriptionFragment.Router {

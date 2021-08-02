@@ -1,10 +1,9 @@
-package yaroslavgorbach.koropapps.vocabulary.feature.exercise.alphabet
+package yaroslavgorbach.koropapps.vocabulary.feature.common.uikit
 
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.Gravity
-import android.view.View
 import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.core.content.res.use

@@ -1,4 +1,4 @@
-package yaroslavgorbach.koropapps.vocabulary.feature.common
+package yaroslavgorbach.koropapps.vocabulary.feature.common.uikit
 
 import android.content.Context
 import android.graphics.Color
@@ -21,7 +21,15 @@ class LetterView @JvmOverloads constructor(
 
     fun setLetter(letter: String) {
         textView.text = letter
+        generateCorrectTextSize(letter)
+    }
 
+    private fun generateCorrectTextSize(text: String) {
+        textView.textSize = if (text.length > 2) {
+            50f
+        } else {
+            100f
+        }
     }
 
     init {
@@ -30,6 +38,7 @@ class LetterView @JvmOverloads constructor(
             textView.text = it.getString(R.styleable.LetterView_letter)
         }
         addView(textView)
+        setPadding(10, 0, 10, 0)
     }
 
 }
