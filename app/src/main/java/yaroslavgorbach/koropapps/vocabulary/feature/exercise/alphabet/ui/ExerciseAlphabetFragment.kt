@@ -1,4 +1,4 @@
-package yaroslavgorbach.koropapps.vocabulary.feature.exercise.alphabet
+package yaroslavgorbach.koropapps.vocabulary.feature.exercise.alphabet.ui
 
 import android.os.Bundle
 import android.view.View
@@ -10,6 +10,7 @@ import kotlinx.coroutines.launch
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseAlphabetBinding
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.alphabet.presentation.ExerciseAlphabetViewModel
 
 class ExerciseAlphabetFragment : Fragment(R.layout.fragment_exercise_alphabet), TimeEndDialog.Host,
     ExerciseFinishDialog.Host {
@@ -17,45 +18,53 @@ class ExerciseAlphabetFragment : Fragment(R.layout.fragment_exercise_alphabet), 
     companion object {
         fun getInstance(exerciseName: ExerciseName): ExerciseAlphabetFragment {
             return ExerciseAlphabetFragment().apply {
-                arguments = bundleOf("exerciseName" to exerciseName)
+                arguments = bundleOf(
+                    "exerciseName" to exerciseName
+                )
             }
         }
-
-        private val ExerciseAlphabetFragment.exName: ExerciseName
-            get() = requireArguments()["exerciseName"] as ExerciseName
     }
+
+    private lateinit var exerciseAlphabetView: ExerciseAlphabetView
+
+    private val viewModel by viewModels<ExerciseAlphabetViewModel>()
+
+    private val exName: ExerciseName
+        get() = requireArguments()["exerciseName"] as ExerciseName
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initView(view)
+        initObservers()
+    }
 
-        // init vm
-        val vm by viewModels<ExerciseAlphabetVm>()
-
-        // init view
-        val v = ExerciseAlphabetView(
+    private fun initView(view: View) {
+        exerciseAlphabetView = ExerciseAlphabetView(
             FragmentExerciseAlphabetBinding.bind(view),
             object : ExerciseAlphabetView.Callback {
                 override fun onNewLetter() {
                     lifecycleScope.launch {
-                        vm.setNewLetter()
+                        viewModel.refreshLetter()
                     }
                 }
 
                 override fun onTimeEnd() {
-                    TimeEndDialog.newInstance(vm.getNumberOfLetters())
+                    TimeEndDialog.newInstance(viewModel.lettersCount)
                         .show(childFragmentManager, null)
                 }
 
                 override fun onGameEnd() {
                     // TODO: 7/19/2021 calculate average time
                     ExerciseFinishDialog.newInstance(30).show(childFragmentManager, null)
-                    vm.stopTimer()
+                    viewModel.stopTimer()
                 }
             })
+    }
 
-        vm.getLetter().observe(viewLifecycleOwner, v::setLetter)
-        v.descriptionText(vm.getText(exName))
-        vm.getProgress().observe(viewLifecycleOwner, v::setProgress)
+    private fun initObservers() {
+        viewModel.letter.observe(viewLifecycleOwner, exerciseAlphabetView::setLetter)
+        exerciseAlphabetView.descriptionText(viewModel.getDescriptionText(exName))
+        viewModel.progress.observe(viewLifecycleOwner, exerciseAlphabetView::setProgress)
     }
 
     override fun onDialogCancel() {

@@ -1,4 +1,4 @@
-package yaroslavgorbach.koropapps.vocabulary.feature.exercise.alphabet
+package yaroslavgorbach.koropapps.vocabulary.feature.exercise.alphabet.ui
 
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseAlphabetBinding
 
@@ -13,6 +13,10 @@ class ExerciseAlphabetView(
     }
 
     init {
+        initActions()
+    }
+
+    private fun initActions() {
         binding.root.setOnClickListener {
             callback.onNewLetter()
         }
