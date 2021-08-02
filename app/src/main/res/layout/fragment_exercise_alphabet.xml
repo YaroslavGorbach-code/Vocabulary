@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="?selectableItemBackgroundBorderless">
 
-    <yaroslavgorbach.koropapps.vocabulary.feature.common.DescriptionWindowView
+    <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.DescriptionWindowView
         android:id="@+id/description"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -20,7 +20,7 @@
         app:layout_constraintVertical_chainStyle="packed" />
 
 
-    <yaroslavgorbach.koropapps.vocabulary.feature.exercise.alphabet.LetterProgressView
+    <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.LetterProgressView
         android:id="@+id/letterProgress"
         android:layout_width="0dp"
         android:layout_height="0dp"
