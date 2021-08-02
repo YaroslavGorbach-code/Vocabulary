@@ -1,4 +1,4 @@
-package yaroslavgorbach.koropapps.vocabulary.feature.exercise.narrator
+package yaroslavgorbach.koropapps.vocabulary.feature.exercise.narrator.presentation
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -8,8 +8,12 @@ import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import kotlin.random.Random
 
-class ExerciseNarratorVm(private val app: Application) : AndroidViewModel(app) {
-    private val numberOfWords = MutableLiveData<Int>()
+class ExerciseNarratorViewModel(private val app: Application) : AndroidViewModel(app) {
+
+    private val _numberOfWords = MutableLiveData<String>()
+
+    val numberOfWords: LiveData<String>
+        get() = _numberOfWords
 
     init {
         generateNumberOfWords()
@@ -31,8 +35,7 @@ class ExerciseNarratorVm(private val app: Application) : AndroidViewModel(app) {
     }
 
     fun generateNumberOfWords() {
-        numberOfWords.value = Random.nextInt(3, 15)
+        _numberOfWords.value = Random.nextInt(3, 15).toString()
     }
 
-    fun getNumberOfWords(): LiveData<Int> = numberOfWords
 }
