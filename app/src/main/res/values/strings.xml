@@ -5,5 +5,5 @@
     <string name="result"> Ваш резуьтат %1$d</string>
     <string name="finish_of_exercise">Упражнение закончено</string>
     <string name="average_time_on_word">Среднее время потраченое на одно слово %1$d секунд</string>
-
+    <string name="number_of_words_in_story">Количество слов в истории</string>
 </resources>
