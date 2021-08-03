@@ -16,19 +16,20 @@ import yaroslavgorbach.koropapps.vocabulary.util.host
 class DescriptionFragment : Fragment(R.layout.fragment_description) {
 
     interface Router {
-        fun openExercise(exerciseName: ExerciseName)
+        fun onOpenExercise(exerciseName: ExerciseName)
     }
 
     companion object {
+        private const val ARG_EXERCISE_NAME = "ARG_EXERCISE_NAME"
         fun newInstance(exerciseName: ExerciseName) = DescriptionFragment().apply {
             arguments = bundleOf(
-                "exerciseName" to exerciseName
+                ARG_EXERCISE_NAME to exerciseName
             )
         }
     }
 
     private val exName: ExerciseName
-        get() = requireArguments()["exerciseName"] as ExerciseName
+        get() = requireArguments()[ARG_EXERCISE_NAME] as ExerciseName
 
     private val viewModel by viewModels<DescriptionViewModel>()
 
@@ -42,7 +43,7 @@ class DescriptionFragment : Fragment(R.layout.fragment_description) {
             FragmentDescriptionBinding.bind(requireView()),
             object : DescriptionView.Callback {
                 override fun onOpenExercise() {
-                    host<Router>().openExercise(exName)
+                    host<Router>().onOpenExercise(exName)
                 }
             })
 

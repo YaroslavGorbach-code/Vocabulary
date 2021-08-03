@@ -16,7 +16,7 @@ class ExerciseAlphabetFragment : Fragment(R.layout.fragment_exercise_alphabet), 
     ExerciseFinishDialog.Host {
 
     companion object {
-        fun getInstance(exerciseName: ExerciseName): ExerciseAlphabetFragment {
+        fun newInstance(exerciseName: ExerciseName): ExerciseAlphabetFragment {
             return ExerciseAlphabetFragment().apply {
                 arguments = bundleOf(
                     "exerciseName" to exerciseName
@@ -70,5 +70,6 @@ class ExerciseAlphabetFragment : Fragment(R.layout.fragment_exercise_alphabet), 
     override fun onDialogCancel() {
         requireActivity().onBackPressed()
     }
+
 
 }

@@ -15,7 +15,7 @@ import yaroslavgorbach.koropapps.vocabulary.feature.exercise.narrator.presentati
 class ExerciseNarratorFragment : Fragment(R.layout.fragment_exercise) {
 
     companion object {
-        fun getInstance(exerciseName: ExerciseName): ExerciseNarratorFragment {
+        fun newInstance(exerciseName: ExerciseName): ExerciseNarratorFragment {
             return ExerciseNarratorFragment().apply {
                 arguments = bundleOf("exerciseName" to exerciseName)
             }
