@@ -58,12 +58,17 @@ class ExerciseAlphabetFragment : Fragment(R.layout.fragment_exercise_alphabet), 
                     ExerciseFinishDialog.newInstance(30).show(childFragmentManager, null)
                     viewModel.stopTimer()
                 }
+
+                override fun onBack() {
+                    childFragmentManager.popBackStack()
+                }
             })
+        exerciseAlphabetView.setExerciseName(requireContext().getString(exName.id))
     }
 
     private fun initObservers() {
         viewModel.letter.observe(viewLifecycleOwner, exerciseAlphabetView::setLetter)
-        exerciseAlphabetView.descriptionText(viewModel.getDescriptionText(exName))
+        exerciseAlphabetView.setDescriptionText(viewModel.getDescriptionText(exName))
         viewModel.progress.observe(viewLifecycleOwner, exerciseAlphabetView::setProgress)
     }
 

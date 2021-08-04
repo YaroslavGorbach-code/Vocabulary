@@ -10,6 +10,7 @@ class ExerciseView(
 ) {
     interface Callback {
         fun onNext()
+        fun onBack()
     }
 
     init {
@@ -19,6 +20,9 @@ class ExerciseView(
     private fun initEvents() {
         binding.next.setOnClickListener {
             callback.onNext()
+        }
+        binding.toolbar.setNavigationOnClickListener {
+            callback.onBack()
         }
     }
 

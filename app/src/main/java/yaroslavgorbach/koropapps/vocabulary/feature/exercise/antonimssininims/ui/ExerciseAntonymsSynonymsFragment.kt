@@ -29,7 +29,12 @@ class ExerciseAntonymsSynonymsFragment : Fragment(R.layout.fragment_exercise) {
                 override fun onNext() {
                     viewModel.generateDescriptionTextAndNewWord()
                 }
+
+                override fun onBack() {
+                    childFragmentManager.popBackStack()
+                }
             })
+        exerciseView.setExerciseName(ExerciseName.ANTONYMS_AND_SYNONYMS)
     }
 
     private fun initObservers() {

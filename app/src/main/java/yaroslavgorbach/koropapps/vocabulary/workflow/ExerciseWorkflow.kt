@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
 import kotlinx.coroutines.FlowPreview
 import yaroslavgorbach.koropapps.vocabulary.R
@@ -89,7 +90,7 @@ class ExerciseWorkflow : Fragment(R.layout.workflow_exercise), DescriptionFragme
         }
         childFragmentManager.commit {
             replace(R.id.exercise_container, fragment)
-            //addToBackStack(null)
+            setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
         }
     }
 }

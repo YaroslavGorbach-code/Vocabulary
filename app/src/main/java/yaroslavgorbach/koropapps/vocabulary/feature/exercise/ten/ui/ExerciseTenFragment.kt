@@ -33,6 +33,10 @@ class ExerciseTenFragment : Fragment(R.layout.fragment_exercise) {
                 override fun onNext() {
                     viewModel.generateWord()
                 }
+
+                override fun onBack() {
+                    childFragmentManager.popBackStack()
+                }
             })
         exerciseView.setDescriptionText(viewModel.descriptionText)
         exerciseView.setExerciseName(ExerciseName.TEN)

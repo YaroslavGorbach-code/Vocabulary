@@ -2,6 +2,7 @@ package yaroslavgorbach.koropapps.vocabulary
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.InternalCoroutinesApi
@@ -29,6 +30,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), ExercisesListFra
             replace(R.id.main_container, fragment)
             setPrimaryNavigationFragment(fragment)
             addToBackStack(null)
+            setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
         }
     }
 }

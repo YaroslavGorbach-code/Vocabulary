@@ -10,6 +10,7 @@ class ExerciseAlphabetView(
         fun onNewLetter()
         fun onTimeEnd()
         fun onGameEnd()
+        fun onBack()
     }
 
     init {
@@ -17,8 +18,11 @@ class ExerciseAlphabetView(
     }
 
     private fun initActions() {
-        binding.root.setOnClickListener {
+        binding.clickSurface.setOnClickListener {
             callback.onNewLetter()
+        }
+        binding.toolbar.setNavigationOnClickListener {
+            callback.onBack()
         }
     }
 
@@ -30,8 +34,12 @@ class ExerciseAlphabetView(
         }
     }
 
-    fun descriptionText(text: String) {
-        binding.description.descriptionText = text
+    fun setDescriptionText(text: String) {
+        binding.description.text = text
+    }
+
+    fun setExerciseName(name: String) {
+        binding.toolbar.title = name
     }
 
     fun setProgress(progress: Int) {
