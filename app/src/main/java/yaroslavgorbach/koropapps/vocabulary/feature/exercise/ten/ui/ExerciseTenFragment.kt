@@ -35,7 +35,7 @@ class ExerciseTenFragment : Fragment(R.layout.fragment_exercise) {
                 }
 
                 override fun onBack() {
-                    childFragmentManager.popBackStack()
+                    requireActivity().onBackPressed()
                 }
             })
         exerciseView.setDescriptionText(viewModel.descriptionText)

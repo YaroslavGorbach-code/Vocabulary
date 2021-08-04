@@ -35,7 +35,7 @@ class ExerciseRememberAllFragment : Fragment(R.layout.fragment_exercise) {
                 }
 
                 override fun onBack() {
-                    childFragmentManager.popBackStack()
+                    requireActivity().onBackPressed()
                 }
             })
         exerciseView.setExerciseName(ExerciseName.REMEMBER_ALL)

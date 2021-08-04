@@ -31,7 +31,7 @@ class ExerciseAntonymsSynonymsFragment : Fragment(R.layout.fragment_exercise) {
                 }
 
                 override fun onBack() {
-                    childFragmentManager.popBackStack()
+                    requireActivity().onBackPressed()
                 }
             })
         exerciseView.setExerciseName(ExerciseName.ANTONYMS_AND_SYNONYMS)
