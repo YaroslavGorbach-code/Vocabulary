@@ -60,7 +60,7 @@ class ExerciseAlphabetFragment : Fragment(R.layout.fragment_exercise_alphabet), 
                 }
 
                 override fun onBack() {
-                    childFragmentManager.popBackStack()
+                    requireActivity().onBackPressed()
                 }
             })
         exerciseAlphabetView.setExerciseName(requireContext().getString(exName.id))

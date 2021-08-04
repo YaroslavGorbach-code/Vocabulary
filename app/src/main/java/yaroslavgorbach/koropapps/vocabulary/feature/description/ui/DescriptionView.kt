@@ -11,6 +11,7 @@ class DescriptionView(
 ) {
     interface Callback {
         fun onOpenExercise()
+        fun onBack()
     }
 
     init {
@@ -20,6 +21,9 @@ class DescriptionView(
     private fun initActions() {
         binding.openExercise.setOnClickListener {
             callback.onOpenExercise()
+        }
+        binding.toolbar.setNavigationOnClickListener {
+            callback.onBack()
         }
     }
 

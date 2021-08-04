@@ -45,6 +45,10 @@ class DescriptionFragment : Fragment(R.layout.fragment_description) {
                 override fun onOpenExercise() {
                     host<Router>().onOpenExercise(exName)
                 }
+
+                override fun onBack() {
+                    requireActivity().onBackPressed()
+                }
             })
 
         descriptionView.setDescription(viewModel.getDescription(exName))
