@@ -35,7 +35,7 @@ class ExerciseAlphabetView(
     }
 
     fun setDescriptionText(text: String) {
-        binding.description.text = text
+        binding.descriptionText.text = text
     }
 
     fun setExerciseName(name: String) {

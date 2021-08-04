@@ -27,7 +27,7 @@ class ExerciseView(
     }
 
     fun setDescriptionText(text: String) {
-        binding.description.text = text
+        binding.descriptionText.text = text
     }
 
     fun setShortDescriptionText(text: String) {

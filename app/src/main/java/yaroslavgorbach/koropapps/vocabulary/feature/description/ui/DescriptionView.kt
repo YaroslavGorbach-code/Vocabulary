@@ -28,8 +28,14 @@ class DescriptionView(
     }
 
     fun setDescription(descriptionLocal: DescriptionLocal) {
-        binding.description.text = binding.getString(descriptionLocal.descriptionTextRes)
-        binding.icon.setImageDrawable(binding.getDrawable(descriptionLocal.exerciseIconRes))
+        binding.descriptionText.text = binding.getString(descriptionLocal.descriptionTextRes)
+        with(binding.getDrawable(descriptionLocal.exerciseIconRes)) {
+            binding.icon1.setImageDrawable(this)
+            binding.icon2.setImageDrawable(this)
+            binding.icon3.setImageDrawable(this)
+            binding.icon4.setImageDrawable(this)
+            binding.icon5.setImageDrawable(this)
+        }
     }
 
     fun setExName(string: String) {
