@@ -8,4 +8,5 @@
     <string name="number_of_words_in_story">Количество слов в истории</string>
     <string name="statistic">Статистика</string>
     <string name="Start">НАЧАТЬ</string>
+    <string name="daily_training">Ежедневная тренировка</string>
 </resources>
