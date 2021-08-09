@@ -7,7 +7,8 @@ import androidx.fragment.app.commit
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.InternalCoroutinesApi
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.Exercise
-import yaroslavgorbach.koropapps.vocabulary.feature.exercises.ui.ExercisesListFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.ui.ExercisesListFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.training.ui.TrainingFragment
 import yaroslavgorbach.koropapps.vocabulary.workflow.ExerciseWorkflow
 
 @InternalCoroutinesApi
@@ -29,6 +30,15 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), ExercisesListFra
         supportFragmentManager.commit {
             replace(R.id.main_container, fragment)
             setPrimaryNavigationFragment(fragment)
+            addToBackStack(null)
+            setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+        }
+    }
+
+    override fun openTraining() {
+        val fragment = TrainingFragment.newInstance()
+        supportFragmentManager.commit {
+            replace(R.id.main_container, fragment)
             addToBackStack(null)
             setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
         }
