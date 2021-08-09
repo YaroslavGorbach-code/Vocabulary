@@ -13,7 +13,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <include
-            android:id="@+id/include"
+            android:id="@+id/training"
             layout="@layout/layout_training" />
     </com.google.android.material.appbar.AppBarLayout>
 
