@@ -5,7 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import yaroslavgorbach.koropapps.vocabulary.R
-import yaroslavgorbach.koropapps.vocabulary.data.exercise.model.ExerciseWordCategory
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.model.ExerciseWordCategory
 
 
 class ExerciseAssociationsViewModel(application: Application) : AndroidViewModel(application) {

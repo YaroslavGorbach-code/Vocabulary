@@ -7,7 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.*
 import yaroslavgorbach.koropapps.vocabulary.R
-import yaroslavgorbach.koropapps.vocabulary.data.exercise.model.ExerciseWordCategory
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.model.ExerciseWordCategory
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 
 class ExerciseAlphabetViewModel(application: Application) : AndroidViewModel(application) {
