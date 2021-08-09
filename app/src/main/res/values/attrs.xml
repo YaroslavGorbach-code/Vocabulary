@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="LetterProgressView">
+    <declare-styleable name="TextProgressView">
         <attr name="progressStrokeWidth" format="dimension" />
         <attr name="outlineColor" format="color" />
         <attr name="progressColor" format="color" />

@@ -3,17 +3,17 @@ package yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.ui.recycler
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.Exercise
 import yaroslavgorbach.koropapps.vocabulary.databinding.ItemExerciseBinding
+import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.ExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.util.getDrawable
 import yaroslavgorbach.koropapps.vocabulary.util.getString
 
-class ExercisesListAdapter(private val onExercise: (exercise: Exercise) -> Unit) :
+class ExercisesListAdapter(private val onExercise: (exercise: ExerciseUi) -> Unit) :
     RecyclerView.Adapter<ExercisesListAdapter.ViewHolder>() {
 
-    private var list: List<Exercise> = emptyList()
+    private var list: List<ExerciseUi> = emptyList()
 
-    fun setData(data: List<Exercise>) {
+    fun setData(data: List<ExerciseUi>) {
         list = data
         notifyDataSetChanged()
     }
@@ -42,9 +42,9 @@ class ExercisesListAdapter(private val onExercise: (exercise: Exercise) -> Unit)
             }
         }
 
-        fun bind(exercise: Exercise) {
-            binding.name.text = binding.getString(exercise.name.id)
-            binding.image.setImageDrawable(binding.getDrawable(exercise.icon))
+        fun bind(exercise: ExerciseUi) {
+            binding.name.text = binding.getString(exercise.nameRes)
+            binding.image.setImageDrawable(binding.getDrawable(exercise.iconRes))
         }
     }
 }

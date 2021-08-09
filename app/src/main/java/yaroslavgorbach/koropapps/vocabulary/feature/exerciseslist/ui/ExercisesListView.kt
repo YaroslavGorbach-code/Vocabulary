@@ -2,9 +2,9 @@ package yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.ui
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import yaroslavgorbach.koropapps.vocabulary.R
-import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.Exercise
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExercisesListBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.LineDecorator
+import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.ExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.ui.recycler.ExercisesListAdapter
 
 class ExercisesListView(
@@ -13,7 +13,7 @@ class ExercisesListView(
 ) {
 
     interface Callback {
-        fun onExercise(exercise: Exercise)
+        fun onExercise(exercise: ExerciseUi)
         fun onTraining()
     }
 
@@ -36,7 +36,7 @@ class ExercisesListView(
         binding.training.item.setOnClickListener { callback.onTraining() }
     }
 
-    fun setExercises(list: List<Exercise>) {
+    fun setExercises(list: List<ExerciseUi>) {
         listAdapter.setData(list)
     }
 }
