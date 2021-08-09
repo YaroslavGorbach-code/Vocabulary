@@ -1,11 +1,12 @@
 package yaroslavgorbach.koropapps.vocabulary.business.exercises
 
-import kotlinx.coroutines.flow.Flow
-import yaroslavgorbach.koropapps.vocabulary.data.exercises.repo.RepoExercises
+import io.reactivex.rxjava3.core.Single
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.Exercise
+import yaroslavgorbach.koropapps.vocabulary.data.exercises.repo.RepoExercises
+import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.ExerciseUi
 
 class GetExercisesUseCase(private val repoExercises: RepoExercises) {
-   suspend operator fun invoke(): Flow<List<Exercise>> {
-        return repoExercises.getExercises()
+    operator fun invoke(): Single<List<Exercise>> {
+        return repoExercises.get()
     }
 }
