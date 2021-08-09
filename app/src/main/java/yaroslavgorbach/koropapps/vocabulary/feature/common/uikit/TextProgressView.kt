@@ -11,7 +11,7 @@ import androidx.core.math.MathUtils
 import yaroslavgorbach.koropapps.vocabulary.R
 import kotlin.math.min
 
-class LetterProgressView @JvmOverloads constructor(
+class TextProgressView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
@@ -40,23 +40,23 @@ class LetterProgressView @JvmOverloads constructor(
 
     init {
         var progressAttr = 0
-        context.obtainStyledAttributes(attrs, R.styleable.LetterProgressView).use {
+        context.obtainStyledAttributes(attrs, R.styleable.TextProgressView).use {
             progressStrokeWidth = it.getDimension(
-                R.styleable.LetterProgressView_progressStrokeWidth, 16f
+                R.styleable.TextProgressView_progressStrokeWidth, 16f
             )
             outlineColor = it.getColor(
-                R.styleable.LetterProgressView_outlineColor, Color.LTGRAY
+                R.styleable.TextProgressView_outlineColor, Color.LTGRAY
             )
             outlineStrokeWidth = it.getDimension(
-                R.styleable.LetterProgressView_outlineStrokeWidth, 4f
+                R.styleable.TextProgressView_outlineStrokeWidth, 4f
             )
             progressAttr = it.getInteger(
-                R.styleable.LetterProgressView_progress, 0
+                R.styleable.TextProgressView_progress, 0
             )
             progressColor = it.getColor(
-                R.styleable.LetterProgressView_progressColor, Color.YELLOW
+                R.styleable.TextProgressView_progressColor, Color.YELLOW
             )
-            textView.textSize = it.getDimension(R.styleable.LetterProgressView_textSize, 24f)
+            textView.textSize = it.getDimension(R.styleable.TextProgressView_textSize, 24f)
         }
         setProgress(progressAttr)
 

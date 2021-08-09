@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.InternalCoroutinesApi
-import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.Exercise
+import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.ExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.ui.ExercisesListFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.training.ui.TrainingFragment
 import yaroslavgorbach.koropapps.vocabulary.workflow.ExerciseWorkflow
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), ExercisesListFra
         }
     }
 
-    override fun openDescription(exercise: Exercise) {
+    override fun openDescription(exercise: ExerciseUi) {
         val fragment = ExerciseWorkflow.newInstance(exercise.name)
         supportFragmentManager.commit {
             replace(R.id.main_container, fragment)
