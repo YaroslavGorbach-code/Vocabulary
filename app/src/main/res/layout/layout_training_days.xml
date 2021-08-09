@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.TextProgressView
+        android:id="@+id/letterProgressView2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/letterProgressView"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/letterProgressView5"
+        app:layout_constraintTop_toTopOf="parent"
+        app:progressColor="?colorPrimary"
+        app:progressStrokeWidth="3dp"
+        app:textSize="8sp"
+        tools:ignore="SmallSp"
+        tools:progress="30" />
+
+    <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.TextProgressView
+        android:id="@+id/letterProgressView5"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/letterProgressView2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:progressColor="?colorPrimary"
+        app:progressStrokeWidth="3dp"
+        app:textSize="8sp"
+        tools:ignore="SmallSp"
+        tools:progress="30" />
+
+    <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.TextProgressView
+        android:id="@+id/letterProgressView4"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/letterProgressView3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:progressColor="?colorPrimary"
+        app:progressStrokeWidth="3dp"
+        app:textSize="8sp"
+        tools:ignore="SmallSp"
+        tools:progress="30" />
+
+    <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.TextProgressView
+        android:id="@+id/letterProgressView3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/letterProgressView4"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/letterProgressView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:progressColor="?colorPrimary"
+        app:progressStrokeWidth="3dp"
+        app:textSize="8sp"
+        tools:ignore="SmallSp"
+        tools:progress="30" />
+
+    <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.TextProgressView
+        android:id="@+id/letterProgressView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/letterProgressView3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/letterProgressView2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:progressColor="?colorPrimary"
+        app:progressStrokeWidth="3dp"
+        app:textSize="8sp"
+        tools:ignore="SmallSp"
+        tools:progress="30" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
