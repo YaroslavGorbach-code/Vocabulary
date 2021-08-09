@@ -1,31 +1,39 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.presentation
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.FlowPreview
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.functions.Consumer
 import yaroslavgorbach.koropapps.vocabulary.business.description.GetDescriptionUseCase
-import yaroslavgorbach.koropapps.vocabulary.business.exercises.GetExerciseUseCase
-import yaroslavgorbach.koropapps.vocabulary.data.description.local.model.DescriptionLocal
+import yaroslavgorbach.koropapps.vocabulary.data.description.local.model.Description
 import yaroslavgorbach.koropapps.vocabulary.data.description.repo.RepoDescription
 import yaroslavgorbach.koropapps.vocabulary.data.description.repo.RepoDescriptionImp
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
-import yaroslavgorbach.koropapps.vocabulary.data.exercises.repo.RepoExercises
-import yaroslavgorbach.koropapps.vocabulary.data.exercises.repo.RepoExercisesImp
 
-@FlowPreview
 class DescriptionViewModel : ViewModel() {
-    private val repoExercises: RepoExercises
-        get() = RepoExercisesImp()
+
+    private val disposables: CompositeDisposable = CompositeDisposable()
 
     private val repoDescription: RepoDescription
-        get() = RepoDescriptionImp(getExerciseUseCase)
+        get() = RepoDescriptionImp()
 
     private val getDescriptionUseCase: GetDescriptionUseCase
         get() = GetDescriptionUseCase(repoDescription)
 
-    private val getExerciseUseCase: GetExerciseUseCase
-        get() = GetExerciseUseCase(repoExercises)
+    private val description: MutableLiveData<Description> = MutableLiveData()
 
-    fun getDescription(exerciseName: ExerciseName): DescriptionLocal {
-        return getDescriptionUseCase(exerciseName)
+
+    fun getDescription(exerciseName: ExerciseName): LiveData<Description> {
+        getDescriptionUseCase(exerciseName)
+            .subscribe(Consumer(description::setValue))
+        return description
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        if (disposables.isDisposed.not()) {
+            disposables.dispose()
+        }
     }
 }

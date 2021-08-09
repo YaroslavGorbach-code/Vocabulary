@@ -1,6 +1,6 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.ui
 
-import yaroslavgorbach.koropapps.vocabulary.data.description.local.model.DescriptionLocal
+import yaroslavgorbach.koropapps.vocabulary.data.description.local.model.Description
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentDescriptionBinding
 import yaroslavgorbach.koropapps.vocabulary.util.getDrawable
 import yaroslavgorbach.koropapps.vocabulary.util.getString
@@ -27,19 +27,16 @@ class DescriptionView(
         }
     }
 
-    fun setDescription(descriptionLocal: DescriptionLocal) {
-        binding.descriptionText.text = binding.getString(descriptionLocal.descriptionTextRes)
-        with(binding.getDrawable(descriptionLocal.exerciseIconRes)) {
+    fun setDescription(description: Description) {
+        binding.descriptionText.text = binding.getString(description.textRes)
+        with(binding.getDrawable(description.exerciseIconRes)) {
             binding.icon1.setImageDrawable(this)
             binding.icon2.setImageDrawable(this)
             binding.icon3.setImageDrawable(this)
             binding.icon4.setImageDrawable(this)
             binding.icon5.setImageDrawable(this)
         }
-    }
-
-    fun setExName(string: String) {
-        binding.toolbar.title = string
+        binding.toolbar.title = binding.getString(description.exerciseName.id)
     }
 
 }

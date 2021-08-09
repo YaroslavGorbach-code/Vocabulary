@@ -28,30 +28,35 @@ class DescriptionFragment : Fragment(R.layout.fragment_description) {
         }
     }
 
-    private val exName: ExerciseName
+    private val exerciseName: ExerciseName
         get() = requireArguments()[ARG_EXERCISE_NAME] as ExerciseName
 
     private val viewModel by viewModels<DescriptionViewModel>()
 
+    private lateinit var descriptionView: DescriptionView
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
+        initObservers()
     }
 
     private fun initView() {
-        val descriptionView = DescriptionView(
+        descriptionView = DescriptionView(
             FragmentDescriptionBinding.bind(requireView()),
             object : DescriptionView.Callback {
                 override fun onOpenExercise() {
-                    host<Router>().onOpenExercise(exName)
+                    host<Router>().onOpenExercise(exerciseName)
                 }
 
                 override fun onBack() {
                     requireActivity().onBackPressed()
                 }
             })
+    }
 
-        descriptionView.setDescription(viewModel.getDescription(exName))
-        descriptionView.setExName(requireContext().getString(exName.id))
+    private fun initObservers() {
+        viewModel.getDescription(exerciseName)
+            .observe(viewLifecycleOwner, descriptionView::setDescription)
     }
 }
