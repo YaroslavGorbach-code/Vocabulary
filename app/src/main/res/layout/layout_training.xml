@@ -30,7 +30,7 @@
 
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/days"
+        android:id="@+id/days_without_interruption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -41,6 +41,7 @@
         android:textSize="12sp" />
 
     <include
+        android:id="@+id/days"
         layout="@layout/layout_training_days"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

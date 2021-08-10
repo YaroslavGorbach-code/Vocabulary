@@ -3,7 +3,7 @@ package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises
 import android.os.SystemClock
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseBinding
-import yaroslavgorbach.koropapps.vocabulary.util.getString
+import yaroslavgorbach.koropapps.vocabulary.utils.getString
 
 class ExerciseView(
     private val binding: FragmentExerciseBinding,

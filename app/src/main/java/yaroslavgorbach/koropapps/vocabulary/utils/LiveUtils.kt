@@ -1,4 +1,4 @@
-package yaroslavgorbach.koropapps.vocabulary.util
+package yaroslavgorbach.koropapps.vocabulary.utils
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData

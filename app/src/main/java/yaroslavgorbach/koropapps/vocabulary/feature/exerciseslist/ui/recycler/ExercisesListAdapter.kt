@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import yaroslavgorbach.koropapps.vocabulary.databinding.ItemExerciseBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.ExerciseUi
-import yaroslavgorbach.koropapps.vocabulary.util.getDrawable
-import yaroslavgorbach.koropapps.vocabulary.util.getString
+import yaroslavgorbach.koropapps.vocabulary.utils.getDrawable
+import yaroslavgorbach.koropapps.vocabulary.utils.getString
 
 class ExercisesListAdapter(private val onExercise: (exercise: ExerciseUi) -> Unit) :
     RecyclerView.Adapter<ExercisesListAdapter.ViewHolder>() {

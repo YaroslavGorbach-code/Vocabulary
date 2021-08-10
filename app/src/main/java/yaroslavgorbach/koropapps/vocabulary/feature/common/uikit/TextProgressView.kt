@@ -18,6 +18,7 @@ class TextProgressView @JvmOverloads constructor(
     companion object {
         private const val DEF_SIZE = 20
     }
+
     private var progressStrokeWidth: Float = 16f
     private var outlineStrokeWidth: Float = 4f
     private var progress: Int = -1
@@ -117,7 +118,7 @@ class TextProgressView @JvmOverloads constructor(
         }
     }
 
-    fun setLetter(letter: String){
-        textView.text = letter
+    fun setText(text: String) {
+        textView.text = text
     }
 }

@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import yaroslavgorbach.koropapps.vocabulary.databinding.ItemeExerciseTariningBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.ExerciseTrainingUi
-import yaroslavgorbach.koropapps.vocabulary.util.getDrawable
-import yaroslavgorbach.koropapps.vocabulary.util.getString
+import yaroslavgorbach.koropapps.vocabulary.utils.getDrawable
+import yaroslavgorbach.koropapps.vocabulary.utils.getString
 
 class TrainingExercisesListAdapter(private val onExercise: (exercise: ExerciseTrainingUi) -> Unit) :
     RecyclerView.Adapter<TrainingExercisesListAdapter.ViewHolder>() {

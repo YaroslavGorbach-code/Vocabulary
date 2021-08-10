@@ -6,7 +6,7 @@ import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseN
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.repo.RepoExercises
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.ExerciseUi
 
-class GetExerciseUseCase(val exercises: RepoExercises) {
+class GetExerciseIntearactor(val exercises: RepoExercises) {
     operator fun invoke(exerciseName: ExerciseName): Single<Exercise> {
         return exercises.get(exerciseName)
     }

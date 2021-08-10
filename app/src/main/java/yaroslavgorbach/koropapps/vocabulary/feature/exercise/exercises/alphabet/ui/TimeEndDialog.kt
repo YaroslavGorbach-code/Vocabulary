@@ -7,7 +7,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import yaroslavgorbach.koropapps.vocabulary.R
-import yaroslavgorbach.koropapps.vocabulary.util.host
+import yaroslavgorbach.koropapps.vocabulary.utils.host
 
 class TimeEndDialog : DialogFragment() {
 

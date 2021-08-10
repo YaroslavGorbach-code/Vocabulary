@@ -7,9 +7,9 @@ import androidx.fragment.app.viewModels
 import kotlinx.coroutines.InternalCoroutinesApi
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExercisesListBinding
-import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.presentation.ExercisesListViewModel
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.ExerciseUi
-import yaroslavgorbach.koropapps.vocabulary.util.host
+import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.presentation.ExercisesListViewModel
+import yaroslavgorbach.koropapps.vocabulary.utils.host
 
 @InternalCoroutinesApi
 class ExercisesListFragment : Fragment(R.layout.fragment_exercises_list) {
@@ -31,6 +31,7 @@ class ExercisesListFragment : Fragment(R.layout.fragment_exercises_list) {
 
     private fun initObservers() {
         viewModel.exercises.observe(viewLifecycleOwner, exercisesView::setExercises)
+        viewModel.training.observe(viewLifecycleOwner, exercisesView::setTraining)
     }
 
 

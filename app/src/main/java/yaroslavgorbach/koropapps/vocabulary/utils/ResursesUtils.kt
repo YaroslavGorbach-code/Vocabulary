@@ -1,4 +1,4 @@
-package yaroslavgorbach.koropapps.vocabulary.util
+package yaroslavgorbach.koropapps.vocabulary.utils
 
 import android.graphics.drawable.Drawable
 import androidx.annotation.DrawableRes

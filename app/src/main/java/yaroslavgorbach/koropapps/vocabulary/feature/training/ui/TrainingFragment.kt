@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentTrainingBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.ExerciseTrainingUi
-import yaroslavgorbach.koropapps.vocabulary.util.host
+import yaroslavgorbach.koropapps.vocabulary.utils.host
 
 class TrainingFragment : Fragment(R.layout.fragment_training) {
 

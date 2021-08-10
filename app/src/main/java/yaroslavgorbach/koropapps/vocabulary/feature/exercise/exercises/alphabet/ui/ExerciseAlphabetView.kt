@@ -28,7 +28,7 @@ class ExerciseAlphabetView(
 
     fun setLetter(letter: String?) {
         if (letter != null) {
-            binding.letterProgress.setLetter(letter)
+            binding.letterProgress.setText(letter)
         } else {
             callback.onGameEnd()
         }

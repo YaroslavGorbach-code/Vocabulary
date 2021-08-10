@@ -1,12 +1,12 @@
-package yaroslavgorbach.koropapps.vocabulary.util.feature.timer
+package yaroslavgorbach.koropapps.vocabulary.utils.feature.timer
 
 import android.os.CountDownTimer
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import yaroslavgorbach.koropapps.vocabulary.util.Event
-import yaroslavgorbach.koropapps.vocabulary.util.LiveEvent
-import yaroslavgorbach.koropapps.vocabulary.util.MutableLiveEvent
-import yaroslavgorbach.koropapps.vocabulary.util.send
+import yaroslavgorbach.koropapps.vocabulary.utils.Event
+import yaroslavgorbach.koropapps.vocabulary.utils.LiveEvent
+import yaroslavgorbach.koropapps.vocabulary.utils.MutableLiveEvent
+import yaroslavgorbach.koropapps.vocabulary.utils.send
 
 class TimerImp : Timer {
 

@@ -2,8 +2,8 @@ package yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.ui
 
 import yaroslavgorbach.koropapps.vocabulary.data.description.local.model.Description
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentDescriptionBinding
-import yaroslavgorbach.koropapps.vocabulary.util.getDrawable
-import yaroslavgorbach.koropapps.vocabulary.util.getString
+import yaroslavgorbach.koropapps.vocabulary.utils.getDrawable
+import yaroslavgorbach.koropapps.vocabulary.utils.getString
 
 class DescriptionView(
     private val binding: FragmentDescriptionBinding,

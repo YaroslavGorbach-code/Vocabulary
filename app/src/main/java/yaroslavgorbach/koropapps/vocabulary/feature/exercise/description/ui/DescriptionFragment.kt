@@ -10,7 +10,7 @@ import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentDescriptionBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.presentation.DescriptionViewModel
-import yaroslavgorbach.koropapps.vocabulary.util.host
+import yaroslavgorbach.koropapps.vocabulary.utils.host
 
 @FlowPreview
 class DescriptionFragment : Fragment(R.layout.fragment_description) {

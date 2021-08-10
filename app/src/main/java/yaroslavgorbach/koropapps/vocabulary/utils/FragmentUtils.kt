@@ -1,4 +1,4 @@
-package yaroslavgorbach.koropapps.vocabulary.util
+package yaroslavgorbach.koropapps.vocabulary.utils
 
 import androidx.fragment.app.Fragment
 
