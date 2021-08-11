@@ -13,6 +13,12 @@ class RepoTrainingImp : RepoTraining {
 
     override fun observe(): Observable<List<Training>> {
         return Observable.just(testTrainings)
+            .map { list ->
+                while (list.size < 5) {
+                    list.add(Training(0, null, emptyList()))
+                }
+                list.reversed()
+            }
     }
 
     override fun insert(training: Training): Completable {
@@ -30,12 +36,6 @@ class RepoTrainingImp : RepoTraining {
     private fun createTestTrainings(): List<Training> {
         return listOf(
             Training(1, Date(), createTestExercises()),
-            Training(2, Date(), createTestExercises()),
-            Training(3, Date(), createTestExercises()),
-            Training(4, Date(), createTestExercises()),
-            Training(5, Date(), createTestExercises()),
-            Training(6, Date(), createTestExercises()),
-            Training(7, Date(), createTestExercises())
         )
     }
 

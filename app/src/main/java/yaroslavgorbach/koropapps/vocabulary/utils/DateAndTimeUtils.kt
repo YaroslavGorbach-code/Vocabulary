@@ -3,13 +3,24 @@ package yaroslavgorbach.koropapps.vocabulary.utils
 import java.text.SimpleDateFormat
 import java.util.*
 
-fun Date.isToday(): Boolean {
+fun Date?.isToday(): Boolean {
     val df = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-    val currentDate = df.format(this)
-    return this.equals(currentDate)
+
+    return if (this != null) {
+        val currentDate = df.format(this)
+        this.equals(currentDate)
+    } else {
+        false
+    }
+
 }
 
-fun Date.day(): String {
+fun Date?.day(): String {
     val df = SimpleDateFormat("EE", Locale.getDefault())
-    return df.format(this).uppercase()
+
+    return if (this != null) {
+        df.format(this).uppercase()
+    } else {
+        "?"
+    }
 }

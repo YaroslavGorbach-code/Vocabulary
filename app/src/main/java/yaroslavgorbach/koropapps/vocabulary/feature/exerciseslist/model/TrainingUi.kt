@@ -2,7 +2,7 @@ package yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model
 
 import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.Training
 
-data class TrainingUi(val trainings: List<Training>) {
+data class TrainingUi(private val trainings: List<Training>) {
     val first: Training
         get() = trainings[0]
 

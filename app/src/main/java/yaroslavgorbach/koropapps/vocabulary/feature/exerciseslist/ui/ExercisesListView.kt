@@ -48,16 +48,16 @@ class ExercisesListView(
             day1.setText(trainingUi.first.date.day())
 
             day2.setProgress(trainingUi.second.progress)
-            day2.setText(trainingUi.first.date.day())
+            day2.setText(trainingUi.second.date.day())
 
             day3.setProgress(trainingUi.third.progress)
-            day3.setText(trainingUi.first.date.day())
+            day3.setText(trainingUi.third.date.day())
 
             day4.setProgress(trainingUi.fourth.progress)
-            day4.setText(trainingUi.first.date.day())
+            day4.setText(trainingUi.fourth.date.day())
 
             day5.setProgress(trainingUi.fifth.progress)
-            day5.setText(trainingUi.first.date.day())
+            day5.setText(trainingUi.fifth.date.day())
         }
     }
 }
