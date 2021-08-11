@@ -7,7 +7,7 @@ import yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.LineDecorator
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.ExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.TrainingUi
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.ui.recycler.ExercisesListAdapter
-import yaroslavgorbach.koropapps.vocabulary.utils.day
+import yaroslavgorbach.koropapps.vocabulary.utils.dayOfWeek
 
 class ExercisesListView(
     private val binding: FragmentExercisesListBinding,
@@ -45,19 +45,19 @@ class ExercisesListView(
     fun setTraining(trainingUi: TrainingUi) {
         with(binding.training.days) {
             day1.setProgress(trainingUi.first.progress)
-            day1.setText(trainingUi.first.date.day())
+            day1.setText(trainingUi.first.date.dayOfWeek())
 
             day2.setProgress(trainingUi.second.progress)
-            day2.setText(trainingUi.second.date.day())
+            day2.setText(trainingUi.second.date.dayOfWeek())
 
             day3.setProgress(trainingUi.third.progress)
-            day3.setText(trainingUi.third.date.day())
+            day3.setText(trainingUi.third.date.dayOfWeek())
 
             day4.setProgress(trainingUi.fourth.progress)
-            day4.setText(trainingUi.fourth.date.day())
+            day4.setText(trainingUi.fourth.date.dayOfWeek())
 
             day5.setProgress(trainingUi.fifth.progress)
-            day5.setText(trainingUi.fifth.date.day())
+            day5.setText(trainingUi.fifth.date.dayOfWeek())
         }
     }
 }

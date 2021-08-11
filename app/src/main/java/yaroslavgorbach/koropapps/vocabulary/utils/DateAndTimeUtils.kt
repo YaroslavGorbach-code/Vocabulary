@@ -15,7 +15,7 @@ fun Date?.isToday(): Boolean {
 
 }
 
-fun Date?.day(): String {
+fun Date?.dayOfWeek(): String {
     val df = SimpleDateFormat("EE", Locale.getDefault())
 
     return if (this != null) {
