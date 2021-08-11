@@ -24,6 +24,7 @@ class TextProgressView @JvmOverloads constructor(
     private var progress: Int = -1
     private var outlineColor: Int = Color.LTGRAY
     private var progressColor: Int = Color.YELLOW
+
     private val textView: TextView = TextView(context, attrs, defStyleAttr).apply {
         text = "A"
         gravity = Gravity.CENTER
@@ -58,6 +59,10 @@ class TextProgressView @JvmOverloads constructor(
                 R.styleable.TextProgressView_progressColor, Color.YELLOW
             )
             textView.textSize = it.getDimension(R.styleable.TextProgressView_textSize, 24f)
+            textView.setTextAppearance(
+                context,
+                it.getResourceId(R.styleable.TextProgressView_textAppearance, 0)
+            )
         }
         setProgress(progressAttr)
 
@@ -117,6 +122,7 @@ class TextProgressView @JvmOverloads constructor(
             invalidate()
         }
     }
+
 
     fun setText(text: String) {
         textView.text = text
