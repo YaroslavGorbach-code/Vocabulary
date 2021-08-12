@@ -1,7 +1,11 @@
 package yaroslavgorbach.koropapps.vocabulary.data.training.local.model
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 
-data class ExerciseTraining(
+@Entity
+data class ExerciseTrainingEntity(
+    @PrimaryKey(autoGenerate = true)
     val id: Long,
     val name: ExerciseName,
     val aim: Int,
