@@ -1,20 +1,21 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model
 
-import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.Training
+import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingWithExercises
 
-data class TrainingUi(private val trainings: List<Training>) {
-    val first: Training
-        get() = trainings[0]
 
-    val second: Training
-        get() = trainings[1]
+data class TrainingUi(private val trainingWithExercises: List<TrainingWithExercises>) {
+    val first: TrainingWithExercises
+        get() = trainingWithExercises[0]
 
-    val third: Training
-        get() = trainings[2]
+    val second: TrainingWithExercises
+        get() = trainingWithExercises[1]
 
-    val fourth: Training
-        get() = trainings[3]
+    val third: TrainingWithExercises
+        get() = trainingWithExercises[2]
 
-    val fifth: Training
-        get() = trainings[4]
+    val fourth: TrainingWithExercises
+        get() = trainingWithExercises[3]
+
+    val fifth: TrainingWithExercises
+        get() = trainingWithExercises[4]
 }
