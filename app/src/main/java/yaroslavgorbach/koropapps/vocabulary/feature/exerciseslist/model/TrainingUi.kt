@@ -4,18 +4,18 @@ import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingWi
 
 
 data class TrainingUi(private val trainingWithExercises: List<TrainingWithExercises>) {
-    val first: TrainingWithExercises
-        get() = trainingWithExercises[0]
+    val first: TrainingWithExercises?
+        get() = trainingWithExercises.getOrNull(0)
 
-    val second: TrainingWithExercises
-        get() = trainingWithExercises[1]
+    val second: TrainingWithExercises?
+        get() = trainingWithExercises.getOrNull(1)
 
-    val third: TrainingWithExercises
-        get() = trainingWithExercises[2]
+    val third: TrainingWithExercises?
+        get() = trainingWithExercises.getOrNull(2)
 
-    val fourth: TrainingWithExercises
-        get() = trainingWithExercises[3]
+    val fourth: TrainingWithExercises?
+        get() = trainingWithExercises.getOrNull(3)
 
-    val fifth: TrainingWithExercises
-        get() = trainingWithExercises[4]
+    val fifth: TrainingWithExercises?
+        get() = trainingWithExercises.getOrNull(4)
 }
