@@ -5,7 +5,7 @@ import yaroslavgorbach.koropapps.vocabulary.data.description.local.model.Descrip
 import yaroslavgorbach.koropapps.vocabulary.data.description.repo.RepoDescription
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 
-class GetDescriptionIntearactor(private val repoDescription: RepoDescription) {
+class GetDescriptionInteractor(private val repoDescription: RepoDescription) {
     operator fun invoke(exerciseName: ExerciseName): Single<Description> {
         return repoDescription.get(exerciseName)
     }

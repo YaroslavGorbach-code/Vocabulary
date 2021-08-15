@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.functions.Consumer
-import yaroslavgorbach.koropapps.vocabulary.business.description.GetDescriptionIntearactor
+import yaroslavgorbach.koropapps.vocabulary.business.description.GetDescriptionInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.description.local.model.Description
 import yaroslavgorbach.koropapps.vocabulary.data.description.repo.RepoDescription
 import yaroslavgorbach.koropapps.vocabulary.data.description.repo.RepoDescriptionImp
@@ -18,14 +18,14 @@ class DescriptionViewModel : ViewModel() {
     private val repoDescription: RepoDescription
         get() = RepoDescriptionImp()
 
-    private val getDescriptionIntearactor: GetDescriptionIntearactor
-        get() = GetDescriptionIntearactor(repoDescription)
+    private val getDescriptionInteractor: GetDescriptionInteractor
+        get() = GetDescriptionInteractor(repoDescription)
 
     private val description: MutableLiveData<Description> = MutableLiveData()
 
 
     fun getDescription(exerciseName: ExerciseName): LiveData<Description> {
-        getDescriptionIntearactor(exerciseName)
+        getDescriptionInteractor(exerciseName)
             .subscribe(Consumer(description::setValue))
         return description
     }
