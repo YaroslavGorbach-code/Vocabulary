@@ -1,7 +1,11 @@
 package yaroslavgorbach.koropapps.vocabulary.data.training.local
 
+import android.content.ContentValues
 import android.content.Context
 import androidx.room.*
+import androidx.sqlite.db.SupportSQLiteDatabase
+import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
+import yaroslavgorbach.koropapps.vocabulary.data.training.local.dao.ExerciseTrainingDao
 import yaroslavgorbach.koropapps.vocabulary.data.training.local.dao.TrainingDao
 import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.ExerciseTrainingEntity
 import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingEntity
@@ -12,6 +16,7 @@ import java.util.*
 abstract class TrainingDatabase : RoomDatabase() {
 
     abstract val trainingDao: TrainingDao
+    abstract val exerciseTrainingDao: ExerciseTrainingDao
 
     companion object {
         private lateinit var INSTANCE: TrainingDatabase
@@ -21,10 +26,31 @@ abstract class TrainingDatabase : RoomDatabase() {
                 if (::INSTANCE.isInitialized.not()) {
                     INSTANCE = Room.databaseBuilder(
                         context, TrainingDatabase::class.java, "database"
-                    ).build()
+                    ).addCallback(object : RoomDatabase.Callback() {
+                        override fun onCreate(db: SupportSQLiteDatabase) {
+                            createTestData(db)
+                        }
+                    }).fallbackToDestructiveMigration().build()
                 }
             }
             return INSTANCE
+        }
+
+        private fun createTestData(db: SupportSQLiteDatabase) {
+            ContentValues().apply {
+                put("id", 0)
+            }.also { cv ->
+                db.insert("TrainingEntity", OnConflictStrategy.REPLACE, cv)
+            }
+            ContentValues().apply {
+                put("id", 0)
+                put("trainingId", 0)
+                put("name", ExerciseName.NARRATOR_VERBS.name)
+                put("aim", 0)
+                put("performed", 0)
+            }.also { cv ->
+                db.insert("ExerciseTrainingEntity", OnConflictStrategy.REPLACE, cv)
+            }
         }
     }
 
