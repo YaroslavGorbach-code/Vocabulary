@@ -8,7 +8,7 @@ data class TrainingWithExercises(
     val trainingEntity: TrainingEntity,
     @Relation(
         parentColumn = "id",
-        entityColumn = "id"
+        entityColumn = "trainingId"
     )
     val exerciseEntities: List<ExerciseTrainingEntity>
 ) {

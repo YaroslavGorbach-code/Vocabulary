@@ -6,7 +6,8 @@ import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseN
 @Entity
 data class ExerciseTrainingEntity(
     @PrimaryKey(autoGenerate = true)
-    val id: Long,
+    val id: Long = 0,
+    val trainingId: Long,
     val name: ExerciseName,
     val aim: Int,
     val performed: Int

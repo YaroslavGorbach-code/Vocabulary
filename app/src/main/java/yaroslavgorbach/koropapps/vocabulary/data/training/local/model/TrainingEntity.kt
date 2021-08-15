@@ -7,7 +7,7 @@ import java.util.*
 @Entity
 data class TrainingEntity(
     @PrimaryKey(autoGenerate = true)
-    val id: Long,
-    val date: Date?,
+    var id: Long = 0,
+    val date: Date? = null,
 )
 
