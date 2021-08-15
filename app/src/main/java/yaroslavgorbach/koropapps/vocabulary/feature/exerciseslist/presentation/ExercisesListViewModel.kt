@@ -1,12 +1,13 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.presentation
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import io.reactivex.rxjava3.disposables.CompositeDisposable
-import yaroslavgorbach.koropapps.vocabulary.business.exercises.GetExercisesInteract
+import yaroslavgorbach.koropapps.vocabulary.business.exercises.GetExercisesInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.training.InsertTrainingInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.training.ObserveLastFifeTrainingsInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.ObserveTrainingsInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.repo.RepoExercises
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.repo.RepoExercisesImp
@@ -15,7 +16,6 @@ import yaroslavgorbach.koropapps.vocabulary.data.training.repo.RepoTraining
 import yaroslavgorbach.koropapps.vocabulary.data.training.repo.RepoTrainingImp
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.ExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.TrainingUi
-import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.presentation.factory.TrainingFactory
 
 class ExercisesListViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -33,8 +33,17 @@ class ExercisesListViewModel(application: Application) : AndroidViewModel(applic
     private val observeTrainingsInteractor: ObserveTrainingsInteractor
         get() = ObserveTrainingsInteractor(repoTraining)
 
-    private val getExercisesInteractor: GetExercisesInteract
-        get() = GetExercisesInteract(exercisesRepo)
+    private val insertTrainingInteractor: InsertTrainingInteractor
+        get() = InsertTrainingInteractor(repoTraining)
+
+    private val observeLastFifeTrainingsInteractor: ObserveLastFifeTrainingsInteractor
+        get() = ObserveLastFifeTrainingsInteractor(
+            observeTrainingsInteractor,
+            insertTrainingInteractor
+        )
+
+    private val getExercisesInteractor: GetExercisesInteractor
+        get() = GetExercisesInteractor(exercisesRepo)
 
     private val _exercises: MutableLiveData<List<ExerciseUi>> = MutableLiveData()
 
@@ -48,16 +57,11 @@ class ExercisesListViewModel(application: Application) : AndroidViewModel(applic
 
     init {
         getExercises()
-        getTraining()
+        getLastFifeTrainings()
     }
 
-    private fun getTraining() {
-        observeTrainingsInteractor()
-            .doOnNext { list ->
-                while (list.size < 5) {
-                    list.toMutableList().add(TrainingFactory().create())
-                }
-            }
+    private fun getLastFifeTrainings() {
+        observeLastFifeTrainingsInteractor()
             .map(::TrainingUi)
             .subscribe(_training::postValue)
             .let(disposables::add)

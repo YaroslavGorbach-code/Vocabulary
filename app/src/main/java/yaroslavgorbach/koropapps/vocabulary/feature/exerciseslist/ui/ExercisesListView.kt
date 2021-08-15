@@ -1,6 +1,5 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.ui
 
-import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExercisesListBinding
@@ -45,20 +44,31 @@ class ExercisesListView(
 
     fun setTraining(trainingUi: TrainingUi) {
         with(binding.training.days) {
-            day1.setProgress(trainingUi.first.progress)
-            day1.setText(trainingUi.first.trainingEntity.date.dayOfWeek())
 
-            day2.setProgress(trainingUi.second.progress)
-            day2.setText(trainingUi.second.trainingEntity.date.dayOfWeek())
+            trainingUi.first?.let { trainingWithExercises ->
+                day1.setProgress(trainingWithExercises.progress)
+                day1.setText(trainingWithExercises.trainingEntity.date.dayOfWeek())
+            }
 
-            day3.setProgress(trainingUi.third.progress)
-            day3.setText(trainingUi.third.trainingEntity.date.dayOfWeek())
+            trainingUi.second?.let { trainingWithExercises ->
+                day2.setProgress(trainingWithExercises.progress)
+                day2.setText(trainingWithExercises.trainingEntity.date.dayOfWeek())
+            }
 
-            day4.setProgress(trainingUi.fourth.progress)
-            day4.setText(trainingUi.fourth.trainingEntity.date.dayOfWeek())
+            trainingUi.third?.let { trainingWithExercises ->
+                day3.setProgress(trainingWithExercises.progress)
+                day3.setText(trainingWithExercises.trainingEntity.date.dayOfWeek())
+            }
 
-            day5.setProgress(trainingUi.fifth.progress)
-            day5.setText(trainingUi.fifth.trainingEntity.date.dayOfWeek())
+            trainingUi.fourth?.let { trainingWithExercises ->
+                day4.setProgress(trainingWithExercises.progress)
+                day4.setText(trainingWithExercises.trainingEntity.date.dayOfWeek())
+            }
+
+            trainingUi.fifth?.let { trainingWithExercises ->
+                day5.setProgress(trainingWithExercises.progress)
+                day5.setText(trainingWithExercises.trainingEntity.date.dayOfWeek())
+            }
         }
     }
 }
