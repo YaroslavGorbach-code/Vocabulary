@@ -3,14 +3,14 @@ package yaroslavgorbach.koropapps.vocabulary.data.training.local.model
 import androidx.room.Embedded
 import androidx.room.Relation
 
-data class TrainingWithExercises(
+data class TrainingWithExercisesEntity(
     @Embedded
     val trainingEntity: TrainingEntity,
     @Relation(
         parentColumn = "id",
         entityColumn = "trainingId"
     )
-    val exerciseEntities: List<ExerciseTrainingEntity>
+    val exerciseEntities: List<TrainingExerciseEntity>
 ) {
     val progress: Int
         get() {

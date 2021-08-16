@@ -15,6 +15,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.TextProgressView
+            android:id="@+id/training_progress"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_gravity="center"
