@@ -4,7 +4,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentTrainingBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.LineDecorator
-import yaroslavgorbach.koropapps.vocabulary.feature.training.model.ExerciseTrainingUi
+import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerciseUi
+import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingWithExercisesUi
 import yaroslavgorbach.koropapps.vocabulary.feature.training.ui.recycler.TrainingExercisesListAdapter
 
 class TrainingView(
@@ -13,7 +14,7 @@ class TrainingView(
 ) {
 
     interface Callback {
-        fun onExercise(exercise: ExerciseTrainingUi)
+        fun onExercise(withExercises: TrainingExerciseUi)
     }
 
     private val listAdapter = TrainingExercisesListAdapter(callback::onExercise)
@@ -30,8 +31,8 @@ class TrainingView(
         }
     }
 
-
-    fun setExercises(list: List<ExerciseTrainingUi>) {
-        listAdapter.setData(list)
+    fun setTrainingWitExercises(trainingWithExercisesUi: TrainingWithExercisesUi) {
+        listAdapter.setData(trainingWithExercisesUi.exercises)
+        binding.trainingProgress.setProgress(trainingWithExercisesUi.progress)
     }
 }
