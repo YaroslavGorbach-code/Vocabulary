@@ -4,14 +4,14 @@ import androidx.room.*
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
 import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingEntity
-import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingWithExercises
+import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingWithExercisesEntity
 
 @Dao
 interface TrainingDao {
 
     @Transaction
     @Query("SELECT * FROM TrainingEntity")
-    fun observe(): Observable<List<TrainingWithExercises>>
+    fun observe(): Observable<List<TrainingWithExercisesEntity>>
 
     @Insert
     fun insert(trainingEntity: TrainingEntity): Completable

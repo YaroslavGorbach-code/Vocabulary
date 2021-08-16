@@ -3,13 +3,13 @@ package yaroslavgorbach.koropapps.vocabulary.data.training.local.dao
 import androidx.room.Dao
 import androidx.room.Insert
 import io.reactivex.rxjava3.core.Completable
-import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.ExerciseTrainingEntity
+import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingExerciseEntity
 
 @Dao
 interface ExerciseTrainingDao {
     @Insert
-    fun insert(exerciseTrainingEntity: ExerciseTrainingEntity): Completable
+    fun insert(trainingExerciseEntity: TrainingExerciseEntity): Completable
 
     @Insert
-    fun insert(exerciseTrainingEntity: List<ExerciseTrainingEntity>): Completable
+    fun insert(trainingExerciseEntity: List<TrainingExerciseEntity>): Completable
 }

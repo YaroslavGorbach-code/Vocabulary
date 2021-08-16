@@ -4,7 +4,7 @@ import androidx.room.PrimaryKey
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 
 @Entity
-data class ExerciseTrainingEntity(
+data class TrainingExerciseEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
     val trainingId: Long,

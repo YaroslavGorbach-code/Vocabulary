@@ -7,12 +7,12 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.data.training.local.dao.ExerciseTrainingDao
 import yaroslavgorbach.koropapps.vocabulary.data.training.local.dao.TrainingDao
-import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.ExerciseTrainingEntity
+import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingExerciseEntity
 import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingEntity
 import java.util.*
 
 @TypeConverters(TrainingDatabase.DateConverter::class)
-@Database(entities = [TrainingEntity::class, ExerciseTrainingEntity::class], version = 1)
+@Database(entities = [TrainingEntity::class, TrainingExerciseEntity::class], version = 1)
 abstract class TrainingDatabase : RoomDatabase() {
 
     abstract val trainingDao: TrainingDao
@@ -49,7 +49,7 @@ abstract class TrainingDatabase : RoomDatabase() {
                 put("aim", 0)
                 put("performed", 0)
             }.also { cv ->
-                db.insert("ExerciseTrainingEntity", OnConflictStrategy.REPLACE, cv)
+                db.insert("TrainingExerciseEntity", OnConflictStrategy.REPLACE, cv)
             }
         }
     }
