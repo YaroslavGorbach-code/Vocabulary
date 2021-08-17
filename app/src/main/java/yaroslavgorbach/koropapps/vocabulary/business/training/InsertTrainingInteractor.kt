@@ -7,6 +7,6 @@ import yaroslavgorbach.koropapps.vocabulary.data.training.repo.RepoTraining
 
 class InsertTrainingInteractor(private val repoTraining: RepoTraining) {
     operator fun invoke(trainingEntity: TrainingEntity): Completable {
-        return repoTraining.insert(trainingEntity).subscribeOn(Schedulers.io())
+        return repoTraining.insertTraining(trainingEntity).subscribeOn(Schedulers.io())
     }
 }

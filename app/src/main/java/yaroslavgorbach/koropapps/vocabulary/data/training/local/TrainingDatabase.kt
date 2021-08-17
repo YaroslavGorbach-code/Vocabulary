@@ -5,7 +5,6 @@ import android.content.Context
 import androidx.room.*
 import androidx.sqlite.db.SupportSQLiteDatabase
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
-import yaroslavgorbach.koropapps.vocabulary.data.training.local.dao.ExerciseTrainingDao
 import yaroslavgorbach.koropapps.vocabulary.data.training.local.dao.TrainingDao
 import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingExerciseEntity
 import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingEntity
@@ -16,7 +15,6 @@ import java.util.*
 abstract class TrainingDatabase : RoomDatabase() {
 
     abstract val trainingDao: TrainingDao
-    abstract val exerciseTrainingDao: ExerciseTrainingDao
 
     companion object {
         private lateinit var INSTANCE: TrainingDatabase
