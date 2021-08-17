@@ -10,7 +10,7 @@ data class TrainingExerciseEntity(
     val trainingId: Long,
     val name: ExerciseName,
     val aim: Int,
-    val performed: Int
+    val performed: Int = 0
 ) {
     val progress: Int
         get() = ((performed.toFloat() / aim.toFloat()) * 100).toInt()

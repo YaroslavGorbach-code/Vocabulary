@@ -5,7 +5,7 @@ import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingWi
 class TrainingWithExercisesUi(private val trainingWithExercisesEntity: TrainingWithExercisesEntity) {
 
     val exercises: List<TrainingExerciseUi>
-        get() = trainingWithExercisesEntity.exerciseEntities.map(::TrainingExerciseUi)
+        get() = trainingWithExercisesEntity.exercises.map(::TrainingExerciseUi)
 
     val progress: Int
         get() = trainingWithExercisesEntity.progress

@@ -47,27 +47,27 @@ class ExercisesListView(
 
             trainingUi.first?.let { trainingWithExercises ->
                 day1.setProgress(trainingWithExercises.progress)
-                day1.setText(trainingWithExercises.trainingEntity.date.dayOfWeek())
+                day1.setText(trainingWithExercises.training.date.dayOfWeek())
             }
 
             trainingUi.second?.let { trainingWithExercises ->
                 day2.setProgress(trainingWithExercises.progress)
-                day2.setText(trainingWithExercises.trainingEntity.date.dayOfWeek())
+                day2.setText(trainingWithExercises.training.date.dayOfWeek())
             }
 
             trainingUi.third?.let { trainingWithExercises ->
                 day3.setProgress(trainingWithExercises.progress)
-                day3.setText(trainingWithExercises.trainingEntity.date.dayOfWeek())
+                day3.setText(trainingWithExercises.training.date.dayOfWeek())
             }
 
             trainingUi.fourth?.let { trainingWithExercises ->
                 day4.setProgress(trainingWithExercises.progress)
-                day4.setText(trainingWithExercises.trainingEntity.date.dayOfWeek())
+                day4.setText(trainingWithExercises.training.date.dayOfWeek())
             }
 
             trainingUi.fifth?.let { trainingWithExercises ->
                 day5.setProgress(trainingWithExercises.progress)
-                day5.setText(trainingWithExercises.trainingEntity.date.dayOfWeek())
+                day5.setText(trainingWithExercises.training.date.dayOfWeek())
             }
         }
     }

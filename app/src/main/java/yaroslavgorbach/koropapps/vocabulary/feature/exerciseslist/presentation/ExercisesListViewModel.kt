@@ -65,7 +65,6 @@ class ExercisesListViewModel(application: Application) : AndroidViewModel(applic
             .map(::TrainingUi)
             .subscribe(_training::postValue)
             .let(disposables::add)
-
     }
 
     private fun getExercises() {

@@ -5,19 +5,19 @@ import androidx.room.Relation
 
 data class TrainingWithExercisesEntity(
     @Embedded
-    val trainingEntity: TrainingEntity,
+    val training: TrainingEntity,
     @Relation(
         parentColumn = "id",
         entityColumn = "trainingId"
     )
-    val exerciseEntities: List<TrainingExerciseEntity>
+    val exercises: List<TrainingExerciseEntity>
 ) {
     val progress: Int
         get() {
             var p = 0
-            exerciseEntities.forEach {
+            exercises.forEach {
                 p += it.progress
             }
-            return (p.toFloat() / exerciseEntities.size.toFloat()).toInt()
+            return (p.toFloat() / exercises.size.toFloat()).toInt()
         }
 }

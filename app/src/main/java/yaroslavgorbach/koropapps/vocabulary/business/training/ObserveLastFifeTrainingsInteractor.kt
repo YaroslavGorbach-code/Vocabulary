@@ -22,7 +22,7 @@ class ObserveLastFifeTrainingsInteractor(
                 }
             }
             .doOnNext { trainings ->
-                if (trainings.size >= 5 && trainings.last().trainingEntity.date.isToday().not()) {
+                if (trainings.size >= 5 && trainings.last().training.date.isToday().not()) {
                     insertTrainingInteractor(
                         TrainingFactory().create(TrainingFactory.TrainingType.TODAY)
                     ).subscribe()
