@@ -17,7 +17,7 @@ class ObserveLastFifeTrainingsInteractor(
             .doOnNext { trainings ->
                 if (trainings.size < 5) {
                     insertTrainingInteractor(
-                        TrainingFactory().create(TrainingFactory.TrainingType.TEST)
+                        TrainingFactory().create(TrainingFactory.TrainingType.EMPTY)
                     ).subscribe()
                 }
             }

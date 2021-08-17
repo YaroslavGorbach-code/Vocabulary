@@ -5,12 +5,12 @@ import java.util.*
 
 class TrainingFactory {
     enum class TrainingType {
-        TEST, TODAY
+        EMPTY, TODAY
     }
 
     fun create(trainingType: TrainingType): TrainingEntity {
         return when (trainingType) {
-            TrainingType.TEST -> TrainingEntity()
+            TrainingType.EMPTY -> TrainingEntity()
             TrainingType.TODAY -> TrainingEntity(date = Date())
         }
     }

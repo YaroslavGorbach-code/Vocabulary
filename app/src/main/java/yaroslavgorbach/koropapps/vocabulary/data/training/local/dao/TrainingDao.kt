@@ -12,7 +12,6 @@ import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingWi
 
 @Dao
 interface TrainingDao {
-
     @Transaction
     @Query("SELECT * FROM TrainingEntity")
     fun observe(): Observable<List<TrainingWithExercisesEntity>>

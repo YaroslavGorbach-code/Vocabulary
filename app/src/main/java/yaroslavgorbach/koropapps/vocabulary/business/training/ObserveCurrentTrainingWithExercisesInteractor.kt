@@ -1,6 +1,5 @@
 package yaroslavgorbach.koropapps.vocabulary.business.training
 
-import android.util.Log
 import io.reactivex.rxjava3.core.Observable
 import yaroslavgorbach.koropapps.vocabulary.business.training.factory.TrainingExercisesFactory
 import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingWithExercisesEntity
