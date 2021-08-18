@@ -9,8 +9,8 @@ import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseAlphabetBinding
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.alphabet.presentation.ExerciseAlphabetViewModel
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.model.ExerciseType
 
 class ExerciseAlphabetFragment : Fragment(R.layout.fragment_exercise_alphabet), TimeEndDialog.Host,
     ExerciseFinishDialog.Host {
@@ -33,13 +33,14 @@ class ExerciseAlphabetFragment : Fragment(R.layout.fragment_exercise_alphabet), 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initView(view)
-        initObservers()
+        initViewWithExerciseType(exerciseType)
+        initObserversWithExerciseType(exerciseType)
     }
 
-    private fun initView(view: View) {
+
+    private fun initViewWithExerciseType(exerciseType: ExerciseType) {
         exerciseAlphabetView = ExerciseAlphabetView(
-            FragmentExerciseAlphabetBinding.bind(view),
+            FragmentExerciseAlphabetBinding.bind(requireView()),
             object : ExerciseAlphabetView.Callback {
                 override fun onNewLetter() {
                     lifecycleScope.launch {
@@ -66,30 +67,36 @@ class ExerciseAlphabetFragment : Fragment(R.layout.fragment_exercise_alphabet), 
         when (exerciseType) {
             is ExerciseType.Common -> {
                 exerciseAlphabetView.setExerciseName(
-                    requireContext().getString((exerciseType as ExerciseType.Common).name.id)
+                    requireContext().getString(exerciseType.name.id)
                 )
                 exerciseAlphabetView.setDescriptionText(
-                    viewModel.getDescriptionText((exerciseType as ExerciseType.Common).name)
+                    viewModel.getDescriptionText(exerciseType.name)
                 )
             }
             is ExerciseType.Training -> {
                 exerciseAlphabetView.setExerciseName(
-                    requireContext().getString((exerciseType as ExerciseType.Training).name.id)
+                    requireContext().getString(exerciseType.name.id)
                 )
                 exerciseAlphabetView.setDescriptionText(
-                    viewModel.getDescriptionText((exerciseType as ExerciseType.Common).name)
+                    viewModel.getDescriptionText(exerciseType.name)
                 )
             }
         }
     }
 
-    private fun initObservers() {
+    private fun initObserversWithExerciseType(exerciseType: ExerciseType) {
         viewModel.letter.observe(viewLifecycleOwner, exerciseAlphabetView::setLetter)
         viewModel.progress.observe(viewLifecycleOwner, exerciseAlphabetView::setProgress)
+
+        when (exerciseType) {
+            is ExerciseType.Common -> {
+            }
+            is ExerciseType.Training -> {
+            }
+        }
     }
 
     override fun onDialogCancel() {
         requireActivity().onBackPressed()
     }
-
 }

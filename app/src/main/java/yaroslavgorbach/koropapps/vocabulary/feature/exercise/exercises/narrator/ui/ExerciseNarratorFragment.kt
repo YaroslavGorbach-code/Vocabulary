@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseBinding
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.ExerciseType
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.ExerciseView
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.narrator.presentation.ExerciseNarratorViewModel
 
@@ -32,11 +32,11 @@ class ExerciseNarratorFragment : Fragment(R.layout.fragment_exercise) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initView()
-        initObservers()
+        initViewWithExerciseType(exerciseType)
+        initObserversWithExerciseType(exerciseType)
     }
 
-    private fun initView() {
+    private fun initViewWithExerciseType(exerciseType: ExerciseType) {
         exerciseView = ExerciseView(
             FragmentExerciseBinding.bind(requireView()),
             object : ExerciseView.Callback {
@@ -49,28 +49,33 @@ class ExerciseNarratorFragment : Fragment(R.layout.fragment_exercise) {
                 }
             })
 
-        when (exerciseType) {
-            is ExerciseType.Common -> {
-                exerciseView.setDescriptionText(
-                    viewModel.getDescriptionText((exerciseType as ExerciseType.Common).name)
-                )
-                exerciseView.setExerciseName((exerciseType as ExerciseType.Common).name)
-            }
-            is ExerciseType.Training -> {
-                exerciseView.setDescriptionText(
-                    viewModel.getDescriptionText((exerciseType as ExerciseType.Training).name)
-                )
-                exerciseView.setExerciseName((exerciseType as ExerciseType.Training).name)
-            }
-        }
-
         exerciseView.setShortDescriptionText(
             requireContext().getString(R.string.number_of_words_in_story)
         )
+
+        // TODO: 8/18/2021 move description out of viewModel to exerciseType
+        when (exerciseType) {
+            is ExerciseType.Common -> {
+                exerciseView.setDescriptionText(viewModel.getDescriptionText(exerciseType.name))
+                exerciseView.setExerciseName(exerciseType.name)
+            }
+            is ExerciseType.Training -> {
+                exerciseView.setDescriptionText(viewModel.getDescriptionText(exerciseType.name))
+                exerciseView.setExerciseName(exerciseType.name)
+            }
+        }
     }
 
-    private fun initObservers() {
+    private fun initObserversWithExerciseType(exerciseType: ExerciseType) {
         viewModel.numberOfWords.observe(viewLifecycleOwner, exerciseView::setWord)
-    }
 
+        when (exerciseType) {
+            is ExerciseType.Common -> {
+            }
+            is ExerciseType.Training -> {
+                viewModel.anim.observe(viewLifecycleOwner) {}
+                viewModel.performed.observe(viewLifecycleOwner) {}
+            }
+        }
+    }
 }

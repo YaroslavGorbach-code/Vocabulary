@@ -22,6 +22,16 @@ class ExerciseTautogramsViewModel(application: Application) : AndroidViewModel(a
     val word: LiveData<String>
         get() = _word
 
+    private val _anim = MutableLiveData<Int>()
+
+    val anim: LiveData<Int>
+        get() = _anim
+
+    private val _performed = MutableLiveData<Int>()
+
+    val performed: LiveData<Int>
+        get() = _performed
+
     init {
         generateWord()
     }

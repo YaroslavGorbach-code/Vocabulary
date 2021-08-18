@@ -1,4 +1,4 @@
-package yaroslavgorbach.koropapps.vocabulary.feature.exercise
+package yaroslavgorbach.koropapps.vocabulary.feature.exercise.model
 
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import java.io.Serializable

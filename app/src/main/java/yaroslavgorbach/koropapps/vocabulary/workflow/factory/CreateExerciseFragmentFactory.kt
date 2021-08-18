@@ -2,7 +2,7 @@ package yaroslavgorbach.koropapps.vocabulary.workflow.factory
 
 import androidx.fragment.app.Fragment
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.ExerciseType
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.alphabet.ui.ExerciseAlphabetFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.antonimssininims.ui.ExerciseAntonymsSynonymsFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.associations.ui.ExerciseAssociationsFragment

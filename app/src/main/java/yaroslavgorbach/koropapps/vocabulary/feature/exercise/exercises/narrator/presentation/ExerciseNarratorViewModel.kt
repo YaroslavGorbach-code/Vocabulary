@@ -15,6 +15,16 @@ class ExerciseNarratorViewModel(private val app: Application) : AndroidViewModel
     val numberOfWords: LiveData<String>
         get() = _numberOfWords
 
+    private val _anim = MutableLiveData<Int>()
+
+    val anim: LiveData<Int>
+        get() = _anim
+
+    private val _performed = MutableLiveData<Int>()
+
+    val performed: LiveData<Int>
+        get() = _performed
+
     init {
         generateNumberOfWords()
     }

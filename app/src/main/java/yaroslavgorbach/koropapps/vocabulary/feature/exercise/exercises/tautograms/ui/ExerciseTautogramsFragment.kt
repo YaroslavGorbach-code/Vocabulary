@@ -6,9 +6,8 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import yaroslavgorbach.koropapps.vocabulary.R
-import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseBinding
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.ExerciseType
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.ExerciseView
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.tautograms.presentation.ExerciseTautogramsViewModel
 
@@ -32,13 +31,13 @@ class ExerciseTautogramsFragment : Fragment(R.layout.fragment_exercise) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initView(view)
-        initObservers()
+        initViewWithExerciseType(exerciseType)
+        initObserversWithExerciseType(exerciseType)
     }
 
-    private fun initView(view: View) {
+    private fun initViewWithExerciseType(exerciseType: ExerciseType) {
         exerciseView = ExerciseView(
-            FragmentExerciseBinding.bind(view),
+            FragmentExerciseBinding.bind(requireView()),
             object : ExerciseView.Callback {
                 override fun onNext() {
                     viewModel.generateWord()
@@ -49,19 +48,29 @@ class ExerciseTautogramsFragment : Fragment(R.layout.fragment_exercise) {
                 }
             })
 
+        // TODO: 8/18/2021 move description out of viewModel to exerciseType
         when (exerciseType) {
             is ExerciseType.Common -> {
-                exerciseView.setExerciseName((exerciseType as ExerciseType.Common).name)
                 exerciseView.setDescriptionText(viewModel.descriptionText)
+                exerciseView.setExerciseName(exerciseType.name)
             }
             is ExerciseType.Training -> {
-                exerciseView.setExerciseName((exerciseType as ExerciseType.Training).name)
                 exerciseView.setDescriptionText(viewModel.descriptionText)
+                exerciseView.setExerciseName(exerciseType.name)
             }
         }
     }
 
-    private fun initObservers() {
+    private fun initObserversWithExerciseType(exerciseType: ExerciseType) {
         viewModel.word.observe(viewLifecycleOwner, exerciseView::setWord)
+
+        when (exerciseType) {
+            is ExerciseType.Common -> {
+            }
+            is ExerciseType.Training -> {
+                viewModel.anim.observe(viewLifecycleOwner) {}
+                viewModel.performed.observe(viewLifecycleOwner) {}
+            }
+        }
     }
 }
