@@ -44,19 +44,19 @@ class TextProgressView @JvmOverloads constructor(
         var progressAttr = 0
         context.obtainStyledAttributes(attrs, R.styleable.TextProgressView).use {
             progressStrokeWidth = it.getDimension(
-                R.styleable.TextProgressView_progressStrokeWidth, 16f
+                R.styleable.TextProgressView_textProgressStrokeWidth, 16f
             )
             outlineColor = it.getColor(
-                R.styleable.TextProgressView_outlineColor, Color.LTGRAY
+                R.styleable.TextProgressView_textProgressOutlineColor, Color.LTGRAY
             )
             outlineStrokeWidth = it.getDimension(
-                R.styleable.TextProgressView_outlineStrokeWidth, 4f
+                R.styleable.TextProgressView_textProgressOutlineStrokeWidth, 4f
             )
             progressAttr = it.getInteger(
-                R.styleable.TextProgressView_progress, 0
+                R.styleable.TextProgressView_textProgress, 0
             )
             progressColor = it.getColor(
-                R.styleable.TextProgressView_progressColor, Color.YELLOW
+                R.styleable.TextProgressView_textProgressColor, Color.YELLOW
             )
             textView.textSize = it.getDimension(R.styleable.TextProgressView_textSize, 24f)
             textView.setTextAppearance(

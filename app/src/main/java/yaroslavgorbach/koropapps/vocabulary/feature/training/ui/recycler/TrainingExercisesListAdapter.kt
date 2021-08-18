@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import yaroslavgorbach.koropapps.vocabulary.databinding.ItemeExerciseTariningBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerciseUi
-import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingWithExercisesUi
 import yaroslavgorbach.koropapps.vocabulary.utils.getDrawable
 import yaroslavgorbach.koropapps.vocabulary.utils.getString
 
@@ -19,7 +18,6 @@ class TrainingExercisesListAdapter(private val onExercise: (withExercises: Train
         notifyDataSetChanged()
     }
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             ItemeExerciseTariningBinding.inflate(
@@ -32,7 +30,6 @@ class TrainingExercisesListAdapter(private val onExercise: (withExercises: Train
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(list[position])
-
     }
 
     override fun getItemCount(): Int = list.size
@@ -45,9 +42,10 @@ class TrainingExercisesListAdapter(private val onExercise: (withExercises: Train
             }
         }
 
-        fun bind(withExercises: TrainingExerciseUi) {
-            binding.name.text = binding.getString(withExercises.nameRes)
-            binding.image.setImageDrawable(binding.getDrawable(withExercises.iconRes))
+        fun bind(exercise: TrainingExerciseUi) {
+            binding.name.text = binding.getString(exercise.nameRes)
+            binding.image.setImageDrawable(binding.getDrawable(exercise.iconRes))
+            binding.imageProgress.setProgress(exercise.progress)
         }
     }
 }

@@ -8,13 +8,7 @@ class TrainingExerciseUi(private val trainingExerciseEntity: TrainingExerciseEnt
     val nameRes: Int
         get() = trainingExerciseEntity.name.id
 
-    val aim: Int
-        get() = trainingExerciseEntity.aim
-
-    val performed: Int
-        get() = trainingExerciseEntity.performed
-
-    val process: Int
+    val progress: Int
         get() = trainingExerciseEntity.progress
 
     val iconRes: Int

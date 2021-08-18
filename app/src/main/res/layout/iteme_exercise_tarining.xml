@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tool="http://schemas.android.com/tools"
     android:id="@+id/item"
     android:layout_width="match_parent"
@@ -13,16 +14,39 @@
         android:layout_width="75dp"
         android:layout_height="match_parent"
         android:padding="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tool:ignore="ContentDescription"
         tool:src="@drawable/ic_alphabet_a" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/name"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:ellipsize="end"
         android:gravity="center|start"
         android:maxLines="1"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/image_progress"
+        app:layout_constraintStart_toEndOf="@+id/image"
+        app:layout_constraintTop_toTopOf="parent"
         tool:text="@tools:sample/first_names" />
-</LinearLayout>
+
+    <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.ImageProgressView
+        android:id="@+id/image_progress"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_gravity="center"
+        android:layout_marginEnd="8dp"
+        android:scaleType="center"
+        android:src="@drawable/ic_start_exercise"
+        app:imageProgressStrokeWidth="4dp"
+        app:imageProgressOutlineStrokeWidth="4dp"
+        app:imageProgressColor="@color/green"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tool:imageProgress="40" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

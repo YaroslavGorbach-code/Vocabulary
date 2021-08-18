@@ -52,10 +52,10 @@
             app:layout_constraintEnd_toStartOf="@+id/guideline8"
             app:layout_constraintStart_toStartOf="@+id/guideline7"
             app:layout_constraintTop_toTopOf="@+id/guideline9"
-            app:progressColor="?colorPrimary"
-            app:progressStrokeWidth="10dp"
+            app:textProgressColor="?colorPrimary"
+            app:textProgressStrokeWidth="10dp"
             app:textSize="20sp"
-            tools:progress="50" />
+            app:textProgress="50" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline7"
