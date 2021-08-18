@@ -6,7 +6,7 @@
         <attr name="textProgressColor" format="color" />
         <attr name="textProgressOutlineStrokeWidth" format="dimension" />
         <attr name="textProgress" format="integer" />
-        <attr name="textSize" format="dimension" />
+        <attr name="textProgressTextSize" format="dimension" />
         <attr name="textAppearance" format="reference" />
     </declare-styleable>
 
@@ -19,11 +19,11 @@
         <attr name="src" format="reference|color" />
     </declare-styleable>
 
-    <declare-styleable name="LetterView">
-        <attr name="letterSize" format="dimension" />
-        <attr name="letter" format="string" />
-        <attr name="description" format="string" />
-        <attr name="descriptionSize" format="dimension" />
+    <declare-styleable name="CardTextView">
+        <attr name="textSize" format="dimension" />
+        <attr name="text" format="string" />
+        <attr name="textAtTop" format="string" />
+        <attr name="textAtTopSize" format="dimension" />
     </declare-styleable>
 
     <declare-styleable name="DescriptionWindowView">

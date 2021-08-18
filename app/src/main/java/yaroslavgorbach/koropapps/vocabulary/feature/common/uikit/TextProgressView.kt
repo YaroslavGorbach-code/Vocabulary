@@ -58,7 +58,7 @@ class TextProgressView @JvmOverloads constructor(
             progressColor = it.getColor(
                 R.styleable.TextProgressView_textProgressColor, Color.YELLOW
             )
-            textView.textSize = it.getDimension(R.styleable.TextProgressView_textSize, 24f)
+            textView.textSize = it.getDimension(R.styleable.TextProgressView_textProgressTextSize, 24f)
             textView.setTextAppearance(
                 context,
                 it.getResourceId(R.styleable.TextProgressView_textAppearance, 0)

@@ -8,7 +8,7 @@ import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerc
 import yaroslavgorbach.koropapps.vocabulary.utils.getDrawable
 import yaroslavgorbach.koropapps.vocabulary.utils.getString
 
-class TrainingExercisesListAdapter(private val onExercise: (withExercises: TrainingExerciseUi) -> Unit) :
+class TrainingExercisesListAdapter(private val onExercise: (exercise: TrainingExerciseUi) -> Unit) :
     RecyclerView.Adapter<TrainingExercisesListAdapter.ViewHolder>() {
 
     private var list: List<TrainingExerciseUi> = emptyList()
@@ -43,7 +43,7 @@ class TrainingExercisesListAdapter(private val onExercise: (withExercises: Train
         }
 
         fun bind(exercise: TrainingExerciseUi) {
-            binding.name.text = binding.getString(exercise.nameRes)
+            binding.name.text = binding.getString(exercise.name.id)
             binding.image.setImageDrawable(binding.getDrawable(exercise.iconRes))
             binding.imageProgress.setProgress(exercise.progress)
         }

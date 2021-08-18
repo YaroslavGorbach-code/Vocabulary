@@ -9,17 +9,17 @@ import androidx.core.content.res.use
 import com.google.android.material.card.MaterialCardView
 import yaroslavgorbach.koropapps.vocabulary.R
 
-class LetterView @JvmOverloads constructor(
+class CardTextView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : MaterialCardView(context, attrs, defStyleAttr) {
 
-    private val letterTextView: TextView = TextView(context, attrs, defStyleAttr).apply {
+    private val textView: TextView = TextView(context, attrs, defStyleAttr).apply {
         gravity = Gravity.CENTER
         setTextColor(Color.WHITE)
         addView(this)
     }
 
-    private val descriptionTextView: TextView =
+    private val textAtTop: TextView =
         TextView(context, attrs, defStyleAttr).apply {
             gravity = Gravity.CENTER_HORIZONTAL
             setTextColor(Color.WHITE)
@@ -28,18 +28,18 @@ class LetterView @JvmOverloads constructor(
         }
 
     init {
-        context.obtainStyledAttributes(attrs, R.styleable.LetterView).use {
-            letterTextView.textSize = it.getDimension(
-                R.styleable.LetterView_letterSize, 24f
+        context.obtainStyledAttributes(attrs, R.styleable.CardTextView).use {
+            textView.textSize = it.getDimension(
+                R.styleable.CardTextView_textSize, 24f
             )
-            letterTextView.text = it.getString(
-                R.styleable.LetterView_letter
+            textView.text = it.getString(
+                R.styleable.CardTextView_text
             )
-            descriptionTextView.textSize = it.getDimension(
-                R.styleable.LetterView_descriptionSize, 16f
+            textAtTop.textSize = it.getDimension(
+                R.styleable.CardTextView_textAtTopSize, 16f
             )
-            descriptionTextView.text = it.getString(
-                R.styleable.LetterView_description
+            textAtTop.text = it.getString(
+                R.styleable.CardTextView_textAtTop
             )
         }
 
@@ -47,16 +47,16 @@ class LetterView @JvmOverloads constructor(
     }
 
     fun setLetter(letter: String) {
-        letterTextView.text = letter
+        textView.text = letter
         generateCorrectTextSize(letter)
     }
 
     fun setDescription(description: String) {
-        descriptionTextView.text = description
+        textAtTop.text = description
     }
 
     private fun generateCorrectTextSize(text: String) {
-        letterTextView.textSize = if (text.length > 2) {
+        textView.textSize = if (text.length > 2) {
             50f
         } else {
             100f
