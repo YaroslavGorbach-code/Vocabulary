@@ -7,8 +7,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import kotlinx.coroutines.FlowPreview
 import yaroslavgorbach.koropapps.vocabulary.R
-import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentDescriptionBinding
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.presentation.DescriptionViewModel
 import yaroslavgorbach.koropapps.vocabulary.utils.host
 
@@ -16,24 +16,25 @@ import yaroslavgorbach.koropapps.vocabulary.utils.host
 class DescriptionFragment : Fragment(R.layout.fragment_description) {
 
     interface Router {
-        fun onOpenExercise(exerciseName: ExerciseName)
+        fun onOpenExercise(exerciseType: ExerciseType)
     }
 
     companion object {
-        private const val ARG_EXERCISE_NAME = "ARG_EXERCISE_NAME"
-        fun newInstance(exerciseName: ExerciseName) = DescriptionFragment().apply {
+        private const val ARG_EXERCISE_TYPE = "ARG_EXERCISE_TYPE"
+        fun newInstance(exerciseType: ExerciseType) = DescriptionFragment().apply {
             arguments = bundleOf(
-                ARG_EXERCISE_NAME to exerciseName
+                ARG_EXERCISE_TYPE to exerciseType
             )
         }
     }
 
-    private val exerciseName: ExerciseName
-        get() = requireArguments()[ARG_EXERCISE_NAME] as ExerciseName
-
     private val viewModel by viewModels<DescriptionViewModel>()
 
     private lateinit var descriptionView: DescriptionView
+
+    private val exerciseType: ExerciseType
+        get() = requireArguments()[ARG_EXERCISE_TYPE] as ExerciseType
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -46,7 +47,7 @@ class DescriptionFragment : Fragment(R.layout.fragment_description) {
             FragmentDescriptionBinding.bind(requireView()),
             object : DescriptionView.Callback {
                 override fun onOpenExercise() {
-                    host<Router>().onOpenExercise(exerciseName)
+                    host<Router>().onOpenExercise(exerciseType)
                 }
 
                 override fun onBack() {
@@ -56,7 +57,15 @@ class DescriptionFragment : Fragment(R.layout.fragment_description) {
     }
 
     private fun initObservers() {
-        viewModel.getDescription(exerciseName)
-            .observe(viewLifecycleOwner, descriptionView::setDescription)
+        when (exerciseType) {
+            is ExerciseType.Common -> {
+                viewModel.getDescription((exerciseType as ExerciseType.Common).name)
+                    .observe(viewLifecycleOwner, descriptionView::setDescription)
+            }
+            is ExerciseType.Training -> {
+                viewModel.getDescription((exerciseType as ExerciseType.Training).name)
+                    .observe(viewLifecycleOwner, descriptionView::setDescription)
+            }
+        }
     }
 }

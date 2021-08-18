@@ -25,6 +25,16 @@ class ExerciseAntonymsSynonymsViewModel(application: Application) : AndroidViewM
     val descriptionText: LiveData<String>
         get() = _descriptionText
 
+    private val _anim = MutableLiveData<Int>()
+
+    val anim: LiveData<Int>
+        get() = _anim
+
+    private val _performed = MutableLiveData<Int>()
+
+    val performed: LiveData<Int>
+        get() = _performed
+
     init {
         generateDescriptionTextAndNewWord()
     }

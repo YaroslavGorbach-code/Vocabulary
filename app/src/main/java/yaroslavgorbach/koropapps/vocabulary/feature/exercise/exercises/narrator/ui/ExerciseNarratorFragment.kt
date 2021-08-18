@@ -6,8 +6,8 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import yaroslavgorbach.koropapps.vocabulary.R
-import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseBinding
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.ExerciseView
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.narrator.presentation.ExerciseNarratorViewModel
 
@@ -15,10 +15,11 @@ import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.narrator.
 class ExerciseNarratorFragment : Fragment(R.layout.fragment_exercise) {
 
     companion object {
-        fun newInstance(exerciseName: ExerciseName): ExerciseNarratorFragment {
-            return ExerciseNarratorFragment().apply {
-                arguments = bundleOf("exerciseName" to exerciseName)
-            }
+        private const val ARG_EXERCISE_TYPE = "ARG_EXERCISE_TYPE"
+        fun newInstance(exerciseType: ExerciseType) = ExerciseNarratorFragment().apply {
+            arguments = bundleOf(
+                ARG_EXERCISE_TYPE to exerciseType
+            )
         }
     }
 
@@ -26,8 +27,8 @@ class ExerciseNarratorFragment : Fragment(R.layout.fragment_exercise) {
 
     private val viewModel by viewModels<ExerciseNarratorViewModel>()
 
-    private val exName: ExerciseName
-        get() = requireArguments()["exerciseName"] as ExerciseName
+    private val exerciseType: ExerciseType
+        get() = requireArguments()[ARG_EXERCISE_TYPE] as ExerciseType
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -47,8 +48,22 @@ class ExerciseNarratorFragment : Fragment(R.layout.fragment_exercise) {
                     requireActivity().onBackPressed()
                 }
             })
-        exerciseView.setDescriptionText(viewModel.getDescriptionText(exName))
-        exerciseView.setExerciseName(exName)
+
+        when (exerciseType) {
+            is ExerciseType.Common -> {
+                exerciseView.setDescriptionText(
+                    viewModel.getDescriptionText((exerciseType as ExerciseType.Common).name)
+                )
+                exerciseView.setExerciseName((exerciseType as ExerciseType.Common).name)
+            }
+            is ExerciseType.Training -> {
+                exerciseView.setDescriptionText(
+                    viewModel.getDescriptionText((exerciseType as ExerciseType.Training).name)
+                )
+                exerciseView.setExerciseName((exerciseType as ExerciseType.Training).name)
+            }
+        }
+
         exerciseView.setShortDescriptionText(
             requireContext().getString(R.string.number_of_words_in_story)
         )

@@ -8,20 +8,19 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
 import yaroslavgorbach.koropapps.vocabulary.R
-import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseAlphabetBinding
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.alphabet.presentation.ExerciseAlphabetViewModel
 
 class ExerciseAlphabetFragment : Fragment(R.layout.fragment_exercise_alphabet), TimeEndDialog.Host,
     ExerciseFinishDialog.Host {
 
     companion object {
-        fun newInstance(exerciseName: ExerciseName): ExerciseAlphabetFragment {
-            return ExerciseAlphabetFragment().apply {
-                arguments = bundleOf(
-                    "exerciseName" to exerciseName
-                )
-            }
+        private const val ARG_EXERCISE_TYPE = "ARG_EXERCISE_TYPE"
+        fun newInstance(exerciseType: ExerciseType) = ExerciseAlphabetFragment().apply {
+            arguments = bundleOf(
+                ARG_EXERCISE_TYPE to exerciseType
+            )
         }
     }
 
@@ -29,8 +28,8 @@ class ExerciseAlphabetFragment : Fragment(R.layout.fragment_exercise_alphabet), 
 
     private val viewModel by viewModels<ExerciseAlphabetViewModel>()
 
-    private val exName: ExerciseName
-        get() = requireArguments()["exerciseName"] as ExerciseName
+    private val exerciseType: ExerciseType
+        get() = requireArguments()[ARG_EXERCISE_TYPE] as ExerciseType
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -53,7 +52,7 @@ class ExerciseAlphabetFragment : Fragment(R.layout.fragment_exercise_alphabet), 
                         .show(childFragmentManager, null)
                 }
 
-                override fun onGameEnd() {
+                override fun onGameFinished() {
                     // TODO: 7/19/2021 calculate average time
                     ExerciseFinishDialog.newInstance(30).show(childFragmentManager, null)
                     viewModel.stopTimer()
@@ -63,18 +62,34 @@ class ExerciseAlphabetFragment : Fragment(R.layout.fragment_exercise_alphabet), 
                     requireActivity().onBackPressed()
                 }
             })
-        exerciseAlphabetView.setExerciseName(requireContext().getString(exName.id))
+
+        when (exerciseType) {
+            is ExerciseType.Common -> {
+                exerciseAlphabetView.setExerciseName(
+                    requireContext().getString((exerciseType as ExerciseType.Common).name.id)
+                )
+                exerciseAlphabetView.setDescriptionText(
+                    viewModel.getDescriptionText((exerciseType as ExerciseType.Common).name)
+                )
+            }
+            is ExerciseType.Training -> {
+                exerciseAlphabetView.setExerciseName(
+                    requireContext().getString((exerciseType as ExerciseType.Training).name.id)
+                )
+                exerciseAlphabetView.setDescriptionText(
+                    viewModel.getDescriptionText((exerciseType as ExerciseType.Common).name)
+                )
+            }
+        }
     }
 
     private fun initObservers() {
         viewModel.letter.observe(viewLifecycleOwner, exerciseAlphabetView::setLetter)
-        exerciseAlphabetView.setDescriptionText(viewModel.getDescriptionText(exName))
         viewModel.progress.observe(viewLifecycleOwner, exerciseAlphabetView::setProgress)
     }
 
     override fun onDialogCancel() {
         requireActivity().onBackPressed()
     }
-
 
 }

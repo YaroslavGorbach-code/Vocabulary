@@ -7,84 +7,49 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
 import kotlinx.coroutines.FlowPreview
 import yaroslavgorbach.koropapps.vocabulary.R
-import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.ui.DescriptionFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.alphabet.ui.ExerciseAlphabetFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.antonimssininims.ui.ExerciseAntonymsSynonymsFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.associations.ui.ExerciseAssociationsFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.game.ui.ExerciseGameFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.jar.ui.ExerciseJarFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.narrator.ui.ExerciseNarratorFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.rememberall.ui.ExerciseRememberAllFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.tautograms.ui.ExerciseTautogramsFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.ten.ui.ExerciseTenFragment
+import yaroslavgorbach.koropapps.vocabulary.workflow.factory.CreateExerciseFragmentFactory
 
 @FlowPreview
 class ExerciseWorkflow : Fragment(R.layout.workflow_exercise), DescriptionFragment.Router {
 
     companion object {
-        private const val ARG_EXERCISE_NAME = "ARG_EXERCISE_NAME"
-        fun newInstance(exerciseName: ExerciseName) = ExerciseWorkflow().apply {
-            arguments = bundleOf(
-                ARG_EXERCISE_NAME to exerciseName
-            )
+        private const val ARG_EXERCISE_TYPE = "ARG_EXERCISE_TYPE"
+        fun newInstance(exerciseType: ExerciseType) = ExerciseWorkflow().apply {
+            arguments = when (exerciseType) {
+                is ExerciseType.Common -> bundleOf(ARG_EXERCISE_TYPE to exerciseType)
+                is ExerciseType.Training -> bundleOf(ARG_EXERCISE_TYPE to exerciseType)
+            }
         }
     }
 
-    private val exName: ExerciseName
-        get() = requireArguments()[ARG_EXERCISE_NAME] as ExerciseName
-
+    private val exerciseType: ExerciseType
+        get() = requireArguments()[ARG_EXERCISE_TYPE] as ExerciseType
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (savedInstanceState == null) {
             childFragmentManager.commit {
-                add(R.id.exercise_container, DescriptionFragment.newInstance(exName))
+                when (exerciseType) {
+                    is ExerciseType.Common -> {
+                        add(R.id.exercise_container, DescriptionFragment.newInstance(exerciseType))
+                    }
+                    is ExerciseType.Training -> {
+                        add(R.id.exercise_container, DescriptionFragment.newInstance(exerciseType))
+                    }
+                }
             }
         }
     }
 
-    override fun onOpenExercise(exerciseName: ExerciseName) {
-        val fragment: Fragment
-        when (exerciseName) {
-            ExerciseName.ALPHABET_ADJECTIVES -> {
-                fragment = ExerciseAlphabetFragment.newInstance(exerciseName)
+    override fun onOpenExercise(exerciseType: ExerciseType) {
+        val fragment: Fragment = when (exerciseType) {
+            is ExerciseType.Common -> {
+                CreateExerciseFragmentFactory().create(exerciseType.name, exerciseType)
             }
-            ExerciseName.ALPHABET_NOUN -> {
-                fragment = ExerciseAlphabetFragment.newInstance(exerciseName)
-            }
-            ExerciseName.ALPHABET_VERBS -> {
-                fragment = ExerciseAlphabetFragment.newInstance(exerciseName)
-            }
-            ExerciseName.TAUTOGRAMS -> {
-                fragment = ExerciseTautogramsFragment()
-            }
-            ExerciseName.NARRATOR_ADJECTIVES -> {
-                fragment = ExerciseNarratorFragment.newInstance(exerciseName)
-            }
-            ExerciseName.NARRATOR_NOUN -> {
-                fragment = ExerciseNarratorFragment.newInstance(exerciseName)
-            }
-            ExerciseName.NARRATOR_VERBS -> {
-                fragment = ExerciseNarratorFragment.newInstance(exerciseName)
-            }
-            ExerciseName.ANTONYMS_AND_SYNONYMS -> {
-                fragment = ExerciseAntonymsSynonymsFragment()
-            }
-            ExerciseName.TEN -> {
-                fragment = ExerciseTenFragment()
-            }
-            ExerciseName.ASSOCIATIONS -> {
-                fragment = ExerciseAssociationsFragment()
-            }
-            ExerciseName.REMEMBER_ALL -> {
-                fragment = ExerciseRememberAllFragment()
-            }
-            ExerciseName.GAME_I_KNOW_5_NAMES -> {
-                fragment = ExerciseGameFragment()
-            }
-            ExerciseName.THREE_LITER_JAR -> {
-                fragment = ExerciseJarFragment()
+            is ExerciseType.Training -> {
+                CreateExerciseFragmentFactory().create(exerciseType.name, exerciseType)
             }
         }
         childFragmentManager.commit {

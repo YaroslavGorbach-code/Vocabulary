@@ -10,6 +10,7 @@
         android:layout_height="match_parent">
 
         <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout5"
             android:layout_width="match_parent"
             android:layout_height="128dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -36,7 +37,7 @@
                 tools:text="Description short" />
         </com.google.android.material.appbar.AppBarLayout>
 
-        <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.LetterView
+        <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.CardTextView
             android:id="@+id/letter"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -46,9 +47,9 @@
             app:layout_constraintEnd_toStartOf="@+id/guideline8"
             app:layout_constraintStart_toStartOf="@+id/guideline7"
             app:layout_constraintTop_toTopOf="@+id/guideline9"
-            app:letterSize="40sp"
+            app:textSize="40sp"
             tools:description="description"
-            tools:letter="A" />
+            tools:text="A" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline7"
@@ -77,6 +78,21 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.65" />
+
+        <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.CardTextView
+            android:id="@+id/cardView"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            app:cardBackgroundColor="?colorPrimary"
+            app:cardCornerRadius="6dp"
+            app:layout_constraintBottom_toTopOf="@+id/letter"
+            app:layout_constraintEnd_toEndOf="@+id/letter"
+            app:layout_constraintStart_toStartOf="@+id/letter"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout5"
+            app:text="1/20"
+            app:textSize="7sp"
+            tools:ignore="SmallSp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.bottomappbar.BottomAppBar
@@ -123,4 +139,5 @@
         app:srcCompat="@drawable/ic_arrow_right"
         app:tint="?colorPrimarySurface"
         tools:ignore="ContentDescription" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

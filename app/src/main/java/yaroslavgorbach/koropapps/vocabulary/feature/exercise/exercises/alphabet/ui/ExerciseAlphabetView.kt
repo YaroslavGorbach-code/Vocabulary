@@ -9,7 +9,7 @@ class ExerciseAlphabetView(
     interface Callback {
         fun onNewLetter()
         fun onTimeEnd()
-        fun onGameEnd()
+        fun onGameFinished()
         fun onBack()
     }
 
@@ -30,7 +30,7 @@ class ExerciseAlphabetView(
         if (letter != null) {
             binding.letterProgress.setText(letter)
         } else {
-            callback.onGameEnd()
+            callback.onGameFinished()
         }
     }
 
