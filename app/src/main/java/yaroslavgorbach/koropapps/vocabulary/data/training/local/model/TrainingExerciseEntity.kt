@@ -1,4 +1,5 @@
 package yaroslavgorbach.koropapps.vocabulary.data.training.local.model
+
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
@@ -10,8 +11,11 @@ data class TrainingExerciseEntity(
     val trainingId: Long,
     val name: ExerciseName,
     val aim: Int,
-    val performed: Int = 0
+    var performed: Int = 0
 ) {
     val progress: Int
         get() = ((performed.toFloat() / aim.toFloat()) * 100).toInt()
+
+    val isFinished: Boolean
+        get() = performed >= aim
 }

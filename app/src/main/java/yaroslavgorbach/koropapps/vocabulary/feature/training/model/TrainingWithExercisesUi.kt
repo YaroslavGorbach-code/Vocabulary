@@ -5,7 +5,10 @@ import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingWi
 class TrainingWithExercisesUi(private val trainingWithExercisesEntity: TrainingWithExercisesEntity) {
 
     val exercises: List<TrainingExerciseUi>
-        get() = trainingWithExercisesEntity.exercises.map(::TrainingExerciseUi)
+        get() = trainingWithExercisesEntity
+            .exercises
+            .map(::TrainingExerciseUi)
+            .filter { it.isFinished.not() }
 
     val progress: Int
         get() = trainingWithExercisesEntity.progress
