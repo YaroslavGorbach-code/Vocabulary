@@ -10,7 +10,7 @@ import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.game.ui.G
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.jar.ui.JarFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.narrator.ui.NarratorFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.rememberall.ui.RememberAllFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.tautograms.ui.ExerciseTautogramsFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.tautograms.ui.TautogramsFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.ten.ui.ExerciseTenFragment
 
 class CreateExerciseFragmentFactory {
@@ -19,7 +19,7 @@ class CreateExerciseFragmentFactory {
             ExerciseName.ALPHABET_ADJECTIVES -> { ExerciseAlphabetFragment.newInstance(exerciseType) }
             ExerciseName.ALPHABET_NOUN -> { ExerciseAlphabetFragment.newInstance(exerciseType) }
             ExerciseName.ALPHABET_VERBS -> { ExerciseAlphabetFragment.newInstance(exerciseType) }
-            ExerciseName.TAUTOGRAMS -> { ExerciseTautogramsFragment.newInstance(exerciseType) }
+            ExerciseName.TAUTOGRAMS -> { TautogramsFragment.newInstance(exerciseType) }
             ExerciseName.NARRATOR_ADJECTIVES -> { NarratorFragment.newInstance(exerciseType) }
             ExerciseName.NARRATOR_NOUN -> { NarratorFragment.newInstance(exerciseType) }
             ExerciseName.NARRATOR_VERBS -> { NarratorFragment.newInstance(exerciseType) }

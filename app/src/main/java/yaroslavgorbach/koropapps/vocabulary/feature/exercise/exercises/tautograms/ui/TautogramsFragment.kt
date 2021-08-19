@@ -1,46 +1,66 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.tautograms.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
+import yaroslavgorbach.koropapps.vocabulary.App
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseBinding
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.ExerciseView
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.tautograms.presentation.ExerciseTautogramsViewModel
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.tautograms.presentation.TautogramsViewModel
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.model.ExerciseType
+import javax.inject.Inject
 
-class ExerciseTautogramsFragment : Fragment(R.layout.fragment_exercise) {
+class TautogramsFragment : Fragment(R.layout.fragment_exercise) {
 
     companion object {
         private const val ARG_EXERCISE_TYPE = "ARG_EXERCISE_TYPE"
-        fun newInstance(exerciseType: ExerciseType) = ExerciseTautogramsFragment().apply {
+        fun newInstance(exerciseType: ExerciseType) = TautogramsFragment().apply {
             arguments = bundleOf(
                 ARG_EXERCISE_TYPE to exerciseType
             )
         }
     }
 
-    private val viewModel by viewModels<ExerciseTautogramsViewModel>()
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private val viewModel by viewModels<TautogramsViewModel> { viewModelFactory }
 
     private lateinit var exerciseView: ExerciseView
 
     private val exerciseType: ExerciseType
         get() = requireArguments()[ARG_EXERCISE_TYPE] as ExerciseType
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        initViewWithExerciseType(exerciseType)
-        initObserversWithExerciseType(exerciseType)
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        initDagger()
     }
 
-    private fun initViewWithExerciseType(exerciseType: ExerciseType) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initView()
+        initObservers()
+    }
+
+    private fun initDagger() {
+        (requireActivity().application as App).appComponent
+            .tautogramsComponent()
+            .create(exerciseType)
+            .inject(this)
+    }
+
+    private fun initView() {
         exerciseView = ExerciseView(
             FragmentExerciseBinding.bind(requireView()),
             object : ExerciseView.Callback {
                 override fun onNext() {
                     viewModel.generateWord()
+                    viewModel.incrementExercisePerformed()
                 }
 
                 override fun onBack() {
@@ -49,28 +69,26 @@ class ExerciseTautogramsFragment : Fragment(R.layout.fragment_exercise) {
             })
 
         // TODO: 8/18/2021 move description out of viewModel to exerciseType
+        exerciseView.setDescriptionText(viewModel.descriptionText)
+
         when (exerciseType) {
             is ExerciseType.Common -> {
-                exerciseView.setDescriptionText(viewModel.descriptionText)
-                exerciseView.setExerciseName(exerciseType.name)
+                exerciseView.setExerciseName((exerciseType as ExerciseType.Common).name)
             }
             is ExerciseType.Training -> {
                 exerciseView.setDescriptionText(viewModel.descriptionText)
-                exerciseView.setExerciseName(exerciseType.name)
+                exerciseView.setExerciseName((exerciseType as ExerciseType.Training).name)
             }
         }
     }
 
-    private fun initObserversWithExerciseType(exerciseType: ExerciseType) {
+    private fun initObservers() {
         viewModel.word.observe(viewLifecycleOwner, exerciseView::setWord)
-
-        when (exerciseType) {
-            is ExerciseType.Common -> {
+        viewModel.exercise.observe(viewLifecycleOwner) { exercise ->
+            if (exercise.isFinished) {
+                requireActivity().onBackPressed()
             }
-            is ExerciseType.Training -> {
-                viewModel.anim.observe(viewLifecycleOwner) {}
-                viewModel.performed.observe(viewLifecycleOwner) {}
-            }
+            exerciseView.setAimAndPerformed(exercise.aim, exercise.performed)
         }
     }
 }
