@@ -1,44 +1,32 @@
-package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.antonimssininims.presentation
+package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.antonymssynonyms.presentation
 
 import android.app.Application
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.business.training.GetTrainingExerciseInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.ObserveTrainingExerciseInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.UpdateTrainingExerciseInteractor
-import yaroslavgorbach.koropapps.vocabulary.data.training.local.TrainingDatabase
 import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingExerciseEntity
-import yaroslavgorbach.koropapps.vocabulary.data.training.repo.RepoTraining
-import yaroslavgorbach.koropapps.vocabulary.data.training.repo.RepoTrainingImp
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.model.ExerciseWordCategory
+import javax.inject.Inject
 import kotlin.random.Random
 
-class ExerciseAntonymsSynonymsViewModel(
+class AntonymsSynonymsViewModel @Inject constructor(
     private val exerciseType: ExerciseType,
-    application: Application
-) : AndroidViewModel(application) {
+    private val application: Application,
+    private val updateTrainingExerciseInteractor: UpdateTrainingExerciseInteractor,
+    private val getTrainingExerciseInteractor: GetTrainingExerciseInteractor,
+    private val observeTrainingExerciseInteractor: ObserveTrainingExerciseInteractor
+) : ViewModel() {
 
     private val disposables: CompositeDisposable = CompositeDisposable()
 
-    private val trainingDatabase: TrainingDatabase
-        get() = TrainingDatabase.getInstance(getApplication())
-
-    private val trainingRepo: RepoTraining
-        get() = RepoTrainingImp(trainingDatabase.trainingDao)
-
-    private val updateTrainingExerciseInteractor: UpdateTrainingExerciseInteractor
-        get() = UpdateTrainingExerciseInteractor(trainingRepo)
-
-    private val getTrainingExerciseInteractor: GetTrainingExerciseInteractor
-        get() = GetTrainingExerciseInteractor(trainingRepo)
-
-    private val observeTrainingExerciseInteractor: ObserveTrainingExerciseInteractor
-        get() = ObserveTrainingExerciseInteractor(trainingRepo)
-
     private val words: List<String>
-        get() = getApplication<Application>().applicationContext.resources.getStringArray(
+        get() = application.applicationContext.resources.getStringArray(
             ExerciseWordCategory.FILLINGS.resId
         ).toList()
 
@@ -72,12 +60,12 @@ class ExerciseAntonymsSynonymsViewModel(
     fun refreshData() {
         when (Random.nextInt(1, 2)) {
             1 -> {
-                _descriptionText.value = getApplication<Application>().applicationContext.getString(
+                _descriptionText.value = application.applicationContext.getString(
                     R.string.desc_short_antonyms,
                 )
             }
             2 -> {
-                _descriptionText.value = getApplication<Application>().applicationContext.getString(
+                _descriptionText.value = application.applicationContext.getString(
                     R.string.desc_short_synonyms,
                 )
             }
@@ -104,17 +92,5 @@ class ExerciseAntonymsSynonymsViewModel(
         if (disposables.isDisposed.not()) {
             disposables.dispose()
         }
-    }
-}
-
-class ExerciseAntonymsSynonymsViewModelFactory(
-    private val exerciseType: ExerciseType,
-    private val application: Application
-) : ViewModelProvider.NewInstanceFactory() {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(ExerciseAntonymsSynonymsViewModel::class.java)) {
-            return ExerciseAntonymsSynonymsViewModel(exerciseType, application) as T
-        }
-        throw IllegalArgumentException("Unknown ViewModel class")
     }
 }

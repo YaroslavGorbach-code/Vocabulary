@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.alphabet.ui.ExerciseAlphabetFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.antonimssininims.ui.ExerciseAntonymsSynonymsFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.antonymssynonyms.ui.AntonymsSynonymsFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.associations.ui.ExerciseAssociationsFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.game.ui.ExerciseGameFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.jar.ui.ExerciseJarFragment
@@ -23,7 +23,7 @@ class CreateExerciseFragmentFactory {
             ExerciseName.NARRATOR_ADJECTIVES -> { ExerciseNarratorFragment.newInstance(exerciseType) }
             ExerciseName.NARRATOR_NOUN -> { ExerciseNarratorFragment.newInstance(exerciseType) }
             ExerciseName.NARRATOR_VERBS -> { ExerciseNarratorFragment.newInstance(exerciseType) }
-            ExerciseName.ANTONYMS_AND_SYNONYMS -> { ExerciseAntonymsSynonymsFragment.newInstance(exerciseType) }
+            ExerciseName.ANTONYMS_AND_SYNONYMS -> { AntonymsSynonymsFragment.newInstance(exerciseType) }
             ExerciseName.TEN -> { ExerciseTenFragment.newInstance(exerciseType) }
             ExerciseName.ASSOCIATIONS -> { ExerciseAssociationsFragment.newInstance(exerciseType) }
             ExerciseName.REMEMBER_ALL -> { ExerciseRememberAllFragment.newInstance(exerciseType) }
