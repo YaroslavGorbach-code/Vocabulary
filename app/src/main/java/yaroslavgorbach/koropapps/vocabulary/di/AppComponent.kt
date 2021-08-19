@@ -8,6 +8,7 @@ import yaroslavgorbach.koropapps.vocabulary.di.business.exercises.BusinessExerci
 import yaroslavgorbach.koropapps.vocabulary.di.business.training.BusinessTrainingModule
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.di.DescriptionComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.antonymssynonyms.di.AntonymsSynonymsExerciseComponent
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.associations.di.AssociationsExerciseComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.di.ExercisesListComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.training.di.TrainingComponent
 import javax.inject.Singleton
@@ -29,6 +30,8 @@ interface AppComponent {
     fun trainingComponent(): TrainingComponent.Factory
 
     fun descriptionComponent(): DescriptionComponent.Factory
+
+    fun associationsComponent(): AssociationsExerciseComponent.Factory
 
     @Component.Factory
     interface Factory {

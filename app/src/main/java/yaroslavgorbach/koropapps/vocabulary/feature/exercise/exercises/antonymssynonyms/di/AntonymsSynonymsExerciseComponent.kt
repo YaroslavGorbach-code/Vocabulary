@@ -3,6 +3,7 @@ package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.antonyms
 import dagger.BindsInstance
 import dagger.Subcomponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.antonymssynonyms.ui.AntonymsSynonymsFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.associations.di.AssociationsExerciseModule
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.model.ExerciseType
 
 @Subcomponent(modules = [AntonymsSynonymsExerciseModule::class])

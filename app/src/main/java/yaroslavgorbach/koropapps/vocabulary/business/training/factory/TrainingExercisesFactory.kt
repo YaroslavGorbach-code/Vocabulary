@@ -10,17 +10,27 @@ class TrainingExercisesFactory {
         return listOf(
             TrainingExerciseEntity(
                 trainingId = trainingEntity.id,
-                name = ExerciseName.THREE_LITER_JAR,
+                name = ExerciseName.ALPHABET_ADJECTIVES,
                 aim = 5
             ),
             TrainingExerciseEntity(
                 trainingId = trainingEntity.id,
-                name = ExerciseName.REMEMBER_ALL,
+                name = ExerciseName.ALPHABET_NOUN,
                 aim = 5
             ),
             TrainingExerciseEntity(
                 trainingId = trainingEntity.id,
-                name = ExerciseName.ANTONYMS_AND_SYNONYMS,
+                name = ExerciseName.ALPHABET_VERBS,
+                aim = 5
+            ),
+            TrainingExerciseEntity(
+                trainingId = trainingEntity.id,
+                name = ExerciseName.TAUTOGRAMS,
+                aim = 5
+            ),
+            TrainingExerciseEntity(
+                trainingId = trainingEntity.id,
+                name = ExerciseName.NARRATOR_NOUN,
                 aim = 5
             ),
             TrainingExerciseEntity(
@@ -31,6 +41,36 @@ class TrainingExercisesFactory {
             TrainingExerciseEntity(
                 trainingId = trainingEntity.id,
                 name = ExerciseName.NARRATOR_VERBS,
+                aim = 5
+            ),
+            TrainingExerciseEntity(
+                trainingId = trainingEntity.id,
+                name = ExerciseName.ANTONYMS_AND_SYNONYMS,
+                aim = 5
+            ),
+            TrainingExerciseEntity(
+                trainingId = trainingEntity.id,
+                name = ExerciseName.TEN,
+                aim = 5
+            ),
+            TrainingExerciseEntity(
+                trainingId = trainingEntity.id,
+                name = ExerciseName.ASSOCIATIONS,
+                aim = 5
+            ),
+            TrainingExerciseEntity(
+                trainingId = trainingEntity.id,
+                name = ExerciseName.REMEMBER_ALL,
+                aim = 5
+            ),
+            TrainingExerciseEntity(
+                trainingId = trainingEntity.id,
+                name = ExerciseName.GAME_I_KNOW_5_NAMES,
+                aim = 5
+            ),
+            TrainingExerciseEntity(
+                trainingId = trainingEntity.id,
+                name = ExerciseName.THREE_LITER_JAR,
                 aim = 5
             )
         )

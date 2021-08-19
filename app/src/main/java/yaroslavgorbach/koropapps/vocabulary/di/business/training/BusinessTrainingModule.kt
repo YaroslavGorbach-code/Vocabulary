@@ -6,11 +6,16 @@ import yaroslavgorbach.koropapps.vocabulary.business.training.*
 import yaroslavgorbach.koropapps.vocabulary.data.training.repo.RepoTraining
 import yaroslavgorbach.koropapps.vocabulary.di.data.training.DataModuleTraining
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.antonymssynonyms.di.AntonymsSynonymsExerciseComponent
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.associations.di.AssociationsExerciseComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.training.di.TrainingComponent
 
 @Module(
     includes = [DataModuleTraining::class],
-    subcomponents = [AntonymsSynonymsExerciseComponent::class, TrainingComponent::class]
+    subcomponents = [
+        AssociationsExerciseComponent::class,
+        TrainingComponent::class,
+        AntonymsSynonymsExerciseComponent::class
+    ]
 )
 class BusinessTrainingModule {
 
