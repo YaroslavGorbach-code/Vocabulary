@@ -9,6 +9,7 @@ import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.antonymss
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.associations.di.AssociationsExerciseComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.game.di.GameExerciseComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.jar.di.JarExerciseComponent
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.narrator.di.NarratorExerciseComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.training.di.TrainingComponent
 
 @Module(
@@ -18,7 +19,8 @@ import yaroslavgorbach.koropapps.vocabulary.feature.training.di.TrainingComponen
         TrainingComponent::class,
         AntonymsSynonymsExerciseComponent::class,
         GameExerciseComponent::class,
-        JarExerciseComponent::class
+        JarExerciseComponent::class,
+        NarratorExerciseComponent::class
     ]
 )
 class BusinessTrainingModule {
