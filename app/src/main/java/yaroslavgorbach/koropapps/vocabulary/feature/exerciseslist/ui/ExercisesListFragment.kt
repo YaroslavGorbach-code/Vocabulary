@@ -1,15 +1,19 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import kotlinx.coroutines.InternalCoroutinesApi
+import yaroslavgorbach.koropapps.vocabulary.App
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExercisesListBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.ExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.presentation.ExercisesListViewModel
 import yaroslavgorbach.koropapps.vocabulary.utils.host
+import javax.inject.Inject
 
 @InternalCoroutinesApi
 class ExercisesListFragment : Fragment(R.layout.fragment_exercises_list) {
@@ -21,7 +25,15 @@ class ExercisesListFragment : Fragment(R.layout.fragment_exercises_list) {
 
     private lateinit var exercisesView: ExercisesListView
 
-    private val viewModel by viewModels<ExercisesListViewModel>()
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private val viewModel: ExercisesListViewModel by viewModels { viewModelFactory }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        initDagger()
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -29,11 +41,17 @@ class ExercisesListFragment : Fragment(R.layout.fragment_exercises_list) {
         initObservers()
     }
 
+    private fun initDagger() {
+        (requireActivity().application as App).appComponent
+            .exercisesListComponent()
+            .create()
+            .inject(this)
+    }
+
     private fun initObservers() {
         viewModel.exercises.observe(viewLifecycleOwner, exercisesView::setExercises)
         viewModel.training.observe(viewLifecycleOwner, exercisesView::setTraining)
     }
-
 
     private fun initView() {
         exercisesView = ExercisesListView(
