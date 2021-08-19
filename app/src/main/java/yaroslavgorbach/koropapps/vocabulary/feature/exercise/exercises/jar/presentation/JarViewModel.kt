@@ -1,4 +1,4 @@
-package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.game.presentation
+package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.jar.presentation
 
 import android.app.Application
 import androidx.lifecycle.LiveData
@@ -14,7 +14,7 @@ import yaroslavgorbach.koropapps.vocabulary.feature.exercise.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.model.ExerciseWordCategory
 import javax.inject.Inject
 
-class GameViewModel @Inject constructor(
+class JarViewModel @Inject constructor(
     private val exerciseType: ExerciseType,
     private val application: Application,
     private val updateTrainingExerciseInteractor: UpdateTrainingExerciseInteractor,
@@ -26,12 +26,12 @@ class GameViewModel @Inject constructor(
 
     private val words: List<String>
         get() = application.applicationContext.resources.getStringArray(
-            ExerciseWordCategory.CATEGORY.resId
+            ExerciseWordCategory.LETTERS.resId
         ).toList()
 
     val descriptionText: String
         get() = application.applicationContext.getString(
-            R.string.desc_short_game
+            R.string.desc_short_three_liter_jar
         )
 
     private val _word = MutableLiveData<String>()
@@ -51,6 +51,7 @@ class GameViewModel @Inject constructor(
 
     val exercise: LiveData<TrainingExerciseEntity>
         get() = _exercise
+
 
     init {
         generateWord()
@@ -76,5 +77,4 @@ class GameViewModel @Inject constructor(
             disposables.dispose()
         }
     }
-
 }

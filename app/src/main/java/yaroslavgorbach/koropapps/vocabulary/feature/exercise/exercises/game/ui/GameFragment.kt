@@ -29,9 +29,7 @@ class GameFragment : Fragment(R.layout.fragment_exercise) {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private val viewModel by viewModels<GameViewModel> {
-        viewModelFactory
-    }
+    private val viewModel by viewModels<GameViewModel> { viewModelFactory }
 
     private lateinit var exerciseView: ExerciseView
 

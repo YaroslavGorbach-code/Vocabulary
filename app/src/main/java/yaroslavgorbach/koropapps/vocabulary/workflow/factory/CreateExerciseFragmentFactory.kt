@@ -7,7 +7,7 @@ import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.alphabet.
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.antonymssynonyms.ui.AntonymsSynonymsFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.associations.ui.AssociationsFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.game.ui.GameFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.jar.ui.ExerciseJarFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.jar.ui.JarFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.narrator.ui.ExerciseNarratorFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.rememberall.ui.ExerciseRememberAllFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.tautograms.ui.ExerciseTautogramsFragment
@@ -28,7 +28,7 @@ class CreateExerciseFragmentFactory {
             ExerciseName.ASSOCIATIONS -> { AssociationsFragment.newInstance(exerciseType) }
             ExerciseName.REMEMBER_ALL -> { ExerciseRememberAllFragment.newInstance(exerciseType) }
             ExerciseName.GAME_I_KNOW_5_NAMES -> { GameFragment.newInstance(exerciseType) }
-            ExerciseName.THREE_LITER_JAR -> { ExerciseJarFragment.newInstance(exerciseType) }
+            ExerciseName.THREE_LITER_JAR -> { JarFragment.newInstance(exerciseType) }
         }
     }
 }
