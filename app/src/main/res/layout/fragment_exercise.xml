@@ -41,6 +41,7 @@
             android:id="@+id/letter"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            app:autoTextSize="true"
             app:cardBackgroundColor="?colorPrimary"
             app:cardCornerRadius="6dp"
             app:layout_constraintBottom_toTopOf="@+id/guideline15"
@@ -80,10 +81,12 @@
             app:layout_constraintGuide_percent="0.65" />
 
         <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.CardTextView
-            android:id="@+id/cardView"
+            android:id="@+id/aim_and_performed"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:gravity="center"
+            android:visibility="visible"
+            app:autoTextSize="false"
             app:cardBackgroundColor="?colorPrimary"
             app:cardCornerRadius="6dp"
             app:layout_constraintBottom_toTopOf="@+id/letter"

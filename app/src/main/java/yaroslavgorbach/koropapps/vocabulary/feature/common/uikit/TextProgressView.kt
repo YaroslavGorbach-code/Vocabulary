@@ -123,7 +123,6 @@ class TextProgressView @JvmOverloads constructor(
         }
     }
 
-
     fun setText(text: String) {
         textView.text = text
     }

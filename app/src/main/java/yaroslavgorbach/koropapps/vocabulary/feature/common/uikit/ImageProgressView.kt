@@ -99,7 +99,7 @@ class ImageProgressView @JvmOverloads constructor(
         // draw outline
         canvas.drawOval(circleRect, outlinePaint)
         // draw progress
-        val angle = -360f * progress / 100
+        val angle = 360f * progress / 100
         if (angle == 360f) { // arc 360 draws nothing
             canvas.drawOval(circleRect, progressPaint)
         } else {
