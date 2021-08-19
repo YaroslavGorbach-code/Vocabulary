@@ -7,9 +7,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseBinding
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.ExerciseView
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.antonimssininims.presentation.ExerciseAntonymsSynonymsViewModel
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.antonimssininims.presentation.ExerciseAntonymsSynonymsViewModelFactory
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.model.ExerciseType
 
 class ExerciseAntonymsSynonymsFragment : Fragment(R.layout.fragment_exercise) {
 
@@ -22,25 +23,28 @@ class ExerciseAntonymsSynonymsFragment : Fragment(R.layout.fragment_exercise) {
         }
     }
 
-    private lateinit var exerciseView: ExerciseView
-
-    private val viewModel by viewModels<ExerciseAntonymsSynonymsViewModel>()
-
     private val exerciseType: ExerciseType
         get() = requireArguments()[ARG_EXERCISE_TYPE] as ExerciseType
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        initViewWithExerciseType(exerciseType)
-        initObserversWithExerciseType(exerciseType)
+    private lateinit var exerciseView: ExerciseView
+
+    private val viewModel: ExerciseAntonymsSynonymsViewModel by viewModels {
+        ExerciseAntonymsSynonymsViewModelFactory(exerciseType, requireActivity().application)
     }
 
-    private fun initViewWithExerciseType(exerciseType: ExerciseType) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initView()
+        initObservers()
+    }
+
+    private fun initView() {
         exerciseView = ExerciseView(
             FragmentExerciseBinding.bind(requireView()),
             object : ExerciseView.Callback {
                 override fun onNext() {
-                    viewModel.generateDescriptionTextAndNewWord()
+                    viewModel.refreshData()
+                    viewModel.incrementExercisePerformed()
                 }
 
                 override fun onBack() {
@@ -50,27 +54,22 @@ class ExerciseAntonymsSynonymsFragment : Fragment(R.layout.fragment_exercise) {
 
         when (exerciseType) {
             is ExerciseType.Common -> {
-                exerciseView.setExerciseName(exerciseType.name)
+                exerciseView.setExerciseName((exerciseType as ExerciseType.Common).name)
             }
             is ExerciseType.Training -> {
-                exerciseView.setExerciseName(exerciseType.name)
+                exerciseView.setExerciseName((exerciseType as ExerciseType.Training).name)
             }
         }
     }
 
-    private fun initObserversWithExerciseType(exerciseType: ExerciseType) {
+    private fun initObservers() {
         viewModel.descriptionText.observe(viewLifecycleOwner, exerciseView::setDescriptionText)
         viewModel.word.observe(viewLifecycleOwner, exerciseView::setWord)
-
-        when (exerciseType) {
-            is ExerciseType.Common -> {
-            }
-            is ExerciseType.Training -> {
-                viewModel.anim.observe(viewLifecycleOwner) {}
-                viewModel.performed.observe(viewLifecycleOwner) {}
+        viewModel.exercise.observe(viewLifecycleOwner) { exercise ->
+            exerciseView.setAimAndPerformed(exercise.aim, exercise.performed)
+            if (exercise.isFinished) {
+                requireActivity().onBackPressed()
             }
         }
-
     }
-
 }
