@@ -7,6 +7,7 @@ import yaroslavgorbach.koropapps.vocabulary.data.training.repo.RepoTraining
 import yaroslavgorbach.koropapps.vocabulary.di.data.training.DataModuleTraining
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.antonymssynonyms.di.AntonymsSynonymsExerciseComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.associations.di.AssociationsExerciseComponent
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.game.di.GameExerciseComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.training.di.TrainingComponent
 
 @Module(
@@ -14,7 +15,8 @@ import yaroslavgorbach.koropapps.vocabulary.feature.training.di.TrainingComponen
     subcomponents = [
         AssociationsExerciseComponent::class,
         TrainingComponent::class,
-        AntonymsSynonymsExerciseComponent::class
+        AntonymsSynonymsExerciseComponent::class,
+        GameExerciseComponent::class
     ]
 )
 class BusinessTrainingModule {
