@@ -13,5 +13,5 @@ abstract class NarratorExerciseModule {
     @Binds
     @IntoMap
     @ViewModelKey(NarratorViewModel::class)
-    abstract fun bindJarViewModel(viewModel: NarratorViewModel): ViewModel
+    abstract fun bindNarratorViewModel(viewModel: NarratorViewModel): ViewModel
 }
