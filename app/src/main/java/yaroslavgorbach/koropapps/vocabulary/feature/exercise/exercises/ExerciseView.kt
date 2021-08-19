@@ -1,6 +1,8 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises
 
 import android.os.SystemClock
+import android.util.Log
+import android.view.View
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseBinding
 import yaroslavgorbach.koropapps.vocabulary.utils.getString
@@ -35,11 +37,11 @@ class ExerciseView(
     }
 
     fun setShortDescriptionText(text: String) {
-        binding.letter.setDescription(text)
+        binding.letter.setAtTop(text)
     }
 
     fun setWord(word: String) {
-        binding.letter.setLetter(word)
+        binding.letter.setText(word)
     }
 
     fun setExerciseName(name: ExerciseName) {
@@ -53,5 +55,10 @@ class ExerciseView(
 
     private fun startAllWordsChronometer() {
         binding.chronometer.start()
+    }
+
+    fun setAimAndPerformed(aim: Int, performed: Int) {
+        binding.aimAndPerformed.visibility = View.VISIBLE
+        binding.aimAndPerformed.setText("$performed/$aim")
     }
 }
