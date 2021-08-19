@@ -2,6 +2,7 @@ package yaroslavgorbach.koropapps.vocabulary.data.training.repo
 
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
 import yaroslavgorbach.koropapps.vocabulary.data.training.local.dao.TrainingDao
 import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingEntity
@@ -12,6 +13,15 @@ class RepoTrainingImp(private val localDataSource: TrainingDao) : RepoTraining {
 
     override fun observe(): Observable<List<TrainingWithExercisesEntity>> {
         return localDataSource.observe()
+            .observeOn(Schedulers.io())
+    }
+
+    override fun observeExercise(exerciseId: Long): Observable<TrainingExerciseEntity> {
+        return localDataSource.observeExercise(exerciseId)
+    }
+
+    override fun getExercise(exerciseId: Long): Single<TrainingExerciseEntity> {
+        return localDataSource.getExercise(exerciseId)
     }
 
     override fun insertTraining(trainingEntity: TrainingEntity): Completable {
@@ -20,7 +30,13 @@ class RepoTrainingImp(private val localDataSource: TrainingDao) : RepoTraining {
     }
 
     override fun insertExercises(trainingExercises: List<TrainingExerciseEntity>): Completable {
-        return localDataSource.insertExercises(trainingExercises).subscribeOn(Schedulers.io())
+        return localDataSource.insertExercises(trainingExercises)
+            .subscribeOn(Schedulers.io())
+    }
+
+    override fun updateExercise(trainingExercise: TrainingExerciseEntity): Completable {
+        return localDataSource.updateExercise(trainingExercise)
+            .subscribeOn(Schedulers.io())
     }
 
 }
