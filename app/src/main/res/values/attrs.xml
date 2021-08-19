@@ -24,6 +24,7 @@
         <attr name="text" format="string" />
         <attr name="textAtTop" format="string" />
         <attr name="textAtTopSize" format="dimension" />
+        <attr name="autoTextSize" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="DescriptionWindowView">

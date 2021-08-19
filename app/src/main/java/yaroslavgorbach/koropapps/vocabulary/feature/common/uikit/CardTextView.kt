@@ -13,6 +13,8 @@ class CardTextView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : MaterialCardView(context, attrs, defStyleAttr) {
 
+    var autoTextSize = false
+
     private val textView: TextView = TextView(context, attrs, defStyleAttr).apply {
         gravity = Gravity.CENTER
         setTextColor(Color.WHITE)
@@ -41,18 +43,24 @@ class CardTextView @JvmOverloads constructor(
             textAtTop.text = it.getString(
                 R.styleable.CardTextView_textAtTop
             )
+            autoTextSize = it.getBoolean(
+                R.styleable.CardTextView_autoTextSize,
+                false
+            )
         }
 
         setPadding(10, 0, 10, 0)
     }
 
-    fun setLetter(letter: String) {
-        textView.text = letter
-        generateCorrectTextSize(letter)
+    fun setText(text: String) {
+        textView.text = text
+        if (autoTextSize) {
+            generateCorrectTextSize(text)
+        }
     }
 
-    fun setDescription(description: String) {
-        textAtTop.text = description
+    fun setAtTop(text: String) {
+        textAtTop.text = text
     }
 
     private fun generateCorrectTextSize(text: String) {
