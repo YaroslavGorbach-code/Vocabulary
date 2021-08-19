@@ -11,7 +11,7 @@ import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.jar.ui.Ja
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.narrator.ui.NarratorFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.rememberall.ui.RememberAllFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.tautograms.ui.TautogramsFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.ten.ui.ExerciseTenFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.ten.ui.TenFragment
 
 class CreateExerciseFragmentFactory {
     fun create(exerciseName: ExerciseName, exerciseType: ExerciseType): Fragment {
@@ -24,7 +24,7 @@ class CreateExerciseFragmentFactory {
             ExerciseName.NARRATOR_NOUN -> { NarratorFragment.newInstance(exerciseType) }
             ExerciseName.NARRATOR_VERBS -> { NarratorFragment.newInstance(exerciseType) }
             ExerciseName.ANTONYMS_AND_SYNONYMS -> { AntonymsSynonymsFragment.newInstance(exerciseType) }
-            ExerciseName.TEN -> { ExerciseTenFragment.newInstance(exerciseType) }
+            ExerciseName.TEN -> { TenFragment.newInstance(exerciseType) }
             ExerciseName.ASSOCIATIONS -> { AssociationsFragment.newInstance(exerciseType) }
             ExerciseName.REMEMBER_ALL -> { RememberAllFragment.newInstance(exerciseType) }
             ExerciseName.GAME_I_KNOW_5_NAMES -> { GameFragment.newInstance(exerciseType) }
