@@ -1,18 +1,20 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import kotlinx.coroutines.FlowPreview
+import androidx.lifecycle.ViewModelProvider
+import yaroslavgorbach.koropapps.vocabulary.App
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentDescriptionBinding
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.presentation.DescriptionViewModel
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.utils.host
+import javax.inject.Inject
 
-@FlowPreview
 class DescriptionFragment : Fragment(R.layout.fragment_description) {
 
     interface Router {
@@ -28,18 +30,32 @@ class DescriptionFragment : Fragment(R.layout.fragment_description) {
         }
     }
 
-    private val viewModel by viewModels<DescriptionViewModel>()
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private val viewModel by viewModels<DescriptionViewModel> { viewModelFactory }
 
     private lateinit var descriptionView: DescriptionView
 
     private val exerciseType: ExerciseType
         get() = requireArguments()[ARG_EXERCISE_TYPE] as ExerciseType
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        initDagger()
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
         initObservers()
+    }
+
+    private fun initDagger() {
+        (requireActivity().application as App).appComponent
+            .descriptionComponent()
+            .create()
+            .inject(this)
     }
 
     private fun initView() {
