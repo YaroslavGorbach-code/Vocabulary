@@ -5,6 +5,7 @@ import dagger.Provides
 import yaroslavgorbach.koropapps.vocabulary.business.training.*
 import yaroslavgorbach.koropapps.vocabulary.data.training.repo.RepoTraining
 import yaroslavgorbach.koropapps.vocabulary.di.data.training.DataModuleTraining
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.alphabet.di.AlphabetExerciseComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.antonymssynonyms.di.AntonymsSynonymsExerciseComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.associations.di.AssociationsExerciseComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.game.di.GameExerciseComponent
@@ -26,7 +27,9 @@ import yaroslavgorbach.koropapps.vocabulary.feature.training.di.TrainingComponen
         NarratorExerciseComponent::class,
         RememberAllExerciseComponent::class,
         TautogramsExerciseComponent::class,
-        TenExerciseComponent::class
+        TenExerciseComponent::class,
+        AntonymsSynonymsExerciseComponent::class,
+        AlphabetExerciseComponent::class
     ]
 )
 class BusinessTrainingModule {

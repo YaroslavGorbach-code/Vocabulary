@@ -3,7 +3,7 @@ package yaroslavgorbach.koropapps.vocabulary.workflow.factory
 import androidx.fragment.app.Fragment
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.model.ExerciseType
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.alphabet.ui.ExerciseAlphabetFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.alphabet.ui.AlphabetFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.antonymssynonyms.ui.AntonymsSynonymsFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.associations.ui.AssociationsFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.game.ui.GameFragment
@@ -16,9 +16,9 @@ import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.ten.ui.Te
 class CreateExerciseFragmentFactory {
     fun create(exerciseName: ExerciseName, exerciseType: ExerciseType): Fragment {
         return when (exerciseName) {
-            ExerciseName.ALPHABET_ADJECTIVES -> { ExerciseAlphabetFragment.newInstance(exerciseType) }
-            ExerciseName.ALPHABET_NOUN -> { ExerciseAlphabetFragment.newInstance(exerciseType) }
-            ExerciseName.ALPHABET_VERBS -> { ExerciseAlphabetFragment.newInstance(exerciseType) }
+            ExerciseName.ALPHABET_ADJECTIVES -> { AlphabetFragment.newInstance(exerciseType) }
+            ExerciseName.ALPHABET_NOUN -> { AlphabetFragment.newInstance(exerciseType) }
+            ExerciseName.ALPHABET_VERBS -> { AlphabetFragment.newInstance(exerciseType) }
             ExerciseName.TAUTOGRAMS -> { TautogramsFragment.newInstance(exerciseType) }
             ExerciseName.NARRATOR_ADJECTIVES -> { NarratorFragment.newInstance(exerciseType) }
             ExerciseName.NARRATOR_NOUN -> { NarratorFragment.newInstance(exerciseType) }

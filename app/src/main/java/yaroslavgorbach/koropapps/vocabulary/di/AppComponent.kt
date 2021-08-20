@@ -7,6 +7,7 @@ import yaroslavgorbach.koropapps.vocabulary.di.business.description.BusinessDesc
 import yaroslavgorbach.koropapps.vocabulary.di.business.exercises.BusinessExercisesModule
 import yaroslavgorbach.koropapps.vocabulary.di.business.training.BusinessTrainingModule
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.di.DescriptionComponent
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.alphabet.di.AlphabetExerciseComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.antonymssynonyms.di.AntonymsSynonymsExerciseComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.associations.di.AssociationsExerciseComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.game.di.GameExerciseComponent
@@ -50,6 +51,8 @@ interface AppComponent {
     fun tautogramsComponent(): TautogramsExerciseComponent.Factory
 
     fun tenComponent(): TenExerciseComponent.Factory
+
+    fun alphabetComponent(): AlphabetExerciseComponent.Factory
 
     @Component.Factory
     interface Factory {

@@ -2,7 +2,7 @@ package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.alphabet
 
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseAlphabetBinding
 
-class ExerciseAlphabetView(
+class AlphabetView(
     private val binding: FragmentExerciseAlphabetBinding,
     private val callback: Callback
 ) {

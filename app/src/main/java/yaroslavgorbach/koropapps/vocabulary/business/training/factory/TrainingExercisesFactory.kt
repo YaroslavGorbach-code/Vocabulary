@@ -11,17 +11,17 @@ class TrainingExercisesFactory {
             TrainingExerciseEntity(
                 trainingId = trainingEntity.id,
                 name = ExerciseName.ALPHABET_ADJECTIVES,
-                aim = 5
+                aim = 1
             ),
             TrainingExerciseEntity(
                 trainingId = trainingEntity.id,
                 name = ExerciseName.ALPHABET_NOUN,
-                aim = 5
+                aim = 1
             ),
             TrainingExerciseEntity(
                 trainingId = trainingEntity.id,
                 name = ExerciseName.ALPHABET_VERBS,
-                aim = 5
+                aim = 1
             ),
             TrainingExerciseEntity(
                 trainingId = trainingEntity.id,
