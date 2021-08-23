@@ -6,7 +6,7 @@
     android:layout_height="190dp"
     android:background="?selectableItemBackground"
     android:orientation="vertical"
-    android:padding="8dp">
+    android:paddingTop="8dp">
 
     <ImageView
         android:id="@+id/image"
@@ -44,8 +44,8 @@
         android:id="@+id/days"
         layout="@layout/layout_training_days"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="8dp"
+        android:layout_height="wrap_content" />
 </LinearLayout>
 
 

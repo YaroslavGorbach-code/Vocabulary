@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:padding="3dp"
     android:orientation="horizontal">
 
     <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.TextProgressView
@@ -16,7 +17,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
-        app:textProgressColor="?colorPrimary"
+        app:textProgressColor="@color/green"
+        app:textProgressOutlineColor="?colorControlHighlight"
+        app:textProgressOutlineStrokeWidth="3dp"
         app:textProgressStrokeWidth="3dp"
         app:textSize="10sp"
         tools:ignore="SmallSp"
@@ -32,9 +35,10 @@
         app:layout_constraintStart_toEndOf="@+id/day1"
         app:layout_constraintTop_toTopOf="parent"
         app:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
-        app:textProgressColor="?colorPrimary"
+        app:textProgressColor="@color/green"
+        app:textProgressOutlineColor="?colorControlHighlight"
+        app:textProgressOutlineStrokeWidth="3dp"
         app:textProgressStrokeWidth="3dp"
-
         app:textSize="8sp"
         tools:ignore="SmallSp"
         tools:progress="30" />
@@ -49,7 +53,9 @@
         app:layout_constraintStart_toEndOf="@+id/day2"
         app:layout_constraintTop_toTopOf="parent"
         app:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
-        app:textProgressColor="?colorPrimary"
+        app:textProgressColor="@color/green"
+        app:textProgressOutlineColor="?colorControlHighlight"
+        app:textProgressOutlineStrokeWidth="3dp"
         app:textProgressStrokeWidth="3dp"
         app:textSize="8sp"
         tools:ignore="SmallSp"
@@ -64,9 +70,11 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/day3"
         app:layout_constraintTop_toTopOf="parent"
-        app:textProgressColor="?colorPrimary"
-        app:textProgressStrokeWidth="3dp"
         app:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        app:textProgressColor="@color/green"
+        app:textProgressOutlineColor="?colorControlHighlight"
+        app:textProgressOutlineStrokeWidth="3dp"
+        app:textProgressStrokeWidth="3dp"
         app:textSize="8sp"
         tools:ignore="SmallSp"
         tools:progress="30" />
@@ -80,11 +88,13 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/day4"
         app:layout_constraintTop_toTopOf="parent"
-        app:textProgressColor="?colorPrimary"
-        app:textProgressStrokeWidth="3dp"
         app:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        app:textProgressColor="@color/green"
+        app:textProgressOutlineColor="?colorControlHighlight"
+        app:textProgressOutlineStrokeWidth="3dp"
+        app:textProgressStrokeWidth="3dp"
         app:textSize="8sp"
         tools:ignore="SmallSp"
-        tools:progress="30" />
+        tools:textProgress="20" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
