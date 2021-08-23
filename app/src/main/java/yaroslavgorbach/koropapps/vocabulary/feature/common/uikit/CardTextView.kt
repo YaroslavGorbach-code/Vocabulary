@@ -21,6 +21,11 @@ class CardTextView @JvmOverloads constructor(
         addView(this)
     }
 
+    override fun setVisibility(visibility: Int) {
+        super.setVisibility(visibility)
+        textView.visibility = visibility
+    }
+
     private val textAtTop: TextView =
         TextView(context, attrs, defStyleAttr).apply {
             gravity = Gravity.CENTER_HORIZONTAL
