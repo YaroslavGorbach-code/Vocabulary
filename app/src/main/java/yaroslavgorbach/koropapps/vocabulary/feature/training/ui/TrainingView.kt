@@ -15,12 +15,14 @@ class TrainingView(
 
     interface Callback {
         fun onExercise(withExercises: TrainingExerciseUi)
+        fun onBack()
     }
 
     private val listAdapter = TrainingExercisesListAdapter(callback::onExercise)
 
     init {
         initView()
+        initActions()
     }
 
     private fun initView() {
@@ -31,8 +33,14 @@ class TrainingView(
         }
     }
 
+    private fun initActions() {
+        binding.close.setOnClickListener {
+            callback.onBack()
+        }
+    }
+
     fun setTrainingWitExercises(trainingWithExercisesUi: TrainingWithExercisesUi) {
         listAdapter.setData(trainingWithExercisesUi.exercises)
-        binding.trainingProgress.setProgress(trainingWithExercisesUi.progress)
+        binding.trainingProgress.progress = trainingWithExercisesUi.progress
     }
 }

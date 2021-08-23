@@ -60,6 +60,10 @@ class TrainingFragment : Fragment(R.layout.fragment_training) {
                 override fun onExercise(withExercises: TrainingExerciseUi) {
                     host<Router>().openDescription(withExercises)
                 }
+
+                override fun onBack() {
+                    requireActivity().onBackPressed()
+                }
             })
     }
 
