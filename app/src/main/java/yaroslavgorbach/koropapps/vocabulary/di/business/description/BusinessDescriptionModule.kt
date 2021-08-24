@@ -5,11 +5,12 @@ import dagger.Provides
 import yaroslavgorbach.koropapps.vocabulary.business.description.GetDescriptionInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.description.repo.RepoDescription
 import yaroslavgorbach.koropapps.vocabulary.di.data.description.DataModuleDescription
+import yaroslavgorbach.koropapps.vocabulary.di.data.statistics.DataModuleStatistics
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.di.DescriptionComponent
 import javax.inject.Singleton
 
 @Module(
-    includes = [DataModuleDescription::class],
+    includes = [DataModuleDescription::class, DataModuleStatistics::class],
     subcomponents = [DescriptionComponent::class]
 )
 class BusinessDescriptionModule {
