@@ -176,6 +176,11 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+
+            <include
+                android:id="@+id/chart_layout"
+                layout="@layout/layout_chart">
+            </include>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

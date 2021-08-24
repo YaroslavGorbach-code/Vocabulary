@@ -1,7 +1,12 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.ui
 
+import android.graphics.Color
+import android.view.View
+import im.dacer.androidcharts.LineView
 import yaroslavgorbach.koropapps.vocabulary.data.description.local.model.Description
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentDescriptionBinding
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.model.ChartUi
+import yaroslavgorbach.koropapps.vocabulary.utils.getColorPrimary
 import yaroslavgorbach.koropapps.vocabulary.utils.getDrawable
 import yaroslavgorbach.koropapps.vocabulary.utils.getString
 
@@ -37,6 +42,29 @@ class DescriptionView(
             binding.icon5.setImageDrawable(this)
         }
         binding.toolbar.title = binding.getString(description.exerciseName.id)
+    }
+
+    fun setChart(chartUi: ChartUi) {
+        if (chartUi.isEmpty) {
+            showNoChartData()
+        } else {
+            binding.chartLayout.chart.setDrawDotLine(false)
+            binding.chartLayout.chart.setShowPopup(LineView.SHOW_POPUPS_All)
+            binding.chartLayout.chart.setBottomTextList(chartUi.labels)
+            binding.chartLayout.chart.setColorArray(
+                intArrayOf(
+                    binding.root.context.getColorPrimary(),
+                    Color.GREEN,
+                    Color.GRAY,
+                    Color.CYAN
+                )
+            )
+            binding.chartLayout.chart.setDataList(chartUi.data)
+        }
+    }
+
+    private fun showNoChartData() {
+        binding.chartLayout.noData.visibility = View.VISIBLE
     }
 
 }

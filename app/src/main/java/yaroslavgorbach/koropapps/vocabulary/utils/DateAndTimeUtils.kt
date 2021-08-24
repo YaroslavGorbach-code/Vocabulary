@@ -10,7 +10,6 @@ fun Date?.isToday(): Boolean {
     } else {
         false
     }
-
 }
 
 fun Date?.dayOfWeek(): String {
@@ -20,4 +19,9 @@ fun Date?.dayOfWeek(): String {
     } else {
         "?"
     }
+}
+
+fun Date.formatDD(): String {
+    val format = SimpleDateFormat("dd", Locale.getDefault())
+    return format.format(time)
 }
