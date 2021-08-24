@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import yaroslavgorbach.koropapps.vocabulary.App
 import yaroslavgorbach.koropapps.vocabulary.R
+import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentDescriptionBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.presentation.DescriptionViewModel
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.model.ExerciseType
@@ -38,7 +39,15 @@ class DescriptionFragment : Fragment(R.layout.fragment_description) {
     private lateinit var descriptionView: DescriptionView
 
     private val exerciseType: ExerciseType
-        get() = requireArguments()[ARG_EXERCISE_TYPE] as ExerciseType
+        get() = (requireArguments()[ARG_EXERCISE_TYPE] as ExerciseType)
+
+    private val exerciseName: ExerciseName = ExerciseName.ALPHABET_ADJECTIVES
+        get() {
+            return when (exerciseType) {
+                is ExerciseType.Common -> field
+                is ExerciseType.Training -> field
+            }
+        }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -54,7 +63,7 @@ class DescriptionFragment : Fragment(R.layout.fragment_description) {
     private fun initDagger() {
         (requireActivity().application as App).appComponent
             .descriptionComponent()
-            .create()
+            .create(exerciseName)
             .inject(this)
     }
 
@@ -69,19 +78,18 @@ class DescriptionFragment : Fragment(R.layout.fragment_description) {
                 override fun onBack() {
                     requireActivity().onBackPressed()
                 }
+
+                override fun onNextChart() {
+                    viewModel.onNextChart()
+                }
+
+                override fun onPreviousChart() {
+                    viewModel.onPreviousChart()
+                }
             })
     }
 
     private fun initObservers() {
-        when (exerciseType) {
-            is ExerciseType.Common -> {
-                viewModel.getDescription((exerciseType as ExerciseType.Common).name)
-                    .observe(viewLifecycleOwner, descriptionView::setDescription)
-            }
-            is ExerciseType.Training -> {
-                viewModel.getDescription((exerciseType as ExerciseType.Training).name)
-                    .observe(viewLifecycleOwner, descriptionView::setDescription)
-            }
-        }
+        viewModel.description.observe(viewLifecycleOwner, descriptionView::setDescription)
     }
 }

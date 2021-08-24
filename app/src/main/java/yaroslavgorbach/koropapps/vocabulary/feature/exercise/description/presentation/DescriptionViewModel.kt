@@ -3,6 +3,7 @@ package yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.presen
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import yaroslavgorbach.koropapps.vocabulary.business.description.GetDescriptionInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.description.local.model.Description
@@ -10,18 +11,30 @@ import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseN
 import javax.inject.Inject
 
 class DescriptionViewModel @Inject constructor(
-    private val getDescriptionInteractor: GetDescriptionInteractor
+    private val getDescriptionInteractor: GetDescriptionInteractor,
+    private val exerciseName: ExerciseName
 ) : ViewModel() {
 
     private val disposables: CompositeDisposable = CompositeDisposable()
 
-    private val description: MutableLiveData<Description> = MutableLiveData()
+    private val _description: MutableLiveData<Description> = MutableLiveData()
+        get() {
+            getDescriptionInteractor(exerciseName)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(field::setValue)
+                .let(disposables::add)
+            return field
+        }
 
-    fun getDescription(exerciseName: ExerciseName): LiveData<Description> {
-        getDescriptionInteractor(exerciseName)
-            .subscribe(description::setValue)
-            .let(disposables::add)
-        return description
+    val description: LiveData<Description>
+        get() = _description
+
+    fun onNextChart() {
+
+    }
+
+    fun onPreviousChart() {
+
     }
 
     override fun onCleared() {
