@@ -17,6 +17,8 @@ class DescriptionView(
     interface Callback {
         fun onOpenExercise()
         fun onBack()
+        fun onNextChart()
+        fun onPreviousChart()
     }
 
     init {
@@ -29,6 +31,12 @@ class DescriptionView(
         }
         binding.toolbar.setNavigationOnClickListener {
             callback.onBack()
+        }
+        binding.chartLayout.nextData.setOnClickListener {
+            callback.onNextChart()
+        }
+        binding.chartLayout.prevData.setOnClickListener {
+            callback.onPreviousChart()
         }
     }
 
