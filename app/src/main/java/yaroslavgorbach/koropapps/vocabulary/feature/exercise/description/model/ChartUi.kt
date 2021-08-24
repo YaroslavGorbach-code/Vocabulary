@@ -1,7 +1,10 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.model
 
+import android.content.Context
+import android.graphics.Color
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsEntity
 import yaroslavgorbach.koropapps.vocabulary.utils.formatDD
+import yaroslavgorbach.koropapps.vocabulary.utils.getColorPrimary
 
 data class ChartUi(private val statisticsEntities: List<StatisticsEntity>) {
 
@@ -24,5 +27,13 @@ data class ChartUi(private val statisticsEntities: List<StatisticsEntity>) {
 
     val isEmpty: Boolean
         get() = data.isEmpty() || labels.isEmpty()
+
+    fun getColors(context: Context): IntArray {
+        return intArrayOf(
+            context.getColorPrimary(),
+            Color.GREEN,
+            Color.GRAY,
+            Color.CYAN)
+    }
 
 }

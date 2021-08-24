@@ -59,14 +59,7 @@ class DescriptionView(
             binding.chartLayout.chart.setDrawDotLine(false)
             binding.chartLayout.chart.setShowPopup(LineView.SHOW_POPUPS_All)
             binding.chartLayout.chart.setBottomTextList(chartUi.labels)
-            binding.chartLayout.chart.setColorArray(
-                intArrayOf(
-                    binding.root.context.getColorPrimary(),
-                    Color.GREEN,
-                    Color.GRAY,
-                    Color.CYAN
-                )
-            )
+            binding.chartLayout.chart.setColorArray(chartUi.getColors(binding.root.context))
             binding.chartLayout.chart.setDataList(chartUi.data)
         }
     }
