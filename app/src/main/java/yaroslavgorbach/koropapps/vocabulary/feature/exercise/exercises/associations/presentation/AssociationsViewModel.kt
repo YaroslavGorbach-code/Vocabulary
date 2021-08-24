@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.business.training.GetTrainingExerciseInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.training.IncrementExercisePerformedInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.ObserveTrainingExerciseInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.UpdateTrainingExerciseInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingExerciseEntity
@@ -18,8 +19,7 @@ import javax.inject.Inject
 class AssociationsViewModel @Inject constructor(
     private val exerciseType: ExerciseType,
     private val application: Application,
-    private val updateTrainingExerciseInteractor: UpdateTrainingExerciseInteractor,
-    private val getTrainingExerciseInteractor: GetTrainingExerciseInteractor,
+    private val incrementExercisePerformedInteractor: IncrementExercisePerformedInteractor,
     private val observeTrainingExerciseInteractor: ObserveTrainingExerciseInteractor
 ) : ViewModel() {
 
@@ -30,7 +30,7 @@ class AssociationsViewModel @Inject constructor(
             ExerciseWordCategory.NOUNS.resId
         ).toList()
 
-
+    // TODO: 8/24/2021 move description to exercise type model
     val descriptionText: String
         get() = application.applicationContext.getString(
             R.string.desc_short_associations
@@ -64,9 +64,7 @@ class AssociationsViewModel @Inject constructor(
 
     fun incrementExercisePerformed() {
         if (exerciseType is ExerciseType.Training) {
-            getTrainingExerciseInteractor(exerciseType.exerciseId)
-                .doOnSuccess { it.performed++ }
-                .flatMapCompletable(updateTrainingExerciseInteractor::invoke)
+            incrementExercisePerformedInteractor(exerciseType.exerciseId)
                 .subscribe()
                 .let(disposables::add)
         }

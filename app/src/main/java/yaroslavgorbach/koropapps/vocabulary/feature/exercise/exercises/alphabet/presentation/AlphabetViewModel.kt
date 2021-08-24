@@ -8,8 +8,7 @@ import androidx.lifecycle.viewModelScope
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import kotlinx.coroutines.*
 import yaroslavgorbach.koropapps.vocabulary.R
-import yaroslavgorbach.koropapps.vocabulary.business.training.GetTrainingExerciseInteractor
-import yaroslavgorbach.koropapps.vocabulary.business.training.UpdateTrainingExerciseInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.training.IncrementExercisePerformedInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.model.ExerciseWordCategory
@@ -18,8 +17,7 @@ import javax.inject.Inject
 class AlphabetViewModel @Inject constructor(
     private val exerciseType: ExerciseType,
     private val application: Application,
-    private val updateTrainingExerciseInteractor: UpdateTrainingExerciseInteractor,
-    private val getTrainingExerciseInteractor: GetTrainingExerciseInteractor,
+    private val incrementExercisePerformedInteractor: IncrementExercisePerformedInteractor,
 ) : ViewModel() {
 
     private val disposables: CompositeDisposable = CompositeDisposable()
@@ -45,6 +43,7 @@ class AlphabetViewModel @Inject constructor(
 
     val description: String
         get() {
+            // TODO: 8/24/2021 move description to exercise type model
             return when (exerciseType) {
                 is ExerciseType.Common -> {
                     when (exerciseType.name) {
@@ -99,9 +98,7 @@ class AlphabetViewModel @Inject constructor(
 
     private fun incrementExercisePerformed() {
         if (exerciseType is ExerciseType.Training) {
-            getTrainingExerciseInteractor(exerciseType.exerciseId)
-                .doOnSuccess { it.performed++ }
-                .flatMapCompletable(updateTrainingExerciseInteractor::invoke)
+            incrementExercisePerformedInteractor(exerciseType.exerciseId)
                 .subscribe()
                 .let(disposables::add)
         }
