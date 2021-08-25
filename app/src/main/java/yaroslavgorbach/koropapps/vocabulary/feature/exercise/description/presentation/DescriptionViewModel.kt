@@ -6,8 +6,10 @@ import androidx.lifecycle.ViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import yaroslavgorbach.koropapps.vocabulary.business.description.GetDescriptionInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.statistics.InsertStatisticInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.description.local.model.Description
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
+import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsEntity
 import javax.inject.Inject
 
 class DescriptionViewModel @Inject constructor(

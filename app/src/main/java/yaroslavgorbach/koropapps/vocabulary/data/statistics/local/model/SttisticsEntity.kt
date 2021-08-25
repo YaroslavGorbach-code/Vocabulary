@@ -8,7 +8,7 @@ import java.util.*
 @Entity
 data class StatisticsEntity(
     @PrimaryKey(autoGenerate = true)
-    val id: Long,
+    val id: Long = 0,
     val exerciseName: ExerciseName,
     val value: Int,
     val date: Date
