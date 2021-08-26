@@ -1,4 +1,4 @@
-package yaroslavgorbach.koropapps.vocabulary.feature.exercise.model
+package yaroslavgorbach.koropapps.vocabulary.feature.exercise.common.model
 
 import yaroslavgorbach.koropapps.vocabulary.R
 

@@ -12,7 +12,7 @@ import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentDescriptionBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.presentation.DescriptionViewModel
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.model.ExerciseType
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.utils.host
 import javax.inject.Inject
 

@@ -9,7 +9,6 @@ data class Description(val exerciseName: ExerciseName) {
     val exerciseIconRes: Int
         get() = ExerciseNameToIconResMapper().map(exerciseName)
 
-
     val textRes: Int
         get() = when (exerciseName) {
             ExerciseName.ALPHABET_ADJECTIVES -> R.string.alphabet_adjectives_description

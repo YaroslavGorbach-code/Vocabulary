@@ -3,7 +3,7 @@ package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.tautogra
 import dagger.BindsInstance
 import dagger.Subcomponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.tautograms.ui.TautogramsFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.model.ExerciseType
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.common.model.ExerciseType
 
 @Subcomponent(modules = [TautogramsExerciseModule::class])
 interface TautogramsExerciseComponent {
