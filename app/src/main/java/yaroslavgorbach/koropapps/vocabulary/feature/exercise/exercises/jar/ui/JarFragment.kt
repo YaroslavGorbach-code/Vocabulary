@@ -10,9 +10,9 @@ import androidx.lifecycle.ViewModelProvider
 import yaroslavgorbach.koropapps.vocabulary.App
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseBinding
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.ExerciseView
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.jar.presentation.JarViewModel
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.model.ExerciseType
 import javax.inject.Inject
 
 class JarFragment : Fragment(R.layout.fragment_exercise) {
@@ -59,8 +59,7 @@ class JarFragment : Fragment(R.layout.fragment_exercise) {
             FragmentExerciseBinding.bind(requireView()),
             object : ExerciseView.Callback {
                 override fun onNext() {
-                    viewModel.generateWord()
-                    viewModel.incrementExercisePerformed()
+                    viewModel.onNextWordClick()
                 }
 
                 override fun onBack() {
@@ -70,20 +69,13 @@ class JarFragment : Fragment(R.layout.fragment_exercise) {
 
         // TODO: 8/18/2021 move description out of viewModel to exerciseType
         exerciseView.setDescriptionText(viewModel.descriptionText)
-
-        when (exerciseType) {
-            is ExerciseType.Common -> {
-                exerciseView.setExerciseName((exerciseType as ExerciseType.Common).name)
-            }
-            is ExerciseType.Training -> {
-                exerciseView.setExerciseName((exerciseType as ExerciseType.Training).name)
-            }
-        }
+        exerciseView.setExerciseName(exerciseType.getExerciseName())
     }
 
     private fun initObservers() {
         viewModel.word.observe(viewLifecycleOwner, exerciseView::setWord)
         viewModel.exercise.observe(viewLifecycleOwner) { exercise ->
+            // TODO: 8/26/2021 move this logic to viewClass just pass exercise lice a parameter
             if (exercise.isFinished) {
                 requireActivity().onBackPressed()
             }
