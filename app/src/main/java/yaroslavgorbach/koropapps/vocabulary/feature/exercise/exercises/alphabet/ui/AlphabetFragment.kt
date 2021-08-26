@@ -12,8 +12,8 @@ import kotlinx.coroutines.launch
 import yaroslavgorbach.koropapps.vocabulary.App
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseAlphabetBinding
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.alphabet.presentation.AlphabetViewModel
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.model.ExerciseType
 import javax.inject.Inject
 
 class AlphabetFragment : Fragment(R.layout.fragment_exercise_alphabet),
@@ -63,19 +63,19 @@ class AlphabetFragment : Fragment(R.layout.fragment_exercise_alphabet),
             object : AlphabetView.Callback {
                 override fun onNewLetter() {
                     lifecycleScope.launch {
-                        viewModel.refreshLetter()
+                        viewModel.onNextLetterClick()
                     }
                 }
 
                 override fun onTimeEnd() {
-                    TimeEndDialog.newInstance(viewModel.lettersCount)
+                    TimeEndDialog.newInstance(viewModel.passedLettersCount)
                         .show(childFragmentManager, null)
                 }
 
                 override fun onGameFinished() {
                     // TODO: 7/19/2021 calculate average time
                     ExerciseFinishDialog.newInstance(30).show(childFragmentManager, null)
-                    viewModel.stopTimer()
+                    viewModel.onTimerFinished()
                 }
 
                 override fun onBack() {
@@ -84,18 +84,7 @@ class AlphabetFragment : Fragment(R.layout.fragment_exercise_alphabet),
             })
 
         alphabetView.setDescriptionText(viewModel.description)
-        when (exerciseType) {
-            is ExerciseType.Common -> {
-                alphabetView.setExerciseName(
-                    requireContext().getString((exerciseType as ExerciseType.Common).name.id)
-                )
-            }
-            is ExerciseType.Training -> {
-                alphabetView.setExerciseName(
-                    requireContext().getString((exerciseType as ExerciseType.Training).name.id)
-                )
-            }
-        }
+        alphabetView.setExerciseName(requireContext().getString((exerciseType.getExerciseName()).id))
     }
 
     private fun initObservers() {
