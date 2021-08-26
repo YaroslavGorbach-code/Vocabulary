@@ -12,7 +12,7 @@ import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.ExerciseView
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.tautograms.presentation.TautogramsViewModel
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.model.ExerciseType
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.common.model.ExerciseType
 import javax.inject.Inject
 
 class TautogramsFragment : Fragment(R.layout.fragment_exercise) {
@@ -59,8 +59,7 @@ class TautogramsFragment : Fragment(R.layout.fragment_exercise) {
             FragmentExerciseBinding.bind(requireView()),
             object : ExerciseView.Callback {
                 override fun onNext() {
-                    viewModel.generateWord()
-                    viewModel.incrementExercisePerformed()
+                    viewModel.onNextClick()
                 }
 
                 override fun onBack() {
@@ -70,16 +69,7 @@ class TautogramsFragment : Fragment(R.layout.fragment_exercise) {
 
         // TODO: 8/18/2021 move description out of viewModel to exerciseType
         exerciseView.setDescriptionText(viewModel.descriptionText)
-
-        when (exerciseType) {
-            is ExerciseType.Common -> {
-                exerciseView.setExerciseName((exerciseType as ExerciseType.Common).name)
-            }
-            is ExerciseType.Training -> {
-                exerciseView.setDescriptionText(viewModel.descriptionText)
-                exerciseView.setExerciseName((exerciseType as ExerciseType.Training).name)
-            }
-        }
+        exerciseView.setExerciseName(exerciseType.getExerciseName())
     }
 
     private fun initObservers() {

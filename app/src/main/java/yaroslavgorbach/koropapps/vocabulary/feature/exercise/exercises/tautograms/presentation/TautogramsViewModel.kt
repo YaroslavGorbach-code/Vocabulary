@@ -4,22 +4,24 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import yaroslavgorbach.koropapps.vocabulary.R
-import yaroslavgorbach.koropapps.vocabulary.business.training.GetTrainingExerciseInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.statistics.InsertStatisticInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.IncrementExercisePerformedInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.ObserveTrainingExerciseInteractor
-import yaroslavgorbach.koropapps.vocabulary.business.training.UpdateTrainingExerciseInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingExerciseEntity
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.model.ExerciseType
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.model.ExerciseWordCategory
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.common.factory.StatisticsEntityFactory
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.common.model.ExerciseType
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.common.model.ExerciseWordCategory
 import javax.inject.Inject
 
 class TautogramsViewModel @Inject constructor(
     private val exerciseType: ExerciseType,
     private val application: Application,
     private val incrementExercisePerformedInteractor: IncrementExercisePerformedInteractor,
-    private val observeTrainingExerciseInteractor: ObserveTrainingExerciseInteractor
+    private val observeTrainingExerciseInteractor: ObserveTrainingExerciseInteractor,
+    private val insertStatisticInteractor: InsertStatisticInteractor
 ) : ViewModel() {
 
     private val disposables: CompositeDisposable = CompositeDisposable()
@@ -50,15 +52,27 @@ class TautogramsViewModel @Inject constructor(
     val exercise: LiveData<TrainingExerciseEntity>
         get() = _exercise
 
+    private var passedWordsCount: Int = 0
+
     init {
         generateWord()
     }
 
-    fun generateWord() {
+    fun onNextClick() {
+        generateWord()
+        incrementExercisePerformed()
+        incrementPassedWords()
+    }
+
+    private fun incrementPassedWords() {
+        passedWordsCount++
+    }
+
+    private fun generateWord() {
         _word.value = words.random()
     }
 
-    fun incrementExercisePerformed() {
+    private fun incrementExercisePerformed() {
         if (exerciseType is ExerciseType.Training) {
             incrementExercisePerformedInteractor(exerciseType.exerciseId)
                 .subscribe()
@@ -66,10 +80,24 @@ class TautogramsViewModel @Inject constructor(
         }
     }
 
-    override fun onCleared() {
-        super.onCleared()
+    private fun saveStatistics() {
+        insertStatisticInteractor.invoke(
+            StatisticsEntityFactory().create(exerciseType.getExerciseName(), passedWordsCount)
+        )
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe()
+            .let(disposables::add)
+    }
+
+    private fun disposeDisposables() {
         if (disposables.isDisposed.not()) {
             disposables.dispose()
         }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        saveStatistics()
+        disposeDisposables()
     }
 }
