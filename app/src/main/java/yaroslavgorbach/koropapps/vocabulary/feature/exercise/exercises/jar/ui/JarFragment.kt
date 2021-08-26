@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import yaroslavgorbach.koropapps.vocabulary.App
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseBinding
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.common.model.ExerciseType
+import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.ExerciseView
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.jar.presentation.JarViewModel
 import javax.inject.Inject
@@ -67,8 +67,7 @@ class JarFragment : Fragment(R.layout.fragment_exercise) {
                 }
             })
 
-        // TODO: 8/18/2021 move description out of viewModel to exerciseType
-        exerciseView.setDescriptionText(viewModel.descriptionText)
+        exerciseView.setDescriptionText(viewModel.description)
         exerciseView.setExerciseName(exerciseType.getExerciseName())
     }
 

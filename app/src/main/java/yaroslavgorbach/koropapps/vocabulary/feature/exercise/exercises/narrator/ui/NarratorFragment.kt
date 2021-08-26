@@ -12,7 +12,7 @@ import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.ExerciseView
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.narrator.presentation.NarratorViewModel
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.common.model.ExerciseType
+import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import javax.inject.Inject
 
 
@@ -72,10 +72,7 @@ class NarratorFragment : Fragment(R.layout.fragment_exercise) {
             requireContext().getString(R.string.number_of_words_in_story)
         )
 
-        // TODO: 8/18/2021 move description out of viewModel to exerciseType
-        exerciseView.setDescriptionText(
-            viewModel.getDescriptionText(exerciseType.getExerciseName())
-        )
+        exerciseView.setDescriptionText(viewModel.description)
         exerciseView.setExerciseName(exerciseType.getExerciseName())
     }
 

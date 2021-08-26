@@ -12,8 +12,9 @@ import yaroslavgorbach.koropapps.vocabulary.business.training.IncrementExerciseP
 import yaroslavgorbach.koropapps.vocabulary.business.training.ObserveTrainingExerciseInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingExerciseEntity
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.common.factory.StatisticsEntityFactory
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.common.model.ExerciseType
+import yaroslavgorbach.koropapps.vocabulary.feature.common.factory.StatisticsEntityFactory
+import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToShortDescriptionResMapper
+import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import javax.inject.Inject
 import kotlin.random.Random
 
@@ -45,26 +46,15 @@ class NarratorViewModel @Inject constructor(
     val exercise: LiveData<TrainingExerciseEntity>
         get() = _exercise
 
+    val description: String
+        get() = application.getString(
+            ExerciseNameToShortDescriptionResMapper().map(exerciseType.getExerciseName())
+        )
+
     private var passedWordsCount: Int = 0
 
     init {
         generateWords()
-    }
-
-    // TODO: 8/26/2021 move description to exercise name model
-    fun getDescriptionText(exName: ExerciseName): String {
-        return when (exName) {
-            ExerciseName.NARRATOR_NOUN -> {
-                application.applicationContext.getString(R.string.desc_short_narrator_noun)
-            }
-            ExerciseName.NARRATOR_ADJECTIVES -> {
-                application.applicationContext.getString(R.string.desc_short_narrator_adjectives)
-            }
-            ExerciseName.NARRATOR_VERBS -> {
-                application.applicationContext.getString(R.string.desc_short_narrator_verbs)
-            }
-            else -> ""
-        }
     }
 
     fun onNextClick() {

@@ -6,14 +6,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
-import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.InsertStatisticInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.IncrementExercisePerformedInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.ObserveTrainingExerciseInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingExerciseEntity
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.common.factory.StatisticsEntityFactory
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.common.model.ExerciseType
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.common.model.ExerciseWordCategory
+import yaroslavgorbach.koropapps.vocabulary.feature.common.factory.StatisticsEntityFactory
+import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToShortDescriptionResMapper
+import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
+import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseWordCategory
 import javax.inject.Inject
 
 class JarViewModel @Inject constructor(
@@ -31,9 +31,9 @@ class JarViewModel @Inject constructor(
             ExerciseWordCategory.LETTERS.resId
         ).toList()
 
-    val descriptionText: String
-        get() = application.applicationContext.getString(
-            R.string.desc_short_three_liter_jar
+    val description: String
+        get() = application.getString(
+            ExerciseNameToShortDescriptionResMapper().map(exerciseType.getExerciseName())
         )
 
     private val _word = MutableLiveData<String>()

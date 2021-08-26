@@ -7,7 +7,7 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
 import kotlinx.coroutines.FlowPreview
 import yaroslavgorbach.koropapps.vocabulary.R
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.common.model.ExerciseType
+import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.ui.DescriptionFragment
 import yaroslavgorbach.koropapps.vocabulary.workflow.factory.CreateExerciseFragmentFactory
 

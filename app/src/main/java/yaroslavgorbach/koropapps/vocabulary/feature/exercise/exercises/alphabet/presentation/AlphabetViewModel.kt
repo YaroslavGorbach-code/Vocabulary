@@ -8,13 +8,12 @@ import androidx.lifecycle.viewModelScope
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import kotlinx.coroutines.*
-import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.InsertStatisticInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.IncrementExercisePerformedInteractor
-import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.common.factory.StatisticsEntityFactory
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.common.model.ExerciseType
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.common.model.ExerciseWordCategory
+import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToShortDescriptionResMapper
+import yaroslavgorbach.koropapps.vocabulary.feature.common.factory.StatisticsEntityFactory
+import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
+import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseWordCategory
 import javax.inject.Inject
 
 class AlphabetViewModel @Inject constructor(
@@ -46,21 +45,9 @@ class AlphabetViewModel @Inject constructor(
         get() = _progress
 
     val description: String
-        get() {
-            // TODO: 8/24/2021 move description to exercise type model
-            return when (exerciseType.getExerciseName()) {
-                ExerciseName.ALPHABET_ADJECTIVES -> {
-                    application.getString(R.string.desc_short_alphabet_a)
-                }
-                ExerciseName.ALPHABET_NOUN -> {
-                    application.getString(R.string.desc_short_alphabet_n)
-                }
-                ExerciseName.ALPHABET_VERBS -> {
-                    application.getString(R.string.desc_short_alphabet_v)
-                }
-                else -> ""
-            }
-        }
+        get() = application.getString(
+            ExerciseNameToShortDescriptionResMapper().map(exerciseType.getExerciseName())
+        )
 
     var passedLettersCount: Int = 0
         private set

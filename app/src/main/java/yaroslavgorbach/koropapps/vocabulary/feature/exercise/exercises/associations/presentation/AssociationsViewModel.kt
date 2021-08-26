@@ -11,9 +11,10 @@ import yaroslavgorbach.koropapps.vocabulary.business.statistics.InsertStatisticI
 import yaroslavgorbach.koropapps.vocabulary.business.training.IncrementExercisePerformedInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.ObserveTrainingExerciseInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingExerciseEntity
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.common.factory.StatisticsEntityFactory
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.common.model.ExerciseType
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.common.model.ExerciseWordCategory
+import yaroslavgorbach.koropapps.vocabulary.feature.common.factory.StatisticsEntityFactory
+import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToShortDescriptionResMapper
+import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
+import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseWordCategory
 import javax.inject.Inject
 
 
@@ -32,10 +33,9 @@ class AssociationsViewModel @Inject constructor(
             ExerciseWordCategory.NOUNS.resId
         ).toList()
 
-    // TODO: 8/24/2021 move description to exercise type model
-    val descriptionText: String
-        get() = application.applicationContext.getString(
-            R.string.desc_short_associations
+    val description: String
+        get() = application.getString(
+            ExerciseNameToShortDescriptionResMapper().map(exerciseType.getExerciseName())
         )
 
     private val _word = MutableLiveData<String>()

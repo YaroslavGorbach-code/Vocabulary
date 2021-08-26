@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import yaroslavgorbach.koropapps.vocabulary.App
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseBinding
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.common.model.ExerciseType
+import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.ExerciseView
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.antonymssynonyms.presentation.AntonymsSynonymsViewModel
 import javax.inject.Inject
@@ -74,8 +74,10 @@ class AntonymsSynonymsFragment : Fragment(R.layout.fragment_exercise) {
     }
 
     private fun initObservers() {
-        viewModel.descriptionText.observe(viewLifecycleOwner, exerciseView::setDescriptionText)
-        viewModel.word.observe(viewLifecycleOwner, exerciseView::setWord)
+        viewModel.word.observe(viewLifecycleOwner){word->
+            exerciseView.setWord(word)
+            exerciseView.setDescriptionText(viewModel.description)
+        }
         viewModel.exercise.observe(viewLifecycleOwner) { exercise ->
             exerciseView.setAimAndPerformed(exercise.aim, exercise.performed)
             if (exercise.isFinished) {
