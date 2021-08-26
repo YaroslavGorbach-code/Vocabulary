@@ -12,7 +12,7 @@ import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingWi
 interface TrainingDao {
     @Transaction
     @Query("SELECT * FROM TrainingEntity")
-    fun observe(): Observable<List<TrainingWithExercisesEntity>>
+    fun observeTrainingWithExercisesEntity(): Observable<List<TrainingWithExercisesEntity>>
 
     @Insert
     fun insertTraining(trainingEntity: TrainingEntity): Completable
