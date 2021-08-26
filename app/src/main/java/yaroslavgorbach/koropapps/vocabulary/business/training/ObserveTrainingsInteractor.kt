@@ -7,7 +7,7 @@ import yaroslavgorbach.koropapps.vocabulary.data.training.repo.RepoTraining
 
 class ObserveTrainingsInteractor(private val repoTraining: RepoTraining) {
     operator fun invoke(): Observable<List<TrainingWithExercisesEntity>> {
-        return repoTraining.observe()
+        return repoTraining.observeTrainingWithExercises()
             .subscribeOn(Schedulers.io())
     }
 }

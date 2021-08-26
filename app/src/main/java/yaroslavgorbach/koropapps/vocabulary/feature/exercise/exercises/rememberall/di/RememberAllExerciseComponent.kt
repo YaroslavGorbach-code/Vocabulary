@@ -3,7 +3,7 @@ package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.remember
 import dagger.BindsInstance
 import dagger.Subcomponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.rememberall.ui.RememberAllFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.model.ExerciseType
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.common.model.ExerciseType
 
 @Subcomponent(modules = [RememberAllExerciseModule::class])
 interface RememberAllExerciseComponent {
