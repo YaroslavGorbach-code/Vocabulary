@@ -10,9 +10,9 @@ import androidx.lifecycle.ViewModelProvider
 import yaroslavgorbach.koropapps.vocabulary.App
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseBinding
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.ExerciseView
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.antonymssynonyms.presentation.AntonymsSynonymsViewModel
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.model.ExerciseType
 import javax.inject.Inject
 
 class AntonymsSynonymsFragment : Fragment(R.layout.fragment_exercise) {
@@ -61,8 +61,7 @@ class AntonymsSynonymsFragment : Fragment(R.layout.fragment_exercise) {
             FragmentExerciseBinding.bind(requireView()),
             object : ExerciseView.Callback {
                 override fun onNext() {
-                    viewModel.refreshData()
-                    viewModel.incrementExercisePerformed()
+                    viewModel.onNextWordClick()
                 }
 
                 override fun onBack() {
@@ -70,14 +69,8 @@ class AntonymsSynonymsFragment : Fragment(R.layout.fragment_exercise) {
                 }
             })
 
-        when (exerciseType) {
-            is ExerciseType.Common -> {
-                exerciseView.setExerciseName((exerciseType as ExerciseType.Common).name)
-            }
-            is ExerciseType.Training -> {
-                exerciseView.setExerciseName((exerciseType as ExerciseType.Training).name)
-            }
-        }
+        exerciseView.setExerciseName(exerciseType.getExerciseName())
+
     }
 
     private fun initObservers() {
