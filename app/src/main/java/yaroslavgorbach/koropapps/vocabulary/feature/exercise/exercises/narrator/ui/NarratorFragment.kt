@@ -12,7 +12,7 @@ import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.ExerciseView
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.narrator.presentation.NarratorViewModel
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.model.ExerciseType
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.common.model.ExerciseType
 import javax.inject.Inject
 
 
@@ -60,8 +60,7 @@ class NarratorFragment : Fragment(R.layout.fragment_exercise) {
             FragmentExerciseBinding.bind(requireView()),
             object : ExerciseView.Callback {
                 override fun onNext() {
-                    viewModel.generateNumberOfWords()
-                    viewModel.incrementExercisePerformed()
+                    viewModel.onNextClick()
                 }
 
                 override fun onBack() {
@@ -74,20 +73,10 @@ class NarratorFragment : Fragment(R.layout.fragment_exercise) {
         )
 
         // TODO: 8/18/2021 move description out of viewModel to exerciseType
-        when (exerciseType) {
-            is ExerciseType.Common -> {
-                exerciseView.setDescriptionText(
-                    viewModel.getDescriptionText((exerciseType as ExerciseType.Common).name)
-                )
-                exerciseView.setExerciseName((exerciseType as ExerciseType.Common).name)
-            }
-            is ExerciseType.Training -> {
-                exerciseView.setDescriptionText(
-                    viewModel.getDescriptionText((exerciseType as ExerciseType.Training).name)
-                )
-                exerciseView.setExerciseName((exerciseType as ExerciseType.Training).name)
-            }
-        }
+        exerciseView.setDescriptionText(
+            viewModel.getDescriptionText(exerciseType.getExerciseName())
+        )
+        exerciseView.setExerciseName(exerciseType.getExerciseName())
     }
 
     private fun initObservers() {
