@@ -8,7 +8,7 @@ import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingEx
 import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingWithExercisesEntity
 
 interface RepoTraining {
-    fun observe(): Observable<List<TrainingWithExercisesEntity>>
+    fun observeTrainingWithExercises(): Observable<List<TrainingWithExercisesEntity>>
 
     fun observeExercise(exerciseId: Long): Observable<TrainingExerciseEntity>
 

@@ -11,17 +11,19 @@ import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingWi
 
 class RepoTrainingImp(private val localDataSource: TrainingDao) : RepoTraining {
 
-    override fun observe(): Observable<List<TrainingWithExercisesEntity>> {
-        return localDataSource.observe()
-            .observeOn(Schedulers.io())
+    override fun observeTrainingWithExercises(): Observable<List<TrainingWithExercisesEntity>> {
+        return localDataSource.observeTrainingWithExercisesEntity()
+            .subscribeOn(Schedulers.io())
     }
 
     override fun observeExercise(exerciseId: Long): Observable<TrainingExerciseEntity> {
         return localDataSource.observeExercise(exerciseId)
+            .subscribeOn(Schedulers.io())
     }
 
     override fun getExercise(exerciseId: Long): Single<TrainingExerciseEntity> {
         return localDataSource.getExercise(exerciseId)
+            .subscribeOn(Schedulers.io())
     }
 
     override fun insertTraining(trainingEntity: TrainingEntity): Completable {
