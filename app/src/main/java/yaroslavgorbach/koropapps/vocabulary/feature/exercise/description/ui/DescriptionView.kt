@@ -1,12 +1,10 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.ui
 
-import android.graphics.Color
 import android.view.View
 import im.dacer.androidcharts.LineView
 import yaroslavgorbach.koropapps.vocabulary.data.description.local.model.Description
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentDescriptionBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.model.ChartUi
-import yaroslavgorbach.koropapps.vocabulary.utils.getColorPrimary
 import yaroslavgorbach.koropapps.vocabulary.utils.getDrawable
 import yaroslavgorbach.koropapps.vocabulary.utils.getString
 

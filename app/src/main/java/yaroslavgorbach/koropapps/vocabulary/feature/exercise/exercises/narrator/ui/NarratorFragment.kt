@@ -71,7 +71,7 @@ class NarratorFragment : Fragment(R.layout.fragment_exercise) {
         exerciseView.setShortDescriptionText(
             requireContext().getString(R.string.number_of_words_in_story)
         )
-
+        exerciseView.setExerciseName(exerciseType.getExerciseName())
         exerciseView.setDescriptionText(viewModel.description)
     }
 

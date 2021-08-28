@@ -66,7 +66,7 @@ class AssociationsFragment : Fragment(R.layout.fragment_exercise) {
                     requireActivity().onBackPressed()
                 }
             })
-
+        exerciseView.setExerciseName(exerciseType.getExerciseName())
         exerciseView.setDescriptionText(viewModel.description)
     }
 

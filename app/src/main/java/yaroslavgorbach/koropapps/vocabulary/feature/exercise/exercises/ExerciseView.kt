@@ -49,7 +49,10 @@ class ExerciseView(
             callback.onBack()
         }
         setAimAndPerformed(exercise.aim, exercise.performed)
-        setExerciseName(exercise.name)
+    }
+
+    fun setExerciseName(name: ExerciseName) {
+        binding.toolbar.title = binding.getString(name.id)
     }
 
     private fun startOneWordChronometer() {
@@ -59,10 +62,6 @@ class ExerciseView(
 
     private fun startAllWordsChronometer() {
         binding.chronometer.start()
-    }
-
-    private fun setExerciseName(name: ExerciseName) {
-        binding.toolbar.title = binding.getString(name.id)
     }
 
     private fun setAimAndPerformed(aim: Int, performed: Int) {

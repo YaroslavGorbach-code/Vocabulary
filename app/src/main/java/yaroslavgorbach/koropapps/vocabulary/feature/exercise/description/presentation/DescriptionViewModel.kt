@@ -44,6 +44,7 @@ class DescriptionViewModel @Inject constructor(
     private fun observeStatistics() {
         observeStatisticsInteractor(exerciseName.id)
             .observeOn(AndroidSchedulers.mainThread())
+            .map { it.takeLast(ChartUi.MAX_ITEMS_COUNT) }
             .map(::ChartUi)
             .subscribe(_chartUi::setValue)
     }

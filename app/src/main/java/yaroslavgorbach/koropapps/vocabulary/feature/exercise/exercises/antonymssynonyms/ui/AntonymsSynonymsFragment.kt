@@ -68,6 +68,7 @@ class AntonymsSynonymsFragment : Fragment(R.layout.fragment_exercise) {
                     requireActivity().onBackPressed()
                 }
             })
+        exerciseView.setExerciseName(exerciseType.getExerciseName())
     }
 
     private fun initObservers() {

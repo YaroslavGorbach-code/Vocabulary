@@ -41,20 +41,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <HorizontalScrollView
-        android:id="@+id/horizontalScrollView"
+    <im.dacer.androidcharts.LineView
+        android:id="@+id/chart"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="300dp"
         android:layout_gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/statistics_text">
-
-        <im.dacer.androidcharts.LineView
-            android:id="@+id/chart"
-            android:layout_width="wrap_content"
-            android:layout_height="300dp" />
-    </HorizontalScrollView>
+        app:layout_constraintTop_toBottomOf="@+id/prev_data" />
 
     <LinearLayout
         android:id="@+id/no_data"
