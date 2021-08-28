@@ -32,8 +32,8 @@ data class ChartUi(private val statisticsEntities: List<StatisticsEntity>) {
         return intArrayOf(
             Color.GREEN,
             context.getColorPrimary(),
-            Color.GRAY,
-            Color.CYAN)
+            Color.WHITE,
+            Color.WHITE)
     }
 
 }

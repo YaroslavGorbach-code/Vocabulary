@@ -1,6 +1,7 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.ui
 
 import android.view.View
+import androidx.core.widget.NestedScrollView
 import im.dacer.androidcharts.LineView
 import yaroslavgorbach.koropapps.vocabulary.data.description.local.model.Description
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentDescriptionBinding
@@ -30,21 +31,26 @@ class DescriptionView(
         binding.toolbar.setNavigationOnClickListener {
             callback.onBack()
         }
-        binding.chartLayout.nextData.setOnClickListener {
+        binding.chart.nextData.setOnClickListener {
             callback.onNextChart()
         }
-        binding.chartLayout.prevData.setOnClickListener {
+        binding.chart.prevData.setOnClickListener {
             callback.onPreviousChart()
         }
+
+        binding.scrollView.setOnScrollChangeListener(
+            NestedScrollView.OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+                if (scrollY > oldScrollY) {
+                    binding.openExercise.hide()
+                } else {
+                    binding.openExercise.show()
+                }
+            })
     }
 
     fun setDescription(description: Description) {
         binding.descriptionText.text = binding.getString(description.textRes)
         with(binding.getDrawable(description.exerciseIconRes)) {
-            binding.icon1.setImageDrawable(this)
-            binding.icon2.setImageDrawable(this)
-            binding.icon3.setImageDrawable(this)
-            binding.icon4.setImageDrawable(this)
             binding.icon5.setImageDrawable(this)
         }
         binding.toolbar.title = binding.getString(description.exerciseName.id)
@@ -54,16 +60,16 @@ class DescriptionView(
         if (chartUi.isEmpty) {
             showNoChartData()
         } else {
-            binding.chartLayout.chart.setDrawDotLine(false)
-            binding.chartLayout.chart.setShowPopup(LineView.SHOW_POPUPS_All)
-            binding.chartLayout.chart.setBottomTextList(chartUi.labels)
-            binding.chartLayout.chart.setColorArray(chartUi.getColors(binding.root.context))
-            binding.chartLayout.chart.setDataList(chartUi.data)
+            binding.chart.chart.setDrawDotLine(false)
+            binding.chart.chart.setShowPopup(LineView.SHOW_POPUPS_All)
+            binding.chart.chart.setBottomTextList(chartUi.labels)
+            binding.chart.chart.setColorArray(chartUi.getColors(binding.root.context))
+            binding.chart.chart.setDataList(chartUi.data)
         }
     }
 
     private fun showNoChartData() {
-        binding.chartLayout.noData.visibility = View.VISIBLE
+        binding.chart.noData.visibility = View.VISIBLE
     }
 
 }
