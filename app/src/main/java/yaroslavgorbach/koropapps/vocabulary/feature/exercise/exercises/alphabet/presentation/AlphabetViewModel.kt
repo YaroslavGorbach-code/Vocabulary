@@ -7,19 +7,19 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import kotlinx.coroutines.*
-import yaroslavgorbach.koropapps.vocabulary.R
-import yaroslavgorbach.koropapps.vocabulary.business.training.GetTrainingExerciseInteractor
-import yaroslavgorbach.koropapps.vocabulary.business.training.UpdateTrainingExerciseInteractor
-import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.model.ExerciseType
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.model.ExerciseWordCategory
+import yaroslavgorbach.koropapps.vocabulary.business.statistics.InsertStatisticInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.training.IncrementExercisePerformedInteractor
+import yaroslavgorbach.koropapps.vocabulary.feature.common.factory.StatisticsEntityFactory
+import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToShortDescriptionResMapper
+import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
+import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseWordCategory
 import javax.inject.Inject
 
 class AlphabetViewModel @Inject constructor(
     private val exerciseType: ExerciseType,
     private val application: Application,
-    private val updateTrainingExerciseInteractor: UpdateTrainingExerciseInteractor,
-    private val getTrainingExerciseInteractor: GetTrainingExerciseInteractor,
+    private val insertStatisticInteractor: InsertStatisticInteractor,
+    private val incrementExercisePerformedInteractor: IncrementExercisePerformedInteractor,
 ) : ViewModel() {
 
     private val disposables: CompositeDisposable = CompositeDisposable()
@@ -44,76 +44,76 @@ class AlphabetViewModel @Inject constructor(
         get() = _progress
 
     val description: String
-        get() {
-            return when (exerciseType) {
-                is ExerciseType.Common -> {
-                    when (exerciseType.name) {
-                        ExerciseName.ALPHABET_ADJECTIVES -> {
-                            application.getString(R.string.desc_short_alphabet_a)
-                        }
-                        ExerciseName.ALPHABET_NOUN -> {
-                            application.getString(R.string.desc_short_alphabet_n)
-                        }
-                        ExerciseName.ALPHABET_VERBS -> {
-                            application.getString(R.string.desc_short_alphabet_v)
-                        }
-                        else -> ""
-                    }
-                }
-                is ExerciseType.Training -> {
-                    when (exerciseType.name) {
-                        ExerciseName.ALPHABET_ADJECTIVES -> {
-                            application.getString(R.string.desc_short_alphabet_a)
-                        }
-                        ExerciseName.ALPHABET_NOUN -> {
-                            application.getString(R.string.desc_short_alphabet_n)
-                        }
-                        ExerciseName.ALPHABET_VERBS -> {
-                            application.getString(R.string.desc_short_alphabet_v)
-                        }
-                        else -> ""
-                    }
-                }
-            }
-        }
+        get() = application.getString(
+            ExerciseNameToShortDescriptionResMapper().map(exerciseType.getExerciseName())
+        )
 
-    var lettersCount: Int = -1
+    var passedLettersCount: Int = 0
         private set
 
     init {
         refreshLetter()
+        refreshProgressTimer()
     }
 
-    fun stopTimer() {
+    fun onNextLetterClick() {
+        refreshLetter()
+        incrementPassedLettersCount()
+        refreshProgressTimer()
+    }
+
+    fun onTimerFinished() {
+        incrementExercisePerformed()
         scope.cancel()
         _progress.value = 0
-        incrementExercisePerformed()
     }
 
-    fun refreshLetter() {
-        lettersCount++
+    private fun refreshLetter() {
         _letter.value = letters.value?.firstOrNull()
             .also { letter -> letters.value = letters.value?.filter { it != letter } }
-        startProgressTimer()
+    }
+
+    private fun incrementPassedLettersCount() {
+        passedLettersCount++
     }
 
     private fun incrementExercisePerformed() {
         if (exerciseType is ExerciseType.Training) {
-            getTrainingExerciseInteractor(exerciseType.exerciseId)
-                .doOnSuccess { it.performed++ }
-                .flatMapCompletable(updateTrainingExerciseInteractor::invoke)
+            incrementExercisePerformedInteractor(exerciseType.exerciseId)
                 .subscribe()
                 .let(disposables::add)
         }
     }
 
-    private fun startProgressTimer() {
+    private fun refreshProgressTimer() {
         scope.coroutineContext.cancelChildren()
         scope.launch {
             (0..100).forEach {
                 delay(50)
                 _progress.value = it
             }
+        }
+    }
+
+    private fun saveStatistics(doOnComplete: () -> Unit) {
+        insertStatisticInteractor.invoke(
+            StatisticsEntityFactory().create(exerciseType.getExerciseName(), passedLettersCount)
+        )
+            .doOnComplete(doOnComplete)
+            .subscribe()
+            .let(disposables::add)
+    }
+
+    private fun disposeDisposables() {
+        if (disposables.isDisposed.not()) {
+            disposables.dispose()
+        }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        saveStatistics {
+            disposeDisposables()
         }
     }
 }

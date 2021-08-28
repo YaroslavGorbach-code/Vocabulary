@@ -5,6 +5,7 @@ import dagger.BindsInstance
 import dagger.Component
 import yaroslavgorbach.koropapps.vocabulary.di.business.description.BusinessDescriptionModule
 import yaroslavgorbach.koropapps.vocabulary.di.business.exercises.BusinessExercisesModule
+import yaroslavgorbach.koropapps.vocabulary.di.business.statistics.BusinessStatisticsModule
 import yaroslavgorbach.koropapps.vocabulary.di.business.training.BusinessTrainingModule
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.di.DescriptionComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.alphabet.di.AlphabetExerciseComponent
@@ -25,7 +26,8 @@ import javax.inject.Singleton
     modules = [
         BusinessTrainingModule::class,
         BusinessExercisesModule::class,
-        BusinessDescriptionModule::class
+        BusinessDescriptionModule::class,
+        BusinessStatisticsModule::class
     ]
 )
 interface AppComponent {

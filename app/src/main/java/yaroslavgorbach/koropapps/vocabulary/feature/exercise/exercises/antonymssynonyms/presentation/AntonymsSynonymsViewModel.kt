@@ -5,22 +5,22 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.reactivex.rxjava3.disposables.CompositeDisposable
-import yaroslavgorbach.koropapps.vocabulary.R
-import yaroslavgorbach.koropapps.vocabulary.business.training.GetTrainingExerciseInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.statistics.InsertStatisticInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.training.IncrementExercisePerformedInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.ObserveTrainingExerciseInteractor
-import yaroslavgorbach.koropapps.vocabulary.business.training.UpdateTrainingExerciseInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingExerciseEntity
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.model.ExerciseType
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.model.ExerciseWordCategory
+import yaroslavgorbach.koropapps.vocabulary.feature.common.factory.StatisticsEntityFactory
+import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToShortDescriptionResMapper
+import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
+import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseWordCategory
 import javax.inject.Inject
-import kotlin.random.Random
 
 class AntonymsSynonymsViewModel @Inject constructor(
     private val exerciseType: ExerciseType,
     private val application: Application,
-    private val updateTrainingExerciseInteractor: UpdateTrainingExerciseInteractor,
-    private val getTrainingExerciseInteractor: GetTrainingExerciseInteractor,
-    private val observeTrainingExerciseInteractor: ObserveTrainingExerciseInteractor
+    private val incrementExercisePerformedInteractor: IncrementExercisePerformedInteractor,
+    private val observeTrainingExerciseInteractor: ObserveTrainingExerciseInteractor,
+    private val insertStatisticInteractor: InsertStatisticInteractor
 ) : ViewModel() {
 
     private val disposables: CompositeDisposable = CompositeDisposable()
@@ -35,10 +35,10 @@ class AntonymsSynonymsViewModel @Inject constructor(
     val word: LiveData<String>
         get() = _word
 
-    private val _descriptionText = MutableLiveData<String>()
-
-    val descriptionText: LiveData<String>
-        get() = _descriptionText
+    val description: String
+        get() = application.getString(
+            ExerciseNameToShortDescriptionResMapper().map(exerciseType.getExerciseName())
+        )
 
     private val _exercise: MutableLiveData<TrainingExerciseEntity> = MutableLiveData()
         get() {
@@ -53,44 +53,53 @@ class AntonymsSynonymsViewModel @Inject constructor(
     val exercise: LiveData<TrainingExerciseEntity>
         get() = _exercise
 
+    private var passedWordsCount: Int = 0
+
     init {
-        refreshData()
+        generateNewWord()
     }
 
-    fun refreshData() {
-        when (Random.nextInt(1, 2)) {
-            1 -> {
-                _descriptionText.value = application.applicationContext.getString(
-                    R.string.desc_short_antonyms,
-                )
-            }
-            2 -> {
-                _descriptionText.value = application.applicationContext.getString(
-                    R.string.desc_short_synonyms,
-                )
-            }
-        }
-        generateWord()
+    fun onNextWordClick() {
+        generateNewWord()
+        incrementExercisePerformed()
+        incrementPassedWords()
     }
 
-    private fun generateWord() {
+    private fun generateNewWord() {
         _word.value = words.random()
     }
 
-    fun incrementExercisePerformed() {
+    private fun incrementPassedWords() {
+        passedWordsCount++
+    }
+
+    private fun incrementExercisePerformed() {
         if (exerciseType is ExerciseType.Training) {
-            getTrainingExerciseInteractor(exerciseType.exerciseId)
-                .doOnSuccess { it.performed++ }
-                .flatMapCompletable(updateTrainingExerciseInteractor::invoke)
+            incrementExercisePerformedInteractor(exerciseType.exerciseId)
                 .subscribe()
                 .let(disposables::add)
         }
     }
 
-    override fun onCleared() {
-        super.onCleared()
+    private fun saveStatistics(doOnComplete: () -> Unit) {
+        insertStatisticInteractor.invoke(
+            StatisticsEntityFactory().create(exerciseType.getExerciseName(), passedWordsCount)
+        )
+            .doOnComplete(doOnComplete)
+            .subscribe()
+            .let(disposables::add)
+    }
+
+    private fun disposeDisposables() {
         if (disposables.isDisposed.not()) {
             disposables.dispose()
+        }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        saveStatistics {
+            disposeDisposables()
         }
     }
 }

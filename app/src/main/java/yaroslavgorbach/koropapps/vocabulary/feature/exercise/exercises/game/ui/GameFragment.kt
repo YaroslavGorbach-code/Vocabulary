@@ -10,9 +10,9 @@ import androidx.lifecycle.ViewModelProvider
 import yaroslavgorbach.koropapps.vocabulary.App
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseBinding
+import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.ExerciseView
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.game.presentation.GameViewModel
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.model.ExerciseType
 import javax.inject.Inject
 
 class GameFragment : Fragment(R.layout.fragment_exercise) {
@@ -59,35 +59,19 @@ class GameFragment : Fragment(R.layout.fragment_exercise) {
             FragmentExerciseBinding.bind(requireView()),
             object : ExerciseView.Callback {
                 override fun onNext() {
-                    viewModel.generateWord()
-                    viewModel.incrementExercisePerformed()
+                    viewModel.onNextWordClick()
                 }
 
                 override fun onBack() {
                     requireActivity().onBackPressed()
                 }
             })
-
-        // TODO: 8/18/2021 move description out of viewModel to exerciseType
-        exerciseView.setDescriptionText(viewModel.descriptionText)
-
-        when (exerciseType) {
-            is ExerciseType.Common -> {
-                exerciseView.setExerciseName((exerciseType as ExerciseType.Common).name)
-            }
-            is ExerciseType.Training -> {
-                exerciseView.setExerciseName((exerciseType as ExerciseType.Training).name)
-            }
-        }
+        exerciseView.setExerciseName(exerciseType.getExerciseName())
+        exerciseView.setDescriptionText(viewModel.description)
     }
 
     private fun initObservers() {
         viewModel.word.observe(viewLifecycleOwner, exerciseView::setWord)
-        viewModel.exercise.observe(viewLifecycleOwner) { exercise ->
-            if (exercise.isFinished) {
-                requireActivity().onBackPressed()
-            }
-            exerciseView.setAimAndPerformed(exercise.aim, exercise.performed)
-        }
+        viewModel.exercise.observe(viewLifecycleOwner, exerciseView::setExercise)
     }
 }

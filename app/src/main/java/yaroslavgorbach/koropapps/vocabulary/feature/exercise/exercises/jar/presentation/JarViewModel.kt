@@ -4,22 +4,24 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
-import yaroslavgorbach.koropapps.vocabulary.R
-import yaroslavgorbach.koropapps.vocabulary.business.training.GetTrainingExerciseInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.statistics.InsertStatisticInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.training.IncrementExercisePerformedInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.ObserveTrainingExerciseInteractor
-import yaroslavgorbach.koropapps.vocabulary.business.training.UpdateTrainingExerciseInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingExerciseEntity
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.model.ExerciseType
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.model.ExerciseWordCategory
+import yaroslavgorbach.koropapps.vocabulary.feature.common.factory.StatisticsEntityFactory
+import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToShortDescriptionResMapper
+import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
+import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseWordCategory
 import javax.inject.Inject
 
 class JarViewModel @Inject constructor(
     private val exerciseType: ExerciseType,
     private val application: Application,
-    private val updateTrainingExerciseInteractor: UpdateTrainingExerciseInteractor,
-    private val getTrainingExerciseInteractor: GetTrainingExerciseInteractor,
-    private val observeTrainingExerciseInteractor: ObserveTrainingExerciseInteractor
+    private val incrementExercisePerformedInteractor: IncrementExercisePerformedInteractor,
+    private val observeTrainingExerciseInteractor: ObserveTrainingExerciseInteractor,
+    private val insertStatisticInteractor: InsertStatisticInteractor
 ) : ViewModel() {
 
     private val disposables: CompositeDisposable = CompositeDisposable()
@@ -29,9 +31,9 @@ class JarViewModel @Inject constructor(
             ExerciseWordCategory.LETTERS.resId
         ).toList()
 
-    val descriptionText: String
-        get() = application.applicationContext.getString(
-            R.string.desc_short_three_liter_jar
+    val description: String
+        get() = application.getString(
+            ExerciseNameToShortDescriptionResMapper().map(exerciseType.getExerciseName())
         )
 
     private val _word = MutableLiveData<String>()
@@ -52,29 +54,53 @@ class JarViewModel @Inject constructor(
     val exercise: LiveData<TrainingExerciseEntity>
         get() = _exercise
 
+    private var passedWordsCount: Int = 0
 
     init {
         generateWord()
     }
 
-    fun generateWord() {
+    fun onNextWordClick() {
+        generateWord()
+        incrementPassedWords()
+        incrementExercisePerformed()
+    }
+
+    private fun generateWord() {
         _word.value = words.random()
     }
 
-    fun incrementExercisePerformed() {
+    private fun incrementPassedWords() {
+        passedWordsCount++
+    }
+
+    private fun incrementExercisePerformed() {
         if (exerciseType is ExerciseType.Training) {
-            getTrainingExerciseInteractor(exerciseType.exerciseId)
-                .doOnSuccess { it.performed++ }
-                .flatMapCompletable(updateTrainingExerciseInteractor::invoke)
+            incrementExercisePerformedInteractor(exerciseType.exerciseId)
                 .subscribe()
                 .let(disposables::add)
         }
     }
 
-    override fun onCleared() {
-        super.onCleared()
+    private fun saveStatistics(doOnComplete: () -> Unit) {
+        insertStatisticInteractor.invoke(
+            StatisticsEntityFactory().create(exerciseType.getExerciseName(), passedWordsCount)
+        )
+            .doOnComplete(doOnComplete)
+            .subscribe()
+            .let(disposables::add)
+    }
+
+    private fun disposeDisposables() {
         if (disposables.isDisposed.not()) {
             disposables.dispose()
+        }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        saveStatistics {
+            disposeDisposables()
         }
     }
 }

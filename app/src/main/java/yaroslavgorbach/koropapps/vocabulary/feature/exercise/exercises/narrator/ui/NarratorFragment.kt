@@ -12,7 +12,7 @@ import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.ExerciseView
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.narrator.presentation.NarratorViewModel
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.model.ExerciseType
+import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import javax.inject.Inject
 
 
@@ -60,8 +60,7 @@ class NarratorFragment : Fragment(R.layout.fragment_exercise) {
             FragmentExerciseBinding.bind(requireView()),
             object : ExerciseView.Callback {
                 override fun onNext() {
-                    viewModel.generateNumberOfWords()
-                    viewModel.incrementExercisePerformed()
+                    viewModel.onNextClick()
                 }
 
                 override fun onBack() {
@@ -72,31 +71,12 @@ class NarratorFragment : Fragment(R.layout.fragment_exercise) {
         exerciseView.setShortDescriptionText(
             requireContext().getString(R.string.number_of_words_in_story)
         )
-
-        // TODO: 8/18/2021 move description out of viewModel to exerciseType
-        when (exerciseType) {
-            is ExerciseType.Common -> {
-                exerciseView.setDescriptionText(
-                    viewModel.getDescriptionText((exerciseType as ExerciseType.Common).name)
-                )
-                exerciseView.setExerciseName((exerciseType as ExerciseType.Common).name)
-            }
-            is ExerciseType.Training -> {
-                exerciseView.setDescriptionText(
-                    viewModel.getDescriptionText((exerciseType as ExerciseType.Training).name)
-                )
-                exerciseView.setExerciseName((exerciseType as ExerciseType.Training).name)
-            }
-        }
+        exerciseView.setExerciseName(exerciseType.getExerciseName())
+        exerciseView.setDescriptionText(viewModel.description)
     }
 
     private fun initObservers() {
         viewModel.numberOfWords.observe(viewLifecycleOwner, exerciseView::setWord)
-        viewModel.exercise.observe(viewLifecycleOwner) { exercise ->
-            if (exercise.isFinished) {
-                requireActivity().onBackPressed()
-            }
-            exerciseView.setAimAndPerformed(exercise.aim, exercise.performed)
-        }
+        viewModel.exercise.observe(viewLifecycleOwner, exerciseView::setExercise)
     }
 }

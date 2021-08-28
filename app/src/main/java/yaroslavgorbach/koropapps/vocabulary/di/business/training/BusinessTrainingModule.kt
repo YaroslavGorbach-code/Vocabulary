@@ -97,4 +97,15 @@ class BusinessTrainingModule {
     ): UpdateTrainingExerciseInteractor {
         return UpdateTrainingExerciseInteractor(repoTraining)
     }
+
+    @Provides
+    fun provideIncrementExercisePerformedInteractor(
+        getTrainingExerciseInteractor: GetTrainingExerciseInteractor,
+        updateTrainingExerciseInteractor: UpdateTrainingExerciseInteractor
+    ): IncrementExercisePerformedInteractor {
+        return IncrementExercisePerformedInteractor(
+            getTrainingExerciseInteractor,
+            updateTrainingExerciseInteractor
+        )
+    }
 }

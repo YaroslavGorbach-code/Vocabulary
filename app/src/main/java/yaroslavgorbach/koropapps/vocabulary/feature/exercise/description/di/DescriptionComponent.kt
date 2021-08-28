@@ -1,7 +1,8 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.di
 
+import dagger.BindsInstance
 import dagger.Subcomponent
-import kotlinx.coroutines.InternalCoroutinesApi
+import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.ui.DescriptionFragment
 
 @Subcomponent(modules = [DescriptionModule::class])
@@ -11,6 +12,6 @@ interface DescriptionComponent {
 
     @Subcomponent.Factory
     interface Factory {
-        fun create(): DescriptionComponent
+        fun create(@BindsInstance exerciseName: ExerciseName): DescriptionComponent
     }
 }
