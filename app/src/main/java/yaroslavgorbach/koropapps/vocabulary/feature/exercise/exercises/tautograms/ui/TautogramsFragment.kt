@@ -68,16 +68,10 @@ class TautogramsFragment : Fragment(R.layout.fragment_exercise) {
             })
 
         exerciseView.setDescriptionText(viewModel.description)
-        exerciseView.setExerciseName(exerciseType.getExerciseName())
     }
 
     private fun initObservers() {
         viewModel.word.observe(viewLifecycleOwner, exerciseView::setWord)
-        viewModel.exercise.observe(viewLifecycleOwner) { exercise ->
-            if (exercise.isFinished) {
-                requireActivity().onBackPressed()
-            }
-            exerciseView.setAimAndPerformed(exercise.aim, exercise.performed)
-        }
+        viewModel.exercise.observe(viewLifecycleOwner, exerciseView::setExercise)
     }
 }

@@ -10,9 +10,9 @@ import androidx.lifecycle.ViewModelProvider
 import yaroslavgorbach.koropapps.vocabulary.App
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseBinding
+import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.ExerciseView
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.game.presentation.GameViewModel
-import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import javax.inject.Inject
 
 class GameFragment : Fragment(R.layout.fragment_exercise) {
@@ -68,16 +68,10 @@ class GameFragment : Fragment(R.layout.fragment_exercise) {
             })
 
         exerciseView.setDescriptionText(viewModel.description)
-        exerciseView.setExerciseName(exerciseType.getExerciseName())
     }
 
     private fun initObservers() {
         viewModel.word.observe(viewLifecycleOwner, exerciseView::setWord)
-        viewModel.exercise.observe(viewLifecycleOwner) { exercise ->
-            if (exercise.isFinished) {
-                requireActivity().onBackPressed()
-            }
-            exerciseView.setAimAndPerformed(exercise.aim, exercise.performed)
-        }
+        viewModel.exercise.observe(viewLifecycleOwner, exerciseView::setExercise)
     }
 }

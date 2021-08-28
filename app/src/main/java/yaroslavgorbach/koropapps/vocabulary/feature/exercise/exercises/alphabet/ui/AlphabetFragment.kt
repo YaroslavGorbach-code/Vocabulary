@@ -84,7 +84,7 @@ class AlphabetFragment : Fragment(R.layout.fragment_exercise_alphabet),
             })
 
         alphabetView.setDescriptionText(viewModel.description)
-        alphabetView.setExerciseName(requireContext().getString((exerciseType.getExerciseName()).id))
+        alphabetView.setExerciseName(exerciseType.getExerciseName())
     }
 
     private fun initObservers() {

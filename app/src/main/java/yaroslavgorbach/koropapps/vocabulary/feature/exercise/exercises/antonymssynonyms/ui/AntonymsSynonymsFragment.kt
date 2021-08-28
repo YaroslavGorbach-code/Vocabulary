@@ -68,21 +68,13 @@ class AntonymsSynonymsFragment : Fragment(R.layout.fragment_exercise) {
                     requireActivity().onBackPressed()
                 }
             })
-
-        exerciseView.setExerciseName(exerciseType.getExerciseName())
-
     }
 
     private fun initObservers() {
-        viewModel.word.observe(viewLifecycleOwner){word->
+        viewModel.word.observe(viewLifecycleOwner) { word ->
             exerciseView.setWord(word)
             exerciseView.setDescriptionText(viewModel.description)
         }
-        viewModel.exercise.observe(viewLifecycleOwner) { exercise ->
-            exerciseView.setAimAndPerformed(exercise.aim, exercise.performed)
-            if (exercise.isFinished) {
-                requireActivity().onBackPressed()
-            }
-        }
+        viewModel.exercise.observe(viewLifecycleOwner, exerciseView::setExercise)
     }
 }

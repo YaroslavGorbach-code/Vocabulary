@@ -66,19 +66,11 @@ class JarFragment : Fragment(R.layout.fragment_exercise) {
                     requireActivity().onBackPressed()
                 }
             })
-
         exerciseView.setDescriptionText(viewModel.description)
-        exerciseView.setExerciseName(exerciseType.getExerciseName())
     }
 
     private fun initObservers() {
         viewModel.word.observe(viewLifecycleOwner, exerciseView::setWord)
-        viewModel.exercise.observe(viewLifecycleOwner) { exercise ->
-            // TODO: 8/26/2021 move this logic to viewClass just pass exercise lice a parameter
-            if (exercise.isFinished) {
-                requireActivity().onBackPressed()
-            }
-            exerciseView.setAimAndPerformed(exercise.aim, exercise.performed)
-        }
+        viewModel.exercise.observe(viewLifecycleOwner, exerciseView::setExercise)
     }
 }

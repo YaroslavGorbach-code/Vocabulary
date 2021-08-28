@@ -1,9 +1,9 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises
 
 import android.os.SystemClock
-import android.util.Log
 import android.view.View
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
+import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingExerciseEntity
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseBinding
 import yaroslavgorbach.koropapps.vocabulary.utils.getString
 
@@ -44,8 +44,12 @@ class ExerciseView(
         binding.letter.setText(word)
     }
 
-    fun setExerciseName(name: ExerciseName) {
-        binding.toolbar.title = binding.getString(name.id)
+    fun setExercise(exercise: TrainingExerciseEntity) {
+        if (exercise.isFinished) {
+            callback.onBack()
+        }
+        setAimAndPerformed(exercise.aim, exercise.performed)
+        setExerciseName(exercise.name)
     }
 
     private fun startOneWordChronometer() {
@@ -57,8 +61,13 @@ class ExerciseView(
         binding.chronometer.start()
     }
 
-    fun setAimAndPerformed(aim: Int, performed: Int) {
+    private fun setExerciseName(name: ExerciseName) {
+        binding.toolbar.title = binding.getString(name.id)
+    }
+
+    private fun setAimAndPerformed(aim: Int, performed: Int) {
         binding.aimAndPerformed.visibility = View.VISIBLE
         binding.aimAndPerformed.setText("$performed/$aim")
     }
+
 }

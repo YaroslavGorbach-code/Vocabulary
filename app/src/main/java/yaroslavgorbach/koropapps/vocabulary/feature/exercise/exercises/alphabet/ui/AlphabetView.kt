@@ -1,6 +1,8 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.alphabet.ui
 
+import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseAlphabetBinding
+import yaroslavgorbach.koropapps.vocabulary.utils.getString
 
 class AlphabetView(
     private val binding: FragmentExerciseAlphabetBinding,
@@ -38,8 +40,8 @@ class AlphabetView(
         binding.descriptionText.text = text
     }
 
-    fun setExerciseName(name: String) {
-        binding.toolbar.title = name
+    fun setExerciseName(name: ExerciseName) {
+        binding.toolbar.title = binding.getString(name.id)
     }
 
     fun setProgress(progress: Int) {
