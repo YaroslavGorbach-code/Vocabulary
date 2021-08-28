@@ -82,11 +82,11 @@ class JarViewModel @Inject constructor(
         }
     }
 
-    private fun saveStatistics() {
+    private fun saveStatistics(doOnComplete: () -> Unit) {
         insertStatisticInteractor.invoke(
             StatisticsEntityFactory().create(exerciseType.getExerciseName(), passedWordsCount)
         )
-            .observeOn(AndroidSchedulers.mainThread())
+            .doOnComplete(doOnComplete)
             .subscribe()
             .let(disposables::add)
     }
@@ -99,7 +99,8 @@ class JarViewModel @Inject constructor(
 
     override fun onCleared() {
         super.onCleared()
-        saveStatistics()
-        disposeDisposables()
+        saveStatistics {
+            disposeDisposables()
+        }
     }
 }

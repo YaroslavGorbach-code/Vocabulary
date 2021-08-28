@@ -11,8 +11,8 @@ import yaroslavgorbach.koropapps.vocabulary.App
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentDescriptionBinding
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.presentation.DescriptionViewModel
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.presentation.DescriptionViewModel
 import yaroslavgorbach.koropapps.vocabulary.utils.host
 import javax.inject.Inject
 
@@ -41,14 +41,6 @@ class DescriptionFragment : Fragment(R.layout.fragment_description) {
     private val exerciseType: ExerciseType
         get() = (requireArguments()[ARG_EXERCISE_TYPE] as ExerciseType)
 
-    private val exerciseName: ExerciseName = ExerciseName.ALPHABET_ADJECTIVES
-        get() {
-            return when (exerciseType) {
-                is ExerciseType.Common -> field
-                is ExerciseType.Training -> field
-            }
-        }
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
         initDagger()
@@ -63,7 +55,7 @@ class DescriptionFragment : Fragment(R.layout.fragment_description) {
     private fun initDagger() {
         (requireActivity().application as App).appComponent
             .descriptionComponent()
-            .create(exerciseName)
+            .create(exerciseType.getExerciseName())
             .inject(this)
     }
 
@@ -91,5 +83,6 @@ class DescriptionFragment : Fragment(R.layout.fragment_description) {
 
     private fun initObservers() {
         viewModel.description.observe(viewLifecycleOwner, descriptionView::setDescription)
+        viewModel.chartUi.observe(viewLifecycleOwner, descriptionView::setChart)
     }
 }

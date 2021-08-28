@@ -4,7 +4,6 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.InsertStatisticInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.IncrementExercisePerformedInteractor
@@ -82,11 +81,11 @@ class AntonymsSynonymsViewModel @Inject constructor(
         }
     }
 
-    private fun saveStatistics() {
+    private fun saveStatistics(doOnComplete: () -> Unit) {
         insertStatisticInteractor.invoke(
             StatisticsEntityFactory().create(exerciseType.getExerciseName(), passedWordsCount)
         )
-            .observeOn(AndroidSchedulers.mainThread())
+            .doOnComplete(doOnComplete)
             .subscribe()
             .let(disposables::add)
     }
@@ -99,7 +98,8 @@ class AntonymsSynonymsViewModel @Inject constructor(
 
     override fun onCleared() {
         super.onCleared()
-        saveStatistics()
-        disposeDisposables()
+        saveStatistics {
+            disposeDisposables()
+        }
     }
 }

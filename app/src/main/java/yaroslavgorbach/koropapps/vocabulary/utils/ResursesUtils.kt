@@ -7,7 +7,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import androidx.viewbinding.ViewBinding
-import yaroslavgorbach.koropapps.vocabulary.R
+
 
 fun ViewBinding.getString(@StringRes id: Int): String {
     return root.context.getString(id)
@@ -18,7 +18,13 @@ fun ViewBinding.getDrawable(@DrawableRes id: Int): Drawable? {
 }
 
 fun Context.getColorPrimary(): Int {
+
     val typedValue = TypedValue()
-    obtainStyledAttributes(typedValue.data, intArrayOf(R.attr.colorPrimary)).use {}
+    theme.resolveAttribute(
+        yaroslavgorbach.koropapps.vocabulary.R.attr.colorPrimary,
+        typedValue,
+        true
+    )
+
     return typedValue.data
 }

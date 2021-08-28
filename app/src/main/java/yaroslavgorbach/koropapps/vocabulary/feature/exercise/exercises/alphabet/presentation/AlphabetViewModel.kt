@@ -5,13 +5,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import kotlinx.coroutines.*
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.InsertStatisticInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.IncrementExercisePerformedInteractor
-import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToShortDescriptionResMapper
 import yaroslavgorbach.koropapps.vocabulary.feature.common.factory.StatisticsEntityFactory
+import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToShortDescriptionResMapper
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseWordCategory
 import javax.inject.Inject
@@ -96,11 +95,11 @@ class AlphabetViewModel @Inject constructor(
         }
     }
 
-    private fun saveStatistics() {
+    private fun saveStatistics(doOnComplete: () -> Unit) {
         insertStatisticInteractor.invoke(
             StatisticsEntityFactory().create(exerciseType.getExerciseName(), passedLettersCount)
         )
-            .observeOn(AndroidSchedulers.mainThread())
+            .doOnComplete(doOnComplete)
             .subscribe()
             .let(disposables::add)
     }
@@ -113,7 +112,8 @@ class AlphabetViewModel @Inject constructor(
 
     override fun onCleared() {
         super.onCleared()
-        saveStatistics()
-        disposeDisposables()
+        saveStatistics {
+            disposeDisposables()
+        }
     }
 }

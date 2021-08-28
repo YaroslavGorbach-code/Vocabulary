@@ -1,5 +1,6 @@
 package yaroslavgorbach.koropapps.vocabulary.data.statistics.repo
 
+import android.util.Log
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.schedulers.Schedulers
