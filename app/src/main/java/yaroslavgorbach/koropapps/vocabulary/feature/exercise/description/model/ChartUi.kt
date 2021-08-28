@@ -30,8 +30,8 @@ data class ChartUi(private val statisticsEntities: List<StatisticsEntity>) {
 
     fun getColors(context: Context): IntArray {
         return intArrayOf(
-            context.getColorPrimary(),
             Color.GREEN,
+            context.getColorPrimary(),
             Color.GRAY,
             Color.CYAN)
     }

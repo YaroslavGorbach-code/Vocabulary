@@ -1,6 +1,8 @@
 package yaroslavgorbach.koropapps.vocabulary.utils
 
+import android.R
 import android.content.Context
+import android.content.res.TypedArray
 import android.graphics.drawable.Drawable
 import android.util.TypedValue
 import androidx.annotation.DrawableRes
@@ -18,13 +20,9 @@ fun ViewBinding.getDrawable(@DrawableRes id: Int): Drawable? {
 }
 
 fun Context.getColorPrimary(): Int {
-
     val typedValue = TypedValue()
-    theme.resolveAttribute(
-        yaroslavgorbach.koropapps.vocabulary.R.attr.colorPrimary,
-        typedValue,
-        true
-    )
-
-    return typedValue.data
+    val a: TypedArray = obtainStyledAttributes(typedValue.data, intArrayOf(R.attr.colorPrimary))
+    val color = a.getColor(0, 0)
+    a.recycle()
+    return color
 }
