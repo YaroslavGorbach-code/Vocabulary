@@ -1,7 +1,6 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.model
 
 import android.content.Context
-import android.graphics.Color
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsEntity
 import yaroslavgorbach.koropapps.vocabulary.utils.formatDD
 import yaroslavgorbach.koropapps.vocabulary.utils.getColorPrimary
@@ -15,14 +14,13 @@ data class ChartUi(private val statisticsEntities: List<StatisticsEntity>) {
     val data: ArrayList<ArrayList<Int>> = arrayListOf()
         get() {
             val dataList: ArrayList<Int> = statisticsEntities.map { it.value } as ArrayList<Int>
-            field.add(dataList)
+            field.add(0, dataList)
             return field
         }
 
-    val labels: ArrayList<String> = arrayListOf()
+    val labels: ArrayList<String>
         get() {
-            field.addAll(statisticsEntities.map { it.date.formatDD() })
-            return field
+            return statisticsEntities.map { it.date.formatDD() } as ArrayList<String>
         }
 
     val isEmpty: Boolean
@@ -30,10 +28,11 @@ data class ChartUi(private val statisticsEntities: List<StatisticsEntity>) {
 
     fun getColors(context: Context): IntArray {
         return intArrayOf(
-            Color.GREEN,
             context.getColorPrimary(),
-            Color.WHITE,
-            Color.WHITE)
+            context.getColorPrimary(),
+            context.getColorPrimary(),
+            context.getColorPrimary()
+        )
     }
 
 }

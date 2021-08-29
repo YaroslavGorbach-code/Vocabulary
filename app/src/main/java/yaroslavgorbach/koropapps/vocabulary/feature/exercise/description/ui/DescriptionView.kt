@@ -1,5 +1,6 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.ui
 
+import android.util.Log
 import android.view.View
 import androidx.core.widget.NestedScrollView
 import im.dacer.androidcharts.LineView
@@ -57,6 +58,9 @@ class DescriptionView(
     }
 
     fun setChart(chartUi: ChartUi) {
+        Log.i("ssww", chartUi.data.first().toString())
+        Log.i("ssww", chartUi.labels.toString())
+
         if (chartUi.isEmpty) {
             showNoChartData()
         } else {
@@ -70,6 +74,7 @@ class DescriptionView(
 
     private fun showNoChartData() {
         binding.chart.noData.visibility = View.VISIBLE
+        binding.chart.chart.visibility = View.GONE
     }
 
 }
