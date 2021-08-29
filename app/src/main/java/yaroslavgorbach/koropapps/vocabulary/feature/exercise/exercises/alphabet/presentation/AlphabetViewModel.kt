@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import kotlinx.coroutines.*
-import yaroslavgorbach.koropapps.vocabulary.business.statistics.InsertStatisticInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.statistics.InsertStatisticValueInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.IncrementExercisePerformedInteractor
 import yaroslavgorbach.koropapps.vocabulary.feature.common.factory.StatisticsEntityFactory
 import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToShortDescriptionResMapper
@@ -18,7 +18,7 @@ import javax.inject.Inject
 class AlphabetViewModel @Inject constructor(
     private val exerciseType: ExerciseType,
     private val application: Application,
-    private val insertStatisticInteractor: InsertStatisticInteractor,
+    private val insertStatisticValueInteractor: InsertStatisticValueInteractor,
     private val incrementExercisePerformedInteractor: IncrementExercisePerformedInteractor,
 ) : ViewModel() {
 
@@ -96,7 +96,7 @@ class AlphabetViewModel @Inject constructor(
     }
 
     private fun saveStatistics(doOnComplete: () -> Unit) {
-        insertStatisticInteractor.invoke(
+        insertStatisticValueInteractor.invoke(
             StatisticsEntityFactory().create(exerciseType.getExerciseName(), passedLettersCount)
         )
             .doOnComplete(doOnComplete)

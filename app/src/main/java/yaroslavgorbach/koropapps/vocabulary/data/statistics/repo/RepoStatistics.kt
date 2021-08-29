@@ -2,12 +2,17 @@ package yaroslavgorbach.koropapps.vocabulary.data.statistics.repo
 
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
-import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsEntity
+import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsTimeEntity
+import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsValueEntity
 
 interface RepoStatistics {
 
-    fun insert(statisticsEntity: StatisticsEntity): Completable
+    fun insert(statisticsValueEntity: StatisticsValueEntity): Completable
 
-    fun observe(exerciseNameRes: Int): Observable<List<StatisticsEntity>>
+    fun insert(statisticsTimeEntity: StatisticsTimeEntity): Completable
+
+    fun observeValue(exerciseNameRes: Int): Observable<List<StatisticsValueEntity>>
+
+    fun observeTime(exerciseNameRes: Int): Observable<List<StatisticsTimeEntity>>
 
 }

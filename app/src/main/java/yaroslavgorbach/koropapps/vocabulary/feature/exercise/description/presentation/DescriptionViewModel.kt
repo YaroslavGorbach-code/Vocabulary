@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import yaroslavgorbach.koropapps.vocabulary.business.description.GetDescriptionInteractor
-import yaroslavgorbach.koropapps.vocabulary.business.statistics.ObserveStatisticsInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.statistics.ObserveStatisticsValueInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.description.local.model.Description
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.model.ChartUi
@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 class DescriptionViewModel @Inject constructor(
     private val getDescriptionInteractor: GetDescriptionInteractor,
-    private val observeStatisticsInteractor: ObserveStatisticsInteractor,
+    private val observeStatisticsValueInteractor: ObserveStatisticsValueInteractor,
     private val exerciseName: ExerciseName
 ) : ViewModel() {
 
@@ -44,7 +44,7 @@ class DescriptionViewModel @Inject constructor(
     }
 
     private fun observeStatistics() {
-        observeStatisticsInteractor(exerciseName.id)
+        observeStatisticsValueInteractor(exerciseName.id)
             .observeOn(AndroidSchedulers.mainThread())
             .map { it.takeLast(ChartUi.MAX_ITEMS_COUNT) }
             .map(::ChartUi)
@@ -53,7 +53,7 @@ class DescriptionViewModel @Inject constructor(
     }
 
     fun onNextChart() {
-        observeStatisticsInteractor(exerciseName.id)
+        observeStatisticsValueInteractor(exerciseName.id)
             .observeOn(AndroidSchedulers.mainThread())
             .map { list ->
                 list.filter {
@@ -72,7 +72,7 @@ class DescriptionViewModel @Inject constructor(
     }
 
     fun onPreviousChart() {
-        observeStatisticsInteractor(exerciseName.id)
+        observeStatisticsValueInteractor(exerciseName.id)
             .observeOn(AndroidSchedulers.mainThread())
             .map { list ->
                 list.filter {

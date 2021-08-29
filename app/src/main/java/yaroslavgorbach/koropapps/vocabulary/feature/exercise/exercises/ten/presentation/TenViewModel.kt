@@ -6,8 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
-import yaroslavgorbach.koropapps.vocabulary.R
-import yaroslavgorbach.koropapps.vocabulary.business.statistics.InsertStatisticInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.statistics.InsertStatisticValueInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.IncrementExercisePerformedInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.ObserveTrainingExerciseInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingExerciseEntity
@@ -22,7 +21,7 @@ class TenViewModel @Inject constructor(
     private val application: Application,
     private val incrementExercisePerformedInteractor: IncrementExercisePerformedInteractor,
     private val observeTrainingExerciseInteractor: ObserveTrainingExerciseInteractor,
-    private val insertStatisticInteractor: InsertStatisticInteractor
+    private val insertStatisticValueInteractor: InsertStatisticValueInteractor
 ) : ViewModel() {
 
     private val disposables: CompositeDisposable = CompositeDisposable()
@@ -84,7 +83,7 @@ class TenViewModel @Inject constructor(
     }
 
     private fun saveStatistics() {
-        insertStatisticInteractor.invoke(
+        insertStatisticValueInteractor.invoke(
             StatisticsEntityFactory().create(exerciseType.getExerciseName(), passedWordsCount)
         )
             .observeOn(AndroidSchedulers.mainThread())

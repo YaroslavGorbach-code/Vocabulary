@@ -2,8 +2,8 @@ package yaroslavgorbach.koropapps.vocabulary.di.business.statistics
 
 import dagger.Module
 import dagger.Provides
-import yaroslavgorbach.koropapps.vocabulary.business.statistics.InsertStatisticInteractor
-import yaroslavgorbach.koropapps.vocabulary.business.statistics.ObserveStatisticsInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.statistics.InsertStatisticValueInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.statistics.ObserveStatisticsValueInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.repo.RepoStatistics
 import yaroslavgorbach.koropapps.vocabulary.di.data.statistics.DataModuleStatistics
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.di.DescriptionComponent
@@ -20,14 +20,14 @@ class BusinessStatisticsModule {
     @Provides
     fun provideInsertStatisticsInteractor(
         repoStatistics: RepoStatistics
-    ): InsertStatisticInteractor {
-        return InsertStatisticInteractor(repoStatistics)
+    ): InsertStatisticValueInteractor {
+        return InsertStatisticValueInteractor(repoStatistics)
     }
 
     @Provides
     fun provideObserveStatisticsInteractor(
         repoStatistics: RepoStatistics
-    ): ObserveStatisticsInteractor {
-        return ObserveStatisticsInteractor(repoStatistics)
+    ): ObserveStatisticsValueInteractor {
+        return ObserveStatisticsValueInteractor(repoStatistics)
     }
 }

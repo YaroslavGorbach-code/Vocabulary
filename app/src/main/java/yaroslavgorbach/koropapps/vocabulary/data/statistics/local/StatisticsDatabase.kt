@@ -5,11 +5,12 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import yaroslavgorbach.koropapps.vocabulary.data.common.DateConverter
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.dao.StatisticsDao
-import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsEntity
+import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsTimeEntity
+import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsValueEntity
 
 @TypeConverters(DateConverter::class)
 @Database(
-    entities = [StatisticsEntity::class],
+    entities = [StatisticsValueEntity::class, StatisticsTimeEntity::class],
     version = 1
 )
 abstract class StatisticsDatabase : RoomDatabase() {

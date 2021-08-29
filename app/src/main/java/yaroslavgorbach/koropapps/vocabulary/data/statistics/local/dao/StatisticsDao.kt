@@ -6,14 +6,21 @@ import androidx.room.OnConflictStrategy.REPLACE
 import androidx.room.Query
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
-import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsEntity
+import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsTimeEntity
+import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsValueEntity
 
 @Dao
 interface StatisticsDao {
 
     @Insert(onConflict = REPLACE)
-    fun insert(statisticsEntity: StatisticsEntity): Completable
+    fun insert(statisticsValueEntity: StatisticsValueEntity): Completable
 
-    @Query("SELECT * FROM statisticsEntity WHERE exerciseNameRes = :exerciseNameRes")
-    fun observe(exerciseNameRes: Int): Observable<List<StatisticsEntity>>
+    @Insert(onConflict = REPLACE)
+    fun insert(statisticsTimeEntity: StatisticsTimeEntity): Completable
+
+    @Query("SELECT * FROM StatisticsValueEntity WHERE exerciseNameRes = :exerciseNameRes")
+    fun observeValue(exerciseNameRes: Int): Observable<List<StatisticsValueEntity>>
+
+    @Query("SELECT * FROM StatisticsTimeEntity WHERE exerciseNameRes = :exerciseNameRes")
+    fun observeTime(exerciseNameRes: Int): Observable<List<StatisticsTimeEntity>>
 }
