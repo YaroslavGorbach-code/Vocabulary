@@ -18,12 +18,12 @@
 
     <TextView
         android:id="@+id/statistics_text"
-        android:layout_width="315dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Cтатистика"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-        android:textSize="14sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/prev_data"
         app:layout_constraintEnd_toStartOf="@+id/next_data"
         app:layout_constraintStart_toEndOf="@+id/prev_data"
@@ -44,6 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_gravity="center"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

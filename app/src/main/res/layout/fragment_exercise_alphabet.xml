@@ -53,7 +53,10 @@
             app:layout_constraintStart_toStartOf="@+id/guideline7"
             app:layout_constraintTop_toTopOf="@+id/guideline9"
             app:textProgressColor="?colorPrimary"
-            app:textProgressStrokeWidth="10dp"
+            app:textProgressStrokeWidth="15dp"
+            app:textProgressOutlineStrokeWidth="15dp"
+            app:textProgressOutlineColor="?colorControlHighlight"
+            app:textProgressTextSize="30sp"
             app:textSize="20sp"
             app:textProgress="50" />
 
