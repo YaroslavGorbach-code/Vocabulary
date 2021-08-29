@@ -40,6 +40,7 @@ class DescriptionViewModel @Inject constructor(
 
     init {
         observeStatistics()
+
     }
 
     private fun observeStatistics() {
