@@ -14,7 +14,6 @@ import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.alphabet.
 @Module(
     includes = [DataModuleStatistics::class],
     subcomponents = [
-        AlphabetExerciseComponent::class,
         DescriptionComponent::class
     ]
 )

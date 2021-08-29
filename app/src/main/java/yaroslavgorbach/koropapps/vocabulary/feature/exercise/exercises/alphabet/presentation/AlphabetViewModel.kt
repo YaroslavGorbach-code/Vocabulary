@@ -7,18 +7,22 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import kotlinx.coroutines.*
+import yaroslavgorbach.koropapps.vocabulary.business.statistics.InsertStatisticTimeInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.InsertStatisticValueInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.IncrementExercisePerformedInteractor
 import yaroslavgorbach.koropapps.vocabulary.feature.common.factory.StatisticsEntityFactory
 import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToShortDescriptionResMapper
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseWordCategory
+import java.util.*
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class AlphabetViewModel @Inject constructor(
     private val exerciseType: ExerciseType,
     private val application: Application,
     private val insertStatisticValueInteractor: InsertStatisticValueInteractor,
+    private val insertStatisticTimeInteractor: InsertStatisticTimeInteractor,
     private val incrementExercisePerformedInteractor: IncrementExercisePerformedInteractor,
 ) : ViewModel() {
 
@@ -51,6 +55,13 @@ class AlphabetViewModel @Inject constructor(
     var passedLettersCount: Int = 0
         private set
 
+    private val timeIntervals: MutableList<Long> = arrayListOf()
+
+    private var previousTime: Long = Date().time
+
+    val averageTimeOnWord: Long
+        get() = (timeIntervals.sum() / timeIntervals.size) / 1000
+
     init {
         refreshLetter()
         refreshProgressTimer()
@@ -60,6 +71,14 @@ class AlphabetViewModel @Inject constructor(
         refreshLetter()
         incrementPassedLettersCount()
         refreshProgressTimer()
+        measureClickInterval()
+    }
+
+    fun measureClickInterval() {
+        val currentTime = Date().time
+        val interval = currentTime - previousTime
+        previousTime = currentTime
+        timeIntervals.add(interval)
     }
 
     fun onTimerFinished() {
@@ -97,7 +116,17 @@ class AlphabetViewModel @Inject constructor(
 
     private fun saveStatistics(doOnComplete: () -> Unit) {
         insertStatisticValueInteractor.invoke(
-            StatisticsEntityFactory().create(exerciseType.getExerciseName(), passedLettersCount)
+            StatisticsEntityFactory().createValueEntity(
+                exerciseType.getExerciseName(),
+                passedLettersCount
+            )
+        ).andThen(
+            insertStatisticTimeInteractor.invoke(
+                StatisticsEntityFactory().createTimeEntity(
+                    exerciseType.getExerciseName(),
+                    averageTimeOnWord
+                )
+            )
         )
             .doOnComplete(doOnComplete)
             .subscribe()

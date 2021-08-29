@@ -84,7 +84,7 @@ class TenViewModel @Inject constructor(
 
     private fun saveStatistics() {
         insertStatisticValueInteractor.invoke(
-            StatisticsEntityFactory().create(exerciseType.getExerciseName(), passedWordsCount)
+            StatisticsEntityFactory().createValueEntity(exerciseType.getExerciseName(), passedWordsCount)
         )
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe()
