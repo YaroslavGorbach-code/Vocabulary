@@ -1,6 +1,5 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.ui
 
-import android.util.Log
 import android.view.View
 import androidx.core.widget.NestedScrollView
 import im.dacer.androidcharts.LineView
@@ -38,9 +37,8 @@ class DescriptionView(
         binding.chart.prevData.setOnClickListener {
             callback.onPreviousChart()
         }
-
         binding.scrollView.setOnScrollChangeListener(
-            NestedScrollView.OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+            NestedScrollView.OnScrollChangeListener { _, _, scrollY, _, oldScrollY ->
                 if (scrollY > oldScrollY) {
                     binding.openExercise.hide()
                 } else {
@@ -58,9 +56,6 @@ class DescriptionView(
     }
 
     fun setChart(chartUi: ChartUi) {
-        Log.i("ssww", chartUi.data.first().toString())
-        Log.i("ssww", chartUi.labels.toString())
-
         if (chartUi.isEmpty) {
             showNoChartData()
         } else {

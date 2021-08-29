@@ -10,6 +10,7 @@ import yaroslavgorbach.koropapps.vocabulary.business.statistics.ObserveStatistic
 import yaroslavgorbach.koropapps.vocabulary.data.description.local.model.Description
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.model.ChartUi
+import java.util.*
 import javax.inject.Inject
 
 class DescriptionViewModel @Inject constructor(
@@ -39,6 +40,7 @@ class DescriptionViewModel @Inject constructor(
 
     init {
         observeStatistics()
+
     }
 
     private fun observeStatistics() {
@@ -47,14 +49,45 @@ class DescriptionViewModel @Inject constructor(
             .map { it.takeLast(ChartUi.MAX_ITEMS_COUNT) }
             .map(::ChartUi)
             .subscribe(_chartUi::setValue)
+            .let(disposables::add)
     }
 
     fun onNextChart() {
-
+        observeStatisticsInteractor(exerciseName.id)
+            .observeOn(AndroidSchedulers.mainThread())
+            .map { list ->
+                list.filter {
+                    it.date > _chartUi.value?.labelsDate?.last() ?: Date()
+                }
+            }
+            .map { it.take(ChartUi.MAX_ITEMS_COUNT) }
+            .map(::ChartUi)
+            .map { chartUi ->
+                if (chartUi.labels.isEmpty().not()) {
+                    _chartUi.value = chartUi
+                }
+            }
+            .subscribe()
+            .let(disposables::add)
     }
 
     fun onPreviousChart() {
-
+        observeStatisticsInteractor(exerciseName.id)
+            .observeOn(AndroidSchedulers.mainThread())
+            .map { list ->
+                list.filter {
+                    it.date < _chartUi.value?.labelsDate?.first() ?: Date()
+                }
+            }
+            .map { it.takeLast(ChartUi.MAX_ITEMS_COUNT) }
+            .map(::ChartUi)
+            .map { chartUi ->
+                if (chartUi.labels.isEmpty().not()) {
+                    _chartUi.value = chartUi
+                }
+            }
+            .subscribe()
+            .let(disposables::add)
     }
 
     override fun onCleared() {
