@@ -73,8 +73,10 @@ class AlphabetFragment : Fragment(R.layout.fragment_exercise_alphabet),
                 }
 
                 override fun onGameFinished() {
-                    // TODO: 7/19/2021 calculate average time
-                    ExerciseFinishDialog.newInstance(30).show(childFragmentManager, null)
+                    ExerciseFinishDialog.newInstance(
+                        viewModel.averageTimeOnWord
+                    ).show(childFragmentManager, null)
+
                     viewModel.onTimerFinished()
                 }
 

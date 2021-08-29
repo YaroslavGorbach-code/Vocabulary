@@ -16,22 +16,21 @@ class ExerciseFinishDialog : DialogFragment() {
 
     companion object {
         const val WORD_AVERAGE_TIME_ARG = "WORD_AVERAGE_TIME_ARG"
-        const val DEFAULT_ARG = 0
-        fun newInstance(averageTime: Int) = ExerciseFinishDialog().apply {
+        const val DEFAULT_ARG = 0f
+        fun newInstance(averageTime: Float) = ExerciseFinishDialog().apply {
             arguments = bundleOf(
                 WORD_AVERAGE_TIME_ARG to averageTime
             )
         }
-
     }
 
-    private val averageTime: Int
-        get() = requireArguments().getInt(WORD_AVERAGE_TIME_ARG, DEFAULT_ARG)
+    private val averageTime: Float
+        get() = requireArguments().getFloat(WORD_AVERAGE_TIME_ARG, DEFAULT_ARG)
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return MaterialAlertDialogBuilder(requireContext())
             .setTitle(R.string.finish_of_exercise)
-            .setMessage(getString(R.string.average_time_on_word, averageTime))
+            .setMessage(getString(R.string.average_time_on_word) + " " + averageTime.toString())
             .create()
     }
 

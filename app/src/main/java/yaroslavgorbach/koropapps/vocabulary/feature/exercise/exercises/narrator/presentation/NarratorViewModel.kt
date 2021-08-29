@@ -78,7 +78,7 @@ class NarratorViewModel @Inject constructor(
 
     private fun saveStatistics(doOnComplete: () -> Unit) {
         insertStatisticValueInteractor.invoke(
-            StatisticsEntityFactory().create(exerciseType.getExerciseName(), passedWordsCount)
+            StatisticsEntityFactory().createValueEntity(exerciseType.getExerciseName(), passedWordsCount)
         )
             .doOnComplete(doOnComplete)
             .subscribe()
