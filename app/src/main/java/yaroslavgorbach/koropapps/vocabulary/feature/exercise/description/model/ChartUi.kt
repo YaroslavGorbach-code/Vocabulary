@@ -4,6 +4,7 @@ import android.content.Context
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsEntity
 import yaroslavgorbach.koropapps.vocabulary.utils.formatDD
 import yaroslavgorbach.koropapps.vocabulary.utils.getColorPrimary
+import java.util.*
 
 data class ChartUi(private val statisticsEntities: List<StatisticsEntity>) {
 
@@ -22,6 +23,9 @@ data class ChartUi(private val statisticsEntities: List<StatisticsEntity>) {
         get() {
             return statisticsEntities.map { it.date.formatDD() } as ArrayList<String>
         }
+
+    val labelsDate: List<Date>
+        get() = statisticsEntities.map { it.date }
 
     val isEmpty: Boolean
         get() = data.isEmpty() || labels.isEmpty()
