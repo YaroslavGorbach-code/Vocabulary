@@ -2,7 +2,9 @@ package yaroslavgorbach.koropapps.vocabulary.di.business.statistics
 
 import dagger.Module
 import dagger.Provides
+import yaroslavgorbach.koropapps.vocabulary.business.statistics.InsertStatisticTimeInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.InsertStatisticValueInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.statistics.ObserveStatisticsTimeInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.ObserveStatisticsValueInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.repo.RepoStatistics
 import yaroslavgorbach.koropapps.vocabulary.di.data.statistics.DataModuleStatistics
@@ -18,16 +20,30 @@ import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.alphabet.
 )
 class BusinessStatisticsModule {
     @Provides
-    fun provideInsertStatisticsInteractor(
+    fun provideInsertValueStatisticsInteractor(
         repoStatistics: RepoStatistics
     ): InsertStatisticValueInteractor {
         return InsertStatisticValueInteractor(repoStatistics)
     }
 
     @Provides
-    fun provideObserveStatisticsInteractor(
+    fun provideObserveValueStatisticsInteractor(
         repoStatistics: RepoStatistics
     ): ObserveStatisticsValueInteractor {
         return ObserveStatisticsValueInteractor(repoStatistics)
+    }
+
+    @Provides
+    fun provideInsertTimeStatisticsInteractor(
+        repoStatistics: RepoStatistics
+    ): InsertStatisticTimeInteractor {
+        return InsertStatisticTimeInteractor(repoStatistics)
+    }
+
+    @Provides
+    fun provideObserveTimeStatisticsInteractor(
+        repoStatistics: RepoStatistics
+    ): ObserveStatisticsTimeInteractor {
+        return ObserveStatisticsTimeInteractor(repoStatistics)
     }
 }
