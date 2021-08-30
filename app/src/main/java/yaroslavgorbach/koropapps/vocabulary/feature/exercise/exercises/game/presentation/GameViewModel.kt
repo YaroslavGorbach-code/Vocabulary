@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.reactivex.rxjava3.disposables.CompositeDisposable
+import yaroslavgorbach.koropapps.vocabulary.business.statistics.InsertStatisticTimeInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.InsertStatisticValueInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.IncrementExercisePerformedInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.ObserveTrainingExerciseInteractor
@@ -13,6 +14,7 @@ import yaroslavgorbach.koropapps.vocabulary.feature.common.factory.StatisticsEnt
 import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToShortDescriptionResMapper
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseWordCategory
+import java.util.*
 import javax.inject.Inject
 
 class GameViewModel @Inject constructor(
@@ -20,7 +22,8 @@ class GameViewModel @Inject constructor(
     private val application: Application,
     private val incrementExercisePerformedInteractor: IncrementExercisePerformedInteractor,
     private val observeTrainingExerciseInteractor: ObserveTrainingExerciseInteractor,
-    private val insertStatisticValueInteractor: InsertStatisticValueInteractor
+    private val insertStatisticValueInteractor: InsertStatisticValueInteractor,
+    private val insertStatisticTimeInteractor: InsertStatisticTimeInteractor
 ) : ViewModel() {
 
     private val disposables: CompositeDisposable = CompositeDisposable()
@@ -55,6 +58,13 @@ class GameViewModel @Inject constructor(
 
     private var passedWordsCount: Int = 0
 
+    private val timeIntervals: MutableList<Long> = arrayListOf()
+
+    private var previousTime: Long = Date().time
+
+    private val averageTimeOnWord: Float
+        get() = (timeIntervals.sum() / timeIntervals.size) / 1000f
+
     init {
         generateNewWord()
     }
@@ -63,10 +73,18 @@ class GameViewModel @Inject constructor(
         generateNewWord()
         incrementExercisePerformed()
         incrementPassedWords()
+        measureClickInterval()
     }
 
     private fun generateNewWord() {
         _word.value = words.random()
+    }
+
+    private fun measureClickInterval() {
+        val currentTime = Date().time
+        val interval = currentTime - previousTime
+        previousTime = currentTime
+        timeIntervals.add(interval)
     }
 
     private fun incrementPassedWords() {
@@ -83,12 +101,23 @@ class GameViewModel @Inject constructor(
 
     private fun saveStatistics(doOnComplete: () -> Unit) {
         insertStatisticValueInteractor.invoke(
-            StatisticsEntityFactory().createValueEntity(exerciseType.getExerciseName(), passedWordsCount)
+            StatisticsEntityFactory().createValueEntity(
+                exerciseType.getExerciseName(),
+                passedWordsCount
+            )
+        ).andThen(
+            insertStatisticTimeInteractor.invoke(
+                StatisticsEntityFactory().createTimeEntity(
+                    exerciseType.getExerciseName(),
+                    averageTimeOnWord
+                )
+            )
         )
             .doOnComplete(doOnComplete)
             .subscribe()
             .let(disposables::add)
     }
+
 
     private fun disposeDisposables() {
         if (disposables.isDisposed.not()) {
