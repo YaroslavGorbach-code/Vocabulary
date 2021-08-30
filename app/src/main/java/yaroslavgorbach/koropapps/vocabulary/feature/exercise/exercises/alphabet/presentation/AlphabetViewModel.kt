@@ -59,8 +59,8 @@ class AlphabetViewModel @Inject constructor(
 
     private var previousTime: Long = Date().time
 
-    val averageTimeOnWord: Float
-        get() = (timeIntervals.sum() / timeIntervals.size) / 1000f
+    val averageTimeOnWord: Long
+        get() = (timeIntervals.sum() / timeIntervals.size) / 1000
 
     init {
         refreshLetter()
@@ -74,17 +74,17 @@ class AlphabetViewModel @Inject constructor(
         measureClickInterval()
     }
 
-    fun onTimerFinished() {
-        incrementExercisePerformed()
-        scope.cancel()
-        _progress.value = 0
-    }
-
-   private fun measureClickInterval() {
+    fun measureClickInterval() {
         val currentTime = Date().time
         val interval = currentTime - previousTime
         previousTime = currentTime
         timeIntervals.add(interval)
+    }
+
+    fun onTimerFinished() {
+        incrementExercisePerformed()
+        scope.cancel()
+        _progress.value = 0
     }
 
     private fun refreshLetter() {

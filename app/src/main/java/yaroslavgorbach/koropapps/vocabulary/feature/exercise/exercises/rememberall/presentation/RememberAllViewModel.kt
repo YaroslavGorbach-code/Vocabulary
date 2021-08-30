@@ -5,7 +5,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.reactivex.rxjava3.disposables.CompositeDisposable
-import yaroslavgorbach.koropapps.vocabulary.business.statistics.InsertStatisticTimeInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.InsertStatisticValueInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.IncrementExercisePerformedInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.ObserveTrainingExerciseInteractor
@@ -14,7 +13,6 @@ import yaroslavgorbach.koropapps.vocabulary.feature.common.factory.StatisticsEnt
 import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToShortDescriptionResMapper
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseWordCategory
-import java.util.*
 import javax.inject.Inject
 
 class RememberAllViewModel @Inject constructor(
@@ -22,8 +20,7 @@ class RememberAllViewModel @Inject constructor(
     private val application: Application,
     private val incrementExercisePerformedInteractor: IncrementExercisePerformedInteractor,
     private val observeTrainingExerciseInteractor: ObserveTrainingExerciseInteractor,
-    private val insertStatisticValueInteractor: InsertStatisticValueInteractor,
-    private val insertStatisticTimeInteractor: InsertStatisticTimeInteractor
+    private val insertStatisticValueInteractor: InsertStatisticValueInteractor
 ) : ViewModel() {
 
     private val disposables: CompositeDisposable = CompositeDisposable()
@@ -57,13 +54,6 @@ class RememberAllViewModel @Inject constructor(
 
     private var passedWordsCount: Int = 0
 
-    private val timeIntervals: MutableList<Long> = arrayListOf()
-
-    private var previousTime: Long = Date().time
-
-    private val averageTimeOnWord: Float
-        get() = (timeIntervals.sum() / timeIntervals.size) / 1000f
-
     init {
         generateWord()
     }
@@ -72,14 +62,6 @@ class RememberAllViewModel @Inject constructor(
         generateWord()
         incrementExercisePerformed()
         incrementPassedWords()
-        measureClickInterval()
-    }
-
-    private fun measureClickInterval() {
-        val currentTime = Date().time
-        val interval = currentTime - previousTime
-        previousTime = currentTime
-        timeIntervals.add(interval)
     }
 
     private fun incrementPassedWords() {
@@ -100,17 +82,7 @@ class RememberAllViewModel @Inject constructor(
 
     private fun saveStatistics(doOnComplete: () -> Unit) {
         insertStatisticValueInteractor.invoke(
-            StatisticsEntityFactory().createValueEntity(
-                exerciseType.getExerciseName(),
-                passedWordsCount
-            )
-        ).andThen(
-            insertStatisticTimeInteractor.invoke(
-                StatisticsEntityFactory().createTimeEntity(
-                    exerciseType.getExerciseName(),
-                    averageTimeOnWord
-                )
-            )
+            StatisticsEntityFactory().createValueEntity(exerciseType.getExerciseName(), passedWordsCount)
         )
             .doOnComplete(doOnComplete)
             .subscribe()
