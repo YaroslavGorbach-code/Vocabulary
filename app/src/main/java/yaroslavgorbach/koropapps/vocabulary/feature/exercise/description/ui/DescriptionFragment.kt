@@ -70,18 +70,27 @@ class DescriptionFragment : Fragment(R.layout.fragment_description) {
                     requireActivity().onBackPressed()
                 }
 
-                override fun onNextChart() {
-                    viewModel.onNextChart()
+                override fun onNextChartValue() {
+                    viewModel.onNextChartValue()
                 }
 
-                override fun onPreviousChart() {
-                    viewModel.onPreviousChart()
+                override fun onPreviousChartValue() {
+                    viewModel.onPreviousChartValue()
+                }
+
+                override fun onNextChartTime() {
+                   viewModel.onNextChartTime()
+                }
+
+                override fun onPreviousChartTime() {
+                    viewModel.onPreviousChartTime()
                 }
             })
     }
 
     private fun initObservers() {
         viewModel.description.observe(viewLifecycleOwner, descriptionView::setDescription)
-        viewModel.chartUi.observe(viewLifecycleOwner, descriptionView::setChart)
+        viewModel.chartValueUi.observe(viewLifecycleOwner, descriptionView::setChartValue)
+        viewModel.chartTimeUi.observe(viewLifecycleOwner, descriptionView::setChartTime)
     }
 }

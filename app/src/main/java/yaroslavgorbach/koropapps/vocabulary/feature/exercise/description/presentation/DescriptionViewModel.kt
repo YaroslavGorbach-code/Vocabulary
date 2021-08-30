@@ -6,16 +6,19 @@ import androidx.lifecycle.ViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import yaroslavgorbach.koropapps.vocabulary.business.description.GetDescriptionInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.statistics.ObserveStatisticsTimeInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.ObserveStatisticsValueInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.description.local.model.Description
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.model.ChartUi
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.model.ChartTimeUi
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.model.ChartValueUi
 import java.util.*
 import javax.inject.Inject
 
 class DescriptionViewModel @Inject constructor(
     private val getDescriptionInteractor: GetDescriptionInteractor,
     private val observeStatisticsValueInteractor: ObserveStatisticsValueInteractor,
+    private val observeStatisticsTimeInteractor: ObserveStatisticsTimeInteractor,
     private val exerciseName: ExerciseName
 ) : ViewModel() {
 
@@ -33,57 +36,109 @@ class DescriptionViewModel @Inject constructor(
     val description: LiveData<Description>
         get() = _description
 
-    private val _chartUi: MutableLiveData<ChartUi> = MutableLiveData()
+    private val _chartValueUi: MutableLiveData<ChartValueUi> = MutableLiveData()
 
-    val chartUi: LiveData<ChartUi>
-        get() = _chartUi
+    val chartValueUi: LiveData<ChartValueUi>
+        get() = _chartValueUi
+
+    private val _chartTimeUi: MutableLiveData<ChartTimeUi> = MutableLiveData()
+
+    val chartTimeUi: LiveData<ChartTimeUi>
+        get() = _chartTimeUi
 
     init {
-        observeStatistics()
-
+        observeValueStatistics()
+        observeTimeStatistics()
     }
 
-    private fun observeStatistics() {
+    private fun observeValueStatistics() {
         observeStatisticsValueInteractor(exerciseName.id)
             .observeOn(AndroidSchedulers.mainThread())
-            .map { it.takeLast(ChartUi.MAX_ITEMS_COUNT) }
-            .map(::ChartUi)
-            .subscribe(_chartUi::setValue)
+            .map { it.takeLast(ChartValueUi.MAX_ITEMS_COUNT) }
+            .map(::ChartValueUi)
+            .subscribe(_chartValueUi::setValue)
             .let(disposables::add)
     }
 
-    fun onNextChart() {
+    private fun observeTimeStatistics() {
+        observeStatisticsTimeInteractor(exerciseName.id)
+            .observeOn(AndroidSchedulers.mainThread())
+            .map { it.takeLast(ChartValueUi.MAX_ITEMS_COUNT) }
+            .map(::ChartTimeUi)
+            .subscribe(_chartTimeUi::setValue)
+            .let(disposables::add)
+    }
+
+    fun onNextChartValue() {
         observeStatisticsValueInteractor(exerciseName.id)
             .observeOn(AndroidSchedulers.mainThread())
             .map { list ->
                 list.filter {
-                    it.date > _chartUi.value?.labelsDate?.last() ?: Date()
+                    it.date > _chartValueUi.value?.labelsDate?.last() ?: Date()
                 }
             }
-            .map { it.take(ChartUi.MAX_ITEMS_COUNT) }
-            .map(::ChartUi)
+            .map { it.take(ChartValueUi.MAX_ITEMS_COUNT) }
+            .map(::ChartValueUi)
             .map { chartUi ->
                 if (chartUi.labels.isEmpty().not()) {
-                    _chartUi.value = chartUi
+                    _chartValueUi.value = chartUi
                 }
             }
             .subscribe()
             .let(disposables::add)
     }
 
-    fun onPreviousChart() {
+    fun onPreviousChartValue() {
         observeStatisticsValueInteractor(exerciseName.id)
             .observeOn(AndroidSchedulers.mainThread())
             .map { list ->
                 list.filter {
-                    it.date < _chartUi.value?.labelsDate?.first() ?: Date()
+                    it.date < _chartValueUi.value?.labelsDate?.first() ?: Date()
                 }
             }
-            .map { it.takeLast(ChartUi.MAX_ITEMS_COUNT) }
-            .map(::ChartUi)
+            .map { it.takeLast(ChartValueUi.MAX_ITEMS_COUNT) }
+            .map(::ChartValueUi)
             .map { chartUi ->
                 if (chartUi.labels.isEmpty().not()) {
-                    _chartUi.value = chartUi
+                    _chartValueUi.value = chartUi
+                }
+            }
+            .subscribe()
+            .let(disposables::add)
+    }
+
+    fun onNextChartTime() {
+        observeStatisticsTimeInteractor(exerciseName.id)
+            .observeOn(AndroidSchedulers.mainThread())
+            .map { list ->
+                list.filter {
+                    it.date > _chartTimeUi.value?.labelsDate?.last() ?: Date()
+                }
+            }
+            .map { it.take(ChartValueUi.MAX_ITEMS_COUNT) }
+            .map(::ChartTimeUi)
+            .map { chartUi ->
+                if (chartUi.labels.isEmpty().not()) {
+                    _chartTimeUi.value = chartUi
+                }
+            }
+            .subscribe()
+            .let(disposables::add)
+    }
+
+    fun onPreviousChartTime() {
+        observeStatisticsTimeInteractor(exerciseName.id)
+            .observeOn(AndroidSchedulers.mainThread())
+            .map { list ->
+                list.filter {
+                    it.date < _chartTimeUi.value?.labelsDate?.first() ?: Date()
+                }
+            }
+            .map { it.takeLast(ChartValueUi.MAX_ITEMS_COUNT) }
+            .map(::ChartTimeUi)
+            .map { chartUi ->
+                if (chartUi.labels.isEmpty().not()) {
+                    _chartTimeUi.value = chartUi
                 }
             }
             .subscribe()

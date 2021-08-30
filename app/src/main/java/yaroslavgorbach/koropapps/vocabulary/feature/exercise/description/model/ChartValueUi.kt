@@ -6,7 +6,7 @@ import yaroslavgorbach.koropapps.vocabulary.utils.formatDD
 import yaroslavgorbach.koropapps.vocabulary.utils.getColorPrimary
 import java.util.*
 
-data class ChartUi(private val statisticsValueEntities: List<StatisticsValueEntity>) {
+data class ChartValueUi(private val statisticsValueEntities: List<StatisticsValueEntity>) {
 
     companion object {
         const val MAX_ITEMS_COUNT = 8

@@ -24,20 +24,6 @@
                 app:navigationIcon="@drawable/ic_arrow_back"
                 tools:title="exerciseName" />
 
-            <include
-                android:id="@+id/chart"
-                layout="@layout/layout_chart"
-                android:layout_width="0dp"
-                android:layout_height="300dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/description_text" />
-
             <ImageView
                 android:id="@+id/icon5"
                 android:layout_width="0dp"
@@ -53,9 +39,7 @@
                 android:id="@+id/description_text"
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
-                android:layout_marginStart="8dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="8dp"
                 android:paddingHorizontal="8dp"
                 android:text="@string/description"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
@@ -63,6 +47,31 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/icon5" />
+
+            <include
+                android:id="@+id/chart_value"
+                layout="@layout/layout_chart"
+                android:layout_width="0dp"
+                android:layout_height="300dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/description_text" />
+
+            <include
+                android:id="@+id/chart_time"
+                layout="@layout/layout_chart"
+                android:layout_width="0dp"
+                android:layout_height="300dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/chart_value" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

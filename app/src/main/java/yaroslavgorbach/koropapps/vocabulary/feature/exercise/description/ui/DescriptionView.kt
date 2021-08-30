@@ -5,7 +5,8 @@ import androidx.core.widget.NestedScrollView
 import im.dacer.androidcharts.LineView
 import yaroslavgorbach.koropapps.vocabulary.data.description.local.model.Description
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentDescriptionBinding
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.model.ChartUi
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.model.ChartTimeUi
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.model.ChartValueUi
 import yaroslavgorbach.koropapps.vocabulary.utils.getDrawable
 import yaroslavgorbach.koropapps.vocabulary.utils.getString
 
@@ -16,8 +17,10 @@ class DescriptionView(
     interface Callback {
         fun onOpenExercise()
         fun onBack()
-        fun onNextChart()
-        fun onPreviousChart()
+        fun onNextChartValue()
+        fun onPreviousChartValue()
+        fun onNextChartTime()
+        fun onPreviousChartTime()
     }
 
     init {
@@ -31,11 +34,17 @@ class DescriptionView(
         binding.toolbar.setNavigationOnClickListener {
             callback.onBack()
         }
-        binding.chart.nextData.setOnClickListener {
-            callback.onNextChart()
+        binding.chartValue.nextData.setOnClickListener {
+            callback.onNextChartValue()
         }
-        binding.chart.prevData.setOnClickListener {
-            callback.onPreviousChart()
+        binding.chartValue.prevData.setOnClickListener {
+            callback.onPreviousChartValue()
+        }
+        binding.chartTime.nextData.setOnClickListener {
+            callback.onNextChartTime()
+        }
+        binding.chartTime.prevData.setOnClickListener {
+            callback.onPreviousChartTime()
         }
         binding.scrollView.setOnScrollChangeListener(
             NestedScrollView.OnScrollChangeListener { _, _, scrollY, _, oldScrollY ->
@@ -55,21 +64,38 @@ class DescriptionView(
         binding.toolbar.title = binding.getString(description.exerciseName.id)
     }
 
-    fun setChart(chartUi: ChartUi) {
-        if (chartUi.isEmpty) {
-            showNoChartData()
+    fun setChartValue(chartValueUi: ChartValueUi) {
+        if (chartValueUi.isEmpty) {
+            showNoChartValueData()
         } else {
-            binding.chart.chart.setDrawDotLine(false)
-            binding.chart.chart.setShowPopup(LineView.SHOW_POPUPS_All)
-            binding.chart.chart.setBottomTextList(chartUi.labels)
-            binding.chart.chart.setColorArray(chartUi.getColors(binding.root.context))
-            binding.chart.chart.setDataList(chartUi.data)
+            binding.chartValue.chartValue.setDrawDotLine(false)
+            binding.chartValue.chartValue.setShowPopup(LineView.SHOW_POPUPS_All)
+            binding.chartValue.chartValue.setBottomTextList(chartValueUi.labels)
+            binding.chartValue.chartValue.setColorArray(chartValueUi.getColors(binding.root.context))
+            binding.chartValue.chartValue.setDataList(chartValueUi.data)
         }
     }
 
-    private fun showNoChartData() {
-        binding.chart.noData.visibility = View.VISIBLE
-        binding.chart.chart.visibility = View.GONE
+    private fun showNoChartValueData() {
+        binding.chartValue.noData.visibility = View.VISIBLE
+        binding.chartValue.chartValue.visibility = View.GONE
+    }
+
+    fun setChartTime(chartTimeUi: ChartTimeUi) {
+        if (chartTimeUi.isEmpty) {
+            showNoChartTimeData()
+        } else {
+            binding.chartTime.chartValue.setDrawDotLine(false)
+            binding.chartTime.chartValue.setShowPopup(LineView.SHOW_POPUPS_All)
+            binding.chartTime.chartValue.setBottomTextList(chartTimeUi.labels)
+            binding.chartTime.chartValue.setColorArray(chartTimeUi.getColors(binding.root.context))
+            binding.chartTime.chartValue.setDataList(chartTimeUi.data)
+        }
+    }
+
+    private fun showNoChartTimeData() {
+        binding.chartTime.noData.visibility = View.VISIBLE
+        binding.chartTime.chartValue.visibility = View.GONE
     }
 
 }
