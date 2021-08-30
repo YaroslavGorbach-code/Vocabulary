@@ -5,7 +5,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.reactivex.rxjava3.disposables.CompositeDisposable
-import yaroslavgorbach.koropapps.vocabulary.business.statistics.InsertStatisticTimeInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.InsertStatisticValueInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.IncrementExercisePerformedInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.ObserveTrainingExerciseInteractor
@@ -14,7 +13,6 @@ import yaroslavgorbach.koropapps.vocabulary.feature.common.factory.StatisticsEnt
 import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToShortDescriptionResMapper
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseWordCategory
-import java.util.*
 import javax.inject.Inject
 
 class AntonymsSynonymsViewModel @Inject constructor(
@@ -73,7 +71,6 @@ class AntonymsSynonymsViewModel @Inject constructor(
         generateNewWord()
         incrementExercisePerformed()
         incrementPassedWords()
-        measureClickInterval()
     }
 
     private fun generateNewWord() {
