@@ -9,6 +9,6 @@ data class StatisticsTimeEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
     val exerciseNameRes: Int,
-    val value: Float,
+    val value: Long,
     val date: Date
 )
