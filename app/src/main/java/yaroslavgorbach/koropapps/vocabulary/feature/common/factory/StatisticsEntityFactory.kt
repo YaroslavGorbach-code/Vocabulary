@@ -15,7 +15,7 @@ class StatisticsEntityFactory {
         )
     }
 
-    fun createTimeEntity(exerciseName: ExerciseName, value: Long): StatisticsTimeEntity {
+    fun createTimeEntity(exerciseName: ExerciseName, value: Float): StatisticsTimeEntity {
         return StatisticsTimeEntity(
             exerciseNameRes = exerciseName.id,
             value = value,

@@ -15,7 +15,6 @@ import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameTo
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseWordCategory
 import java.util.*
-import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class AlphabetViewModel @Inject constructor(
@@ -59,8 +58,8 @@ class AlphabetViewModel @Inject constructor(
 
     private var previousTime: Long = Date().time
 
-    val averageTimeOnWord: Long
-        get() = (timeIntervals.sum() / timeIntervals.size) / 1000
+    val averageTimeOnWord: Float
+        get() = (timeIntervals.sum() / timeIntervals.size) / 1000f
 
     init {
         refreshLetter()
