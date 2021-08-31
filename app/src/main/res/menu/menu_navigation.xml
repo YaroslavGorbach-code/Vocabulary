@@ -7,7 +7,7 @@
         android:orderInCategory="1"
         android:icon="@drawable/ic_rocket"/>
     <item
-        android:id="@+id/menu_nav_records"
+        android:id="@+id/menu_nav_profile"
         android:enabled="true"
         android:title="@string/records"
         android:orderInCategory="3"
