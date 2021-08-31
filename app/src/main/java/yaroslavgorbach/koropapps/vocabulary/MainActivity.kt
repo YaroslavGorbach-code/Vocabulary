@@ -9,18 +9,19 @@ import kotlinx.coroutines.InternalCoroutinesApi
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.ExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.ui.ExercisesListFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.navigation.NavigationFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.feature.training.ui.TrainingFragment
 import yaroslavgorbach.koropapps.vocabulary.workflow.ExerciseWorkflow
 
 @InternalCoroutinesApi
 @FlowPreview
-class MainActivity : AppCompatActivity(R.layout.activity_main), ExercisesListFragment.Router,
+class MainActivity : AppCompatActivity(R.layout.activity_main), NavigationFragment.Router,
     TrainingFragment.Router {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (savedInstanceState == null) {
-            val fragment = ExercisesListFragment()
+            val fragment = NavigationFragment.newInstance()
             supportFragmentManager.commit {
                 add(R.id.main_container, fragment)
                 setPrimaryNavigationFragment(fragment)

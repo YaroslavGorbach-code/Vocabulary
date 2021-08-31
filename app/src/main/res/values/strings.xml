@@ -10,4 +10,7 @@
     <string name="Start">НАЧАТЬ</string>
     <string name="daily_training">Ежедневная тренировка</string>
     <string name="no_data">Нет данных</string>
+    <string name="title_exercises">Упражнения</string>
+    <string name="exercises">Упражнения</string>
+    <string name="records">Профиль</string>
 </resources>

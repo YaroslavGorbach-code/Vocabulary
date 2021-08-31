@@ -23,6 +23,11 @@ class ExercisesListFragment : Fragment(R.layout.fragment_exercises_list) {
         fun openTraining()
     }
 
+    companion object {
+        fun newInstance() = ExercisesListFragment()
+    }
+
+
     private lateinit var exercisesView: ExercisesListView
 
     @Inject

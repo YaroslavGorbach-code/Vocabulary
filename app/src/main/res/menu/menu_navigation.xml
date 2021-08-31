@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_nav_exercises"
+        android:enabled="true"
+        android:title="@string/exercises"
+        android:orderInCategory="1"
+        android:icon="@drawable/ic_rocket"/>
+    <item
+        android:id="@+id/menu_nav_records"
+        android:enabled="true"
+        android:title="@string/records"
+        android:orderInCategory="3"
+        android:icon="@drawable/ic_person"/>
+</menu>
