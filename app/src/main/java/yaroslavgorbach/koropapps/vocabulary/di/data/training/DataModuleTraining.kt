@@ -37,6 +37,7 @@ class DataModuleTraining {
                     put("id", 0)
                     put("daysWithoutInterruption", 0)
                     put("isFinished", false)
+                    put("numberOfTraining", 0)
                 }.also { cv ->
                     db.insert("TrainingEntity", OnConflictStrategy.REPLACE, cv)
                 }

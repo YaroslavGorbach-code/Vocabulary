@@ -10,6 +10,7 @@ data class TrainingEntity(
     var id: Long = 0,
     val date: Date? = null,
     var isFinished: Boolean = false,
-    var daysWithoutInterruption: Int = 0
+    var daysWithoutInterruption: Int = 0,
+    var numberOfTraining: Int = 0
 )
 

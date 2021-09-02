@@ -16,16 +16,19 @@ class TrainingFactory {
             TrainingType.EMPTY -> TrainingEntity()
             TrainingType.TODAY -> {
                 var daysWithoutInterrupting = 0
-                if (previousTraining != null && previousTraining.isFinished) {
+                var numberOfTrainings = previousTraining!!.numberOfTraining
+                numberOfTrainings++
+
+                if (previousTraining.isFinished) {
                     daysWithoutInterrupting = previousTraining.daysWithoutInterruption
                 }
+
                 TrainingEntity(
                     date = Date(),
-                    daysWithoutInterruption = daysWithoutInterrupting
+                    daysWithoutInterruption = daysWithoutInterrupting,
+                    numberOfTraining = numberOfTrainings
                 )
-
             }
-
         }
     }
 }
