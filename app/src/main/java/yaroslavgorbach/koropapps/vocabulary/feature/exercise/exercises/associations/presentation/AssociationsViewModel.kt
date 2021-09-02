@@ -64,7 +64,13 @@ class AssociationsViewModel @Inject constructor(
     private var previousTime: Long = Date().time
 
     private val averageTimeOnWord: Float
-        get() = (timeIntervals.sum() / timeIntervals.size) / 1000f
+        get() {
+            return try {
+                (timeIntervals.sum() / timeIntervals.size) / 1000f
+            } catch (ex: Exception) {
+                0f
+            }
+        }
 
     init {
         generateNewWord()

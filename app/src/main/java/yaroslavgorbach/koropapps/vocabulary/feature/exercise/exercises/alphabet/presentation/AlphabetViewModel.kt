@@ -59,7 +59,13 @@ class AlphabetViewModel @Inject constructor(
     private var previousTime: Long = Date().time
 
     val averageTimeOnWord: Float
-        get() = (timeIntervals.sum() / timeIntervals.size) / 1000f
+        get() {
+            return try {
+                (timeIntervals.sum() / timeIntervals.size) / 1000f
+            } catch (ex: Exception) {
+                0f
+            }
+        }
 
     init {
         refreshLetter()
@@ -73,7 +79,7 @@ class AlphabetViewModel @Inject constructor(
         measureClickInterval()
     }
 
-    fun measureClickInterval() {
+    private fun measureClickInterval() {
         val currentTime = Date().time
         val interval = currentTime - previousTime
         previousTime = currentTime
