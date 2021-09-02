@@ -48,8 +48,6 @@ class NavigationFragment : Fragment(R.layout.fragment_navigation), ExercisesList
                     val fragment = ExercisesListFragment.newInstance()
                     childFragmentManager.commit {
                         replace(R.id.nav_container, fragment)
-                        setPrimaryNavigationFragment(fragment)
-                        addToBackStack(null)
                         setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                     }
                 }
@@ -58,8 +56,6 @@ class NavigationFragment : Fragment(R.layout.fragment_navigation), ExercisesList
                     val fragment = ProfileFragment.newInstance()
                     childFragmentManager.commit {
                         replace(R.id.nav_container, fragment)
-                        setPrimaryNavigationFragment(fragment)
-                        addToBackStack(null)
                         setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                     }
                 }
