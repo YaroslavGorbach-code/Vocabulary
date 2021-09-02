@@ -3,7 +3,6 @@ package yaroslavgorbach.koropapps.vocabulary.feature.navigation.ui
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
 import kotlinx.coroutines.InternalCoroutinesApi
@@ -28,12 +27,8 @@ class NavigationFragment : Fragment(R.layout.fragment_navigation), ExercisesList
 
     private lateinit var navigationView: NavigationView
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        initViews(savedInstanceState)
-    }
-
-    private fun initViews(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         if (savedInstanceState == null) {
             val fragment = ExercisesListFragment.newInstance()
             childFragmentManager.commit {
@@ -41,6 +36,14 @@ class NavigationFragment : Fragment(R.layout.fragment_navigation), ExercisesList
                 setPrimaryNavigationFragment(fragment)
             }
         }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initViews()
+    }
+
+    private fun initViews() {
         navigationView = NavigationView(
             FragmentNavigationBinding.bind(requireView()),
             object : NavigationView.Callback {
