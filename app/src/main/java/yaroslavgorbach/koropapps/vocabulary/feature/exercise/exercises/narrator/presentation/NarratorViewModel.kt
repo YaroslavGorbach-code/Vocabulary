@@ -13,6 +13,7 @@ import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingEx
 import yaroslavgorbach.koropapps.vocabulary.feature.common.factory.StatisticsEntityFactory
 import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToShortDescriptionResMapper
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
+import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerciseUi
 import java.util.*
 import javax.inject.Inject
 import kotlin.random.Random
@@ -33,17 +34,18 @@ class NarratorViewModel @Inject constructor(
     val numberOfWords: LiveData<String>
         get() = _numberOfWords
 
-    private val _exercise: MutableLiveData<TrainingExerciseEntity> = MutableLiveData()
+    private val _exercise: MutableLiveData<TrainingExerciseUi> = MutableLiveData()
         get() {
             if (exerciseType is ExerciseType.Training) {
                 observeTrainingExerciseInteractor(exerciseType.exerciseId)
+                    .map(::TrainingExerciseUi)
                     .subscribe(field::postValue)
                     .let(disposables::add)
             }
             return field
         }
 
-    val exercise: LiveData<TrainingExerciseEntity>
+    val exercise: LiveData<TrainingExerciseUi>
         get() = _exercise
 
     val description: String

@@ -11,7 +11,7 @@ import yaroslavgorbach.koropapps.vocabulary.App
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.ExerciseView
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.common.uitik.ExerciseView
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.associations.presentation.AssociationsViewModel
 import javax.inject.Inject
 

@@ -9,11 +9,11 @@ import yaroslavgorbach.koropapps.vocabulary.business.statistics.InsertStatisticT
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.InsertStatisticValueInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.IncrementExercisePerformedInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.ObserveTrainingExerciseInteractor
-import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingExerciseEntity
 import yaroslavgorbach.koropapps.vocabulary.feature.common.factory.StatisticsEntityFactory
 import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToShortDescriptionResMapper
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseWordCategory
+import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerciseUi
 import java.util.*
 import javax.inject.Inject
 
@@ -43,17 +43,18 @@ class JarViewModel @Inject constructor(
     val word: LiveData<String>
         get() = _word
 
-    private val _exercise: MutableLiveData<TrainingExerciseEntity> = MutableLiveData()
+    private val _exercise: MutableLiveData<TrainingExerciseUi> = MutableLiveData()
         get() {
             if (exerciseType is ExerciseType.Training) {
                 observeTrainingExerciseInteractor(exerciseType.exerciseId)
+                    .map(::TrainingExerciseUi)
                     .subscribe(field::postValue)
                     .let(disposables::add)
             }
             return field
         }
 
-    val exercise: LiveData<TrainingExerciseEntity>
+    val exercise: LiveData<TrainingExerciseUi>
         get() = _exercise
 
     private var passedWordsCount: Int = 0

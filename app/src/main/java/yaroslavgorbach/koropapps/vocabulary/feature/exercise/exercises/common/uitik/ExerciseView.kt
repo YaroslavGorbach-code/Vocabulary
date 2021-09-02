@@ -1,10 +1,11 @@
-package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises
+package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.common.uitik
 
 import android.os.SystemClock
 import android.view.View
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingExerciseEntity
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseBinding
+import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.utils.getString
 
 class ExerciseView(
@@ -44,7 +45,7 @@ class ExerciseView(
         binding.letter.setText(word)
     }
 
-    fun setExercise(exercise: TrainingExerciseEntity) {
+    fun setExercise(exercise: TrainingExerciseUi) {
         if (exercise.isFinished) {
             callback.onBack()
         }

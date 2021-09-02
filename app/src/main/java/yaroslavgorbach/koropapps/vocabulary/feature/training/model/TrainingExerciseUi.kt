@@ -21,4 +21,9 @@ class TrainingExerciseUi(private val trainingExerciseEntity: TrainingExerciseEnt
     val isFinished: Boolean
         get() = trainingExerciseEntity.isFinished
 
+    val aim: Int
+        get() = trainingExerciseEntity.aim
+
+    val performed: Int
+        get() = trainingExerciseEntity.performed
 }

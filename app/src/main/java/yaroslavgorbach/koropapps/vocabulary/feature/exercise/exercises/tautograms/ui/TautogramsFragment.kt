@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import yaroslavgorbach.koropapps.vocabulary.App
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseBinding
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.ExerciseView
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.common.uitik.ExerciseView
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.tautograms.presentation.TautogramsViewModel
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import javax.inject.Inject
