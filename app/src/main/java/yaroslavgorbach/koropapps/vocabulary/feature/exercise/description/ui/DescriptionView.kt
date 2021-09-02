@@ -65,6 +65,8 @@ class DescriptionView(
     }
 
     fun setChartValue(chartValueUi: ChartValueUi) {
+        binding.chartValue.statisticsText.text = binding.getString(chartValueUi.nameRes)
+
         if (chartValueUi.isEmpty) {
             showNoChartValueData()
         } else {
@@ -82,6 +84,8 @@ class DescriptionView(
     }
 
     fun setChartTime(chartTimeUi: ChartTimeUi) {
+        binding.chartTime.statisticsText.text = binding.getString(chartTimeUi.nameRes)
+
         if (chartTimeUi.isEmpty) {
             showNoChartTimeData()
         } else {

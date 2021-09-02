@@ -55,7 +55,7 @@ class DescriptionViewModel @Inject constructor(
         observeStatisticsValueInteractor(exerciseName.id)
             .observeOn(AndroidSchedulers.mainThread())
             .map { it.takeLast(ChartValueUi.MAX_ITEMS_COUNT) }
-            .map(::ChartValueUi)
+            .map { ChartValueUi(it, exerciseName) }
             .subscribe(_chartValueUi::setValue)
             .let(disposables::add)
     }
@@ -64,7 +64,7 @@ class DescriptionViewModel @Inject constructor(
         observeStatisticsTimeInteractor(exerciseName.id)
             .observeOn(AndroidSchedulers.mainThread())
             .map { it.takeLast(ChartValueUi.MAX_ITEMS_COUNT) }
-            .map(::ChartTimeUi)
+            .map { ChartTimeUi(it, exerciseName) }
             .subscribe(_chartTimeUi::setValue)
             .let(disposables::add)
     }
@@ -78,7 +78,7 @@ class DescriptionViewModel @Inject constructor(
                 }
             }
             .map { it.take(ChartValueUi.MAX_ITEMS_COUNT) }
-            .map(::ChartValueUi)
+            .map { ChartValueUi(it, exerciseName) }
             .map { chartUi ->
                 if (chartUi.labels.isEmpty().not()) {
                     _chartValueUi.value = chartUi
@@ -97,7 +97,7 @@ class DescriptionViewModel @Inject constructor(
                 }
             }
             .map { it.takeLast(ChartValueUi.MAX_ITEMS_COUNT) }
-            .map(::ChartValueUi)
+            .map{ ChartValueUi(it, exerciseName) }
             .map { chartUi ->
                 if (chartUi.labels.isEmpty().not()) {
                     _chartValueUi.value = chartUi
@@ -116,7 +116,7 @@ class DescriptionViewModel @Inject constructor(
                 }
             }
             .map { it.take(ChartValueUi.MAX_ITEMS_COUNT) }
-            .map(::ChartTimeUi)
+            .map { ChartTimeUi(it, exerciseName) }
             .map { chartUi ->
                 if (chartUi.labels.isEmpty().not()) {
                     _chartTimeUi.value = chartUi
@@ -135,7 +135,7 @@ class DescriptionViewModel @Inject constructor(
                 }
             }
             .map { it.takeLast(ChartValueUi.MAX_ITEMS_COUNT) }
-            .map(::ChartTimeUi)
+            .map { ChartTimeUi(it, exerciseName) }
             .map { chartUi ->
                 if (chartUi.labels.isEmpty().not()) {
                     _chartTimeUi.value = chartUi

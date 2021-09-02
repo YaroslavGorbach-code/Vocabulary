@@ -4,7 +4,17 @@
     <string name="end_of_time">Время закончилось</string>
     <string name="result"> Ваш резуьтат %1$d</string>
     <string name="finish_of_exercise">Упражнение закончено</string>
-    <string name="average_time_on_word">Среднее время потраченое на одно слово</string>
+    <string name="average_time_on_word">Среднее время потраченое на слово</string>
+    <string name="number_words_for_session">Количествво слов за сессию</string>
+    <string name="number_sentences_for_session">Количествво предложений за сессию</string>
+    <string name="number_stores_for_session">Количествво историй за сессию</string>
+    <string name="number_letters_for_session">Количествво букв за сессию</string>
+    <string name="number_categories_for_session">Количествво категорий за сессию</string>
+    <string name="average_time_on_sentence">Среднее время потраченое на предложение</string>
+    <string name="average_time_on_story">Среднее время потраченое на историю</string>
+    <string name="average_time_on_letter">Среднее время потраченое на букву</string>
+    <string name="average_time_on_category">Среднее время потраченое на категорию</string>
+
     <string name="number_of_words_in_story">Количество слов в истории</string>
     <string name="statistic">Статистика</string>
     <string name="Start">НАЧАТЬ</string>
@@ -14,4 +24,5 @@
     <string name="exercises">Упражнения</string>
     <string name="records">Профиль</string>
     <string name="days_without_interruption">Дней подряд</string>
+
 </resources>
