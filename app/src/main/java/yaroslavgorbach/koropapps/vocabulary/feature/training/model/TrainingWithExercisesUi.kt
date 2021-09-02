@@ -1,5 +1,6 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.training.model
 
+import androidx.room.Ignore
 import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingWithExercisesEntity
 
 class TrainingWithExercisesUi(private val trainingWithExercisesEntity: TrainingWithExercisesEntity) {
@@ -13,4 +14,6 @@ class TrainingWithExercisesUi(private val trainingWithExercisesEntity: TrainingW
     val progress: Int
         get() = trainingWithExercisesEntity.progress
 
+    val daysWithoutInterruption: Int
+        get() = trainingWithExercisesEntity.training.daysWithoutInterruption
 }

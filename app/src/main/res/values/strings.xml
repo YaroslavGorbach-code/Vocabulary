@@ -13,4 +13,5 @@
     <string name="title_exercises">Упражнения</string>
     <string name="exercises">Упражнения</string>
     <string name="records">Профиль</string>
+    <string name="days_without_interruption">Дней подряд</string>
 </resources>

@@ -35,6 +35,8 @@ class DataModuleTraining {
             override fun onCreate(db: SupportSQLiteDatabase) {
                 ContentValues().apply {
                     put("id", 0)
+                    put("daysWithoutInterruption", 0)
+                    put("isFinished", false)
                 }.also { cv ->
                     db.insert("TrainingEntity", OnConflictStrategy.REPLACE, cv)
                 }

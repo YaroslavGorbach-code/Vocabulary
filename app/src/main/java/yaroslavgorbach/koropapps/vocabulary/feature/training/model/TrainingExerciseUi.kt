@@ -18,6 +18,7 @@ class TrainingExerciseUi(private val trainingExerciseEntity: TrainingExerciseEnt
     val iconRes: Int
         get() = ExerciseNameToIconResMapper().map(trainingExerciseEntity.name)
 
-    val isFinished = trainingExerciseEntity.isFinished
+    val isFinished: Boolean
+        get() = trainingExerciseEntity.isFinished
 
 }

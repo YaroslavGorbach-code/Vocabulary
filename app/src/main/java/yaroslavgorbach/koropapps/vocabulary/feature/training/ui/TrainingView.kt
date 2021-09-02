@@ -1,5 +1,6 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.training.ui
 
+import android.annotation.SuppressLint
 import androidx.recyclerview.widget.LinearLayoutManager
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentTrainingBinding
@@ -7,6 +8,7 @@ import yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.LineDecorator
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingWithExercisesUi
 import yaroslavgorbach.koropapps.vocabulary.feature.training.ui.recycler.TrainingExercisesListAdapter
+import yaroslavgorbach.koropapps.vocabulary.utils.getString
 
 class TrainingView(
     private val binding: FragmentTrainingBinding,
@@ -39,8 +41,13 @@ class TrainingView(
         }
     }
 
+    @SuppressLint("SetTextI18n")
     fun setTrainingWitExercises(trainingWithExercisesUi: TrainingWithExercisesUi) {
         listAdapter.setData(trainingWithExercisesUi.exercises)
         binding.trainingProgress.progress = trainingWithExercisesUi.progress
+        binding.daysWithoutInterruption.text =
+            binding.getString(R.string.days_without_interruption) + ": ${
+                trainingWithExercisesUi.daysWithoutInterruption
+            }"
     }
 }

@@ -20,4 +20,7 @@ data class TrainingWithExercisesEntity(
             }
             return (p.toFloat() / exercises.size.toFloat()).toInt()
         }
+
+    val isFinished: Boolean
+        get() = progress == 100
 }

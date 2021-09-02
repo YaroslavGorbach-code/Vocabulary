@@ -8,10 +8,24 @@ class TrainingFactory {
         EMPTY, TODAY
     }
 
-    fun create(trainingType: TrainingType): TrainingEntity {
+    fun create(
+        trainingType: TrainingType,
+        previousTraining: TrainingEntity? = null
+    ): TrainingEntity {
         return when (trainingType) {
             TrainingType.EMPTY -> TrainingEntity()
-            TrainingType.TODAY -> TrainingEntity(date = Date())
+            TrainingType.TODAY -> {
+                var daysWithoutInterrupting = 0
+                if (previousTraining != null && previousTraining.isFinished) {
+                    daysWithoutInterrupting = previousTraining.daysWithoutInterruption
+                }
+                TrainingEntity(
+                    date = Date(),
+                    daysWithoutInterruption = daysWithoutInterrupting
+                )
+
+            }
+
         }
     }
 }

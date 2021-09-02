@@ -9,5 +9,7 @@ data class TrainingEntity(
     @PrimaryKey(autoGenerate = true)
     var id: Long = 0,
     val date: Date? = null,
+    var isFinished: Boolean = false,
+    var daysWithoutInterruption: Int = 0
 )
 

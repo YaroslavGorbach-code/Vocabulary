@@ -24,8 +24,20 @@ class ObserveLastFifeTrainingsInteractor(
             .doOnNext { trainings ->
                 if (trainings.size >= 5 && trainings.last().training.date.isToday().not()) {
                     insertTrainingInteractor(
-                        TrainingFactory().create(TrainingFactory.TrainingType.TODAY)
+                        TrainingFactory().create(
+                            TrainingFactory.TrainingType.TODAY,
+                            trainings.last().training
+                        )
                     ).subscribe()
+                }
+            }
+            .doOnNext { trainingsWithExercises ->
+                val trainingLast = trainingsWithExercises.last().training
+
+                if (trainingsWithExercises.last().isFinished && trainingLast.isFinished.not()) {
+                    trainingLast.isFinished = true
+                    trainingLast.daysWithoutInterruption++
+                    insertTrainingInteractor.invoke(trainingLast).subscribe()
                 }
             }
     }
