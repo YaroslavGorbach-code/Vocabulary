@@ -30,11 +30,11 @@ data class ChartTimeUi(
             return statisticsTimeEntities.map { it.date.formatDD() } as ArrayList<String>
         }
 
-    val labelsDate: List<Date>
-        get() = statisticsTimeEntities.map { it.date }
-
     val isEmpty: Boolean
         get() = data.isEmpty() || labels.isEmpty()
+
+    val dates: List<Date>
+        get() = statisticsTimeEntities.map { it.date }
 
     val nameRes: Int
         get() = when (exerciseName) {
@@ -61,5 +61,4 @@ data class ChartTimeUi(
             context.getColorPrimary()
         )
     }
-
 }

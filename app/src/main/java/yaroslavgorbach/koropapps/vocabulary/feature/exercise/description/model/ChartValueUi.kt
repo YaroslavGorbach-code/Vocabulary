@@ -30,7 +30,7 @@ data class ChartValueUi(
             return statisticsValueEntities.map { it.date.formatDD() } as ArrayList<String>
         }
 
-    val labelsDate: List<Date>
+    val dates: List<Date>
         get() = statisticsValueEntities.map { it.date }
 
     val isEmpty: Boolean

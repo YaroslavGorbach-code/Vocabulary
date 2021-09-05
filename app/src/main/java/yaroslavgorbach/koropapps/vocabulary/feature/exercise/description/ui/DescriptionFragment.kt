@@ -7,11 +7,11 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import yaroslavgorbach.koropapps.vocabulary.App
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentDescriptionBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.presentation.DescriptionViewModel
+import yaroslavgorbach.koropapps.vocabulary.utils.appComponent
 import yaroslavgorbach.koropapps.vocabulary.utils.host
 import javax.inject.Inject
 
@@ -52,7 +52,7 @@ class DescriptionFragment : Fragment(R.layout.fragment_description) {
     }
 
     private fun initDagger() {
-        (requireActivity().application as App).appComponent
+        appComponent()
             .descriptionComponent()
             .create(exerciseType.getExerciseName())
             .inject(this)
@@ -79,7 +79,7 @@ class DescriptionFragment : Fragment(R.layout.fragment_description) {
                 }
 
                 override fun onNextChartTime() {
-                   viewModel.onNextChartTime()
+                    viewModel.onNextChartTime()
                 }
 
                 override fun onPreviousChartTime() {

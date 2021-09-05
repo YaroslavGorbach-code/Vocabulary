@@ -63,7 +63,7 @@ class DescriptionViewModel @Inject constructor(
     private fun observeTimeStatistics() {
         observeStatisticsTimeInteractor(exerciseName.id)
             .observeOn(AndroidSchedulers.mainThread())
-            .map { it.takeLast(ChartValueUi.MAX_ITEMS_COUNT) }
+            .map { it.takeLast(ChartTimeUi.MAX_ITEMS_COUNT) }
             .map { ChartTimeUi(it, exerciseName) }
             .subscribe(_chartTimeUi::setValue)
             .let(disposables::add)
@@ -74,7 +74,7 @@ class DescriptionViewModel @Inject constructor(
             .observeOn(AndroidSchedulers.mainThread())
             .map { list ->
                 list.filter {
-                    it.date > _chartValueUi.value?.labelsDate?.last() ?: Date()
+                    it.date > _chartValueUi.value?.dates?.last() ?: Date()
                 }
             }
             .map { it.take(ChartValueUi.MAX_ITEMS_COUNT) }
@@ -93,7 +93,7 @@ class DescriptionViewModel @Inject constructor(
             .observeOn(AndroidSchedulers.mainThread())
             .map { list ->
                 list.filter {
-                    it.date < _chartValueUi.value?.labelsDate?.first() ?: Date()
+                    it.date < _chartValueUi.value?.dates?.first() ?: Date()
                 }
             }
             .map { it.takeLast(ChartValueUi.MAX_ITEMS_COUNT) }
@@ -112,10 +112,10 @@ class DescriptionViewModel @Inject constructor(
             .observeOn(AndroidSchedulers.mainThread())
             .map { list ->
                 list.filter {
-                    it.date > _chartTimeUi.value?.labelsDate?.last() ?: Date()
+                    it.date > _chartTimeUi.value?.dates?.last() ?: Date()
                 }
             }
-            .map { it.take(ChartValueUi.MAX_ITEMS_COUNT) }
+            .map { it.take(ChartTimeUi.MAX_ITEMS_COUNT) }
             .map { ChartTimeUi(it, exerciseName) }
             .map { chartUi ->
                 if (chartUi.labels.isEmpty().not()) {
@@ -131,10 +131,10 @@ class DescriptionViewModel @Inject constructor(
             .observeOn(AndroidSchedulers.mainThread())
             .map { list ->
                 list.filter {
-                    it.date < _chartTimeUi.value?.labelsDate?.first() ?: Date()
+                    it.date < _chartTimeUi.value?.dates?.first() ?: Date()
                 }
             }
-            .map { it.takeLast(ChartValueUi.MAX_ITEMS_COUNT) }
+            .map { it.takeLast(ChartTimeUi.MAX_ITEMS_COUNT) }
             .map { ChartTimeUi(it, exerciseName) }
             .map { chartUi ->
                 if (chartUi.labels.isEmpty().not()) {

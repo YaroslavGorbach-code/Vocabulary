@@ -1,6 +1,5 @@
 package yaroslavgorbach.koropapps.vocabulary.utils
 
-import android.R
 import android.content.Context
 import android.content.res.TypedArray
 import android.graphics.drawable.Drawable
@@ -9,6 +8,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import androidx.viewbinding.ViewBinding
+import yaroslavgorbach.koropapps.vocabulary.R
 
 
 fun ViewBinding.getString(@StringRes id: Int): String {
