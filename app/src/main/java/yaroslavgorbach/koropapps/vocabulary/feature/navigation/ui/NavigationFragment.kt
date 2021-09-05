@@ -8,7 +8,7 @@ import androidx.fragment.app.commit
 import kotlinx.coroutines.InternalCoroutinesApi
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentNavigationBinding
-import yaroslavgorbach.koropapps.vocabulary.feature.ProfileFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.profile.ui.ProfileFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.ExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.ui.ExercisesListFragment
 import yaroslavgorbach.koropapps.vocabulary.utils.host

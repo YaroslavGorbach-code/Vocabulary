@@ -6,10 +6,8 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.InternalCoroutinesApi
-import yaroslavgorbach.koropapps.vocabulary.feature.ProfileFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.ExerciseUi
-import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.ui.ExercisesListFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.navigation.ui.NavigationFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.feature.training.ui.TrainingFragment

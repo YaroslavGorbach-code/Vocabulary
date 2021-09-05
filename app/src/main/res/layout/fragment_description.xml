@@ -61,7 +61,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/description_text">
 
                 <include
-                    android:id="@+id/chart_value"
+                    android:id="@+id/chart"
                     layout="@layout/layout_chart"
                     android:layout_width="match_parent"
                     android:layout_height="300dp"

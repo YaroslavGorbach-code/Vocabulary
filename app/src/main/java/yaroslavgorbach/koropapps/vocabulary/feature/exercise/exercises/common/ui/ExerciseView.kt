@@ -1,9 +1,8 @@
-package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.common.uitik
+package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.common.ui
 
 import android.os.SystemClock
 import android.view.View
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
-import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingExerciseEntity
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.utils.getString
@@ -26,9 +25,11 @@ class ExerciseView(
             callback.onNext()
             startOneWordChronometer()
         }
+
         binding.toolbar.setNavigationOnClickListener {
             callback.onBack()
         }
+
         startAllWordsChronometer()
         startOneWordChronometer()
     }
@@ -49,6 +50,7 @@ class ExerciseView(
         if (exercise.isFinished) {
             callback.onBack()
         }
+
         setAimAndPerformed(exercise.aim, exercise.performed)
     }
 

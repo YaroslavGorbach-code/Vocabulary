@@ -17,6 +17,7 @@ class ExerciseFinishDialog : DialogFragment() {
     companion object {
         const val WORD_AVERAGE_TIME_ARG = "WORD_AVERAGE_TIME_ARG"
         const val DEFAULT_ARG = 0f
+
         fun newInstance(averageTime: Float) = ExerciseFinishDialog().apply {
             arguments = bundleOf(
                 WORD_AVERAGE_TIME_ARG to averageTime

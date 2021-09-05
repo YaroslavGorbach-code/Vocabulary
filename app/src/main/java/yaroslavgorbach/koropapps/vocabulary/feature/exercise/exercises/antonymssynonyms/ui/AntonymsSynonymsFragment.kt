@@ -11,14 +11,16 @@ import yaroslavgorbach.koropapps.vocabulary.App
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.common.uitik.ExerciseView
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.common.ui.ExerciseView
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.antonymssynonyms.presentation.AntonymsSynonymsViewModel
+import yaroslavgorbach.koropapps.vocabulary.utils.appComponent
 import javax.inject.Inject
 
 class AntonymsSynonymsFragment : Fragment(R.layout.fragment_exercise) {
 
     companion object {
         private const val ARG_EXERCISE_TYPE = "ARG_EXERCISE_TYPE"
+
         fun newInstance(exerciseType: ExerciseType): AntonymsSynonymsFragment {
             return AntonymsSynonymsFragment().apply {
                 arguments = bundleOf(
@@ -50,7 +52,7 @@ class AntonymsSynonymsFragment : Fragment(R.layout.fragment_exercise) {
     }
 
     private fun initDagger() {
-        (requireActivity().application as App).appComponent
+        appComponent()
             .antonymsSynonymsComponent()
             .create(exerciseType)
             .inject(this)
@@ -68,6 +70,7 @@ class AntonymsSynonymsFragment : Fragment(R.layout.fragment_exercise) {
                     requireActivity().onBackPressed()
                 }
             })
+
         exerciseView.setExerciseName(exerciseType.getExerciseName())
     }
 
@@ -76,6 +79,7 @@ class AntonymsSynonymsFragment : Fragment(R.layout.fragment_exercise) {
             exerciseView.setWord(word)
             exerciseView.setDescriptionText(viewModel.description)
         }
+
         viewModel.exercise.observe(viewLifecycleOwner, exerciseView::setExercise)
     }
 }

@@ -23,6 +23,7 @@ class AlphabetView(
         binding.clickSurface.setOnClickListener {
             callback.onNewLetter()
         }
+
         binding.toolbar.setNavigationOnClickListener {
             callback.onBack()
         }

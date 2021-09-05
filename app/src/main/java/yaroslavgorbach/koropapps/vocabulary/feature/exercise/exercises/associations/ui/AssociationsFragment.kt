@@ -11,14 +11,16 @@ import yaroslavgorbach.koropapps.vocabulary.App
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.common.uitik.ExerciseView
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.common.ui.ExerciseView
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.associations.presentation.AssociationsViewModel
+import yaroslavgorbach.koropapps.vocabulary.utils.appComponent
 import javax.inject.Inject
 
 class AssociationsFragment : Fragment(R.layout.fragment_exercise) {
 
     companion object {
         private const val ARG_EXERCISE_TYPE = "ARG_EXERCISE_TYPE"
+
         fun newInstance(exerciseType: ExerciseType) = AssociationsFragment().apply {
             arguments = bundleOf(
                 ARG_EXERCISE_TYPE to exerciseType
@@ -48,7 +50,7 @@ class AssociationsFragment : Fragment(R.layout.fragment_exercise) {
     }
 
     private fun initDagger() {
-        (requireActivity().application as App).appComponent
+        appComponent()
             .associationsComponent()
             .create(exerciseType)
             .inject(this)
@@ -66,6 +68,7 @@ class AssociationsFragment : Fragment(R.layout.fragment_exercise) {
                     requireActivity().onBackPressed()
                 }
             })
+
         exerciseView.setExerciseName(exerciseType.getExerciseName())
         exerciseView.setDescriptionText(viewModel.description)
     }

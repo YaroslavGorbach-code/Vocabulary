@@ -31,21 +31,27 @@ class DescriptionView(
         binding.openExercise.setOnClickListener {
             callback.onOpenExercise()
         }
+
         binding.toolbar.setNavigationOnClickListener {
             callback.onBack()
         }
-        binding.chartValue.nextData.setOnClickListener {
+
+        binding.chart.nextData.setOnClickListener {
             callback.onNextChartValue()
         }
-        binding.chartValue.prevData.setOnClickListener {
+
+        binding.chart.prevData.setOnClickListener {
             callback.onPreviousChartValue()
         }
+
         binding.chartTime.nextData.setOnClickListener {
             callback.onNextChartTime()
         }
+
         binding.chartTime.prevData.setOnClickListener {
             callback.onPreviousChartTime()
         }
+
         binding.scrollView.setOnScrollChangeListener(
             NestedScrollView.OnScrollChangeListener { _, _, scrollY, _, oldScrollY ->
                 if (scrollY > oldScrollY) {
@@ -58,29 +64,31 @@ class DescriptionView(
 
     fun setDescription(description: Description) {
         binding.descriptionText.text = binding.getString(description.textRes)
+
         with(binding.getDrawable(description.exerciseIconRes)) {
             binding.icon5.setImageDrawable(this)
         }
+
         binding.toolbar.title = binding.getString(description.exerciseName.id)
     }
 
     fun setChartValue(chartValueUi: ChartValueUi) {
-        binding.chartValue.statisticsText.text = binding.getString(chartValueUi.nameRes)
+        binding.chart.statisticsText.text = binding.getString(chartValueUi.nameRes)
 
         if (chartValueUi.isEmpty) {
             showNoChartValueData()
         } else {
-            binding.chartValue.chartValue.setDrawDotLine(false)
-            binding.chartValue.chartValue.setShowPopup(LineView.SHOW_POPUPS_All)
-            binding.chartValue.chartValue.setBottomTextList(chartValueUi.labels)
-            binding.chartValue.chartValue.setColorArray(chartValueUi.getColors(binding.root.context))
-            binding.chartValue.chartValue.setDataList(chartValueUi.data)
+            binding.chart.chart.setDrawDotLine(false)
+            binding.chart.chart.setShowPopup(LineView.SHOW_POPUPS_All)
+            binding.chart.chart.setBottomTextList(chartValueUi.labels)
+            binding.chart.chart.setColorArray(chartValueUi.getColors(binding.root.context))
+            binding.chart.chart.setDataList(chartValueUi.data)
         }
     }
 
     private fun showNoChartValueData() {
-        binding.chartValue.noData.visibility = View.VISIBLE
-        binding.chartValue.chartValue.visibility = View.GONE
+        binding.chart.noData.visibility = View.VISIBLE
+        binding.chart.chart.visibility = View.GONE
     }
 
     fun setChartTime(chartTimeUi: ChartTimeUi) {
@@ -89,17 +97,17 @@ class DescriptionView(
         if (chartTimeUi.isEmpty) {
             showNoChartTimeData()
         } else {
-            binding.chartTime.chartValue.setDrawDotLine(false)
-            binding.chartTime.chartValue.setShowPopup(LineView.SHOW_POPUPS_All)
-            binding.chartTime.chartValue.setBottomTextList(chartTimeUi.labels)
-            binding.chartTime.chartValue.setColorArray(chartTimeUi.getColors(binding.root.context))
-            binding.chartTime.chartValue.setDataList(chartTimeUi.data)
+            binding.chartTime.chart.setDrawDotLine(false)
+            binding.chartTime.chart.setShowPopup(LineView.SHOW_POPUPS_All)
+            binding.chartTime.chart.setBottomTextList(chartTimeUi.labels)
+            binding.chartTime.chart.setColorArray(chartTimeUi.getColors(binding.root.context))
+            binding.chartTime.chart.setDataList(chartTimeUi.data)
         }
     }
 
     private fun showNoChartTimeData() {
         binding.chartTime.noData.visibility = View.VISIBLE
-        binding.chartTime.chartValue.visibility = View.GONE
+        binding.chartTime.chart.visibility = View.GONE
     }
 
 }

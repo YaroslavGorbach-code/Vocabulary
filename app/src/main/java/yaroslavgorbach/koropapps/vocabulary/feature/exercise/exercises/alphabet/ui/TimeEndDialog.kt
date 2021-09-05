@@ -18,6 +18,7 @@ class TimeEndDialog : DialogFragment() {
     companion object {
         const val NUMBER_OF_LETTERS_ARG = "NUMBER_OF_LETTERS_ARG"
         const val DEFAULT_ARG = 0
+
         fun newInstance(numberOfWords: Int) = TimeEndDialog().apply {
             arguments = bundleOf(
                 NUMBER_OF_LETTERS_ARG to numberOfWords

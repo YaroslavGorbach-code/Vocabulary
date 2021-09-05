@@ -7,18 +7,19 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import yaroslavgorbach.koropapps.vocabulary.App
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.common.ui.ExerciseView
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.rememberall.presentation.RememberAllViewModel
+import yaroslavgorbach.koropapps.vocabulary.utils.appComponent
 import javax.inject.Inject
 
 class RememberAllFragment : Fragment(R.layout.fragment_exercise) {
 
     companion object {
         private const val ARG_EXERCISE_TYPE = "ARG_EXERCISE_TYPE"
+
         fun newInstance(exerciseType: ExerciseType) = RememberAllFragment().apply {
             arguments = bundleOf(
                 ARG_EXERCISE_TYPE to exerciseType
@@ -48,7 +49,7 @@ class RememberAllFragment : Fragment(R.layout.fragment_exercise) {
     }
 
     private fun initDagger() {
-        (requireActivity().application as App).appComponent
+        appComponent()
             .rememberAllComponent()
             .create(exerciseType)
             .inject(this)
@@ -66,6 +67,7 @@ class RememberAllFragment : Fragment(R.layout.fragment_exercise) {
                     requireActivity().onBackPressed()
                 }
             })
+
         exerciseView.setExerciseName(exerciseType.getExerciseName())
         exerciseView.setDescriptionText(viewModel.description)
     }

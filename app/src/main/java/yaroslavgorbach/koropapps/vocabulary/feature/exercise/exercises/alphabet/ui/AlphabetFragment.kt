@@ -9,11 +9,11 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
-import yaroslavgorbach.koropapps.vocabulary.App
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseAlphabetBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.alphabet.presentation.AlphabetViewModel
+import yaroslavgorbach.koropapps.vocabulary.utils.appComponent
 import javax.inject.Inject
 
 class AlphabetFragment : Fragment(R.layout.fragment_exercise_alphabet),
@@ -51,7 +51,7 @@ class AlphabetFragment : Fragment(R.layout.fragment_exercise_alphabet),
     }
 
     private fun initDagger() {
-        (requireActivity().application as App).appComponent
+        appComponent()
             .alphabetComponent()
             .create(exerciseType)
             .inject(this)
@@ -68,15 +68,11 @@ class AlphabetFragment : Fragment(R.layout.fragment_exercise_alphabet),
                 }
 
                 override fun onTimeEnd() {
-                    TimeEndDialog.newInstance(viewModel.passedLettersCount)
-                        .show(childFragmentManager, null)
+                    showTimeEndDialog()
                 }
 
                 override fun onGameFinished() {
-                    ExerciseFinishDialog.newInstance(
-                        viewModel.averageTimeOnWord
-                    ).show(childFragmentManager, null)
-
+                    showGameFinishedDialog()
                     viewModel.onTimerFinished()
                 }
 
@@ -87,6 +83,17 @@ class AlphabetFragment : Fragment(R.layout.fragment_exercise_alphabet),
 
         alphabetView.setDescriptionText(viewModel.description)
         alphabetView.setExerciseName(exerciseType.getExerciseName())
+    }
+
+    private fun showTimeEndDialog() {
+        TimeEndDialog.newInstance(viewModel.passedLettersCount)
+            .show(childFragmentManager, null)
+    }
+
+    private fun showGameFinishedDialog() {
+        ExerciseFinishDialog.newInstance(
+            viewModel.averageTimeOnWord
+        ).show(childFragmentManager, null)
     }
 
     private fun initObservers() {
