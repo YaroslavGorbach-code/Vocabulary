@@ -1,6 +1,7 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.common.factory
 
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
+import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsDayEntity
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsTimeEntity
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsValueEntity
 import java.util.*
@@ -22,4 +23,9 @@ class StatisticsEntityFactory {
             date = Date()
         )
     }
+
+    fun createDayEntity(timeSpentOnExercise: Long): StatisticsDayEntity {
+        return StatisticsDayEntity(summaryTrainingTime = timeSpentOnExercise, date = Date())
+    }
+
 }

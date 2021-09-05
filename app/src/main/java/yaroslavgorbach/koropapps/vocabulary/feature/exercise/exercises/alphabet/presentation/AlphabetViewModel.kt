@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import kotlinx.coroutines.*
+import yaroslavgorbach.koropapps.vocabulary.business.statistics.InsertOrUpdateStatisticDayInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.InsertStatisticTimeInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.InsertStatisticValueInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.IncrementExercisePerformedInteractor
@@ -23,6 +24,7 @@ class AlphabetViewModel @Inject constructor(
     private val insertStatisticValueInteractor: InsertStatisticValueInteractor,
     private val insertStatisticTimeInteractor: InsertStatisticTimeInteractor,
     private val incrementExercisePerformedInteractor: IncrementExercisePerformedInteractor,
+    private val insertOrUpdateStatisticDayInteractor: InsertOrUpdateStatisticDayInteractor
 ) : ViewModel() {
 
     private val disposables: CompositeDisposable = CompositeDisposable()
@@ -58,10 +60,13 @@ class AlphabetViewModel @Inject constructor(
 
     private var previousTime: Long = Date().time
 
+    private val summaryTimeSpendOnExercise: Long
+        get() = timeIntervals.sum()
+
     val averageTimeOnWord: Float
         get() {
             return try {
-                (timeIntervals.sum() / timeIntervals.size) / 1000f
+                (summaryTimeSpendOnExercise / timeIntervals.size) / 1000f
             } catch (ex: Exception) {
                 0f
             }
@@ -132,7 +137,11 @@ class AlphabetViewModel @Inject constructor(
                     averageTimeOnWord
                 )
             )
-        )
+        ).andThen(
+                insertOrUpdateStatisticDayInteractor(
+                    StatisticsEntityFactory().createDayEntity(summaryTimeSpendOnExercise)
+                )
+            )
             .doOnComplete(doOnComplete)
             .subscribe()
             .let(disposables::add)

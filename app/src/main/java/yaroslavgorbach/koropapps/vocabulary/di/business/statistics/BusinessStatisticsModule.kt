@@ -2,14 +2,10 @@ package yaroslavgorbach.koropapps.vocabulary.di.business.statistics
 
 import dagger.Module
 import dagger.Provides
-import yaroslavgorbach.koropapps.vocabulary.business.statistics.InsertStatisticTimeInteractor
-import yaroslavgorbach.koropapps.vocabulary.business.statistics.InsertStatisticValueInteractor
-import yaroslavgorbach.koropapps.vocabulary.business.statistics.ObserveStatisticsTimeInteractor
-import yaroslavgorbach.koropapps.vocabulary.business.statistics.ObserveStatisticsValueInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.statistics.*
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.repo.RepoStatistics
 import yaroslavgorbach.koropapps.vocabulary.di.data.statistics.DataModuleStatistics
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.di.DescriptionComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.alphabet.di.AlphabetExerciseComponent
 
 @Module(
     includes = [DataModuleStatistics::class],
@@ -44,5 +40,23 @@ class BusinessStatisticsModule {
         repoStatistics: RepoStatistics
     ): ObserveStatisticsTimeInteractor {
         return ObserveStatisticsTimeInteractor(repoStatistics)
+    }
+
+    @Provides
+    fun provideObserveStatisticDayInteractor(
+        repoStatistics: RepoStatistics
+    ): ObserveStatisticDaysInteractor {
+        return ObserveStatisticDaysInteractor(repoStatistics)
+    }
+
+    @Provides
+    fun provideInsertOrUpdateStatisticsInteractor(
+        repoStatistics: RepoStatistics,
+        provideObserveStatisticDaysInteractor: ObserveStatisticDaysInteractor
+    ): InsertOrUpdateStatisticDayInteractor {
+        return InsertOrUpdateStatisticDayInteractor(
+            repoStatistics,
+            provideObserveStatisticDaysInteractor
+        )
     }
 }

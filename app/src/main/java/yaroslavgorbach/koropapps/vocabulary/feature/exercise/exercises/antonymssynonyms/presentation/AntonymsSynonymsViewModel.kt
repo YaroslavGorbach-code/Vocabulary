@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.reactivex.rxjava3.disposables.CompositeDisposable
+import yaroslavgorbach.koropapps.vocabulary.business.statistics.InsertOrUpdateStatisticDayInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.InsertStatisticTimeInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.InsertStatisticValueInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.IncrementExercisePerformedInteractor
@@ -23,7 +24,8 @@ class AntonymsSynonymsViewModel @Inject constructor(
     private val incrementExercisePerformedInteractor: IncrementExercisePerformedInteractor,
     private val observeTrainingExerciseInteractor: ObserveTrainingExerciseInteractor,
     private val insertStatisticValueInteractor: InsertStatisticValueInteractor,
-    private val insertStatisticTimeInteractor: InsertStatisticTimeInteractor
+    private val insertStatisticTimeInteractor: InsertStatisticTimeInteractor,
+    private val insertOrUpdateStatisticDayInteractor: InsertOrUpdateStatisticDayInteractor
 ) : ViewModel() {
 
     private val disposables: CompositeDisposable = CompositeDisposable()
@@ -63,10 +65,13 @@ class AntonymsSynonymsViewModel @Inject constructor(
 
     private var previousTime: Long = Date().time
 
+    private val summaryTimeSpendOnExercise: Long
+        get() = timeIntervals.sum()
+
     private val averageTimeOnWord: Float
         get() {
             return try {
-                (timeIntervals.sum() / timeIntervals.size) / 1000f
+                (summaryTimeSpendOnExercise / timeIntervals.size) / 1000f
             } catch (ex: Exception) {
                 0f
             }
@@ -117,6 +122,10 @@ class AntonymsSynonymsViewModel @Inject constructor(
                 StatisticsEntityFactory().createTimeEntity(
                     exerciseType.getExerciseName(),
                     averageTimeOnWord
+                )
+            ).andThen(
+                insertOrUpdateStatisticDayInteractor(
+                    StatisticsEntityFactory().createDayEntity(summaryTimeSpendOnExercise)
                 )
             )
         )

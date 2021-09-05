@@ -8,15 +8,11 @@ import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import dagger.Module
 import dagger.Provides
-import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.StatisticsDatabase
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.dao.StatisticsDao
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.repo.RepoStatistics
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.repo.RepoStatisticsImp
-import yaroslavgorbach.koropapps.vocabulary.data.training.local.TrainingDatabase
-import yaroslavgorbach.koropapps.vocabulary.data.training.local.dao.TrainingDao
-import yaroslavgorbach.koropapps.vocabulary.data.training.repo.RepoTraining
-import yaroslavgorbach.koropapps.vocabulary.data.training.repo.RepoTrainingImp
+import java.util.*
 import javax.inject.Singleton
 
 @Module
@@ -35,7 +31,17 @@ class DataModuleStatistics {
     fun provideStatisticsDatabase(context: Application): StatisticsDatabase {
         return Room.databaseBuilder(
             context, StatisticsDatabase::class.java, "databaseStatistics"
-        ).build()
+        ).addCallback(object : RoomDatabase.Callback() {
+            override fun onCreate(db: SupportSQLiteDatabase) {
+                ContentValues().apply {
+                    put("id", 0)
+                    put("summaryTrainingTime", 0)
+                    put("date", Date().time)
+                }.also { cv ->
+                    db.insert("StatisticsDayEntity", OnConflictStrategy.REPLACE, cv)
+                }
+            }
+        }).build()
     }
 
     @Singleton
