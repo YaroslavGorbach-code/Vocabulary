@@ -6,11 +6,13 @@ import yaroslavgorbach.koropapps.vocabulary.business.statistics.*
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.repo.RepoStatistics
 import yaroslavgorbach.koropapps.vocabulary.di.data.statistics.DataModuleStatistics
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.di.DescriptionComponent
+import yaroslavgorbach.koropapps.vocabulary.feature.profile.di.ProfileComponent
 
 @Module(
     includes = [DataModuleStatistics::class],
     subcomponents = [
-        DescriptionComponent::class
+        DescriptionComponent::class,
+        ProfileComponent::class
     ]
 )
 class BusinessStatisticsModule {

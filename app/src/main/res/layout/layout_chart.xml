@@ -21,7 +21,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Cтатистика"
+        android:text="@string/time_on_training"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/prev_data"
         app:layout_constraintEnd_toStartOf="@+id/next_data"
@@ -39,7 +39,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <im.dacer.androidcharts.LineView
-        android:id="@+id/chart_value"
+        android:id="@+id/chart"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_gravity="center"

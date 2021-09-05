@@ -24,5 +24,6 @@
     <string name="exercises">Упражнения</string>
     <string name="records">Профиль</string>
     <string name="days_without_interruption">Дней подряд</string>
+    <string name="time_on_training">Временя (минуты) потраченое на тренировку</string>
 
 </resources>

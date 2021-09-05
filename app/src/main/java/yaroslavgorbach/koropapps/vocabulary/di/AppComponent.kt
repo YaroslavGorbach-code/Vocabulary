@@ -18,6 +18,7 @@ import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.remembera
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.tautograms.di.TautogramsExerciseComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.ten.di.TenExerciseComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.di.ExercisesListComponent
+import yaroslavgorbach.koropapps.vocabulary.feature.profile.di.ProfileComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.training.di.TrainingComponent
 import javax.inject.Singleton
 
@@ -55,6 +56,8 @@ interface AppComponent {
     fun tenComponent(): TenExerciseComponent.Factory
 
     fun alphabetComponent(): AlphabetExerciseComponent.Factory
+
+    fun profileComponent(): ProfileComponent.Factory
 
     @Component.Factory
     interface Factory {
