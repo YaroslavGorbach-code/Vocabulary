@@ -54,6 +54,22 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 override fun onPreviousChart() {
                     viewModel.onPreviousChart()
                 }
+
+                override fun onSettings() {
+
+                }
+
+                override fun onRemoveAds() {
+
+                }
+
+                override fun onShare() {
+
+                }
+
+                override fun onRate() {
+
+                }
             })
     }
 

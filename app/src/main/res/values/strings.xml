@@ -25,5 +25,9 @@
     <string name="records">Профиль</string>
     <string name="days_without_interruption">Дней подряд</string>
     <string name="time_on_training">Временя (минуты) потраченое на тренировку</string>
+    <string name="settings">Настройки</string>
+    <string name="remove_ads">Убрать рекламу</string>
+    <string name="rate_app">Оценить приложение</string>
+    <string name="share_app">Поделиться приложением</string>
 
 </resources>
