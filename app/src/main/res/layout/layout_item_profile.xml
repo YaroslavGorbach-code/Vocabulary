@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:padding="4dp"
+    android:background="?selectableItemBackground"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:layout_weight="0.15"
+        android:src="@drawable/ic_settings" />
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:textSize="16sp"
+        android:textColor="?colorControlNormal"
+        android:layout_weight="1"
+        android:gravity="center|start"
+        tools:text="Name of button" />
+
+</LinearLayout>
