@@ -45,6 +45,7 @@ data class ChartValueUi(
             ExerciseName.THREE_LITER_JAR,
             ExerciseName.LIST_OF_CATEGORIES,
             ExerciseName.ANTONYMS_AND_SYNONYMS -> R.string.number_words_for_session
+            ExerciseName.THREE_LETTERS,
             ExerciseName.TAUTOGRAMS -> R.string.number_sentences_for_session
             ExerciseName.NARRATOR_NOUN,
             ExerciseName.NARRATOR_ADJECTIVES,

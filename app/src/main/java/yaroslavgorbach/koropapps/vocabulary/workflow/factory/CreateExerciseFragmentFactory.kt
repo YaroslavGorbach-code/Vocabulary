@@ -13,6 +13,7 @@ import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.narrator.
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.rememberall.ui.RememberAllFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.tautograms.ui.TautogramsFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.ten.ui.TenFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.threeletters.ui.ThreeLettersFragment
 
 class CreateExerciseFragmentFactory {
     fun create(exerciseName: ExerciseName, exerciseType: ExerciseType): Fragment {
@@ -58,6 +59,9 @@ class CreateExerciseFragmentFactory {
             }
             ExerciseName.LIST_OF_CATEGORIES -> {
                 ListOfCategoriesFragment.newInstance(exerciseType)
+            }
+            ExerciseName.THREE_LETTERS -> {
+                ThreeLettersFragment.newInstance(exerciseType)
             }
         }
     }

@@ -15,6 +15,7 @@ import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.narrator.
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.rememberall.di.RememberAllExerciseComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.tautograms.di.TautogramsExerciseComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.ten.di.TenExerciseComponent
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.threeletters.di.ThreeLettersExerciseComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.training.di.TrainingComponent
 
 @Module(
@@ -31,7 +32,8 @@ import yaroslavgorbach.koropapps.vocabulary.feature.training.di.TrainingComponen
         TenExerciseComponent::class,
         AntonymsSynonymsExerciseComponent::class,
         AlphabetExerciseComponent::class,
-        ListOfCategoriesComponent::class
+        ListOfCategoriesComponent::class,
+        ThreeLettersExerciseComponent::class
     ]
 )
 class BusinessTrainingModule {

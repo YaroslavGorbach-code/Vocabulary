@@ -31,6 +31,7 @@ class ExerciseNameToShortDescriptionResMapper {
             ExerciseName.GAME_I_KNOW_5_NAMES -> R.string.desc_short_game
             ExerciseName.THREE_LITER_JAR -> R.string.desc_short_three_liter_jar
             ExerciseName.LIST_OF_CATEGORIES -> R.string.desc_short_list_of_categories
+            ExerciseName.THREE_LETTERS -> R.string.desc_short_three_letters
         }
     }
 }

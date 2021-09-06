@@ -31,6 +31,8 @@
     <string name="share_app">Поделиться приложением</string>
     <string name="Level">Уровень</string>
     <string name="list_of_categories">Список категорий</string>
+    <string name="three_letters">Три буквы</string>
+
     <style name="click_on_screen">После названого слова, нажниме на экран, для учета результата</style>
 
 </resources>

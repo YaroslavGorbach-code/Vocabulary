@@ -20,6 +20,7 @@ class ExerciseNameToIconResMapper {
             ExerciseName.GAME_I_KNOW_5_NAMES -> R.drawable.ic_game
             ExerciseName.THREE_LITER_JAR -> R.drawable.ic_jar
             ExerciseName.LIST_OF_CATEGORIES -> R.drawable.ic_share
+            ExerciseName.THREE_LETTERS -> R.drawable.ic_rate
         }
     }
 }

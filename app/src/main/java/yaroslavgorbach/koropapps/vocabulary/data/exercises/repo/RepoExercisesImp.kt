@@ -20,7 +20,8 @@ class RepoExercisesImp : RepoExercises {
             Exercise(ExerciseName.GAME_I_KNOW_5_NAMES),
             Exercise(ExerciseName.TEN),
             Exercise(ExerciseName.THREE_LITER_JAR),
-            Exercise(ExerciseName.LIST_OF_CATEGORIES)
+            Exercise(ExerciseName.LIST_OF_CATEGORIES),
+            Exercise(ExerciseName.THREE_LETTERS)
         )
     )
 

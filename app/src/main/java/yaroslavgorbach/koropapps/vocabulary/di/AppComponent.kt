@@ -18,6 +18,7 @@ import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.narrator.
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.rememberall.di.RememberAllExerciseComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.tautograms.di.TautogramsExerciseComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.ten.di.TenExerciseComponent
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.threeletters.di.ThreeLettersExerciseComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.di.ExercisesListComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.di.ProfileComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.training.di.TrainingComponent
@@ -61,6 +62,8 @@ interface AppComponent {
     fun profileComponent(): ProfileComponent.Factory
 
     fun listOfCategoriesComponent(): ListOfCategoriesComponent.Factory
+
+    fun threeLettersComponent(): ThreeLettersExerciseComponent.Factory
 
     @Component.Factory
     interface Factory {

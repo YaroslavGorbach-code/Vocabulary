@@ -43,12 +43,28 @@
         Назовите предмет на данную букву, который поместиться в трехлитровую банку
     </string>
 
-    <string name="desc_short_alphabet_a">Назовите прилагательное (какой? какое?) на букву</string>
-    <string name="desc_short_alphabet_n">Назовите существительное на букву (кто? что?)</string>
-    <string name="desc_short_alphabet_v">Назовите глагол на букву (что делать? что сделать?)</string>
+    <string name="desc_short_alphabet_a">
+        Назовите прилагательное (какой? какое?) на букву
+    </string>
 
-    <string name="desc_short_tautograms">Составте предложение, в котором все слова будут начинаться на букву</string>
+    <string name="desc_short_alphabet_n">
+        Назовите существительное на букву (кто? что?)
+    </string>
 
-    <string name="desc_short_list_of_categories">Назовите слово начинаюшееся с
-        данной буквы и пренадлежащее данной категории</string>
+    <string name="desc_short_alphabet_v">
+        Назовите глагол на букву (что делать? что сделать?)
+    </string>
+
+    <string name="desc_short_tautograms">
+        Составте предложение, в котором всеслова будут начинаться на букву
+    </string>
+
+    <string name="desc_short_list_of_categories">
+        Назовите слово начинаюшееся сданной буквы и пренадлежащее данной категории
+    </string>
+
+    <string name="desc_short_three_letters">
+        Составьте предложение из трех слов, начинающихся с трех предложеных вам букв
+    </string>
+
 </resources>
