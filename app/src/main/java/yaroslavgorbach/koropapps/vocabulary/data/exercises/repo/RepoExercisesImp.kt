@@ -20,12 +20,12 @@ class RepoExercisesImp : RepoExercises {
             Exercise(ExerciseName.GAME_I_KNOW_5_NAMES),
             Exercise(ExerciseName.TEN),
             Exercise(ExerciseName.THREE_LITER_JAR),
+            Exercise(ExerciseName.LIST_OF_CATEGORIES)
         )
     )
 
     override fun get(): Single<List<Exercise>> {
         return exercises
-
     }
 
     override fun get(exerciseName: ExerciseName): Single<Exercise> {

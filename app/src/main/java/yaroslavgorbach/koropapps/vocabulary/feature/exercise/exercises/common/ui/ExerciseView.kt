@@ -38,7 +38,7 @@ class ExerciseView(
         binding.descriptionText.text = text
     }
 
-    fun setShortDescriptionText(text: String) {
+    fun setShortDescriptionAboveWord(text: String) {
         binding.letter.setAtTop(text)
     }
 

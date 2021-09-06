@@ -2,8 +2,8 @@ package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.jar.di
 
 import dagger.BindsInstance
 import dagger.Subcomponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.jar.ui.JarFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.jar.ui.JarFragment
 
 @Subcomponent(modules = [JarExerciseModule::class])
 interface JarExerciseComponent {

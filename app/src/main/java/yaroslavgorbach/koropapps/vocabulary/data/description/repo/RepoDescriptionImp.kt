@@ -20,6 +20,7 @@ class RepoDescriptionImp : RepoDescription {
             Description(ExerciseName.REMEMBER_ALL),
             Description(ExerciseName.GAME_I_KNOW_5_NAMES),
             Description(ExerciseName.THREE_LITER_JAR),
+            Description(ExerciseName.LIST_OF_CATEGORIES),
         )
     )
 

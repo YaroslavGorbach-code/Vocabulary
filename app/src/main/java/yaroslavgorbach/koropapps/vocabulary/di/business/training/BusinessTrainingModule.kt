@@ -10,6 +10,7 @@ import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.antonymss
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.associations.di.AssociationsExerciseComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.game.di.GameExerciseComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.jar.di.JarExerciseComponent
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.listofcategories.di.ListOfCategoriesComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.narrator.di.NarratorExerciseComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.rememberall.di.RememberAllExerciseComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.tautograms.di.TautogramsExerciseComponent
@@ -29,7 +30,8 @@ import yaroslavgorbach.koropapps.vocabulary.feature.training.di.TrainingComponen
         TautogramsExerciseComponent::class,
         TenExerciseComponent::class,
         AntonymsSynonymsExerciseComponent::class,
-        AlphabetExerciseComponent::class
+        AlphabetExerciseComponent::class,
+        ListOfCategoriesComponent::class
     ]
 )
 class BusinessTrainingModule {

@@ -1,4 +1,4 @@
-package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.narrator.ui
+package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.listofcategories.ui
 
 import android.content.Context
 import android.os.Bundle
@@ -11,17 +11,16 @@ import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.common.ui.ExerciseView
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.narrator.presentation.NarratorViewModel
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.listofcategories.presentation.ListOfCategoriesViewModel
 import yaroslavgorbach.koropapps.vocabulary.utils.appComponent
 import javax.inject.Inject
 
-
-class NarratorFragment : Fragment(R.layout.fragment_exercise) {
+class ListOfCategoriesFragment : Fragment(R.layout.fragment_exercise) {
 
     companion object {
         private const val ARG_EXERCISE_TYPE = "ARG_EXERCISE_TYPE"
 
-        fun newInstance(exerciseType: ExerciseType) = NarratorFragment().apply {
+        fun newInstance(exerciseType: ExerciseType) = ListOfCategoriesFragment().apply {
             arguments = bundleOf(
                 ARG_EXERCISE_TYPE to exerciseType
             )
@@ -31,7 +30,7 @@ class NarratorFragment : Fragment(R.layout.fragment_exercise) {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private val viewModel by viewModels<NarratorViewModel> { viewModelFactory }
+    private val viewModel by viewModels<ListOfCategoriesViewModel> { viewModelFactory }
 
     private lateinit var exerciseView: ExerciseView
 
@@ -51,7 +50,7 @@ class NarratorFragment : Fragment(R.layout.fragment_exercise) {
 
     private fun initDagger() {
         appComponent()
-            .narratorComponent()
+            .listOfCategoriesComponent()
             .create(exerciseType)
             .inject(this)
     }
@@ -61,7 +60,7 @@ class NarratorFragment : Fragment(R.layout.fragment_exercise) {
             FragmentExerciseBinding.bind(requireView()),
             object : ExerciseView.Callback {
                 override fun onNext() {
-                    viewModel.onNextClick()
+                    viewModel.onNextWordClick()
                 }
 
                 override fun onBack() {
@@ -69,13 +68,13 @@ class NarratorFragment : Fragment(R.layout.fragment_exercise) {
                 }
             })
 
-        exerciseView.setShortDescriptionAboveWord(getString(R.string.number_of_words_in_story))
         exerciseView.setExerciseName(exerciseType.getExerciseName())
         exerciseView.setDescriptionText(viewModel.description)
     }
 
     private fun initObservers() {
-        viewModel.numberOfWords.observe(viewLifecycleOwner, exerciseView::setWord)
+        viewModel.letter.observe(viewLifecycleOwner, exerciseView::setWord)
+        viewModel.category.observe(viewLifecycleOwner, exerciseView::setShortDescriptionAboveWord)
         viewModel.exercise.observe(viewLifecycleOwner, exerciseView::setExercise)
     }
 }

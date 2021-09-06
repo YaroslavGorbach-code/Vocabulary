@@ -24,5 +24,6 @@ data class Description(val exerciseName: ExerciseName) {
             ExerciseName.REMEMBER_ALL -> R.string.remember_all_description
             ExerciseName.GAME_I_KNOW_5_NAMES -> R.string.game_i_know_5_names_description
             ExerciseName.THREE_LITER_JAR -> R.string.three_liter_jar_description
+            ExerciseName.LIST_OF_CATEGORIES -> R.string.lists_of_categories_description
         }
 }

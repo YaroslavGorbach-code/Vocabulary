@@ -47,7 +47,8 @@
     <string name="desc_short_alphabet_n">Назовите существительное на букву (кто? что?)</string>
     <string name="desc_short_alphabet_v">Назовите глагол на букву (что делать? что сделать?)</string>
 
-    <style name="desc_short_click_on_screen">После названого слова, нажниме на экран, для учета результата</style>
-
     <string name="desc_short_tautograms">Составте предложение, в котором все слова будут начинаться на букву</string>
+
+    <string name="desc_short_list_of_categories">Назовите слово начинаюшееся с
+        данной буквы и пренадлежащее данной категории</string>
 </resources>
