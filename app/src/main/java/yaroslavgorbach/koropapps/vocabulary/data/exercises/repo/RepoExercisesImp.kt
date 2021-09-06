@@ -21,7 +21,8 @@ class RepoExercisesImp : RepoExercises {
             Exercise(ExerciseName.TEN),
             Exercise(ExerciseName.THREE_LITER_JAR),
             Exercise(ExerciseName.LIST_OF_CATEGORIES),
-            Exercise(ExerciseName.THREE_LETTERS)
+            Exercise(ExerciseName.THREE_LETTERS),
+            Exercise(ExerciseName.HALF)
         )
     )
 

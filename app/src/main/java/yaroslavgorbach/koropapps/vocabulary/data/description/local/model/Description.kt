@@ -26,5 +26,6 @@ data class Description(val exerciseName: ExerciseName) {
             ExerciseName.THREE_LITER_JAR -> R.string.three_liter_jar_description
             ExerciseName.LIST_OF_CATEGORIES -> R.string.lists_of_categories_description
             ExerciseName.THREE_LETTERS -> R.string.three_letters_description
+            ExerciseName.HALF -> R.string.half_description
         }
 }

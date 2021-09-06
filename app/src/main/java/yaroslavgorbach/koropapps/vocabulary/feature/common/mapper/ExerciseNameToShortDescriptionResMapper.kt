@@ -32,6 +32,7 @@ class ExerciseNameToShortDescriptionResMapper {
             ExerciseName.THREE_LITER_JAR -> R.string.desc_short_three_liter_jar
             ExerciseName.LIST_OF_CATEGORIES -> R.string.desc_short_list_of_categories
             ExerciseName.THREE_LETTERS -> R.string.desc_short_three_letters
+            ExerciseName.HALF -> R.string.desc_short_half
         }
     }
 }

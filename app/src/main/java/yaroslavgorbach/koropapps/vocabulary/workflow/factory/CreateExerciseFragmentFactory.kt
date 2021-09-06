@@ -7,6 +7,7 @@ import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.alphabet.
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.antonymssynonyms.ui.AntonymsSynonymsFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.associations.ui.AssociationsFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.game.ui.GameFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.half.ui.HalfFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.jar.ui.JarFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.listofcategories.ui.ListOfCategoriesFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.narrator.ui.NarratorFragment
@@ -62,6 +63,9 @@ class CreateExerciseFragmentFactory {
             }
             ExerciseName.THREE_LETTERS -> {
                 ThreeLettersFragment.newInstance(exerciseType)
+            }
+            ExerciseName.HALF -> {
+                HalfFragment.newInstance(exerciseType)
             }
         }
     }

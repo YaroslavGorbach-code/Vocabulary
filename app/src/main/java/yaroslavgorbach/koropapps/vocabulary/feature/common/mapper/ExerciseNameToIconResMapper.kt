@@ -21,6 +21,7 @@ class ExerciseNameToIconResMapper {
             ExerciseName.THREE_LITER_JAR -> R.drawable.ic_jar
             ExerciseName.LIST_OF_CATEGORIES -> R.drawable.ic_share
             ExerciseName.THREE_LETTERS -> R.drawable.ic_rate
+            ExerciseName.HALF -> R.drawable.ic_no_ads
         }
     }
 }

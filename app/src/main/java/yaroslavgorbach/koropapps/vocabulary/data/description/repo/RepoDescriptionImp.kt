@@ -21,7 +21,8 @@ class RepoDescriptionImp : RepoDescription {
             Description(ExerciseName.GAME_I_KNOW_5_NAMES),
             Description(ExerciseName.THREE_LITER_JAR),
             Description(ExerciseName.LIST_OF_CATEGORIES),
-            Description(ExerciseName.THREE_LETTERS)
+            Description(ExerciseName.THREE_LETTERS),
+            Description(ExerciseName.HALF)
         )
     )
 
