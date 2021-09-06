@@ -13,6 +13,7 @@
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_rocket.xml" value="0.21481481481481482" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_settings.xml" value="0.2101851851851852" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_share.xml" value="0.2101851851851852" />
+        <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_shool.xml" value="0.2203125" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_start_exercise.xml" value="0.2203125" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_ten.xml" value="0.2101851851851852" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/line_devider.xml" value="0.2203125" />
@@ -22,7 +23,7 @@
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_exercise_alphabet.xml" value="0.14990942028985507" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_exercises_list.xml" value="0.14990942028985507" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_navigation.xml" value="0.16" />
-        <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_profile.xml" value="0.22" />
+        <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_profile.xml" value="0.18" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_training.xml" value="0.22" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/item_exercise.xml" value="0.14990942028985507" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/iteme_exercise_tarining.xml" value="0.33" />
