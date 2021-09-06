@@ -40,14 +40,14 @@
     </string>
 
     <string name="desc_short_three_liter_jar">
-        Назовите предмет на данную букву который поместиться в трехлитровую банку
+        Назовите предмет на данную букву, который поместиться в трехлитровую банку
     </string>
 
-    <string name="desc_short_alphabet_a">Назовите прилагательное на букву</string>
-    <string name="desc_short_alphabet_n">Назовите существительное на букву</string>
-    <string name="desc_short_alphabet_v">Назовите глагол на букву</string>
+    <string name="desc_short_alphabet_a">Назовите прилагательное (какой? какое?) на букву</string>
+    <string name="desc_short_alphabet_n">Назовите существительное на букву (кто? что?)</string>
+    <string name="desc_short_alphabet_v">Назовите глагол на букву (что делать? что сделать?)</string>
 
     <style name="desc_short_click_on_screen">После названого слова, нажниме на экран, для учета результата</style>
 
-    <string name="desc_short_tautograms">Составте предложение в котором все слова будут начинаться букву</string>
+    <string name="desc_short_tautograms">Составте предложение, в котором все слова будут начинаться на букву</string>
 </resources>
