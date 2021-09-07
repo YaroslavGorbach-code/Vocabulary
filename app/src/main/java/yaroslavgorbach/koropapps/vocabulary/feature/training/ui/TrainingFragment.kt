@@ -14,6 +14,7 @@ import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentTrainingBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.feature.training.presentation.TrainingViewModel
 import yaroslavgorbach.koropapps.vocabulary.utils.host
+import yaroslavgorbach.koropapps.vocabulary.utils.onBackPressed
 import javax.inject.Inject
 
 @InternalCoroutinesApi
@@ -62,7 +63,7 @@ class TrainingFragment : Fragment(R.layout.fragment_training) {
                 }
 
                 override fun onBack() {
-                    requireActivity().onBackPressed()
+                    onBackPressed()
                 }
             })
     }

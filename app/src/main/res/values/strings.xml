@@ -30,6 +30,10 @@
     <string name="rate_app">Оценить приложение</string>
     <string name="share_app">Поделиться приложением</string>
     <string name="Level">Уровень</string>
+    <string name="performed_daily_trainings">Выполнено ежедневных тренеровок</string>
+    <string name="summary_training_time">Сумарное тренеровочное время (минуты)</string>
+    <string name="performed_exercises">Выполнено упражнений</string>
+
     <style name="click_on_screen">После названого слова, нажниме на экран, для учета результата</style>
 
 </resources>

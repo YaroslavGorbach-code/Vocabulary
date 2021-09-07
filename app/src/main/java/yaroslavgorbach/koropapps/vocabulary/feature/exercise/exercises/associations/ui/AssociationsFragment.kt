@@ -7,13 +7,13 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import yaroslavgorbach.koropapps.vocabulary.App
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.common.ui.ExerciseView
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.associations.presentation.AssociationsViewModel
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.common.ui.ExerciseView
 import yaroslavgorbach.koropapps.vocabulary.utils.appComponent
+import yaroslavgorbach.koropapps.vocabulary.utils.onBackPressed
 import javax.inject.Inject
 
 class AssociationsFragment : Fragment(R.layout.fragment_exercise) {
@@ -65,7 +65,7 @@ class AssociationsFragment : Fragment(R.layout.fragment_exercise) {
                 }
 
                 override fun onBack() {
-                    requireActivity().onBackPressed()
+                    onBackPressed()
                 }
             })
 

@@ -13,6 +13,7 @@ import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.presentation.DescriptionViewModel
 import yaroslavgorbach.koropapps.vocabulary.utils.appComponent
 import yaroslavgorbach.koropapps.vocabulary.utils.host
+import yaroslavgorbach.koropapps.vocabulary.utils.onBackPressed
 import javax.inject.Inject
 
 class DescriptionFragment : Fragment(R.layout.fragment_description) {
@@ -67,7 +68,7 @@ class DescriptionFragment : Fragment(R.layout.fragment_description) {
                 }
 
                 override fun onBack() {
-                    requireActivity().onBackPressed()
+                    onBackPressed()
                 }
 
                 override fun onNextChartValue() {

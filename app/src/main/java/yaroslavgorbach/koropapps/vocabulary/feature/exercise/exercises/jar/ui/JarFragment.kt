@@ -13,6 +13,7 @@ import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.common.ui.ExerciseView
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.jar.presentation.JarViewModel
 import yaroslavgorbach.koropapps.vocabulary.utils.appComponent
+import yaroslavgorbach.koropapps.vocabulary.utils.onBackPressed
 import javax.inject.Inject
 
 class JarFragment : Fragment(R.layout.fragment_exercise) {
@@ -64,7 +65,7 @@ class JarFragment : Fragment(R.layout.fragment_exercise) {
                 }
 
                 override fun onBack() {
-                    requireActivity().onBackPressed()
+                    onBackPressed()
                 }
             })
 

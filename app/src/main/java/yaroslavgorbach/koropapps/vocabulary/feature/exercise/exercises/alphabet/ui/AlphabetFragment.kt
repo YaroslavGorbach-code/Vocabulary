@@ -14,6 +14,7 @@ import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseAlphabet
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.alphabet.presentation.AlphabetViewModel
 import yaroslavgorbach.koropapps.vocabulary.utils.appComponent
+import yaroslavgorbach.koropapps.vocabulary.utils.onBackPressed
 import javax.inject.Inject
 
 class AlphabetFragment : Fragment(R.layout.fragment_exercise_alphabet),
@@ -77,7 +78,7 @@ class AlphabetFragment : Fragment(R.layout.fragment_exercise_alphabet),
                 }
 
                 override fun onBack() {
-                    requireActivity().onBackPressed()
+                    onBackPressed()
                 }
             })
 

@@ -14,6 +14,7 @@ import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.common.ui
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.tautograms.presentation.TautogramsViewModel
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.utils.appComponent
+import yaroslavgorbach.koropapps.vocabulary.utils.onBackPressed
 import javax.inject.Inject
 
 class TautogramsFragment : Fragment(R.layout.fragment_exercise) {
@@ -65,7 +66,7 @@ class TautogramsFragment : Fragment(R.layout.fragment_exercise) {
                 }
 
                 override fun onBack() {
-                    requireActivity().onBackPressed()
+                    onBackPressed()
                 }
             })
 

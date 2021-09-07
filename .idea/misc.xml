@@ -11,6 +11,7 @@
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_person.xml" value="0.21481481481481482" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_rate.xml" value="0.2101851851851852" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_rocket.xml" value="0.21481481481481482" />
+        <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_rocket_black.xml" value="0.2203125" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_settings.xml" value="0.2101851851851852" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_share.xml" value="0.2101851851851852" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_shool.xml" value="0.2203125" />
@@ -22,7 +23,7 @@
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_exercise.xml" value="0.22" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_exercise_alphabet.xml" value="0.14990942028985507" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_exercises_list.xml" value="0.14990942028985507" />
-        <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_level.xml" value="0.10326086956521739" />
+        <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_level.xml" value="0.16" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_navigation.xml" value="0.16" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_profile.xml" value="0.33" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_training.xml" value="0.22" />
@@ -30,6 +31,7 @@
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/iteme_exercise_tarining.xml" value="0.33" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/layout_chart.xml" value="0.22" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/layout_item_profile.xml" value="0.25" />
+        <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/layout_level_info_item.xml" value="0.25" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/layout_next_button.xml" value="0.14855072463768115" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/layout_training.xml" value="0.25" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/layout_training_days.xml" value="0.22" />
