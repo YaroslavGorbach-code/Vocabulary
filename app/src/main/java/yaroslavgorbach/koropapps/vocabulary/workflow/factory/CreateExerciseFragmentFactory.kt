@@ -12,6 +12,7 @@ import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.jar.ui.Ja
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.listofcategories.ui.ListOfCategoriesFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.narrator.ui.NarratorFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.rememberall.ui.RememberAllFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.specifications.ui.SpecificationsFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.tautograms.ui.TautogramsFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.ten.ui.TenFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.threeletters.ui.ThreeLettersFragment
@@ -66,6 +67,9 @@ class CreateExerciseFragmentFactory {
             }
             ExerciseName.HALF -> {
                 HalfFragment.newInstance(exerciseType)
+            }
+            ExerciseName.SPECIFICATIONS -> {
+                SpecificationsFragment.newInstance(exerciseType)
             }
         }
     }

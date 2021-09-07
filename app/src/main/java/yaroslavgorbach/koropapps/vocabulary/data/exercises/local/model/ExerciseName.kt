@@ -19,5 +19,6 @@ enum class ExerciseName(@StringRes val id: Int) {
     THREE_LITER_JAR(R.string.three_liter_jar),
     LIST_OF_CATEGORIES(R.string.list_of_categories),
     THREE_LETTERS(R.string.three_letters),
-    HALF(R.string.half)
+    HALF(R.string.half),
+    SPECIFICATIONS(R.string.specifications)
 }

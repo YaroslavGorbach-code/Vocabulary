@@ -70,4 +70,8 @@
     <string name="desc_short_half">
         Придумайте слово из данных вам двух первых букв
     </string>
+
+    <string name="desc_short_specifications">
+        Назовите минимум пять определений - характеристик для данно вам предмета
+    </string>
 </resources>

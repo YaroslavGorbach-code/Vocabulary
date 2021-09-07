@@ -22,7 +22,8 @@ class RepoDescriptionImp : RepoDescription {
             Description(ExerciseName.THREE_LITER_JAR),
             Description(ExerciseName.LIST_OF_CATEGORIES),
             Description(ExerciseName.THREE_LETTERS),
-            Description(ExerciseName.HALF)
+            Description(ExerciseName.HALF),
+            Description(ExerciseName.SPECIFICATIONS)
         )
     )
 
@@ -32,5 +33,4 @@ class RepoDescriptionImp : RepoDescription {
                 list.first { it.exerciseName == exerciseName }
             }
     }
-
 }
