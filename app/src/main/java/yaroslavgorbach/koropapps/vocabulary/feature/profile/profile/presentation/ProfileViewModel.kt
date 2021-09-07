@@ -1,4 +1,4 @@
-package yaroslavgorbach.koropapps.vocabulary.feature.profile.presentation
+package yaroslavgorbach.koropapps.vocabulary.feature.profile.profile.presentation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,7 +7,7 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.ObserveStatisticDaysInteractor
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.model.ChartValueUi
-import yaroslavgorbach.koropapps.vocabulary.feature.profile.model.ChartDayUi
+import yaroslavgorbach.koropapps.vocabulary.feature.profile.profile.model.ChartDayUi
 import java.util.*
 import javax.inject.Inject
 

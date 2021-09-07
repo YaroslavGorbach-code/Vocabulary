@@ -22,7 +22,7 @@ import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.tautogram
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.ten.di.TenExerciseComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.threeletters.di.ThreeLettersExerciseComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.di.ExercisesListComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.profile.di.ProfileComponent
+import yaroslavgorbach.koropapps.vocabulary.feature.profile.profile.di.ProfileComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.training.di.TrainingComponent
 import javax.inject.Singleton
 

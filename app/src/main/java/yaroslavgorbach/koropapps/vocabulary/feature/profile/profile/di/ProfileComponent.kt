@@ -1,8 +1,7 @@
-package yaroslavgorbach.koropapps.vocabulary.feature.profile.di
+package yaroslavgorbach.koropapps.vocabulary.feature.profile.profile.di
 
 import dagger.Subcomponent
-import yaroslavgorbach.koropapps.vocabulary.feature.profile.presentation.ProfileViewModel
-import yaroslavgorbach.koropapps.vocabulary.feature.profile.ui.ProfileFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.profile.profile.ui.ProfileFragment
 
 @Subcomponent(modules = [ProfileModule::class])
 interface ProfileComponent {

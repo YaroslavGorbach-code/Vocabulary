@@ -1,9 +1,8 @@
 package yaroslavgorbach.koropapps.vocabulary.data.description.repo
-
+// TODO: 9/7/2021 добавить фичу слово дня
 import io.reactivex.rxjava3.core.Single
 import yaroslavgorbach.koropapps.vocabulary.data.description.local.model.Description
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
-
 class RepoDescriptionImp : RepoDescription {
     private val descriptions = Single.just(
         listOf(

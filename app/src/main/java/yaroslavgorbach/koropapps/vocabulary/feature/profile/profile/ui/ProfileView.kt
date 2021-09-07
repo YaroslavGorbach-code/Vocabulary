@@ -1,10 +1,10 @@
-package yaroslavgorbach.koropapps.vocabulary.feature.profile.ui
+package yaroslavgorbach.koropapps.vocabulary.feature.profile.profile.ui
 
 import android.view.View
 import im.dacer.androidcharts.LineView
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentProfileBinding
-import yaroslavgorbach.koropapps.vocabulary.feature.profile.model.ChartDayUi
+import yaroslavgorbach.koropapps.vocabulary.feature.profile.profile.model.ChartDayUi
 import yaroslavgorbach.koropapps.vocabulary.utils.getDrawable
 
 class ProfileView(private val binding: FragmentProfileBinding, private val callback: Callback) {
@@ -16,6 +16,7 @@ class ProfileView(private val binding: FragmentProfileBinding, private val callb
         fun onRemoveAds()
         fun onShare()
         fun onRate()
+        fun onLevel()
     }
 
     init {
@@ -68,6 +69,10 @@ class ProfileView(private val binding: FragmentProfileBinding, private val callb
 
         binding.settings.item.setOnClickListener {
             callback.onSettings()
+        }
+
+        binding.levelCard.setOnClickListener {
+            callback.onLevel()
         }
     }
 

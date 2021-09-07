@@ -9,6 +9,7 @@ import kotlinx.coroutines.InternalCoroutinesApi
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.ExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.feature.navigation.ui.NavigationFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.ui.LevelFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.feature.training.ui.TrainingFragment
 import yaroslavgorbach.koropapps.vocabulary.workflow.ExerciseWorkflow
@@ -40,6 +41,15 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), NavigationFragme
 
     override fun openTraining() {
         val fragment = TrainingFragment.newInstance()
+        supportFragmentManager.commit {
+            replace(R.id.main_container, fragment)
+            addToBackStack(null)
+            setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+        }
+    }
+
+    override fun openLevel() {
+        val fragment = LevelFragment.newInstance()
         supportFragmentManager.commit {
             replace(R.id.main_container, fragment)
             addToBackStack(null)

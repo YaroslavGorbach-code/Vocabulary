@@ -8,17 +8,19 @@ import androidx.fragment.app.commit
 import kotlinx.coroutines.InternalCoroutinesApi
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentNavigationBinding
-import yaroslavgorbach.koropapps.vocabulary.feature.profile.ui.ProfileFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.ExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.ui.ExercisesListFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.profile.profile.ui.ProfileFragment
 import yaroslavgorbach.koropapps.vocabulary.utils.host
 
 @InternalCoroutinesApi
-class NavigationFragment : Fragment(R.layout.fragment_navigation), ExercisesListFragment.Router {
+class NavigationFragment : Fragment(R.layout.fragment_navigation), ExercisesListFragment.Router,
+    ProfileFragment.Router {
 
     interface Router {
         fun openDescription(exercise: ExerciseUi)
         fun openTraining()
+        fun openLevel()
     }
 
     companion object {
@@ -71,5 +73,9 @@ class NavigationFragment : Fragment(R.layout.fragment_navigation), ExercisesList
 
     override fun openTraining() {
         host<Router>().openTraining()
+    }
+
+    override fun openLevel() {
+        host<Router>().openLevel()
     }
 }

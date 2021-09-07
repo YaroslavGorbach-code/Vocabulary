@@ -1,4 +1,4 @@
-package yaroslavgorbach.koropapps.vocabulary.feature.profile.ui
+package yaroslavgorbach.koropapps.vocabulary.feature.profile.profile.ui
 
 import android.content.Context
 import android.os.Bundle
@@ -8,11 +8,16 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentProfileBinding
-import yaroslavgorbach.koropapps.vocabulary.feature.profile.presentation.ProfileViewModel
+import yaroslavgorbach.koropapps.vocabulary.feature.profile.profile.presentation.ProfileViewModel
 import yaroslavgorbach.koropapps.vocabulary.utils.appComponent
+import yaroslavgorbach.koropapps.vocabulary.utils.host
 import javax.inject.Inject
 
-class ProfileFragment : Fragment(R.layout.fragment_profile) {
+class ProfileFragment : Fragment(R.layout.fragment_profile){
+
+    interface Router {
+        fun openLevel()
+    }
 
     companion object {
         fun newInstance() = ProfileFragment()
@@ -69,6 +74,10 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
                 override fun onRate() {
 
+                }
+
+                override fun onLevel() {
+                    host<Router>().openLevel()
                 }
             })
     }

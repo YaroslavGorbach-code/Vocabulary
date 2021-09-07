@@ -1,4 +1,4 @@
-package yaroslavgorbach.koropapps.vocabulary.feature.profile.model
+package yaroslavgorbach.koropapps.vocabulary.feature.profile.profile.model
 
 import android.content.Context
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsDayEntity
