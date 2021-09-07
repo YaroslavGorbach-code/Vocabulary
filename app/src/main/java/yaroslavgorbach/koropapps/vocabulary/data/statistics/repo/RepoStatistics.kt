@@ -2,23 +2,31 @@ package yaroslavgorbach.koropapps.vocabulary.data.statistics.repo
 
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
-import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsDayEntity
-import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsTimeEntity
-import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsValueEntity
+import io.reactivex.rxjava3.core.Single
+import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsDailyTrainingTimeEntity
+import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsExerciseTimeEntity
+import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsExerciseValueEntity
+import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsLevelEntity
 
 interface RepoStatistics {
 
-    fun insert(statisticsValueEntity: StatisticsValueEntity): Completable
+    fun insert(statisticsExerciseValueEntity: StatisticsExerciseValueEntity): Completable
 
-    fun insert(statisticsTimeEntity: StatisticsTimeEntity): Completable
+    fun insert(statisticsExerciseTimeEntity: StatisticsExerciseTimeEntity): Completable
 
-    fun insert(statisticsDayEntity: StatisticsDayEntity): Completable
+    fun insert(statisticsDailyTrainingTimeEntity: StatisticsDailyTrainingTimeEntity): Completable
 
-    fun update(statisticsDayEntity: StatisticsDayEntity): Completable
+    fun insert(statisticsLevelEntity: StatisticsLevelEntity): Completable
 
-    fun observeValue(exerciseNameRes: Int): Observable<List<StatisticsValueEntity>>
+    fun update(statisticsLevelEntity: StatisticsLevelEntity): Completable
 
-    fun observeTime(exerciseNameRes: Int): Observable<List<StatisticsTimeEntity>>
+    fun update(statisticsDailyTrainingTimeEntity: StatisticsDailyTrainingTimeEntity): Completable
 
-    fun observeDays(): Observable<List<StatisticsDayEntity>>
+    fun observeValue(exerciseNameRes: Int): Observable<List<StatisticsExerciseValueEntity>>
+
+    fun observeTime(exerciseNameRes: Int): Observable<List<StatisticsExerciseTimeEntity>>
+
+    fun observeDays(): Observable<List<StatisticsDailyTrainingTimeEntity>>
+
+    fun getLevel(): Single<StatisticsLevelEntity>
 }

@@ -1,12 +1,12 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.profile.profile.model
 
 import android.content.Context
-import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsDayEntity
+import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsDailyTrainingTimeEntity
 import yaroslavgorbach.koropapps.vocabulary.utils.formatDD
 import yaroslavgorbach.koropapps.vocabulary.utils.getColorPrimary
 import java.util.*
 
-data class ChartDayUi(private val statisticsDayEntity: List<StatisticsDayEntity>) {
+data class ChartDayUi(private val statisticsDailyTrainingTimeEntity: List<StatisticsDailyTrainingTimeEntity>) {
 
     companion object {
         const val MAX_ITEMS_COUNT = 7
@@ -16,19 +16,19 @@ data class ChartDayUi(private val statisticsDayEntity: List<StatisticsDayEntity>
     val data: ArrayList<ArrayList<Int>> = arrayListOf()
         get() {
             val dataList: ArrayList<Int> =
-                statisticsDayEntity.map { it.summaryTrainingTime.toInt() / ONE_MINUTE } as ArrayList<Int>
+                statisticsDailyTrainingTimeEntity.map { it.summaryTrainingTime.toInt() / ONE_MINUTE } as ArrayList<Int>
             field.add(0, dataList)
             return field
         }
 
     val labels: ArrayList<String>
-        get() = statisticsDayEntity.map { it.date.formatDD() } as ArrayList<String>
+        get() = statisticsDailyTrainingTimeEntity.map { it.date.formatDD() } as ArrayList<String>
 
     val isEmpty: Boolean
         get() = data.isEmpty() || labels.isEmpty()
 
     val dates: List<Date>
-        get() = statisticsDayEntity.map { it.date }
+        get() = statisticsDailyTrainingTimeEntity.map { it.date }
 
     fun getColors(context: Context): IntArray {
         return intArrayOf(

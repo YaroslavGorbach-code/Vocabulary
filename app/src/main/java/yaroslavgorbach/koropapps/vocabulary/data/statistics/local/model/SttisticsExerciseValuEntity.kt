@@ -6,7 +6,7 @@ import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseN
 import java.util.*
 
 @Entity
-data class StatisticsValueEntity(
+data class StatisticsExerciseValueEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
     val exerciseNameRes: Int,

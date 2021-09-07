@@ -2,47 +2,72 @@ package yaroslavgorbach.koropapps.vocabulary.data.statistics.repo
 
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.dao.StatisticsDao
-import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsDayEntity
-import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsTimeEntity
-import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsValueEntity
+import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsDailyTrainingTimeEntity
+import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsExerciseTimeEntity
+import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsExerciseValueEntity
+import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsLevelEntity
 
 class RepoStatisticsImp(private val localDataSource: StatisticsDao) : RepoStatistics {
 
-    override fun insert(statisticsValueEntity: StatisticsValueEntity): Completable {
-        return localDataSource.insert(statisticsValueEntity)
+    override fun insert(statisticsExerciseValueEntity: StatisticsExerciseValueEntity): Completable {
+        return localDataSource.insert(statisticsExerciseValueEntity)
             .subscribeOn(Schedulers.io())
     }
 
-    override fun insert(statisticsTimeEntity: StatisticsTimeEntity): Completable {
-        return localDataSource.insert(statisticsTimeEntity)
+    override fun insert(statisticsExerciseTimeEntity: StatisticsExerciseTimeEntity): Completable {
+        return localDataSource.insert(statisticsExerciseTimeEntity)
             .subscribeOn(Schedulers.io())
     }
 
-    override fun insert(statisticsDayEntity: StatisticsDayEntity): Completable {
-        return localDataSource.insert(statisticsDayEntity)
+    override fun insert(statisticsDailyTrainingTimeEntity: StatisticsDailyTrainingTimeEntity): Completable {
+        return localDataSource.insert(statisticsDailyTrainingTimeEntity)
             .subscribeOn(Schedulers.io())
     }
 
-    override fun update(statisticsDayEntity: StatisticsDayEntity): Completable {
-        return localDataSource.update(statisticsDayEntity)
+    override fun insert(statisticsLevelEntity: StatisticsLevelEntity): Completable {
+        return localDataSource.insert(statisticsLevelEntity)
             .subscribeOn(Schedulers.io())
     }
 
-    override fun observeValue(exerciseNameRes: Int): Observable<List<StatisticsValueEntity>> {
+    override fun update(statisticsLevelEntity: StatisticsLevelEntity): Completable {
+        return localDataSource.update(statisticsLevelEntity)
+            .subscribeOn(Schedulers.io())
+    }
+
+    override fun update(statisticsDailyTrainingTimeEntity: StatisticsDailyTrainingTimeEntity): Completable {
+        return localDataSource.update(statisticsDailyTrainingTimeEntity)
+            .subscribeOn(Schedulers.io())
+    }
+
+    override fun observeValue(exerciseNameRes: Int): Observable<List<StatisticsExerciseValueEntity>> {
         return localDataSource.observeValue(exerciseNameRes)
             .subscribeOn(Schedulers.io())
     }
 
-    override fun observeTime(exerciseNameRes: Int): Observable<List<StatisticsTimeEntity>> {
+    override fun observeTime(exerciseNameRes: Int): Observable<List<StatisticsExerciseTimeEntity>> {
         return localDataSource.observeTime(exerciseNameRes)
             .subscribeOn(Schedulers.io())
     }
 
-    override fun observeDays(): Observable<List<StatisticsDayEntity>> {
+    override fun observeDays(): Observable<List<StatisticsDailyTrainingTimeEntity>> {
         return localDataSource.observeDays()
-            .observeOn(Schedulers.io())
+            .subscribeOn(Schedulers.io())
     }
 
+    override fun getLevel(): Single<StatisticsLevelEntity> {
+        return localDataSource.getLevel()
+            .subscribeOn(Schedulers.io())
+            .onErrorResumeNext {
+                val entity = StatisticsLevelEntity(
+                    summaryTrainingTime = 0,
+                    exercisesCompleted = 0,
+                    dailyTrainingsCompleted = 0
+                )
+                insert(entity)
+                Single.just(entity)
+            }
+    }
 }

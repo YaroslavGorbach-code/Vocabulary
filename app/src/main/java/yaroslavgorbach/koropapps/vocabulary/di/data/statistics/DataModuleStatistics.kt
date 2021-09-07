@@ -33,12 +33,13 @@ class DataModuleStatistics {
             context, StatisticsDatabase::class.java, "databaseStatistics"
         ).addCallback(object : RoomDatabase.Callback() {
             override fun onCreate(db: SupportSQLiteDatabase) {
+                // TODO: 9/7/2021 выпилить такое из всех баз данных
                 ContentValues().apply {
                     put("id", 0)
                     put("summaryTrainingTime", 0)
                     put("date", Date().time)
                 }.also { cv ->
-                    db.insert("StatisticsDayEntity", OnConflictStrategy.REPLACE, cv)
+                    db.insert("StatisticsDailyTrainingTimeEntity", OnConflictStrategy.REPLACE, cv)
                 }
             }
         }).build()

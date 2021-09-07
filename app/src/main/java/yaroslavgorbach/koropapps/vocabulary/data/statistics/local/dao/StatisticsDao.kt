@@ -7,31 +7,43 @@ import androidx.room.Query
 import androidx.room.Update
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
-import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsDayEntity
-import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsTimeEntity
-import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsValueEntity
+import io.reactivex.rxjava3.core.Single
+import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsDailyTrainingTimeEntity
+import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsExerciseTimeEntity
+import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsExerciseValueEntity
+import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsLevelEntity
 
 @Dao
 interface StatisticsDao {
 
     @Insert(onConflict = REPLACE)
-    fun insert(statisticsValueEntity: StatisticsValueEntity): Completable
+    fun insert(statisticsExerciseValueEntity: StatisticsExerciseValueEntity): Completable
 
     @Insert(onConflict = REPLACE)
-    fun insert(statisticsTimeEntity: StatisticsTimeEntity): Completable
+    fun insert(statisticsExerciseTimeEntity: StatisticsExerciseTimeEntity): Completable
 
     @Insert(onConflict = REPLACE)
-    fun insert(statisticsDayEntity: StatisticsDayEntity): Completable
+    fun insert(statisticsDailyTrainingTimeEntity: StatisticsDailyTrainingTimeEntity): Completable
+
+    @Insert(onConflict = REPLACE)
+    fun insert(statisticsLevelEntity: StatisticsLevelEntity): Completable
 
     @Update
-    fun update(statisticsDayEntity: StatisticsDayEntity): Completable
+    fun update(statisticsLevelEntity: StatisticsLevelEntity): Completable
 
-    @Query("SELECT * FROM StatisticsValueEntity WHERE exerciseNameRes = :exerciseNameRes")
-    fun observeValue(exerciseNameRes: Int): Observable<List<StatisticsValueEntity>>
+    @Update
+    fun update(statisticsDailyTrainingTimeEntity: StatisticsDailyTrainingTimeEntity): Completable
 
-    @Query("SELECT * FROM StatisticsTimeEntity WHERE exerciseNameRes = :exerciseNameRes")
-    fun observeTime(exerciseNameRes: Int): Observable<List<StatisticsTimeEntity>>
+    @Query("SELECT * FROM StatisticsExerciseValueEntity WHERE exerciseNameRes = :exerciseNameRes")
+    fun observeValue(exerciseNameRes: Int): Observable<List<StatisticsExerciseValueEntity>>
 
-    @Query("SELECT * FROM StatisticsDayEntity")
-    fun observeDays(): Observable<List<StatisticsDayEntity>>
+    @Query("SELECT * FROM StatisticsExerciseTimeEntity WHERE exerciseNameRes = :exerciseNameRes")
+    fun observeTime(exerciseNameRes: Int): Observable<List<StatisticsExerciseTimeEntity>>
+
+    @Query("SELECT * FROM StatisticsDailyTrainingTimeEntity")
+    fun observeDays(): Observable<List<StatisticsDailyTrainingTimeEntity>>
+
+    @Query("SELECT * FROM StatisticsLevelEntity LIMIT 1")
+    fun getLevel(): Single<StatisticsLevelEntity>
+
 }

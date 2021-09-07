@@ -5,9 +5,10 @@ import androidx.room.PrimaryKey
 import java.util.*
 
 @Entity
-data class StatisticsDayEntity(
+data class StatisticsExerciseTimeEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
-    var summaryTrainingTime: Long,
+    val exerciseNameRes: Int,
+    val value: Float,
     val date: Date
 )

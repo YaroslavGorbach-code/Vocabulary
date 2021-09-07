@@ -61,4 +61,11 @@ class BusinessStatisticsModule {
             provideObserveStatisticDaysInteractor
         )
     }
+
+    @Provides
+    fun provideGetStatisticsLevelInteractor(
+        repoStatistics: RepoStatistics
+    ): GetStatisticsLevelInteractor {
+        return GetStatisticsLevelInteractor(repoStatistics)
+    }
 }

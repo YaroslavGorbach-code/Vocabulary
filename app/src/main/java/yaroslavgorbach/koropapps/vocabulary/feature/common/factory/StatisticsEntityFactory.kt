@@ -1,31 +1,31 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.common.factory
 
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
-import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsDayEntity
-import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsTimeEntity
-import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsValueEntity
+import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsDailyTrainingTimeEntity
+import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsExerciseTimeEntity
+import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsExerciseValueEntity
 import java.util.*
 
 class StatisticsEntityFactory {
 
-    fun createValueEntity(exerciseName: ExerciseName, value: Int): StatisticsValueEntity {
-        return StatisticsValueEntity(
+    fun createValueEntity(exerciseName: ExerciseName, value: Int): StatisticsExerciseValueEntity {
+        return StatisticsExerciseValueEntity(
             exerciseNameRes = exerciseName.id,
             value = value,
             date = Date()
         )
     }
 
-    fun createTimeEntity(exerciseName: ExerciseName, value: Float): StatisticsTimeEntity {
-        return StatisticsTimeEntity(
+    fun createTimeEntity(exerciseName: ExerciseName, value: Float): StatisticsExerciseTimeEntity {
+        return StatisticsExerciseTimeEntity(
             exerciseNameRes = exerciseName.id,
             value = value,
             date = Date()
         )
     }
 
-    fun createDayEntity(timeSpentOnExercise: Long): StatisticsDayEntity {
-        return StatisticsDayEntity(summaryTrainingTime = timeSpentOnExercise, date = Date())
+    fun createDayEntity(timeSpentOnExercise: Long): StatisticsDailyTrainingTimeEntity {
+        return StatisticsDailyTrainingTimeEntity(summaryTrainingTime = timeSpentOnExercise, date = Date())
     }
 
 }

@@ -5,13 +5,19 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import yaroslavgorbach.koropapps.vocabulary.data.common.DateConverter
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.dao.StatisticsDao
-import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsDayEntity
-import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsTimeEntity
-import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsValueEntity
+import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsDailyTrainingTimeEntity
+import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsExerciseTimeEntity
+import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsExerciseValueEntity
+import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsLevelEntity
 
 @TypeConverters(DateConverter::class)
 @Database(
-    entities = [StatisticsValueEntity::class, StatisticsTimeEntity::class, StatisticsDayEntity::class],
+    entities = [
+        StatisticsExerciseValueEntity::class,
+        StatisticsExerciseTimeEntity::class,
+        StatisticsDailyTrainingTimeEntity::class,
+        StatisticsLevelEntity::class
+    ],
     version = 1
 )
 abstract class StatisticsDatabase : RoomDatabase() {

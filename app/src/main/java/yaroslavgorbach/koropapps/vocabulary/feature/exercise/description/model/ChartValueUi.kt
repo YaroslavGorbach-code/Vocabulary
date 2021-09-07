@@ -3,13 +3,13 @@ package yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.model
 import android.content.Context
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
-import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsValueEntity
+import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsExerciseValueEntity
 import yaroslavgorbach.koropapps.vocabulary.utils.formatDD
 import yaroslavgorbach.koropapps.vocabulary.utils.getColorPrimary
 import java.util.*
 
 data class ChartValueUi(
-    private val statisticsValueEntities: List<StatisticsValueEntity>,
+    private val statisticsExerciseValueEntities: List<StatisticsExerciseValueEntity>,
     private val exerciseName: ExerciseName
 ) {
 
@@ -20,18 +20,18 @@ data class ChartValueUi(
     val data: ArrayList<ArrayList<Int>> = arrayListOf()
         get() {
             val dataList: ArrayList<Int> =
-                statisticsValueEntities.map { it.value } as ArrayList<Int>
+                statisticsExerciseValueEntities.map { it.value } as ArrayList<Int>
             field.add(0, dataList)
             return field
         }
 
     val labels: ArrayList<String>
         get() {
-            return statisticsValueEntities.map { it.date.formatDD() } as ArrayList<String>
+            return statisticsExerciseValueEntities.map { it.date.formatDD() } as ArrayList<String>
         }
 
     val dates: List<Date>
-        get() = statisticsValueEntities.map { it.date }
+        get() = statisticsExerciseValueEntities.map { it.date }
 
     val isEmpty: Boolean
         get() = data.isEmpty() || labels.isEmpty()
