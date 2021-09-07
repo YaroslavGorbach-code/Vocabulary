@@ -10,7 +10,11 @@ class IncrementExercisePerformedInteractor(
     operator fun invoke(exerciseId: Long): Completable {
         return getTrainingExerciseInteractor(exerciseId)
             .subscribeOn(Schedulers.io())
-            .doOnSuccess { it.performed++ }
+            .doOnSuccess {
+                if (it.isFinished.not()) {
+                    it.performed++
+                }
+            }
             .flatMapCompletable(updateTrainingExerciseInteractor::invoke)
     }
 }

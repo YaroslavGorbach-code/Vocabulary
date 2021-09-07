@@ -32,12 +32,14 @@ class ObserveLastFifeTrainingsInteractor(
                 }
             }
             .doOnNext { trainingsWithExercises ->
-                val trainingLast = trainingsWithExercises.last().training
+                val trainingLast = trainingsWithExercises.lastOrNull()?.training
 
-                if (trainingsWithExercises.last().isFinished && trainingLast.isFinished.not()) {
-                    trainingLast.isFinished = true
-                    trainingLast.daysWithoutInterruption++
-                    insertTrainingInteractor.invoke(trainingLast).subscribe()
+                if (trainingLast != null) {
+                    if (trainingsWithExercises.last().isFinished && trainingLast.isFinished.not()) {
+                        trainingLast.isFinished = true
+                        trainingLast.daysWithoutInterruption++
+                        insertTrainingInteractor.invoke(trainingLast).subscribe()
+                    }
                 }
             }
     }

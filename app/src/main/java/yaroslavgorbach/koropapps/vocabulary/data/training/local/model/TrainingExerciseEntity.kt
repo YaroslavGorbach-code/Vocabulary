@@ -8,9 +8,9 @@ import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseN
 data class TrainingExerciseEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
-    val trainingId: Long,
-    val name: ExerciseName,
-    val aim: Int,
+    val trainingId: Long = 0,
+    val name: ExerciseName = ExerciseName.NARRATOR_VERBS,
+    val aim: Int = 0,
     var performed: Int = 0
 ) {
     val progress: Int

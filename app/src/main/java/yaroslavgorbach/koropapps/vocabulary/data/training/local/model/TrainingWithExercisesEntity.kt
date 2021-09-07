@@ -1,5 +1,6 @@
 package yaroslavgorbach.koropapps.vocabulary.data.training.local.model
 
+import android.util.Log
 import androidx.room.Embedded
 import androidx.room.Relation
 
