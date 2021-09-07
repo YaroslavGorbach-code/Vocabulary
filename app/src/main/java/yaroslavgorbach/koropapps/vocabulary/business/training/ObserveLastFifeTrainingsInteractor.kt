@@ -38,7 +38,7 @@ class ObserveLastFifeTrainingsInteractor(
                     if (trainingsWithExercises.last().isFinished && trainingLast.isFinished.not()) {
                         trainingLast.isFinished = true
                         trainingLast.daysWithoutInterruption++
-                        insertTrainingInteractor.invoke(trainingLast).subscribe()
+                        insertTrainingInteractor(trainingLast).subscribe()
                     }
                 }
             }

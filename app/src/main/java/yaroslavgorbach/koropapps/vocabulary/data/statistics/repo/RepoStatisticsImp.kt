@@ -9,6 +9,7 @@ import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.Statisti
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsExerciseTimeEntity
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsExerciseValueEntity
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsLevelEntity
+import java.util.*
 
 class RepoStatisticsImp(private val localDataSource: StatisticsDao) : RepoStatistics {
 
@@ -55,6 +56,14 @@ class RepoStatisticsImp(private val localDataSource: StatisticsDao) : RepoStatis
     override fun observeDays(): Observable<List<StatisticsDailyTrainingTimeEntity>> {
         return localDataSource.observeDays()
             .subscribeOn(Schedulers.io())
+            .map {
+                val entities = listOf(StatisticsDailyTrainingTimeEntity(0, 0, Date()))
+                if (it.isEmpty()) {
+                    entities
+                } else {
+                    it
+                }
+            }
     }
 
     override fun getLevel(): Single<StatisticsLevelEntity> {
