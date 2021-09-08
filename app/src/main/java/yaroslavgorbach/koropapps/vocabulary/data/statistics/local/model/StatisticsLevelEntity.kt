@@ -7,7 +7,11 @@ import androidx.room.PrimaryKey
 data class StatisticsLevelEntity(
     @PrimaryKey(autoGenerate = false)
     val id: Long = 0,
-    val summaryTrainingTime: Int,
-    val exercisesCompleted: Int,
-    val dailyTrainingsCompleted: Int,
-)
+    var summaryTrainingTimeMc: Long,
+    var exercisesCompleted: Int,
+    var dailyTrainingsCompleted: Int,
+) {
+    val summaryTrainingTimeMinutes: Long
+        get() = summaryTrainingTimeMc / 60000
+
+}

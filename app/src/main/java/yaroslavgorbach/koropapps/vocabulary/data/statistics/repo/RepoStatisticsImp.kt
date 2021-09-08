@@ -1,5 +1,6 @@
 package yaroslavgorbach.koropapps.vocabulary.data.statistics.repo
 
+import android.util.Log
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
@@ -57,8 +58,10 @@ class RepoStatisticsImp(private val localDataSource: StatisticsDao) : RepoStatis
         return localDataSource.observeDays()
             .subscribeOn(Schedulers.io())
             .map {
-                val entities = listOf(StatisticsDailyTrainingTimeEntity(0, 0, Date()))
                 if (it.isEmpty()) {
+                    val entity = StatisticsDailyTrainingTimeEntity(0, 0, Date())
+                    val entities = listOf(entity)
+                    insert(entity).subscribe()
                     entities
                 } else {
                     it
@@ -71,11 +74,11 @@ class RepoStatisticsImp(private val localDataSource: StatisticsDao) : RepoStatis
             .subscribeOn(Schedulers.io())
             .onErrorResumeNext {
                 val entity = StatisticsLevelEntity(
-                    summaryTrainingTime = 0,
+                    summaryTrainingTimeMc = 0,
                     exercisesCompleted = 0,
                     dailyTrainingsCompleted = 0
                 )
-                insert(entity)
+                insert(entity).subscribe()
                 Single.just(entity)
             }
     }

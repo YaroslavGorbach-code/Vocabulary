@@ -6,17 +6,17 @@ import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.presentation.m
 data class LevelInfoUi(private val levelEntity: StatisticsLevelEntity) {
 
     val level: Level
-        get() = MapSummaryTrainingTimeToLevel().map(levelEntity.summaryTrainingTime)
+        get() = MapSummaryTrainingTimeToLevel().map(levelEntity.summaryTrainingTimeMinutes)
 
     val progress: Int
         get() = try {
-            ((levelEntity.summaryTrainingTime.toFloat() / level.trainingTimeReared.toFloat()) * 100).toInt()
+            ((levelEntity.summaryTrainingTimeMinutes.toFloat() / level.nextLevelTrainingTimeRequired.toFloat()) * 100f).toInt()
         } catch (ex: Throwable) {
             0
         }
 
     val summaryTrainingTime: String
-        get() = levelEntity.summaryTrainingTime.toString()
+        get() = levelEntity.summaryTrainingTimeMinutes.toString()
 
     val completedExercises: String
         get() = levelEntity.exercisesCompleted.toString()
