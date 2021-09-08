@@ -2,9 +2,9 @@ package yaroslavgorbach.koropapps.vocabulary.feature.profile.level.presentation.
 
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.model.Level
 
-class MapSummaryTrainingTimeToLevel() {
-    fun map(summaryTrainingTime: Int): Level {
-        return when (summaryTrainingTime) {
+class MapSummaryTrainingTimeToLevel {
+    fun map(summaryTrainingTimeMinutes: Long): Level {
+        return when (summaryTrainingTimeMinutes) {
             in 0..10 -> Level.ZERO()
             in 10..20 -> Level.First()
             in 20..30 -> Level.Second()

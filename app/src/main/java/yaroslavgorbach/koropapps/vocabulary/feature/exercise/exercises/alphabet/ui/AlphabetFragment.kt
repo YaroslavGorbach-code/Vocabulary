@@ -64,7 +64,7 @@ class AlphabetFragment : Fragment(R.layout.fragment_exercise_alphabet),
             object : AlphabetView.Callback {
                 override fun onNewLetter() {
                     lifecycleScope.launch {
-                        viewModel.onNextLetterClick()
+                        viewModel.onNextClick()
                     }
                 }
 
@@ -87,7 +87,7 @@ class AlphabetFragment : Fragment(R.layout.fragment_exercise_alphabet),
     }
 
     private fun showTimeEndDialog() {
-        TimeEndDialog.newInstance(viewModel.passedLettersCount)
+        TimeEndDialog.newInstance(viewModel.numberOnNextCLicked)
             .show(childFragmentManager, null)
     }
 

@@ -3,31 +3,29 @@ package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.alphabet
 import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import io.reactivex.rxjava3.disposables.CompositeDisposable
 import kotlinx.coroutines.*
-import yaroslavgorbach.koropapps.vocabulary.business.statistics.InsertOrUpdateStatisticDayInteractor
-import yaroslavgorbach.koropapps.vocabulary.business.statistics.InsertStatisticTimeInteractor
-import yaroslavgorbach.koropapps.vocabulary.business.statistics.InsertStatisticValueInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.statistics.SaveStatisticsInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.IncrementExercisePerformedInteractor
-import yaroslavgorbach.koropapps.vocabulary.feature.common.factory.StatisticsEntityFactory
+import yaroslavgorbach.koropapps.vocabulary.business.training.ObserveTrainingExerciseInteractor
 import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToShortDescriptionResMapper
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseWordCategory
-import java.util.*
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.base.BaseExerciseViewModel
 import javax.inject.Inject
 
 class AlphabetViewModel @Inject constructor(
     private val exerciseType: ExerciseType,
     private val application: Application,
-    private val insertStatisticValueInteractor: InsertStatisticValueInteractor,
-    private val insertStatisticTimeInteractor: InsertStatisticTimeInteractor,
-    private val incrementExercisePerformedInteractor: IncrementExercisePerformedInteractor,
-    private val insertOrUpdateStatisticDayInteractor: InsertOrUpdateStatisticDayInteractor
-) : ViewModel() {
-
-    private val disposables: CompositeDisposable = CompositeDisposable()
+    incrementExercisePerformedInteractor: IncrementExercisePerformedInteractor,
+    saveStatisticsInteractor: SaveStatisticsInteractor,
+    observeTrainingExerciseInteractor: ObserveTrainingExerciseInteractor
+) : BaseExerciseViewModel(
+    exerciseType,
+    incrementExercisePerformedInteractor,
+    saveStatisticsInteractor,
+    observeTrainingExerciseInteractor
+) {
 
     private val letters: MutableLiveData<List<String>> = MutableLiveData(
         application.applicationContext.resources.getStringArray(
@@ -53,42 +51,15 @@ class AlphabetViewModel @Inject constructor(
             ExerciseNameToShortDescriptionResMapper().map(exerciseType.getExerciseName())
         )
 
-    var passedLettersCount: Int = 0
-        private set
-
-    private val timeIntervals: MutableList<Long> = arrayListOf()
-
-    private var previousTime: Long = Date().time
-
-    private val summaryTimeSpendOnExercise: Long
-        get() = timeIntervals.sum()
-
-    val averageTimeOnWord: Float
-        get() {
-            return try {
-                (summaryTimeSpendOnExercise / timeIntervals.size) / 1000f
-            } catch (ex: Exception) {
-                0f
-            }
-        }
-
     init {
         refreshLetter()
         refreshProgressTimer()
     }
 
-    fun onNextLetterClick() {
-        refreshLetter()
-        incrementPassedLettersCount()
+    override fun onNextClick() {
+        super.onNextClick()
         refreshProgressTimer()
-        measureClickInterval()
-    }
-
-    private fun measureClickInterval() {
-        val currentTime = Date().time
-        val interval = currentTime - previousTime
-        previousTime = currentTime
-        timeIntervals.add(interval)
+        refreshLetter()
     }
 
     fun onTimerFinished() {
@@ -102,17 +73,6 @@ class AlphabetViewModel @Inject constructor(
             .also { letter -> letters.value = letters.value?.filter { it != letter } }
     }
 
-    private fun incrementPassedLettersCount() {
-        passedLettersCount++
-    }
-
-    private fun incrementExercisePerformed() {
-        if (exerciseType is ExerciseType.Training) {
-            incrementExercisePerformedInteractor(exerciseType.exerciseId)
-                .subscribe()
-                .let(disposables::add)
-        }
-    }
 
     private fun refreshProgressTimer() {
         scope.coroutineContext.cancelChildren()
@@ -124,39 +84,4 @@ class AlphabetViewModel @Inject constructor(
         }
     }
 
-    private fun saveStatistics(doOnComplete: () -> Unit) {
-        insertStatisticValueInteractor.invoke(
-            StatisticsEntityFactory().createValueEntity(
-                exerciseType.getExerciseName(),
-                passedLettersCount
-            )
-        ).andThen(
-            insertStatisticTimeInteractor.invoke(
-                StatisticsEntityFactory().createTimeEntity(
-                    exerciseType.getExerciseName(),
-                    averageTimeOnWord
-                )
-            )
-        ).andThen(
-                insertOrUpdateStatisticDayInteractor(
-                    StatisticsEntityFactory().createDayEntity(summaryTimeSpendOnExercise)
-                )
-            )
-            .doOnComplete(doOnComplete)
-            .subscribe()
-            .let(disposables::add)
-    }
-
-    private fun disposeDisposables() {
-        if (disposables.isDisposed.not()) {
-            disposables.dispose()
-        }
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        saveStatistics {
-            disposeDisposables()
-        }
-    }
 }

@@ -61,7 +61,7 @@ class AssociationsFragment : Fragment(R.layout.fragment_exercise) {
             FragmentExerciseBinding.bind(requireView()),
             object : ExerciseView.Callback {
                 override fun onNext() {
-                    viewModel.onNextWordClick()
+                    viewModel.onNextClick()
                 }
 
                 override fun onBack() {
