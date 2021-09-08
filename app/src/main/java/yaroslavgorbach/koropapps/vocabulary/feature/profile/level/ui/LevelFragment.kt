@@ -1,12 +1,17 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.profile.level.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentLevelBinding
-import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.model.LevelInfoUi
+import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.presentation.LevelViewModel
+import yaroslavgorbach.koropapps.vocabulary.utils.appComponent
 import yaroslavgorbach.koropapps.vocabulary.utils.onBackPressed
+import javax.inject.Inject
 
 class LevelFragment : Fragment(R.layout.fragment_level) {
 
@@ -14,12 +19,29 @@ class LevelFragment : Fragment(R.layout.fragment_level) {
         fun newInstance() = LevelFragment()
     }
 
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private val viewModel by viewModels<LevelViewModel> { viewModelFactory }
+
     private lateinit var levelView: LevelView
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        initDagger()
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
         initObservers()
+    }
+
+    private fun initDagger() {
+        appComponent()
+            .levelComponent()
+            .create()
+            .inject(this)
     }
 
     private fun initView() {
@@ -33,7 +55,7 @@ class LevelFragment : Fragment(R.layout.fragment_level) {
         )
     }
 
-    private fun initObservers(){
-        levelView.setLevelInfo(LevelInfoUi("test"))
+    private fun initObservers() {
+        viewModel.levelInfoUi.observe(viewLifecycleOwner, levelView::setLevelInfo)
     }
 }

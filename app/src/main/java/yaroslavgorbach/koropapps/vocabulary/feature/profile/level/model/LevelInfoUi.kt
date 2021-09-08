@@ -1,19 +1,26 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.profile.level.model
 
-data class LevelInfoUi(val test: String) {
+import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsLevelEntity
+import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.presentation.mapper.MapSummaryTrainingTimeToLevel
 
-    val level: String
-        get() = "1"
+data class LevelInfoUi(private val levelEntity: StatisticsLevelEntity) {
+
+    val level: Level
+        get() = MapSummaryTrainingTimeToLevel().map(levelEntity.summaryTrainingTime)
 
     val progress: Int
-        get() = 50
+        get() = try {
+            ((levelEntity.summaryTrainingTime.toFloat() / level.trainingTimeReared.toFloat()) * 100).toInt()
+        } catch (ex: Throwable) {
+            0
+        }
 
     val summaryTrainingTime: String
-        get() = "20"
+        get() = levelEntity.summaryTrainingTime.toString()
 
-    val performedExercises: String
-        get() = "20"
+    val completedExercises: String
+        get() = levelEntity.exercisesCompleted.toString()
 
-    val performedDailyTrainings: String
-        get() = "20"
+    val completedDailyTrainings: String
+        get() = levelEntity.dailyTrainingsCompleted.toString()
 }

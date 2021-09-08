@@ -22,7 +22,7 @@ class LevelView(private val binding: FragmentLevelBinding, private val callback:
     }
 
     fun setLevelInfo(levelInfoUi: LevelInfoUi) {
-        binding.level.text = levelInfoUi.level
+        binding.level.text = levelInfoUi.level.level
         binding.levelProgress.progress = levelInfoUi.progress
 
         with(binding.summaryTrainingTime) {
@@ -34,13 +34,13 @@ class LevelView(private val binding: FragmentLevelBinding, private val callback:
         with(binding.performedDailyTrainings) {
             icon.setImageResource(R.drawable.ic_rocket)
             text.text = getString(R.string.performed_daily_trainings)
-            value.text = levelInfoUi.performedDailyTrainings
+            value.text = levelInfoUi.completedDailyTrainings
         }
 
         with(binding.performedExercises) {
             icon.setImageResource(R.drawable.ic_rocket)
             text.text = getString(R.string.performed_exercises)
-            value.text = levelInfoUi.performedExercises
+            value.text = levelInfoUi.completedExercises
         }
     }
 }

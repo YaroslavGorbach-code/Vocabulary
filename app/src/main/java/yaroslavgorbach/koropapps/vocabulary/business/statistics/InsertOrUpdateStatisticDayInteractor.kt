@@ -13,10 +13,7 @@ class InsertOrUpdateStatisticDayInteractor(
     operator fun invoke(statisticsDailyTrainingTimeEntity: StatisticsDailyTrainingTimeEntity): Completable {
         return observeStatisticDaysInteractor()
             .firstOrError()
-            .map {
-
-                it.last()
-            }
+            .map { it.last() }
             .flatMapCompletable { statisticLast ->
                 if (statisticLast.date.isToday()) {
                     statisticLast.summaryTrainingTime += statisticsDailyTrainingTimeEntity.summaryTrainingTime
