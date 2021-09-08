@@ -6,13 +6,9 @@ import yaroslavgorbach.koropapps.vocabulary.business.exercises.GetExercisesInter
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.repo.RepoExercises
 import yaroslavgorbach.koropapps.vocabulary.di.business.training.BusinessTrainingModule
 import yaroslavgorbach.koropapps.vocabulary.di.data.exercises.DataModuleExercises
-import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.di.ExercisesListComponent
 import javax.inject.Singleton
 
-@Module(
-    includes = [DataModuleExercises::class, BusinessTrainingModule::class],
-    subcomponents = [ExercisesListComponent::class]
-)
+@Module(includes = [DataModuleExercises::class, BusinessTrainingModule::class])
 class BusinessExercisesModule {
     @Singleton
     @Provides

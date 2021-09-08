@@ -20,26 +20,7 @@ import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.ten.di.Te
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.threeletters.di.ThreeLettersExerciseComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.training.di.TrainingComponent
 
-@Module(
-    includes = [DataModuleTraining::class],
-    subcomponents = [
-        AssociationsExerciseComponent::class,
-        TrainingComponent::class,
-        AntonymsSynonymsExerciseComponent::class,
-        GameExerciseComponent::class,
-        JarExerciseComponent::class,
-        NarratorExerciseComponent::class,
-        RememberAllExerciseComponent::class,
-        TautogramsExerciseComponent::class,
-        TenExerciseComponent::class,
-        AntonymsSynonymsExerciseComponent::class,
-        AlphabetExerciseComponent::class,
-        ListOfCategoriesComponent::class,
-        ThreeLettersExerciseComponent::class,
-        HalfExerciseComponent::class,
-        SpecificationsExerciseComponent::class
-    ]
-)
+@Module(includes = [DataModuleTraining::class],)
 class BusinessTrainingModule {
 
     @Provides

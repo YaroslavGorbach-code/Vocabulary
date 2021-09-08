@@ -9,10 +9,7 @@ import yaroslavgorbach.koropapps.vocabulary.di.data.statistics.DataModuleStatist
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.di.DescriptionComponent
 import javax.inject.Singleton
 
-@Module(
-    includes = [DataModuleDescription::class, DataModuleStatistics::class],
-    subcomponents = [DescriptionComponent::class]
-)
+@Module(includes = [DataModuleDescription::class, DataModuleStatistics::class])
 class BusinessDescriptionModule {
     @Singleton
     @Provides

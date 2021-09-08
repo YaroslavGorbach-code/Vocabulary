@@ -5,18 +5,8 @@ import dagger.Provides
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.*
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.repo.RepoStatistics
 import yaroslavgorbach.koropapps.vocabulary.di.data.statistics.DataModuleStatistics
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.di.DescriptionComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.di.LevelComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.profile.profile.di.ProfileComponent
 
-@Module(
-    includes = [DataModuleStatistics::class],
-    subcomponents = [
-        DescriptionComponent::class,
-        ProfileComponent::class,
-        LevelComponent::class
-    ]
-)
+@Module(includes = [DataModuleStatistics::class])
 class BusinessStatisticsModule {
     @Provides
     fun provideInsertValueStatisticsInteractor(
@@ -69,5 +59,28 @@ class BusinessStatisticsModule {
         repoStatistics: RepoStatistics
     ): GetStatisticsLevelInteractor {
         return GetStatisticsLevelInteractor(repoStatistics)
+    }
+
+    @Provides
+    fun provideUpdateStatisticsLevelInteractor(
+        repoStatistics: RepoStatistics,
+        getStatisticsLevelInteractor: GetStatisticsLevelInteractor
+    ): UpdateStatisticsLevelInteractor {
+        return UpdateStatisticsLevelInteractor(getStatisticsLevelInteractor, repoStatistics)
+    }
+
+    @Provides
+    fun provideSaveStatisticsInteractor(
+        insertStatisticTimeInteractor: InsertStatisticTimeInteractor,
+        insertStatisticValueInteractor: InsertStatisticValueInteractor,
+        insertOrUpdateStatisticDayInteractor: InsertOrUpdateStatisticDayInteractor,
+        updateStatisticDayInteractor: UpdateStatisticsLevelInteractor
+    ): SaveStatisticsInteractor {
+        return SaveStatisticsInteractor(
+            insertStatisticValueInteractor = insertStatisticValueInteractor,
+            insertStatisticTimeInteractor = insertStatisticTimeInteractor,
+            insertOrUpdateStatisticDayInteractor = insertOrUpdateStatisticDayInteractor,
+            updateStatisticsLevelInteractor = updateStatisticDayInteractor
+        )
     }
 }
