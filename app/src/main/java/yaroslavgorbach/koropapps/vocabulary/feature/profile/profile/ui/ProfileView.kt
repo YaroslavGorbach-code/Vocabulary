@@ -4,6 +4,7 @@ import android.view.View
 import im.dacer.androidcharts.LineView
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentProfileBinding
+import yaroslavgorbach.koropapps.vocabulary.feature.profile.model.LevelInfoUi
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.profile.model.ChartDayUi
 import yaroslavgorbach.koropapps.vocabulary.utils.getDrawable
 
@@ -91,5 +92,10 @@ class ProfileView(private val binding: FragmentProfileBinding, private val callb
     private fun showNoChartValueData() {
         binding.chart.noData.visibility = View.VISIBLE
         binding.chart.chart.visibility = View.GONE
+    }
+
+    fun setLevel(levelInfoUi: LevelInfoUi) {
+        binding.levelProgress.setProgress(levelInfoUi.progress)
+        binding.levelProgress.setText(levelInfoUi.level.level)
     }
 }

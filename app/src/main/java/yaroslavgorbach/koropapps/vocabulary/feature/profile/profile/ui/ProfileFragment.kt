@@ -13,7 +13,7 @@ import yaroslavgorbach.koropapps.vocabulary.utils.appComponent
 import yaroslavgorbach.koropapps.vocabulary.utils.host
 import javax.inject.Inject
 
-class ProfileFragment : Fragment(R.layout.fragment_profile){
+class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     interface Router {
         fun openLevel()
@@ -84,5 +84,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile){
 
     fun initObservers() {
         viewModel.chartDayUi.observe(viewLifecycleOwner, profileView::setChart)
+        viewModel.levelInfoUi.observe(viewLifecycleOwner, profileView::setLevel)
     }
 }

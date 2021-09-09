@@ -5,14 +5,17 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
+import yaroslavgorbach.koropapps.vocabulary.business.statistics.GetStatisticsLevelInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.ObserveStatisticDaysInteractor
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.model.ChartValueUi
+import yaroslavgorbach.koropapps.vocabulary.feature.profile.model.LevelInfoUi
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.profile.model.ChartDayUi
 import java.util.*
 import javax.inject.Inject
 
 class ProfileViewModel @Inject constructor(
     private val observeStatisticDaysInteractor: ObserveStatisticDaysInteractor,
+    private val getStatisticsLevelInteractor: GetStatisticsLevelInteractor
 ) : ViewModel() {
 
     private val disposables: CompositeDisposable = CompositeDisposable()
@@ -22,8 +25,21 @@ class ProfileViewModel @Inject constructor(
     val chartDayUi: LiveData<ChartDayUi>
         get() = _chartDayUi
 
+    private val _levelInfoUi: MutableLiveData<LevelInfoUi> = MutableLiveData()
+
+    val levelInfoUi: LiveData<LevelInfoUi>
+        get() = _levelInfoUi
+
     init {
         observeDaysStatistics()
+        getLevel()
+    }
+
+    private fun getLevel() {
+        getStatisticsLevelInteractor()
+            .observeOn(AndroidSchedulers.mainThread())
+            .map(::LevelInfoUi)
+            .subscribe(_levelInfoUi::setValue)
     }
 
     private fun observeDaysStatistics() {
