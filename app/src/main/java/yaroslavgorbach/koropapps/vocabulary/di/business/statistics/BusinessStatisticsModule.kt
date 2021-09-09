@@ -3,6 +3,7 @@ package yaroslavgorbach.koropapps.vocabulary.di.business.statistics
 import dagger.Module
 import dagger.Provides
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.*
+import yaroslavgorbach.koropapps.vocabulary.business.training.GetCurrentTrainingIsFinishedInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.repo.RepoStatistics
 import yaroslavgorbach.koropapps.vocabulary.di.data.statistics.DataModuleStatistics
 
@@ -64,9 +65,14 @@ class BusinessStatisticsModule {
     @Provides
     fun provideUpdateStatisticsLevelInteractor(
         repoStatistics: RepoStatistics,
+        getCurrentTrainingIsFinishedInteractor: GetCurrentTrainingIsFinishedInteractor,
         getStatisticsLevelInteractor: GetStatisticsLevelInteractor
     ): UpdateStatisticsLevelInteractor {
-        return UpdateStatisticsLevelInteractor(getStatisticsLevelInteractor, repoStatistics)
+        return UpdateStatisticsLevelInteractor(
+            getStatisticsLevelInteractor,
+            getCurrentTrainingIsFinishedInteractor,
+            repoStatistics
+        )
     }
 
     @Provides
@@ -74,13 +80,13 @@ class BusinessStatisticsModule {
         insertStatisticTimeInteractor: InsertStatisticTimeInteractor,
         insertStatisticValueInteractor: InsertStatisticValueInteractor,
         insertOrUpdateStatisticDayInteractor: InsertOrUpdateStatisticDayInteractor,
-        updateStatisticDayInteractor: UpdateStatisticsLevelInteractor
+        updateStatisticDayInteractor: UpdateStatisticsLevelInteractor,
     ): SaveStatisticsInteractor {
         return SaveStatisticsInteractor(
             insertStatisticValueInteractor = insertStatisticValueInteractor,
             insertStatisticTimeInteractor = insertStatisticTimeInteractor,
             insertOrUpdateStatisticDayInteractor = insertOrUpdateStatisticDayInteractor,
-            updateStatisticsLevelInteractor = updateStatisticDayInteractor
+            updateStatisticsLevelInteractor = updateStatisticDayInteractor,
         )
     }
 }

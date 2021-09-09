@@ -1,7 +1,7 @@
 package yaroslavgorbach.koropapps.vocabulary.business.statistics
 
 import io.reactivex.rxjava3.core.Completable
-import yaroslavgorbach.koropapps.vocabulary.feature.common.factory.StatisticsEntityFactory
+import yaroslavgorbach.koropapps.vocabulary.business.statistics.factory.StatisticsEntityFactory
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 
 class SaveStatisticsInteractor(
@@ -33,12 +33,7 @@ class SaveStatisticsInteractor(
                 StatisticsEntityFactory().createDayEntity(summaryTimeSpendOnExercise)
             )
         ).andThen(
-            updateStatisticsLevelInteractor(
-                StatisticsEntityFactory().createLevelEntity(
-                    summaryTimeSpendOnExercise,
-                    exerciseType
-                )
-            )
+            updateStatisticsLevelInteractor.invoke(exerciseType, summaryTimeSpendOnExercise)
         )
     }
 }

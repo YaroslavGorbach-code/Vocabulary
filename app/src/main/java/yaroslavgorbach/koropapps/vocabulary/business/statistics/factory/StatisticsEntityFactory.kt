@@ -1,4 +1,4 @@
-package yaroslavgorbach.koropapps.vocabulary.feature.common.factory
+package yaroslavgorbach.koropapps.vocabulary.business.statistics.factory
 
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsDailyTrainingTimeEntity
@@ -32,16 +32,4 @@ class StatisticsEntityFactory {
             date = Date()
         )
     }
-
-    fun createLevelEntity(
-        summaryTrainingTime: Long,
-        exerciseType: ExerciseType,
-    ): StatisticsLevelEntity {
-        return StatisticsLevelEntity(
-            summaryTrainingTimeMc = summaryTrainingTime,
-            exercisesCompleted = 1,
-            dailyTrainingsCompleted = if (exerciseType is ExerciseType.Common) 0 else 1
-        )
-    }
-
 }

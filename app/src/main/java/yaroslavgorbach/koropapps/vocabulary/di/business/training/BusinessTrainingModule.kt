@@ -5,22 +5,8 @@ import dagger.Provides
 import yaroslavgorbach.koropapps.vocabulary.business.training.*
 import yaroslavgorbach.koropapps.vocabulary.data.training.repo.RepoTraining
 import yaroslavgorbach.koropapps.vocabulary.di.data.training.DataModuleTraining
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.alphabet.di.AlphabetExerciseComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.antonymssynonyms.di.AntonymsSynonymsExerciseComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.associations.di.AssociationsExerciseComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.game.di.GameExerciseComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.half.di.HalfExerciseComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.jar.di.JarExerciseComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.listofcategories.di.ListOfCategoriesComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.narrator.di.NarratorExerciseComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.rememberall.di.RememberAllExerciseComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.specifications.di.SpecificationsExerciseComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.tautograms.di.TautogramsExerciseComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.ten.di.TenExerciseComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.threeletters.di.ThreeLettersExerciseComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.training.di.TrainingComponent
 
-@Module(includes = [DataModuleTraining::class],)
+@Module(includes = [DataModuleTraining::class])
 class BusinessTrainingModule {
 
     @Provides
@@ -96,5 +82,12 @@ class BusinessTrainingModule {
             getTrainingExerciseInteractor,
             updateTrainingExerciseInteractor
         )
+    }
+
+    @Provides
+    fun provideGetCurrentTrainingIsFinishedInteractor(
+        observeCurrentTrainingWithExercisesInteractor: ObserveCurrentTrainingWithExercisesInteractor
+    ): GetCurrentTrainingIsFinishedInteractor {
+        return GetCurrentTrainingIsFinishedInteractor(observeCurrentTrainingWithExercisesInteractor)
     }
 }
