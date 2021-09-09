@@ -26,20 +26,20 @@ class LevelView(private val binding: FragmentLevelBinding, private val callback:
         binding.levelProgress.progress = levelInfoUi.progress
 
         with(binding.summaryTrainingTime) {
-            icon.setImageResource(R.drawable.ic_rocket)
+            icon.setImageResource(R.drawable.ic_time)
             text.text = getString(R.string.summary_training_time)
             value.text = levelInfoUi.summaryTrainingTime
         }
 
         with(binding.performedDailyTrainings) {
-            icon.setImageResource(R.drawable.ic_rocket)
-            text.text = getString(R.string.performed_daily_trainings)
+            icon.setImageResource(R.drawable.ic_rocket_black)
+            text.text = getString(R.string.completed_daily_trainings)
             value.text = levelInfoUi.completedDailyTrainings
         }
 
         with(binding.performedExercises) {
-            icon.setImageResource(R.drawable.ic_rocket)
-            text.text = getString(R.string.performed_exercises)
+            icon.setImageResource(R.drawable.ic_exercise)
+            text.text = getString(R.string.completed_exercises)
             value.text = levelInfoUi.completedExercises
         }
     }
