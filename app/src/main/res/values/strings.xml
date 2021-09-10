@@ -33,7 +33,5 @@
     <string name="completed_daily_trainings">Завершено ежедневных тренеровок</string>
     <string name="summary_training_time">Сумарное тренеровочное время (минуты)</string>
     <string name="completed_exercises">Завершено упражнений</string>
-
-    <style name="click_on_screen">После названого слова, нажниме на экран, для учета результата</style>
-
+    <string name="click_on_screen">Нажимайте на экран, для учета результата</string>
 </resources>

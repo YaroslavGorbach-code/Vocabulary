@@ -1,5 +1,7 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.alphabet.ui
 
+import android.animation.ObjectAnimator
+import android.view.View
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseAlphabetBinding
 import yaroslavgorbach.koropapps.vocabulary.utils.getString
@@ -17,11 +19,13 @@ class AlphabetView(
 
     init {
         initActions()
+        startClickHelperAnimation()
     }
 
     private fun initActions() {
         binding.clickSurface.setOnClickListener {
             callback.onNewLetter()
+            stopClickHelperAnimation()
         }
 
         binding.toolbar.setNavigationOnClickListener {
@@ -50,5 +54,28 @@ class AlphabetView(
             callback.onTimeEnd()
         }
         binding.letterProgress.setProgress(progress)
+    }
+
+    private fun startClickHelperAnimation() {
+        animateHelper(binding.clickHelperIcon)
+        animateHelper(binding.clickHelperText)
+    }
+
+    private fun stopClickHelperAnimation() {
+        binding.clickHelperIcon.visibility = View.GONE
+        binding.clickHelperText.visibility = View.GONE
+    }
+
+    private fun animateHelper(view: View) {
+        ObjectAnimator().apply {
+            target = view
+            setAutoCancel(false)
+            setPropertyName(View.TRANSLATION_Y.name)
+            setFloatValues(100f)
+            duration = 1000
+            repeatCount = 5
+            repeatMode = ObjectAnimator.REVERSE
+            start()
+        }
     }
 }

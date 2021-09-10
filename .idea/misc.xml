@@ -19,16 +19,18 @@
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_start_exercise.xml" value="0.2203125" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_ten.xml" value="0.2101851851851852" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_time.xml" value="0.2203125" />
+        <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_toch.xml" value="0.2169230769230769" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/line_devider.xml" value="0.2203125" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_description.xml" value="0.2" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_description_new.xml" value="0.1539855072463768" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_exercise.xml" value="0.22" />
-        <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_exercise_alphabet.xml" value="0.14990942028985507" />
+        <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_exercise_alphabet.xml" value="0.1" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_exercises_list.xml" value="0.14990942028985507" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_level.xml" value="0.16" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_navigation.xml" value="0.16" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_profile.xml" value="0.33" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_training.xml" value="0.22" />
+        <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/ic_touch.xml" value="0.1" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/item_exercise.xml" value="0.14990942028985507" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/iteme_exercise_tarining.xml" value="0.33" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/layout_chart.xml" value="0.22" />

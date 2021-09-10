@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout2"
@@ -37,6 +38,7 @@
         android:id="@+id/click_surface"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:animateLayoutChanges="true"
         android:background="?selectableItemBackgroundBorderless"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,13 +54,15 @@
             app:layout_constraintEnd_toStartOf="@+id/guideline8"
             app:layout_constraintStart_toStartOf="@+id/guideline7"
             app:layout_constraintTop_toTopOf="@+id/guideline9"
+            app:textProgress="50"
             app:textProgressColor="?colorPrimary"
-            app:textProgressStrokeWidth="15dp"
-            app:textProgressOutlineStrokeWidth="15dp"
             app:textProgressOutlineColor="?colorControlHighlight"
+            app:textProgressOutlineStrokeWidth="15dp"
+            app:textProgressStrokeWidth="15dp"
             app:textProgressTextSize="30sp"
-            app:textSize="20sp"
-            app:textProgress="50" />
+            app:textSize="20sp">
+
+        </yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.TextProgressView>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline7"
@@ -87,6 +91,27 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.7" />
+
+        <ImageView
+            android:id="@+id/click_helper_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_touch"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/letterProgress" />
+
+        <TextView
+            android:id="@+id/click_helper_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/click_on_screen"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/click_helper_icon" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
