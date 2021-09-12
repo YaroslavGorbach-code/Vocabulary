@@ -15,4 +15,7 @@ class TrainingWithExercisesUi(private val trainingWithExercisesEntity: TrainingW
 
     val daysWithoutInterruption: Int
         get() = trainingWithExercisesEntity.training.daysWithoutInterruption
+
+    val areExerciseEmpty
+        get() = exercises.isEmpty()
 }

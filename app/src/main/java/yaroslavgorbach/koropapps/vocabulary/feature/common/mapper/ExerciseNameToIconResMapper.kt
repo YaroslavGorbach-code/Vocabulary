@@ -19,10 +19,10 @@ class ExerciseNameToIconResMapper {
             ExerciseName.REMEMBER_ALL -> R.drawable.ic_memory
             ExerciseName.GAME_I_KNOW_5_NAMES -> R.drawable.ic_game
             ExerciseName.THREE_LITER_JAR -> R.drawable.ic_jar
-            ExerciseName.LIST_OF_CATEGORIES -> R.drawable.ic_share
-            ExerciseName.THREE_LETTERS -> R.drawable.ic_rate
-            ExerciseName.HALF -> R.drawable.ic_no_ads
-            ExerciseName.SPECIFICATIONS -> R.drawable.ic_settings
+            ExerciseName.LIST_OF_CATEGORIES -> R.drawable.ic_lists
+            ExerciseName.THREE_LETTERS -> R.drawable.ic_letters
+            ExerciseName.HALF -> R.drawable.ic_half
+            ExerciseName.SPECIFICATIONS -> R.drawable.ic_spetifications
         }
     }
 }

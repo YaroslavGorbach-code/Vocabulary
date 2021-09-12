@@ -33,6 +33,7 @@ class TimeEndDialog : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return MaterialAlertDialogBuilder(requireContext())
             .setTitle(R.string.end_of_time)
+            .setIcon(R.drawable.ic_time)
             .setMessage(getString(R.string.result, numberOfLetters))
             .create()
     }

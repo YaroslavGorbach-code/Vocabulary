@@ -9,8 +9,8 @@
 
     <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.TextProgressView
         android:id="@+id/day1"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/day2"
         app:layout_constraintHorizontal_bias="0.5"
@@ -27,8 +27,8 @@
 
     <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.TextProgressView
         android:id="@+id/day2"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/day3"
         app:layout_constraintHorizontal_bias="0.5"
@@ -45,8 +45,8 @@
 
     <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.TextProgressView
         android:id="@+id/day3"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/day4"
         app:layout_constraintHorizontal_bias="0.5"
@@ -63,8 +63,8 @@
 
     <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.TextProgressView
         android:id="@+id/day4"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/day5"
         app:layout_constraintHorizontal_bias="0.5"
@@ -81,8 +81,8 @@
 
     <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.TextProgressView
         android:id="@+id/day5"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

@@ -2,7 +2,7 @@
     <string name="app_name">Vocabulary</string>
     <string name="description">Описание</string>
     <string name="end_of_time">Время закончилось</string>
-    <string name="result"> Ваш резуьтат %1$d</string>
+    <string name="result"> Названо слов %1$d</string>
     <string name="finish_of_exercise">Упражнение закончено</string>
     <string name="average_time_on_word">Среднее время потраченое на слово</string>
     <string name="number_words_for_session">Количествво слов за сессию</string>
@@ -34,4 +34,7 @@
     <string name="summary_training_time">Сумарное тренеровочное время (минуты)</string>
     <string name="completed_exercises">Завершено упражнений</string>
     <string name="click_on_screen">Нажимайте на экран, для учета результата</string>
+    <string name="word_of_the_day">Слово дня</string>
+    <string name="no_exercises_text_one">На сегодня все</string>
+    <string name="no_exercises_text_two">новая тренировка будет доступна завтра</string>
 </resources>

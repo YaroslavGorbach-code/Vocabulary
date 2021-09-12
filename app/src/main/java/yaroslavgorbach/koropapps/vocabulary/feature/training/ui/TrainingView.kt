@@ -1,6 +1,7 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.training.ui
 
 import android.annotation.SuppressLint
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentTrainingBinding
@@ -49,5 +50,16 @@ class TrainingView(
             binding.getString(R.string.days_without_interruption) + ": ${
                 trainingWithExercisesUi.daysWithoutInterruption
             }"
+
+        if (trainingWithExercisesUi.areExerciseEmpty) {
+            showNoExercises()
+        }
     }
+
+    private fun showNoExercises() {
+        binding.noExercisesIcon.visibility = View.VISIBLE
+        binding.noExercisesTextOne.visibility = View.VISIBLE
+        binding.noExercisesTextTwo.visibility = View.VISIBLE
+    }
+
 }

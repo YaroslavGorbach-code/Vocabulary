@@ -91,8 +91,52 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout4"
+        app:layout_constraintVertical_bias="1.0"
         tools:itemCount="3"
         tools:listitem="@layout/iteme_exercise_tarining" />
+
+    <ImageView
+        android:id="@+id/no_exercises_icon"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:src="@drawable/ic_palms"
+        app:layout_constraintBottom_toTopOf="@+id/no_exercises_text_one"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout4"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/no_exercises_text_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no_exercises_text_one"
+        android:textSize="24sp"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/no_exercises_text_two"
+        app:layout_constraintEnd_toEndOf="@+id/no_exercises_icon"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/no_exercises_icon"
+        app:layout_constraintTop_toBottomOf="@+id/no_exercises_icon" />
+
+    <TextView
+        android:id="@+id/no_exercises_text_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:text="@string/no_exercises_text_two"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/no_exercises_icon"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/no_exercises_icon"
+        app:layout_constraintTop_toBottomOf="@+id/no_exercises_text_one" />
 </androidx.constraintlayout.widget.ConstraintLayout>
