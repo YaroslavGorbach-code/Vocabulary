@@ -70,6 +70,7 @@ class AlphabetFragment : Fragment(R.layout.fragment_exercise_alphabet),
 
                 override fun onTimeEnd() {
                     showTimeEndDialog()
+                    viewModel.onTimerFinished()
                 }
 
                 override fun onGameFinished() {

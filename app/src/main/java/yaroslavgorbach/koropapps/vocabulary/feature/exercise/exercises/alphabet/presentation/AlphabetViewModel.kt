@@ -66,13 +66,13 @@ class AlphabetViewModel @Inject constructor(
         incrementExercisePerformed()
         scope.cancel()
         _progress.value = 0
+        saveStatistics()
     }
 
     private fun refreshLetter() {
         _letter.value = letters.value?.firstOrNull()
             .also { letter -> letters.value = letters.value?.filter { it != letter } }
     }
-
 
     private fun refreshProgressTimer() {
         scope.coroutineContext.cancelChildren()

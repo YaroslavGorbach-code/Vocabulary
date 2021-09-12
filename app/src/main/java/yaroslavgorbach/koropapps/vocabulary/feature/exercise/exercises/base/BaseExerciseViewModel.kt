@@ -27,6 +27,8 @@ open class BaseExerciseViewModel(
 
     private var previousTime: Long = Date().time
 
+    private var isStatisticsSaved = false
+
     private val summaryTimeSpendOnExercise: Long
         get() = timeIntervals.sum()
 
@@ -78,17 +80,22 @@ open class BaseExerciseViewModel(
         }
     }
 
-    private fun saveStatistics(doOnComplete: () -> Unit) {
-        saveStatisticsInteractor(
-            exerciseType = exerciseType,
-            passedLettersOrWordsCount = numberOnNextCLicked,
-            averageTimeOnWord = averageTimeOnWord,
-            summaryTimeSpendOnExercise = summaryTimeSpendOnExercise
-        )
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnComplete(doOnComplete)
-            .subscribe()
-            .let(disposables::add)
+    protected fun saveStatistics(doOnComplete: () -> Unit = {}) {
+        if (isStatisticsSaved.not()) {
+            saveStatisticsInteractor(
+                exerciseType = exerciseType,
+                passedLettersOrWordsCount = numberOnNextCLicked,
+                averageTimeOnWord = averageTimeOnWord,
+                summaryTimeSpendOnExercise = summaryTimeSpendOnExercise
+            )
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnComplete(doOnComplete)
+                .subscribe()
+                .let(disposables::add)
+
+            isStatisticsSaved = true
+        }
+
     }
 
     private fun disposeDisposables() {
