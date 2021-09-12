@@ -6,37 +6,33 @@ import androidx.lifecycle.MutableLiveData
 import yaroslavgorbach.koropapps.vocabulary.utils.Event
 import yaroslavgorbach.koropapps.vocabulary.utils.LiveEvent
 import yaroslavgorbach.koropapps.vocabulary.utils.MutableLiveEvent
+import yaroslavgorbach.koropapps.vocabulary.utils.feature.timer.Timer.Companion.ONE_SECOND
 import yaroslavgorbach.koropapps.vocabulary.utils.send
 
 class TimerImp : Timer {
 
-    companion object {
-        private const val ONE_SECOND = 1000L
-        private const val COUNTDOWN_TIME = 60000L
-    }
+    private val _state: MutableLiveData<Timer.State> = MutableLiveData()
 
-    private val _finishEvent: MutableLiveEvent<Event<Unit>> = MutableLiveEvent()
+    override val state: LiveData<Timer.State>
+        get() = _state
 
-    override val finishEvent: LiveEvent<Event<Unit>>
-        get() = _finishEvent
+    private lateinit var  countDownTimer: CountDownTimer
 
-    private val _value: MutableLiveData<Int> = MutableLiveData()
-
-    override val value: LiveData<Int>
-        get() = _value
-
-    override fun start() {
-        object : CountDownTimer(COUNTDOWN_TIME, ONE_SECOND) {
+    override fun start(countDownTime: Long, interval: Long) {
+        countDownTimer = object : CountDownTimer(countDownTime, interval) {
             override fun onTick(millisUntilFinished: Long) {
-                _value.value = (millisUntilFinished / ONE_SECOND).toInt()
+                _state.value = Timer.State.Tick(millisUntilFinished)
             }
 
             override fun onFinish() {
-                _value.value = 0
-                _finishEvent.send(Event(Unit))
+                _state.value = Timer.State.Finish
             }
-
-        }
+        }.start()
     }
 
+    override fun cancel() {
+        if (::countDownTimer.isInitialized){
+            countDownTimer.cancel()
+        }
+    }
 }

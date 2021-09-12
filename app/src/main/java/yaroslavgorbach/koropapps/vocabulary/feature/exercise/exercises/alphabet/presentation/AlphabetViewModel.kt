@@ -3,8 +3,6 @@ package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.alphabet
 import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.*
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.SaveStatisticsInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.IncrementExercisePerformedInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.ObserveTrainingExerciseInteractor
@@ -12,6 +10,9 @@ import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameTo
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseWordCategory
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.base.BaseExerciseViewModel
+import yaroslavgorbach.koropapps.vocabulary.utils.feature.timer.Timer
+import yaroslavgorbach.koropapps.vocabulary.utils.feature.timer.Timer.Companion.ONE_SECOND
+import yaroslavgorbach.koropapps.vocabulary.utils.feature.timer.TimerImp
 import javax.inject.Inject
 
 class AlphabetViewModel @Inject constructor(
@@ -33,40 +34,36 @@ class AlphabetViewModel @Inject constructor(
         ).toList()
     )
 
-    private val scope
-        get() = CoroutineScope(viewModelScope.coroutineContext)
-
     private val _letter: MutableLiveData<String> = MutableLiveData()
 
     val letter: LiveData<String>
         get() = _letter
 
-    private val _progress = MutableLiveData<Int>()
-
-    val progress: LiveData<Int>
-        get() = _progress
+    val timerState: LiveData<Timer.State>
+        get() = timer.state
 
     val description: String
         get() = application.getString(
             ExerciseNameToShortDescriptionResMapper().map(exerciseType.getExerciseName())
         )
 
+    private val timer: Timer = TimerImp()
+
     init {
         refreshLetter()
-        refreshProgressTimer()
+        startOrRefreshProgressTimer()
     }
 
     override fun onNextClick() {
         super.onNextClick()
-        refreshProgressTimer()
+        startOrRefreshProgressTimer()
         refreshLetter()
     }
 
     fun onTimerFinished() {
         incrementExercisePerformed()
-        scope.cancel()
-        _progress.value = 0
         saveStatistics()
+        timer.cancel()
     }
 
     private fun refreshLetter() {
@@ -74,14 +71,8 @@ class AlphabetViewModel @Inject constructor(
             .also { letter -> letters.value = letters.value?.filter { it != letter } }
     }
 
-    private fun refreshProgressTimer() {
-        scope.coroutineContext.cancelChildren()
-        scope.launch {
-            (0..100).forEach {
-                delay(50)
-                _progress.value = it
-            }
-        }
+    private fun startOrRefreshProgressTimer() {
+        timer.cancel()
+        timer.start(ONE_SECOND * 5, 1)
     }
-
 }

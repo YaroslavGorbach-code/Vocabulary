@@ -1,9 +1,12 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.alphabet.ui
 
 import android.animation.ObjectAnimator
+import android.util.Log
 import android.view.View
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseAlphabetBinding
+import yaroslavgorbach.koropapps.vocabulary.utils.feature.timer.Timer
+import yaroslavgorbach.koropapps.vocabulary.utils.feature.timer.Timer.Companion.ONE_SECOND
 import yaroslavgorbach.koropapps.vocabulary.utils.getString
 
 class AlphabetView(
@@ -49,11 +52,15 @@ class AlphabetView(
         binding.toolbar.title = binding.getString(name.id)
     }
 
-    fun setProgress(progress: Int) {
-        if (progress == 100) {
-            callback.onTimeEnd()
+    fun setTimerState(state: Timer.State) {
+        when (state) {
+            Timer.State.Finish -> callback.onTimeEnd()
+            is Timer.State.Tick -> {
+                binding.letterProgress.setProgress(
+                   ((((state.millisecondsUntilFinished / 5000f) * 100).toInt()))
+                )
+            }
         }
-        binding.letterProgress.setProgress(progress)
     }
 
     private fun startClickHelperAnimation() {

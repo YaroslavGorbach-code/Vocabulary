@@ -100,7 +100,7 @@ class AlphabetFragment : Fragment(R.layout.fragment_exercise_alphabet),
 
     private fun initObservers() {
         viewModel.letter.observe(viewLifecycleOwner, alphabetView::setLetter)
-        viewModel.progress.observe(viewLifecycleOwner, alphabetView::setProgress)
+        viewModel.timerState.observe(viewLifecycleOwner, alphabetView::setTimerState)
     }
 
     override fun onDialogCancel() {

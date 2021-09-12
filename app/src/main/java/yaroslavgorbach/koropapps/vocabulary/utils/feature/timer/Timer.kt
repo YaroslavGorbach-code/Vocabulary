@@ -1,11 +1,19 @@
 package yaroslavgorbach.koropapps.vocabulary.utils.feature.timer
 
 import androidx.lifecycle.LiveData
-import yaroslavgorbach.koropapps.vocabulary.utils.Event
-import yaroslavgorbach.koropapps.vocabulary.utils.LiveEvent
 
 interface Timer {
-    fun start()
-    val finishEvent: LiveEvent<Event<Unit>>
-    val value: LiveData<Int>
+    companion object {
+        const val ONE_SECOND = 1000L
+        const val ONE_MINUTE = 60000L
+    }
+
+    sealed class State {
+        class Tick(val millisecondsUntilFinished: Long) : State()
+        object Finish : State()
+    }
+
+    fun start(countDownTime: Long, interval: Long)
+    fun cancel()
+    val state: LiveData<State>
 }
