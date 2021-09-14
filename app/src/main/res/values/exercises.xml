@@ -18,4 +18,9 @@
     <string name="three_letters">Три буквы</string>
     <string name="half">Половинка</string>
     <string name="specifications">Характеристики</string>
+    <string name="anagrams">Анаграммы</string>
+    <string name="single_root_words">Однокоренные слова</string>
+    <string name="dictionary_noun">Словарь (существительные)</string>
+    <string name="dictionary_verbs">Словарь (глаголы)</string>
+    <string name="dictionary_adjectives">Словарь (прилагательные)</string>
 </resources>

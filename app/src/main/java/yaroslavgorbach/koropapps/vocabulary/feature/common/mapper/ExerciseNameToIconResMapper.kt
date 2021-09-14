@@ -23,6 +23,9 @@ class ExerciseNameToIconResMapper {
             ExerciseName.THREE_LETTERS -> R.drawable.ic_letters
             ExerciseName.HALF -> R.drawable.ic_half
             ExerciseName.SPECIFICATIONS -> R.drawable.ic_spetifications
+            ExerciseName.DICTIONARY_ADJECTIVES -> R.drawable.ic_dictionary_a
+            ExerciseName.DICTIONARY_NOUN -> R.drawable.ic_dictionary_n
+            ExerciseName.DICTIONARY_VERBS -> R.drawable.ic_dictionary_v
         }
     }
 }

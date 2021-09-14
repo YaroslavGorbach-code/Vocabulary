@@ -20,5 +20,8 @@ enum class ExerciseName(@StringRes val id: Int) {
     LIST_OF_CATEGORIES(R.string.list_of_categories),
     THREE_LETTERS(R.string.three_letters),
     HALF(R.string.half),
-    SPECIFICATIONS(R.string.specifications)
+    SPECIFICATIONS(R.string.specifications),
+    DICTIONARY_ADJECTIVES(R.string.dictionary_adjectives),
+    DICTIONARY_NOUN(R.string.dictionary_noun),
+    DICTIONARY_VERBS(R.string.dictionary_verbs),
 }

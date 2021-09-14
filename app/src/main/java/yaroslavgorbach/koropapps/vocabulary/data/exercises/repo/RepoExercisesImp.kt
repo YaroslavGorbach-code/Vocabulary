@@ -23,7 +23,10 @@ class RepoExercisesImp : RepoExercises {
             Exercise(ExerciseName.LIST_OF_CATEGORIES),
             Exercise(ExerciseName.THREE_LETTERS),
             Exercise(ExerciseName.HALF),
-            Exercise(ExerciseName.SPECIFICATIONS)
+            Exercise(ExerciseName.SPECIFICATIONS),
+            Exercise(ExerciseName.DICTIONARY_NOUN),
+            Exercise(ExerciseName.DICTIONARY_VERBS),
+            Exercise(ExerciseName.DICTIONARY_ADJECTIVES),
         )
     )
 

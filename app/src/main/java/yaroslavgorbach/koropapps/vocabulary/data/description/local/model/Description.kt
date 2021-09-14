@@ -28,5 +28,8 @@ data class Description(val exerciseName: ExerciseName) {
             ExerciseName.THREE_LETTERS -> R.string.three_letters_description
             ExerciseName.HALF -> R.string.half_description
             ExerciseName.SPECIFICATIONS -> R.string.specifications_description
+            ExerciseName.DICTIONARY_ADJECTIVES -> R.string.dictionary_adjectives_desc
+            ExerciseName.DICTIONARY_NOUN -> R.string.dictionary_nouns_desc
+            ExerciseName.DICTIONARY_VERBS -> R.string.dictionary_verbs_desc
         }
 }

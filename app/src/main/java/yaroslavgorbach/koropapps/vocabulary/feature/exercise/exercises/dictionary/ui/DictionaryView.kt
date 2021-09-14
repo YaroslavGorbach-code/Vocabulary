@@ -1,22 +1,19 @@
-package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.alphabet.ui
+package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.dictionary.ui
 
 import android.animation.ObjectAnimator
-import android.util.Log
 import android.view.View
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
-import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseAlphabetBinding
+import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseDictionaryBinding
 import yaroslavgorbach.koropapps.vocabulary.utils.feature.timer.Timer
-import yaroslavgorbach.koropapps.vocabulary.utils.feature.timer.Timer.Companion.ONE_SECOND
 import yaroslavgorbach.koropapps.vocabulary.utils.getString
 
-class AlphabetView(
-    private val binding: FragmentExerciseAlphabetBinding,
+class DictionaryView(
+    private val binding: FragmentExerciseDictionaryBinding,
     private val callback: Callback
 ) {
     interface Callback {
-        fun onNewLetter()
+        fun onClick()
         fun onTimeEnd()
-        fun onGameFinished()
         fun onBack()
     }
 
@@ -27,20 +24,12 @@ class AlphabetView(
 
     private fun initActions() {
         binding.clickSurface.setOnClickListener {
-            callback.onNewLetter()
+            callback.onClick()
             stopClickHelperAnimation()
         }
 
         binding.toolbar.setNavigationOnClickListener {
             callback.onBack()
-        }
-    }
-
-    fun setLetter(letter: String?) {
-        if (letter != null) {
-            binding.letterProgress.setText(letter)
-        } else {
-            callback.onGameFinished()
         }
     }
 
@@ -52,12 +41,16 @@ class AlphabetView(
         binding.toolbar.title = binding.getString(name.id)
     }
 
+    fun setNumberOfClicked(numberOfClicked: Int) {
+        binding.numberOfWords.setText(numberOfClicked.toString())
+    }
+
     fun setTimerState(state: Timer.State) {
         when (state) {
             Timer.State.Finish -> callback.onTimeEnd()
             is Timer.State.Tick -> {
-                binding.letterProgress.setProgress(
-                   ((((state.millisecondsUntilFinished / (ONE_SECOND * 5)) * 100).toInt()))
+                binding.progress.setProgress(
+                    ((((state.millisecondsUntilFinished / Timer.ONE_MINUTE) * 100).toInt()))
                 )
             }
         }

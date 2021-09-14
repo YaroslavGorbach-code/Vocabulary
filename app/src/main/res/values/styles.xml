@@ -5,10 +5,10 @@
     <style name="BaseAppTheme.DayNight" />
 
     <style name="BaseAppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="colorPrimary">#ff5722</item>
-        <item name="colorPrimaryVariant">#ff8a50</item>
-        <item name="colorSecondary">#ffc107</item>
-        <item name="colorSecondaryVariant">#fff350</item>
+        <item name="colorPrimary">#4db6ac</item>
+        <item name="colorPrimaryVariant">#82e9de</item>
+        <item name="colorSecondary">#d81b60</item>
+        <item name="colorSecondaryVariant">#ff5c8d</item>
         <item name="colorPrimarySurface">#fff</item>
         <item name="android:statusBarColor">#222</item>
         <item name="appBarLayoutStyle">@style/Vocabulary.AppBar</item>

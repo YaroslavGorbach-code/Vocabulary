@@ -34,6 +34,9 @@ class ExerciseNameToShortDescriptionResMapper {
             ExerciseName.THREE_LETTERS -> R.string.desc_short_three_letters
             ExerciseName.HALF -> R.string.desc_short_half
             ExerciseName.SPECIFICATIONS -> R.string.desc_short_specifications
+            ExerciseName.DICTIONARY_ADJECTIVES -> R.string.desc_short_dictionary_adjectives
+            ExerciseName.DICTIONARY_NOUN -> R.string.desc_short_dictionary_nouns
+            ExerciseName.DICTIONARY_VERBS -> R.string.desc_short_dictionary_verbs
         }
     }
 }

@@ -1,5 +1,5 @@
 package yaroslavgorbach.koropapps.vocabulary.data.description.repo
-// TODO: 9/7/2021 добавить фичу слово дня
+// TODO: 9/7/2021 добавить фичу фраза дня
 import io.reactivex.rxjava3.core.Single
 import yaroslavgorbach.koropapps.vocabulary.data.description.local.model.Description
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
@@ -22,7 +22,10 @@ class RepoDescriptionImp : RepoDescription {
             Description(ExerciseName.LIST_OF_CATEGORIES),
             Description(ExerciseName.THREE_LETTERS),
             Description(ExerciseName.HALF),
-            Description(ExerciseName.SPECIFICATIONS)
+            Description(ExerciseName.SPECIFICATIONS),
+            Description(ExerciseName.DICTIONARY_ADJECTIVES),
+            Description(ExerciseName.DICTIONARY_VERBS),
+            Description(ExerciseName.DICTIONARY_NOUN),
         )
     )
 

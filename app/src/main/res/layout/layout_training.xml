@@ -4,7 +4,7 @@
     xmlns:tool="http://schemas.android.com/tools"
     android:id="@+id/item"
     android:layout_width="match_parent"
-    android:layout_height="170dp"
+    android:layout_height="160dp"
     android:foreground="?selectableItemBackground"
     android:orientation="vertical">
 
@@ -13,7 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:alpha="1"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_rocket_daily_training"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -46,6 +46,9 @@ data class ChartTimeUi(
             ExerciseName.LIST_OF_CATEGORIES,
             ExerciseName.HALF,
             ExerciseName.SPECIFICATIONS,
+            ExerciseName.DICTIONARY_ADJECTIVES,
+            ExerciseName.DICTIONARY_NOUN,
+            ExerciseName.DICTIONARY_VERBS,
             ExerciseName.ANTONYMS_AND_SYNONYMS -> R.string.average_time_on_word
             ExerciseName.THREE_LETTERS,
             ExerciseName.TAUTOGRAMS -> R.string.average_time_on_sentence

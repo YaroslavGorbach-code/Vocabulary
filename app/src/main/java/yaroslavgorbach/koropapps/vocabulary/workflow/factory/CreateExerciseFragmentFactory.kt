@@ -6,6 +6,7 @@ import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.alphabet.ui.AlphabetFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.antonymssynonyms.ui.AntonymsSynonymsFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.associations.ui.AssociationsFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.dictionary.ui.DictionaryFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.game.ui.GameFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.half.ui.HalfFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.jar.ui.JarFragment
@@ -70,6 +71,15 @@ class CreateExerciseFragmentFactory {
             }
             ExerciseName.SPECIFICATIONS -> {
                 SpecificationsFragment.newInstance(exerciseType)
+            }
+            ExerciseName.DICTIONARY_ADJECTIVES -> {
+                DictionaryFragment.newInstance(exerciseType)
+            }
+            ExerciseName.DICTIONARY_NOUN -> {
+                DictionaryFragment.newInstance(exerciseType)
+            }
+            ExerciseName.DICTIONARY_VERBS -> {
+                DictionaryFragment.newInstance(exerciseType)
             }
         }
     }
