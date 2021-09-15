@@ -10,12 +10,14 @@ import androidx.lifecycle.ViewModelProvider
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseDictionaryBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.common.ui.ExerciseFinishDialog
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.common.ui.ExerciseTimeEndDialog
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.dictionary.presentation.DictionaryViewModel
 import yaroslavgorbach.koropapps.vocabulary.utils.appComponent
 import yaroslavgorbach.koropapps.vocabulary.utils.onBackPressed
 import javax.inject.Inject
 
-class DictionaryFragment : Fragment(R.layout.fragment_exercise_dictionary) {
+class DictionaryFragment : Fragment(R.layout.fragment_exercise_dictionary), ExerciseFinishDialog.Host, ExerciseTimeEndDialog.Host {
 
     companion object {
         private const val ARG_EXERCISE_TYPE = "ARG_EXERCISE_TYPE"
@@ -63,7 +65,7 @@ class DictionaryFragment : Fragment(R.layout.fragment_exercise_dictionary) {
                 }
 
                 override fun onTimeEnd() {
-                    //   showTimeEndDialog()
+                       showTimeEndDialog()
                     viewModel.onTimerFinished()
                 }
 
@@ -76,17 +78,17 @@ class DictionaryFragment : Fragment(R.layout.fragment_exercise_dictionary) {
         dictionaryView.setExerciseName(exerciseType.getExerciseName())
     }
 
-//    private fun showTimeEndDialog() {
-//        TimeEndDialog.newInstance(viewModel.numberOnNextCLicked)
-//            .show(childFragmentManager, null)
-//    }
+    private fun showTimeEndDialog() {
+        ExerciseTimeEndDialog.newInstance(viewModel.numberOnNextCLicked)
+            .show(childFragmentManager, null)
+    }
 
     private fun initObservers() {
         viewModel.timerState.observe(viewLifecycleOwner, dictionaryView::setTimerState)
         viewModel.numberOfWords.observe(viewLifecycleOwner, dictionaryView::setNumberOfClicked)
     }
 
-//    override fun onDialogCancel() {
-//        requireActivity().onBackPressed()
-//    }
+    override fun onDialogCancel() {
+        requireActivity().onBackPressed()
+    }
 }

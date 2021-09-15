@@ -50,8 +50,9 @@ class DictionaryView(
             Timer.State.Finish -> callback.onTimeEnd()
             is Timer.State.Tick -> {
                 binding.progress.setProgress(
-                    ((((state.millisecondsUntilFinished / Timer.ONE_MINUTE) * 100).toInt()))
+                    ((((state.millisecondsUntilFinished / Timer.ONE_MINUTE.toFloat()) * 100).toInt()))
                 )
+                binding.progress.setText((state.millisecondsUntilFinished / 1000).toString())
             }
         }
     }

@@ -37,18 +37,21 @@ class DictionaryViewModel @Inject constructor(
     private val _numberOfWords: MutableLiveData<Int> = MutableLiveData()
 
     val numberOfWords: LiveData<Int>
-        get() {
-            return _numberOfWords
-        }
+        get() = _numberOfWords
 
     private val timer: Timer = TimerImp()
 
     init {
         startExerciseTimer()
+        setNumberOfWords()
     }
 
     override fun onNextClick() {
         super.onNextClick()
+        setNumberOfWords()
+    }
+
+    private fun setNumberOfWords() {
         _numberOfWords.value = numberOnNextCLicked
     }
 

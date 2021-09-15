@@ -1,4 +1,4 @@
-package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.alphabet.ui
+package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.common.ui
 
 import android.app.Dialog
 import android.content.DialogInterface

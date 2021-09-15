@@ -13,12 +13,14 @@ import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseAlphabetBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.alphabet.presentation.AlphabetViewModel
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.common.ui.ExerciseFinishDialog
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.common.ui.ExerciseTimeEndDialog
 import yaroslavgorbach.koropapps.vocabulary.utils.appComponent
 import yaroslavgorbach.koropapps.vocabulary.utils.onBackPressed
 import javax.inject.Inject
 
 class AlphabetFragment : Fragment(R.layout.fragment_exercise_alphabet),
-    TimeEndDialog.Host,
+    ExerciseTimeEndDialog.Host,
     ExerciseFinishDialog.Host {
 
     companion object {
@@ -88,7 +90,7 @@ class AlphabetFragment : Fragment(R.layout.fragment_exercise_alphabet),
     }
 
     private fun showTimeEndDialog() {
-        TimeEndDialog.newInstance(viewModel.numberOnNextCLicked)
+        ExerciseTimeEndDialog.newInstance(viewModel.numberOnNextCLicked)
             .show(childFragmentManager, null)
     }
 

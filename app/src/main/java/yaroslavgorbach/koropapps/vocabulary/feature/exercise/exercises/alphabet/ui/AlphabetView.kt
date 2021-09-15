@@ -1,7 +1,6 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.alphabet.ui
 
 import android.animation.ObjectAnimator
-import android.util.Log
 import android.view.View
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseAlphabetBinding
@@ -57,7 +56,7 @@ class AlphabetView(
             Timer.State.Finish -> callback.onTimeEnd()
             is Timer.State.Tick -> {
                 binding.letterProgress.setProgress(
-                   ((((state.millisecondsUntilFinished / (ONE_SECOND * 5)) * 100).toInt()))
+                    ((((state.millisecondsUntilFinished / (ONE_SECOND * 5).toFloat()) * 100).toInt()))
                 )
             }
         }
