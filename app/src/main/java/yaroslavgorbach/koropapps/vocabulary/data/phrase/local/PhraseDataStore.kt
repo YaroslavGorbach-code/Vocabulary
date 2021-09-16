@@ -9,6 +9,7 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import yaroslavgorbach.koropapps.vocabulary.business.phrase.factory.PhraseFactory
 import yaroslavgorbach.koropapps.vocabulary.data.phrase.local.model.Phrase
 import java.util.*
 
@@ -37,7 +38,7 @@ class PhraseDataStore {
             .map { preferences ->
                 val date = Date(preferences[DATE_KEY] ?: DEFAULT_LONG_ARG)
                 val phrase = preferences[PHRASE_KEY] ?: DEFAULT_STRING_ARG
-                val explanation = preferences[PHRASE_KEY] ?: DEFAULT_STRING_ARG
+                val explanation = preferences[EXPLANATION_KEY] ?: DEFAULT_STRING_ARG
 
                 Phrase(phrase = phrase, explanation = explanation, date = date)
             }

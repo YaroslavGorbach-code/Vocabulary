@@ -1,6 +1,7 @@
 package yaroslavgorbach.koropapps.vocabulary.business.phrase.factory
 
 import android.content.Context
+import android.util.Log
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.data.phrase.local.model.Phrase
 import java.util.*
@@ -8,6 +9,7 @@ import kotlin.random.Random
 
 class PhraseFactory {
     fun create(context: Context): Phrase {
+
         // TODO: 9/15/2021 replace letters on phrases
         val phrasesResArray = context.resources.getStringArray(R.array.phrases)
         val phrasesExplanationsResArray =

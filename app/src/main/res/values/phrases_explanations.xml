@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="phrases_explanations">
-        <item name="phrase_1">A</item>
+        <item name="phrase_1">
+            Легендарная фраза Галилея, получившая крылатость,
+            употребляется как формула неколебимой убежденности в чем-либо.
+        </item>
     </string-array>
 </resources>
