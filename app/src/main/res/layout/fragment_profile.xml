@@ -74,7 +74,7 @@
             app:layout_constraintTop_toBottomOf="@+id/level_card">
 
             <include
-                android:id="@+id/word"
+                android:id="@+id/phrase"
                 layout="@layout/layout_item_profile"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />

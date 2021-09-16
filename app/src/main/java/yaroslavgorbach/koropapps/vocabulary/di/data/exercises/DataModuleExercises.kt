@@ -13,5 +13,4 @@ class DataModuleExercises {
     fun provideRepoExercises(): RepoExercises {
         return RepoExercisesImp()
     }
-
 }

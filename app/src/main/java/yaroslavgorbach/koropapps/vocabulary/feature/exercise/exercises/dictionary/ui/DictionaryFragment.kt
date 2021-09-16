@@ -17,7 +17,8 @@ import yaroslavgorbach.koropapps.vocabulary.utils.appComponent
 import yaroslavgorbach.koropapps.vocabulary.utils.onBackPressed
 import javax.inject.Inject
 
-class DictionaryFragment : Fragment(R.layout.fragment_exercise_dictionary), ExerciseFinishDialog.Host, ExerciseTimeEndDialog.Host {
+class DictionaryFragment : Fragment(R.layout.fragment_exercise_dictionary),
+    ExerciseFinishDialog.Host, ExerciseTimeEndDialog.Host {
 
     companion object {
         private const val ARG_EXERCISE_TYPE = "ARG_EXERCISE_TYPE"
@@ -65,7 +66,7 @@ class DictionaryFragment : Fragment(R.layout.fragment_exercise_dictionary), Exer
                 }
 
                 override fun onTimeEnd() {
-                       showTimeEndDialog()
+                    showTimeEndDialog()
                     viewModel.onTimerFinished()
                 }
 

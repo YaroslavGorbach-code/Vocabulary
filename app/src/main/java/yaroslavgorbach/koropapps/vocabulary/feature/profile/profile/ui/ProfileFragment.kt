@@ -6,6 +6,8 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentProfileBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.profile.presentation.ProfileViewModel
@@ -84,6 +86,12 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     fun initObservers() {
         viewModel.chartDayUi.observe(viewLifecycleOwner, profileView::setChart)
+
         viewModel.levelInfoUi.observe(viewLifecycleOwner, profileView::setLevel)
+
+        lifecycleScope.launch {
+            viewModel.observePhrase(requireContext())
+                .observe(viewLifecycleOwner, profileView::setPhrase)
+        }
     }
 }

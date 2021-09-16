@@ -1,12 +1,16 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.profile.profile.presentation
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
+import yaroslavgorbach.koropapps.vocabulary.business.phrase.ObserveTodayPhraseInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.GetStatisticsLevelInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.ObserveStatisticDaysInteractor
+import yaroslavgorbach.koropapps.vocabulary.data.phrase.local.model.Phrase
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.model.ChartValueUi
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.model.LevelInfoUi
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.profile.model.ChartDayUi
@@ -15,7 +19,8 @@ import javax.inject.Inject
 
 class ProfileViewModel @Inject constructor(
     private val observeStatisticDaysInteractor: ObserveStatisticDaysInteractor,
-    private val getStatisticsLevelInteractor: GetStatisticsLevelInteractor
+    private val getStatisticsLevelInteractor: GetStatisticsLevelInteractor,
+    private val observeTodayPhraseInteractor: ObserveTodayPhraseInteractor
 ) : ViewModel() {
 
     private val disposables: CompositeDisposable = CompositeDisposable()
@@ -33,6 +38,10 @@ class ProfileViewModel @Inject constructor(
     init {
         observeDaysStatistics()
         getLevel()
+    }
+
+    suspend fun observePhrase(context: Context): LiveData<Phrase> {
+        return observeTodayPhraseInteractor(context).asLiveData()
     }
 
     private fun getLevel() {

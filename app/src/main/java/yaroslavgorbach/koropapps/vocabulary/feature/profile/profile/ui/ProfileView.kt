@@ -3,6 +3,7 @@ package yaroslavgorbach.koropapps.vocabulary.feature.profile.profile.ui
 import android.view.View
 import im.dacer.androidcharts.LineView
 import yaroslavgorbach.koropapps.vocabulary.R
+import yaroslavgorbach.koropapps.vocabulary.data.phrase.local.model.Phrase
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentProfileBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.model.LevelInfoUi
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.profile.model.ChartDayUi
@@ -87,6 +88,10 @@ class ProfileView(private val binding: FragmentProfileBinding, private val callb
             binding.chart.chart.setColorArray(chartDayUi.getColors(binding.root.context))
             binding.chart.chart.setDataList(chartDayUi.data)
         }
+    }
+
+    fun setPhrase(phrase: Phrase) {
+        binding.phrase.text.text = phrase.phrase
     }
 
     private fun showNoChartValueData() {
