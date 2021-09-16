@@ -22,6 +22,8 @@ class ProfileView(private val binding: FragmentProfileBinding, private val callb
         fun onPhrase(phrase: String)
     }
 
+    private var phrase: Phrase? = null
+
     init {
         initViews()
         initActions()
@@ -79,7 +81,7 @@ class ProfileView(private val binding: FragmentProfileBinding, private val callb
         }
 
         binding.phrase.root.setOnClickListener {
-            callback.onPhrase(binding.phrase.phrase.text.toString())
+            callback.onPhrase(phrase?.explanation ?: "")
         }
     }
 
@@ -96,6 +98,7 @@ class ProfileView(private val binding: FragmentProfileBinding, private val callb
     }
 
     fun setPhrase(phrase: Phrase) {
+        this.phrase = phrase
         binding.phrase.phrase.text = phrase.phrase
     }
 
