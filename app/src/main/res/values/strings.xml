@@ -37,4 +37,5 @@
     <string name="word_of_the_day">Слово дня</string>
     <string name="no_exercises_text_one">На сегодня все</string>
     <string name="no_exercises_text_two">новая тренировка будет доступна завтра</string>
+    <string name="phrase_of_day">Фраза дня</string>
 </resources>

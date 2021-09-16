@@ -12,8 +12,8 @@ import kotlinx.coroutines.launch
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseAlphabetBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
+import yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.InfoDialog
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.alphabet.presentation.AlphabetViewModel
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.common.ui.ExerciseFinishDialog
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.common.ui.ExerciseTimeEndDialog
 import yaroslavgorbach.koropapps.vocabulary.utils.appComponent
 import yaroslavgorbach.koropapps.vocabulary.utils.onBackPressed
@@ -21,7 +21,7 @@ import javax.inject.Inject
 
 class AlphabetFragment : Fragment(R.layout.fragment_exercise_alphabet),
     ExerciseTimeEndDialog.Host,
-    ExerciseFinishDialog.Host {
+    InfoDialog.Host {
 
     companion object {
         private const val ARG_EXERCISE_TYPE = "ARG_EXERCISE_TYPE"
@@ -95,8 +95,9 @@ class AlphabetFragment : Fragment(R.layout.fragment_exercise_alphabet),
     }
 
     private fun showGameFinishedDialog() {
-        ExerciseFinishDialog.newInstance(
-            viewModel.averageTimeOnWord
+        InfoDialog.newInstance(
+            title = getString(R.string.finish_of_exercise),
+            message = getString(R.string.average_time_on_word) + " ${viewModel.averageTimeOnWord}"
         ).show(childFragmentManager, null)
     }
 
@@ -105,7 +106,11 @@ class AlphabetFragment : Fragment(R.layout.fragment_exercise_alphabet),
         viewModel.timerState.observe(viewLifecycleOwner, alphabetView::setTimerState)
     }
 
-    override fun onDialogCancel() {
+    override fun onInfoDialogCancel() {
+        requireActivity().onBackPressed()
+    }
+
+    override fun onTimeEndDialogCancel() {
         requireActivity().onBackPressed()
     }
 }

@@ -10,7 +10,6 @@ import androidx.lifecycle.ViewModelProvider
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseDictionaryBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.common.ui.ExerciseFinishDialog
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.common.ui.ExerciseTimeEndDialog
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.dictionary.presentation.DictionaryViewModel
 import yaroslavgorbach.koropapps.vocabulary.utils.appComponent
@@ -18,7 +17,7 @@ import yaroslavgorbach.koropapps.vocabulary.utils.onBackPressed
 import javax.inject.Inject
 
 class DictionaryFragment : Fragment(R.layout.fragment_exercise_dictionary),
-    ExerciseFinishDialog.Host, ExerciseTimeEndDialog.Host {
+    ExerciseTimeEndDialog.Host {
 
     companion object {
         private const val ARG_EXERCISE_TYPE = "ARG_EXERCISE_TYPE"
@@ -89,7 +88,8 @@ class DictionaryFragment : Fragment(R.layout.fragment_exercise_dictionary),
         viewModel.numberOfWords.observe(viewLifecycleOwner, dictionaryView::setNumberOfClicked)
     }
 
-    override fun onDialogCancel() {
+    override fun onTimeEndDialogCancel() {
         requireActivity().onBackPressed()
     }
+
 }

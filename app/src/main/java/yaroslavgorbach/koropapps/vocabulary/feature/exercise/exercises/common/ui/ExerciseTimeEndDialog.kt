@@ -11,7 +11,7 @@ import yaroslavgorbach.koropapps.vocabulary.utils.host
 
 class ExerciseTimeEndDialog : DialogFragment() {
     interface Host {
-        fun onDialogCancel()
+        fun onTimeEndDialogCancel()
     }
 
     companion object {
@@ -23,7 +23,6 @@ class ExerciseTimeEndDialog : DialogFragment() {
                 NUMBER_OF_LETTERS_ARG to numberOfWords
             )
         }
-
     }
 
     private val numberOfLetters: Int
@@ -39,6 +38,6 @@ class ExerciseTimeEndDialog : DialogFragment() {
 
     override fun onCancel(dialog: DialogInterface) {
         super.onCancel(dialog)
-        host<Host>().onDialogCancel()
+        host<Host>().onTimeEndDialogCancel()
     }
 }

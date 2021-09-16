@@ -19,6 +19,7 @@ class ProfileView(private val binding: FragmentProfileBinding, private val callb
         fun onShare()
         fun onRate()
         fun onLevel()
+        fun onPhrase(phrase: String)
     }
 
     init {
@@ -76,6 +77,10 @@ class ProfileView(private val binding: FragmentProfileBinding, private val callb
         binding.levelCard.setOnClickListener {
             callback.onLevel()
         }
+
+        binding.phrase.root.setOnClickListener {
+            callback.onPhrase(binding.phrase.phrase.text.toString())
+        }
     }
 
     fun setChart(chartDayUi: ChartDayUi) {
@@ -91,7 +96,7 @@ class ProfileView(private val binding: FragmentProfileBinding, private val callb
     }
 
     fun setPhrase(phrase: Phrase) {
-        binding.phrase.text.text = phrase.phrase
+        binding.phrase.phrase.text = phrase.phrase
     }
 
     private fun showNoChartValueData() {

@@ -10,12 +10,13 @@ import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentProfileBinding
+import yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.InfoDialog
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.profile.presentation.ProfileViewModel
 import yaroslavgorbach.koropapps.vocabulary.utils.appComponent
 import yaroslavgorbach.koropapps.vocabulary.utils.host
 import javax.inject.Inject
 
-class ProfileFragment : Fragment(R.layout.fragment_profile) {
+class ProfileFragment : Fragment(R.layout.fragment_profile), InfoDialog.Host {
 
     interface Router {
         fun openLevel()
@@ -81,7 +82,16 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 override fun onLevel() {
                     host<Router>().openLevel()
                 }
+
+                override fun onPhrase(phrase: String) {
+                    showPhraseDialog(phrase)
+                }
             })
+    }
+
+    private fun showPhraseDialog(phrase: String) {
+        InfoDialog.newInstance(title = getString(R.string.phrase_of_day), message = phrase)
+            .show(childFragmentManager, null)
     }
 
     fun initObservers() {
@@ -94,4 +104,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 .observe(viewLifecycleOwner, profileView::setPhrase)
         }
     }
+
+    override fun onInfoDialogCancel() {}
 }
