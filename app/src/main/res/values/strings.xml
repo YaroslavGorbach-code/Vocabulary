@@ -17,7 +17,7 @@
 
     <string name="number_of_words_in_story">Количество слов в истории</string>
     <string name="statistic">Статистика</string>
-    <string name="Start">НАЧАТЬ</string>
+    <string name="start">НАЧАТЬ</string>
     <string name="daily_training">Ежедневная тренировка</string>
     <string name="no_data">Нет данных</string>
     <string name="title_exercises">Упражнения</string>
@@ -38,4 +38,5 @@
     <string name="no_exercises_text_one">На сегодня все</string>
     <string name="no_exercises_text_two">новая тренировка будет доступна завтра</string>
     <string name="phrase_of_day">Фраза дня</string>
+    <string name="chose_theme">Выбор темы</string>
 </resources>

@@ -19,7 +19,8 @@ import javax.inject.Inject
 class ProfileFragment : Fragment(R.layout.fragment_profile), InfoDialog.Host {
 
     interface Router {
-        fun openLevel()
+        fun onOpenLevelClick()
+        fun onOpenSettingsClick()
     }
 
     companion object {
@@ -64,7 +65,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), InfoDialog.Host {
                 }
 
                 override fun onSettings() {
-
+                    host<Router>().onOpenSettingsClick()
                 }
 
                 override fun onRemoveAds() {
@@ -80,7 +81,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), InfoDialog.Host {
                 }
 
                 override fun onLevel() {
-                    host<Router>().openLevel()
+                    host<Router>().onOpenLevelClick()
                 }
 
                 override fun onPhrase(phrase: String) {

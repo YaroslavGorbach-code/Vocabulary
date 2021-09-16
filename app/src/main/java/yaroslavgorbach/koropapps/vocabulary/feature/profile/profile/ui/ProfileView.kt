@@ -5,7 +5,7 @@ import im.dacer.androidcharts.LineView
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.data.phrase.local.model.Phrase
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentProfileBinding
-import yaroslavgorbach.koropapps.vocabulary.feature.profile.model.LevelInfoUi
+import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.model.LevelInfoUi
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.profile.model.ChartDayUi
 import yaroslavgorbach.koropapps.vocabulary.utils.getDrawable
 

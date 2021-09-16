@@ -12,7 +12,7 @@ import yaroslavgorbach.koropapps.vocabulary.business.statistics.GetStatisticsLev
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.ObserveStatisticDaysInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.phrase.local.model.Phrase
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.model.ChartValueUi
-import yaroslavgorbach.koropapps.vocabulary.feature.profile.model.LevelInfoUi
+import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.model.LevelInfoUi
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.profile.model.ChartDayUi
 import java.util.*
 import javax.inject.Inject

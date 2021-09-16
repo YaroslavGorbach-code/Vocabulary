@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.GetStatisticsLevelInteractor
-import yaroslavgorbach.koropapps.vocabulary.feature.profile.model.LevelInfoUi
+import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.model.LevelInfoUi
 import javax.inject.Inject
 
 class LevelViewModel @Inject constructor(

@@ -1,4 +1,4 @@
-package yaroslavgorbach.koropapps.vocabulary.feature.profile.model
+package yaroslavgorbach.koropapps.vocabulary.feature.profile.level.model
 
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsLevelEntity
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.model.Level

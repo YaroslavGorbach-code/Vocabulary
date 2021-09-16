@@ -21,6 +21,7 @@ class NavigationFragment : Fragment(R.layout.fragment_navigation), ExercisesList
         fun openDescription(exercise: ExerciseUi)
         fun openTraining()
         fun openLevel()
+        fun openSettings()
     }
 
     companion object {
@@ -75,7 +76,11 @@ class NavigationFragment : Fragment(R.layout.fragment_navigation), ExercisesList
         host<Router>().openTraining()
     }
 
-    override fun openLevel() {
+    override fun onOpenLevelClick() {
         host<Router>().openLevel()
+    }
+
+    override fun onOpenSettingsClick() {
+        host<Router>().openSettings()
     }
 }

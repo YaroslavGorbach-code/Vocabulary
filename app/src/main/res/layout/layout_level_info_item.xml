@@ -26,7 +26,8 @@
         android:gravity="center|start"
         android:textColor="?colorControlNormal"
         android:textSize="16sp"
-        tools:text="Name of button" />
+        tools:text="Name of button"
+        tools:ignore="RtlSymmetry" />
 
     <TextView
         android:id="@+id/value"

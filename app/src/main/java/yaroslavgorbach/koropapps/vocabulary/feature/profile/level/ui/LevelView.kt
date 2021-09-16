@@ -2,7 +2,7 @@ package yaroslavgorbach.koropapps.vocabulary.feature.profile.level.ui
 
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentLevelBinding
-import yaroslavgorbach.koropapps.vocabulary.feature.profile.model.LevelInfoUi
+import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.model.LevelInfoUi
 import yaroslavgorbach.koropapps.vocabulary.utils.getString
 
 class LevelView(private val binding: FragmentLevelBinding, private val callback: Callback) {
