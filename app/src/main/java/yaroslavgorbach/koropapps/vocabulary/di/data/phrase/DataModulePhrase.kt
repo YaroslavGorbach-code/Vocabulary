@@ -21,5 +21,4 @@ class DataModulePhrase {
     fun provideRepoPhrase(phraseDataStore: PhraseDataStore): RepoPhrase {
         return RepoPhraseImp(phraseDataStore)
     }
-
 }

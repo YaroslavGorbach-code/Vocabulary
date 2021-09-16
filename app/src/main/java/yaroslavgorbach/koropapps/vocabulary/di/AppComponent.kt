@@ -6,6 +6,7 @@ import dagger.Component
 import yaroslavgorbach.koropapps.vocabulary.di.business.description.BusinessDescriptionModule
 import yaroslavgorbach.koropapps.vocabulary.di.business.exercises.BusinessExercisesModule
 import yaroslavgorbach.koropapps.vocabulary.di.business.phrase.BusinessPhraseModule
+import yaroslavgorbach.koropapps.vocabulary.di.business.settings.BusinessSettingsModule
 import yaroslavgorbach.koropapps.vocabulary.di.business.statistics.BusinessStatisticsModule
 import yaroslavgorbach.koropapps.vocabulary.di.business.training.BusinessTrainingModule
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.di.DescriptionComponent
@@ -36,7 +37,8 @@ import javax.inject.Singleton
         BusinessExercisesModule::class,
         BusinessDescriptionModule::class,
         BusinessStatisticsModule::class,
-        BusinessPhraseModule::class
+        BusinessPhraseModule::class,
+        BusinessSettingsModule::class
     ]
 )
 interface AppComponent {
