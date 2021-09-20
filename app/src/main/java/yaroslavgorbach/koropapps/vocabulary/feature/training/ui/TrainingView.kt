@@ -47,19 +47,21 @@ class TrainingView(
         listAdapter.setData(trainingWithExercisesUi.exercises)
         binding.trainingProgress.progress = trainingWithExercisesUi.progress
         binding.daysWithoutInterruption.text =
-            binding.getString(R.string.days_without_interruption) + ": ${
-                trainingWithExercisesUi.daysWithoutInterruption
-            }"
+            binding.getString(R.string.days_without_interruption) + ": ${trainingWithExercisesUi.daysWithoutInterruption}"
 
-        if (trainingWithExercisesUi.areExerciseEmpty) {
-            showNoExercises()
-        }
+        showNoExercises(trainingWithExercisesUi.exercises.isEmpty())
     }
 
-    private fun showNoExercises() {
-        binding.noExercisesIcon.visibility = View.VISIBLE
-        binding.noExercisesTextOne.visibility = View.VISIBLE
-        binding.noExercisesTextTwo.visibility = View.VISIBLE
+    private fun showNoExercises(isShow: Boolean) {
+        if (isShow){
+            binding.noExercisesIcon.visibility = View.VISIBLE
+            binding.noExercisesTextOne.visibility = View.VISIBLE
+            binding.noExercisesTextTwo.visibility = View.VISIBLE
+        }else{
+            binding.noExercisesIcon.visibility = View.GONE
+            binding.noExercisesTextOne.visibility = View.GONE
+            binding.noExercisesTextTwo.visibility = View.GONE
+        }
     }
 
 }
