@@ -31,9 +31,9 @@
         android:id="@+id/theme_color_example"
         android:layout_width="16sp"
         android:layout_height="16dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginEnd="4dp"
         android:background="@drawable/bg_theme_example"
         app:layout_constraintBottom_toBottomOf="@+id/chose_theme_text"
-        app:layout_constraintStart_toEndOf="@+id/chose_theme_text"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/chose_theme_text" />
 </androidx.constraintlayout.widget.ConstraintLayout>
