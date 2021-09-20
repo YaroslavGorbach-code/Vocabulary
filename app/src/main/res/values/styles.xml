@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Vocabulary" parent="BaseAppTheme.DayNight" />
-
-    <style name="BaseAppTheme.DayNight" />
-
     <style name="BaseAppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="colorPrimary">#4db6ac</item>
-        <item name="colorPrimaryVariant">#82e9de</item>
-        <item name="colorSecondary">#d81b60</item>
-        <item name="colorSecondaryVariant">#ff5c8d</item>
         <item name="colorPrimarySurface">#fff</item>
         <item name="android:statusBarColor">#222</item>
         <item name="appBarLayoutStyle">@style/Vocabulary.AppBar</item>
@@ -19,4 +11,52 @@
         <item name="android:elevation">4dp</item>
     </style>
 
+    <style name="BaseAppTheme.Teal">
+        <item name="colorPrimary">@color/TealPrimary</item>
+        <item name="colorPrimaryVariant">@color/TealPrimaryVariant</item>
+        <item name="colorSecondary">@color/TealSecondary</item>
+        <item name="colorSecondaryVariant">@color/TealSecondaryVariant</item>
+    </style>
+
+    <style name="BaseAppTheme.Blue">
+        <item name="colorPrimary">@color/BluePrimary</item>
+        <item name="colorPrimaryVariant">@color/BluePrimaryVariant</item>
+        <item name="colorSecondary">@color/BlueSecondary</item>
+        <item name="colorSecondaryVariant">@color/BlueSecondaryVariant</item>
+    </style>
+
+    <style name="BaseAppTheme.Indigo">
+        <item name="colorPrimary">@color/IndigoPrimary</item>
+        <item name="colorPrimaryVariant">@color/IndigoPrimaryVariant</item>
+        <item name="colorSecondary">@color/IndigoSecondary</item>
+        <item name="colorSecondaryVariant">@color/IndigoSecondaryVariant</item>
+    </style>
+
+    <style name="BaseAppTheme.DeepPurple">
+        <item name="colorPrimary">@color/DeepPurplePrimary</item>
+        <item name="colorPrimaryVariant">@color/DeepPurplePrimaryVariant</item>
+        <item name="colorSecondary">@color/DeepPurpleSecondary</item>
+        <item name="colorSecondaryVariant">@color/DeepPurpleSecondaryVariant</item>
+    </style>
+
+    <style name="BaseAppTheme.Purple">
+        <item name="colorPrimary">@color/PurplePrimary</item>
+        <item name="colorPrimaryVariant">@color/PurplePrimaryVariant</item>
+        <item name="colorSecondary">@color/PurplePurpleSecondary</item>
+        <item name="colorSecondaryVariant">@color/PurpleSecondaryVariant</item>
+    </style>
+
+    <style name="BaseAppTheme.Pink">
+        <item name="colorPrimary">@color/PinkPrimary</item>
+        <item name="colorPrimaryVariant">@color/PinkPrimaryVariant</item>
+        <item name="colorSecondary">@color/PinkSecondary</item>
+        <item name="colorSecondaryVariant">@color/PinkSecondaryVariant</item>
+    </style>
+
+    <style name="BaseAppTheme.Red">
+        <item name="colorPrimary">@color/RedPrimary</item>
+        <item name="colorPrimaryVariant">@color/RedPrimaryVariant</item>
+        <item name="colorSecondary">@color/RedSecondary</item>
+        <item name="colorSecondaryVariant">@color/RedSecondaryVariant</item>
+    </style>
 </resources>

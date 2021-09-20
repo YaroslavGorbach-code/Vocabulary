@@ -6,6 +6,8 @@ import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Theme
 
 interface RepoSettings {
 
+    val themes: List<Theme>
+
     fun observeCurrentTheme(context: Context): Flow<Theme>
 
     suspend fun changeTheme(context: Context, theme: Theme)

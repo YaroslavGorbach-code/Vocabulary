@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+<!--    <style name="BaseAppTheme" parent="BaseAppTheme.v23" />-->
 
-    <style name="BaseAppTheme.v23.DayNight" />
+<!--    <style name="BaseAppTheme.v23" />-->
 </resources>

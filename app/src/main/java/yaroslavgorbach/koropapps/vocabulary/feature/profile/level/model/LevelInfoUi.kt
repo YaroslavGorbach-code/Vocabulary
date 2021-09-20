@@ -11,8 +11,7 @@ data class LevelInfoUi(private val levelEntity: StatisticsLevelEntity) {
 
     val progress: Int
         get() = try {
-            (((levelEntity.summaryTrainingTimeMinutes.toFloat() - level.levelTrainingTimeRequired)
-                    / level.nextLevelTrainingTimeRequired.toFloat()) * 100f).toInt()
+            (((level.levelTrainingTimeRequired.toFloat() - levelEntity.summaryTrainingTimeMinutes.toFloat()) / level.nextLevelTrainingTimeRequired.toFloat()) * 100f).toInt()
         } catch (ex: Throwable) {
             0
         }

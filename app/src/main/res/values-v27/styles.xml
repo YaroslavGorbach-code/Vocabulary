@@ -1,13 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <style name="Vocabulary" parent="BaseAppTheme.v27.DayNight" />
-
-    <style name="BaseAppTheme.v27.DayNight">
+    <style name="BaseAppTheme.v27" parent="BaseAppTheme.v23">
         <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:navigationBarColor">?android:colorBackground</item>
     </style>
 
-    <style name="BaseAppTheme.v27" parent="BaseAppTheme.v23.DayNight">
-        <item name="android:navigationBarColor">?android:colorBackground</item>
+    <style name="BaseAppTheme.Teal" parent="BaseAppTheme.v27">
+        <item name="colorPrimary">@color/TealPrimary</item>
+        <item name="colorPrimaryVariant">@color/TealPrimaryVariant</item>
+        <item name="colorSecondary">@color/TealSecondary</item>
+        <item name="colorSecondaryVariant">@color/TealSecondaryVariant</item>
+    </style>
+
+    <style name="BaseAppTheme.Blue" parent="BaseAppTheme.v27">
+        <item name="colorPrimary">@color/BluePrimary</item>
+        <item name="colorPrimaryVariant">@color/BluePrimaryVariant</item>
+        <item name="colorSecondary">@color/BlueSecondary</item>
+        <item name="colorSecondaryVariant">@color/BlueSecondaryVariant</item>
+    </style>
+
+    <style name="BaseAppTheme.Indigo" parent="BaseAppTheme.v27">
+        <item name="colorPrimary">@color/IndigoPrimary</item>
+        <item name="colorPrimaryVariant">@color/IndigoPrimaryVariant</item>
+        <item name="colorSecondary">@color/IndigoSecondary</item>
+        <item name="colorSecondaryVariant">@color/IndigoSecondaryVariant</item>
+    </style>
+
+    <style name="BaseAppTheme.DeepPurple" parent="BaseAppTheme.v27">
+        <item name="colorPrimary">@color/DeepPurplePrimary</item>
+        <item name="colorPrimaryVariant">@color/DeepPurplePrimaryVariant</item>
+        <item name="colorSecondary">@color/DeepPurpleSecondary</item>
+        <item name="colorSecondaryVariant">@color/DeepPurpleSecondaryVariant</item>
+    </style>
+
+    <style name="BaseAppTheme.Purple" parent="BaseAppTheme.v27">
+        <item name="colorPrimary">@color/PurplePrimary</item>
+        <item name="colorPrimaryVariant">@color/PurplePrimaryVariant</item>
+        <item name="colorSecondary">@color/PurplePurpleSecondary</item>
+        <item name="colorSecondaryVariant">@color/PurpleSecondaryVariant</item>
+    </style>
+
+    <style name="BaseAppTheme.Pink" parent="BaseAppTheme.v27">
+        <item name="colorPrimary">@color/PinkPrimary</item>
+        <item name="colorPrimaryVariant">@color/PinkPrimaryVariant</item>
+        <item name="colorSecondary">@color/PinkSecondary</item>
+        <item name="colorSecondaryVariant">@color/PinkSecondaryVariant</item>
+    </style>
+
+    <style name="BaseAppTheme.Red" parent="BaseAppTheme.v27">
+        <item name="colorPrimary">@color/RedPrimary</item>
+        <item name="colorPrimaryVariant">@color/RedPrimaryVariant</item>
+        <item name="colorSecondary">@color/RedSecondary</item>
+        <item name="colorSecondaryVariant">@color/RedSecondaryVariant</item>
     </style>
 </resources>

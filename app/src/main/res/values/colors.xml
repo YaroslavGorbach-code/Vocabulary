@@ -1,4 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="green">#00FF83</color>
+
+<!--    Theme teal-->
+    <color name="TealPrimary">#4bb5ab</color>
+    <color name="TealPrimaryVariant">#80cbc4</color>
+    <color name="TealSecondary">#d81b60</color>
+    <color name="TealSecondaryVariant">#ff5c8d</color>
+
+    <!--    Theme blue-->
+    <color name="BluePrimary">#64b5f6</color>
+    <color name="BluePrimaryVariant">#9be7ff</color>
+    <color name="BlueSecondary">#d81b60</color>
+    <color name="BlueSecondaryVariant">#ff5c8d</color>
+
+    <!--    Theme indigo-->
+    <color name="IndigoPrimary">#5c6bc0</color>
+    <color name="IndigoPrimaryVariant">#7986cb</color>
+    <color name="IndigoSecondary">#d81b60</color>
+    <color name="IndigoSecondaryVariant">#ff5c8d</color>
+
+    <!--    Theme deepPurple-->
+    <color name="DeepPurplePrimary">#7e57c2</color>
+    <color name="DeepPurplePrimaryVariant">#9575cd</color>
+    <color name="DeepPurpleSecondary">#d81b60</color>
+    <color name="DeepPurpleSecondaryVariant">#ff5c8d</color>
+
+    <!--    Theme purple-->
+    <color name="PurplePrimary">#ba68c8</color>
+    <color name="PurplePrimaryVariant">#ce93d8</color>
+    <color name="PurplePurpleSecondary">#d81b60</color>
+    <color name="PurpleSecondaryVariant">#ff5c8d</color>
+
+    <!--   Theme pink-->
+    <color name="PinkPrimary">#f06292</color>
+    <color name="PinkPrimaryVariant">#f48fb1</color>
+    <color name="PinkSecondary">#d81b60</color>
+    <color name="PinkSecondaryVariant">#ff5c8d</color>
+
+    <!--   Theme red-->
+    <color name="RedPrimary">#ef5350</color>
+    <color name="RedPrimaryVariant">#e57373</color>
+    <color name="RedSecondary">#d81b60</color>
+    <color name="RedSecondaryVariant">#ff5c8d</color>
+
 </resources>
