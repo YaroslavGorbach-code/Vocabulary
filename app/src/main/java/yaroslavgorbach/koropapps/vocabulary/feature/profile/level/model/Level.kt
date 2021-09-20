@@ -6,7 +6,7 @@ sealed class Level {
     abstract val levelTrainingTimeRequired: Int
     abstract val level: String
 
-    class ZERO : Level() {
+    class Zero : Level() {
         override val levelTrainingTimeRequired = 0
         override val nextLevelTrainingTimeRequired = 10
         override val level: String = "0"
