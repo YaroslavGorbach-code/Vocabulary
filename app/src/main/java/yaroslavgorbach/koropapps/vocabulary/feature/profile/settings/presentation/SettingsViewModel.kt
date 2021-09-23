@@ -8,12 +8,14 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import yaroslavgorbach.koropapps.vocabulary.business.settings.ChangeThemeInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.settings.ObserveCurrentThemeInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.settings.ObserveThemesInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Theme
 import javax.inject.Inject
 
 class SettingsViewModel @Inject constructor(
     private val changeThemeInteractor: ChangeThemeInteractor,
-    private val observeCurrentThemeInteractor: ObserveCurrentThemeInteractor
+    private val observeCurrentThemeInteractor: ObserveCurrentThemeInteractor,
+    private val observeThemesInteractor: ObserveThemesInteractor
 ) : ViewModel() {
 
     fun observeCurrentTheme(context: Context): LiveData<Theme> {
@@ -22,5 +24,9 @@ class SettingsViewModel @Inject constructor(
 
     fun onChangeThemeCLick(context: Context, theme: Theme) {
         viewModelScope.launch { changeThemeInteractor(context, theme) }
+    }
+
+    fun observeThemes(context: Context): LiveData<List<Theme>> {
+        return observeThemesInteractor(context).asLiveData()
     }
 }

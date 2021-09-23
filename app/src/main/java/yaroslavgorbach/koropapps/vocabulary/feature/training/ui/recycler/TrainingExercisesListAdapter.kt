@@ -1,9 +1,10 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.training.ui.recycler
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import yaroslavgorbach.koropapps.vocabulary.databinding.ItemeExerciseTariningBinding
+import yaroslavgorbach.koropapps.vocabulary.databinding.ItemExerciseTariningBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.utils.getDrawable
 import yaroslavgorbach.koropapps.vocabulary.utils.getString
@@ -13,6 +14,7 @@ class TrainingExercisesListAdapter(private val onExercise: (exercise: TrainingEx
 
     private var list: List<TrainingExerciseUi> = emptyList()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(data: List<TrainingExerciseUi>) {
         list = data
         notifyDataSetChanged()
@@ -20,7 +22,7 @@ class TrainingExercisesListAdapter(private val onExercise: (exercise: TrainingEx
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            ItemeExerciseTariningBinding.inflate(
+            ItemExerciseTariningBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -34,7 +36,7 @@ class TrainingExercisesListAdapter(private val onExercise: (exercise: TrainingEx
 
     override fun getItemCount(): Int = list.size
 
-    inner class ViewHolder(private val binding: ItemeExerciseTariningBinding) :
+    inner class ViewHolder(private val binding: ItemExerciseTariningBinding) :
         RecyclerView.ViewHolder(binding.root) {
         init {
             binding.item.setOnClickListener {

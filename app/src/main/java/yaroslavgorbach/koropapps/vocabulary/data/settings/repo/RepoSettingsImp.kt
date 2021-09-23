@@ -7,19 +7,12 @@ import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Theme
 
 class RepoSettingsImp(private val localDataStore: SettingsDataStore) : RepoSettings {
 
-    override val themes: List<Theme>
-        get() = listOf(
-            Theme.Base(),
-            Theme.Blue(),
-            Theme.Indigo(),
-            Theme.DeepPurple(),
-            Theme.Purple(),
-            Theme.Pink(),
-            Theme.Red()
-        )
+    override fun observeThemes(context: Context): Flow<List<Theme>> {
+        return localDataStore.observeThemes(context)
+    }
 
     override fun observeCurrentTheme(context: Context): Flow<Theme> {
-        return localDataStore.getCurrentTheme(context)
+        return localDataStore.observeCurrentTheme(context)
     }
 
     override suspend fun changeTheme(context: Context, theme: Theme) {

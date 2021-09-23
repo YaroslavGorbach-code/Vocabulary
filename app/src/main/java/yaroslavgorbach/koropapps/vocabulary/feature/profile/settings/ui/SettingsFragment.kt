@@ -2,11 +2,13 @@ package yaroslavgorbach.koropapps.vocabulary.feature.profile.settings.ui
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import yaroslavgorbach.koropapps.vocabulary.R
+import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Theme
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentSettingsBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.settings.presentation.SettingsViewModel
 import yaroslavgorbach.koropapps.vocabulary.utils.appComponent
@@ -47,18 +49,20 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         settingsView = SettingsView(
             FragmentSettingsBinding.bind(requireView()),
             object : SettingsView.Callback {
-                override fun onChoseTheme() {
-                    choseThemeDialog()
+                override fun onChoseTheme(themes: List<Theme>) {
+                    choseThemeDialog(themes)
                 }
             })
     }
 
-    fun choseThemeDialog() {
-        DialogChoseTheme.newInstance().show(childFragmentManager, null)
+    fun choseThemeDialog(themes: List<Theme>) {
+        DialogChoseTheme.newInstance(themes).show(childFragmentManager, null)
     }
 
     private fun initObservers() {
         viewModel.observeCurrentTheme(requireContext())
-            .observe(viewLifecycleOwner, settingsView::setTheme)
+            .observe(viewLifecycleOwner, settingsView::setCurrentTheme)
+
+        viewModel.observeThemes(requireContext()).observe(viewLifecycleOwner, settingsView::setThemes)
     }
 }

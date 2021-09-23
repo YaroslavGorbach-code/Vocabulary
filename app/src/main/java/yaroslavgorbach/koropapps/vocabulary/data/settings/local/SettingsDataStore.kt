@@ -8,27 +8,51 @@ import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import yaroslavgorbach.koropapps.vocabulary.data.settings.factory.ThemeFactory
+import yaroslavgorbach.koropapps.vocabulary.R
+import yaroslavgorbach.koropapps.vocabulary.data.settings.local.factory.ThemeFactory
+import yaroslavgorbach.koropapps.vocabulary.data.settings.local.mapper.MapStyleResToThemeRes
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Theme
 
 private val Context.settingsDataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
 class SettingsDataStore {
+
     companion object {
         private val THEME_RES_KEY = intPreferencesKey("THEME_RES_KEY")
+
+        private const val DEFAULT_THEME_RES = R.style.BaseAppTheme_Teal
     }
 
-    fun getCurrentTheme(context: Context): Flow<Theme> {
+    private var themes: List<Theme> = listOf(
+        Theme.Teal(),
+        Theme.Blue(),
+        Theme.Indigo(),
+        Theme.DeepPurple(),
+        Theme.Purple(),
+        Theme.Pink(),
+        Theme.Red()
+    )
+
+    fun observeThemes(context: Context): Flow<List<Theme>> {
+        return observeCurrentTheme(context).map { theme ->
+            themes.apply {
+                requireNotNull(themes.find { it.colorPrimary == theme.colorPrimary }).isCurrent =
+                    true
+            }
+        }
+    }
+
+    fun observeCurrentTheme(context: Context): Flow<Theme> {
         return context.settingsDataStore.data
             .map { prefs ->
-                val themeRes = prefs[THEME_RES_KEY] ?: 0
-                ThemeFactory().create(themeRes)
+                val styleRes = prefs[THEME_RES_KEY] ?: DEFAULT_THEME_RES
+                ThemeFactory().create(MapStyleResToThemeRes().map(styleRes))
             }
     }
 
     suspend fun changeTheme(context: Context, theme: Theme) {
         context.settingsDataStore.edit { prefs ->
-            prefs[THEME_RES_KEY] = theme.res
+            prefs[THEME_RES_KEY] = theme.res.id
         }
     }
 

@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar2"
+        android:id="@+id/settings_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -16,12 +16,12 @@
         app:titleTextColor="?colorControlNormal" />
 
     <include
-        android:id="@+id/chose_theme"
+        android:id="@+id/chose_theme_item"
         layout="@layout/layout_theme_item"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
+        app:layout_constraintTop_toBottomOf="@+id/settings_toolbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
