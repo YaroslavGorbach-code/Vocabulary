@@ -1,46 +1,64 @@
 package yaroslavgorbach.koropapps.vocabulary.data.settings.local.model
 
 import android.graphics.Color
-import yaroslavgorbach.koropapps.vocabulary.R
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.RawValue
 
 // TODO: 9/16/2021 add themes
-sealed class Theme {
-    abstract val res: Int
+sealed class Theme : Parcelable {
+    abstract val res: ThemeRes
+
+    abstract var isCurrent: Boolean
 
     abstract val colorPrimary: Int
 
-    class Base(
-        override val res: Int = R.style.BaseAppTheme,
-        override val colorPrimary: Int = Color.parseColor("#4db6ac")
+    @Parcelize
+    class Teal(
+        override val res: @RawValue ThemeRes = ThemeResTeal(),
+        override val colorPrimary: Int = Color.parseColor("#4db6ac"),
+        override var isCurrent: Boolean = false
     ) : Theme()
 
+    @Parcelize
     class Blue(
-        override val res: Int = R.style.BaseAppTheme_Blue,
-        override val colorPrimary: Int = Color.parseColor("#64b5f6")
+        override val res: @RawValue ThemeRes = ThemeResBlue(),
+        override val colorPrimary: Int = Color.parseColor("#64b5f6"),
+        override var isCurrent: Boolean = false
     ) : Theme()
 
+    @Parcelize
     class Indigo(
-        override val res: Int = R.style.BaseAppTheme_Indigo,
-        override val colorPrimary: Int = Color.parseColor("#5c6bc0")
+        override val res: @RawValue ThemeRes = ThemeResIndigo(),
+        override val colorPrimary: Int = Color.parseColor("#5c6bc0"),
+        override var isCurrent: Boolean = false
     ) : Theme()
 
+    @Parcelize
     class Purple(
-        override val res: Int = R.style.BaseAppTheme_Purple,
-        override val colorPrimary: Int = Color.parseColor("#7e57c2")
+        override val res: @RawValue ThemeRes = ThemeResPurple(),
+        override val colorPrimary: Int = Color.parseColor("#7e57c2"),
+        override var isCurrent: Boolean = false
     ) : Theme()
 
+    @Parcelize
     class DeepPurple(
-        override val res: Int = R.style.BaseAppTheme_DeepPurple,
-        override val colorPrimary: Int = Color.parseColor("#ba68c8")
+        override val res: @RawValue ThemeRes = ThemeResDeepPurple(),
+        override val colorPrimary: Int = Color.parseColor("#ba68c8"),
+        override var isCurrent: Boolean = false
     ) : Theme()
 
+    @Parcelize
     class Pink(
-        override val res: Int = R.style.BaseAppTheme_Pink,
-        override val colorPrimary: Int = Color.parseColor("#f06292")
+        override val res: @RawValue ThemeRes = ThemeResPink(),
+        override val colorPrimary: Int = Color.parseColor("#f06292"),
+        override var isCurrent: Boolean = false
     ) : Theme()
 
+    @Parcelize
     class Red(
-        override val res: Int = R.style.BaseAppTheme_Red,
-        override val colorPrimary: Int = Color.parseColor("#ef5350")
+        override val res: @RawValue ThemeRes = ThemeResRed(),
+        override val colorPrimary: Int = Color.parseColor("#ef5350"),
+        override var isCurrent: Boolean = false
     ) : Theme()
 }
