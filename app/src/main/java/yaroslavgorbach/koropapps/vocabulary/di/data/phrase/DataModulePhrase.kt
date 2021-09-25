@@ -3,6 +3,7 @@ package yaroslavgorbach.koropapps.vocabulary.di.data.phrase
 import dagger.Module
 import dagger.Provides
 import yaroslavgorbach.koropapps.vocabulary.data.phrase.local.PhraseDataStore
+import yaroslavgorbach.koropapps.vocabulary.data.phrase.local.PhraseDataStoreImp
 import yaroslavgorbach.koropapps.vocabulary.data.phrase.repo.RepoPhrase
 import yaroslavgorbach.koropapps.vocabulary.data.phrase.repo.RepoPhraseImp
 import javax.inject.Singleton
@@ -13,7 +14,7 @@ class DataModulePhrase {
     @Singleton
     @Provides
     fun providePhraseDataStore(): PhraseDataStore {
-        return PhraseDataStore()
+        return PhraseDataStoreImp()
     }
 
     @Singleton
