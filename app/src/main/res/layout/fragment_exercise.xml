@@ -30,7 +30,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:padding="8dp"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+                style="@style/TextPrimary"
                 app:autoSizeMaxTextSize="20sp"
                 app:autoSizeMinTextSize="12sp"
                 app:autoSizeTextType="uniform"

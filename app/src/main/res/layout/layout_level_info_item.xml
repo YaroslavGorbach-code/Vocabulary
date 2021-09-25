@@ -24,8 +24,7 @@
         android:layout_weight="1"
         android:paddingStart="8dp"
         android:gravity="center|start"
-        android:textColor="?colorControlNormal"
-        android:textSize="16sp"
+        style="@style/TextPrimary"
         tools:text="Name of button"
         tools:ignore="RtlSymmetry" />
 
@@ -36,8 +35,7 @@
         android:layout_gravity="center"
         android:layout_weight="0.20"
         android:gravity="center"
-        android:textColor="?colorControlNormal"
-        android:textSize="16sp"
+        style="@style/TextPrimary"
         tools:text="10" />
 
 </LinearLayout>

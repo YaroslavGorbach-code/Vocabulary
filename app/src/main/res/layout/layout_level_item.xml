@@ -23,8 +23,7 @@
         android:layout_weight="1"
         android:gravity="center|start"
         android:text="@string/Level"
-        android:textColor="?colorControlNormal"
-        android:textSize="16sp" />
+        style="@style/TextPrimary" />
 
     <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.TextProgressView
         android:id="@+id/level_progress"

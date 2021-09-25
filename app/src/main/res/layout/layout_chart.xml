@@ -22,6 +22,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/time_on_training"
+        style="@style/TextPrimary"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/prev_data"
         app:layout_constraintEnd_toStartOf="@+id/next_data"

@@ -11,6 +11,11 @@
         <item name="android:elevation">4dp</item>
     </style>
 
+    <style name="TextPrimary" parent="@style/TextAppearance.AppCompat">
+        <item name="android:textColor">?colorControlNormal</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
     <style name="BaseAppTheme.Teal">
         <item name="colorPrimary">@color/TealPrimary</item>
         <item name="colorPrimaryVariant">@color/TealPrimaryVariant</item>
