@@ -18,7 +18,7 @@ class DialogChoseTheme : DialogFragment() {
     companion object {
         private const val THEMES_LIST_ARG = "THEMES_LIST_JSON_ARG"
 
-        private const val NUMBER_OF_GRID_SPANS = 5
+        private const val NUMBER_OF_GRID_SPANS = 4
 
         fun newInstance(themes: List<Theme>): DialogChoseTheme {
             return DialogChoseTheme().apply {
@@ -84,7 +84,7 @@ class DialogChoseTheme : DialogFragment() {
             dismiss()
         }.apply { submitList(themes) }
 
-        _gridSpacingItemDecorator = GridSpacingItemDecoration(NUMBER_OF_GRID_SPANS, 24, true, 0)
+        _gridSpacingItemDecorator = GridSpacingItemDecoration(NUMBER_OF_GRID_SPANS, 34, true, 0)
 
         _gridLayoutManager = GridLayoutManager(requireContext(), NUMBER_OF_GRID_SPANS)
 

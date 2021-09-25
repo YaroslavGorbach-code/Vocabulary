@@ -27,3 +27,29 @@ value class ThemeResPink(override val id: Int = R.style.BaseAppTheme_Pink) : The
 @JvmInline
 value class ThemeResRed(override val id: Int = R.style.BaseAppTheme_Red) : ThemeRes
 
+@JvmInline
+value class ThemeResLightBlue(override val id: Int = R.style.BaseAppTheme_LightBlue) : ThemeRes
+
+@JvmInline
+value class ThemeResGreen(override val id: Int = R.style.BaseAppTheme_Green) : ThemeRes
+
+@JvmInline
+value class ThemeResLightGreen(override val id: Int = R.style.BaseAppTheme_LightGreen) : ThemeRes
+
+@JvmInline
+value class ThemeResLime(override val id: Int = R.style.BaseAppTheme_Lime) : ThemeRes
+
+@JvmInline
+value class ThemeResYellow(override val id: Int = R.style.BaseAppTheme_Yellow) : ThemeRes
+
+@JvmInline
+value class ThemeResAmber(override val id: Int = R.style.BaseAppTheme_Amber) : ThemeRes
+
+@JvmInline
+value class ThemeResOrange(override val id: Int = R.style.BaseAppTheme_Orange) : ThemeRes
+
+@JvmInline
+value class ThemeResDeepOrange(override val id: Int = R.style.BaseAppTheme_DeepOrange) : ThemeRes
+
+@JvmInline
+value class ThemeResBrown(override val id: Int = R.style.BaseAppTheme_Brown) : ThemeRes

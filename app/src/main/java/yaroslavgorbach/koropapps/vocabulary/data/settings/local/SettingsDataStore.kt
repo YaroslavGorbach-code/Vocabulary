@@ -30,7 +30,16 @@ class SettingsDataStore {
         Theme.DeepPurple(),
         Theme.Purple(),
         Theme.Pink(),
-        Theme.Red()
+        Theme.Red(),
+        Theme.LightBlue(),
+        Theme.Green(),
+        Theme.LightGreen(),
+        Theme.Lime(),
+        Theme.Yellow(),
+        Theme.Amber(),
+        Theme.Orange(),
+        Theme.DeepOrange(),
+        Theme.Brown(),
     )
 
     fun observeThemes(context: Context): Flow<List<Theme>> {

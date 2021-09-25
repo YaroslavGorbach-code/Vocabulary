@@ -54,7 +54,6 @@ class MainActivity : AppCompatActivity(), NavigationFragment.Router,
         }
     }
 
-
     private fun initDagger() {
         (application as App).appComponent.inject(this)
     }

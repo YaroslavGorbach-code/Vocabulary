@@ -54,4 +54,66 @@
         <item name="colorSecondaryVariant">@color/RedSecondaryVariant</item>
     </style>
 
+    <style name="BaseAppTheme.LightBlue" parent="BaseAppTheme.v23">
+        <item name="colorPrimary">@color/LightBluePrimary</item>
+        <item name="colorPrimaryVariant">@color/LightBluePrimaryVariant</item>
+        <item name="colorSecondary">@color/LightBlueSecondary</item>
+        <item name="colorSecondaryVariant">@color/LightBlueSecondaryVariant</item>
+    </style>
+
+    <style name="BaseAppTheme.Green" parent="BaseAppTheme.v23">
+        <item name="colorPrimary">@color/GreenPrimary</item>
+        <item name="colorPrimaryVariant">@color/GreenPrimaryVariant</item>
+        <item name="colorSecondary">@color/GreenSecondary</item>
+        <item name="colorSecondaryVariant">@color/GreenSecondaryVariant</item>
+    </style>
+
+    <style name="BaseAppTheme.LightGreen" parent="BaseAppTheme.v23">
+        <item name="colorPrimary">@color/LightGreenPrimary</item>
+        <item name="colorPrimaryVariant">@color/LightGreenPrimaryVariant</item>
+        <item name="colorSecondary">@color/LightGreenSecondary</item>
+        <item name="colorSecondaryVariant">@color/LightGreenSecondaryVariant</item>
+    </style>
+
+    <style name="BaseAppTheme.Lime" parent="BaseAppTheme.v23">
+        <item name="colorPrimary">@color/LimePrimary</item>
+        <item name="colorPrimaryVariant">@color/LimePrimaryVariant</item>
+        <item name="colorSecondary">@color/LimeSecondary</item>
+        <item name="colorSecondaryVariant">@color/LimeSecondaryVariant</item>
+    </style>
+
+    <style name="BaseAppTheme.Yellow" parent="BaseAppTheme.v23">
+        <item name="colorPrimary">@color/YellowPrimary</item>
+        <item name="colorPrimaryVariant">@color/YellowPrimaryVariant</item>
+        <item name="colorSecondary">@color/YellowSecondary</item>
+        <item name="colorSecondaryVariant">@color/YellowSecondaryVariant</item>
+    </style>
+
+    <style name="BaseAppTheme.Amber" parent="BaseAppTheme.v23">
+        <item name="colorPrimary">@color/AmberPrimary</item>
+        <item name="colorPrimaryVariant">@color/AmberPrimaryVariant</item>
+        <item name="colorSecondary">@color/AmberSecondary</item>
+        <item name="colorSecondaryVariant">@color/AmberSecondaryVariant</item>
+    </style>
+
+    <style name="BaseAppTheme.Orange" parent="BaseAppTheme.v23">
+        <item name="colorPrimary">@color/OrangePrimary</item>
+        <item name="colorPrimaryVariant">@color/OrangePrimaryVariant</item>
+        <item name="colorSecondary">@color/OrangeSecondary</item>
+        <item name="colorSecondaryVariant">@color/OrangeSecondaryVariant</item>
+    </style>
+
+    <style name="BaseAppTheme.DeepOrange" parent="BaseAppTheme.v23">
+        <item name="colorPrimary">@color/DeepOrangePrimary</item>
+        <item name="colorPrimaryVariant">@color/DeepOrangePrimaryVariant</item>
+        <item name="colorSecondary">@color/DeepOrangeSecondary</item>
+        <item name="colorSecondaryVariant">@color/DeepOrangeSecondaryVariant</item>
+    </style>
+
+    <style name="BaseAppTheme.Brown" parent="BaseAppTheme.v23">
+        <item name="colorPrimary">@color/BrownPrimary</item>
+        <item name="colorPrimaryVariant">@color/BrownPrimaryVariant</item>
+        <item name="colorSecondary">@color/BrownSecondary</item>
+        <item name="colorSecondaryVariant">@color/BrownSecondaryVariant</item>
+    </style>
 </resources>

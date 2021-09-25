@@ -4,7 +4,6 @@ import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.*
 
 class ThemeFactory {
     fun create(themeRes: ThemeRes): Theme {
-        // TODO: 9/16/2021 put logic of creating theme here
         return when (themeRes) {
             is ThemeResTeal -> Theme.Teal()
             is ThemeResBlue -> Theme.Blue()
@@ -13,6 +12,15 @@ class ThemeFactory {
             is ThemeResPurple -> Theme.Purple()
             is ThemeResPink -> Theme.Pink()
             is ThemeResRed -> Theme.Red()
+            is ThemeResLightBlue -> Theme.LightBlue()
+            is ThemeResGreen -> Theme.Green()
+            is ThemeResLightGreen -> Theme.LightGreen()
+            is ThemeResLime -> Theme.Lime()
+            is ThemeResYellow -> Theme.Yellow()
+            is ThemeResAmber -> Theme.Amber()
+            is ThemeResOrange -> Theme.Orange()
+            is ThemeResDeepOrange -> Theme.DeepOrange()
+            is ThemeResBrown -> Theme.Brown()
             else -> error("There are no theme associated wit this resource")
         }
     }
