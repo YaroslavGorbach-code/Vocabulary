@@ -3,6 +3,7 @@ package yaroslavgorbach.koropapps.vocabulary.data.settings.repo
 import android.content.Context
 import kotlinx.coroutines.flow.Flow
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.SettingsDataStore
+import yaroslavgorbach.koropapps.vocabulary.data.settings.local.SettingsDataStoreImp
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Theme
 
 class RepoSettingsImp(private val localDataStore: SettingsDataStore) : RepoSettings {

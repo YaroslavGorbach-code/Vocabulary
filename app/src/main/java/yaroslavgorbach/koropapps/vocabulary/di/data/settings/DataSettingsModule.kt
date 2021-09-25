@@ -3,6 +3,7 @@ package yaroslavgorbach.koropapps.vocabulary.di.data.settings
 import dagger.Module
 import dagger.Provides
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.SettingsDataStore
+import yaroslavgorbach.koropapps.vocabulary.data.settings.local.SettingsDataStoreImp
 import yaroslavgorbach.koropapps.vocabulary.data.settings.repo.RepoSettings
 import yaroslavgorbach.koropapps.vocabulary.data.settings.repo.RepoSettingsImp
 import javax.inject.Singleton
@@ -13,7 +14,7 @@ class DataSettingsModule {
     @Singleton
     @Provides
     fun provideSettingsDataStore(): SettingsDataStore {
-        return SettingsDataStore()
+        return SettingsDataStoreImp()
     }
 
     @Singleton

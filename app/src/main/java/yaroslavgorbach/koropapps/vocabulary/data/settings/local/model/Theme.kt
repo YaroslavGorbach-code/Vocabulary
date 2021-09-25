@@ -5,7 +5,6 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 import kotlinx.parcelize.RawValue
 
-// TODO: 9/16/2021 add themes
 sealed class Theme : Parcelable {
     abstract val res: ThemeRes
 
