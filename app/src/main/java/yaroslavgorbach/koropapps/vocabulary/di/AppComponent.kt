@@ -3,6 +3,8 @@ package yaroslavgorbach.koropapps.vocabulary.di
 import android.app.Application
 import dagger.BindsInstance
 import dagger.Component
+import kotlinx.coroutines.InternalCoroutinesApi
+import yaroslavgorbach.koropapps.vocabulary.MainActivity
 import yaroslavgorbach.koropapps.vocabulary.di.business.description.BusinessDescriptionModule
 import yaroslavgorbach.koropapps.vocabulary.di.business.exercises.BusinessExercisesModule
 import yaroslavgorbach.koropapps.vocabulary.di.business.phrase.BusinessPhraseModule
@@ -83,6 +85,9 @@ interface AppComponent {
     fun dictionaryComponent(): DictionaryExerciseComponent.Factory
 
     fun settingsComponent(): SettingsComponent.Factory
+
+    @InternalCoroutinesApi
+    fun inject(mainActivity: MainActivity)
 
     @Component.Factory
     interface Factory {

@@ -22,7 +22,7 @@ class SettingsViewModel @Inject constructor(
         return observeCurrentThemeInteractor(context).asLiveData(viewModelScope.coroutineContext)
     }
 
-    fun onChangeThemeCLick(context: Context, theme: Theme) {
+    fun changeTheme(context: Context, theme: Theme) {
         viewModelScope.launch { changeThemeInteractor(context, theme) }
     }
 

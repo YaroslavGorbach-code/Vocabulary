@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
 import kotlinx.coroutines.InternalCoroutinesApi
 import yaroslavgorbach.koropapps.vocabulary.R
+import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Theme
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentNavigationBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.ExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.ui.ExercisesListFragment
@@ -18,10 +19,10 @@ class NavigationFragment : Fragment(R.layout.fragment_navigation), ExercisesList
     ProfileFragment.Router {
 
     interface Router {
-        fun openDescription(exercise: ExerciseUi)
-        fun openTraining()
-        fun openLevel()
-        fun openSettings()
+        fun onOpenDescription(exercise: ExerciseUi)
+        fun onOpenTraining()
+        fun onOpenLevel()
+        fun onOpenSettings()
     }
 
     companion object {
@@ -69,18 +70,19 @@ class NavigationFragment : Fragment(R.layout.fragment_navigation), ExercisesList
     }
 
     override fun openDescription(exercise: ExerciseUi) {
-        host<Router>().openDescription(exercise)
+        host<Router>().onOpenDescription(exercise)
     }
 
     override fun openTraining() {
-        host<Router>().openTraining()
+        host<Router>().onOpenTraining()
     }
 
     override fun onOpenLevelClick() {
-        host<Router>().openLevel()
+        host<Router>().onOpenLevel()
     }
 
     override fun onOpenSettingsClick() {
-        host<Router>().openSettings()
+        host<Router>().onOpenSettings()
     }
+
 }

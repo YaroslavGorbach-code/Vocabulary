@@ -2,7 +2,6 @@ package yaroslavgorbach.koropapps.vocabulary.feature.profile.settings.ui
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -12,12 +11,17 @@ import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Theme
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentSettingsBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.settings.presentation.SettingsViewModel
 import yaroslavgorbach.koropapps.vocabulary.utils.appComponent
+import yaroslavgorbach.koropapps.vocabulary.utils.host
 import javax.inject.Inject
 
-class SettingsFragment : Fragment(R.layout.fragment_settings) {
+class SettingsFragment : Fragment(R.layout.fragment_settings), DialogChoseTheme.Callback {
 
     companion object {
         fun newInstance() = SettingsFragment()
+    }
+
+    interface ThemeChangedFragment {
+        fun onThemeChanged(theme: Theme)
     }
 
     @Inject
@@ -63,6 +67,13 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         viewModel.observeCurrentTheme(requireContext())
             .observe(viewLifecycleOwner, settingsView::setCurrentTheme)
 
-        viewModel.observeThemes(requireContext()).observe(viewLifecycleOwner, settingsView::setThemes)
+        viewModel.observeThemes(requireContext())
+            .observe(viewLifecycleOwner, settingsView::setThemes)
+    }
+
+    override fun onThemeChanged(theme: Theme) {
+        viewModel.changeTheme(requireContext(), theme)
+
+        host<ThemeChangedFragment>().onThemeChanged(theme)
     }
 }

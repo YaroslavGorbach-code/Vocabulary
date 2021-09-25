@@ -16,6 +16,7 @@ class ExerciseWorkflow : Fragment(R.layout.workflow_exercise), DescriptionFragme
 
     companion object {
         private const val ARG_EXERCISE_TYPE = "ARG_EXERCISE_TYPE"
+
         fun newInstance(exerciseType: ExerciseType) = ExerciseWorkflow().apply {
             arguments = when (exerciseType) {
                 is ExerciseType.Common -> bundleOf(ARG_EXERCISE_TYPE to exerciseType)
@@ -29,12 +30,14 @@ class ExerciseWorkflow : Fragment(R.layout.workflow_exercise), DescriptionFragme
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         if (savedInstanceState == null) {
             childFragmentManager.commit {
                 when (exerciseType) {
                     is ExerciseType.Common -> {
                         add(R.id.exercise_container, DescriptionFragment.newInstance(exerciseType))
                     }
+
                     is ExerciseType.Training -> {
                         add(R.id.exercise_container, DescriptionFragment.newInstance(exerciseType))
                     }
@@ -48,10 +51,12 @@ class ExerciseWorkflow : Fragment(R.layout.workflow_exercise), DescriptionFragme
             is ExerciseType.Common -> {
                 CreateExerciseFragmentFactory().create(exerciseType.name, exerciseType)
             }
+
             is ExerciseType.Training -> {
                 CreateExerciseFragmentFactory().create(exerciseType.name, exerciseType)
             }
         }
+
         childFragmentManager.commit {
             replace(R.id.exercise_container, fragment)
             setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)

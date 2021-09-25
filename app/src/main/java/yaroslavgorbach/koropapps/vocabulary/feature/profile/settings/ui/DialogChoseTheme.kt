@@ -11,6 +11,7 @@ import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Theme
 import yaroslavgorbach.koropapps.vocabulary.databinding.DialogChoseThemeBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.GridSpacingItemDecoration
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.settings.ui.recycler.ThemesListAdapter
+import yaroslavgorbach.koropapps.vocabulary.utils.host
 
 class DialogChoseTheme : DialogFragment() {
 
@@ -28,6 +29,10 @@ class DialogChoseTheme : DialogFragment() {
         }
     }
 
+    interface Callback {
+        fun onThemeChanged(theme: Theme)
+    }
+
     private var _themesListAdapter: ThemesListAdapter? = null
 
     private val themesListAdapter: ThemesListAdapter
@@ -42,7 +47,6 @@ class DialogChoseTheme : DialogFragment() {
 
     private val gridSpacingItemDecorator: GridSpacingItemDecoration
         get() = requireNotNull(_gridSpacingItemDecorator)
-
 
     private var _binding: DialogChoseThemeBinding? = null
 
@@ -74,8 +78,10 @@ class DialogChoseTheme : DialogFragment() {
     }
 
     private fun initProperties() {
-        _themesListAdapter = ThemesListAdapter {
-            // TODO: 9/22/2021 onChangeTheme
+        _themesListAdapter = ThemesListAdapter { theme ->
+            host<Callback>().onThemeChanged(theme)
+
+            dismiss()
         }.apply { submitList(themes) }
 
         _gridSpacingItemDecorator = GridSpacingItemDecoration(NUMBER_OF_GRID_SPANS, 24, true, 0)

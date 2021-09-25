@@ -36,8 +36,8 @@ class SettingsDataStore {
     fun observeThemes(context: Context): Flow<List<Theme>> {
         return observeCurrentTheme(context).map { theme ->
             themes.apply {
-                requireNotNull(themes.find { it.colorPrimary == theme.colorPrimary }).isCurrent =
-                    true
+                themes.forEach { it.isCurrent = false }
+                requireNotNull(themes.find { it.colorPrimary == theme.colorPrimary }).isCurrent = true
             }
         }
     }

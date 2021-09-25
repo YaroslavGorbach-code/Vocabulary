@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 class ExercisesListViewModel @Inject constructor(
     private val observeLastFifeTrainingsInteractor: ObserveLastFifeTrainingsInteractor,
-    private val getExercisesInteractor: GetExercisesInteractor
+    private val getExercisesInteractor: GetExercisesInteractor,
 ) : ViewModel() {
 
     private val disposables: CompositeDisposable = CompositeDisposable()
