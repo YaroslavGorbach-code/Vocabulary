@@ -9,7 +9,7 @@
     <item
         android:id="@+id/menu_nav_profile"
         android:enabled="true"
-        android:title="@string/records"
+        android:title="@string/profile"
         android:orderInCategory="3"
         android:icon="@drawable/ic_person"/>
 </menu>

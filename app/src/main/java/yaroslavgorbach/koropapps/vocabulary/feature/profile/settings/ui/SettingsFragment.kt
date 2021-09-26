@@ -13,6 +13,7 @@ import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentSettingsBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.settings.presentation.SettingsViewModel
 import yaroslavgorbach.koropapps.vocabulary.utils.appComponent
 import yaroslavgorbach.koropapps.vocabulary.utils.host
+import yaroslavgorbach.koropapps.vocabulary.utils.onBackPressed
 import javax.inject.Inject
 
 class SettingsFragment : Fragment(R.layout.fragment_settings), DialogChoseTheme.Callback {
@@ -57,6 +58,10 @@ class SettingsFragment : Fragment(R.layout.fragment_settings), DialogChoseTheme.
             object : SettingsView.Callback {
                 override fun onChoseTheme(themes: List<Theme>, uiMode: UiMode) {
                     choseThemeDialog(themes, uiMode)
+                }
+
+                override fun onBack() {
+                    onBackPressed()
                 }
             })
     }
