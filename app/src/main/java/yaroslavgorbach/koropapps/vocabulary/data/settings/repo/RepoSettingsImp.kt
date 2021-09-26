@@ -5,6 +5,7 @@ import kotlinx.coroutines.flow.Flow
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.SettingsDataStore
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.SettingsDataStoreImp
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Theme
+import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.UiMode
 
 class RepoSettingsImp(private val localDataStore: SettingsDataStore) : RepoSettings {
 
@@ -18,5 +19,13 @@ class RepoSettingsImp(private val localDataStore: SettingsDataStore) : RepoSetti
 
     override suspend fun changeTheme(context: Context, theme: Theme) {
         localDataStore.changeTheme(context, theme)
+    }
+
+    override fun observeUiMode(context: Context): Flow<UiMode> {
+        return localDataStore.observeUiMode(context)
+    }
+
+    override suspend fun changeUiMode(context: Context, uiMode: UiMode) {
+        localDataStore.changeUiMode(context, uiMode)
     }
 }

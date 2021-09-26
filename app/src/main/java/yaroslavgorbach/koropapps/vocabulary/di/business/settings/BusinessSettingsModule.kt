@@ -2,9 +2,7 @@ package yaroslavgorbach.koropapps.vocabulary.di.business.settings
 
 import dagger.Module
 import dagger.Provides
-import yaroslavgorbach.koropapps.vocabulary.business.settings.ChangeThemeInteractor
-import yaroslavgorbach.koropapps.vocabulary.business.settings.ObserveCurrentThemeInteractor
-import yaroslavgorbach.koropapps.vocabulary.business.settings.ObserveThemesInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.settings.*
 import yaroslavgorbach.koropapps.vocabulary.data.settings.repo.RepoSettings
 import yaroslavgorbach.koropapps.vocabulary.di.data.settings.DataSettingsModule
 import javax.inject.Singleton
@@ -30,4 +28,15 @@ class BusinessSettingsModule {
         return ChangeThemeInteractor(repoSettings)
     }
 
+    @Singleton
+    @Provides
+    fun provideChangeUiModeInteractor(repoSettings: RepoSettings): ChangeUiModeInteractor {
+        return ChangeUiModeInteractor(repoSettings)
+    }
+
+    @Singleton
+    @Provides
+    fun provideObserveUiModeInteractor(repoSettings: RepoSettings): ObserveUiModeInteractor {
+        return ObserveUiModeInteractor(repoSettings)
+    }
 }

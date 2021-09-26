@@ -39,4 +39,6 @@
     <string name="no_exercises_text_two">новая тренировка будет доступна завтра</string>
     <string name="phrase_of_day">Фраза дня</string>
     <string name="chose_theme">Выбор темы</string>
+    <string name="dark_theme">Темная тема</string>
+    <string name="light_theme">Светлая тема</string>
 </resources>

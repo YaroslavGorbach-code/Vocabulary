@@ -3,6 +3,7 @@ package yaroslavgorbach.koropapps.vocabulary.data.settings.local
 import android.content.Context
 import kotlinx.coroutines.flow.Flow
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Theme
+import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.UiMode
 
 interface SettingsDataStore {
     fun observeThemes(context: Context): Flow<List<Theme>>
@@ -10,4 +11,8 @@ interface SettingsDataStore {
     fun observeCurrentTheme(context: Context): Flow<Theme>
 
     suspend fun changeTheme(context: Context, theme: Theme)
+
+    fun observeUiMode(context: Context): Flow<UiMode>
+
+    suspend fun changeUiMode(context: Context, uiMode: UiMode)
 }

@@ -6,16 +6,17 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import yaroslavgorbach.koropapps.vocabulary.business.settings.ChangeThemeInteractor
-import yaroslavgorbach.koropapps.vocabulary.business.settings.ObserveCurrentThemeInteractor
-import yaroslavgorbach.koropapps.vocabulary.business.settings.ObserveThemesInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.settings.*
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Theme
+import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.UiMode
 import javax.inject.Inject
 
 class SettingsViewModel @Inject constructor(
     private val changeThemeInteractor: ChangeThemeInteractor,
     private val observeCurrentThemeInteractor: ObserveCurrentThemeInteractor,
-    private val observeThemesInteractor: ObserveThemesInteractor
+    private val observeThemesInteractor: ObserveThemesInteractor,
+    private val observeUiModeInteractor: ObserveUiModeInteractor,
+    private val changeUiModeInteractor: ChangeUiModeInteractor
 ) : ViewModel() {
 
     fun observeCurrentTheme(context: Context): LiveData<Theme> {
@@ -28,5 +29,13 @@ class SettingsViewModel @Inject constructor(
 
     fun observeThemes(context: Context): LiveData<List<Theme>> {
         return observeThemesInteractor(context).asLiveData()
+    }
+
+    fun changeUiMode(context: Context, uiMode: UiMode) {
+        viewModelScope.launch { changeUiModeInteractor(context, uiMode) }
+    }
+
+    fun observeUiMode(context: Context): LiveData<UiMode> {
+        return observeUiModeInteractor(context).asLiveData()
     }
 }

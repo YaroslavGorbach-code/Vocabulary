@@ -1,6 +1,7 @@
 package yaroslavgorbach.koropapps.vocabulary.utils
 
 import android.content.Context
+import android.content.res.Configuration
 import android.content.res.TypedArray
 import android.graphics.drawable.Drawable
 import android.util.TypedValue
@@ -26,3 +27,10 @@ fun Context.getColorPrimary(): Int {
     a.recycle()
     return color
 }
+
+fun Context.isSystemNightMode() =
+    when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
+        Configuration.UI_MODE_NIGHT_NO -> false
+        Configuration.UI_MODE_NIGHT_YES -> true
+        else -> error("can not get system night mode")
+    }

@@ -2,6 +2,9 @@ package yaroslavgorbach.koropapps.vocabulary
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
+import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
@@ -9,8 +12,11 @@ import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import yaroslavgorbach.koropapps.vocabulary.business.settings.ChangeUiModeInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.settings.ObserveCurrentThemeInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.settings.ObserveUiModeInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Theme
+import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.UiMode
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.ExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.feature.navigation.ui.NavigationFragment
@@ -28,6 +34,9 @@ class MainActivity : AppCompatActivity(), NavigationFragment.Router,
 
     @Inject
     lateinit var observeCurrentThemeInteractor: ObserveCurrentThemeInteractor
+
+    @Inject
+    lateinit var observeUiModeInteractor: ObserveUiModeInteractor
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +59,7 @@ class MainActivity : AppCompatActivity(), NavigationFragment.Router,
     private fun setCurrentTheme(doAfterSet: () -> Unit) {
         lifecycleScope.launch {
             onThemeChanged(observeCurrentThemeInteractor(this@MainActivity).first())
+            onUiModeChanged(observeUiModeInteractor(this@MainActivity).first())
             doAfterSet()
         }
     }
@@ -114,5 +124,12 @@ class MainActivity : AppCompatActivity(), NavigationFragment.Router,
 
     override fun onThemeChanged(theme: Theme) {
         setTheme(theme.res.id)
+    }
+
+    override fun onUiModeChanged(uiMode: UiMode) {
+        when(uiMode){
+            is UiMode.Dark -> AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_YES)
+            is UiMode.Light -> AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_NO)
+        }
     }
 }
