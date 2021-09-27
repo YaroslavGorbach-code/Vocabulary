@@ -3,23 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="?selectableItemBackground"
-    android:orientation="horizontal"
-    android:padding="4dp">
+    style="@style/BaseLayoutItem"
+    android:layout_height="60dp"
+    android:orientation="horizontal">
 
     <ImageView
-        android:layout_width="0dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_weight="0.15"
         android:src="@drawable/ic_school" />
 
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
         android:layout_gravity="center"
-        android:layout_marginStart="5dp"
         android:layout_weight="1"
         android:gravity="center|start"
         android:text="@string/Level"
@@ -28,7 +26,7 @@
     <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.TextProgressView
         android:id="@+id/level_progress"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="60dp"
         android:layout_gravity="center"
         android:layout_weight="0.15"
         app:textProgressColor="@color/green"

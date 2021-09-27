@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
@@ -24,10 +25,11 @@
     <include
         android:id="@+id/chose_theme_item"
         layout="@layout/layout_theme_item"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appbar" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <include
+        layout="@layout/layout_item_notification_settings"
+        android:id="@+id/notifications_settings_item"/>
+</LinearLayout>
