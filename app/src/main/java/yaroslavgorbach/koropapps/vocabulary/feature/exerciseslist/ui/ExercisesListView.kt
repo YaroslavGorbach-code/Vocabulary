@@ -3,7 +3,7 @@ package yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.ui
 import androidx.recyclerview.widget.LinearLayoutManager
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExercisesListBinding
-import yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.LineDecorator
+import yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.recycler.LineDecorator
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.ExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.TrainingUi
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.ui.recycler.ExercisesListAdapter

@@ -16,7 +16,7 @@ import yaroslavgorbach.koropapps.vocabulary.utils.host
 import yaroslavgorbach.koropapps.vocabulary.utils.onBackPressed
 import javax.inject.Inject
 
-class SettingsFragment : Fragment(R.layout.fragment_settings), DialogChoseTheme.Callback {
+class SettingsFragment : Fragment(R.layout.fragment_settings), ChoseThemeDialog.Callback {
 
     companion object {
         fun newInstance() = SettingsFragment()
@@ -67,7 +67,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings), DialogChoseTheme.
     }
 
     fun choseThemeDialog(themes: List<Theme>, uiMode: UiMode) {
-        DialogChoseTheme.newInstance(themes, uiMode).show(childFragmentManager, null)
+        ChoseThemeDialog.newInstance(themes, uiMode).show(childFragmentManager, null)
     }
 
     private fun initObservers() {

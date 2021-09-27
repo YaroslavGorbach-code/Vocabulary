@@ -15,7 +15,7 @@ import yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.GridSpacingItem
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.settings.ui.recycler.ThemesListAdapter
 import yaroslavgorbach.koropapps.vocabulary.utils.host
 
-class DialogChoseTheme : DialogFragment() {
+class ChoseThemeDialog : DialogFragment() {
 
     companion object {
         private const val THEMES_LIST_ARG = "THEMES_LIST_ARG"
@@ -23,8 +23,8 @@ class DialogChoseTheme : DialogFragment() {
 
         private const val NUMBER_OF_GRID_SPANS = 4
 
-        fun newInstance(themes: List<Theme>, uiMode: UiMode): DialogChoseTheme {
-            return DialogChoseTheme().apply {
+        fun newInstance(themes: List<Theme>, uiMode: UiMode): ChoseThemeDialog {
+            return ChoseThemeDialog().apply {
                 arguments = Bundle().apply {
                     putParcelableArrayList(THEMES_LIST_ARG, ArrayList(themes))
                     putParcelable(UI_MODE_ARG, uiMode)

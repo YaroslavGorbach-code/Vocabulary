@@ -23,7 +23,7 @@
         android:text="@string/Level"
         style="@style/TextPrimary" />
 
-    <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.TextProgressView
+    <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.customview.TextProgressView
         android:id="@+id/level_progress"
         android:layout_width="0dp"
         android:layout_height="60dp"

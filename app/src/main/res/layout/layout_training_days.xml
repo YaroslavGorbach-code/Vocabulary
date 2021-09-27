@@ -7,7 +7,7 @@
     android:padding="3dp"
     android:orientation="horizontal">
 
-    <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.TextProgressView
+    <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.customview.TextProgressView
         android:id="@+id/day1"
         android:layout_width="55dp"
         android:layout_height="55dp"
@@ -25,7 +25,7 @@
         tools:ignore="SmallSp"
         tools:progress="30" />
 
-    <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.TextProgressView
+    <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.customview.TextProgressView
         android:id="@+id/day2"
         android:layout_width="55dp"
         android:layout_height="55dp"
@@ -43,7 +43,7 @@
         tools:ignore="SmallSp"
         tools:progress="30" />
 
-    <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.TextProgressView
+    <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.customview.TextProgressView
         android:id="@+id/day3"
         android:layout_width="55dp"
         android:layout_height="55dp"
@@ -61,7 +61,7 @@
         tools:ignore="SmallSp"
         tools:progress="30" />
 
-    <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.TextProgressView
+    <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.customview.TextProgressView
         android:id="@+id/day4"
         android:layout_width="55dp"
         android:layout_height="55dp"
@@ -79,7 +79,7 @@
         tools:ignore="SmallSp"
         tools:progress="30" />
 
-    <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.TextProgressView
+    <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.customview.TextProgressView
         android:id="@+id/day5"
         android:layout_width="55dp"
         android:layout_height="55dp"

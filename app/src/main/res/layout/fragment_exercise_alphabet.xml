@@ -46,7 +46,7 @@
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout2">
 
 
-        <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.TextProgressView
+        <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.customview.TextProgressView
             android:id="@+id/letterProgress"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -62,7 +62,7 @@
             app:textProgressTextSize="30sp"
             app:textSize="20sp">
 
-        </yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.TextProgressView>
+        </yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.customview.TextProgressView>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline7"

@@ -33,7 +33,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tool:text="@tools:sample/first_names" />
 
-    <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.ImageProgressView
+    <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.customview.ImageProgressView
         android:id="@+id/image_progress"
         android:layout_width="55dp"
         android:layout_height="55dp"

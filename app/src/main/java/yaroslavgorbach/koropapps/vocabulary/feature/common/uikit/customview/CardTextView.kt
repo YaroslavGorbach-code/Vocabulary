@@ -1,4 +1,4 @@
-package yaroslavgorbach.koropapps.vocabulary.feature.common.uikit
+package yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.customview
 
 import android.content.Context
 import android.graphics.Color
