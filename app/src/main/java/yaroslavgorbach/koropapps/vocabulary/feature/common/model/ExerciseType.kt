@@ -5,6 +5,7 @@ import java.io.Serializable
 
 sealed class ExerciseType : Serializable {
     class Common(val name: ExerciseName) : ExerciseType()
+
     class Training(val name: ExerciseName, val exerciseId: Long) : ExerciseType()
 
     fun getExerciseName(): ExerciseName {

@@ -8,6 +8,7 @@ class SettingsView(private val binding: FragmentSettingsBinding, private val cal
 
     interface Callback {
         fun onChoseTheme(themes: List<Theme>, uiMode: UiMode)
+        fun onNotificationSettings()
         fun onBack()
     }
 
@@ -22,6 +23,10 @@ class SettingsView(private val binding: FragmentSettingsBinding, private val cal
     private fun initViewActions() {
         binding.choseThemeItem.root.setOnClickListener {
             callback.onChoseTheme(themes, uiMode)
+        }
+
+        binding.notificationsSettingsItem.root.setOnClickListener {
+            callback.onNotificationSettings()
         }
 
         binding.settingsToolbar.setNavigationOnClickListener {

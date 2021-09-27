@@ -57,7 +57,11 @@ class SettingsFragment : Fragment(R.layout.fragment_settings), ChoseThemeDialog.
             FragmentSettingsBinding.bind(requireView()),
             object : SettingsView.Callback {
                 override fun onChoseTheme(themes: List<Theme>, uiMode: UiMode) {
-                    choseThemeDialog(themes, uiMode)
+                    showChoseThemeDialog(themes, uiMode)
+                }
+
+                override fun onNotificationSettings() {
+                    showNotificationsSettingsDialog()
                 }
 
                 override fun onBack() {
@@ -66,8 +70,13 @@ class SettingsFragment : Fragment(R.layout.fragment_settings), ChoseThemeDialog.
             })
     }
 
-    fun choseThemeDialog(themes: List<Theme>, uiMode: UiMode) {
+    // TODO: 9/27/2021 remove parameters and and get them from view model in dialog
+    fun showChoseThemeDialog(themes: List<Theme>, uiMode: UiMode) {
         ChoseThemeDialog.newInstance(themes, uiMode).show(childFragmentManager, null)
+    }
+
+    fun showNotificationsSettingsDialog() {
+        NotificationSettingsDialog().show(childFragmentManager, null)
     }
 
     private fun initObservers() {

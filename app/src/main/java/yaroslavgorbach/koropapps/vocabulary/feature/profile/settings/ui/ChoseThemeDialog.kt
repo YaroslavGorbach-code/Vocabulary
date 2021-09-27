@@ -11,7 +11,7 @@ import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Theme
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.UiMode
 import yaroslavgorbach.koropapps.vocabulary.databinding.DialogChoseThemeBinding
-import yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.GridSpacingItemDecoration
+import yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.recycler.GridSpacingItemDecoration
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.settings.ui.recycler.ThemesListAdapter
 import yaroslavgorbach.koropapps.vocabulary.utils.host
 

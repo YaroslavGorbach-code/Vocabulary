@@ -1,10 +1,9 @@
-package yaroslavgorbach.koropapps.vocabulary.feature.common.uikit
+package yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.recycler
 
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
-
 
 class GridSpacingItemDecoration(
     private val spanCount: Int,
