@@ -14,17 +14,17 @@ import yaroslavgorbach.koropapps.vocabulary.data.settings.local.mapper.MapStyleR
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Notification
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Theme
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.UiMode
+import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.getNotificationDefaultText
 import yaroslavgorbach.koropapps.vocabulary.utils.isSystemNightMode
 
 private val Context.settingsDataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
-class SettingsDataStoreImp: SettingsDataStore {
+class SettingsDataStoreImp : SettingsDataStore {
 
     companion object {
         private const val DEFAULT_THEME_RES = R.style.BaseAppTheme_Teal
         private const val DEFAULT_NOTIFICATION_HOUR = 12
         private const val DEFAULT_NOTIFICATION_MINUTE = 30
-        private const val DEFAULT_NOTIFICATION_TEXT = ""
         private const val DEFAULT_NOTIFICATION_IS_ACTIVE = true
 
         private val THEME_RES_KEY = intPreferencesKey("THEME_RES_KEY")
@@ -103,7 +103,7 @@ class SettingsDataStoreImp: SettingsDataStore {
                 val isActive: Boolean = prefs[NOTIFICATION_IS_ACTIVE_KEY] ?: DEFAULT_NOTIFICATION_IS_ACTIVE
                 val hour: Int = prefs[NOTIFICATION_HOUR_KEY] ?: DEFAULT_NOTIFICATION_HOUR
                 val minute: Int = prefs[NOTIFICATION_MINUTE_KEY] ?: DEFAULT_NOTIFICATION_MINUTE
-                val text: String = prefs[NOTIFICATION_TEXT_KEY] ?: DEFAULT_NOTIFICATION_TEXT
+                val text: String = prefs[NOTIFICATION_TEXT_KEY] ?: getNotificationDefaultText()
 
                 NotificationFactory().create(
                     isActive = isActive,
