@@ -45,4 +45,6 @@
     <string name="notifications_settings">Настройка уведомлений</string>
     <string name="notification_text">Текст уведомления</string>
     <string name="ok">Ok</string>
+    <string name="empty_field_error">Это поле не может быть пустым</string>
+    <string name="save">Сохранить</string>
 </resources>

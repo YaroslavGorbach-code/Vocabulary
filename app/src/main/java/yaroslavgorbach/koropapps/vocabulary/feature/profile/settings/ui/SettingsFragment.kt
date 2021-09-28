@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import yaroslavgorbach.koropapps.vocabulary.R
+import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Notification
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Theme
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.UiMode
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentSettingsBinding
@@ -16,7 +17,8 @@ import yaroslavgorbach.koropapps.vocabulary.utils.host
 import yaroslavgorbach.koropapps.vocabulary.utils.onBackPressed
 import javax.inject.Inject
 
-class SettingsFragment : Fragment(R.layout.fragment_settings), ChoseThemeDialog.Callback {
+class SettingsFragment : Fragment(R.layout.fragment_settings), ChoseThemeDialog.Callback,
+    NotificationSettingsDialog.Host {
 
     companion object {
         fun newInstance() = SettingsFragment()
@@ -60,8 +62,8 @@ class SettingsFragment : Fragment(R.layout.fragment_settings), ChoseThemeDialog.
                     showChoseThemeDialog(themes, uiMode)
                 }
 
-                override fun onNotificationSettings() {
-                    showNotificationsSettingsDialog()
+                override fun onNotificationSettings(notification: Notification) {
+                    showNotificationsSettingsDialog(notification)
                 }
 
                 override fun onBack() {
@@ -70,13 +72,12 @@ class SettingsFragment : Fragment(R.layout.fragment_settings), ChoseThemeDialog.
             })
     }
 
-    // TODO: 9/27/2021 remove parameters and and get them from view model in dialog
     fun showChoseThemeDialog(themes: List<Theme>, uiMode: UiMode) {
         ChoseThemeDialog.newInstance(themes, uiMode).show(childFragmentManager, null)
     }
 
-    fun showNotificationsSettingsDialog() {
-        NotificationSettingsDialog().show(childFragmentManager, null)
+    fun showNotificationsSettingsDialog(notification: Notification) {
+        NotificationSettingsDialog.newInstance(notification).show(childFragmentManager, null)
     }
 
     private fun initObservers() {
@@ -88,6 +89,9 @@ class SettingsFragment : Fragment(R.layout.fragment_settings), ChoseThemeDialog.
 
         viewModel.observeUiMode(requireContext())
             .observe(viewLifecycleOwner, settingsView::setUiMode)
+
+        viewModel.observeNotification(requireContext())
+            .observe(viewLifecycleOwner, settingsView::setNotification)
     }
 
     override fun onThemeChanged(theme: Theme) {
@@ -100,5 +104,9 @@ class SettingsFragment : Fragment(R.layout.fragment_settings), ChoseThemeDialog.
         viewModel.changeUiMode(requireContext(), uiMode)
 
         host<ThemeChangedFragment>().onUiModeChanged(uiMode)
+    }
+
+    override fun onNotificationChanged(notification: Notification) {
+        viewModel.updateNotification(requireContext(), notification)
     }
 }

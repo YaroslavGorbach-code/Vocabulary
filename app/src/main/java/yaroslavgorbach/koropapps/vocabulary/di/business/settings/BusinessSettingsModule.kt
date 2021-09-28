@@ -39,4 +39,16 @@ class BusinessSettingsModule {
     fun provideObserveUiModeInteractor(repoSettings: RepoSettings): ObserveUiModeInteractor {
         return ObserveUiModeInteractor(repoSettings)
     }
+
+    @Singleton
+    @Provides
+    fun provideObserveNotificationInteractor(repoSettings: RepoSettings): ObserveNotificationInteractor {
+        return ObserveNotificationInteractor(repoSettings)
+    }
+
+    @Singleton
+    @Provides
+    fun provideUpdateNotificationInteractor(repoSettings: RepoSettings): UpdateNotificationInteractor {
+        return UpdateNotificationInteractor(repoSettings)
+    }
 }

@@ -10,6 +10,7 @@ import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.utils.host
 
 class ExerciseTimeEndDialog : DialogFragment() {
+
     interface Host {
         fun onTimeEndDialogCancel()
     }

@@ -22,6 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:text="00:00"
+        android:background="?selectableItemBackground"
         android:padding="8dp"
         style="@style/TextPrimary"
         android:gravity="center"

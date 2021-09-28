@@ -2,6 +2,7 @@ package yaroslavgorbach.koropapps.vocabulary.data.settings.repo
 
 import android.content.Context
 import kotlinx.coroutines.flow.Flow
+import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Notification
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Theme
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.UiMode
 
@@ -15,4 +16,8 @@ interface RepoSettings {
     fun observeUiMode(context: Context): Flow<UiMode>
 
     suspend fun changeUiMode(context: Context, uiMode: UiMode)
+
+    fun observeNotification(context: Context): Flow<Notification>
+
+    suspend fun updateNotification(context: Context, notification: Notification)
 }
