@@ -91,6 +91,7 @@ class NotificationSettingsDialog : DialogFragment() {
         if (isNotificationTextValid()) {
             notification.text = binding.notificationText.text.toString()
         }
+
         notification.isActive = binding.notificationCheckBox.isChecked
 
         host<Host>().onNotificationChanged(notification)
