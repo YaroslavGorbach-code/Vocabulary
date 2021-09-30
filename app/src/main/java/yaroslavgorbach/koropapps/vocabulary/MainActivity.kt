@@ -10,10 +10,11 @@ import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.InternalCoroutinesApi
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
-import yaroslavgorbach.koropapps.vocabulary.business.settings.ChangeUiModeInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.settings.ObserveCurrentThemeInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.settings.ObserveNotificationInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.settings.ObserveUiModeInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Theme
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.UiMode
@@ -24,6 +25,8 @@ import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.ui.LevelFragme
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.settings.ui.SettingsFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.feature.training.ui.TrainingFragment
+import yaroslavgorbach.koropapps.vocabulary.utils.cancelNotification
+import yaroslavgorbach.koropapps.vocabulary.utils.scheduleNotification
 import yaroslavgorbach.koropapps.vocabulary.workflow.ExerciseWorkflow
 import javax.inject.Inject
 
@@ -38,9 +41,13 @@ class MainActivity : AppCompatActivity(), NavigationFragment.Router,
     @Inject
     lateinit var observeUiModeInteractor: ObserveUiModeInteractor
 
+    @Inject
+    lateinit var observeNotificationInteractor: ObserveNotificationInteractor
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initDagger()
+        initNotifications()
 
         setCurrentTheme {
             setContentView(R.layout.activity_main)
@@ -55,6 +62,13 @@ class MainActivity : AppCompatActivity(), NavigationFragment.Router,
             }
         }
     }
+
+    private fun initNotifications() {
+        lifecycleScope.launch {
+            observeNotificationInteractor(this@MainActivity).collect(this@MainActivity::scheduleNotification)
+        }
+    }
+
 
     private fun setCurrentTheme(doAfterSet: () -> Unit) {
         lifecycleScope.launch {
@@ -127,7 +141,7 @@ class MainActivity : AppCompatActivity(), NavigationFragment.Router,
     }
 
     override fun onUiModeChanged(uiMode: UiMode) {
-        when(uiMode){
+        when (uiMode) {
             is UiMode.Dark -> AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_YES)
             is UiMode.Light -> AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_NO)
         }

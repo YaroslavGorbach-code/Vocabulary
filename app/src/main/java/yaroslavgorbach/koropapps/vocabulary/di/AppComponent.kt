@@ -3,6 +3,7 @@ package yaroslavgorbach.koropapps.vocabulary.di
 import android.app.Application
 import dagger.BindsInstance
 import dagger.Component
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.InternalCoroutinesApi
 import yaroslavgorbach.koropapps.vocabulary.MainActivity
 import yaroslavgorbach.koropapps.vocabulary.di.business.description.BusinessDescriptionModule
@@ -86,6 +87,7 @@ interface AppComponent {
 
     fun settingsComponent(): SettingsComponent.Factory
 
+    @FlowPreview
     @InternalCoroutinesApi
     fun inject(mainActivity: MainActivity)
 
