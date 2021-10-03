@@ -23,4 +23,18 @@
     <string name="dictionary_noun">Словарь (существительные)</string>
     <string name="dictionary_verbs">Словарь (глаголы)</string>
     <string name="dictionary_adjectives">Словарь (прилагательные)</string>
+
+    <string name="linguistic_pyramids">Лингвистические пирамиды</string>
+    <string name="raven_look_like_a_table">Чем ворон похож на стол</string>
+    <string name="storyteller_improviser">Рассказчик - импровизатор</string>
+    <string name="advanced_binding">Продвинутое связывание</string>
+    <string name="what_i_see_i_sing_about">О чем вижу, о том и пою</string>
+    <string name="other_abbreviations">Другие варианты сокращений</string>
+    <string name="magic_naming">Волшебный нейминг</string>
+    <string name="buying_selling">Купля - продажа</string>
+    <string name="co_authored_with_dahl">В соавторстве с Далем</string>
+    <string name="rorschach_test">Тест Роршаха</string>
+    <string name="will_not_be_worse">Хуже уже не будет</string>
+    <string name="question_answer">Вопрос - ответ</string>
+    <string name="raven_look_like_a_table_filings">Чем ворон похож на стул (чувства)</string>
 </resources>

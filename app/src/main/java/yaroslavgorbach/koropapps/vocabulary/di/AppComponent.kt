@@ -6,27 +6,27 @@ import dagger.Component
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.InternalCoroutinesApi
 import yaroslavgorbach.koropapps.vocabulary.MainActivity
-import yaroslavgorbach.koropapps.vocabulary.di.business.description.BusinessDescriptionModule
 import yaroslavgorbach.koropapps.vocabulary.di.business.exercises.BusinessExercisesModule
 import yaroslavgorbach.koropapps.vocabulary.di.business.phrase.BusinessPhraseModule
 import yaroslavgorbach.koropapps.vocabulary.di.business.settings.BusinessSettingsModule
 import yaroslavgorbach.koropapps.vocabulary.di.business.statistics.BusinessStatisticsModule
 import yaroslavgorbach.koropapps.vocabulary.di.business.training.BusinessTrainingModule
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.di.DescriptionComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.alphabet.di.AlphabetExerciseComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.antonymssynonyms.di.AntonymsSynonymsExerciseComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.associations.di.AssociationsExerciseComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.dictionary.di.DictionaryExerciseComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.game.di.GameExerciseComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.half.di.HalfExerciseComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.jar.di.JarExerciseComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.listofcategories.di.ListOfCategoriesComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.narrator.di.NarratorExerciseComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.rememberall.di.RememberAllExerciseComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.specifications.di.SpecificationsExerciseComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.tautograms.di.TautogramsExerciseComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.ten.di.TenExerciseComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.threeletters.di.ThreeLettersExerciseComponent
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.communication.abbreviations.di.AbbreviationsExerciseComponent
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.alphabet.di.AlphabetExerciseComponent
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.antonymssynonyms.di.AntonymsSynonymsExerciseComponent
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.associations.di.AssociationsExerciseComponent
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.dictionary.di.DictionaryExerciseComponent
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.game.di.GameExerciseComponent
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.half.di.HalfExerciseComponent
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.jar.di.JarExerciseComponent
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.listofcategories.di.ListOfCategoriesComponent
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.narrator.di.NarratorExerciseComponent
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.rememberall.di.RememberAllExerciseComponent
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.specifications.di.SpecificationsExerciseComponent
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.tautograms.di.TautogramsExerciseComponent
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.ten.di.TenExerciseComponent
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.threeletters.di.ThreeLettersExerciseComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.di.ExercisesListComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.di.LevelComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.profile.di.ProfileComponent
@@ -39,7 +39,6 @@ import javax.inject.Singleton
     modules = [
         BusinessTrainingModule::class,
         BusinessExercisesModule::class,
-        BusinessDescriptionModule::class,
         BusinessStatisticsModule::class,
         BusinessPhraseModule::class,
         BusinessSettingsModule::class
@@ -86,6 +85,8 @@ interface AppComponent {
     fun dictionaryComponent(): DictionaryExerciseComponent.Factory
 
     fun settingsComponent(): SettingsComponent.Factory
+
+    fun abbreviationsComponent(): AbbreviationsExerciseComponent.Factory
 
     @FlowPreview
     @InternalCoroutinesApi

@@ -25,7 +25,7 @@
                 tools:title="exerciseName" />
 
             <ImageView
-                android:id="@+id/icon5"
+                android:id="@+id/icon"
                 android:layout_width="0dp"
                 android:layout_height="150dp"
                 android:padding="16dp"
@@ -46,8 +46,7 @@
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/icon5" />
-
+                app:layout_constraintTop_toBottomOf="@+id/icon" />
 
             <include
                 android:id="@+id/chart"

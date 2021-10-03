@@ -24,4 +24,18 @@ enum class ExerciseName(@StringRes val id: Int) {
     DICTIONARY_ADJECTIVES(R.string.dictionary_adjectives),
     DICTIONARY_NOUN(R.string.dictionary_noun),
     DICTIONARY_VERBS(R.string.dictionary_verbs),
+
+    LINGUISTIC_PYRAMIDS(R.string.linguistic_pyramids),
+    RAVEN_LOOK_LIKE_A_TABLE(R.string.raven_look_like_a_table),
+    STORYTELLER_IMPROVISER(R.string.storyteller_improviser),
+    ADVANCED_BINDING(R.string.advanced_binding),
+    WHAT_I_SEE_I_SING_ABOUT(R.string.what_i_see_i_sing_about),
+    OTHER_ABBREVIATIONS(R.string.other_abbreviations),
+    MAGIC_NAMING(R.string.magic_naming),
+    BUYING_SELLING(R.string.buying_selling),
+    CO_AUTHORED_WITH_DAHL(R.string.co_authored_with_dahl),
+    RORSCHACH_TEST(R.string.rorschach_test),
+    WILL_NOT_BE_WORSE(R.string.will_not_be_worse),
+    QUESTION_ANSWER(R.string.question_answer),
+    RAVEN_LOOK_LIKE_A_TABLE_FILINGS(R.string.raven_look_like_a_table_filings),
 }

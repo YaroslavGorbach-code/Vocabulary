@@ -5,18 +5,17 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
-import yaroslavgorbach.koropapps.vocabulary.business.description.GetDescriptionInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.ObserveStatisticsTimeInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.ObserveStatisticsValueInteractor
-import yaroslavgorbach.koropapps.vocabulary.data.description.local.model.Description
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
+import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToDescriptionResMapper
+import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToIconResMapper
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.model.ChartTimeUi
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.model.ChartValueUi
 import java.util.*
 import javax.inject.Inject
 
 class DescriptionViewModel @Inject constructor(
-    private val getDescriptionInteractor: GetDescriptionInteractor,
     private val observeStatisticsValueInteractor: ObserveStatisticsValueInteractor,
     private val observeStatisticsTimeInteractor: ObserveStatisticsTimeInteractor,
     private val exerciseName: ExerciseName
@@ -24,17 +23,11 @@ class DescriptionViewModel @Inject constructor(
 
     private val disposables: CompositeDisposable = CompositeDisposable()
 
-    private val _description: MutableLiveData<Description> = MutableLiveData()
-        get() {
-            getDescriptionInteractor(exerciseName)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(field::setValue)
-                .let(disposables::add)
-            return field
-        }
+    val descriptionRes: Int
+        get() = ExerciseNameToDescriptionResMapper().map(exerciseName)
 
-    val description: LiveData<Description>
-        get() = _description
+    val exerciseIconRes: Int
+        get() = ExerciseNameToIconResMapper().map(exerciseName)
 
     private val _chartValueUi: MutableLiveData<ChartValueUi> = MutableLiveData()
 

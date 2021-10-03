@@ -3,7 +3,6 @@ package yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.ui
 import android.view.View
 import androidx.core.widget.NestedScrollView
 import im.dacer.androidcharts.LineView
-import yaroslavgorbach.koropapps.vocabulary.data.description.local.model.Description
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentDescriptionBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.model.ChartTimeUi
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.model.ChartValueUi
@@ -62,14 +61,18 @@ class DescriptionView(
             })
     }
 
-    fun setDescription(description: Description) {
-        binding.descriptionText.text = binding.getString(description.textRes)
+    fun setDescriptionRes(descriptionRes: Int) {
+        binding.descriptionText.text = binding.getString(descriptionRes)
+    }
 
-        with(binding.getDrawable(description.exerciseIconRes)) {
-            binding.icon5.setImageDrawable(this)
+    fun setExerciseIconRes(exerciseIconRes: Int) {
+        with(binding.getDrawable(exerciseIconRes)) {
+            binding.icon.setImageDrawable(this)
         }
+    }
 
-        binding.toolbar.title = binding.getString(description.exerciseName.id)
+    fun setExerciseNameRes(exerciseNameRes: Int) {
+        binding.toolbar.title = binding.getString(exerciseNameRes)
     }
 
     fun setChartValue(chartValueUi: ChartValueUi) {

@@ -87,10 +87,15 @@ class DescriptionFragment : Fragment(R.layout.fragment_description) {
                     viewModel.onPreviousChartTime()
                 }
             })
+
+        descriptionView.setDescriptionRes(viewModel.descriptionRes)
+
+        descriptionView.setExerciseIconRes(viewModel.exerciseIconRes)
+
+        descriptionView.setExerciseNameRes(exerciseType.getExerciseName().id)
     }
 
     private fun initObservers() {
-        viewModel.description.observe(viewLifecycleOwner, descriptionView::setDescription)
         viewModel.chartValueUi.observe(viewLifecycleOwner, descriptionView::setChartValue)
         viewModel.chartTimeUi.observe(viewLifecycleOwner, descriptionView::setChartTime)
     }

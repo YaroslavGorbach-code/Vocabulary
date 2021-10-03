@@ -1,0 +1,16 @@
+package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.ten.di
+
+import dagger.BindsInstance
+import dagger.Subcomponent
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.ten.ui.TenFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
+
+@Subcomponent(modules = [TenExerciseModule::class])
+interface TenExerciseComponent {
+    fun inject(fragment: TenFragment)
+
+    @Subcomponent.Factory
+    interface Factory {
+        fun create(@BindsInstance exerciseType: ExerciseType): TenExerciseComponent
+    }
+}

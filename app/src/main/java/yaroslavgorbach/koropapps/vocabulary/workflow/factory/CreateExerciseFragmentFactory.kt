@@ -3,20 +3,21 @@ package yaroslavgorbach.koropapps.vocabulary.workflow.factory
 import androidx.fragment.app.Fragment
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.alphabet.ui.AlphabetFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.antonymssynonyms.ui.AntonymsSynonymsFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.associations.ui.AssociationsFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.dictionary.ui.DictionaryFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.game.ui.GameFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.half.ui.HalfFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.jar.ui.JarFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.listofcategories.ui.ListOfCategoriesFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.narrator.ui.NarratorFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.rememberall.ui.RememberAllFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.specifications.ui.SpecificationsFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.tautograms.ui.TautogramsFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.ten.ui.TenFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.threeletters.ui.ThreeLettersFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.communication.abbreviations.ui.AbbreviationsFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.alphabet.ui.AlphabetFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.antonymssynonyms.ui.AntonymsSynonymsFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.associations.ui.AssociationsFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.dictionary.ui.DictionaryFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.game.ui.GameFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.half.ui.HalfFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.jar.ui.JarFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.listofcategories.ui.ListOfCategoriesFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.narrator.ui.NarratorFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.rememberall.ui.RememberAllFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.specifications.ui.SpecificationsFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.tautograms.ui.TautogramsFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.ten.ui.TenFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.threeletters.ui.ThreeLettersFragment
 
 class CreateExerciseFragmentFactory {
     fun create(exerciseName: ExerciseName, exerciseType: ExerciseType): Fragment {
@@ -81,6 +82,21 @@ class CreateExerciseFragmentFactory {
             ExerciseName.DICTIONARY_VERBS -> {
                 DictionaryFragment.newInstance(exerciseType)
             }
+            ExerciseName.LINGUISTIC_PYRAMIDS -> TODO()
+            ExerciseName.RAVEN_LOOK_LIKE_A_TABLE -> TODO()
+            ExerciseName.STORYTELLER_IMPROVISER -> TODO()
+            ExerciseName.ADVANCED_BINDING -> TODO()
+            ExerciseName.WHAT_I_SEE_I_SING_ABOUT -> TODO()
+            ExerciseName.OTHER_ABBREVIATIONS -> {
+                AbbreviationsFragment.newInstance(exerciseType)
+            }
+            ExerciseName.MAGIC_NAMING -> TODO()
+            ExerciseName.BUYING_SELLING -> TODO()
+            ExerciseName.CO_AUTHORED_WITH_DAHL -> TODO()
+            ExerciseName.RORSCHACH_TEST -> TODO()
+            ExerciseName.WILL_NOT_BE_WORSE -> TODO()
+            ExerciseName.QUESTION_ANSWER -> TODO()
+            ExerciseName.RAVEN_LOOK_LIKE_A_TABLE_FILINGS -> TODO()
         }
     }
 }

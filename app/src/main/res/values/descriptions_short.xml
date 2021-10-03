@@ -94,4 +94,33 @@
         Например, слово “бег”. Однокоренные к нему: бегать, убегать, пробегать, пробежка, побег, беглый, перебежчик и т. д.
     </string>
 
+    <string name="desc_short_linguistic_pyramids_1">Придумайте аналогию</string>
+
+    <string name="desc_short_linguistic_pyramids_2">Обобщите данное слово</string>
+
+    <string name="desc_short_linguistic_pyramids_3">Разобобщите данное слово</string>
+
+    <string name="desc_short_raven_look_like_a_table">Найдите сходство</string>
+
+    <string name="desc_short_storyteller_improviser">Составьте рассказ, используя данные слова</string>
+
+    <string name="desc_short_advanced_binding">Найдите несколько сходств</string>
+
+    <string name="desc_short_what_i_see_i_sing_about">Описывайте максимально долго данный предмет</string>
+
+    <string name="desc_short_other_abbreviations">Придумайте необычную расшифровку аббревиатуры</string>
+
+    <string name="desc_short_magic_naming">Придумайте к этому слову минимум 5 смешных прилагательных</string>
+
+    <string name="desc_short_buying_selling">Описывайте данный предмет так, как будто вам нужно его продать</string>
+
+    <string name="desc_short_co_authored_with_dahl">Дайте подробное определение слову</string>
+
+    <string name="desc_short_rorschach_test">Придумайте чем данный предмет может быть еще</string>
+
+    <string name="desc_short_will_not_be_worse">Придумайте ситуацию или фразу худшего в мире</string>
+
+    <string name="desc_short_question_answer">Дайте развернутый ответ на вопрос</string>
+
+    <string name="desc_short_raven_look_like_a_table_filings">Найдите сходство</string>
 </resources>
