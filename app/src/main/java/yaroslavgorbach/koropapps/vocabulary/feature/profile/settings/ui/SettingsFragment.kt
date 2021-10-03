@@ -6,6 +6,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import kotlinx.coroutines.InternalCoroutinesApi
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Notification
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Theme
@@ -15,6 +16,7 @@ import yaroslavgorbach.koropapps.vocabulary.feature.profile.settings.presentatio
 import yaroslavgorbach.koropapps.vocabulary.utils.appComponent
 import yaroslavgorbach.koropapps.vocabulary.utils.host
 import yaroslavgorbach.koropapps.vocabulary.utils.onBackPressed
+import yaroslavgorbach.koropapps.vocabulary.utils.scheduleNotification
 import javax.inject.Inject
 
 class SettingsFragment : Fragment(R.layout.fragment_settings), ChoseThemeDialog.Callback,
@@ -106,7 +108,10 @@ class SettingsFragment : Fragment(R.layout.fragment_settings), ChoseThemeDialog.
         host<ThemeChangedFragment>().onUiModeChanged(uiMode)
     }
 
+    @InternalCoroutinesApi
     override fun onNotificationChanged(notification: Notification) {
         viewModel.updateNotification(requireContext(), notification)
+
+        requireContext().scheduleNotification(notification)
     }
 }

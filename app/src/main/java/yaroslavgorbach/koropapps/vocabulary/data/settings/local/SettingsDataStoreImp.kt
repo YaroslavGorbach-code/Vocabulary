@@ -26,6 +26,7 @@ class SettingsDataStoreImp : SettingsDataStore {
         private const val DEFAULT_NOTIFICATION_HOUR = 12
         private const val DEFAULT_NOTIFICATION_MINUTE = 30
         private const val DEFAULT_NOTIFICATION_IS_ACTIVE = true
+        private const val DEFAULT_NOTIFICATION_LAST_TIME_SHOW = 0L
 
         private val THEME_RES_KEY = intPreferencesKey("THEME_RES_KEY")
         private val IS_DARK_UI_MODE_KEY = booleanPreferencesKey("IS_DARK_UI_MODE_KEY")
@@ -100,7 +101,8 @@ class SettingsDataStoreImp : SettingsDataStore {
     override fun observeNotification(context: Context): Flow<Notification> {
         return context.settingsDataStore.data
             .map { prefs ->
-                val isActive: Boolean = prefs[NOTIFICATION_IS_ACTIVE_KEY] ?: DEFAULT_NOTIFICATION_IS_ACTIVE
+                val isActive: Boolean =
+                    prefs[NOTIFICATION_IS_ACTIVE_KEY] ?: DEFAULT_NOTIFICATION_IS_ACTIVE
                 val hour: Int = prefs[NOTIFICATION_HOUR_KEY] ?: DEFAULT_NOTIFICATION_HOUR
                 val minute: Int = prefs[NOTIFICATION_MINUTE_KEY] ?: DEFAULT_NOTIFICATION_MINUTE
                 val text: String = prefs[NOTIFICATION_TEXT_KEY] ?: getNotificationDefaultText()
@@ -109,7 +111,7 @@ class SettingsDataStoreImp : SettingsDataStore {
                     isActive = isActive,
                     hour = hour,
                     minute = minute,
-                    text = text
+                    text = text,
                 )
             }
     }

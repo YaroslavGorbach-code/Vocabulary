@@ -16,6 +16,7 @@ import kotlinx.coroutines.launch
 import yaroslavgorbach.koropapps.vocabulary.business.settings.ObserveCurrentThemeInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.settings.ObserveNotificationInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.settings.ObserveUiModeInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.settings.UpdateNotificationInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Theme
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.UiMode
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
@@ -25,9 +26,9 @@ import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.ui.LevelFragme
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.settings.ui.SettingsFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.feature.training.ui.TrainingFragment
-import yaroslavgorbach.koropapps.vocabulary.utils.cancelNotification
 import yaroslavgorbach.koropapps.vocabulary.utils.scheduleNotification
 import yaroslavgorbach.koropapps.vocabulary.workflow.ExerciseWorkflow
+import java.util.*
 import javax.inject.Inject
 
 @InternalCoroutinesApi
@@ -41,13 +42,9 @@ class MainActivity : AppCompatActivity(), NavigationFragment.Router,
     @Inject
     lateinit var observeUiModeInteractor: ObserveUiModeInteractor
 
-    @Inject
-    lateinit var observeNotificationInteractor: ObserveNotificationInteractor
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initDagger()
-        initNotifications()
 
         setCurrentTheme {
             setContentView(R.layout.activity_main)
@@ -62,13 +59,6 @@ class MainActivity : AppCompatActivity(), NavigationFragment.Router,
             }
         }
     }
-
-    private fun initNotifications() {
-        lifecycleScope.launch {
-            observeNotificationInteractor(this@MainActivity).collect(this@MainActivity::scheduleNotification)
-        }
-    }
-
 
     private fun setCurrentTheme(doAfterSet: () -> Unit) {
         lifecycleScope.launch {
