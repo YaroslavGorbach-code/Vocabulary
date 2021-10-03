@@ -1,4 +1,4 @@
-package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.rememberall.ui
+package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.letters.ui
 
 import android.content.Context
 import android.os.Bundle
@@ -11,17 +11,17 @@ import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.common.ui.ExerciseView
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.rememberall.presentation.RememberAllViewModel
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.letters.presentation.LettersExerciseViewModel
 import yaroslavgorbach.koropapps.vocabulary.utils.appComponent
 import yaroslavgorbach.koropapps.vocabulary.utils.onBackPressed
 import javax.inject.Inject
 
-class RememberAllFragment : Fragment(R.layout.fragment_exercise) {
+class LettersExerciseFragment : Fragment(R.layout.fragment_exercise) {
 
     companion object {
         private const val ARG_EXERCISE_TYPE = "ARG_EXERCISE_TYPE"
 
-        fun newInstance(exerciseType: ExerciseType) = RememberAllFragment().apply {
+        fun newInstance(exerciseType: ExerciseType) = LettersExerciseFragment().apply {
             arguments = bundleOf(
                 ARG_EXERCISE_TYPE to exerciseType
             )
@@ -31,7 +31,7 @@ class RememberAllFragment : Fragment(R.layout.fragment_exercise) {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private val viewModel by viewModels<RememberAllViewModel> { viewModelFactory }
+    private val viewModel by viewModels<LettersExerciseViewModel> { viewModelFactory }
 
     private lateinit var exerciseView: ExerciseView
 
@@ -51,7 +51,7 @@ class RememberAllFragment : Fragment(R.layout.fragment_exercise) {
 
     private fun initDagger() {
         appComponent()
-            .rememberAllComponent()
+            .letterExerciseComponent()
             .create(exerciseType)
             .inject(this)
     }
@@ -70,11 +70,12 @@ class RememberAllFragment : Fragment(R.layout.fragment_exercise) {
             })
 
         exerciseView.setExerciseName(exerciseType.getExerciseName())
+
         exerciseView.setDescriptionText(viewModel.description)
     }
 
     private fun initObservers() {
-        viewModel.word.observe(viewLifecycleOwner, exerciseView::setWord)
+        viewModel.letter.observe(viewLifecycleOwner, exerciseView::setWord)
         viewModel.exercise.observe(viewLifecycleOwner, exerciseView::setExercise)
     }
 }

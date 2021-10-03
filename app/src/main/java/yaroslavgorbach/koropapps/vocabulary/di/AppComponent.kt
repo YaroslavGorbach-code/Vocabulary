@@ -18,15 +18,11 @@ import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabular
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.associations.di.AssociationsExerciseComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.dictionary.di.DictionaryExerciseComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.game.di.GameExerciseComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.half.di.HalfExerciseComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.jar.di.JarExerciseComponent
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.letters.di.LettersExerciseComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.listofcategories.di.ListOfCategoriesComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.narrator.di.NarratorExerciseComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.rememberall.di.RememberAllExerciseComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.specifications.di.SpecificationsExerciseComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.tautograms.di.TautogramsExerciseComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.ten.di.TenExerciseComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.threeletters.di.ThreeLettersExerciseComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.di.ExercisesListComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.di.LevelComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.profile.di.ProfileComponent
@@ -58,13 +54,9 @@ interface AppComponent {
 
     fun gameComponent(): GameExerciseComponent.Factory
 
-    fun jarComponent(): JarExerciseComponent.Factory
-
     fun narratorComponent(): NarratorExerciseComponent.Factory
 
-    fun rememberAllComponent(): RememberAllExerciseComponent.Factory
-
-    fun tautogramsComponent(): TautogramsExerciseComponent.Factory
+    fun letterExerciseComponent(): LettersExerciseComponent.Factory
 
     fun tenComponent(): TenExerciseComponent.Factory
 
@@ -73,10 +65,6 @@ interface AppComponent {
     fun profileComponent(): ProfileComponent.Factory
 
     fun listOfCategoriesComponent(): ListOfCategoriesComponent.Factory
-
-    fun threeLettersComponent(): ThreeLettersExerciseComponent.Factory
-
-    fun halfComponent(): HalfExerciseComponent.Factory
 
     fun specificationsComponent(): SpecificationsExerciseComponent.Factory
 

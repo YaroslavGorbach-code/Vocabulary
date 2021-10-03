@@ -9,15 +9,11 @@ import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabular
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.associations.ui.AssociationsFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.dictionary.ui.DictionaryFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.game.ui.GameFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.half.ui.HalfFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.jar.ui.JarFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.letters.ui.LettersExerciseFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.listofcategories.ui.ListOfCategoriesFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.narrator.ui.NarratorFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.rememberall.ui.RememberAllFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.specifications.ui.SpecificationsFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.tautograms.ui.TautogramsFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.ten.ui.TenFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.threeletters.ui.ThreeLettersFragment
 
 class CreateExerciseFragmentFactory {
     fun create(exerciseName: ExerciseName, exerciseType: ExerciseType): Fragment {
@@ -32,7 +28,7 @@ class CreateExerciseFragmentFactory {
                 AlphabetFragment.newInstance(exerciseType)
             }
             ExerciseName.TAUTOGRAMS -> {
-                TautogramsFragment.newInstance(exerciseType)
+                LettersExerciseFragment.newInstance(exerciseType)
             }
             ExerciseName.NARRATOR_ADJECTIVES -> {
                 NarratorFragment.newInstance(exerciseType)
@@ -53,22 +49,22 @@ class CreateExerciseFragmentFactory {
                 AssociationsFragment.newInstance(exerciseType)
             }
             ExerciseName.REMEMBER_ALL -> {
-                RememberAllFragment.newInstance(exerciseType)
+                LettersExerciseFragment.newInstance(exerciseType)
             }
             ExerciseName.GAME_I_KNOW_5_NAMES -> {
                 GameFragment.newInstance(exerciseType)
             }
             ExerciseName.THREE_LITER_JAR -> {
-                JarFragment.newInstance(exerciseType)
+                LettersExerciseFragment.newInstance(exerciseType)
             }
             ExerciseName.LIST_OF_CATEGORIES -> {
                 ListOfCategoriesFragment.newInstance(exerciseType)
             }
             ExerciseName.THREE_LETTERS -> {
-                ThreeLettersFragment.newInstance(exerciseType)
+                LettersExerciseFragment.newInstance(exerciseType)
             }
             ExerciseName.HALF -> {
-                HalfFragment.newInstance(exerciseType)
+                LettersExerciseFragment.newInstance(exerciseType)
             }
             ExerciseName.SPECIFICATIONS -> {
                 SpecificationsFragment.newInstance(exerciseType)
