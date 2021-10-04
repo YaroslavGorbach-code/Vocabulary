@@ -12,10 +12,9 @@ import yaroslavgorbach.koropapps.vocabulary.di.business.settings.BusinessSetting
 import yaroslavgorbach.koropapps.vocabulary.di.business.statistics.BusinessStatisticsModule
 import yaroslavgorbach.koropapps.vocabulary.di.business.training.BusinessTrainingModule
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.di.DescriptionComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.communication.abbreviations.di.AbbreviationsExerciseComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.word.di.WordExerciseComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.wordwithcategory.di.WordWithCategoryExerciseComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.wordwithtimer.di.WordWithTimerExerciseComponent
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.word.di.WordExerciseComponent
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.wordwithcategory.di.WordWithCategoryExerciseComponent
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.wordwithtimer.di.WordWithTimerExerciseComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.di.ExercisesListComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.di.LevelComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.profile.di.ProfileComponent
@@ -52,8 +51,6 @@ interface AppComponent {
     fun dictionaryComponent(): WordWithTimerExerciseComponent.Factory
 
     fun settingsComponent(): SettingsComponent.Factory
-
-    fun abbreviationsComponent(): AbbreviationsExerciseComponent.Factory
 
     @FlowPreview
     @InternalCoroutinesApi

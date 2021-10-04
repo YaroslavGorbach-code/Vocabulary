@@ -3,10 +3,9 @@ package yaroslavgorbach.koropapps.vocabulary.workflow.factory
 import androidx.fragment.app.Fragment
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.communication.abbreviations.ui.AbbreviationsFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.word.ui.WordExerciseFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.wordwithcategory.ui.WordWithCategoryFragment
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.wordwithtimer.ui.WordWithTimerExerciseFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.word.ui.WordExerciseFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.wordwithcategory.ui.WordWithCategoryFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.wordwithtimer.ui.WordWithTimerExerciseFragment
 
 class CreateExerciseFragmentFactory {
     fun create(exerciseName: ExerciseName, exerciseType: ExerciseType): Fragment {
@@ -71,14 +70,16 @@ class CreateExerciseFragmentFactory {
             ExerciseName.DICTIONARY_VERBS -> {
                 WordWithTimerExerciseFragment.newInstance(exerciseType)
             }
-            ExerciseName.LINGUISTIC_PYRAMIDS -> TODO()
-            ExerciseName.RAVEN_LOOK_LIKE_A_TABLE -> TODO()
+            ExerciseName.LINGUISTIC_PYRAMIDS -> {
+                WordExerciseFragment.newInstance(exerciseType)
+            }
+            ExerciseName.RAVEN_LOOK_LIKE_A_TABLE -> {
+                WordExerciseFragment.newInstance(exerciseType)
+            }
             ExerciseName.STORYTELLER_IMPROVISER -> TODO()
             ExerciseName.ADVANCED_BINDING -> TODO()
             ExerciseName.WHAT_I_SEE_I_SING_ABOUT -> TODO()
-            ExerciseName.OTHER_ABBREVIATIONS -> {
-                AbbreviationsFragment.newInstance(exerciseType)
-            }
+            ExerciseName.OTHER_ABBREVIATIONS -> TODO()
             ExerciseName.MAGIC_NAMING -> TODO()
             ExerciseName.BUYING_SELLING -> TODO()
             ExerciseName.CO_AUTHORED_WITH_DAHL -> TODO()

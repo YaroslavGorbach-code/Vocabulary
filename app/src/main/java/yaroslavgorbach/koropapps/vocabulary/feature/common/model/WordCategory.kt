@@ -2,11 +2,25 @@ package yaroslavgorbach.koropapps.vocabulary.feature.common.model
 
 import yaroslavgorbach.koropapps.vocabulary.R
 
-enum class WordCategory(val resId: Int) {
-    LETTERS(R.array.letters),
-    FILLINGS(R.array.fillings),
-    NOUNS(R.array.nouns),
-    CATEGORY(R.array.categories),
-    ABBREVIATIONS(R.array.abbreviations),
-    NONE(R.array.empty_array),
+sealed class WordCategory {
+
+    abstract val resArray: Int
+
+    class Letters(override val resArray: Int = R.array.letters) : WordCategory()
+
+    class Fillings(override val resArray: Int = R.array.fillings) : WordCategory()
+
+    class NounsNotAlive(override val resArray: Int = R.array.nouns_not_alive) : WordCategory()
+
+    class NounsAlive(override val resArray: Int = R.array.nouns_alive) : WordCategory()
+
+    class NounsAliveAndNotAlive(override val resArray: Int = R.array.empty_array) : WordCategory()
+
+    class Category(override val resArray: Int = R.array.categories) : WordCategory()
+
+    class Abbreviations(override val resArray: Int = R.array.abbreviations) : WordCategory()
+
+    class Terms(override val resArray: Int = R.array.terms) : WordCategory()
+
+    class None(override val resArray: Int = R.array.empty_array) : WordCategory()
 }
