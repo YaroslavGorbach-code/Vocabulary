@@ -7,26 +7,26 @@ class ExerciseNameToWordCategoryMapper {
 
     fun map(exerciseName: ExerciseName): WordCategory {
         return when (exerciseName) {
-            ExerciseName.ALPHABET_ADJECTIVES -> TODO()
-            ExerciseName.ALPHABET_NOUN -> TODO()
-            ExerciseName.ALPHABET_VERBS -> TODO()
+            ExerciseName.ALPHABET_ADJECTIVES -> WordCategory.LETTERS
+            ExerciseName.ALPHABET_NOUN -> WordCategory.LETTERS
+            ExerciseName.ALPHABET_VERBS -> WordCategory.LETTERS
             ExerciseName.TAUTOGRAMS -> WordCategory.LETTERS
-            ExerciseName.NARRATOR_NOUN -> TODO()
-            ExerciseName.NARRATOR_ADJECTIVES -> TODO()
-            ExerciseName.NARRATOR_VERBS -> TODO()
-            ExerciseName.ANTONYMS_AND_SYNONYMS -> TODO()
-            ExerciseName.TEN -> TODO()
-            ExerciseName.ASSOCIATIONS -> TODO()
+            ExerciseName.NARRATOR_NOUN -> WordCategory.NONE
+            ExerciseName.NARRATOR_ADJECTIVES -> WordCategory.NONE
+            ExerciseName.NARRATOR_VERBS -> WordCategory.NONE
+            ExerciseName.ANTONYMS_AND_SYNONYMS -> WordCategory.FILLINGS
+            ExerciseName.TEN -> WordCategory.NOUNS
+            ExerciseName.ASSOCIATIONS -> WordCategory.NOUNS
             ExerciseName.REMEMBER_ALL -> WordCategory.LETTERS
-            ExerciseName.GAME_I_KNOW_5_NAMES -> TODO()
+            ExerciseName.GAME_I_KNOW_5_NAMES -> WordCategory.CATEGORY
             ExerciseName.THREE_LITER_JAR -> WordCategory.LETTERS
-            ExerciseName.LIST_OF_CATEGORIES -> TODO()
+            ExerciseName.LIST_OF_CATEGORIES -> WordCategory.LETTERS
             ExerciseName.THREE_LETTERS -> WordCategory.LETTERS
             ExerciseName.HALF -> WordCategory.LETTERS
-            ExerciseName.SPECIFICATIONS -> TODO()
-            ExerciseName.DICTIONARY_ADJECTIVES -> TODO()
-            ExerciseName.DICTIONARY_NOUN -> TODO()
-            ExerciseName.DICTIONARY_VERBS -> TODO()
+            ExerciseName.SPECIFICATIONS -> WordCategory.NOUNS
+            ExerciseName.DICTIONARY_ADJECTIVES -> WordCategory.NONE
+            ExerciseName.DICTIONARY_NOUN -> WordCategory.NONE
+            ExerciseName.DICTIONARY_VERBS -> WordCategory.NONE
             ExerciseName.LINGUISTIC_PYRAMIDS -> TODO()
             ExerciseName.RAVEN_LOOK_LIKE_A_TABLE -> TODO()
             ExerciseName.STORYTELLER_IMPROVISER -> TODO()

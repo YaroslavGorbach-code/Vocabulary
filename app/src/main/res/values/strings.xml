@@ -50,4 +50,6 @@
     <string name="ok">Ok</string>
     <string name="empty_field_error">Это поле не может быть пустым</string>
     <string name="save">Сохранить</string>
+
+    <string-array name="empty_array" />
 </resources>

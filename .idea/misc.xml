@@ -22,7 +22,6 @@
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_palms.xml" value="0.2203125" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_person.xml" value="0.21481481481481482" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_rate.xml" value="0.2101851851851852" />
-        <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_raven_2.xml" value="0.2169230769230769" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_rocket.xml" value="0.21481481481481482" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_rocket_black.xml" value="0.2203125" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_rocket_daily_training.xml" value="0.2203125" />
@@ -70,6 +69,9 @@
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/layout_word_of_the_day.xml" value="0.25" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/workflow_exercise.xml" value="0.10869565217391304" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/menu/menu_navigation.xml" value="0.2" />
+        <entry key="..\:/Vocabulary/app/src/main/res/layout/fragment_exercise_alphabet.xml" value="0.3645833333333333" />
+        <entry key="..\:/Vocabulary/app/src/main/res/layout/fragment_exercise_dictionary.xml" value="0.3645833333333333" />
+        <entry key="..\:/Vocabulary/app/src/main/res/layout/fragment_exercise_with_timer.xml" value="0.5162187210379982" />
       </map>
     </option>
   </component>

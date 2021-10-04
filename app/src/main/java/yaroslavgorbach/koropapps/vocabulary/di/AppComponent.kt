@@ -13,16 +13,9 @@ import yaroslavgorbach.koropapps.vocabulary.di.business.statistics.BusinessStati
 import yaroslavgorbach.koropapps.vocabulary.di.business.training.BusinessTrainingModule
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.di.DescriptionComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.communication.abbreviations.di.AbbreviationsExerciseComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.alphabet.di.AlphabetExerciseComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.antonymssynonyms.di.AntonymsSynonymsExerciseComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.associations.di.AssociationsExerciseComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.dictionary.di.DictionaryExerciseComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.game.di.GameExerciseComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.letters.di.LettersExerciseComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.listofcategories.di.ListOfCategoriesComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.narrator.di.NarratorExerciseComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.specifications.di.SpecificationsExerciseComponent
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.ten.di.TenExerciseComponent
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.word.di.WordExerciseComponent
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.wordwithcategory.di.WordWithCategoryExerciseComponent
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.vocabulary.wordwithtimer.di.WordWithTimerExerciseComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.di.ExercisesListComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.di.LevelComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.profile.di.ProfileComponent
@@ -42,35 +35,21 @@ import javax.inject.Singleton
 )
 interface AppComponent {
 
-    fun antonymsSynonymsComponent(): AntonymsSynonymsExerciseComponent.Factory
-
     fun exercisesListComponent(): ExercisesListComponent.Factory
 
     fun trainingComponent(): TrainingComponent.Factory
 
     fun descriptionComponent(): DescriptionComponent.Factory
 
-    fun associationsComponent(): AssociationsExerciseComponent.Factory
-
-    fun gameComponent(): GameExerciseComponent.Factory
-
-    fun narratorComponent(): NarratorExerciseComponent.Factory
-
-    fun letterExerciseComponent(): LettersExerciseComponent.Factory
-
-    fun tenComponent(): TenExerciseComponent.Factory
-
-    fun alphabetComponent(): AlphabetExerciseComponent.Factory
+    fun wordExerciseComponent(): WordExerciseComponent.Factory
 
     fun profileComponent(): ProfileComponent.Factory
 
-    fun listOfCategoriesComponent(): ListOfCategoriesComponent.Factory
-
-    fun specificationsComponent(): SpecificationsExerciseComponent.Factory
+    fun wordWithCategoryExerciseComponent(): WordWithCategoryExerciseComponent.Factory
 
     fun levelComponent(): LevelComponent.Factory
 
-    fun dictionaryComponent(): DictionaryExerciseComponent.Factory
+    fun dictionaryComponent(): WordWithTimerExerciseComponent.Factory
 
     fun settingsComponent(): SettingsComponent.Factory
 

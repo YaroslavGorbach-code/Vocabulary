@@ -16,12 +16,12 @@ class TimerImp : Timer {
     override val state: LiveData<Timer.State>
         get() = _state
 
-    private lateinit var  countDownTimer: CountDownTimer
+    private lateinit var countDownTimer: CountDownTimer
 
     override fun start(countDownTime: Long, interval: Long) {
         countDownTimer = object : CountDownTimer(countDownTime, interval) {
             override fun onTick(millisUntilFinished: Long) {
-                _state.value = Timer.State.Tick(millisUntilFinished)
+                _state.value = Timer.State.Tick(millisUntilFinished, countDownTime)
             }
 
             override fun onFinish() {
@@ -31,7 +31,7 @@ class TimerImp : Timer {
     }
 
     override fun cancel() {
-        if (::countDownTimer.isInitialized){
+        if (::countDownTimer.isInitialized) {
             countDownTimer.cancel()
         }
     }

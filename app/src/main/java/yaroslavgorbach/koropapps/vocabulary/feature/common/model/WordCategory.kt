@@ -8,4 +8,5 @@ enum class WordCategory(val resId: Int) {
     NOUNS(R.array.nouns),
     CATEGORY(R.array.categories),
     ABBREVIATIONS(R.array.abbreviations),
+    NONE(R.array.empty_array),
 }

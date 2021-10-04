@@ -9,7 +9,7 @@ interface Timer {
     }
 
     sealed class State {
-        class Tick(val millisecondsUntilFinished: Long) : State()
+        class Tick(val millisecondsUntilFinished: Long, val duration: Long) : State()
         object Finish : State()
     }
 
