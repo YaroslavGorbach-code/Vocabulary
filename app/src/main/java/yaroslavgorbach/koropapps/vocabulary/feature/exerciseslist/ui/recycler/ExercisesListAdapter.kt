@@ -3,6 +3,8 @@ package yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.ui.recycler
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import yaroslavgorbach.koropapps.vocabulary.R
+import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseCategory
 import yaroslavgorbach.koropapps.vocabulary.databinding.ItemExerciseBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.ExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.utils.getDrawable
@@ -45,6 +47,11 @@ class ExercisesListAdapter(private val onExercise: (exercise: ExerciseUi) -> Uni
         fun bind(exercise: ExerciseUi) {
             binding.name.text = binding.getString(exercise.nameRes)
             binding.image.setImageDrawable(binding.getDrawable(exercise.iconRes))
+
+            when (exercise.category) {
+                ExerciseCategory.COMMUNICATION -> binding.category.setText(R.string.category_communications)
+                ExerciseCategory.VOCABULARY -> binding.category.setText(R.string.category_vocabulary)
+            }
         }
     }
 }
