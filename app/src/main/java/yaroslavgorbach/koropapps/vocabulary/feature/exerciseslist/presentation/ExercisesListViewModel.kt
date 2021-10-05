@@ -1,13 +1,17 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.presentation
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import io.reactivex.rxjava3.disposables.CompositeDisposable
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 import yaroslavgorbach.koropapps.vocabulary.business.exercises.GetExercisesInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.ObserveLastFifeTrainingsInteractor
+import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseCategory
+import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.ExerciseCategoryFilterUi
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.ExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.TrainingUi
+import java.util.Locale.filter
 import javax.inject.Inject
 
 class ExercisesListViewModel @Inject constructor(
@@ -27,8 +31,14 @@ class ExercisesListViewModel @Inject constructor(
     val training: LiveData<TrainingUi>
         get() = _training
 
+    private val _exercisesFilterUi: MutableLiveData<ExerciseCategoryFilterUi> =
+        MutableLiveData()
+
+    val exercisesFilterUi: LiveData<ExerciseCategoryFilterUi>
+        get() = _exercisesFilterUi
+
     init {
-        getExercises()
+        getAndFilterExercises(ExerciseCategoryFilterUi.ALL)
         getLastFifeTrainings()
     }
 
@@ -39,17 +49,39 @@ class ExercisesListViewModel @Inject constructor(
             .let(disposables::add)
     }
 
-    private fun getExercises() {
-        getExercisesInteractor()
-            .map { list -> list.map(::ExerciseUi) }
-            .subscribe(_exercises::postValue)
-            .let(disposables::add)
-    }
-
     override fun onCleared() {
         super.onCleared()
         if (disposables.isDisposed.not()) {
             disposables.dispose()
+        }
+    }
+
+    fun changeExercisesFilter(filterUi: ExerciseCategoryFilterUi) {
+        getAndFilterExercises(filterUi)
+    }
+
+    private fun getAndFilterExercises(filterUi: ExerciseCategoryFilterUi) {
+        viewModelScope.launch {
+            _exercisesFilterUi.value = filterUi
+
+            getExercisesInteractor()
+                .map { list -> list.map(::ExerciseUi) }
+                .map { exercisesUi ->
+                    when (filterUi) {
+                        ExerciseCategoryFilterUi.ALL -> {
+                            exercisesUi
+                        }
+                        ExerciseCategoryFilterUi.VOCABULARY -> exercisesUi.filter {
+                            it.category == ExerciseCategory.VOCABULARY
+                        }
+                        ExerciseCategoryFilterUi.COMMUNICATION -> exercisesUi.filter {
+                            it.category == ExerciseCategory.COMMUNICATION
+                        }
+                        ExerciseCategoryFilterUi.FAVORITE -> {
+                            exercisesUi.filter { it.isFavorite }
+                        }
+                    }
+                }.collect(_exercises::postValue)
         }
     }
 }

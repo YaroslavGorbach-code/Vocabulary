@@ -9,8 +9,8 @@ import androidx.lifecycle.ViewModelProvider
 import kotlinx.coroutines.InternalCoroutinesApi
 import yaroslavgorbach.koropapps.vocabulary.App
 import yaroslavgorbach.koropapps.vocabulary.R
-import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Theme
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExercisesListBinding
+import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.ExerciseCategoryFilterUi
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.ExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.presentation.ExercisesListViewModel
 import yaroslavgorbach.koropapps.vocabulary.utils.host
@@ -57,6 +57,8 @@ class ExercisesListFragment : Fragment(R.layout.fragment_exercises_list) {
         viewModel.exercises.observe(viewLifecycleOwner, exercisesView::setExercises)
 
         viewModel.training.observe(viewLifecycleOwner, exercisesView::setTraining)
+
+        viewModel.exercisesFilterUi.observe(viewLifecycleOwner, exercisesView::setExercisesFilter)
     }
 
     private fun initView() {
@@ -68,6 +70,10 @@ class ExercisesListFragment : Fragment(R.layout.fragment_exercises_list) {
 
                 override fun onTraining() {
                     host<Router>().openTraining()
+                }
+
+                override fun onExercisesFilterChanged(filterUi: ExerciseCategoryFilterUi) {
+                    viewModel.changeExercisesFilter(filterUi)
                 }
             })
     }

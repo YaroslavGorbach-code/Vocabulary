@@ -26,7 +26,6 @@ class SettingsDataStoreImp : SettingsDataStore {
         private const val DEFAULT_NOTIFICATION_HOUR = 12
         private const val DEFAULT_NOTIFICATION_MINUTE = 30
         private const val DEFAULT_NOTIFICATION_IS_ACTIVE = true
-        private const val DEFAULT_NOTIFICATION_LAST_TIME_SHOW = 0L
 
         private val THEME_RES_KEY = intPreferencesKey("THEME_RES_KEY")
         private val IS_DARK_UI_MODE_KEY = booleanPreferencesKey("IS_DARK_UI_MODE_KEY")

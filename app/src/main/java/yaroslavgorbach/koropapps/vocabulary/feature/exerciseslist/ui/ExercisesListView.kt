@@ -4,6 +4,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExercisesListBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.recycler.LineDecorator
+import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.ExerciseCategoryFilterUi
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.ExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.TrainingUi
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.ui.recycler.ExercisesListAdapter
@@ -17,6 +18,7 @@ class ExercisesListView(
     interface Callback {
         fun onExercise(exercise: ExerciseUi)
         fun onTraining()
+        fun onExercisesFilterChanged(filterUi: ExerciseCategoryFilterUi)
     }
 
     private val listAdapter = ExercisesListAdapter(callback::onExercise)
@@ -36,10 +38,52 @@ class ExercisesListView(
 
     private fun initActions() {
         binding.training.item.setOnClickListener { callback.onTraining() }
+
+        binding.chipAll.setOnCheckedChangeListener { chip, isChecked ->
+            if (isChecked) {
+                callback.onExercisesFilterChanged(ExerciseCategoryFilterUi.ALL)
+            }
+        }
+
+        binding.chipCommunication.setOnCheckedChangeListener { chip, isChecked ->
+            if (isChecked) {
+                callback.onExercisesFilterChanged(ExerciseCategoryFilterUi.COMMUNICATION)
+            }
+        }
+
+        binding.chipVocabulary.setOnCheckedChangeListener { chip, isChecked ->
+            if (isChecked) {
+                callback.onExercisesFilterChanged(ExerciseCategoryFilterUi.VOCABULARY)
+            }
+        }
+
+        binding.chipFavorite.setOnCheckedChangeListener { chip, isChecked ->
+            if (isChecked) {
+                callback.onExercisesFilterChanged(ExerciseCategoryFilterUi.FAVORITE)
+            }
+        }
     }
 
     fun setExercises(list: List<ExerciseUi>) {
         listAdapter.setData(list)
+    }
+
+    fun setExercisesFilter(filter: ExerciseCategoryFilterUi) {
+
+        when (filter) {
+            ExerciseCategoryFilterUi.ALL -> {
+                binding.chipAll.isChecked = true
+            }
+            ExerciseCategoryFilterUi.VOCABULARY -> {
+                binding.chipVocabulary.isChecked = true
+            }
+            ExerciseCategoryFilterUi.COMMUNICATION -> {
+                binding.chipCommunication.isChecked = true
+            }
+            ExerciseCategoryFilterUi.FAVORITE -> {
+                binding.chipFavorite.isChecked = true
+            }
+        }
     }
 
     fun setTraining(trainingUi: TrainingUi) {

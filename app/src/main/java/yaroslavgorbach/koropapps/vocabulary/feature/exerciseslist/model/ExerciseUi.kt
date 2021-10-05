@@ -16,6 +16,8 @@ data class ExerciseUi(private val exercise: Exercise) {
     val iconRes: Int
         get() = ExerciseNameToIconResMapper().map(exercise.name)
 
+    val isFavorite: Boolean
+        get() = exercise.isFavorite
 
     val category: ExerciseCategory
         get() = exercise.category

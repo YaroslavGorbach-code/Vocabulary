@@ -14,8 +14,58 @@
 
         <include
             android:id="@+id/training"
-            layout="@layout/layout_training" />
+            layout="@layout/layout_training"
+            android:visibility="visible" />
     </com.google.android.material.appbar.AppBarLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout3">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chip_group"
+            android:layout_width="wrap_content"
+            app:singleSelection="true"
+            android:paddingHorizontal="8dp"
+            app:chipSpacingHorizontal="8dp"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_all"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/category_all_exercise" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_communication"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/category_communications" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_vocabulary"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/category_vocabulary" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_favorite"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/category_favorite" />
+        </com.google.android.material.chip.ChipGroup>
+
+    </HorizontalScrollView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/exercises_list"
@@ -24,5 +74,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout3" />
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

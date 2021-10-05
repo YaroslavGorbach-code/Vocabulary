@@ -3,6 +3,10 @@ package yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.ui.recycler
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.h6ah4i.android.widget.advrecyclerview.swipeable.SwipeableItemAdapter
+import com.h6ah4i.android.widget.advrecyclerview.swipeable.SwipeableItemConstants
+import com.h6ah4i.android.widget.advrecyclerview.swipeable.action.SwipeResultAction
+import com.h6ah4i.android.widget.advrecyclerview.swipeable.action.SwipeResultActionMoveToSwipedDirection
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseCategory
 import yaroslavgorbach.koropapps.vocabulary.databinding.ItemExerciseBinding
@@ -14,6 +18,10 @@ class ExercisesListAdapter(private val onExercise: (exercise: ExerciseUi) -> Uni
     RecyclerView.Adapter<ExercisesListAdapter.ViewHolder>() {
 
     private var list: List<ExerciseUi> = emptyList()
+
+    init {
+        setHasStableIds(true)
+    }
 
     fun setData(data: List<ExerciseUi>) {
         list = data
@@ -30,6 +38,10 @@ class ExercisesListAdapter(private val onExercise: (exercise: ExerciseUi) -> Uni
         )
     }
 
+    override fun getItemId(position: Int): Long {
+        return list[position].name.id.toLong()
+    }
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(list[position])
     }
@@ -38,9 +50,12 @@ class ExercisesListAdapter(private val onExercise: (exercise: ExerciseUi) -> Uni
 
     inner class ViewHolder(private val binding: ItemExerciseBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
         init {
             binding.item.setOnClickListener {
-                onExercise(list[adapterPosition])
+                if (list.isEmpty().not()) {
+                    onExercise(list[adapterPosition])
+                }
             }
         }
 
