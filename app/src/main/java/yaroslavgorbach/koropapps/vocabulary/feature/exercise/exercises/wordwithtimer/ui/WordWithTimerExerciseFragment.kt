@@ -53,7 +53,7 @@ class WordWithTimerExerciseFragment : Fragment(R.layout.fragment_exercise_with_t
 
     private fun initDagger() {
         appComponent()
-            .dictionaryComponent()
+            .wordWithTimerExerciseComponent()
             .create(exerciseType)
             .inject(this)
     }

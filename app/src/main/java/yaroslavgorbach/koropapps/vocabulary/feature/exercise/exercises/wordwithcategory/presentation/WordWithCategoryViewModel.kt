@@ -6,8 +6,8 @@ import androidx.lifecycle.MutableLiveData
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.SaveStatisticsInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.IncrementExercisePerformedInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.ObserveTrainingExerciseInteractor
+import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToExerciseRandomWordMapper
 import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToShortDescriptionResMapper
-import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToExerciseWordMapper
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.WordCategory
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.base.BaseExerciseViewModel
@@ -26,10 +26,8 @@ class WordWithCategoryViewModel @Inject constructor(
     observeTrainingExerciseInteractor
 ) {
 
-    private val letters: List<String>
-        get() = application.applicationContext.resources.getStringArray(
-            ExerciseNameToExerciseWordMapper().map(exerciseType.getExerciseName()).resArray
-        ).toList()
+    private val exerciseNameToExerciseRandomWordMapper =
+        ExerciseNameToExerciseRandomWordMapper(application.resources)
 
     private val categories: List<String>
         get() = application.applicationContext.resources.getStringArray(
@@ -63,7 +61,7 @@ class WordWithCategoryViewModel @Inject constructor(
     }
 
     private fun generateLetter() {
-        _letter.value = letters.random()
+        _letter.value = exerciseNameToExerciseRandomWordMapper.map(exerciseType.getExerciseName())
     }
 
     private fun generateCategory() {

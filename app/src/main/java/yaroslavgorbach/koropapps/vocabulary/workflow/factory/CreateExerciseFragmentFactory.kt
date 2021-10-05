@@ -10,83 +10,49 @@ import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.wordwitht
 class CreateExerciseFragmentFactory {
     fun create(exerciseName: ExerciseName, exerciseType: ExerciseType): Fragment {
         return when (exerciseName) {
-            ExerciseName.ALPHABET_ADJECTIVES -> {
+            ExerciseName.ALPHABET_ADJECTIVES,
+            ExerciseName.ALPHABET_NOUN,
+            ExerciseName.ALPHABET_VERBS,
+            ExerciseName.DICTIONARY_ADJECTIVES,
+            ExerciseName.DICTIONARY_NOUN,
+            ExerciseName.DICTIONARY_VERBS,
+            -> {
                 WordWithTimerExerciseFragment.newInstance(exerciseType)
             }
-            ExerciseName.ALPHABET_NOUN -> {
-                WordWithTimerExerciseFragment.newInstance(exerciseType)
+
+            ExerciseName.LIST_OF_CATEGORIES -> {
+                WordWithCategoryFragment.newInstance(exerciseType)
+
             }
-            ExerciseName.ALPHABET_VERBS -> {
-                WordWithTimerExerciseFragment.newInstance(exerciseType)
-            }
+
+            ExerciseName.GAME_I_KNOW_5_NAMES,
+            ExerciseName.REMEMBER_ALL,
+            ExerciseName.ASSOCIATIONS,
+            ExerciseName.TEN,
+            ExerciseName.ANTONYMS_AND_SYNONYMS,
+            ExerciseName.NARRATOR_VERBS,
+            ExerciseName.NARRATOR_NOUN,
+            ExerciseName.NARRATOR_ADJECTIVES,
+            ExerciseName.THREE_LITER_JAR,
+            ExerciseName.THREE_LETTERS,
+            ExerciseName.HALF,
+            ExerciseName.SPECIFICATIONS,
+            ExerciseName.LINGUISTIC_PYRAMIDS,
+            ExerciseName.RAVEN_LOOK_LIKE_A_TABLE,
+            ExerciseName.STORYTELLER_IMPROVISER,
+            ExerciseName.ADVANCED_BINDING,
+            ExerciseName.WHAT_I_SEE_I_SING_ABOUT,
+            ExerciseName.OTHER_ABBREVIATIONS,
+            ExerciseName.MAGIC_NAMING,
+            ExerciseName.BUYING_SELLING,
+            ExerciseName.CO_AUTHORED_WITH_DAHL,
+            ExerciseName.RORSCHACH_TEST,
+            ExerciseName.WILL_NOT_BE_WORSE,
+            ExerciseName.QUESTION_ANSWER,
+            ExerciseName.RAVEN_LOOK_LIKE_A_TABLE_FILINGS,
             ExerciseName.TAUTOGRAMS -> {
                 WordExerciseFragment.newInstance(exerciseType)
             }
-            ExerciseName.NARRATOR_ADJECTIVES -> {
-                WordExerciseFragment.newInstance(exerciseType)
-            }
-            ExerciseName.NARRATOR_NOUN -> {
-                WordExerciseFragment.newInstance(exerciseType)
-            }
-            ExerciseName.NARRATOR_VERBS -> {
-                WordExerciseFragment.newInstance(exerciseType)
-            }
-            ExerciseName.ANTONYMS_AND_SYNONYMS -> {
-                WordExerciseFragment.newInstance(exerciseType)
-            }
-            ExerciseName.TEN -> {
-                WordExerciseFragment.newInstance(exerciseType)
-            }
-            ExerciseName.ASSOCIATIONS -> {
-                WordWithTimerExerciseFragment.newInstance(exerciseType)
-            }
-            ExerciseName.REMEMBER_ALL -> {
-                WordExerciseFragment.newInstance(exerciseType)
-            }
-            ExerciseName.GAME_I_KNOW_5_NAMES -> {
-                WordExerciseFragment.newInstance(exerciseType)
-            }
-            ExerciseName.THREE_LITER_JAR -> {
-                WordExerciseFragment.newInstance(exerciseType)
-            }
-            ExerciseName.LIST_OF_CATEGORIES -> {
-                WordWithCategoryFragment.newInstance(exerciseType)
-            }
-            ExerciseName.THREE_LETTERS -> {
-                WordExerciseFragment.newInstance(exerciseType)
-            }
-            ExerciseName.HALF -> {
-                WordExerciseFragment.newInstance(exerciseType)
-            }
-            ExerciseName.SPECIFICATIONS -> {
-                WordExerciseFragment.newInstance(exerciseType)
-            }
-            ExerciseName.DICTIONARY_ADJECTIVES -> {
-                WordWithTimerExerciseFragment.newInstance(exerciseType)
-            }
-            ExerciseName.DICTIONARY_NOUN -> {
-                WordWithTimerExerciseFragment.newInstance(exerciseType)
-            }
-            ExerciseName.DICTIONARY_VERBS -> {
-                WordWithTimerExerciseFragment.newInstance(exerciseType)
-            }
-            ExerciseName.LINGUISTIC_PYRAMIDS -> {
-                WordExerciseFragment.newInstance(exerciseType)
-            }
-            ExerciseName.RAVEN_LOOK_LIKE_A_TABLE -> {
-                WordExerciseFragment.newInstance(exerciseType)
-            }
-            ExerciseName.STORYTELLER_IMPROVISER -> TODO()
-            ExerciseName.ADVANCED_BINDING -> TODO()
-            ExerciseName.WHAT_I_SEE_I_SING_ABOUT -> TODO()
-            ExerciseName.OTHER_ABBREVIATIONS -> TODO()
-            ExerciseName.MAGIC_NAMING -> TODO()
-            ExerciseName.BUYING_SELLING -> TODO()
-            ExerciseName.CO_AUTHORED_WITH_DAHL -> TODO()
-            ExerciseName.RORSCHACH_TEST -> TODO()
-            ExerciseName.WILL_NOT_BE_WORSE -> TODO()
-            ExerciseName.QUESTION_ANSWER -> TODO()
-            ExerciseName.RAVEN_LOOK_LIKE_A_TABLE_FILINGS -> TODO()
         }
     }
 }

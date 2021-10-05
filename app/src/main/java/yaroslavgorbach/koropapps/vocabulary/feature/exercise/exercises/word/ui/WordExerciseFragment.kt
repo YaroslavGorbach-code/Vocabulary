@@ -70,12 +70,14 @@ class WordExerciseFragment : Fragment(R.layout.fragment_exercise) {
             })
 
         exerciseView.setExerciseName(exerciseType.getExerciseName())
-
-        exerciseView.setDescriptionText(viewModel.description)
     }
 
     private fun initObservers() {
-        viewModel.word.observe(viewLifecycleOwner, exerciseView::setWord)
+        viewModel.word.observe(viewLifecycleOwner) {
+            exerciseView.setWord(it)
+            exerciseView.setDescriptionText(viewModel.description)
+        }
+
         viewModel.exercise.observe(viewLifecycleOwner, exerciseView::setExercise)
     }
 }

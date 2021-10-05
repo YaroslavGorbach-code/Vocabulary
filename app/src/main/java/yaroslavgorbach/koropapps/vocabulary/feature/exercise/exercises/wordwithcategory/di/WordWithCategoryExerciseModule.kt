@@ -9,9 +9,9 @@ import yaroslavgorbach.koropapps.vocabulary.di.common.ViewModelKey
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.wordwithcategory.presentation.WordWithCategoryViewModel
 
 @Module(includes = [ViewModelBuilderModule::class])
-abstract class WordWithCategoryExerciceModule {
+abstract class WordWithCategoryExerciseModule {
     @Binds
     @IntoMap
     @ViewModelKey(WordWithCategoryViewModel::class)
-    abstract fun bindListOfCategoriesViewModel(viewModel: WordWithCategoryViewModel): ViewModel
+    abstract fun bindViewModel(viewModel: WordWithCategoryViewModel): ViewModel
 }

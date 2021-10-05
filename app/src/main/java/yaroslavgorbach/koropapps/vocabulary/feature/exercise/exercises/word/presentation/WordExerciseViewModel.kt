@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.SaveStatisticsInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.IncrementExercisePerformedInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.ObserveTrainingExerciseInteractor
-import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToExerciseWordMapper
+import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToExerciseRandomWordMapper
 import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToShortDescriptionResMapper
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.base.BaseExerciseViewModel
@@ -24,6 +24,9 @@ class WordExerciseViewModel @Inject constructor(
     saveStatisticsInteractor,
     observeTrainingExerciseInteractor
 ) {
+
+    private val exerciseNameToExerciseRandomWordMapper =
+        ExerciseNameToExerciseRandomWordMapper(application.resources)
 
     val description: String
         get() = application.getString(
@@ -45,26 +48,6 @@ class WordExerciseViewModel @Inject constructor(
     }
 
     private fun generateWord() {
-        _word.value = ExerciseNameToExerciseWordMapper.map(
-            exerciseType.getExerciseName(),
-            application.resources
-        )
-//        when (exerciseType.getExerciseName()) {
-//            ExerciseName.HALF -> {
-//                // TODO: 9/6/2021 доработь этот метод так, чтобы первая буква была не гласная а вторая гласная
-//                _word.value = words.random() + words.random()
-//            }
-//            ExerciseName.THREE_LETTERS -> {
-//                _word.value = words.random() + words.random() + words.random()
-//            }
-//            ExerciseName.NARRATOR_ADJECTIVES,
-//            ExerciseName.NARRATOR_NOUN,
-//            ExerciseName.NARRATOR_VERBS -> {
-//                _word.value = Random.nextInt(3, 15).toString()
-//            }
-//            else -> {
-//                _word.value = words.random()
-//            }
-//        }
+        _word.value = exerciseNameToExerciseRandomWordMapper.map(exerciseType.getExerciseName())
     }
 }

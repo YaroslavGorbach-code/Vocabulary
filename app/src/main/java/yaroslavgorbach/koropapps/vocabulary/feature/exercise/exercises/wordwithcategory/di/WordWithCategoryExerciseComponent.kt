@@ -5,7 +5,7 @@ import dagger.Subcomponent
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.wordwithcategory.ui.WordWithCategoryFragment
 
-@Subcomponent(modules = [WordWithCategoryExerciceModule::class])
+@Subcomponent(modules = [WordWithCategoryExerciseModule::class])
 interface WordWithCategoryExerciseComponent {
 
     fun inject(wordWithCategoryFragment: WordWithCategoryFragment)
@@ -14,5 +14,4 @@ interface WordWithCategoryExerciseComponent {
     interface Factory {
         fun create(@BindsInstance exerciseType: ExerciseType): WordWithCategoryExerciseComponent
     }
-
 }

@@ -13,5 +13,5 @@ abstract class WordWithTimerExerciseModule {
     @Binds
     @IntoMap
     @ViewModelKey(WordWithTimerViewModel::class)
-    abstract fun bindDictionaryViewModel(viewModel: WordWithTimerViewModel): ViewModel
+    abstract fun bindViewModel(viewModel: WordWithTimerViewModel): ViewModel
 }

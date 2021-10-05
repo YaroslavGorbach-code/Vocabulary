@@ -14,13 +14,13 @@ sealed class WordCategory {
 
     class NounsAlive(override val resArray: Int = R.array.nouns_alive) : WordCategory()
 
-    class NounsAliveAndNotAlive(override val resArray: Int = R.array.empty_array) : WordCategory()
-
     class Category(override val resArray: Int = R.array.categories) : WordCategory()
 
     class Abbreviations(override val resArray: Int = R.array.abbreviations) : WordCategory()
 
     class Terms(override val resArray: Int = R.array.terms) : WordCategory()
+
+    class Questions(override val resArray: Int = R.array.questions) : WordCategory()
 
     class None(override val resArray: Int = R.array.empty_array) : WordCategory()
 }

@@ -48,7 +48,7 @@ interface AppComponent {
 
     fun levelComponent(): LevelComponent.Factory
 
-    fun dictionaryComponent(): WordWithTimerExerciseComponent.Factory
+    fun wordWithTimerExerciseComponent(): WordWithTimerExerciseComponent.Factory
 
     fun settingsComponent(): SettingsComponent.Factory
 
