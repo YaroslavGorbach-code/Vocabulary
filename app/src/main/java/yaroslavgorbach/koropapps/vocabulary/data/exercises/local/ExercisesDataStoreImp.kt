@@ -74,7 +74,7 @@ class ExercisesDataStoreImp : ExercisesDataStore {
             }
     }
 
-    override suspend fun update(exercise: Exercise, context: Context) {
+    override suspend fun changeFavorite(exercise: Exercise, context: Context) {
         context.exercisesDataStore.edit { prefs ->
             if (exercise.isFavorite) {
                 prefs[FAVORITE_EXERCISES_KEY].orEmpty().plus(exercise.name)

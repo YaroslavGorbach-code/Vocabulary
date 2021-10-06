@@ -86,6 +86,10 @@ class DescriptionFragment : Fragment(R.layout.fragment_description) {
                 override fun onPreviousChartTime() {
                     viewModel.onPreviousChartTime()
                 }
+
+                override fun onAddToFavorite() {
+                    viewModel.changeExerciseFavorite()
+                }
             })
 
         descriptionView.setDescriptionRes(viewModel.descriptionRes)
@@ -97,6 +101,12 @@ class DescriptionFragment : Fragment(R.layout.fragment_description) {
 
     private fun initObservers() {
         viewModel.chartValueUi.observe(viewLifecycleOwner, descriptionView::setChartValue)
+
         viewModel.chartTimeUi.observe(viewLifecycleOwner, descriptionView::setChartTime)
+
+        viewModel.isExerciseFavorite.observe(
+            viewLifecycleOwner,
+            descriptionView::setExerciseFavorite
+        )
     }
 }

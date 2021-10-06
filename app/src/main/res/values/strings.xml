@@ -55,6 +55,7 @@
     <string name="category_communications">Для развития навыков общения</string>
     <string name="category_all_exercise">Все упражнения</string>
     <string name="category_favorite">Избрынные</string>
+    <string name="add_to_favorite">В избранные</string>
 
 
     <string-array name="empty_array" />

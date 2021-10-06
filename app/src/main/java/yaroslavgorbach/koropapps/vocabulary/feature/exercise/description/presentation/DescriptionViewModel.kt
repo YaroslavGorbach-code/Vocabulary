@@ -1,10 +1,15 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.presentation
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
+import kotlinx.coroutines.async
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
+import yaroslavgorbach.koropapps.vocabulary.business.exercises.ChangeExerciseFavoriteInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.exercises.GetExerciseInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.exercises.GetExercisesInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.ObserveStatisticsTimeInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.ObserveStatisticsValueInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
@@ -18,6 +23,8 @@ import javax.inject.Inject
 class DescriptionViewModel @Inject constructor(
     private val observeStatisticsValueInteractor: ObserveStatisticsValueInteractor,
     private val observeStatisticsTimeInteractor: ObserveStatisticsTimeInteractor,
+    private val changeExerciseFavoriteInteractor: ChangeExerciseFavoriteInteractor,
+    private val getExerciseInteractor: GetExerciseInteractor,
     private val exerciseName: ExerciseName
 ) : ViewModel() {
 
@@ -39,9 +46,15 @@ class DescriptionViewModel @Inject constructor(
     val chartTimeUi: LiveData<ChartTimeUi>
         get() = _chartTimeUi
 
+    private val _isExerciseFavorite: MutableLiveData<Boolean> = MutableLiveData()
+
+    val isExerciseFavorite: LiveData<Boolean>
+        get() = _isExerciseFavorite
+
     init {
         observeValueStatistics()
         observeTimeStatistics()
+        observeIsExerciseFavorite()
     }
 
     private fun observeValueStatistics() {
@@ -60,6 +73,13 @@ class DescriptionViewModel @Inject constructor(
             .map { ChartTimeUi(it, exerciseName) }
             .subscribe(_chartTimeUi::setValue)
             .let(disposables::add)
+    }
+
+    private fun observeIsExerciseFavorite() {
+        viewModelScope.launch {
+            getExerciseInteractor(exerciseName).map { it.isFavorite }
+                .collect(_isExerciseFavorite::postValue)
+        }
     }
 
     fun onNextChartValue() {
@@ -90,7 +110,7 @@ class DescriptionViewModel @Inject constructor(
                 }
             }
             .map { it.takeLast(ChartValueUi.MAX_ITEMS_COUNT) }
-            .map{ ChartValueUi(it, exerciseName) }
+            .map { ChartValueUi(it, exerciseName) }
             .map { chartUi ->
                 if (chartUi.labels.isEmpty().not()) {
                     _chartValueUi.value = chartUi
@@ -138,10 +158,19 @@ class DescriptionViewModel @Inject constructor(
             .let(disposables::add)
     }
 
+    fun changeExerciseFavorite() {
+        _isExerciseFavorite.value = _isExerciseFavorite.value?.not()
+
+        viewModelScope.launch {
+            changeExerciseFavoriteInteractor(exerciseName)
+        }
+    }
+
     override fun onCleared() {
         super.onCleared()
         if (disposables.isDisposed.not()) {
             disposables.dispose()
         }
     }
+
 }

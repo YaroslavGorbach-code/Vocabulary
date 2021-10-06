@@ -7,7 +7,7 @@ import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseN
 interface RepoExercises {
     fun observe(): Flow<List<Exercise>>
 
-    suspend fun update(exercise: Exercise)
+    suspend fun changeFavorite(exercise: Exercise)
 
     suspend fun get(exerciseName: ExerciseName): Flow<Exercise>
 }

@@ -1,8 +1,10 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.ui
 
 import android.view.View
+import androidx.core.view.get
 import androidx.core.widget.NestedScrollView
 import im.dacer.androidcharts.LineView
+import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentDescriptionBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.model.ChartTimeUi
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.model.ChartValueUi
@@ -20,6 +22,7 @@ class DescriptionView(
         fun onPreviousChartValue()
         fun onNextChartTime()
         fun onPreviousChartTime()
+        fun onAddToFavorite()
     }
 
     init {
@@ -33,6 +36,15 @@ class DescriptionView(
 
         binding.toolbar.setNavigationOnClickListener {
             callback.onBack()
+        }
+
+        binding.toolbar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.menu_add_to_favorite -> {
+                    callback.onAddToFavorite()
+                }
+            }
+            true
         }
 
         binding.chart.nextData.setOnClickListener {
@@ -68,6 +80,16 @@ class DescriptionView(
     fun setExerciseIconRes(exerciseIconRes: Int) {
         with(binding.getDrawable(exerciseIconRes)) {
             binding.icon.setImageDrawable(this)
+        }
+    }
+
+    fun setExerciseFavorite(isFavorite: Boolean) {
+        val menuItem = binding.toolbar.menu[0]
+
+        if (isFavorite) {
+            menuItem.icon = binding.getDrawable(R.drawable.ic_star_yellow)
+        } else {
+            menuItem.icon = binding.getDrawable(R.drawable.ic_star)
         }
     }
 
