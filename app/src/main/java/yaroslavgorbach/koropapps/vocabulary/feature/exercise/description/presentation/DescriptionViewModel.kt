@@ -1,15 +1,16 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.presentation
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
-import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import yaroslavgorbach.koropapps.vocabulary.business.exercises.ChangeExerciseFavoriteInteractor
-import yaroslavgorbach.koropapps.vocabulary.business.exercises.GetExerciseInteractor
-import yaroslavgorbach.koropapps.vocabulary.business.exercises.GetExercisesInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.exercises.ObserveExerciseInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.ObserveStatisticsTimeInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.ObserveStatisticsValueInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
@@ -24,7 +25,7 @@ class DescriptionViewModel @Inject constructor(
     private val observeStatisticsValueInteractor: ObserveStatisticsValueInteractor,
     private val observeStatisticsTimeInteractor: ObserveStatisticsTimeInteractor,
     private val changeExerciseFavoriteInteractor: ChangeExerciseFavoriteInteractor,
-    private val getExerciseInteractor: GetExerciseInteractor,
+    private val observeExerciseInteractor: ObserveExerciseInteractor,
     private val exerciseName: ExerciseName
 ) : ViewModel() {
 
@@ -77,7 +78,7 @@ class DescriptionViewModel @Inject constructor(
 
     private fun observeIsExerciseFavorite() {
         viewModelScope.launch {
-            getExerciseInteractor(exerciseName).map { it.isFavorite }
+            observeExerciseInteractor(exerciseName).map { it.isFavorite }
                 .collect(_isExerciseFavorite::postValue)
         }
     }
@@ -159,8 +160,6 @@ class DescriptionViewModel @Inject constructor(
     }
 
     fun changeExerciseFavorite() {
-        _isExerciseFavorite.value = _isExerciseFavorite.value?.not()
-
         viewModelScope.launch {
             changeExerciseFavoriteInteractor(exerciseName)
         }

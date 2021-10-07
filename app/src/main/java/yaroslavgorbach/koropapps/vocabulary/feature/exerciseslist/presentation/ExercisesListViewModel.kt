@@ -62,7 +62,6 @@ class ExercisesListViewModel @Inject constructor(
 
     private fun getAndFilterExercises(filterUi: ExerciseCategoryFilterUi) {
         viewModelScope.launch {
-            _exercisesFilterUi.value = filterUi
 
             getExercisesInteractor()
                 .map { list -> list.map(::ExerciseUi) }
@@ -81,7 +80,10 @@ class ExercisesListViewModel @Inject constructor(
                             exercisesUi.filter { it.isFavorite }
                         }
                     }
-                }.collect(_exercises::postValue)
+                }.collect { exercises ->
+                    _exercises.postValue(exercises)
+                    _exercisesFilterUi.value = filterUi
+                }
         }
     }
 }

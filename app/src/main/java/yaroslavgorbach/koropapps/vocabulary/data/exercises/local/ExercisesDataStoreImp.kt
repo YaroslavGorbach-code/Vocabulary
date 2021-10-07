@@ -1,10 +1,9 @@
 package yaroslavgorbach.koropapps.vocabulary.data.exercises.local
 
 import android.content.Context
+import android.util.Log
 import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.edit
-import androidx.datastore.preferences.core.stringSetPreferencesKey
+import androidx.datastore.preferences.core.*
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -16,9 +15,16 @@ private val Context.exercisesDataStore: DataStore<Preferences> by preferencesDat
 
 class ExercisesDataStoreImp : ExercisesDataStore {
 
-    companion object {
-        private val FAVORITE_EXERCISES_KEY = stringSetPreferencesKey("FAVORITE_EXERCISES_KEY")
+    private val favoriteExercisesKeys: Set<Preferences.Key<Boolean>> by lazy {
+        val set: MutableSet<Preferences.Key<Boolean>> = mutableSetOf()
 
+        exercises.forEach { set.add(booleanPreferencesKey(it.name.name)) }
+
+        set
+    }
+
+    private fun getFavoriteKey(exerciseName: ExerciseName): Preferences.Key<Boolean> {
+        return favoriteExercisesKeys.find { it.name == exerciseName.name }!!
     }
 
     private val exercises = listOf(
@@ -64,23 +70,22 @@ class ExercisesDataStoreImp : ExercisesDataStore {
     override fun observe(context: Context): Flow<List<Exercise>> {
         return context.exercisesDataStore.data
             .map { prefs ->
-                val favoriteExercisesNames = prefs[FAVORITE_EXERCISES_KEY]
                 exercises.map { exercise ->
-                    if (favoriteExercisesNames?.contains(exercise.name.name) == true) {
-                        exercise.isFavorite = true
-                    }
+                    val isExerciseFavorite = prefs[getFavoriteKey(exercise.name)]
+                    Log.i("observe", "obser" + exercise.name.name)
+
+                    exercise.isFavorite = isExerciseFavorite ?: false
+
                     exercise
                 }
             }
     }
 
-    override suspend fun changeFavorite(exercise: Exercise, context: Context) {
+    override suspend fun changeFavorite(exerciseName: ExerciseName, context: Context) {
         context.exercisesDataStore.edit { prefs ->
-            if (exercise.isFavorite) {
-                prefs[FAVORITE_EXERCISES_KEY].orEmpty().plus(exercise.name)
-            } else {
-                prefs[FAVORITE_EXERCISES_KEY].orEmpty().minus(exercise.name)
-            }
+
+            prefs[getFavoriteKey(exerciseName)] =
+                prefs[getFavoriteKey(exerciseName)]?.not() ?: true
         }
     }
 

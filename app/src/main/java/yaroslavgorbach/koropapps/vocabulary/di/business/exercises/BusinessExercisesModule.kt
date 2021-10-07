@@ -3,7 +3,7 @@ package yaroslavgorbach.koropapps.vocabulary.di.business.exercises
 import dagger.Module
 import dagger.Provides
 import yaroslavgorbach.koropapps.vocabulary.business.exercises.ChangeExerciseFavoriteInteractor
-import yaroslavgorbach.koropapps.vocabulary.business.exercises.GetExerciseInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.exercises.ObserveExerciseInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.exercises.GetExercisesInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.repo.RepoExercises
 import yaroslavgorbach.koropapps.vocabulary.di.business.training.BusinessTrainingModule
@@ -27,7 +27,7 @@ class BusinessExercisesModule {
 
     @Singleton
     @Provides
-    fun provideGetExerciseInteractor(repoExercises: RepoExercises): GetExerciseInteractor {
-        return GetExerciseInteractor(repoExercises)
+    fun provideGetExerciseInteractor(repoExercises: RepoExercises): ObserveExerciseInteractor {
+        return ObserveExerciseInteractor(repoExercises)
     }
 }

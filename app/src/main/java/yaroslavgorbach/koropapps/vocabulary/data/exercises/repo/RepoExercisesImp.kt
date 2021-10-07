@@ -12,8 +12,8 @@ class RepoExercisesImp(private val localDataStore: ExercisesDataStore, private v
         return localDataStore.observe(context)
     }
 
-    override suspend fun changeFavorite(exercise: Exercise) {
-        localDataStore.changeFavorite(context = context, exercise = exercise)
+    override suspend fun changeFavorite(exerciseName: ExerciseName) {
+        localDataStore.changeFavorite(context = context, exerciseName = exerciseName)
     }
 
     override suspend fun get(exerciseName: ExerciseName): Flow<Exercise> {

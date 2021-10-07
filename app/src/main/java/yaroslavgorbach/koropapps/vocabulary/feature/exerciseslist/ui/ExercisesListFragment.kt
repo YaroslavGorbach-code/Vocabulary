@@ -53,14 +53,6 @@ class ExercisesListFragment : Fragment(R.layout.fragment_exercises_list) {
             .inject(this)
     }
 
-    private fun initObservers() {
-        viewModel.exercises.observe(viewLifecycleOwner, exercisesView::setExercises)
-
-        viewModel.training.observe(viewLifecycleOwner, exercisesView::setTraining)
-
-        viewModel.exercisesFilterUi.observe(viewLifecycleOwner, exercisesView::setExercisesFilter)
-    }
-
     private fun initView() {
         exercisesView = ExercisesListView(
             FragmentExercisesListBinding.bind(requireView()), object : ExercisesListView.Callback {
@@ -76,5 +68,13 @@ class ExercisesListFragment : Fragment(R.layout.fragment_exercises_list) {
                     viewModel.changeExercisesFilter(filterUi)
                 }
             })
+    }
+
+    private fun initObservers() {
+        viewModel.exercises.observe(viewLifecycleOwner, exercisesView::setExercises)
+
+        viewModel.training.observe(viewLifecycleOwner, exercisesView::setTraining)
+
+        viewModel.exercisesFilterUi.observe(viewLifecycleOwner, exercisesView::setExercisesFilter)
     }
 }

@@ -11,7 +11,7 @@ import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.UiMode
 interface ExercisesDataStore {
     fun observe(context: Context): Flow<List<Exercise>>
 
-    suspend fun changeFavorite(exercise: Exercise, context: Context)
+    suspend fun changeFavorite(exerciseName: ExerciseName, context: Context)
 
     fun get(context: Context, exerciseName: ExerciseName): Flow<Exercise>
 }
