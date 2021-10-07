@@ -1,5 +1,6 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.training.presentation
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -19,13 +20,13 @@ class TrainingViewModel @Inject constructor(
     val trainingWithExercises: LiveData<TrainingWithExercisesUi>
         get() = _trainingWithExercises
 
-    init {
-        getCurrentTrainingWithExercises()
-    }
+    private var currentViewPage = 0
 
-    private fun getCurrentTrainingWithExercises() {
+
+    fun getCurrentTrainingWithExercises() {
         observeCurrentTrainingWithExercisesInteractor()
             .map(::TrainingWithExercisesUi)
+            .map { training -> training.apply { currentViewPagerPage = currentViewPage } }
             .subscribe(_trainingWithExercises::postValue)
             .let(disposables::add)
     }
@@ -35,6 +36,11 @@ class TrainingViewModel @Inject constructor(
         if (disposables.isDisposed.not()) {
             disposables.dispose()
         }
+    }
+
+    fun setCurrentPage(currentPage: Int) {
+
+        currentViewPage = currentPage
     }
 
 }

@@ -45,6 +45,8 @@ class TrainingFragment : Fragment(R.layout.fragment_training) {
         super.onViewCreated(view, savedInstanceState)
         initView(view)
         initObservers()
+        viewModel.getCurrentTrainingWithExercises()
+
     }
 
     private fun initDagger() {
@@ -60,6 +62,11 @@ class TrainingFragment : Fragment(R.layout.fragment_training) {
             object : TrainingView.Callback {
                 override fun onExercise(withExercises: TrainingExerciseUi) {
                     host<Router>().openDescription(withExercises)
+
+                }
+
+                override fun onPageChanged(page: Int) {
+                    viewModel.setCurrentPage(page)
                 }
 
                 override fun onBack() {

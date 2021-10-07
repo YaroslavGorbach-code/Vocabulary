@@ -16,4 +16,5 @@ class TrainingWithExercisesUi(private val trainingWithExercisesEntity: TrainingW
     val daysWithoutInterruption: Int
         get() = trainingWithExercisesEntity.training.daysWithoutInterruption
 
+    var currentViewPagerPage = 0
 }

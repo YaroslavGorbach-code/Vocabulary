@@ -77,7 +77,7 @@
                 android:ellipsize="end"
                 android:gravity="center"
                 android:maxLines="1"
-                android:text="Дней подряд: 3"
+                tools:text="Дней подряд: 3"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@+id/image"
                 app:layout_constraintStart_toStartOf="@+id/image"
@@ -86,8 +86,8 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -95,9 +95,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout4"
-        app:layout_constraintVertical_bias="1.0"
-        tools:itemCount="3"
-        tools:listitem="@layout/item_exercise_tarining" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/no_exercises_icon"

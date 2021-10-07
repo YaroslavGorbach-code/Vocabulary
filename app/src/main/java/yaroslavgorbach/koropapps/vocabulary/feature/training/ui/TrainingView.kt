@@ -1,11 +1,11 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.training.ui
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.View
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.viewpager2.widget.ViewPager2
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentTrainingBinding
-import yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.recycler.LineDecorator
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingWithExercisesUi
 import yaroslavgorbach.koropapps.vocabulary.feature.training.ui.recycler.TrainingExercisesListAdapter
@@ -18,10 +18,17 @@ class TrainingView(
 
     interface Callback {
         fun onExercise(withExercises: TrainingExerciseUi)
+
+        fun onPageChanged(page: Int)
+
         fun onBack()
     }
 
-    private val listAdapter = TrainingExercisesListAdapter(callback::onExercise)
+    private val pagerAdapter = TrainingExercisesListAdapter { exercise ->
+        callback.onExercise(exercise)
+
+        callback.onPageChanged(binding.viewPager.currentItem)
+    }
 
     init {
         initView()
@@ -29,10 +36,8 @@ class TrainingView(
     }
 
     private fun initView() {
-        binding.list.apply {
-            adapter = listAdapter
-            layoutManager = LinearLayoutManager(binding.root.context)
-            addItemDecoration(LineDecorator(context, R.drawable.line_devider))
+        binding.viewPager.apply {
+            adapter = pagerAdapter
         }
     }
 
@@ -42,26 +47,33 @@ class TrainingView(
         }
     }
 
-    @SuppressLint("SetTextI18n")
-    fun setTrainingWitExercises(trainingWithExercisesUi: TrainingWithExercisesUi) {
-        listAdapter.setData(trainingWithExercisesUi.exercises)
-        binding.trainingProgress.progress = trainingWithExercisesUi.progress
-        binding.daysWithoutInterruption.text =
-            binding.getString(R.string.days_without_interruption) + ": ${trainingWithExercisesUi.daysWithoutInterruption}"
-
-        showNoExercises(trainingWithExercisesUi.exercises.isEmpty())
-    }
-
     private fun showNoExercises(isShow: Boolean) {
-        if (isShow){
+        if (isShow) {
             binding.noExercisesIcon.visibility = View.VISIBLE
             binding.noExercisesTextOne.visibility = View.VISIBLE
             binding.noExercisesTextTwo.visibility = View.VISIBLE
-        }else{
+        } else {
             binding.noExercisesIcon.visibility = View.GONE
             binding.noExercisesTextOne.visibility = View.GONE
             binding.noExercisesTextTwo.visibility = View.GONE
         }
     }
 
+    @SuppressLint("SetTextI18n")
+    fun setTrainingWitExercises(trainingWithExercisesUi: TrainingWithExercisesUi) {
+        pagerAdapter.setData(trainingWithExercisesUi.exercises)
+
+        setViewPagerPage(trainingWithExercisesUi.currentViewPagerPage)
+
+        binding.trainingProgress.progress = trainingWithExercisesUi.progress
+
+        binding.daysWithoutInterruption.text =
+            binding.getString(R.string.days_without_interruption) + ": ${trainingWithExercisesUi.daysWithoutInterruption}"
+
+        showNoExercises(trainingWithExercisesUi.exercises.isEmpty())
+    }
+
+    private fun setViewPagerPage(page: Int) {
+        binding.viewPager.setCurrentItem(page, false)
+    }
 }

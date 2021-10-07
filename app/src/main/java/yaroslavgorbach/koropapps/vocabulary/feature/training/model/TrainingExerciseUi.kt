@@ -26,4 +26,5 @@ class TrainingExerciseUi(private val trainingExerciseEntity: TrainingExerciseEnt
 
     val performed: Int
         get() = trainingExerciseEntity.performed
+
 }
