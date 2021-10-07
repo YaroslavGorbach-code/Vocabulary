@@ -2,6 +2,8 @@
 <resources>
     <color name="green">#00FF83</color>
 
+    <color name="black_0.4">#66000000</color>
+
     <!--    Theme teal-->
     <color name="TealPrimary">#4bb5ab</color>
     <color name="TealPrimaryVariant">#80cbc4</color>

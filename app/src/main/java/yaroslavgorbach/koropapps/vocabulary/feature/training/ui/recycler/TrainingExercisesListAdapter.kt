@@ -48,6 +48,7 @@ class TrainingExercisesListAdapter(private val onExercise: (exercise: TrainingEx
             binding.name.text = binding.getString(exercise.name.id)
             binding.image.setImageDrawable(binding.getDrawable(exercise.iconRes))
             binding.imageProgress.setProgress(exercise.progress)
+            binding.category.text = binding.getString(exercise.category.stringRes)
         }
     }
 }

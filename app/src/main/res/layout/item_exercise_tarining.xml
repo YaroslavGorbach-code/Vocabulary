@@ -7,57 +7,98 @@
     android:layout_height="match_parent"
     android:layout_margin="24dp"
     app:cardElevation="4dp"
+    app:cardCornerRadius="16dp"
     android:background="?selectableItemBackground"
     android:clickable="true"
     android:focusable="true">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        tool:ignore="ContentDescription"
+        tool:src="@drawable/ic_alphabet_a" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/image"
-            android:layout_width="0dp"
-            android:layout_height="123dp"
-            android:padding="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tool:ignore="ContentDescription"
-            tool:src="@drawable/ic_alphabet_a" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:gravity="center"
-            android:maxLines="1"
-            android:padding="16dp"
-            android:textSize="24sp"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image"
-            tool:text="@tools:sample/first_names" />
-
         <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.customview.ImageProgressView
             android:id="@+id/image_progress"
-            android:layout_width="200dp"
+            android:layout_width="60dp"
             android:layout_height="200dp"
             android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
             android:scaleType="center"
-            android:src="@drawable/ic_start_exercise"
+            app:imageProgress="60"
             app:imageProgressColor="@color/green"
             app:imageProgressOutlineColor="?colorControlHighlight"
-            app:imageProgressOutlineStrokeWidth="3dp"
-            app:imageProgressStrokeWidth="3dp"
+            app:imageProgressOutlineStrokeWidth="6dp"
+            app:imageProgressStrokeWidth="6dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/bg_item_exercise_bottom"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/name"
-            tool:imageProgress="40" />
+            app:layout_constraintTop_toTopOf="@+id/guideline3">
 
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:ellipsize="end"
+                android:gravity="center|start"
+                android:maxLines="1"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/category"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed"
+                tool:text="@tools:sample/first_names" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:ellipsize="end"
+                android:gravity="center|start"
+                android:maxLines="1"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/name"
+                tool:text="@tools:sample/first_names" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.80" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
