@@ -16,7 +16,6 @@
         android:layout_weight="0.5"
         android:gravity="center"
         android:text="@string/phrase_of_day"
-        android:textStyle="bold"
         style="@style/TextPrimary"
         app:layout_constraintBottom_toTopOf="@+id/phrase"
         app:layout_constraintEnd_toStartOf="@+id/icon"
@@ -28,10 +27,11 @@
 
     <ImageView
         android:id="@+id/icon"
-        android:layout_width="wrap_content"
+        android:layout_width="18dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:src="@drawable/ic_book"
+        android:alpha="0.8"
         app:layout_constraintBottom_toBottomOf="@+id/text_at_top"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

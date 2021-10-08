@@ -4,7 +4,6 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable-v24/ic_no_ads.xml" value="0.2101851851851852" />
-        <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/bg_item_exercise_bottom.xml" value="0.2203125" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/bg_item_theme.xml" value="0.4453125" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/bg_start_exercise.xml" value="0.43846153846153846" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/bg_theme_example.xml" value="0.43846153846153846" />
@@ -52,7 +51,7 @@
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_training.xml" value="0.22" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/ic_touch.xml" value="0.1" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/item_exercise.xml" value="0.14990942028985507" />
-        <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/item_exercise_tarining.xml" value="0.25" />
+        <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/item_exercise_tarining.xml" value="0.3532608695652174" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/item_theme.xml" value="0.5" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/iteme_exercise_tarining.xml" value="0.33" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/layout_chart.xml" value="0.22" />
@@ -70,9 +69,26 @@
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/layout_word_of_the_day.xml" value="0.25" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/workflow_exercise.xml" value="0.10869565217391304" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/menu/menu_navigation.xml" value="0.2" />
+        <entry key="..\:/Vocabulary/app/src/main/res/drawable-v24/ic_star_yellow.xml" value="0.43846153846153846" />
+        <entry key="..\:/Vocabulary/app/src/main/res/drawable/ic_book.xml" value="0.3851851851851852" />
+        <entry key="..\:/Vocabulary/app/src/main/res/drawable/ic_star.xml" value="0.43846153846153846" />
+        <entry key="..\:/Vocabulary/app/src/main/res/layout/dialog_chose_theme.xml" value="0.10104166666666667" />
+        <entry key="..\:/Vocabulary/app/src/main/res/layout/fragment_description.xml" value="0.20871327254305977" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/fragment_exercise_alphabet.xml" value="0.3645833333333333" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/fragment_exercise_dictionary.xml" value="0.3645833333333333" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/fragment_exercise_with_timer.xml" value="0.5162187210379982" />
+        <entry key="..\:/Vocabulary/app/src/main/res/layout/fragment_exercises_list.xml" value="0.1" />
+        <entry key="..\:/Vocabulary/app/src/main/res/layout/fragment_profile.xml" value="0.2708333333333333" />
+        <entry key="..\:/Vocabulary/app/src/main/res/layout/fragment_training.xml" value="0.1" />
+        <entry key="..\:/Vocabulary/app/src/main/res/layout/item_exercise.xml" value="0.35507246376811596" />
+        <entry key="..\:/Vocabulary/app/src/main/res/layout/item_exercise_tarining.xml" value="0.22" />
+        <entry key="..\:/Vocabulary/app/src/main/res/layout/layout_item_profile.xml" value="0.2708333333333333" />
+        <entry key="..\:/Vocabulary/app/src/main/res/layout/layout_level_item.xml" value="0.2477355072463768" />
+        <entry key="..\:/Vocabulary/app/src/main/res/layout/layout_phrase_profile.xml" value="0.2" />
+        <entry key="..\:/Vocabulary/app/src/main/res/layout/layout_training.xml" value="0.20677083333333332" />
+        <entry key="..\:/Vocabulary/app/src/main/res/layout/layout_training_days.xml" value="0.20677083333333332" />
+        <entry key="..\:/Vocabulary/app/src/main/res/menu/menu_description.xml" value="0.42916666666666664" />
+        <entry key="..\:/Vocabulary/app/src/main/res/menu/menu_navigation.xml" value="0.42916666666666664" />
       </map>
     </option>
   </component>
