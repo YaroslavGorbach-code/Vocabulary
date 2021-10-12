@@ -1,9 +1,7 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.training.ui
 
 import android.annotation.SuppressLint
-import android.util.Log
 import android.view.View
-import androidx.viewpager2.widget.ViewPager2
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentTrainingBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerciseUi
@@ -42,9 +40,9 @@ class TrainingView(
     }
 
     private fun initActions() {
-        binding.close.setOnClickListener {
-            callback.onBack()
-        }
+//        binding.close.setOnClickListener {
+//            callback.onBack()
+//        }
     }
 
     private fun showNoExercises(isShow: Boolean) {
@@ -65,10 +63,12 @@ class TrainingView(
 
         setViewPagerPage(trainingWithExercisesUi.currentViewPagerPage)
 
-        binding.trainingProgress.progress = trainingWithExercisesUi.progress
+        binding.textProgress.setProgress(trainingWithExercisesUi.progress)
 
-        binding.daysWithoutInterruption.text =
-            binding.getString(R.string.days_without_interruption) + ": ${trainingWithExercisesUi.daysWithoutInterruption}"
+        binding.textProgress.setText(
+            binding.getString(R.string.days_without_interruption) +
+                    ": ${trainingWithExercisesUi.daysWithoutInterruption}"
+        )
 
         showNoExercises(trainingWithExercisesUi.exercises.isEmpty())
     }

@@ -46,22 +46,33 @@ class TextProgressView @JvmOverloads constructor(
             progressStrokeWidth = it.getDimension(
                 R.styleable.TextProgressView_textProgressStrokeWidth, 16f
             )
+
             outlineColor = it.getColor(
                 R.styleable.TextProgressView_textProgressOutlineColor, Color.LTGRAY
             )
+
             outlineStrokeWidth = it.getDimension(
                 R.styleable.TextProgressView_textProgressOutlineStrokeWidth, 4f
             )
+
             progressAttr = it.getInteger(
                 R.styleable.TextProgressView_textProgress, 0
             )
+
             progressColor = it.getColor(
                 R.styleable.TextProgressView_textProgressColor, Color.YELLOW
             )
-            textView.textSize = it.getDimension(R.styleable.TextProgressView_textProgressTextSize, 24f)
+
+            textView.textSize =
+                it.getDimension(R.styleable.TextProgressView_textProgressTextSize, 24f)
+
             textView.setTextAppearance(
                 context,
                 it.getResourceId(R.styleable.TextProgressView_textAppearance, 0)
+            )
+
+            textView.setTextColor(
+                it.getColor(R.styleable.TextProgressView_textProgressTextColor, Color.BLACK)
             )
         }
         setProgress(progressAttr)
@@ -125,5 +136,9 @@ class TextProgressView @JvmOverloads constructor(
 
     fun setText(text: String) {
         textView.text = text
+    }
+
+    fun setTextColor(color: Int) {
+        textView.setTextColor(color)
     }
 }

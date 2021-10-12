@@ -3,6 +3,8 @@
     <style name="BaseAppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimarySurface">#fff</item>
         <item name="android:statusBarColor">#222</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
         <item name="appBarLayoutStyle">@style/Vocabulary.AppBar</item>
     </style>
 
@@ -21,6 +23,10 @@
         <item name="android:paddingStart">8dp</item>
         <item name="android:paddingEnd">8dp</item>
         <item name="android:background">?selectableItemBackground</item>
+    </style>
+
+    <style name="ShapeAppearance.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">cut</item>
     </style>
 
     <style name="BaseAppTheme.Teal">

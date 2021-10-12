@@ -3,10 +3,14 @@ package yaroslavgorbach.koropapps.vocabulary.feature.training.presentation
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.core.SingleSource
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import yaroslavgorbach.koropapps.vocabulary.business.training.ObserveCurrentTrainingWithExercisesInteractor
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingWithExercisesUi
 import javax.inject.Inject
+import io.reactivex.rxjava3.observables.GroupedObservable
+
 
 class TrainingViewModel @Inject constructor(
     private val observeCurrentTrainingWithExercisesInteractor: ObserveCurrentTrainingWithExercisesInteractor
