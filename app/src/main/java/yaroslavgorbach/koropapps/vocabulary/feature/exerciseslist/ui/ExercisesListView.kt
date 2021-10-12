@@ -39,25 +39,25 @@ class ExercisesListView(
     private fun initActions() {
         binding.training.item.setOnClickListener { callback.onTraining() }
 
-        binding.chipAll.setOnCheckedChangeListener { chip, isChecked ->
+        binding.chipAll.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 callback.onExercisesFilterChanged(ExerciseCategoryFilterUi.ALL)
             }
         }
 
-        binding.chipCommunication.setOnCheckedChangeListener { chip, isChecked ->
+        binding.chipCommunication.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 callback.onExercisesFilterChanged(ExerciseCategoryFilterUi.COMMUNICATION)
             }
         }
 
-        binding.chipVocabulary.setOnCheckedChangeListener { chip, isChecked ->
+        binding.chipVocabulary.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 callback.onExercisesFilterChanged(ExerciseCategoryFilterUi.VOCABULARY)
             }
         }
 
-        binding.chipFavorite.setOnCheckedChangeListener { chip, isChecked ->
+        binding.chipFavorite.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 callback.onExercisesFilterChanged(ExerciseCategoryFilterUi.FAVORITE)
             }
@@ -69,7 +69,6 @@ class ExercisesListView(
     }
 
     fun setExercisesFilter(filter: ExerciseCategoryFilterUi) {
-
         when (filter) {
             ExerciseCategoryFilterUi.ALL -> {
                 binding.chipAll.isChecked = true

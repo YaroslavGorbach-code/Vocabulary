@@ -2,7 +2,9 @@ package yaroslavgorbach.koropapps.vocabulary.data.training.local.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseCategory
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
+import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToExerciseCategoryMapper
 
 @Entity
 data class TrainingExerciseEntity(
@@ -18,4 +20,7 @@ data class TrainingExerciseEntity(
 
     val isFinished: Boolean
         get() = performed >= aim
+
+    val category: ExerciseCategory
+        get() = ExerciseNameToExerciseCategoryMapper().map(exerciseName = name)
 }

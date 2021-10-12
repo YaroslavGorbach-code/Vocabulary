@@ -10,6 +10,7 @@ import yaroslavgorbach.koropapps.vocabulary.business.training.ObserveCurrentTrai
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingWithExercisesUi
 import javax.inject.Inject
 import io.reactivex.rxjava3.observables.GroupedObservable
+import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerciseCategoryFilterUi
 
 
 class TrainingViewModel @Inject constructor(
@@ -25,11 +26,13 @@ class TrainingViewModel @Inject constructor(
 
     private var currentViewPage = 0
 
+    private var currentExerciseCategoryFilter = TrainingExerciseCategoryFilterUi.ALL
 
     fun getCurrentTrainingWithExercises() {
         observeCurrentTrainingWithExercisesInteractor()
             .map(::TrainingWithExercisesUi)
             .map { training -> training.apply { currentViewPagerPage = currentViewPage } }
+            .map { training -> training.apply { currentFilter = currentExerciseCategoryFilter } }
             .subscribe(_trainingWithExercises::postValue)
             .let(disposables::add)
     }
@@ -42,8 +45,11 @@ class TrainingViewModel @Inject constructor(
     }
 
     fun setCurrentPage(currentPage: Int) {
-
         currentViewPage = currentPage
+    }
+
+    fun changeFilter(filterUi: TrainingExerciseCategoryFilterUi) {
+        currentExerciseCategoryFilter = filterUi
     }
 
 }

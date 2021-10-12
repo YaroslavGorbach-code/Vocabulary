@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     android:animationCache="true">
 
+    <ImageView
+        android:id="@+id/ic_close"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="?selectableItemBackgroundBorderless"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_close"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.customview.TextProgressView
         android:id="@+id/text_progress"
         android:layout_width="0dp"
@@ -38,11 +50,16 @@
         app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView2"
         app:layout_constraintVertical_bias="1.0" />
 
+
     <HorizontalScrollView
         android:id="@+id/horizontalScrollView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_progress">
 
         <com.google.android.material.chip.ChipGroup
@@ -57,40 +74,49 @@
             app:singleSelection="true">
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_all"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:text="@string/all"
-                app:shapeAppearanceOverlay="@style/ShapeAppearance.SmallComponent" />
+                android:visibility="gone"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.SmallComponent"
+                tools:visibility="visible" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_vocabulary"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:text="@string/vocabulary"
+                android:visibility="gone"
                 app:shapeAppearanceOverlay="@style/ShapeAppearance.SmallComponent"
-                android:text="@string/vocabulary" />
+                tools:visibility="visible" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_communication"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:text="@string/communication"
+                android:visibility="gone"
                 app:shapeAppearanceOverlay="@style/ShapeAppearance.SmallComponent"
-                android:text="@string/communication" />
+                tools:visibility="visible" />
         </com.google.android.material.chip.ChipGroup>
     </HorizontalScrollView>
-
 
     <ImageView
         android:id="@+id/no_exercises_icon"
         android:layout_width="200dp"
         android:layout_height="200dp"
+        android:background="?selectableItemBackgroundBorderless"
         android:src="@drawable/ic_palms"
         android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/no_exercises_text_one"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view_pager"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
         tools:visibility="visible" />
 
