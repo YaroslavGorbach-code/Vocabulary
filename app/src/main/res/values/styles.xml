@@ -3,8 +3,6 @@
     <style name="BaseAppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimarySurface">#fff</item>
         <item name="android:statusBarColor">#222</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowFullscreen">true</item>
         <item name="appBarLayoutStyle">@style/Vocabulary.AppBar</item>
     </style>
 
