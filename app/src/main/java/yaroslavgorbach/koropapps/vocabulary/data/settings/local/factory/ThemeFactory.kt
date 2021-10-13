@@ -21,6 +21,7 @@ class ThemeFactory {
             is ThemeResOrange -> Theme.Orange()
             is ThemeResDeepOrange -> Theme.DeepOrange()
             is ThemeResBrown -> Theme.Brown()
+            is ThemeResBlueGray -> Theme.BlueGray()
             else -> error("There are no theme associated wit this resource")
         }
     }

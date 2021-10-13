@@ -53,3 +53,6 @@ value class ThemeResDeepOrange(override val id: Int = R.style.BaseAppTheme_DeepO
 
 @JvmInline
 value class ThemeResBrown(override val id: Int = R.style.BaseAppTheme_Brown) : ThemeRes
+
+@JvmInline
+value class ThemeResBlueGray(override val id: Int = R.style.BaseAppTheme_BlueGray) : ThemeRes

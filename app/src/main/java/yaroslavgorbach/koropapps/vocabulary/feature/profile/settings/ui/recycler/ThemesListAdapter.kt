@@ -49,7 +49,7 @@ class ThemesListAdapter(private val onThemeClick: (Theme) -> Unit) :
                     mark.visibility = View.INVISIBLE
                 }
 
-                root.background.setTint(theme.colorPrimary)
+                root.background.setTint(binding.root.context.resources.getColor(theme.colorPrimaryRes))
             }
         }
     }

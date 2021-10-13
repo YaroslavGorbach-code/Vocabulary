@@ -45,7 +45,11 @@ class SettingsView(private val binding: FragmentSettingsBinding, private val cal
     }
 
     fun setCurrentTheme(theme: Theme) {
-        binding.choseThemeItem.themeColorExample.setBackgroundColor(theme.colorPrimary)
+        binding.choseThemeItem.themeColorExample.setBackgroundColor(
+            binding.root.resources.getColor(
+                theme.colorPrimaryRes
+            )
+        )
     }
 
     @SuppressLint("SetTextI18n")
