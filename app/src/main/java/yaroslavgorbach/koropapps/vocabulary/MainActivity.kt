@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
 import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
-import androidx.core.view.ViewCompat
-import androidx.fragment.app.FragmentContainerView
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
@@ -25,8 +23,8 @@ import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.ui.LevelFragme
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.settings.ui.SettingsFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.feature.training.ui.TrainingFragment
-import yaroslavgorbach.koropapps.vocabulary.utils.makeStatusBarTransparent
-import yaroslavgorbach.koropapps.vocabulary.utils.setMarginTop
+import yaroslavgorbach.koropapps.vocabulary.utils.colorBackground
+import yaroslavgorbach.koropapps.vocabulary.utils.statusBarColor
 import yaroslavgorbach.koropapps.vocabulary.workflow.ExerciseWorkflow
 import java.util.*
 import javax.inject.Inject
@@ -34,7 +32,7 @@ import javax.inject.Inject
 @InternalCoroutinesApi
 @FlowPreview
 class MainActivity : AppCompatActivity(), NavigationFragment.Router,
-    TrainingFragment.Router, SettingsFragment.ThemeChangedFragment {
+    TrainingFragment.Router, SettingsFragment.ThemeChangedListener {
 
     @Inject
     lateinit var observeCurrentThemeInteractor: ObserveCurrentThemeInteractor
@@ -47,15 +45,6 @@ class MainActivity : AppCompatActivity(), NavigationFragment.Router,
         initDagger()
 
         setCurrentTheme {
-            setContentView(R.layout.activity_main)
-
-            makeStatusBarTransparent()
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main_container)) { _, insets ->
-            findViewById<FragmentContainerView>(R.id.main_container).setMarginTop(insets.systemWindowInsetTop)
-            insets.consumeSystemWindowInsets()
-        }
-
             if (savedInstanceState == null) {
                 val fragment = NavigationFragment.newInstance()
 
@@ -71,6 +60,7 @@ class MainActivity : AppCompatActivity(), NavigationFragment.Router,
         lifecycleScope.launch {
             onThemeChanged(observeCurrentThemeInteractor(this@MainActivity).first())
             onUiModeChanged(observeUiModeInteractor(this@MainActivity).first())
+            setContentView(R.layout.activity_main)
             doAfterSet()
         }
     }

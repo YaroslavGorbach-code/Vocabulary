@@ -72,7 +72,10 @@ class TextProgressView @JvmOverloads constructor(
             )
 
             textView.setTextColor(
-                it.getColor(R.styleable.TextProgressView_textProgressTextColor, Color.BLACK)
+                it.getColor(
+                    R.styleable.TextProgressView_textProgressTextColor,
+                    textView.currentTextColor
+                )
             )
         }
         setProgress(progressAttr)

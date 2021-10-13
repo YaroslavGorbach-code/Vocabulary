@@ -1,8 +1,10 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.training.ui
 
 import android.annotation.SuppressLint
+import android.graphics.drawable.ColorDrawable
 import android.util.Log
 import android.view.View
+import android.view.Window
 import android.widget.CompoundButton
 import androidx.core.view.isVisible
 import com.google.android.material.chip.ChipGroup
@@ -12,6 +14,8 @@ import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerc
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingWithExercisesUi
 import yaroslavgorbach.koropapps.vocabulary.feature.training.ui.recycler.TrainingExercisesListAdapter
+import yaroslavgorbach.koropapps.vocabulary.utils.colorBackground
+import yaroslavgorbach.koropapps.vocabulary.utils.getColorPrimary
 import yaroslavgorbach.koropapps.vocabulary.utils.getString
 
 class TrainingView(

@@ -19,6 +19,7 @@ import yaroslavgorbach.koropapps.vocabulary.utils.onBackPressed
 import yaroslavgorbach.koropapps.vocabulary.utils.scheduleNotification
 import javax.inject.Inject
 
+@InternalCoroutinesApi
 class SettingsFragment : Fragment(R.layout.fragment_settings), ChoseThemeDialog.Callback,
     NotificationSettingsDialog.Host {
 
@@ -26,7 +27,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings), ChoseThemeDialog.
         fun newInstance() = SettingsFragment()
     }
 
-    interface ThemeChangedFragment {
+    interface ThemeChangedListener {
         fun onThemeChanged(theme: Theme)
         fun onUiModeChanged(uiMode: UiMode)
     }
@@ -99,16 +100,15 @@ class SettingsFragment : Fragment(R.layout.fragment_settings), ChoseThemeDialog.
     override fun onThemeChanged(theme: Theme) {
         viewModel.changeTheme(requireContext(), theme)
 
-        host<ThemeChangedFragment>().onThemeChanged(theme)
+        host<ThemeChangedListener>().onThemeChanged(theme)
     }
 
     override fun onUiModeChanged(uiMode: UiMode) {
         viewModel.changeUiMode(requireContext(), uiMode)
 
-        host<ThemeChangedFragment>().onUiModeChanged(uiMode)
+        host<ThemeChangedListener>().onUiModeChanged(uiMode)
     }
 
-    @InternalCoroutinesApi
     override fun onNotificationChanged(notification: Notification) {
         viewModel.updateNotification(requireContext(), notification)
 

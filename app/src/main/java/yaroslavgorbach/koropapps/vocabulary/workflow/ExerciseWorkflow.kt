@@ -9,10 +9,15 @@ import kotlinx.coroutines.FlowPreview
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.ui.DescriptionFragment
+import yaroslavgorbach.koropapps.vocabulary.utils.statusBarColor
 import yaroslavgorbach.koropapps.vocabulary.workflow.factory.CreateExerciseFragmentFactory
 
 @FlowPreview
 class ExerciseWorkflow : Fragment(R.layout.workflow_exercise), DescriptionFragment.Router {
+
+    interface Router {
+        fun onOpenExercise(exerciseType: ExerciseType)
+    }
 
     companion object {
         private const val ARG_EXERCISE_TYPE = "ARG_EXERCISE_TYPE"
@@ -60,6 +65,12 @@ class ExerciseWorkflow : Fragment(R.layout.workflow_exercise), DescriptionFragme
         childFragmentManager.commit {
             replace(R.id.exercise_container, fragment)
             setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            setDefaultStatusBarColor()
         }
     }
+    
+    private fun setDefaultStatusBarColor() {
+        requireActivity().window.statusBarColor = requireContext().statusBarColor
+    }
+
 }
