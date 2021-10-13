@@ -3,100 +3,107 @@
     <color name="green">#00FF83</color>
 
     <color name="black_0.4">#66000000</color>
+    <color name="black_0.2">#33000000</color>
 
     <!--    Theme teal-->
-    <color name="TealPrimary">#4bb5ab</color>
-    <color name="TealPrimaryVariant">#80cbc4</color>
-    <color name="TealSecondary">#d81b60</color>
-    <color name="TealSecondaryVariant">#ff5c8d</color>
+    <color name="TealPrimary">#26A69A</color>
+    <color name="TealPrimaryVariant">#4DB6AC</color>
+    <color name="TealSecondary">#a946b3</color>
+    <color name="TealSecondaryVariant">#b866c0</color>
 
     <!--    Theme blue-->
-    <color name="BluePrimary">#64b5f6</color>
-    <color name="BluePrimaryVariant">#9be7ff</color>
-    <color name="BlueSecondary">#d81b60</color>
-    <color name="BlueSecondaryVariant">#ff5c8d</color>
+    <color name="BluePrimary">#42A5F5</color>
+    <color name="BluePrimaryVariant">#64B5F6</color>
+    <color name="BlueSecondary">#f5008d</color>
+    <color name="BlueSecondaryVariant">#f542a4</color>
 
     <!--    Theme indigo-->
-    <color name="IndigoPrimary">#5c6bc0</color>
-    <color name="IndigoPrimaryVariant">#7986cb</color>
-    <color name="IndigoSecondary">#d81b60</color>
-    <color name="IndigoSecondaryVariant">#ff5c8d</color>
+    <color name="IndigoPrimary">#5C6BC0</color>
+    <color name="IndigoPrimaryVariant">#7986CB</color>
+    <color name="IndigoSecondary">#c05c6b</color>
+    <color name="IndigoSecondaryVariant">#cc7182</color>
 
     <!--    Theme deepPurple-->
-    <color name="DeepPurplePrimary">#7e57c2</color>
-    <color name="DeepPurplePrimaryVariant">#9575cd</color>
-    <color name="DeepPurpleSecondary">#d81b60</color>
-    <color name="DeepPurpleSecondaryVariant">#ff5c8d</color>
+    <color name="DeepPurplePrimary">#7E57C2</color>
+    <color name="DeepPurplePrimaryVariant">#9575CD</color>
+    <color name="DeepPurpleSecondary">#e2ab6f</color>
+    <color name="DeepPurpleSecondaryVariant">#e7b981</color>
 
     <!--    Theme purple-->
-    <color name="PurplePrimary">#ba68c8</color>
-    <color name="PurplePrimaryVariant">#ce93d8</color>
-    <color name="PurplePurpleSecondary">#d81b60</color>
-    <color name="PurpleSecondaryVariant">#ff5c8d</color>
+    <color name="PurplePrimary">#AB47BC</color>
+    <color name="PurplePrimaryVariant">#BA68C8</color>
+    <color name="PurplePurpleSecondary">#e4d769</color>
+    <color name="PurpleSecondaryVariant">#e9de81</color>
 
     <!--   Theme pink-->
-    <color name="PinkPrimary">#f06292</color>
-    <color name="PinkPrimaryVariant">#f48fb1</color>
+    <color name="PinkPrimary">#EC407A</color>
+    <color name="PinkPrimaryVariant">#F06292</color>
     <color name="PinkSecondary">#d81b60</color>
     <color name="PinkSecondaryVariant">#ff5c8d</color>
 
     <!--   Theme red-->
-    <color name="RedPrimary">#ef5350</color>
-    <color name="RedPrimaryVariant">#e57373</color>
-    <color name="RedSecondary">#d81b60</color>
-    <color name="RedSecondaryVariant">#ff5c8d</color>
+    <color name="RedPrimary">#EF5350</color>
+    <color name="RedPrimaryVariant">#E57373</color>
+    <color name="RedSecondary">#e86657</color>
+    <color name="RedSecondaryVariant">#df8079</color>
 
     <!--   Theme Light Blue-->
-    <color name="LightBluePrimary">#81d4fa</color>
-    <color name="LightBluePrimaryVariant">#b3e5fc</color>
-    <color name="LightBlueSecondary">#d81b60</color>
-    <color name="LightBlueSecondaryVariant">#ff5c8d</color>
+    <color name="LightBluePrimary">#4FC3F7</color>
+    <color name="LightBluePrimaryVariant">#81D4FA</color>
+    <color name="LightBlueSecondary">#4f6ef7</color>
+    <color name="LightBlueSecondaryVariant">#748af9</color>
 
     <!--   Theme Green-->
-    <color name="GreenPrimary">#66bb6a</color>
-    <color name="GreenPrimaryVariant">#81c784</color>
-    <color name="GreenSecondary">#d81b60</color>
-    <color name="GreenSecondaryVariant">#ff5c8d</color>
+    <color name="GreenPrimary">#66BB6A</color>
+    <color name="GreenPrimaryVariant">#81C784</color>
+    <color name="GreenSecondary">#42ad80</color>
+    <color name="GreenSecondaryVariant">#66bb95</color>
 
     <!--   Theme Light Green-->
-    <color name="LightGreenPrimary">#9ccc65</color>
-    <color name="LightGreenPrimaryVariant">#aed581</color>
-    <color name="LightGreenSecondary">#d81b60</color>
-    <color name="LightGreenSecondaryVariant">#ff5c8d</color>
+    <color name="LightGreenPrimary">#9CCC65</color>
+    <color name="LightGreenPrimaryVariant">#AED581</color>
+    <color name="LightGreenSecondary">#68cc65</color>
+    <color name="LightGreenSecondaryVariant">#85d682</color>
 
     <!--   Theme Lime-->
-    <color name="LimePrimary">#d4e157</color>
-    <color name="LimePrimaryVariant">#d4e157</color>
-    <color name="LimeSecondary">#d81b60</color>
-    <color name="LimeSecondaryVariant">#ff5c8d</color>
+    <color name="LimePrimary">#D4E157</color>
+    <color name="LimePrimaryVariant">#DCE775</color>
+    <color name="LimeSecondary">#8ee157</color>
+    <color name="LimeSecondaryVariant">#a5e779</color>
 
     <!--   Theme Yellow-->
-    <color name="YellowPrimary">#ffee58</color>
-    <color name="YellowPrimaryVariant">#fff176</color>
-    <color name="YellowSecondary">#d81b60</color>
-    <color name="YellowSecondaryVariant">#ff5c8d</color>
+    <color name="YellowPrimary">#FFEB3B</color>
+    <color name="YellowPrimaryVariant">#FFEE58</color>
+    <color name="YellowSecondary">#b1ff3b</color>
+    <color name="YellowSecondaryVariant">#bfff67</color>
 
     <!--   Theme Amber-->
-    <color name="AmberPrimary">#ffca28</color>
-    <color name="AmberPrimaryVariant">#ffd54f</color>
-    <color name="AmberSecondary">#d81b60</color>
-    <color name="AmberSecondaryVariant">#ff5c8d</color>
+    <color name="AmberPrimary">#FFC107</color>
+    <color name="AmberPrimaryVariant">#FFCA28</color>
+    <color name="AmberSecondary">#c5fb42</color>
+    <color name="AmberSecondaryVariant">#d1fe6b</color>
 
     <!--   Theme Orange-->
-    <color name="OrangePrimary">#ff9800</color>
-    <color name="OrangePrimaryVariant">#ffa726</color>
-    <color name="OrangeSecondary">#d81b60</color>
-    <color name="OrangeSecondaryVariant">#ff5c8d</color>
+    <color name="OrangePrimary">#FF9800</color>
+    <color name="OrangePrimaryVariant">#FFA726</color>
+    <color name="OrangeSecondary">#e0f63b</color>
+    <color name="OrangeSecondaryVariant">#e7f966</color>
 
     <!--   Theme Deep Orange-->
-    <color name="DeepOrangePrimary">#ff5722</color>
-    <color name="DeepOrangePrimaryVariant">#ff7043</color>
-    <color name="DeepOrangeSecondary">#d81b60</color>
-    <color name="DeepOrangeSecondaryVariant">#ff5c8d</color>
+    <color name="DeepOrangePrimary">#FF5722</color>
+    <color name="DeepOrangePrimaryVariant">#FF7043</color>
+    <color name="DeepOrangeSecondary">#ffcd35</color>
+    <color name="DeepOrangeSecondaryVariant">#ffd757</color>
 
     <!--   Theme Brown-->
-    <color name="BrownPrimary">#8d6e63</color>
-    <color name="BrownPrimaryVariant">#a1887f</color>
-    <color name="BrownSecondary">#d81b60</color>
-    <color name="BrownSecondaryVariant">#ff5c8d</color>
+    <color name="BrownPrimary">#8D6E63</color>
+    <color name="BrownPrimaryVariant">#A1887F</color>
+    <color name="BrownSecondary">#ebeb90</color>
+    <color name="BrownSecondaryVariant">#eff0a1</color>
+
+    <!--   Theme Blue Gray-->
+    <color name="BlueGrayPrimary">#78909C</color>
+    <color name="BlueGrayPrimaryVariant">#90A4AE</color>
+    <color name="BlueGraySecondary">#787e9c</color>
+    <color name="BlueGraySecondaryVariant">#9ca2b9</color>
 </resources>

@@ -113,4 +113,11 @@
         <item name="colorSecondary">@color/BrownSecondary</item>
         <item name="colorSecondaryVariant">@color/BrownSecondaryVariant</item>
     </style>
+
+    <style name="BaseAppTheme.BlueGray" parent="BaseAppTheme.Night.v23">
+        <item name="colorPrimary">@color/BlueGrayPrimary</item>
+        <item name="colorPrimaryVariant">@color/BlueGrayPrimaryVariant</item>
+        <item name="colorSecondary">@color/BlueGraySecondary</item>
+        <item name="colorSecondaryVariant">@color/BlueGraySecondaryVariant</item>
+    </style>
 </resources>

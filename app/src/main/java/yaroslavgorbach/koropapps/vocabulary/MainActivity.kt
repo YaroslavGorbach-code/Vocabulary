@@ -10,13 +10,10 @@ import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.InternalCoroutinesApi
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import yaroslavgorbach.koropapps.vocabulary.business.settings.ObserveCurrentThemeInteractor
-import yaroslavgorbach.koropapps.vocabulary.business.settings.ObserveNotificationInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.settings.ObserveUiModeInteractor
-import yaroslavgorbach.koropapps.vocabulary.business.settings.UpdateNotificationInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Theme
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.UiMode
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
@@ -26,7 +23,8 @@ import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.ui.LevelFragme
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.settings.ui.SettingsFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.feature.training.ui.TrainingFragment
-import yaroslavgorbach.koropapps.vocabulary.utils.scheduleNotification
+import yaroslavgorbach.koropapps.vocabulary.utils.colorBackground
+import yaroslavgorbach.koropapps.vocabulary.utils.statusBarColor
 import yaroslavgorbach.koropapps.vocabulary.workflow.ExerciseWorkflow
 import java.util.*
 import javax.inject.Inject
@@ -34,7 +32,7 @@ import javax.inject.Inject
 @InternalCoroutinesApi
 @FlowPreview
 class MainActivity : AppCompatActivity(), NavigationFragment.Router,
-    TrainingFragment.Router, SettingsFragment.ThemeChangedFragment {
+    TrainingFragment.Router, SettingsFragment.ThemeChangedListener {
 
     @Inject
     lateinit var observeCurrentThemeInteractor: ObserveCurrentThemeInteractor
@@ -47,8 +45,6 @@ class MainActivity : AppCompatActivity(), NavigationFragment.Router,
         initDagger()
 
         setCurrentTheme {
-            setContentView(R.layout.activity_main)
-
             if (savedInstanceState == null) {
                 val fragment = NavigationFragment.newInstance()
 
@@ -64,6 +60,7 @@ class MainActivity : AppCompatActivity(), NavigationFragment.Router,
         lifecycleScope.launch {
             onThemeChanged(observeCurrentThemeInteractor(this@MainActivity).first())
             onUiModeChanged(observeUiModeInteractor(this@MainActivity).first())
+            setContentView(R.layout.activity_main)
             doAfterSet()
         }
     }

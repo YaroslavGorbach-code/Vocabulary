@@ -2,7 +2,9 @@ package yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.ui
 
 import android.content.Context
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -11,9 +13,7 @@ import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentDescriptionBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.presentation.DescriptionViewModel
-import yaroslavgorbach.koropapps.vocabulary.utils.appComponent
-import yaroslavgorbach.koropapps.vocabulary.utils.host
-import yaroslavgorbach.koropapps.vocabulary.utils.onBackPressed
+import yaroslavgorbach.koropapps.vocabulary.utils.*
 import javax.inject.Inject
 
 class DescriptionFragment : Fragment(R.layout.fragment_description) {
@@ -50,6 +50,16 @@ class DescriptionFragment : Fragment(R.layout.fragment_description) {
         super.onViewCreated(view, savedInstanceState)
         initView()
         initObservers()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        requireActivity().setBackgroundStatusBarColor()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        requireActivity().setDefaultStatusBarColor()
     }
 
     private fun initDagger() {
@@ -97,6 +107,7 @@ class DescriptionFragment : Fragment(R.layout.fragment_description) {
         descriptionView.setExerciseIconRes(viewModel.exerciseIconRes)
 
         descriptionView.setExerciseNameRes(exerciseType.getExerciseName().id)
+
     }
 
     private fun initObservers() {
@@ -109,4 +120,5 @@ class DescriptionFragment : Fragment(R.layout.fragment_description) {
             descriptionView::setExerciseFavorite
         )
     }
+
 }

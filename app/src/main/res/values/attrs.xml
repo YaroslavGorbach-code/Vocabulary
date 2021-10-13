@@ -4,6 +4,7 @@
         <attr name="textProgressStrokeWidth" format="dimension" />
         <attr name="textProgressOutlineColor" format="color" />
         <attr name="textProgressColor" format="color" />
+        <attr name="textProgressTextColor" format="color" />
         <attr name="textProgressOutlineStrokeWidth" format="dimension" />
         <attr name="textProgress" format="integer" />
         <attr name="textProgressTextSize" format="dimension" />

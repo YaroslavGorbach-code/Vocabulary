@@ -23,6 +23,7 @@ class MapStyleResToThemeRes {
             R.style.BaseAppTheme_Orange -> ThemeResOrange()
             R.style.BaseAppTheme_DeepOrange -> ThemeResDeepOrange()
             R.style.BaseAppTheme_Brown -> ThemeResBrown()
+            R.style.BaseAppTheme_BlueGray -> ThemeResBlueGray()
             else -> error("Can not map style resource to ThemeRes value class")
         }
     }

@@ -3,111 +3,121 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/constraint"
     android:layout_height="match_parent"
     android:animationCache="true">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout4"
-        android:layout_width="match_parent"
-        android:layout_height="128dp"
-        android:gravity="bottom"
-        app:layout_constraintEnd_toEndOf="parent"
+    <ImageView
+        android:id="@+id/ic_close"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="?selectableItemBackgroundBorderless"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_close"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <com.google.android.material.progressindicator.LinearProgressIndicator
-                android:id="@+id/training_progress"
-                android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:layout_gravity="bottom"
-                app:indicatorColor="@color/green"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:trackColor="?colorControlHighlight"
-                tools:progress="50" />
-
-            <ImageView
-                android:id="@+id/close"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:background="?selectableItemBackgroundBorderless"
-                android:padding="8dp"
-                android:src="@drawable/ic_close"
-                android:visibility="visible"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/image"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
-                android:layout_gravity="center"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_rocket"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:padding="4dp"
-                android:text="@string/daily_training"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
-                app:layout_constraintEnd_toEndOf="@+id/image"
-                app:layout_constraintStart_toStartOf="@+id/image"
-                app:layout_constraintTop_toBottomOf="@+id/image" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/days_without_interruption"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:ellipsize="end"
-                android:gravity="center"
-                android:maxLines="1"
-                tools:text="Дней подряд: 3"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="@+id/image"
-                app:layout_constraintStart_toStartOf="@+id/image"
-                app:layout_constraintTop_toBottomOf="@+id/name" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.appbar.AppBarLayout>
+    <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.customview.TextProgressView
+        android:id="@+id/text_progress"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline5"
+        app:layout_constraintEnd_toStartOf="@+id/guideline6"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline11"
+        app:layout_constraintTop_toTopOf="@+id/guideline12"
+        app:layout_constraintVertical_bias="0.0"
+        app:textProgress="50"
+        app:textProgressColor="?colorPrimary"
+        app:textProgressOutlineColor="?colorControlHighlight"
+        app:textProgressOutlineStrokeWidth="12dp"
+        app:textProgressStrokeWidth="12dp"
+        app:textProgressTextColor="?colorControlNormal"
+        app:textProgressTextSize="6sp" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_pager"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:fadeScrollbars="false"
+        android:scrollbars="none"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout4"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView2"
         app:layout_constraintVertical_bias="1.0" />
+
+
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_progress">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
+            app:chipSpacingHorizontal="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_progress"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_all"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/all"
+                android:visibility="gone"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.SmallComponent"
+                tools:visibility="visible" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_vocabulary"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/vocabulary"
+                android:visibility="gone"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.SmallComponent"
+                tools:visibility="visible" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_communication"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/communication"
+                android:visibility="gone"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.SmallComponent"
+                tools:visibility="visible" />
+        </com.google.android.material.chip.ChipGroup>
+    </HorizontalScrollView>
 
     <ImageView
         android:id="@+id/no_exercises_icon"
         android:layout_width="200dp"
         android:layout_height="200dp"
+        android:background="?selectableItemBackgroundBorderless"
         android:src="@drawable/ic_palms"
         android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/no_exercises_text_one"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout4"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
         tools:visibility="visible" />
 
@@ -121,7 +131,6 @@
         android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/no_exercises_text_two"
         app:layout_constraintEnd_toEndOf="@+id/no_exercises_icon"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/no_exercises_icon"
         app:layout_constraintTop_toBottomOf="@+id/no_exercises_icon"
         tools:visibility="visible" />
@@ -134,8 +143,36 @@
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/no_exercises_icon"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/no_exercises_icon"
         app:layout_constraintTop_toBottomOf="@+id/no_exercises_text_one"
         tools:visibility="visible" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.30" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.03" />
 </androidx.constraintlayout.widget.ConstraintLayout>

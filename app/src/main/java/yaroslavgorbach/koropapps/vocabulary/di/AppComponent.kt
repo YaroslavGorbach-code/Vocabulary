@@ -50,6 +50,7 @@ interface AppComponent {
 
     fun wordWithTimerExerciseComponent(): WordWithTimerExerciseComponent.Factory
 
+    @InternalCoroutinesApi
     fun settingsComponent(): SettingsComponent.Factory
 
     @FlowPreview

@@ -11,10 +11,13 @@ import kotlinx.coroutines.InternalCoroutinesApi
 import yaroslavgorbach.koropapps.vocabulary.App
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentTrainingBinding
+import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerciseCategoryFilterUi
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.feature.training.presentation.TrainingViewModel
 import yaroslavgorbach.koropapps.vocabulary.utils.host
 import yaroslavgorbach.koropapps.vocabulary.utils.onBackPressed
+import yaroslavgorbach.koropapps.vocabulary.utils.setBackgroundStatusBarColor
+import yaroslavgorbach.koropapps.vocabulary.utils.setDefaultStatusBarColor
 import javax.inject.Inject
 
 @InternalCoroutinesApi
@@ -41,12 +44,20 @@ class TrainingFragment : Fragment(R.layout.fragment_training) {
         initDagger()
     }
 
+    override fun onStart() {
+        super.onStart()
+        requireActivity().setBackgroundStatusBarColor()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        requireActivity().setDefaultStatusBarColor()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView(view)
         initObservers()
-        viewModel.getCurrentTrainingWithExercises()
-
     }
 
     private fun initDagger() {
@@ -69,6 +80,10 @@ class TrainingFragment : Fragment(R.layout.fragment_training) {
                     viewModel.setCurrentPage(page)
                 }
 
+                override fun onFilterChanged(filterUi: TrainingExerciseCategoryFilterUi) {
+                    viewModel.changeFilter(filterUi)
+                }
+
                 override fun onBack() {
                     onBackPressed()
                 }
@@ -76,6 +91,8 @@ class TrainingFragment : Fragment(R.layout.fragment_training) {
     }
 
     private fun initObservers() {
+        viewModel.getCurrentTrainingWithExercises()
+
         viewModel.trainingWithExercises.observe(
             viewLifecycleOwner,
             trainingView::setTrainingWitExercises

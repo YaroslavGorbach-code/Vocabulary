@@ -28,6 +28,28 @@ fun Context.getColorPrimary(): Int {
     return color
 }
 
+val Context.colorBackground: Int
+    get() {
+        val typedValue = TypedValue()
+        val a: TypedArray =
+            obtainStyledAttributes(typedValue.data, intArrayOf(android.R.attr.colorBackground))
+        val color = a.getColor(0, 0)
+        a.recycle()
+
+        return color
+    }
+
+val Context.statusBarColor: Int
+    get() {
+        val typedValue = TypedValue()
+        val a: TypedArray =
+            obtainStyledAttributes(typedValue.data, intArrayOf(android.R.attr.statusBarColor))
+        val color = a.getColor(0, 0)
+        a.recycle()
+
+        return color
+    }
+
 fun Context.isSystemNightMode() =
     when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
         Configuration.UI_MODE_NIGHT_NO -> false

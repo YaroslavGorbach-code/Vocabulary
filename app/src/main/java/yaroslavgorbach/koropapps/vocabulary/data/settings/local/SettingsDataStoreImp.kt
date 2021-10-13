@@ -38,14 +38,14 @@ class SettingsDataStoreImp : SettingsDataStore {
     }
 
     private var themes: List<Theme> = listOf(
-        Theme.Teal(),
-        Theme.Blue(),
-        Theme.Indigo(),
-        Theme.DeepPurple(),
-        Theme.Purple(),
-        Theme.Pink(),
         Theme.Red(),
+        Theme.Pink(),
+        Theme.Purple(),
+        Theme.DeepPurple(),
+        Theme.Indigo(),
+        Theme.Blue(),
         Theme.LightBlue(),
+        Theme.Teal(),
         Theme.Green(),
         Theme.LightGreen(),
         Theme.Lime(),
@@ -54,13 +54,14 @@ class SettingsDataStoreImp : SettingsDataStore {
         Theme.Orange(),
         Theme.DeepOrange(),
         Theme.Brown(),
+        Theme.BlueGray(),
     )
 
     override fun observeThemes(context: Context): Flow<List<Theme>> {
         return observeCurrentTheme(context).map { theme ->
             themes.apply {
                 themes.forEach { it.isCurrent = false }
-                requireNotNull(themes.find { it.colorPrimary == theme.colorPrimary }).isCurrent =
+                requireNotNull(themes.find { it.colorPrimaryRes == theme.colorPrimaryRes }).isCurrent =
                     true
             }
         }
