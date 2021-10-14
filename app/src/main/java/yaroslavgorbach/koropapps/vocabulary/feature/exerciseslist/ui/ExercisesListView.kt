@@ -1,11 +1,13 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.ui
 
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExercisesListBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.recycler.LineDecorator
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.ExerciseCategoryFilterUi
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.ExerciseUi
+import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.ExercisesWithFilterUi
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.TrainingUi
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.ui.recycler.ExercisesListAdapter
 import yaroslavgorbach.koropapps.vocabulary.utils.dayOfWeek
@@ -64,12 +66,12 @@ class ExercisesListView(
         }
     }
 
-    fun setExercises(list: List<ExerciseUi>) {
-        listAdapter.setData(list)
+    private fun setExercisesListData(exercisesWithFilterUi: ExercisesWithFilterUi) {
+        listAdapter.setData(exercisesWithFilterUi.exercisesUi)
     }
 
-    fun setExercisesFilter(filter: ExerciseCategoryFilterUi) {
-        when (filter) {
+    private fun initFilterChips(exercisesWithFilterUi: ExercisesWithFilterUi) {
+        when (exercisesWithFilterUi.filterUi) {
             ExerciseCategoryFilterUi.ALL -> {
                 binding.chipAll.isChecked = true
             }
@@ -83,6 +85,22 @@ class ExercisesListView(
                 binding.chipFavorite.isChecked = true
             }
         }
+    }
+
+    private fun showEmptyFavoritesIcon(isShow: Boolean) {
+        if (isShow) {
+            binding.emptyFavorites.root.visibility = View.VISIBLE
+        } else {
+            binding.emptyFavorites.root.visibility = View.GONE
+        }
+    }
+
+    fun setExercisesWithFilter(exercisesWithFilterUi: ExercisesWithFilterUi) {
+        initFilterChips(exercisesWithFilterUi)
+
+        showEmptyFavoritesIcon(exercisesWithFilterUi.areFavoritesEmpty)
+
+        setExercisesListData(exercisesWithFilterUi)
     }
 
     fun setTraining(trainingUi: TrainingUi) {

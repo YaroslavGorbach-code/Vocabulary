@@ -1,6 +1,9 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.presentation
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
@@ -10,8 +13,8 @@ import yaroslavgorbach.koropapps.vocabulary.business.training.ObserveLastFifeTra
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseCategory
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.ExerciseCategoryFilterUi
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.ExerciseUi
+import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.ExercisesWithFilterUi
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.TrainingUi
-import java.util.Locale.filter
 import javax.inject.Inject
 
 class ExercisesListViewModel @Inject constructor(
@@ -21,21 +24,15 @@ class ExercisesListViewModel @Inject constructor(
 
     private val disposables: CompositeDisposable = CompositeDisposable()
 
-    private val _exercises: MutableLiveData<List<ExerciseUi>> = MutableLiveData()
+    private val _exercisesWithFilter: MutableLiveData<ExercisesWithFilterUi> = MutableLiveData()
 
-    val exercises: LiveData<List<ExerciseUi>>
-        get() = _exercises
+    val exercisesWithFilter: LiveData<ExercisesWithFilterUi>
+        get() = _exercisesWithFilter
 
     private val _training: MutableLiveData<TrainingUi> = MutableLiveData()
 
     val training: LiveData<TrainingUi>
         get() = _training
-
-    private val _exercisesFilterUi: MutableLiveData<ExerciseCategoryFilterUi> =
-        MutableLiveData()
-
-    val exercisesFilterUi: LiveData<ExerciseCategoryFilterUi>
-        get() = _exercisesFilterUi
 
     init {
         getAndFilterExercises(ExerciseCategoryFilterUi.ALL)
@@ -80,10 +77,9 @@ class ExercisesListViewModel @Inject constructor(
                             exercisesUi.filter { it.isFavorite }
                         }
                     }
-                }.collect { exercises ->
-                    _exercises.postValue(exercises)
-                    _exercisesFilterUi.value = filterUi
                 }
+                .map { ExercisesWithFilterUi(it, filterUi) }
+                .collect(_exercisesWithFilter::postValue)
         }
     }
 }
