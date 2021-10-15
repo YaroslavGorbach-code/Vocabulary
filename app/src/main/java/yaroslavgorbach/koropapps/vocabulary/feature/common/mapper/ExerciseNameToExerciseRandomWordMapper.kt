@@ -47,6 +47,18 @@ class ExerciseNameToExerciseRandomWordMapper(resources: Resources) {
         WordCategory.Fillings().resArray
     ).toList()
 
+    private val tongueTwistersEasy = resources.getStringArray(
+        WordCategory.TongueTwistersEasy().resArray
+    ).toList()
+
+    private val tongueTwistersHard = resources.getStringArray(
+        WordCategory.TongueTwistersHard().resArray
+    ).toList()
+
+    private val tongueTwistersVeryHard = resources.getStringArray(
+        WordCategory.TongueTwistersVeryHard().resArray
+    ).toList()
+
     fun map(exerciseName: ExerciseName): String {
         return when (exerciseName) {
             ExerciseName.ALPHABET_ADJECTIVES,
@@ -114,6 +126,9 @@ class ExerciseNameToExerciseRandomWordMapper(resources: Resources) {
             ExerciseName.RAVEN_LOOK_LIKE_A_TABLE_FILINGS -> {
                 "${nounsAlive.random()} - ${fillings.random()}"
             }
+            ExerciseName.TONGUE_TWISTERS_EASY -> tongueTwistersEasy.random()
+            ExerciseName.TONGUE_TWISTERS_HARD -> tongueTwistersHard.random()
+            ExerciseName.TONGUE_TWISTERS_VERY_HARD -> tongueTwistersVeryHard.random()
         }
     }
 }

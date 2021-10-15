@@ -63,6 +63,9 @@ class ExerciseNameToShortDescriptionResMapper {
             ExerciseName.WILL_NOT_BE_WORSE -> R.string.desc_short_will_not_be_worse
             ExerciseName.QUESTION_ANSWER -> R.string.desc_short_question_answer
             ExerciseName.RAVEN_LOOK_LIKE_A_TABLE_FILINGS -> R.string.desc_short_raven_look_like_a_table_filings
+            ExerciseName.TONGUE_TWISTERS_EASY,
+            ExerciseName.TONGUE_TWISTERS_HARD,
+            ExerciseName.TONGUE_TWISTERS_VERY_HARD -> R.array.desc_short_tongue_twisters
         }
     }
 }

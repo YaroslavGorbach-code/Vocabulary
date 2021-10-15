@@ -40,6 +40,9 @@ class ExerciseNameToExerciseCategoryMapper {
             ExerciseName.WILL_NOT_BE_WORSE -> ExerciseCategory.COMMUNICATION
             ExerciseName.QUESTION_ANSWER -> ExerciseCategory.COMMUNICATION
             ExerciseName.RAVEN_LOOK_LIKE_A_TABLE_FILINGS -> ExerciseCategory.COMMUNICATION
+            ExerciseName.TONGUE_TWISTERS_EASY,
+            ExerciseName.TONGUE_TWISTERS_HARD,
+            ExerciseName.TONGUE_TWISTERS_VERY_HARD -> ExerciseCategory.DICTION_AND_ARTICULATION
         }
     }
 }

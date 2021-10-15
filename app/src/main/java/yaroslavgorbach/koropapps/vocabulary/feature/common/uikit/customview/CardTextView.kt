@@ -54,7 +54,7 @@ class CardTextView @JvmOverloads constructor(
             )
         }
 
-        setPadding(10, 0, 10, 0)
+        setPadding(16, 0, 16, 0)
     }
 
     fun setText(text: String) {

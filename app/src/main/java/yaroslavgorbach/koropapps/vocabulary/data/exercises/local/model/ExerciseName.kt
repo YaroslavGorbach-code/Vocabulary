@@ -38,4 +38,8 @@ enum class ExerciseName(@StringRes val id: Int) {
     WILL_NOT_BE_WORSE(R.string.will_not_be_worse),
     QUESTION_ANSWER(R.string.question_answer),
     RAVEN_LOOK_LIKE_A_TABLE_FILINGS(R.string.raven_look_like_a_table_filings),
+
+    TONGUE_TWISTERS_EASY(R.string.tongue_twisters_easy),
+    TONGUE_TWISTERS_HARD(R.string.tongue_twisters_hard),
+    TONGUE_TWISTERS_VERY_HARD(R.string.tongue_twisters_very_hard),
 }

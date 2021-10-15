@@ -14,6 +14,7 @@ import yaroslavgorbach.koropapps.vocabulary.di.business.training.BusinessTrainin
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.di.DescriptionComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.word.di.WordExerciseComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.wordwithcategory.di.WordWithCategoryExerciseComponent
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.wordwithstage.di.WordWithStageExerciseComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.wordwithtimer.di.WordWithTimerExerciseComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.di.ExercisesListComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.di.LevelComponent
@@ -49,6 +50,8 @@ interface AppComponent {
     fun levelComponent(): LevelComponent.Factory
 
     fun wordWithTimerExerciseComponent(): WordWithTimerExerciseComponent.Factory
+
+    fun wordWithStageExerciseComponent(): WordWithStageExerciseComponent.Factory
 
     @InternalCoroutinesApi
     fun settingsComponent(): SettingsComponent.Factory

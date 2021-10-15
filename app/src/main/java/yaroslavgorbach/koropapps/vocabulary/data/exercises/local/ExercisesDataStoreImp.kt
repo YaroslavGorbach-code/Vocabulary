@@ -3,7 +3,9 @@ package yaroslavgorbach.koropapps.vocabulary.data.exercises.local
 import android.content.Context
 import android.util.Log
 import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.*
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.booleanPreferencesKey
+import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -65,6 +67,21 @@ class ExercisesDataStoreImp : ExercisesDataStore {
             ExerciseCategory.COMMUNICATION,
             false
         ),
+        Exercise(
+            ExerciseName.TONGUE_TWISTERS_EASY,
+            ExerciseCategory.DICTION_AND_ARTICULATION,
+            false
+        ),
+        Exercise(
+            ExerciseName.TONGUE_TWISTERS_HARD,
+            ExerciseCategory.DICTION_AND_ARTICULATION,
+            false
+        ),
+        Exercise(
+            ExerciseName.TONGUE_TWISTERS_VERY_HARD,
+            ExerciseCategory.DICTION_AND_ARTICULATION,
+            false
+        ),
     )
 
     override fun observe(context: Context): Flow<List<Exercise>> {
@@ -72,7 +89,6 @@ class ExercisesDataStoreImp : ExercisesDataStore {
             .map { prefs ->
                 exercises.map { exercise ->
                     val isExerciseFavorite = prefs[getFavoriteKey(exercise.name)]
-                    Log.i("observe", "obser" + exercise.name.name)
 
                     exercise.isFavorite = isExerciseFavorite ?: false
 
@@ -83,7 +99,6 @@ class ExercisesDataStoreImp : ExercisesDataStore {
 
     override suspend fun changeFavorite(exerciseName: ExerciseName, context: Context) {
         context.exercisesDataStore.edit { prefs ->
-
             prefs[getFavoriteKey(exerciseName)] =
                 prefs[getFavoriteKey(exerciseName)]?.not() ?: true
         }

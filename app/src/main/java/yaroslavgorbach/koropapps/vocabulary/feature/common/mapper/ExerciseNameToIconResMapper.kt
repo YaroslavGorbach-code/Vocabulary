@@ -39,6 +39,9 @@ class ExerciseNameToIconResMapper {
             ExerciseName.WILL_NOT_BE_WORSE -> R.drawable.ic_thomb_down
             ExerciseName.QUESTION_ANSWER -> R.drawable.ic_qestion
             ExerciseName.RAVEN_LOOK_LIKE_A_TABLE_FILINGS -> R.drawable.ic_raven_2
+            ExerciseName.TONGUE_TWISTERS_EASY -> R.drawable.ic_lips_green
+            ExerciseName.TONGUE_TWISTERS_HARD -> R.drawable.ic_lips_yellow
+            ExerciseName.TONGUE_TWISTERS_VERY_HARD -> R.drawable.ic_lips_read
         }
     }
 }

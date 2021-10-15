@@ -123,4 +123,12 @@
     <string name="desc_short_question_answer">Дайте развернутый ответ на вопрос</string>
 
     <string name="desc_short_raven_look_like_a_table_filings">Найдите сходство</string>
+
+    <array name="desc_short_tongue_twisters">
+        <item>Проговаривайте текст медленно</item>
+        <item>Беззвучно произнесите скороговорку. Движениями губ</item>
+        <item>Произнесите текст в пол голоса, шепотом</item>
+        <item>Произнесите вслух, громко, но все ещё медленно и четко</item>
+        <item>Теперь пробуйте произносить текст в разных стилях, с разной интонацией, с разной скоростью</item>
+    </array>
 </resources>

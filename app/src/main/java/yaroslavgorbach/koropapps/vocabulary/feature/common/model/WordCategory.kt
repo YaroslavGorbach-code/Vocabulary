@@ -22,5 +22,11 @@ sealed class WordCategory {
 
     class Questions(override val resArray: Int = R.array.questions) : WordCategory()
 
+    class TongueTwistersEasy(override val resArray: Int = R.array.twisters_easy) : WordCategory()
+
+    class TongueTwistersHard(override val resArray: Int = R.array.twisters_hard) : WordCategory()
+
+    class TongueTwistersVeryHard(override val resArray: Int = R.array.twisters_very_hard) : WordCategory()
+
     class None(override val resArray: Int = R.array.empty_array) : WordCategory()
 }

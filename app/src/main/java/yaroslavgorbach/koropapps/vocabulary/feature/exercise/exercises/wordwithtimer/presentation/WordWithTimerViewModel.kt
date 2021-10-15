@@ -7,7 +7,6 @@ import yaroslavgorbach.koropapps.vocabulary.business.statistics.SaveStatisticsIn
 import yaroslavgorbach.koropapps.vocabulary.business.training.IncrementExercisePerformedInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.ObserveTrainingExerciseInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
-import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToExerciseRandomWordMapper
 import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToShortDescriptionResMapper
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.WordCategory

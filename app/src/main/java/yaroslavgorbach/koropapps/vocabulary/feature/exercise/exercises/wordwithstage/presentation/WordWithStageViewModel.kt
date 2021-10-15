@@ -1,4 +1,4 @@
-package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.word.presentation
+package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.wordwithstage.presentation
 
 import android.app.Application
 import androidx.lifecycle.LiveData
@@ -10,9 +10,11 @@ import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameTo
 import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToShortDescriptionResMapper
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.base.BaseExerciseViewModel
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.wordwithstage.mapper.ExerciseShortDescriptionsToListStagesMapper
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.wordwithstage.model.StageUi
 import javax.inject.Inject
 
-class WordExerciseViewModel @Inject constructor(
+class WordWithStageViewModel @Inject constructor(
     private val exerciseType: ExerciseType,
     private val application: Application,
     incrementExercisePerformedInteractor: IncrementExercisePerformedInteractor,
@@ -24,14 +26,18 @@ class WordExerciseViewModel @Inject constructor(
     saveStatisticsInteractor,
     observeTrainingExerciseInteractor
 ) {
-
     private val exerciseNameToExerciseRandomWordMapper =
         ExerciseNameToExerciseRandomWordMapper(application.resources)
 
-    val description: String
-        get() = application.getString(
+    private val shortDescriptions: List<String>
+        get() = application.resources.getStringArray(
             ExerciseNameToShortDescriptionResMapper().map(exerciseType.getExerciseName())
-        )
+        ).toList()
+
+    private val _stages: MutableLiveData<List<StageUi>> = MutableLiveData()
+
+    val stages: LiveData<List<StageUi>>
+        get() = _stages
 
     private val _word = MutableLiveData<String>()
 
@@ -40,14 +46,33 @@ class WordExerciseViewModel @Inject constructor(
 
     init {
         generateWord()
+        refreshStages()
     }
 
-    override fun onNextClick() {
-        super.onNextClick()
-        generateWord()
+    private fun refreshStages() {
+        _stages.value = ExerciseShortDescriptionsToListStagesMapper().map(shortDescriptions)
     }
 
     private fun generateWord() {
-     _word.value = exerciseNameToExerciseRandomWordMapper.map(exerciseType.getExerciseName())
+        _word.value = exerciseNameToExerciseRandomWordMapper.map(exerciseType.getExerciseName())
+    }
+
+    fun onNextStageClick() {
+        _stages.value.orEmpty().toMutableList().apply {
+            val currentIndex = indexOfFirst { it.isActive }
+
+            if (getOrNull(currentIndex + 1) != null) {
+                find { it.isActive }!!.isFinished = true
+                find { it.isActive }!!.isActive = false
+
+                getOrNull(currentIndex + 1)!!.isActive = true
+
+                _stages.value = this
+            } else {
+                generateWord()
+                refreshStages()
+                onNextClick()
+            }
+        }
     }
 }

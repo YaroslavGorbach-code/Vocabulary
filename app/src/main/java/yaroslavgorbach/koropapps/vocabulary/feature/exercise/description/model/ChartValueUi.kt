@@ -71,6 +71,9 @@ data class ChartValueUi(
             ExerciseName.REMEMBER_ALL -> R.string.number_letters_for_session
             ExerciseName.GAME_I_KNOW_5_NAMES -> R.string.number_categories_for_session
             ExerciseName.OTHER_ABBREVIATIONS -> R.string.number_abbreviations
+            ExerciseName.TONGUE_TWISTERS_EASY,
+            ExerciseName.TONGUE_TWISTERS_HARD,
+            ExerciseName.TONGUE_TWISTERS_VERY_HARD -> R.string.number_tongue_twisters
         }
 
     fun getColors(context: Context): IntArray {

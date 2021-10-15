@@ -40,6 +40,9 @@ class ExerciseNameToDescriptionResMapper {
             ExerciseName.WILL_NOT_BE_WORSE -> R.string.will_not_be_worse_description
             ExerciseName.QUESTION_ANSWER -> R.string.question_answer_description
             ExerciseName.RAVEN_LOOK_LIKE_A_TABLE_FILINGS -> R.string.raven_look_like_a_table_filings_description
+            ExerciseName.TONGUE_TWISTERS_EASY,
+            ExerciseName.TONGUE_TWISTERS_HARD,
+            ExerciseName.TONGUE_TWISTERS_VERY_HARD -> R.string.tongue_twisters_description
         }
     }
 }

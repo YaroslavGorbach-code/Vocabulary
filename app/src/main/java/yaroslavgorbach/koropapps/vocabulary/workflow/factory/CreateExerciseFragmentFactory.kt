@@ -5,6 +5,7 @@ import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseN
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.word.ui.WordExerciseFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.wordwithcategory.ui.WordWithCategoryFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.wordwithstage.ui.WordWithStageFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.wordwithtimer.ui.WordWithTimerExerciseFragment
 
 class CreateExerciseFragmentFactory {
@@ -15,16 +16,13 @@ class CreateExerciseFragmentFactory {
             ExerciseName.ALPHABET_VERBS,
             ExerciseName.DICTIONARY_ADJECTIVES,
             ExerciseName.DICTIONARY_NOUN,
-            ExerciseName.DICTIONARY_VERBS,
-            -> {
+            ExerciseName.DICTIONARY_VERBS -> {
                 WordWithTimerExerciseFragment.newInstance(exerciseType)
             }
-
             ExerciseName.LIST_OF_CATEGORIES -> {
                 WordWithCategoryFragment.newInstance(exerciseType)
 
             }
-
             ExerciseName.GAME_I_KNOW_5_NAMES,
             ExerciseName.REMEMBER_ALL,
             ExerciseName.ASSOCIATIONS,
@@ -52,6 +50,11 @@ class CreateExerciseFragmentFactory {
             ExerciseName.RAVEN_LOOK_LIKE_A_TABLE_FILINGS,
             ExerciseName.TAUTOGRAMS -> {
                 WordExerciseFragment.newInstance(exerciseType)
+            }
+            ExerciseName.TONGUE_TWISTERS_EASY,
+            ExerciseName.TONGUE_TWISTERS_HARD,
+            ExerciseName.TONGUE_TWISTERS_VERY_HARD -> {
+                WordWithStageFragment.newInstance(exerciseType)
             }
         }
     }

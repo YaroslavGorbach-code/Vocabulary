@@ -37,4 +37,8 @@
     <string name="will_not_be_worse">Хуже уже не будет</string>
     <string name="question_answer">Вопрос - ответ</string>
     <string name="raven_look_like_a_table_filings">Чем ворон похож на стул (чувства)</string>
+
+    <string name="tongue_twisters_easy">Простые скороговорки</string>
+    <string name="tongue_twisters_hard">Сложные скороговорки</string>
+    <string name="tongue_twisters_very_hard">Очень сложные скороговорки</string>
 </resources>
