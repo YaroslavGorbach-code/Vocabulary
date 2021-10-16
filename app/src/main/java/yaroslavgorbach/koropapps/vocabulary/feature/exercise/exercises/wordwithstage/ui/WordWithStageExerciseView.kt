@@ -35,7 +35,6 @@ class WordWithStageExerciseView(
     private fun initEvents() {
         binding.next.setOnClickListener {
             callback.onNextStage()
-            startOneWordChronometer()
         }
 
         binding.toolbar.setNavigationOnClickListener {
@@ -52,6 +51,7 @@ class WordWithStageExerciseView(
 
     fun setWord(word: String) {
         binding.word.text = word
+        startOneWordChronometer()
     }
 
     fun setExercise(exercise: TrainingExerciseUi) {
