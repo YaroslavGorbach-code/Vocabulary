@@ -41,4 +41,5 @@
     <string name="tongue_twisters_easy">Простые скороговорки</string>
     <string name="tongue_twisters_hard">Сложные скороговорки</string>
     <string name="tongue_twisters_very_hard">Очень сложные скороговорки</string>
+    <string name="sound_combinations">Звукосочетания</string>
 </resources>

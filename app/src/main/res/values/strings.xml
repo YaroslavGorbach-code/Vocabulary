@@ -11,6 +11,7 @@
     <string name="number_categories_for_session">Количествво категорий за сессию</string>
     <string name="number_abbreviations">Количество аббревиатур за сессию</string>
     <string name="number_tongue_twisters">Количество скороговорок за сессию</string>
+    <string name="number_sound_combinations">Количество звукосочетаний за сессию</string>
     <string name="average_time_on_sentence">В среднеем потрачено секунд на предложение</string>
     <string name="average_time_on_story">В среднеем потрачено секунд на историю</string>
     <string name="average_time_on_letter">В среднеем потрачено секунд на букву</string>
@@ -18,7 +19,7 @@
     <string name="average_time_on_abbreviation">В среднеем потрачено секунд на аббревиатуру</string>
     <string name="average_time_on_word">В среднеем потрачено секунд на слово</string>
     <string name="average_time_on_tongue_twister">В среднеем потрачено секунд на скороговорку</string>
-
+    <string name="average_time_on_sound_combinations">В среднеем потрачено секунд на звукосочетание</string>
 
     <string name="number_of_words_in_story">Количество слов в истории</string>
     <string name="statistic">Статистика</string>
@@ -65,7 +66,6 @@
     <string name="vocabulary">Словарный запас</string>
     <string name="communication">Навык общения</string>
     <string name="no_favorites">Избранных упражнений нет</string>
-
 
     <string-array name="empty_array" />
 </resources>

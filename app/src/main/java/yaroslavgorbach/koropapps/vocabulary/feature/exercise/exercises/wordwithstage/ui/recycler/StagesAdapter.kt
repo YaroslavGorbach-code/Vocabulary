@@ -56,7 +56,5 @@ class StagesAdapter : ListAdapter<StageUi, StagesAdapter.ViewHolder>(
                 }
             }
         }
-
     }
-
 }

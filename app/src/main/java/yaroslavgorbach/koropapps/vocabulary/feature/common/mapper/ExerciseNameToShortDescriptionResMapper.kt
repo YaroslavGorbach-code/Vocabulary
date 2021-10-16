@@ -66,6 +66,7 @@ class ExerciseNameToShortDescriptionResMapper {
             ExerciseName.TONGUE_TWISTERS_EASY,
             ExerciseName.TONGUE_TWISTERS_HARD,
             ExerciseName.TONGUE_TWISTERS_VERY_HARD -> R.array.desc_short_tongue_twisters
+            ExerciseName.SOUND_COMBINATIONS -> R.array.desc_short_sound_combinations
         }
     }
 }

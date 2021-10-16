@@ -1,7 +1,6 @@
 package yaroslavgorbach.koropapps.vocabulary.data.exercises.local
 
 import android.content.Context
-import android.util.Log
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
@@ -79,6 +78,11 @@ class ExercisesDataStoreImp : ExercisesDataStore {
         ),
         Exercise(
             ExerciseName.TONGUE_TWISTERS_VERY_HARD,
+            ExerciseCategory.DICTION_AND_ARTICULATION,
+            false
+        ),
+        Exercise(
+            ExerciseName.SOUND_COMBINATIONS,
             ExerciseCategory.DICTION_AND_ARTICULATION,
             false
         ),

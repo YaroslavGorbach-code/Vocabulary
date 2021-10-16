@@ -74,6 +74,7 @@ data class ChartValueUi(
             ExerciseName.TONGUE_TWISTERS_EASY,
             ExerciseName.TONGUE_TWISTERS_HARD,
             ExerciseName.TONGUE_TWISTERS_VERY_HARD -> R.string.number_tongue_twisters
+            ExerciseName.SOUND_COMBINATIONS -> R.string.number_sound_combinations
         }
 
     fun getColors(context: Context): IntArray {

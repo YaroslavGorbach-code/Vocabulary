@@ -74,6 +74,7 @@ data class ChartTimeUi(
             ExerciseName.TONGUE_TWISTERS_EASY,
             ExerciseName.TONGUE_TWISTERS_HARD,
             ExerciseName.TONGUE_TWISTERS_VERY_HARD -> R.string.average_time_on_tongue_twister
+            ExerciseName.SOUND_COMBINATIONS -> R.string.average_time_on_sound_combinations
         }
 
     fun getColors(context: Context): IntArray {

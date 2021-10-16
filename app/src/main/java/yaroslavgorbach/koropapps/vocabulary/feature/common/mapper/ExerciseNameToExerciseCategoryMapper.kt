@@ -43,6 +43,7 @@ class ExerciseNameToExerciseCategoryMapper {
             ExerciseName.TONGUE_TWISTERS_EASY,
             ExerciseName.TONGUE_TWISTERS_HARD,
             ExerciseName.TONGUE_TWISTERS_VERY_HARD -> ExerciseCategory.DICTION_AND_ARTICULATION
+            ExerciseName.SOUND_COMBINATIONS -> ExerciseCategory.DICTION_AND_ARTICULATION
         }
     }
 }

@@ -53,6 +53,7 @@ class CreateExerciseFragmentFactory {
             }
             ExerciseName.TONGUE_TWISTERS_EASY,
             ExerciseName.TONGUE_TWISTERS_HARD,
+            ExerciseName.SOUND_COMBINATIONS,
             ExerciseName.TONGUE_TWISTERS_VERY_HARD -> {
                 WordWithStageFragment.newInstance(exerciseType)
             }

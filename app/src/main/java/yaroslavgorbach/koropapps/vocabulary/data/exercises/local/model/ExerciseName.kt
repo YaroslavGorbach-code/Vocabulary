@@ -42,4 +42,5 @@ enum class ExerciseName(@StringRes val id: Int) {
     TONGUE_TWISTERS_EASY(R.string.tongue_twisters_easy),
     TONGUE_TWISTERS_HARD(R.string.tongue_twisters_hard),
     TONGUE_TWISTERS_VERY_HARD(R.string.tongue_twisters_very_hard),
+    SOUND_COMBINATIONS(R.string.sound_combinations)
 }
