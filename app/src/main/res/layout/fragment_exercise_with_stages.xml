@@ -46,8 +46,6 @@
             android:id="@+id/stages"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@+id/materialCardView"
             app:layout_constraintEnd_toStartOf="@+id/guideline8"
@@ -74,8 +72,8 @@
                 android:gravity="center"
                 android:layout_margin="8dp"
                 android:textColor="@android:color/white"
-                app:autoSizeMaxTextSize="40sp"
-                app:autoSizeMinTextSize="12sp"
+                app:autoSizeMaxTextSize="30sp"
+                app:autoSizeMinTextSize="8sp"
                 app:autoSizeTextType="uniform"
                 tools:text="0" />
 

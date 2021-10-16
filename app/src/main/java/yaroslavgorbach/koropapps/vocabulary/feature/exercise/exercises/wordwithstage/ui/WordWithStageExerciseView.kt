@@ -79,5 +79,4 @@ class WordWithStageExerciseView(
         binding.aimAndPerformed.visibility = View.VISIBLE
         binding.aimAndPerformed.setText("$performed/$aim")
     }
-
 }

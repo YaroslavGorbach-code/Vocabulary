@@ -63,6 +63,10 @@ class ExerciseNameToExerciseRandomWordMapper(resources: Resources) {
         WordCategory.SoundCombinations().resArray
     ).toList()
 
+    private val difficultWords = resources.getStringArray(
+        WordCategory.DifficultWords().resArray
+    ).toList()
+
     fun map(exerciseName: ExerciseName): String {
         return when (exerciseName) {
             ExerciseName.ALPHABET_ADJECTIVES,
@@ -134,6 +138,7 @@ class ExerciseNameToExerciseRandomWordMapper(resources: Resources) {
             ExerciseName.TONGUE_TWISTERS_HARD -> tongueTwistersHard.random()
             ExerciseName.TONGUE_TWISTERS_VERY_HARD -> tongueTwistersVeryHard.random()
             ExerciseName.SOUND_COMBINATIONS -> soundCombination.random()
+            ExerciseName.DIFFICULT_WORDS -> difficultWords.random()
         }
     }
 }

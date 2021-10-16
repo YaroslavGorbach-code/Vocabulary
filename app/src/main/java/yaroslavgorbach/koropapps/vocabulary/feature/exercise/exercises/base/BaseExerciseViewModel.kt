@@ -95,7 +95,6 @@ open class BaseExerciseViewModel(
 
             isStatisticsSaved = true
         }
-
     }
 
     private fun disposeDisposables() {

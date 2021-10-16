@@ -86,6 +86,11 @@ class ExercisesDataStoreImp : ExercisesDataStore {
             ExerciseCategory.DICTION_AND_ARTICULATION,
             false
         ),
+        Exercise(
+            ExerciseName.DIFFICULT_WORDS,
+            ExerciseCategory.DICTION_AND_ARTICULATION,
+            false
+        ),
     )
 
     override fun observe(context: Context): Flow<List<Exercise>> {

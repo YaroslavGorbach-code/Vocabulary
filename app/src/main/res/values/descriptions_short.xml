@@ -133,9 +133,14 @@
     </array>
 
     <array name="desc_short_sound_combinations">
-        <item>Произнести звукосочетание медленно</item>
-        <item>Произнечите свукосочетание безвучно. Движениями губ</item>
+        <item>Произнесите звукосочетание медленно</item>
+        <item>Произнечите свукосочетание движениями губ</item>
         <item>Произнесите в слух, медленно и четко</item>
         <item>Произнесите несколько раз быстро</item>
+    </array>
+
+    <array name="desc_short_difficult_words">
+        <item>Произнесите слово медленно и четко</item>
+        <item>Произнесите слово быстро</item>
     </array>
 </resources>

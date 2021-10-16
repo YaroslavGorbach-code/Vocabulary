@@ -30,5 +30,7 @@ sealed class WordCategory {
 
     class SoundCombinations(override val resArray: Int = R.array.sound_combinations) : WordCategory()
 
+    class DifficultWords(override val resArray: Int = R.array.difficult_words) : WordCategory()
+
     class None(override val resArray: Int = R.array.empty_array) : WordCategory()
 }
