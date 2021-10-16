@@ -28,7 +28,7 @@ class ExerciseNameToIconResMapper {
             ExerciseName.DICTIONARY_VERBS -> R.drawable.ic_dictionary_v
             ExerciseName.LINGUISTIC_PYRAMIDS -> R.drawable.ic_piramids
             ExerciseName.RAVEN_LOOK_LIKE_A_TABLE -> R.drawable.ic_raven
-            ExerciseName.STORYTELLER_IMPROVISER -> R.drawable.ic_person_with_microfon // TODO: 10/3/2021 drove new icon
+            ExerciseName.STORYTELLER_IMPROVISER -> R.drawable.ic_talcking_man
             ExerciseName.ADVANCED_BINDING -> R.drawable.ic_chain
             ExerciseName.WHAT_I_SEE_I_SING_ABOUT -> R.drawable.ic_person_with_microfon
             ExerciseName.OTHER_ABBREVIATIONS -> R.drawable.ic_letter
