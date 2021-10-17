@@ -1,6 +1,5 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.training.model
 
-import android.util.Log
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseCategory
 import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingWithExercisesEntity
 
@@ -12,8 +11,9 @@ class TrainingWithExercisesUi(private val trainingWithExercisesEntity: TrainingW
             .filter {
                 when (currentFilter) {
                     TrainingExerciseCategoryFilterUi.ALL -> true
-                    TrainingExerciseCategoryFilterUi.COMMUNICATION -> it.category === ExerciseCategory.COMMUNICATION
-                    TrainingExerciseCategoryFilterUi.VOCABULARY -> it.category === ExerciseCategory.VOCABULARY
+                    TrainingExerciseCategoryFilterUi.COMMUNICATION -> it.category == ExerciseCategory.COMMUNICATION
+                    TrainingExerciseCategoryFilterUi.VOCABULARY -> it.category == ExerciseCategory.VOCABULARY
+                    TrainingExerciseCategoryFilterUi.DICTION_AND_ARTICULATION -> it.category == ExerciseCategory.DICTION_AND_ARTICULATION
                 }
             }
             .map(::TrainingExerciseUi)
@@ -46,7 +46,15 @@ class TrainingWithExercisesUi(private val trainingWithExercisesEntity: TrainingW
                     filters.add(TrainingExerciseCategoryFilterUi.COMMUNICATION)
                 }
 
-                val isAllFilter = isVocabularyFilter && isVocabularyFilter
+                val isDictionFilter = trainingWithExercisesEntity.exercises.any {
+                    it.category == ExerciseCategory.DICTION_AND_ARTICULATION && it.isFinished.not()
+                }
+
+                if (isDictionFilter) {
+                    filters.add(TrainingExerciseCategoryFilterUi.DICTION_AND_ARTICULATION)
+                }
+
+                val isAllFilter = isVocabularyFilter || isVocabularyFilter || isDictionFilter
 
                 if (isAllFilter) {
                     filters.add(TrainingExerciseCategoryFilterUi.ALL)

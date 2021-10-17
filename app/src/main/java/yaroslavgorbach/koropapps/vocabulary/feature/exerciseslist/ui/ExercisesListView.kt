@@ -59,6 +59,12 @@ class ExercisesListView(
             }
         }
 
+        binding.chipDiction.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                callback.onExercisesFilterChanged(ExerciseCategoryFilterUi.DICTION_AND_ARTICULATION)
+            }
+        }
+
         binding.chipFavorite.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 callback.onExercisesFilterChanged(ExerciseCategoryFilterUi.FAVORITE)
@@ -83,6 +89,9 @@ class ExercisesListView(
             }
             ExerciseCategoryFilterUi.FAVORITE -> {
                 binding.chipFavorite.isChecked = true
+            }
+            ExerciseCategoryFilterUi.DICTION_AND_ARTICULATION -> {
+                binding.chipDiction.isChecked = true
             }
         }
     }

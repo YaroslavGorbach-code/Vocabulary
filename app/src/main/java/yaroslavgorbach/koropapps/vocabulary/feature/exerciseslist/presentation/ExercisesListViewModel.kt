@@ -64,18 +64,22 @@ class ExercisesListViewModel @Inject constructor(
                 .map { list -> list.map(::ExerciseUi) }
                 .map { exercisesUi ->
                     when (filterUi) {
-                        ExerciseCategoryFilterUi.ALL -> {
-                            exercisesUi
-                        }
+                        ExerciseCategoryFilterUi.ALL -> exercisesUi
+
                         ExerciseCategoryFilterUi.VOCABULARY -> exercisesUi.filter {
                             it.category == ExerciseCategory.VOCABULARY
                         }
+
                         ExerciseCategoryFilterUi.COMMUNICATION -> exercisesUi.filter {
                             it.category == ExerciseCategory.COMMUNICATION
                         }
-                        ExerciseCategoryFilterUi.FAVORITE -> {
-                            exercisesUi.filter { it.isFavorite }
+
+                        ExerciseCategoryFilterUi.DICTION_AND_ARTICULATION -> exercisesUi.filter {
+                            it.category == ExerciseCategory.DICTION_AND_ARTICULATION
                         }
+
+                        ExerciseCategoryFilterUi.FAVORITE -> exercisesUi.filter { it.isFavorite }
+
                     }
                 }
                 .map { ExercisesWithFilterUi(it, filterUi) }
