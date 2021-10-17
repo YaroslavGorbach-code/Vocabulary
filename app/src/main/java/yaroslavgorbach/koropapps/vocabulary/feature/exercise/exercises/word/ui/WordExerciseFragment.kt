@@ -10,13 +10,15 @@ import androidx.lifecycle.ViewModelProvider
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
+import yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.PermissionDeniedDialog
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.common.ui.ExerciseView
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.word.presentation.WordExerciseViewModel
 import yaroslavgorbach.koropapps.vocabulary.utils.appComponent
+import yaroslavgorbach.koropapps.vocabulary.utils.consume
 import yaroslavgorbach.koropapps.vocabulary.utils.onBackPressed
 import javax.inject.Inject
 
-class WordExerciseFragment : Fragment(R.layout.fragment_exercise) {
+class WordExerciseFragment : Fragment(R.layout.fragment_exercise), PermissionDeniedDialog.Host {
 
     companion object {
         private const val ARG_EXERCISE_TYPE = "ARG_EXERCISE_TYPE"
@@ -52,7 +54,7 @@ class WordExerciseFragment : Fragment(R.layout.fragment_exercise) {
     private fun initDagger() {
         appComponent()
             .wordExerciseComponent()
-            .create(exerciseType)
+            .create(exerciseType, requireActivity().activityResultRegistry)
             .inject(this)
     }
 
@@ -67,6 +69,10 @@ class WordExerciseFragment : Fragment(R.layout.fragment_exercise) {
                 override fun onBack() {
                     onBackPressed()
                 }
+
+                override fun onStartStopRecording() {
+                    viewModel.onStartStopRecording()
+                }
             })
 
         exerciseView.setExerciseName(exerciseType.getExerciseName())
@@ -79,5 +85,18 @@ class WordExerciseFragment : Fragment(R.layout.fragment_exercise) {
         }
 
         viewModel.exercise.observe(viewLifecycleOwner, exerciseView::setExercise)
+
+        viewModel.showPermissionDeniedDialogEvent.consume(viewLifecycleOwner) {
+            PermissionDeniedDialog.newInstance(getString(R.string.audio_permission_denied_message))
+                .show(childFragmentManager, null)
+        }
+
+        viewModel.isVoiceRecorderRecording.observe(viewLifecycleOwner, exerciseView::setIsRecording)
+
+        viewModel.isRecordSavedEvent.consume(viewLifecycleOwner){ exerciseView.showRecordSavedSnack() }
+    }
+
+    override fun onGrantPermissionClicked() {
+        viewModel.onStartStopRecording()
     }
 }

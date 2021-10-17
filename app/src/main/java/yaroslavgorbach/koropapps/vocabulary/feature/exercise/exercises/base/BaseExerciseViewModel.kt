@@ -1,5 +1,6 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.base
 
+import android.Manifest
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,15 +11,22 @@ import yaroslavgorbach.koropapps.vocabulary.business.training.IncrementExerciseP
 import yaroslavgorbach.koropapps.vocabulary.business.training.ObserveTrainingExerciseInteractor
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerciseUi
+import yaroslavgorbach.koropapps.vocabulary.utils.LiveEvent
+import yaroslavgorbach.koropapps.vocabulary.utils.MutableLiveEvent
+import yaroslavgorbach.koropapps.vocabulary.utils.feature.permition.PermissionManager
+import yaroslavgorbach.koropapps.vocabulary.utils.feature.voicerecorder.VoiceRecorder
+import yaroslavgorbach.koropapps.vocabulary.utils.send
 import java.util.*
 
 open class BaseExerciseViewModel(
     private val exerciseType: ExerciseType,
     private val incrementExercisePerformedInteractor: IncrementExercisePerformedInteractor,
     private val saveStatisticsInteractor: SaveStatisticsInteractor,
-    private val observeTrainingExerciseInteractor: ObserveTrainingExerciseInteractor
+    private val observeTrainingExerciseInteractor: ObserveTrainingExerciseInteractor,
+    private val voiceRecorder: VoiceRecorder,
+    private val permissionManager: PermissionManager
 ) : ViewModel() {
-    protected val disposables: CompositeDisposable = CompositeDisposable()
+    private val disposables: CompositeDisposable = CompositeDisposable()
 
     var numberOnNextCLicked: Int = 0
         private set
@@ -55,11 +63,16 @@ open class BaseExerciseViewModel(
     val exercise: LiveData<TrainingExerciseUi>
         get() = _exercise
 
-    open fun onNextClick() {
-        incrementNumberOnNextClicked()
-        measureClickInterval()
-        incrementExercisePerformed()
-    }
+    val isVoiceRecorderRecording: LiveData<Boolean>
+        get() = voiceRecorder.isRecording
+
+    val isRecordSavedEvent: LiveEvent<Unit>
+        get() = voiceRecorder.isRecordSaved
+
+    private val _showPermissionDeniedDialogEvent: MutableLiveEvent<Unit> = MutableLiveEvent()
+
+    val showPermissionDeniedDialogEvent: LiveEvent<Unit>
+        get() = _showPermissionDeniedDialogEvent
 
     private fun incrementNumberOnNextClicked() {
         numberOnNextCLicked++
@@ -80,7 +93,7 @@ open class BaseExerciseViewModel(
         }
     }
 
-    protected fun saveStatistics(doOnComplete: () -> Unit = {}) {
+    private fun saveStatistics(doOnComplete: () -> Unit = {}) {
         if (isStatisticsSaved.not()) {
             saveStatisticsInteractor(
                 exerciseType = exerciseType,
@@ -97,10 +110,47 @@ open class BaseExerciseViewModel(
         }
     }
 
+    private fun checkOrRequestRecordAudioPermission(onGranted: () -> Unit) {
+        permissionManager.checkPermission(
+            permission = Manifest.permission.RECORD_AUDIO
+        ) { userHasPermission ->
+            if (userHasPermission) {
+                onGranted()
+            } else {
+                permissionManager.requestPermission(Manifest.permission.RECORD_AUDIO) { isGranted ->
+                    if (isGranted) {
+                        onGranted()
+                    } else {
+                        _showPermissionDeniedDialogEvent.send(Unit)
+                    }
+                }
+            }
+        }
+    }
+
     private fun disposeDisposables() {
         if (disposables.isDisposed.not()) {
             disposables.dispose()
         }
+    }
+
+    open fun onNextClick() {
+        incrementNumberOnNextClicked()
+        measureClickInterval()
+        incrementExercisePerformed()
+    }
+
+    fun onStartStopRecording() {
+        checkOrRequestRecordAudioPermission {
+            isVoiceRecorderRecording.value?.let { isRecording ->
+                if (isRecording) {
+                    voiceRecorder.stop()
+                } else {
+                    voiceRecorder.start(exerciseType.getExerciseName().name.lowercase())
+                }
+            }
+        }
+
     }
 
     override fun onCleared() {

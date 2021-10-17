@@ -66,6 +66,11 @@
     <string name="vocabulary">Словарный запас</string>
     <string name="communication">Навык общения</string>
     <string name="no_favorites">Избранных упражнений нет</string>
+    <string name="permission_denied_error_title">Ошибка доступа</string>
+    <string name="grant_permission">Дать разрешение</string>
+    <string name="close">Закрыть</string>
+    <string name="audio_permission_denied_message">Для работы функционала диктофона необходимо дать разрешение</string>
+    <string name="record_saved">Запись успешно сохранена</string>
 
     <string-array name="empty_array" />
 </resources>

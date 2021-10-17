@@ -10,6 +10,8 @@ import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameTo
 import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToShortDescriptionResMapper
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.base.BaseExerciseViewModel
+import yaroslavgorbach.koropapps.vocabulary.utils.feature.permition.PermissionManager
+import yaroslavgorbach.koropapps.vocabulary.utils.feature.voicerecorder.VoiceRecorder
 import javax.inject.Inject
 
 class WordExerciseViewModel @Inject constructor(
@@ -17,12 +19,16 @@ class WordExerciseViewModel @Inject constructor(
     private val application: Application,
     incrementExercisePerformedInteractor: IncrementExercisePerformedInteractor,
     observeTrainingExerciseInteractor: ObserveTrainingExerciseInteractor,
-    saveStatisticsInteractor: SaveStatisticsInteractor
+    saveStatisticsInteractor: SaveStatisticsInteractor,
+    voiceRecorder: VoiceRecorder,
+    permissionManager: PermissionManager
 ) : BaseExerciseViewModel(
     exerciseType,
     incrementExercisePerformedInteractor,
     saveStatisticsInteractor,
-    observeTrainingExerciseInteractor
+    observeTrainingExerciseInteractor,
+    voiceRecorder,
+    permissionManager
 ) {
 
     private val exerciseNameToExerciseRandomWordMapper =

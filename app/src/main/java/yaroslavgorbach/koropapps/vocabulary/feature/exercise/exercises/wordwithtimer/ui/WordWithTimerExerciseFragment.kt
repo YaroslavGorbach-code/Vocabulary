@@ -54,7 +54,7 @@ class WordWithTimerExerciseFragment : Fragment(R.layout.fragment_exercise_with_t
     private fun initDagger() {
         appComponent()
             .wordWithTimerExerciseComponent()
-            .create(exerciseType)
+            .create(exerciseType, requireActivity().activityResultRegistry)
             .inject(this)
     }
 
