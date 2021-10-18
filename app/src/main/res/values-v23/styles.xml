@@ -5,6 +5,11 @@
         <item name="android:windowLightStatusBar">true</item>
     </style>
 
+    <style name="BaseLayoutItem.InteractiveItem">
+        <item name="android:foreground">?selectableItemBackground</item>
+        <item name="android:stateListAnimator">@animator/interactive_item</item>
+    </style>
+
     <style name="BaseAppTheme.Teal" parent="BaseAppTheme.v23">
         <item name="colorPrimary">@color/TealPrimary</item>
         <item name="colorPrimaryVariant">@color/TealPrimaryVariant</item>
