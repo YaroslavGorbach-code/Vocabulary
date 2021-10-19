@@ -8,6 +8,7 @@ import kotlinx.coroutines.InternalCoroutinesApi
 import yaroslavgorbach.koropapps.vocabulary.MainActivity
 import yaroslavgorbach.koropapps.vocabulary.di.business.exercises.BusinessExercisesModule
 import yaroslavgorbach.koropapps.vocabulary.di.business.phrase.BusinessPhraseModule
+import yaroslavgorbach.koropapps.vocabulary.di.business.records.BusinessRecordsModule
 import yaroslavgorbach.koropapps.vocabulary.di.business.settings.BusinessSettingsModule
 import yaroslavgorbach.koropapps.vocabulary.di.business.statistics.BusinessStatisticsModule
 import yaroslavgorbach.koropapps.vocabulary.di.business.training.BusinessTrainingModule
@@ -20,6 +21,7 @@ import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.di.ExercisesLi
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.di.LevelComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.profile.di.ProfileComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.settings.di.SettingsComponent
+import yaroslavgorbach.koropapps.vocabulary.feature.records.di.RecordsComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.training.di.TrainingComponent
 import javax.inject.Singleton
 
@@ -30,7 +32,8 @@ import javax.inject.Singleton
         BusinessExercisesModule::class,
         BusinessStatisticsModule::class,
         BusinessPhraseModule::class,
-        BusinessSettingsModule::class
+        BusinessSettingsModule::class,
+        BusinessRecordsModule::class,
     ]
 )
 interface AppComponent {
@@ -52,6 +55,8 @@ interface AppComponent {
     fun wordWithTimerExerciseComponent(): WordWithTimerExerciseComponent.Factory
 
     fun wordWithStageExerciseComponent(): WordWithStageExerciseComponent.Factory
+
+    fun recordsComponent(): RecordsComponent.Factory
 
     @InternalCoroutinesApi
     fun settingsComponent(): SettingsComponent.Factory
