@@ -5,10 +5,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import yaroslavgorbach.koropapps.vocabulary.databinding.ItemRecordBinding
+import yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.recycler.SwipeDeleteDecor
 import yaroslavgorbach.koropapps.vocabulary.feature.records.model.RecordUi
 import yaroslavgorbach.koropapps.vocabulary.utils.inflateBind
 
-class RecordsListAdapter(private val onRecordClick: (RecordUi) -> Unit) :
+class RecordsListAdapter(private val onRecordClick: (RecordUi) -> Unit, private val swipeDeleteDecor: SwipeDeleteDecor) :
     ListAdapter<RecordUi, RecordsListAdapter.ViewHolder>(object :
         DiffUtil.ItemCallback<RecordUi>() {
         override fun areItemsTheSame(oldItem: RecordUi, newItem: RecordUi): Boolean {
@@ -33,6 +34,8 @@ class RecordsListAdapter(private val onRecordClick: (RecordUi) -> Unit) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
+
+    fun getItemByPosition(position: Int) = getItem(position)
 
     inner class ViewHolder(private val binding: ItemRecordBinding) :
         RecyclerView.ViewHolder(binding.root) {

@@ -1,5 +1,6 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.records.presentation
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -28,6 +29,7 @@ class RecordsViewModel @Inject constructor(
     }
 
     private fun startPauseRecordPlayer(record: RecordUi) {
+        Log.i("recordstate", record.recordState.toString())
         when (record.recordState) {
             is RecordUi.RecordState.Pause -> recordsPlayer.resume()
             is RecordUi.RecordState.Playing -> recordsPlayer.pause()
@@ -55,10 +57,10 @@ class RecordsViewModel @Inject constructor(
 
             set(
                 elementIndex, record.copy(
-                    recordState = if (record.recordState is RecordUi.RecordState.Playing) {
-                        RecordUi.RecordState.Pause
-                    } else {
-                        RecordUi.RecordState.Playing
+                    recordState = when(record.recordState){
+                        is RecordUi.RecordState.Pause ->
+                        is RecordUi.RecordState.Playing ->
+                        is RecordUi.RecordState.Stop ->
                     }
                 )
             )
@@ -81,6 +83,13 @@ class RecordsViewModel @Inject constructor(
     fun setStoppedUiStateToAllRecords() {
         _records.value = _records.value?.toMutableList()?.onEach {
             it.recordState = RecordUi.RecordState.Stop
+        }
+    }
+
+    fun removeRecord(record: RecordUi) {
+        // TODO: 20.10.2021 remove file also
+        _records.value = _records.value?.toMutableList()?.filter {
+            record.name != it.name
         }
     }
 }
