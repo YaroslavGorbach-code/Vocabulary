@@ -59,6 +59,10 @@ class RecordsListFragment : Fragment(R.layout.fragment_records_list) {
 
     private fun initObservers() {
         viewModel.records.observe(viewLifecycleOwner, recordsView::setRecords)
+
+        viewModel.playerFinishedEvent.observe(viewLifecycleOwner) {
+            viewModel.setStoppedUiStateToAllRecords()
+        }
     }
 
     override fun onDestroyView() {

@@ -6,7 +6,13 @@ import java.io.File
 import java.util.*
 import java.util.concurrent.TimeUnit
 
-data class RecordUi(val file: File, var isPlaying: Boolean = false) {
+data class RecordUi(val file: File, var recordState: RecordState = RecordState.Stop) {
+
+    sealed class RecordState {
+        object Playing : RecordState()
+        object Pause : RecordState()
+        object Stop : RecordState()
+    }
 
     val lastModified: String
         get() = DateUtils.getRelativeTimeSpanString(file.lastModified()).toString()
@@ -18,7 +24,7 @@ data class RecordUi(val file: File, var isPlaying: Boolean = false) {
         get() = getFileDuration(file)
 
     val playIconRes: Int
-        get() = if (isPlaying) R.drawable.ic_pause_round else R.drawable.ic_play_round
+        get() = if (recordState == RecordState.Playing) R.drawable.ic_pause_round else R.drawable.ic_play_round
 
 
     private fun getFileDuration(file: File): String {
