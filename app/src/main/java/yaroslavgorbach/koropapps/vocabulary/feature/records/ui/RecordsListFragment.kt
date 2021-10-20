@@ -54,6 +54,10 @@ class RecordsListFragment : Fragment(R.layout.fragment_records_list) {
                 override fun onRecord(record: RecordUi) {
                     viewModel.startPauseRecord(record)
                 }
+
+                override fun onRemoveRecord(record: RecordUi) {
+                    viewModel.removeRecord(record)
+                }
             })
     }
 

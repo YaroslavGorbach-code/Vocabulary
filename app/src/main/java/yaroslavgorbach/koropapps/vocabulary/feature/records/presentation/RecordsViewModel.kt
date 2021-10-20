@@ -83,4 +83,11 @@ class RecordsViewModel @Inject constructor(
             it.recordState = RecordUi.RecordState.Stop
         }
     }
+
+    fun removeRecord(record: RecordUi) {
+        // TODO: 20.10.2021 remove file also
+        _records.value = _records.value?.toMutableList()?.filter {
+            record.name != it.name
+        }
+    }
 }
