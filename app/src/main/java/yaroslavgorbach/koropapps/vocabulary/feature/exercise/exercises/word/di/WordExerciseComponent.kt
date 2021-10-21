@@ -1,5 +1,6 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.word.di
 
+import androidx.activity.result.ActivityResultRegistry
 import dagger.BindsInstance
 import dagger.Subcomponent
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
@@ -12,6 +13,9 @@ interface WordExerciseComponent {
 
     @Subcomponent.Factory
     interface Factory {
-        fun create(@BindsInstance exerciseType: ExerciseType): WordExerciseComponent
+        fun create(
+            @BindsInstance exerciseType: ExerciseType,
+            @BindsInstance activityResultRegistry: ActivityResultRegistry
+        ): WordExerciseComponent
     }
 }

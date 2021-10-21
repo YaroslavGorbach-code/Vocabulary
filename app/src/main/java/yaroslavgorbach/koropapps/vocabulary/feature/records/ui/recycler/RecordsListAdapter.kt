@@ -1,0 +1,59 @@
+package yaroslavgorbach.koropapps.vocabulary.feature.records.ui.recycler
+
+import android.view.ViewGroup
+import androidx.annotation.MainThread
+import androidx.recyclerview.widget.RecyclerView
+import yaroslavgorbach.koropapps.vocabulary.databinding.ItemRecordBinding
+import yaroslavgorbach.koropapps.vocabulary.feature.records.model.RecordUi
+import yaroslavgorbach.koropapps.vocabulary.utils.inflateBind
+
+class RecordsListAdapter(private val onRecordClick: (RecordUi) -> Unit) :
+    RecyclerView.Adapter<RecordsListAdapter.ViewHolder>() {
+
+    private var items: List<RecordUi> = emptyList()
+
+    init {
+        setHasStableIds(true)
+    }
+
+    @MainThread
+    fun submitList(list: List<RecordUi>) {
+        items = list
+        notifyDataSetChanged()
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return ViewHolder(parent.inflateBind(ItemRecordBinding::inflate))
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(getItem(position))
+    }
+
+    fun getItemByPosition(position: Int) = getItem(position)
+
+    override fun getItemCount() = items.size
+
+    override fun getItemId(position: Int): Long {
+        return getItem(position).file.length()
+    }
+
+    inner class ViewHolder(private val binding: ItemRecordBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            binding.root.setOnClickListener { onRecordClick(getItem(absoluteAdapterPosition)) }
+        }
+
+        fun bind(item: RecordUi) {
+            with(binding) {
+                date.text = item.lastModified
+                duration.text = item.duration
+                name.text = item.name
+                iconPlay.setImageResource(item.playIconRes)
+            }
+        }
+    }
+
+    private fun getItem(position: Int) = items[position]
+}

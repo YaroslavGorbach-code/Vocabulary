@@ -13,8 +13,10 @@ import yaroslavgorbach.koropapps.vocabulary.feature.common.model.WordCategory
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.base.BaseExerciseViewModel
 import yaroslavgorbach.koropapps.vocabulary.utils.LiveEvent
 import yaroslavgorbach.koropapps.vocabulary.utils.MutableLiveEvent
+import yaroslavgorbach.koropapps.vocabulary.utils.feature.permition.PermissionManager
 import yaroslavgorbach.koropapps.vocabulary.utils.feature.timer.Timer
 import yaroslavgorbach.koropapps.vocabulary.utils.feature.timer.TimerImp
+import yaroslavgorbach.koropapps.vocabulary.utils.feature.voicerecorder.VoiceRecorder
 import yaroslavgorbach.koropapps.vocabulary.utils.send
 import javax.inject.Inject
 
@@ -23,12 +25,16 @@ class WordWithTimerViewModel @Inject constructor(
     private val application: Application,
     incrementExercisePerformedInteractor: IncrementExercisePerformedInteractor,
     saveStatisticsInteractor: SaveStatisticsInteractor,
-    observeTrainingExerciseInteractor: ObserveTrainingExerciseInteractor
+    observeTrainingExerciseInteractor: ObserveTrainingExerciseInteractor,
+    voiceRecorder: VoiceRecorder,
+    permissionManager: PermissionManager
 ) : BaseExerciseViewModel(
     exerciseType,
     incrementExercisePerformedInteractor,
     saveStatisticsInteractor,
-    observeTrainingExerciseInteractor
+    observeTrainingExerciseInteractor,
+    voiceRecorder,
+    permissionManager
 ) {
 
     private val letters: MutableLiveData<List<String>> = MutableLiveData(

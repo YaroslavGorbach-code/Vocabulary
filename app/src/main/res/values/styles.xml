@@ -24,6 +24,10 @@
         <item name="android:background">?selectableItemBackground</item>
     </style>
 
+    <style name="BaseLayoutItem.InteractiveItem">
+        <item name="android:foreground">?selectableItemBackground</item>
+    </style>
+
     <style name="ShapeAppearance.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
         <item name="cornerFamily">cut</item>
     </style>

@@ -12,6 +12,7 @@ import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentNavigationBindin
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.ExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.ui.ExercisesListFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.profile.ui.ProfileFragment
+import yaroslavgorbach.koropapps.vocabulary.feature.records.ui.RecordsListFragment
 import yaroslavgorbach.koropapps.vocabulary.utils.host
 
 @InternalCoroutinesApi
@@ -66,7 +67,16 @@ class NavigationFragment : Fragment(R.layout.fragment_navigation), ExercisesList
                         setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                     }
                 }
+
+                override fun onNavigateToRecords() {
+                    val fragment = RecordsListFragment.newInstance()
+                    childFragmentManager.commit {
+                        replace(R.id.nav_container, fragment)
+                        setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    }
+                }
             })
+
     }
 
     override fun openDescription(exercise: ExerciseUi) {

@@ -51,7 +51,7 @@ class WordWithStageFragment : Fragment(R.layout.fragment_exercise_with_stages) {
     private fun initDagger() {
         appComponent()
             .wordWithStageExerciseComponent()
-            .create(exerciseType)
+            .create(exerciseType, requireActivity().activityResultRegistry)
             .inject(this)
     }
 

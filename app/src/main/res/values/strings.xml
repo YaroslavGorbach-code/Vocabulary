@@ -29,6 +29,7 @@
     <string name="title_exercises">Упражнения</string>
     <string name="exercises">Упражнения</string>
     <string name="profile">Профиль</string>
+    <string name="records">Записи</string>
     <string name="days_without_interruption">Дней подряд</string>
     <string name="time_on_training">Временя (минуты) потраченое на тренировку</string>
     <string name="settings">Настройки</string>
@@ -66,6 +67,13 @@
     <string name="vocabulary">Словарный запас</string>
     <string name="communication">Навык общения</string>
     <string name="no_favorites">Избранных упражнений нет</string>
+    <string name="permission_denied_error_title">Ошибка доступа</string>
+    <string name="grant_permission">Дать разрешение</string>
+    <string name="close">Закрыть</string>
+    <string name="audio_permission_denied_message">Для работы функционала диктофона необходимо дать разрешение</string>
+    <string name="record_saved">Запись успешно сохранена</string>
+    <string name="cancel">Отмена</string>
+    <string name="record_deleted">Запись удалена</string>
 
     <string-array name="empty_array" />
 </resources>

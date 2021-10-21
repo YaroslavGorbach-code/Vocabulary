@@ -2,6 +2,8 @@ package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.common.u
 
 import android.os.SystemClock
 import android.view.View
+import com.google.android.material.snackbar.Snackbar
+import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerciseUi
@@ -14,10 +16,13 @@ class ExerciseView(
     interface Callback {
         fun onNext()
         fun onBack()
+        fun onStartStopRecording()
     }
 
     init {
         initEvents()
+        startAllWordsChronometer()
+        startOneWordChronometer()
     }
 
     private fun initEvents() {
@@ -26,12 +31,13 @@ class ExerciseView(
             startOneWordChronometer()
         }
 
+        binding.startStopRecord.setOnClickListener {
+            callback.onStartStopRecording()
+        }
+
         binding.toolbar.setNavigationOnClickListener {
             callback.onBack()
         }
-
-        startAllWordsChronometer()
-        startOneWordChronometer()
     }
 
     fun setDescriptionText(text: String) {
@@ -52,6 +58,23 @@ class ExerciseView(
         }
 
         setAimAndPerformed(exercise.aim, exercise.performed)
+    }
+
+    fun setIsRecording(isRecording: Boolean) {
+        setRecordingButtonIcon(isRecording)
+    }
+
+    fun showRecordSavedSnack() {
+        Snackbar.make(binding.root, R.string.record_saved, Snackbar.LENGTH_SHORT).show()
+    }
+
+    private fun setRecordingButtonIcon(isRecording: Boolean) {
+        if (isRecording) {
+            binding.startStopRecord.setImageResource(R.drawable.ic_voice_recording)
+        } else {
+            binding.startStopRecord.setImageResource(R.drawable.ic_voice_record_stop)
+
+        }
     }
 
     fun setExerciseName(name: ExerciseName) {

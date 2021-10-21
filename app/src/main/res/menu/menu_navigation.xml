@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
+        android:id="@+id/menu_nav_records"
+        android:enabled="true"
+        android:icon="@drawable/ic_voice_record_stop"
+        android:orderInCategory="1"
+        android:title="@string/records" />
+
+    <item
         android:id="@+id/menu_nav_exercises"
         android:enabled="true"
-        android:title="@string/exercises"
-        android:orderInCategory="1"
-        android:icon="@drawable/ic_rocket"/>
+        android:icon="@drawable/ic_rocket"
+        android:orderInCategory="2"
+        android:title="@string/exercises" />
     <item
         android:id="@+id/menu_nav_profile"
         android:enabled="true"
-        android:title="@string/profile"
+        android:icon="@drawable/ic_person"
         android:orderInCategory="3"
-        android:icon="@drawable/ic_person"/>
+        android:title="@string/profile" />
 </menu>
