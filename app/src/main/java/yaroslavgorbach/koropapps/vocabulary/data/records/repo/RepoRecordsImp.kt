@@ -10,4 +10,8 @@ class RepoRecordsImp(private val context: Context) : RepoRecords {
             .listFiles() ?: emptyArray<File>()).toList()
     }
 
+    override fun deleteRecordFile(file: File) {
+        file.delete()
+    }
+
 }

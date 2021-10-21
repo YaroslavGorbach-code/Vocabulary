@@ -56,7 +56,15 @@ class RecordsListFragment : Fragment(R.layout.fragment_records_list) {
                 }
 
                 override fun onRemoveRecord(record: RecordUi) {
-                    viewModel.removeRecord(record)
+                    viewModel.removeRecordUi(record)
+                }
+
+                override fun onRestoreRemovedRecord() {
+                    viewModel.restorePreviouslyRemovedRecordUi()
+                }
+
+                override fun onRemovedRecordSnackDismiss() {
+                    viewModel.removeRecordPermanently()
                 }
             })
     }

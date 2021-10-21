@@ -72,6 +72,8 @@
     <string name="close">Закрыть</string>
     <string name="audio_permission_denied_message">Для работы функционала диктофона необходимо дать разрешение</string>
     <string name="record_saved">Запись успешно сохранена</string>
+    <string name="cancel">Отмена</string>
+    <string name="record_deleted">Запись удалена</string>
 
     <string-array name="empty_array" />
 </resources>
