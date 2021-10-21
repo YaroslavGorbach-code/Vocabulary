@@ -7,9 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlin.math.abs
 
 class SwipeDeleteDecor(
-    itemBg: Drawable,
+    itemBackground: Drawable,
     private val onSwipe: (viewHolder: RecyclerView.ViewHolder) -> Unit
-    ) : ItemTouchHelper(object : SimpleCallback(0, START or END) {
+) : ItemTouchHelper(object : SimpleCallback(0, START or END) {
     override fun onMove(
         recyclerView: RecyclerView,
         viewHolder: RecyclerView.ViewHolder,
@@ -31,7 +31,7 @@ class SwipeDeleteDecor(
         actionState: Int,
         isCurrentlyActive: Boolean
     ) {
-        drawBackground(viewHolder, dX, canvas)
+        drawBackgroundHint(viewHolder, dX, canvas)
 
         super.onChildDraw(
             canvas,
@@ -44,13 +44,12 @@ class SwipeDeleteDecor(
         )
     }
 
-    private fun drawBackground(
+    private fun drawBackgroundHint(
         viewHolder: RecyclerView.ViewHolder,
         dX: Float,
         canvas: Canvas
     ) {
         val item = viewHolder.itemView
-
         val clipLeft: Int = if (dX >= 0) {
             0
         } else {
@@ -63,10 +62,11 @@ class SwipeDeleteDecor(
         }
 
         canvas.clipRect(clipLeft, item.top, clipRight, item.bottom)
-        itemBg.setBounds(0, item.top, item.width, item.bottom)
-        itemBg.alpha = ((1 - abs(dX / item.width)) * 255).toInt()
-        itemBg.draw(canvas)
+        itemBackground.setBounds(0, item.top, item.width, item.bottom)
+        itemBackground.alpha = ((1 - abs(dX / item.width)) * 255).toInt()
+        itemBackground.draw(canvas)
     }
+
 
     override fun clearView(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder) {
         viewHolder.itemView.isActivated = false

@@ -1,29 +1,24 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.records.ui.recycler
 
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
+import androidx.annotation.MainThread
 import androidx.recyclerview.widget.RecyclerView
 import yaroslavgorbach.koropapps.vocabulary.databinding.ItemRecordBinding
-import yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.recycler.SwipeDeleteDecor
 import yaroslavgorbach.koropapps.vocabulary.feature.records.model.RecordUi
 import yaroslavgorbach.koropapps.vocabulary.utils.inflateBind
 
-class RecordsListAdapter(private val onRecordClick: (RecordUi) -> Unit, private val swipeDeleteDecor: SwipeDeleteDecor) :
-    ListAdapter<RecordUi, RecordsListAdapter.ViewHolder>(object :
-        DiffUtil.ItemCallback<RecordUi>() {
-        override fun areItemsTheSame(oldItem: RecordUi, newItem: RecordUi): Boolean {
-            return oldItem.name == newItem.name
-        }
+class RecordsListAdapter(private val onRecordClick: (RecordUi) -> Unit) :
+    RecyclerView.Adapter<RecordsListAdapter.ViewHolder>() {
 
-        override fun areContentsTheSame(oldItem: RecordUi, newItem: RecordUi): Boolean {
-            return oldItem == newItem
-        }
+    private var items: List<RecordUi> = emptyList()
 
-    }) {
+    init {
+        setHasStableIds(true)
+    }
 
-    override fun submitList(list: List<RecordUi>?) {
-        super.submitList(list)
+    @MainThread
+    fun submitList(list: List<RecordUi>) {
+        items = list
         notifyDataSetChanged()
     }
 
@@ -36,6 +31,12 @@ class RecordsListAdapter(private val onRecordClick: (RecordUi) -> Unit, private 
     }
 
     fun getItemByPosition(position: Int) = getItem(position)
+
+    override fun getItemCount() = items.size
+
+    override fun getItemId(position: Int): Long {
+        return getItem(position).file.length()
+    }
 
     inner class ViewHolder(private val binding: ItemRecordBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -53,4 +54,6 @@ class RecordsListAdapter(private val onRecordClick: (RecordUi) -> Unit, private 
             }
         }
     }
+
+    private fun getItem(position: Int) = items[position]
 }

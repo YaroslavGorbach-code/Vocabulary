@@ -1,6 +1,5 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.records.presentation
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -29,7 +28,6 @@ class RecordsViewModel @Inject constructor(
     }
 
     private fun startPauseRecordPlayer(record: RecordUi) {
-        Log.i("recordstate", record.recordState.toString())
         when (record.recordState) {
             is RecordUi.RecordState.Pause -> recordsPlayer.resume()
             is RecordUi.RecordState.Playing -> recordsPlayer.pause()
@@ -50,20 +48,21 @@ class RecordsViewModel @Inject constructor(
         }
 
         _records.value = _records.value?.toMutableList()?.apply {
+            val currentRecordIndex = indexOfFirst { it.name == record.name }
 
-            val elementIndex = indexOfFirst { it.name == record.name }
+            stopPlayingExceptCurrent(currentRecordIndex)
 
-            stopPlayingExceptCurrent(elementIndex)
-
-            set(
-                elementIndex, record.copy(
+            val newRecord = set(
+                currentRecordIndex, record.copy(
                     recordState = when(record.recordState){
-                        is RecordUi.RecordState.Pause ->
-                        is RecordUi.RecordState.Playing ->
-                        is RecordUi.RecordState.Stop ->
+                        is RecordUi.RecordState.Pause -> RecordUi.RecordState.Playing
+                        is RecordUi.RecordState.Playing -> RecordUi.RecordState.Pause
+                        is RecordUi.RecordState.Stop -> RecordUi.RecordState.Playing
                     }
                 )
             )
+
+            startPauseRecordPlayer(newRecord)
         }
     }
 
@@ -77,7 +76,6 @@ class RecordsViewModel @Inject constructor(
 
     fun startPauseRecord(record: RecordUi) {
         changeStartPauseUiState(record)
-        startPauseRecordPlayer(record)
     }
 
     fun setStoppedUiStateToAllRecords() {

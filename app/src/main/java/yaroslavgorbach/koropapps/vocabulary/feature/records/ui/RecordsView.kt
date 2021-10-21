@@ -24,11 +24,11 @@ class RecordsView(private val binding: FragmentRecordsListBinding, private val c
     }
 
     private fun initViews() {
-        swipeDecor = SwipeDeleteDecor(binding.getDrawable(R.drawable.ic_delete)!!) { viewHolder ->
+        swipeDecor = SwipeDeleteDecor(binding.getDrawable(R.drawable.bg_delete_record_hint)!!) { viewHolder ->
             callback.onRemoveRecord(recordsAdapter?.getItemByPosition(viewHolder.absoluteAdapterPosition)!!)
         }.also { it.attachToRecyclerView(binding.recordsList) }
 
-        recordsAdapter = RecordsListAdapter(callback::onRecord, swipeDecor!!)
+        recordsAdapter = RecordsListAdapter(callback::onRecord)
 
         binding.recordsList.adapter = recordsAdapter
 

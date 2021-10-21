@@ -44,13 +44,15 @@ class RecordPlayerImp : RecordPlayer, LifecycleObserver {
             e.printStackTrace()
         }
         mediaPlayer?.setOnPreparedListener { mediaPlayer!!.start() }
-        mediaPlayer?.setOnCompletionListener { stop() }
+        mediaPlayer?.setOnCompletionListener {
+            _finishEvent.send(Unit)
+            stop()
+        }
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
     override fun stop() {
         if (mediaPlayer != null) {
-            _finishEvent.send(Unit)
             mediaPlayer!!.stop()
             mediaPlayer!!.release()
             mediaPlayer = null
