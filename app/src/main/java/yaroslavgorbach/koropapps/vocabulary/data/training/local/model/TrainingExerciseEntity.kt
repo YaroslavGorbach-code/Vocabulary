@@ -12,7 +12,7 @@ data class TrainingExerciseEntity(
     val id: Long = 0,
     val trainingId: Long = 0,
     val name: ExerciseName = ExerciseName.NARRATOR_VERBS,
-    val aim: Int = 0,
+    val aim: Int = 1,
     var performed: Int = 0
 ) {
     val progress: Int
