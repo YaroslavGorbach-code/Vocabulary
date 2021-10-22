@@ -47,38 +47,22 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toTopOf="@+id/materialCardView"
+            app:layout_constraintBottom_toTopOf="@+id/guideline9"
             app:layout_constraintEnd_toStartOf="@+id/guideline8"
             app:layout_constraintStart_toStartOf="@+id/guideline7"
             app:layout_constraintTop_toBottomOf="@+id/aim_and_performed"
             tools:itemCount="5"
             tools:listitem="@layout/item_stage" />
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/materialCardView"
+        <include
+            android:id="@+id/card_text"
+            layout="@layout/layout_card_with_auto_size_text"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:cardBackgroundColor="?colorPrimary"
-            app:cardCornerRadius="6dp"
             app:layout_constraintBottom_toTopOf="@+id/guideline15"
             app:layout_constraintEnd_toStartOf="@+id/guideline8"
             app:layout_constraintStart_toStartOf="@+id/guideline7"
-            app:layout_constraintTop_toTopOf="@+id/guideline9">
-
-            <TextView
-                android:id="@+id/word"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:layout_margin="8dp"
-                android:textColor="@android:color/white"
-                app:autoSizeMaxTextSize="30sp"
-                app:autoSizeMinTextSize="8sp"
-                app:autoSizeTextType="uniform"
-                tools:text="0" />
-
-        </com.google.android.material.card.MaterialCardView>
-
+            app:layout_constraintTop_toTopOf="@+id/guideline9" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline7"

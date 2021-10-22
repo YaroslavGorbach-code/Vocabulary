@@ -50,7 +50,7 @@ class WordWithStageExerciseView(
     }
 
     fun setWord(word: String) {
-        binding.word.text = word
+        binding.cardText.word.text = word
         startOneWordChronometer()
     }
 

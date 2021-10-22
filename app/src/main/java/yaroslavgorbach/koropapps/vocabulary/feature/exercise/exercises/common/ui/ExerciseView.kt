@@ -45,11 +45,13 @@ class ExerciseView(
     }
 
     fun setShortDescriptionAboveWord(text: String) {
-        binding.letter.setAtTop(text)
+        binding.cardText.textAtTop.visibility = View.VISIBLE
+
+        binding.cardText.textAtTop.text = text
     }
 
     fun setWord(word: String) {
-        binding.letter.setText(word)
+        binding.cardText.word.text = word
     }
 
     fun setExercise(exercise: TrainingExerciseUi) {

@@ -37,20 +37,6 @@
                 tools:text="Description short" />
         </com.google.android.material.appbar.AppBarLayout>
 
-        <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.customview.CardTextView
-            android:id="@+id/letter"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:autoTextSize="true"
-            app:cardBackgroundColor="?colorPrimary"
-            app:cardCornerRadius="6dp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline15"
-            app:layout_constraintEnd_toStartOf="@+id/guideline8"
-            app:layout_constraintStart_toStartOf="@+id/guideline7"
-            app:layout_constraintTop_toTopOf="@+id/guideline9"
-            app:textSize="40sp"
-            tools:description="description"
-            tools:text="A" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline7"
@@ -89,14 +75,24 @@
             app:autoTextSize="false"
             app:cardBackgroundColor="?colorPrimary"
             app:cardCornerRadius="6dp"
-            app:layout_constraintBottom_toTopOf="@+id/letter"
-            app:layout_constraintEnd_toEndOf="@+id/letter"
-            app:layout_constraintStart_toStartOf="@+id/letter"
+            app:layout_constraintBottom_toTopOf="@+id/guideline9"
+            app:layout_constraintEnd_toStartOf="@+id/guideline8"
+            app:layout_constraintStart_toStartOf="@+id/guideline7"
             app:layout_constraintTop_toBottomOf="@+id/appBarLayout5"
             app:text="1/20"
             app:textSize="7sp"
-            tools:visibility="visible"
-            tools:ignore="SmallSp" />
+            tools:ignore="SmallSp"
+            tools:visibility="visible" />
+
+        <include
+            android:id="@+id/card_text"
+            layout="@layout/layout_card_with_auto_size_text"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline15"
+            app:layout_constraintEnd_toStartOf="@+id/guideline8"
+            app:layout_constraintStart_toStartOf="@+id/guideline7"
+            app:layout_constraintTop_toTopOf="@+id/guideline9" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.bottomappbar.BottomAppBar
