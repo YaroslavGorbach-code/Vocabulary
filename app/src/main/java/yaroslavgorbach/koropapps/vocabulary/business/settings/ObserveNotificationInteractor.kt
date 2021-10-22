@@ -7,7 +7,7 @@ import yaroslavgorbach.koropapps.vocabulary.data.settings.repo.RepoSettings
 
 class ObserveNotificationInteractor(private val repoSettings: RepoSettings) {
 
-    operator fun invoke(context: Context): Flow<Notification> {
-        return repoSettings.observeNotification(context)
+    operator fun invoke(): Flow<Notification> {
+        return repoSettings.observeNotification()
     }
 }

@@ -84,33 +84,29 @@ class SettingsFragment : Fragment(R.layout.fragment_settings), ChoseThemeDialog.
     }
 
     private fun initObservers() {
-        viewModel.observeCurrentTheme(requireContext())
-            .observe(viewLifecycleOwner, settingsView::setCurrentTheme)
+        viewModel.currentTheme.observe(viewLifecycleOwner, settingsView::setCurrentTheme)
 
-        viewModel.observeThemes(requireContext())
-            .observe(viewLifecycleOwner, settingsView::setThemes)
+        viewModel.themes.observe(viewLifecycleOwner, settingsView::setThemes)
 
-        viewModel.observeUiMode(requireContext())
-            .observe(viewLifecycleOwner, settingsView::setUiMode)
+        viewModel.uiMode.observe(viewLifecycleOwner, settingsView::setUiMode)
 
-        viewModel.observeNotification(requireContext())
-            .observe(viewLifecycleOwner, settingsView::setNotification)
+        viewModel.notification.observe(viewLifecycleOwner, settingsView::setNotification)
     }
 
     override fun onThemeChanged(theme: Theme) {
-        viewModel.changeTheme(requireContext(), theme)
+        viewModel.changeTheme(theme)
 
         host<ThemeChangedListener>().onThemeChanged(theme)
     }
 
     override fun onUiModeChanged(uiMode: UiMode) {
-        viewModel.changeUiMode(requireContext(), uiMode)
+        viewModel.changeUiMode(uiMode)
 
         host<ThemeChangedListener>().onUiModeChanged(uiMode)
     }
 
     override fun onNotificationChanged(notification: Notification) {
-        viewModel.updateNotification(requireContext(), notification)
+        viewModel.updateNotification(notification)
 
         requireContext().scheduleNotification(notification)
     }

@@ -6,7 +6,7 @@ import yaroslavgorbach.koropapps.vocabulary.data.settings.repo.RepoSettings
 
 class UpdateNotificationInteractor(private val repoSettings: RepoSettings) {
 
-    suspend operator fun invoke(context: Context, notification: Notification) {
-        repoSettings.updateNotification(context, notification)
+    suspend operator fun invoke(notification: Notification) {
+        repoSettings.updateNotification(notification)
     }
 }

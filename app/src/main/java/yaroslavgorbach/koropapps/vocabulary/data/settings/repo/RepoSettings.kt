@@ -1,23 +1,22 @@
 package yaroslavgorbach.koropapps.vocabulary.data.settings.repo
 
-import android.content.Context
 import kotlinx.coroutines.flow.Flow
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Notification
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Theme
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.UiMode
 
 interface RepoSettings {
-    fun observeThemes(context: Context): Flow<List<Theme>>
+    fun observeThemes(): Flow<List<Theme>>
 
-    fun observeCurrentTheme(context: Context): Flow<Theme>
+    fun observeCurrentTheme(): Flow<Theme>
 
-    suspend fun changeTheme(context: Context, theme: Theme)
+    suspend fun changeTheme(theme: Theme)
 
-    fun observeUiMode(context: Context): Flow<UiMode>
+    fun observeUiMode(): Flow<UiMode>
 
-    suspend fun changeUiMode(context: Context, uiMode: UiMode)
+    suspend fun changeUiMode(uiMode: UiMode)
 
-    fun observeNotification(context: Context): Flow<Notification>
+    fun observeNotification(): Flow<Notification>
 
-    suspend fun updateNotification(context: Context, notification: Notification)
+    suspend fun updateNotification(notification: Notification)
 }

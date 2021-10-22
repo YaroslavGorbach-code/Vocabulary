@@ -58,8 +58,8 @@ class MainActivity : AppCompatActivity(), NavigationFragment.Router,
 
     private fun setCurrentTheme(doAfterSet: () -> Unit) {
         lifecycleScope.launch {
-            onThemeChanged(observeCurrentThemeInteractor(this@MainActivity).first())
-            onUiModeChanged(observeUiModeInteractor(this@MainActivity).first())
+            onThemeChanged(observeCurrentThemeInteractor().first())
+            onUiModeChanged(observeUiModeInteractor().first())
             setContentView(R.layout.activity_main)
             doAfterSet()
         }

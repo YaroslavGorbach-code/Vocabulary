@@ -7,7 +7,7 @@ import yaroslavgorbach.koropapps.vocabulary.data.settings.repo.RepoSettings
 
 class ObserveThemesInteractor(private val repoSettings: RepoSettings) {
 
-    operator fun invoke(context: Context): Flow<List<Theme>> {
-        return repoSettings.observeThemes(context)
+    operator fun invoke(): Flow<List<Theme>> {
+        return repoSettings.observeThemes()
     }
 }

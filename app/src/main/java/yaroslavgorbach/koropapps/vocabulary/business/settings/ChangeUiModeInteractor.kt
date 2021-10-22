@@ -6,7 +6,7 @@ import yaroslavgorbach.koropapps.vocabulary.data.settings.repo.RepoSettings
 
 class ChangeUiModeInteractor(private val repoSettings: RepoSettings) {
 
-    suspend operator fun invoke(context: Context, uiMode: UiMode){
-        repoSettings.changeUiMode(context, uiMode)
+    suspend operator fun invoke(uiMode: UiMode){
+        repoSettings.changeUiMode(uiMode)
     }
 }

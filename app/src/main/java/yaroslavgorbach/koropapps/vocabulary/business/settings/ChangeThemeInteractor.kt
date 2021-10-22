@@ -6,7 +6,7 @@ import yaroslavgorbach.koropapps.vocabulary.data.settings.repo.RepoSettings
 
 class ChangeThemeInteractor(private val repoSettings: RepoSettings) {
 
-    suspend operator fun invoke(context: Context, theme: Theme) {
-        repoSettings.changeTheme(context, theme)
+    suspend operator fun invoke(theme: Theme) {
+        repoSettings.changeTheme(theme)
     }
 }

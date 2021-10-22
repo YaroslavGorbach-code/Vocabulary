@@ -1,6 +1,5 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.profile.settings.presentation
 
-import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
@@ -22,31 +21,28 @@ class SettingsViewModel @Inject constructor(
     private val observeNotificationInteractor: ObserveNotificationInteractor
 ) : ViewModel() {
 
-    fun observeCurrentTheme(context: Context): LiveData<Theme> {
-        return observeCurrentThemeInteractor(context).asLiveData(viewModelScope.coroutineContext)
+    val currentTheme: LiveData<Theme>
+        get() = observeCurrentThemeInteractor().asLiveData(viewModelScope.coroutineContext)
+
+    val themes: LiveData<List<Theme>>
+        get() = observeThemesInteractor().asLiveData()
+
+    val uiMode: LiveData<UiMode>
+        get() = observeUiModeInteractor().asLiveData()
+
+    val notification: LiveData<Notification>
+        get() = observeNotificationInteractor().asLiveData()
+
+    fun changeTheme(theme: Theme) {
+        viewModelScope.launch { changeThemeInteractor(theme) }
     }
 
-    fun changeTheme(context: Context, theme: Theme) {
-        viewModelScope.launch { changeThemeInteractor(context, theme) }
+    fun changeUiMode(uiMode: UiMode) {
+        viewModelScope.launch { changeUiModeInteractor(uiMode) }
     }
 
-    fun observeThemes(context: Context): LiveData<List<Theme>> {
-        return observeThemesInteractor(context).asLiveData()
+    fun updateNotification(notification: Notification) {
+        viewModelScope.launch { updateNotificationInteractor(notification) }
     }
 
-    fun changeUiMode(context: Context, uiMode: UiMode) {
-        viewModelScope.launch { changeUiModeInteractor(context, uiMode) }
-    }
-
-    fun observeUiMode(context: Context): LiveData<UiMode> {
-        return observeUiModeInteractor(context).asLiveData()
-    }
-
-    fun updateNotification(context: Context, notification: Notification) {
-        viewModelScope.launch { updateNotificationInteractor(context, notification) }
-    }
-
-    fun observeNotification(context: Context): LiveData<Notification> {
-        return observeNotificationInteractor(context).asLiveData()
-    }
 }
