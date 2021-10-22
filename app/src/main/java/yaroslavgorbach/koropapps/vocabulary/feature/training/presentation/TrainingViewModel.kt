@@ -50,6 +50,7 @@ class TrainingViewModel @Inject constructor(
 
     fun changeFilter(filterUi: TrainingExerciseCategoryFilterUi) {
         currentExerciseCategoryFilter = filterUi
+        getCurrentTrainingWithExercises()
     }
 
 }
