@@ -52,7 +52,6 @@ class RecordsView(private val binding: FragmentRecordsListBinding, private val c
 
             }.also { it.attachToRecyclerView(binding.recordsList) }
 
-
         binding.recordsList.apply {
             adapter = recordsAdapter
 

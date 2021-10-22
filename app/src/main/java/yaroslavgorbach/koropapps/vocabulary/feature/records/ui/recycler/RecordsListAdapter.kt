@@ -1,5 +1,6 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.records.ui.recycler
 
+import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.MainThread
 import androidx.recyclerview.widget.RecyclerView
@@ -27,7 +28,7 @@ class RecordsListAdapter(private val onRecordClick: (RecordUi) -> Unit) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        getItem(position)?.let(holder::bind)
     }
 
     fun getItemByPosition(position: Int) = getItem(position)
@@ -35,14 +36,16 @@ class RecordsListAdapter(private val onRecordClick: (RecordUi) -> Unit) :
     override fun getItemCount() = items.size
 
     override fun getItemId(position: Int): Long {
-        return getItem(position).file.length()
+        return getItem(position)?.file?.length() ?: 0
     }
 
     inner class ViewHolder(private val binding: ItemRecordBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         init {
-            binding.root.setOnClickListener { onRecordClick(getItem(absoluteAdapterPosition)) }
+            binding.root.setOnClickListener {
+                getItem(absoluteAdapterPosition)?.let(onRecordClick)
+            }
         }
 
         fun bind(item: RecordUi) {
@@ -51,9 +54,29 @@ class RecordsListAdapter(private val onRecordClick: (RecordUi) -> Unit) :
                 duration.text = item.duration
                 name.text = item.name
                 iconPlay.setImageResource(item.playIconRes)
+
+                when (item.recordState) {
+                    RecordUi.RecordState.Pause -> {
+                        binding.seekBar.visibility = View.VISIBLE
+                    }
+                    RecordUi.RecordState.Playing -> {
+                        binding.seekBar.visibility = View.VISIBLE
+                        seekBar.progress = item.progress
+                    }
+                    RecordUi.RecordState.Stop -> {
+                        binding.seekBar.visibility = View.GONE
+                    }
+                }
             }
         }
+
     }
 
-    private fun getItem(position: Int) = items[position]
+    private fun getItem(position: Int): RecordUi? {
+        return if (position >= 0) {
+            items[position]
+        } else {
+            null
+        }
+    }
 }

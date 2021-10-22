@@ -17,6 +17,7 @@ sealed class Level {
         override val nextLevelTrainingTimeRequired = 20
         override val level: String = "1"
     }
+
     class Two : Level() {
         override val levelTrainingTimeRequired = 20
         override val nextLevelTrainingTimeRequired = 30
@@ -53,7 +54,7 @@ sealed class Level {
         override val level: String = "7"
     }
 
-    class Eight: Level() {
+    class Eight : Level() {
         override val levelTrainingTimeRequired = 95
         override val nextLevelTrainingTimeRequired = 110
         override val level: String = "8"
@@ -105,5 +106,29 @@ sealed class Level {
         override val levelTrainingTimeRequired = 210
         override val nextLevelTrainingTimeRequired = 230
         override val level: String = "16"
+    }
+
+    class Seventeen : Level() {
+        override val levelTrainingTimeRequired = 230
+        override val nextLevelTrainingTimeRequired = 250
+        override val level: String = "17"
+    }
+
+    class Eighteen : Level() {
+        override val levelTrainingTimeRequired = 250
+        override val nextLevelTrainingTimeRequired = 270
+        override val level: String = "18"
+    }
+
+    class Nineteen : Level() {
+        override val levelTrainingTimeRequired = 270
+        override val nextLevelTrainingTimeRequired = 290
+        override val level: String = "19"
+    }
+
+    class Twenty : Level() {
+        override val levelTrainingTimeRequired = 290
+        override val nextLevelTrainingTimeRequired = 220
+        override val level: String = "20"
     }
 }

@@ -26,6 +26,9 @@ class RecordsViewModel @Inject constructor(
     val playerFinishedEvent: LiveEvent<Unit>
         get() = recordsPlayer.finishEvent
 
+    val currentRecordPlayingProgress: LiveData<Int>
+        get() = recordsPlayer.progress
+
     private var previouslyRemovedRecord: RecordUi? = null
 
     init {
@@ -107,5 +110,11 @@ class RecordsViewModel @Inject constructor(
 
     fun removeRecordPermanently() {
         previouslyRemovedRecord?.file?.let(deleteRecordFileInteractor::invoke)
+    }
+
+    fun setProgressToAllRecords(progress: Int) {
+        _records.value = _records.value?.toMutableList()?.map {
+            it.apply { this.progress = progress }
+        }
     }
 }

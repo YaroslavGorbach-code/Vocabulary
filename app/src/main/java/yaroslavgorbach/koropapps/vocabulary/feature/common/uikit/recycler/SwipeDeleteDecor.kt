@@ -10,6 +10,30 @@ class SwipeDeleteDecor(
     itemBackground: Drawable,
     private val onSwipe: (viewHolder: RecyclerView.ViewHolder) -> Unit
 ) : ItemTouchHelper(object : SimpleCallback(0, START or END) {
+
+    private fun drawBackgroundHint(
+        viewHolder: RecyclerView.ViewHolder,
+        dX: Float,
+        canvas: Canvas
+    ) {
+        val item = viewHolder.itemView
+        val clipLeft: Int = if (dX >= 0) {
+            0
+        } else {
+            item.width + dX.toInt()
+        }
+        val clipRight: Int = if (dX >= 0) {
+            dX.toInt()
+        } else {
+            item.width
+        }
+
+        canvas.clipRect(clipLeft, item.top, clipRight, item.bottom)
+        itemBackground.setBounds(0, item.top, item.width, item.bottom)
+        itemBackground.alpha = ((1 - abs(dX / item.width)) * 255).toInt()
+        itemBackground.draw(canvas)
+    }
+
     override fun onMove(
         recyclerView: RecyclerView,
         viewHolder: RecyclerView.ViewHolder,
@@ -43,30 +67,6 @@ class SwipeDeleteDecor(
             isCurrentlyActive
         )
     }
-
-    private fun drawBackgroundHint(
-        viewHolder: RecyclerView.ViewHolder,
-        dX: Float,
-        canvas: Canvas
-    ) {
-        val item = viewHolder.itemView
-        val clipLeft: Int = if (dX >= 0) {
-            0
-        } else {
-            item.width + dX.toInt()
-        }
-        val clipRight: Int = if (dX >= 0) {
-            dX.toInt()
-        } else {
-            item.width
-        }
-
-        canvas.clipRect(clipLeft, item.top, clipRight, item.bottom)
-        itemBackground.setBounds(0, item.top, item.width, item.bottom)
-        itemBackground.alpha = ((1 - abs(dX / item.width)) * 255).toInt()
-        itemBackground.draw(canvas)
-    }
-
 
     override fun clearView(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder) {
         viewHolder.itemView.isActivated = false

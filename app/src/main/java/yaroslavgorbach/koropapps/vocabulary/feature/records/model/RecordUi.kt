@@ -6,7 +6,11 @@ import java.io.File
 import java.util.*
 import java.util.concurrent.TimeUnit
 
-data class RecordUi(val file: File, var recordState: RecordState = RecordState.Stop) {
+data class RecordUi(
+    val file: File,
+    var recordState: RecordState = RecordState.Stop,
+    var progress: Int = 0
+) {
 
     sealed class RecordState {
         object Playing : RecordState()

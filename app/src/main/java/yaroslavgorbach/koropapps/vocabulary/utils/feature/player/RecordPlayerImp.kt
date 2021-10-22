@@ -1,8 +1,8 @@
 package yaroslavgorbach.koropapps.vocabulary.utils.feature.player
 
 import android.media.MediaPlayer
-import android.media.MediaPlayer.OnCompletionListener
-import android.media.MediaPlayer.OnPreparedListener
+import android.os.Handler
+import android.os.Looper
 import androidx.lifecycle.*
 import yaroslavgorbach.koropapps.vocabulary.utils.LiveEvent
 import yaroslavgorbach.koropapps.vocabulary.utils.MutableLiveEvent
@@ -17,17 +17,35 @@ class RecordPlayerImp : RecordPlayer, LifecycleObserver {
     override val progress: LiveData<Int>
         get() = _progress
 
-    private val _duration: MutableLiveData<Int> = MutableLiveData()
-
-    override val duration: LiveData<Int>
-        get() = _duration
-
     private val _finishEvent: MutableLiveEvent<Unit> = MutableLiveEvent()
 
     override val finishEvent: LiveEvent<Unit>
         get() = _finishEvent
 
     private var mediaPlayer: MediaPlayer? = null
+
+    private val progressHandler: Handler = Handler(Looper.getMainLooper())
+
+    private var progressRunnable: Runnable? = null
+
+
+    private fun startProgressRunnable() {
+        progressRunnable = object : Runnable {
+            override fun run() {
+                progressHandler.postDelayed(this, 100)
+                mediaPlayer?.let {
+                    _progress.value =
+                        ((it.currentPosition.toFloat() / it.duration.toFloat()) * 100f).toInt()
+                }
+            }
+        }
+
+        progressHandler.postDelayed(progressRunnable!!, 300)
+    }
+
+    private fun stopProgressRunnable() {
+        progressRunnable?.let(progressHandler::removeCallbacks)
+    }
 
     override fun play(file: File) {
         if (mediaPlayer != null && mediaPlayer!!.isPlaying) {
@@ -38,8 +56,8 @@ class RecordPlayerImp : RecordPlayer, LifecycleObserver {
             mediaPlayer = MediaPlayer()
             mediaPlayer!!.setDataSource(file.absolutePath)
             mediaPlayer!!.prepare()
-            _duration.setValue(mediaPlayer!!.duration)
-            //initProgressRunnable()
+
+            startProgressRunnable()
         } catch (e: IOException) {
             e.printStackTrace()
         }
@@ -56,25 +74,24 @@ class RecordPlayerImp : RecordPlayer, LifecycleObserver {
             mediaPlayer!!.stop()
             mediaPlayer!!.release()
             mediaPlayer = null
-            //mProgressHandler.removeCallbacks(progressRunnable)
+
+            _progress.value = 0
+            stopProgressRunnable()
         }
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
     override fun pause() {
         if (mediaPlayer != null) {
-            //mCallback.finish()
             mediaPlayer!!.pause()
-            // mCurrentRecord.isPause = true
-            //mProgressHandler.removeCallbacks(progressRunnable)
+            stopProgressRunnable()
         }
     }
 
     override fun resume() {
         if (mediaPlayer != null) {
             mediaPlayer!!.start()
-//            mCurrentRecord.isPause = false
-//            initProgressRunnable()
+            startProgressRunnable()
         }
     }
 

@@ -123,8 +123,7 @@ class TrainingView(
         binding.textProgress.setProgress(trainingWithExercisesUi.progress)
 
         binding.textProgress.setText(
-            binding.getString(R.string.days_without_interruption) +
-                    ": ${trainingWithExercisesUi.daysWithoutInterruption}"
+            binding.getString(R.string.days_without_interruption) + ": ${trainingWithExercisesUi.daysWithoutInterruption}"
         )
 
         initFilterChips(trainingWithExercisesUi.availableFilters)
