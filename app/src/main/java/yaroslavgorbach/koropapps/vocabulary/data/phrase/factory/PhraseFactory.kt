@@ -1,7 +1,6 @@
-package yaroslavgorbach.koropapps.vocabulary.business.phrase.factory
+package yaroslavgorbach.koropapps.vocabulary.data.phrase.factory
 
 import android.content.Context
-import android.util.Log
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.data.phrase.local.model.Phrase
 import java.util.*
@@ -13,6 +12,7 @@ class PhraseFactory {
         val phrasesResArray = context.resources.getStringArray(R.array.phrases)
         val phrasesExplanationsResArray =
             context.resources.getStringArray(R.array.phrases_explanations)
+
         val randomIndex: Int = Random.nextInt(phrasesResArray.size)
 
         return Phrase(

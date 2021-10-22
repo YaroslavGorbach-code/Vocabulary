@@ -1,5 +1,6 @@
 package yaroslavgorbach.koropapps.vocabulary.di.data.phrase
 
+import android.app.Application
 import dagger.Module
 import dagger.Provides
 import yaroslavgorbach.koropapps.vocabulary.data.phrase.local.PhraseDataStore
@@ -19,7 +20,7 @@ class DataModulePhrase {
 
     @Singleton
     @Provides
-    fun provideRepoPhrase(phraseDataStore: PhraseDataStore): RepoPhrase {
-        return RepoPhraseImp(phraseDataStore)
+    fun provideRepoPhrase(phraseDataStore: PhraseDataStore, context: Application): RepoPhrase {
+        return RepoPhraseImp(phraseDataStore, context)
     }
 }

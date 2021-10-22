@@ -73,7 +73,6 @@ class TrainingFragment : Fragment(R.layout.fragment_training) {
             object : TrainingView.Callback {
                 override fun onExercise(withExercises: TrainingExerciseUi) {
                     host<Router>().openDescription(withExercises)
-
                 }
 
                 override fun onPageChanged(page: Int) {

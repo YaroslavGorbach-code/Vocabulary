@@ -40,8 +40,8 @@ class ProfileViewModel @Inject constructor(
         getLevel()
     }
 
-    suspend fun observePhrase(context: Context): LiveData<Phrase> {
-        return observeTodayPhraseInteractor(context).asLiveData()
+    suspend fun observePhrase(): LiveData<Phrase> {
+        return observeTodayPhraseInteractor().asLiveData()
     }
 
     private fun getLevel() {

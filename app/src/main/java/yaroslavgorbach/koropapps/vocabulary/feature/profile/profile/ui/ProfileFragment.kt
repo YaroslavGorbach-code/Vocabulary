@@ -101,7 +101,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), InfoDialog.Host {
         viewModel.levelInfoUi.observe(viewLifecycleOwner, profileView::setLevel)
 
         lifecycleScope.launch {
-            viewModel.observePhrase(requireContext())
+            viewModel.observePhrase()
                 .observe(viewLifecycleOwner, profileView::setPhrase)
         }
     }
