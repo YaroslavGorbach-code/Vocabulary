@@ -11,6 +11,8 @@ import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentLevelBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.presentation.LevelViewModel
 import yaroslavgorbach.koropapps.vocabulary.utils.appComponent
 import yaroslavgorbach.koropapps.vocabulary.utils.onBackPressed
+import yaroslavgorbach.koropapps.vocabulary.utils.setBackgroundStatusBarColor
+import yaroslavgorbach.koropapps.vocabulary.utils.setDefaultStatusBarColor
 import javax.inject.Inject
 
 class LevelFragment : Fragment(R.layout.fragment_level) {
@@ -35,6 +37,7 @@ class LevelFragment : Fragment(R.layout.fragment_level) {
         super.onViewCreated(view, savedInstanceState)
         initView()
         initObservers()
+        requireActivity().setBackgroundStatusBarColor()
     }
 
     private fun initDagger() {
@@ -57,5 +60,10 @@ class LevelFragment : Fragment(R.layout.fragment_level) {
 
     private fun initObservers() {
         viewModel.levelInfoUi.observe(viewLifecycleOwner, levelView::setLevelInfo)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        requireActivity().setDefaultStatusBarColor()
     }
 }
