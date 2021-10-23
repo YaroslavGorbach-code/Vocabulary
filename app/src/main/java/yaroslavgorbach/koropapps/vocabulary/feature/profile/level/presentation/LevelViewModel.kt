@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.GetStatisticsLevelInteractor
-import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.model.LevelInfoUi
+import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.model.OratorLevelInfoUi
 import javax.inject.Inject
 
 class LevelViewModel @Inject constructor(
@@ -15,10 +15,10 @@ class LevelViewModel @Inject constructor(
 
     private val disposables: CompositeDisposable = CompositeDisposable()
 
-    private val _levelInfoUi: MutableLiveData<LevelInfoUi> = MutableLiveData()
+    private val _Orator_levelInfoUi: MutableLiveData<OratorLevelInfoUi> = MutableLiveData()
 
-    val levelInfoUi: LiveData<LevelInfoUi>
-        get() = _levelInfoUi
+    val oratorLevelInfoUi: LiveData<OratorLevelInfoUi>
+        get() = _Orator_levelInfoUi
 
     init {
         getLevel()
@@ -27,8 +27,8 @@ class LevelViewModel @Inject constructor(
     private fun getLevel() {
         getStatisticsLevelInteractor()
             .observeOn(AndroidSchedulers.mainThread())
-            .map(::LevelInfoUi)
-            .subscribe(_levelInfoUi::setValue)
+            .map(::OratorLevelInfoUi)
+            .subscribe(_Orator_levelInfoUi::setValue)
             .let(disposables::add)
     }
 

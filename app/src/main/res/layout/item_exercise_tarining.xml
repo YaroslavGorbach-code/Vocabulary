@@ -30,7 +30,6 @@
             android:layout_gravity="center"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:scaleType="center"
             app:imageProgress="60"
             app:imageProgressColor="@color/green"
             app:imageProgressOutlineColor="?colorControlHighlight"

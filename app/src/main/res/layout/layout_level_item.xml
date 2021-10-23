@@ -18,7 +18,7 @@
         android:layout_gravity="center"
         android:layout_weight="1"
         android:gravity="center|start"
-        android:text="@string/Level"
+        android:text="@string/orator_level"
         style="@style/TextPrimary" />
 
 <ImageView

@@ -36,7 +36,9 @@
     <string name="remove_ads">Убрать рекламу</string>
     <string name="rate_app">Оценить приложение</string>
     <string name="share_app">Поделиться приложением</string>
-    <string name="Level">Уровень</string>
+    <string name="orator_level">Уровень оратора</string>
+    <string name="impromptu">Экспромт</string>
+    <string name="diction">Дикция</string>
     <string name="completed_daily_trainings">Завершено ежедневных тренеровок</string>
     <string name="summary_training_time">Сумарное тренеровочное время (минуты)</string>
     <string name="completed_exercises">Завершено упражнений</string>

@@ -59,7 +59,7 @@ class LevelFragment : Fragment(R.layout.fragment_level) {
     }
 
     private fun initObservers() {
-        viewModel.levelInfoUi.observe(viewLifecycleOwner, levelView::setLevelInfo)
+        viewModel.oratorLevelInfoUi.observe(viewLifecycleOwner, levelView::setLevelInfo)
     }
 
     override fun onDestroyView() {

@@ -98,7 +98,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), InfoDialog.Host {
     fun initObservers() {
         viewModel.chartDayUi.observe(viewLifecycleOwner, profileView::setChart)
 
-        viewModel.levelInfoUi.observe(viewLifecycleOwner, profileView::setLevel)
+        viewModel.oratorLevelInfoUi.observe(viewLifecycleOwner, profileView::setLevel)
 
         lifecycleScope.launch {
             viewModel.observePhrase()

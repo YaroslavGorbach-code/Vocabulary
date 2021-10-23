@@ -1,6 +1,5 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.profile.profile.presentation
 
-import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,7 +11,7 @@ import yaroslavgorbach.koropapps.vocabulary.business.statistics.GetStatisticsLev
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.ObserveStatisticDaysInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.phrase.local.model.Phrase
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.model.ChartValueUi
-import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.model.LevelInfoUi
+import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.model.OratorLevelInfoUi
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.profile.model.ChartDayUi
 import java.util.*
 import javax.inject.Inject
@@ -30,10 +29,10 @@ class ProfileViewModel @Inject constructor(
     val chartDayUi: LiveData<ChartDayUi>
         get() = _chartDayUi
 
-    private val _levelInfoUi: MutableLiveData<LevelInfoUi> = MutableLiveData()
+    private val _Orator_levelInfoUi: MutableLiveData<OratorLevelInfoUi> = MutableLiveData()
 
-    val levelInfoUi: LiveData<LevelInfoUi>
-        get() = _levelInfoUi
+    val oratorLevelInfoUi: LiveData<OratorLevelInfoUi>
+        get() = _Orator_levelInfoUi
 
     init {
         observeDaysStatistics()
@@ -47,8 +46,8 @@ class ProfileViewModel @Inject constructor(
     private fun getLevel() {
         getStatisticsLevelInteractor()
             .observeOn(AndroidSchedulers.mainThread())
-            .map(::LevelInfoUi)
-            .subscribe(_levelInfoUi::setValue)
+            .map(::OratorLevelInfoUi)
+            .subscribe(_Orator_levelInfoUi::setValue)
     }
 
     private fun observeDaysStatistics() {

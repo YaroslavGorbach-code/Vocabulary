@@ -2,11 +2,11 @@ package yaroslavgorbach.koropapps.vocabulary.feature.profile.level.model
 
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsLevelEntity
-import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.presentation.mapper.MapSummaryTrainingTimeToLevel
+import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.presentation.mapper.MapSummaryTrainingTimeToOratorLevel
 
-data class LevelInfoUi(private val levelEntity: StatisticsLevelEntity) {
+data class OratorLevelInfoUi(private val levelEntity: StatisticsLevelEntity) {
 
-    private val progress: Int
+    val progress: Int
         get() = try {
             (((levelEntity.summaryTrainingTimeMinutes.toFloat() - level.levelTrainingTimeRequired.toFloat()) / level.nextLevelTrainingTimeRequired.toFloat()) * 100f).toInt()
         } catch (ex: Throwable) {
@@ -28,7 +28,7 @@ data class LevelInfoUi(private val levelEntity: StatisticsLevelEntity) {
         }
 
     val level: Level
-        get() = MapSummaryTrainingTimeToLevel().map(levelEntity.summaryTrainingTimeMinutes)
+        get() = MapSummaryTrainingTimeToOratorLevel().map(levelEntity.summaryTrainingTimeMinutes)
 
     val summaryTrainingTime: String
         get() = levelEntity.summaryTrainingTimeMinutes.toString()

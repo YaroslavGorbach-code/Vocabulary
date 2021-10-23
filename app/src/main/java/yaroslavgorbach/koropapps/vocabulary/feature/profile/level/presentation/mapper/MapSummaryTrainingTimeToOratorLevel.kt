@@ -2,7 +2,7 @@ package yaroslavgorbach.koropapps.vocabulary.feature.profile.level.presentation.
 
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.model.Level
 
-class MapSummaryTrainingTimeToLevel {
+class MapSummaryTrainingTimeToOratorLevel {
     fun map(summaryTrainingTimeMinutes: Long): Level {
         return when (summaryTrainingTimeMinutes) {
             in Level.Zero().levelTrainingTimeRequired..Level.Zero().nextLevelTrainingTimeRequired -> Level.Zero()
