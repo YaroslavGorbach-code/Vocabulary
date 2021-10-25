@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Theme
 import yaroslavgorbach.koropapps.vocabulary.databinding.ItemThemeBinding
-import yaroslavgorbach.koropapps.vocabulary.utils.inflateBind
+import yaroslavgorbach.koropapps.vocabulary.utils.inflateBinding
 
 class ThemesListAdapter(private val onThemeClick: (Theme) -> Unit) :
     ListAdapter<Theme, ThemesListAdapter.ViewHolder>(object : ItemCallback<Theme>() {
@@ -21,7 +21,7 @@ class ThemesListAdapter(private val onThemeClick: (Theme) -> Unit) :
     }) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(parent.inflateBind(ItemThemeBinding::inflate))
+        return ViewHolder(parent.inflateBinding(ItemThemeBinding::inflate))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

@@ -5,10 +5,13 @@ import yaroslavgorbach.koropapps.vocabulary.R
 
 data class Achievement(
     val name: AchievementName,
-    val iconAchieved: Drawable?,
-    val iconNotAchieved: Drawable?,
+    private val iconAchieved: Drawable?,
+    private val iconNotAchieved: Drawable?,
     var isAchieved: Boolean = false
-)
+) {
+    val icon: Drawable?
+        get() = if (isAchieved) iconAchieved else iconNotAchieved
+}
 
 enum class AchievementName(val nameRes: Int) {
     FIRST_DAILY_TRAINING_COMPLETE(R.string.achievement_first_daily_training)

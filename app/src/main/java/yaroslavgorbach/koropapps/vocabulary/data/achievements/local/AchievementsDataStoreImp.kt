@@ -28,18 +28,19 @@ class AchievementsDataStoreImp(private val context: Context) : AchievementsDataS
     override fun observe(): Flow<List<Achievement>> {
         return context.achievementsDataStoreImp.data
             .map { prefs ->
-                achievements.onEach { achievement ->
+                achievements.map { achievement ->
                     val isAchieved = prefs[booleanPreferencesKey(achievement.name.name)]
 
                     achievement.isAchieved = isAchieved ?: false
+
+                    achievement
                 }
             }
     }
 
     override suspend fun achieve(name: AchievementName) {
         context.achievementsDataStoreImp.edit { prefs ->
-            prefs[booleanPreferencesKey(name.name)] =
-                prefs[booleanPreferencesKey(name.name)]?.not() ?: true
+            prefs[booleanPreferencesKey(name.name)] = true
         }
     }
 }

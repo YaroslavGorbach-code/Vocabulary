@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import yaroslavgorbach.koropapps.vocabulary.databinding.ItemStageBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.wordwithstage.model.StageUi
-import yaroslavgorbach.koropapps.vocabulary.utils.inflateBind
+import yaroslavgorbach.koropapps.vocabulary.utils.inflateBinding
 
 class StagesAdapter : ListAdapter<StageUi, StagesAdapter.ViewHolder>(
     object : DiffUtil.ItemCallback<StageUi>() {
@@ -23,7 +23,7 @@ class StagesAdapter : ListAdapter<StageUi, StagesAdapter.ViewHolder>(
 ) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(parent.inflateBind(ItemStageBinding::inflate))
+        return ViewHolder(parent.inflateBinding(ItemStageBinding::inflate))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

@@ -7,7 +7,7 @@ import androidx.lifecycle.asLiveData
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import yaroslavgorbach.koropapps.vocabulary.business.phrase.ObserveTodayPhraseInteractor
-import yaroslavgorbach.koropapps.vocabulary.business.statistics.GetStatisticsLevelInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.statistics.GetStatisticsCommonInfoInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.ObserveStatisticDaysInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.phrase.local.model.Phrase
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.model.ChartValueUi
@@ -18,7 +18,7 @@ import javax.inject.Inject
 
 class ProfileViewModel @Inject constructor(
     private val observeStatisticDaysInteractor: ObserveStatisticDaysInteractor,
-    private val getStatisticsLevelInteractor: GetStatisticsLevelInteractor,
+    private val getStatisticsCommonInfoInteractor: GetStatisticsCommonInfoInteractor,
     private val observeTodayPhraseInteractor: ObserveTodayPhraseInteractor
 ) : ViewModel() {
 
@@ -44,7 +44,7 @@ class ProfileViewModel @Inject constructor(
     }
 
     private fun getLevel() {
-        getStatisticsLevelInteractor()
+        getStatisticsCommonInfoInteractor()
             .observeOn(AndroidSchedulers.mainThread())
             .map(::OratorLevelInfoUi)
             .subscribe(_Orator_levelInfoUi::setValue)

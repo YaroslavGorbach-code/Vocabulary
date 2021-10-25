@@ -58,18 +58,18 @@ class BusinessStatisticsModule {
     @Provides
     fun provideGetStatisticsLevelInteractor(
         repoStatistics: RepoStatistics
-    ): GetStatisticsLevelInteractor {
-        return GetStatisticsLevelInteractor(repoStatistics)
+    ): GetStatisticsCommonInfoInteractor {
+        return GetStatisticsCommonInfoInteractor(repoStatistics)
     }
 
     @Provides
     fun provideUpdateStatisticsLevelInteractor(
         repoStatistics: RepoStatistics,
         getCurrentTrainingIsFinishedInteractor: GetCurrentTrainingIsFinishedInteractor,
-        getStatisticsLevelInteractor: GetStatisticsLevelInteractor
+        getStatisticsCommonInfoInteractor: GetStatisticsCommonInfoInteractor
     ): UpdateStatisticsLevelInteractor {
         return UpdateStatisticsLevelInteractor(
-            getStatisticsLevelInteractor,
+            getStatisticsCommonInfoInteractor,
             getCurrentTrainingIsFinishedInteractor,
             repoStatistics
         )

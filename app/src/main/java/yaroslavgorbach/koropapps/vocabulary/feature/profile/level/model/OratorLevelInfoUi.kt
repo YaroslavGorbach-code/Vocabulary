@@ -1,14 +1,14 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.profile.level.model
 
 import yaroslavgorbach.koropapps.vocabulary.R
-import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsLevelEntity
+import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsCommonInfoEntity
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.presentation.mapper.MapSummaryTrainingTimeToOratorLevel
 
-data class OratorLevelInfoUi(private val levelEntity: StatisticsLevelEntity) {
+data class OratorLevelInfoUi(private val commonInfoEntity: StatisticsCommonInfoEntity) {
 
     val progress: Int
         get() = try {
-            (((levelEntity.summaryTrainingTimeMinutes.toFloat() - level.levelTrainingTimeRequired.toFloat()) / level.nextLevelTrainingTimeRequired.toFloat()) * 100f).toInt()
+            (((commonInfoEntity.summaryTrainingTimeMinutes.toFloat() - level.levelTrainingTimeRequired.toFloat()) / level.nextLevelTrainingTimeRequired.toFloat()) * 100f).toInt()
         } catch (ex: Throwable) {
             0
         }
@@ -28,14 +28,14 @@ data class OratorLevelInfoUi(private val levelEntity: StatisticsLevelEntity) {
         }
 
     val level: Level
-        get() = MapSummaryTrainingTimeToOratorLevel().map(levelEntity.summaryTrainingTimeMinutes)
+        get() = MapSummaryTrainingTimeToOratorLevel().map(commonInfoEntity.summaryTrainingTimeMinutes)
 
     val summaryTrainingTime: String
-        get() = levelEntity.summaryTrainingTimeMinutes.toString()
+        get() = commonInfoEntity.summaryTrainingTimeMinutes.toString()
 
     val completedExercises: String
-        get() = levelEntity.exercisesCompleted.toString()
+        get() = commonInfoEntity.exercisesCompleted.toString()
 
     val completedDailyTrainings: String
-        get() = levelEntity.dailyTrainingsCompleted.toString()
+        get() = commonInfoEntity.dailyTrainingsCompleted.toString()
 }

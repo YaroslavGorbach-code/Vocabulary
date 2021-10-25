@@ -8,7 +8,7 @@ import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.dao.Statistics
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsDailyTrainingTimeEntity
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsExerciseTimeEntity
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsExerciseValueEntity
-import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsLevelEntity
+import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsCommonInfoEntity
 import java.util.*
 
 class RepoStatisticsImp(private val localDataSource: StatisticsDao) : RepoStatistics {
@@ -28,13 +28,13 @@ class RepoStatisticsImp(private val localDataSource: StatisticsDao) : RepoStatis
             .subscribeOn(Schedulers.io())
     }
 
-    override fun insert(statisticsLevelEntity: StatisticsLevelEntity): Completable {
-        return localDataSource.insert(statisticsLevelEntity)
+    override fun insert(statisticsCommonInfoEntity: StatisticsCommonInfoEntity): Completable {
+        return localDataSource.insert(statisticsCommonInfoEntity)
             .subscribeOn(Schedulers.io())
     }
 
-    override fun update(statisticsLevelEntity: StatisticsLevelEntity): Completable {
-        return localDataSource.update(statisticsLevelEntity)
+    override fun update(statisticsCommonInfoEntity: StatisticsCommonInfoEntity): Completable {
+        return localDataSource.update(statisticsCommonInfoEntity)
             .subscribeOn(Schedulers.io())
     }
 
@@ -68,11 +68,11 @@ class RepoStatisticsImp(private val localDataSource: StatisticsDao) : RepoStatis
             }
     }
 
-    override fun getLevel(): Single<StatisticsLevelEntity> {
+    override fun getCommonInfo(): Single<StatisticsCommonInfoEntity> {
         return localDataSource.getLevel()
             .subscribeOn(Schedulers.io())
             .onErrorResumeNext {
-                val entity = StatisticsLevelEntity(
+                val entity = StatisticsCommonInfoEntity(
                     summaryTrainingTimeMc = 0,
                     exercisesCompleted = 0,
                     dailyTrainingsCompleted = 0

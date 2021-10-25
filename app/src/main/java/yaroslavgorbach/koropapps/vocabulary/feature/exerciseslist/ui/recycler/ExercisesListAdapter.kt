@@ -1,12 +1,12 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.ui.recycler
 
-import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import yaroslavgorbach.koropapps.vocabulary.databinding.ItemExerciseBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.ExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.utils.getDrawable
 import yaroslavgorbach.koropapps.vocabulary.utils.getString
+import yaroslavgorbach.koropapps.vocabulary.utils.inflateBinding
 
 class ExercisesListAdapter(private val onExercise: (exercise: ExerciseUi) -> Unit) :
     RecyclerView.Adapter<ExercisesListAdapter.ViewHolder>() {
@@ -23,13 +23,7 @@ class ExercisesListAdapter(private val onExercise: (exercise: ExerciseUi) -> Uni
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(
-            ItemExerciseBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
-        )
+        return ViewHolder(parent.inflateBinding(ItemExerciseBinding::inflate))
     }
 
     override fun getItemId(position: Int): Long {

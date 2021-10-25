@@ -11,7 +11,7 @@ import io.reactivex.rxjava3.core.Single
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsDailyTrainingTimeEntity
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsExerciseTimeEntity
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsExerciseValueEntity
-import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsLevelEntity
+import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsCommonInfoEntity
 
 @Dao
 interface StatisticsDao {
@@ -26,10 +26,10 @@ interface StatisticsDao {
     fun insert(statisticsDailyTrainingTimeEntity: StatisticsDailyTrainingTimeEntity): Completable
 
     @Insert(onConflict = REPLACE)
-    fun insert(statisticsLevelEntity: StatisticsLevelEntity): Completable
+    fun insert(statisticsCommonInfoEntity: StatisticsCommonInfoEntity): Completable
 
     @Update
-    fun update(statisticsLevelEntity: StatisticsLevelEntity): Completable
+    fun update(statisticsCommonInfoEntity: StatisticsCommonInfoEntity): Completable
 
     @Update
     fun update(statisticsDailyTrainingTimeEntity: StatisticsDailyTrainingTimeEntity): Completable
@@ -43,7 +43,7 @@ interface StatisticsDao {
     @Query("SELECT * FROM StatisticsDailyTrainingTimeEntity")
     fun observeDays(): Observable<List<StatisticsDailyTrainingTimeEntity>>
 
-    @Query("SELECT * FROM StatisticsLevelEntity LIMIT 1")
-    fun getLevel(): Single<StatisticsLevelEntity>
+    @Query("SELECT * FROM StatisticsCommonInfoEntity LIMIT 1")
+    fun getLevel(): Single<StatisticsCommonInfoEntity>
 
 }
