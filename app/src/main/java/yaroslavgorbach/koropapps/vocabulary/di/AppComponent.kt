@@ -6,6 +6,7 @@ import dagger.Component
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.InternalCoroutinesApi
 import yaroslavgorbach.koropapps.vocabulary.MainActivity
+import yaroslavgorbach.koropapps.vocabulary.di.business.achievements.BusinessAchievementsModule
 import yaroslavgorbach.koropapps.vocabulary.di.business.exercises.BusinessExercisesModule
 import yaroslavgorbach.koropapps.vocabulary.di.business.phrase.BusinessPhraseModule
 import yaroslavgorbach.koropapps.vocabulary.di.business.records.BusinessRecordsModule
@@ -34,6 +35,7 @@ import javax.inject.Singleton
         BusinessPhraseModule::class,
         BusinessSettingsModule::class,
         BusinessRecordsModule::class,
+        BusinessAchievementsModule::class
     ]
 )
 interface AppComponent {

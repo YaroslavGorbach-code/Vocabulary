@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable
 import android.util.TypedValue
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.viewbinding.ViewBinding
 import yaroslavgorbach.koropapps.vocabulary.R
@@ -19,6 +20,9 @@ fun ViewBinding.getString(@StringRes id: Int): String {
 fun ViewBinding.getDrawable(@DrawableRes id: Int): Drawable? {
     return ContextCompat.getDrawable(root.context, id)
 }
+
+fun Context.getAppComputeDrawable(resId: Int): Drawable? = AppCompatResources.getDrawable(this, resId)
+
 
 fun Context.getColorPrimary(): Int {
     val typedValue = TypedValue()

@@ -69,7 +69,6 @@ class RecordsListAdapter(private val onRecordClick: (RecordUi) -> Unit) :
                 }
             }
         }
-
     }
 
     private fun getItem(position: Int): RecordUi? {

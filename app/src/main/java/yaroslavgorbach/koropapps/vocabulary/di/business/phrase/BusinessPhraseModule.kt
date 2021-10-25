@@ -9,7 +9,6 @@ import javax.inject.Singleton
 
 @Module(includes = [DataModulePhrase::class])
 class BusinessPhraseModule {
-    @Singleton
     @Provides
     fun provideObserveTodayPhraseInteractor(repoPhrase: RepoPhrase): ObserveTodayPhraseInteractor {
         return ObserveTodayPhraseInteractor(repoPhrase)

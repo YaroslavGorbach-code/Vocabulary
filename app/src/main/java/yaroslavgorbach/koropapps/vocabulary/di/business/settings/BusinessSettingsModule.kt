@@ -10,43 +10,36 @@ import javax.inject.Singleton
 @Module(includes = [DataSettingsModule::class])
 class BusinessSettingsModule {
 
-    @Singleton
     @Provides
     fun provideObserveCurrentThemeInteractor(repoSettings: RepoSettings): ObserveCurrentThemeInteractor {
         return ObserveCurrentThemeInteractor(repoSettings)
     }
 
-    @Singleton
     @Provides
     fun provideObserveThemesInteractor(repoSettings: RepoSettings): ObserveThemesInteractor {
         return ObserveThemesInteractor(repoSettings)
     }
 
-    @Singleton
     @Provides
     fun provideChangeThemeInteractor(repoSettings: RepoSettings): ChangeThemeInteractor {
         return ChangeThemeInteractor(repoSettings)
     }
 
-    @Singleton
     @Provides
     fun provideChangeUiModeInteractor(repoSettings: RepoSettings): ChangeUiModeInteractor {
         return ChangeUiModeInteractor(repoSettings)
     }
 
-    @Singleton
     @Provides
     fun provideObserveUiModeInteractor(repoSettings: RepoSettings): ObserveUiModeInteractor {
         return ObserveUiModeInteractor(repoSettings)
     }
 
-    @Singleton
     @Provides
     fun provideObserveNotificationInteractor(repoSettings: RepoSettings): ObserveNotificationInteractor {
         return ObserveNotificationInteractor(repoSettings)
     }
 
-    @Singleton
     @Provides
     fun provideUpdateNotificationInteractor(repoSettings: RepoSettings): UpdateNotificationInteractor {
         return UpdateNotificationInteractor(repoSettings)

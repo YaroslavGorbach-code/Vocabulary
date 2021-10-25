@@ -14,13 +14,11 @@ import javax.inject.Singleton
 @Module(includes = [DataModuleRecords::class])
 class BusinessRecordsModule {
 
-    @Singleton
     @Provides
     fun provideGetRecordsInteractor(repoRecords: RepoRecords): GetRecordFilesInteractor {
         return GetRecordFilesInteractor(repoRecords)
     }
 
-    @Singleton
     @Provides
     fun provideDeleteRecordInteractor(repoRecords: RepoRecords): DeleteRecordFileInteractor {
         return DeleteRecordFileInteractor(repoRecords)
