@@ -6,7 +6,7 @@ import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.Statisti
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.repo.RepoStatistics
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 
-class UpdateStatisticsLevelInteractor(
+class UpdateStatisticsCommonInfoInteractor(
     private val getStatisticsCommonInfoInteractor: GetStatisticsCommonInfoInteractor,
     private val getCurrentTrainingIsFinishedInteractor: GetCurrentTrainingIsFinishedInteractor,
     private val repoStatistics: RepoStatistics

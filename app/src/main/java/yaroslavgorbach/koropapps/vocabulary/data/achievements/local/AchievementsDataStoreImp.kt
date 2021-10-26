@@ -6,8 +6,10 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.preferencesDataStore
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.data.achievements.local.model.Achievement
 import yaroslavgorbach.koropapps.vocabulary.data.achievements.local.model.AchievementName
@@ -20,6 +22,11 @@ class AchievementsDataStoreImp(private val context: Context) : AchievementsDataS
     private val achievements: List<Achievement> = listOf(
         Achievement(
             name = AchievementName.FIRST_DAILY_TRAINING_COMPLETE,
+            iconAchieved = context.getAppComputeDrawable(R.drawable.ic_level_10),
+            iconNotAchieved = context.getAppComputeDrawable(R.drawable.ic_level_20)
+        ),
+        Achievement(
+            name = AchievementName.FIRST_TONGUE_TWISTER_COMPLETE,
             iconAchieved = context.getAppComputeDrawable(R.drawable.ic_level_10),
             iconNotAchieved = context.getAppComputeDrawable(R.drawable.ic_level_20)
         )
@@ -38,9 +45,11 @@ class AchievementsDataStoreImp(private val context: Context) : AchievementsDataS
             }
     }
 
-    override suspend fun achieve(name: AchievementName) {
-        context.achievementsDataStoreImp.edit { prefs ->
-            prefs[booleanPreferencesKey(name.name)] = true
+    override fun achieve(name: AchievementName) {
+        GlobalScope.launch {
+            context.achievementsDataStoreImp.edit { prefs ->
+                prefs[booleanPreferencesKey(name.name)] = true
+            }
         }
     }
 }

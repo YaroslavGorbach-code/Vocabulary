@@ -14,5 +14,6 @@ data class Achievement(
 }
 
 enum class AchievementName(val nameRes: Int) {
-    FIRST_DAILY_TRAINING_COMPLETE(R.string.achievement_first_daily_training)
+    FIRST_DAILY_TRAINING_COMPLETE(R.string.achievement_first_daily_training),
+    FIRST_TONGUE_TWISTER_COMPLETE(R.string.achievement_first_tongue_twister)
 }

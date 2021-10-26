@@ -4,7 +4,7 @@ import yaroslavgorbach.koropapps.vocabulary.data.achievements.local.model.Achiev
 import yaroslavgorbach.koropapps.vocabulary.data.achievements.repo.RepoAchievements
 
 class AchieveAchievementInteractor(private val repoAchievements: RepoAchievements) {
-    suspend operator fun invoke(name: AchievementName) {
+    operator fun invoke(name: AchievementName) {
         repoAchievements.achieve(name)
     }
 }

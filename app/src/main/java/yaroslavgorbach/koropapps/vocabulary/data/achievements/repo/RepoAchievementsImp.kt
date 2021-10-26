@@ -7,7 +7,7 @@ import yaroslavgorbach.koropapps.vocabulary.data.achievements.local.model.Achiev
 
 class RepoAchievementsImp(private val localDataSource: AchievementsDataStore) : RepoAchievements {
 
-    override suspend fun achieve(name: AchievementName) {
+    override fun achieve(name: AchievementName) {
         localDataSource.achieve(name)
     }
 

@@ -50,7 +50,6 @@ class LevelView(private val binding: FragmentLevelBinding, private val callback:
     }
 
     fun setAchievements(achievements: List<Achievement>) {
-        Log.i("ffdxvx", achievements.toString())
         achievementsAdapter?.let { it.items = achievements }
     }
 }

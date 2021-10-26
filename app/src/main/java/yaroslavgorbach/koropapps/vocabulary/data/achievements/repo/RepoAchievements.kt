@@ -5,7 +5,7 @@ import yaroslavgorbach.koropapps.vocabulary.data.achievements.local.model.Achiev
 import yaroslavgorbach.koropapps.vocabulary.data.achievements.local.model.AchievementName
 
 interface RepoAchievements {
-    suspend fun achieve(name: AchievementName)
+    fun achieve(name: AchievementName)
 
     fun observe(): Flow<List<Achievement>>
 

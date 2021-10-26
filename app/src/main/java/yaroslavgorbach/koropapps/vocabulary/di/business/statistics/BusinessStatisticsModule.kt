@@ -2,12 +2,14 @@ package yaroslavgorbach.koropapps.vocabulary.di.business.statistics
 
 import dagger.Module
 import dagger.Provides
+import yaroslavgorbach.koropapps.vocabulary.business.achievements.AchieveAchievementInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.*
 import yaroslavgorbach.koropapps.vocabulary.business.training.GetCurrentTrainingIsFinishedInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.repo.RepoStatistics
+import yaroslavgorbach.koropapps.vocabulary.di.business.achievements.BusinessAchievementsModule
 import yaroslavgorbach.koropapps.vocabulary.di.data.statistics.DataModuleStatistics
 
-@Module(includes = [DataModuleStatistics::class])
+@Module(includes = [DataModuleStatistics::class, BusinessAchievementsModule::class])
 class BusinessStatisticsModule {
     @Provides
     fun provideInsertValueStatisticsInteractor(
@@ -57,9 +59,10 @@ class BusinessStatisticsModule {
 
     @Provides
     fun provideGetStatisticsLevelInteractor(
-        repoStatistics: RepoStatistics
+        repoStatistics: RepoStatistics,
+        achievementInteractor: AchieveAchievementInteractor
     ): GetStatisticsCommonInfoInteractor {
-        return GetStatisticsCommonInfoInteractor(repoStatistics)
+        return GetStatisticsCommonInfoInteractor(repoStatistics, achievementInteractor)
     }
 
     @Provides
@@ -67,8 +70,8 @@ class BusinessStatisticsModule {
         repoStatistics: RepoStatistics,
         getCurrentTrainingIsFinishedInteractor: GetCurrentTrainingIsFinishedInteractor,
         getStatisticsCommonInfoInteractor: GetStatisticsCommonInfoInteractor
-    ): UpdateStatisticsLevelInteractor {
-        return UpdateStatisticsLevelInteractor(
+    ): UpdateStatisticsCommonInfoInteractor {
+        return UpdateStatisticsCommonInfoInteractor(
             getStatisticsCommonInfoInteractor,
             getCurrentTrainingIsFinishedInteractor,
             repoStatistics
@@ -80,13 +83,15 @@ class BusinessStatisticsModule {
         insertStatisticTimeInteractor: InsertStatisticTimeInteractor,
         insertStatisticValueInteractor: InsertStatisticValueInteractor,
         insertOrUpdateStatisticDayInteractor: InsertOrUpdateStatisticDayInteractor,
-        updateStatisticDayInteractor: UpdateStatisticsLevelInteractor,
+        updateStatisticDayInteractor: UpdateStatisticsCommonInfoInteractor,
+        achieveAchievementInteractor: AchieveAchievementInteractor
     ): SaveStatisticsInteractor {
         return SaveStatisticsInteractor(
             insertStatisticValueInteractor = insertStatisticValueInteractor,
             insertStatisticTimeInteractor = insertStatisticTimeInteractor,
             insertOrUpdateStatisticDayInteractor = insertOrUpdateStatisticDayInteractor,
-            updateStatisticsLevelInteractor = updateStatisticDayInteractor,
+            updateStatisticsCommonInfoInteractor = updateStatisticDayInteractor,
+            achieveAchievementInteractor = achieveAchievementInteractor
         )
     }
 }

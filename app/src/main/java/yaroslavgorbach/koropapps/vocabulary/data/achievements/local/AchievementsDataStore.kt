@@ -8,5 +8,5 @@ interface AchievementsDataStore {
 
     fun observe(): Flow<List<Achievement>>
 
-    suspend fun achieve(name: AchievementName)
+    fun achieve(name: AchievementName)
 }
