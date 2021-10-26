@@ -18,6 +18,9 @@ class GetStatisticsCommonInfoInteractor(
                 if (commonInfo.dailyTrainingsCompleted > 0) {
                     achieveAchievementInteractor(AchievementName.FIRST_DAILY_TRAINING_COMPLETE)
                 }
+                if (commonInfo.dailyTrainingsCompleted > 6) {
+                    achieveAchievementInteractor(AchievementName.SEVEN_DAILY_TRAININGS_COMPLETE)
+                }
             }
             .subscribeOn(Schedulers.io())
     }
