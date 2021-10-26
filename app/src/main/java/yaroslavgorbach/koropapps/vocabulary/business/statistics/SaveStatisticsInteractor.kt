@@ -60,6 +60,10 @@ class SaveStatisticsInteractor(
                 achieveAchievementInteractor(AchievementName.FIRST_IMPROVISATION_COMPLETE)
             }
 
+            if (ExerciseNameToExerciseCategoryMapper().map(exerciseName) == ExerciseCategory.VOCABULARY) {
+                achieveAchievementInteractor(AchievementName.FIRST_VOCABULARY_COMPLETE)
+            }
+
             emitter.onComplete()
         }
     }
