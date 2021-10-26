@@ -5,4 +5,7 @@
     <string name="achievement_first_improvisation">За первую импровизацию</string>
     <string name="achievement_first_vocabulary">За первое упражнение для словарного запаса</string>
     <string name="achievement_seven_daily_training">За семь ежедневных тренеровок выполненых подряд</string>
+    <string name="achievement_dictionary_adjectives_over_norm">За выполнение нормы слов в упражнении словарь (прилагательные)</string>
+    <string name="achievement_dictionary_nouns_over_norm">За выполнение нормы слов в упражнении словарь (существительные)</string>
+    <string name="achievement_dictionary_verbs_over_norm">За выполнение нормы слов в упражнении словарь (глаголы)</string>
 </resources>

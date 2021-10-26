@@ -16,6 +16,12 @@ class SaveStatisticsInteractor(
     private val updateStatisticsCommonInfoInteractor: UpdateStatisticsCommonInfoInteractor,
     private val achieveAchievementInteractor: AchieveAchievementInteractor
 ) {
+    companion object {
+        private const val DICTIONARY_ADJECTIVES_WORDS_NORM = 46
+        private const val DICTIONARY_NOUNS_WORDS_NORM = 54
+        private const val DICTIONARY_VERBS_WORDS_NORM = 42
+    }
+
     operator fun invoke(
         exerciseType: ExerciseType,
         passedLettersOrWordsCount: Int,
@@ -62,6 +68,18 @@ class SaveStatisticsInteractor(
 
             if (ExerciseNameToExerciseCategoryMapper().map(exerciseName) == ExerciseCategory.VOCABULARY) {
                 achieveAchievementInteractor(AchievementName.FIRST_VOCABULARY_COMPLETE)
+            }
+
+            if (exerciseName == ExerciseName.DICTIONARY_VERBS && passedLettersOrWordsCount >= DICTIONARY_VERBS_WORDS_NORM) {
+                achieveAchievementInteractor(AchievementName.DICTIONARY_VERBS_OVER_NORM)
+            }
+
+            if (exerciseName == ExerciseName.DICTIONARY_NOUN && passedLettersOrWordsCount >= DICTIONARY_NOUNS_WORDS_NORM) {
+                achieveAchievementInteractor(AchievementName.DICTIONARY_NOUNS_OVER_NORM)
+            }
+
+            if (exerciseName == ExerciseName.DICTIONARY_ADJECTIVES && passedLettersOrWordsCount >= DICTIONARY_ADJECTIVES_WORDS_NORM) {
+                achieveAchievementInteractor(AchievementName.DICTIONARY_ADJECTIVES_OVER_NORM)
             }
 
             emitter.onComplete()
