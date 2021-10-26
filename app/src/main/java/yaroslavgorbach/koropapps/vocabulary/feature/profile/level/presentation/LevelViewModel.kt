@@ -24,7 +24,8 @@ class LevelViewModel @Inject constructor(
     val oratorLevelInfoUi: LiveData<OratorLevelInfoUi>
         get() = _oratorLevelInfo
 
-    val achievements: LiveData<List<Achievement>> = observeAchievementsInteractor().asLiveData()
+    val achievements: LiveData<List<Achievement>>
+        get() = observeAchievementsInteractor().asLiveData()
 
     init {
         getCommonStatisticInfo()

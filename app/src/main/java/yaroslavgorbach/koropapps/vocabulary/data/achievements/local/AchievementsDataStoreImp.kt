@@ -22,23 +22,23 @@ class AchievementsDataStoreImp(private val context: Context) : AchievementsDataS
     private val achievements: List<Achievement> = listOf(
         Achievement(
             name = AchievementName.FIRST_DAILY_TRAINING_COMPLETE,
-            iconAchieved = context.getAppComputeDrawable(R.drawable.ic_level_10),
-            iconNotAchieved = context.getAppComputeDrawable(R.drawable.ic_level_20)
+            iconAchieved = context.getAppComputeDrawable(R.drawable.ic_achievement_active_first_daily_training),
+            iconNotAchieved = context.getAppComputeDrawable(R.drawable.ic_achievement_not_active_first_daily_training)
         ),
         Achievement(
             name = AchievementName.FIRST_TONGUE_TWISTER_COMPLETE,
-            iconAchieved = context.getAppComputeDrawable(R.drawable.ic_level_10),
-            iconNotAchieved = context.getAppComputeDrawable(R.drawable.ic_level_20)
+            iconAchieved = context.getAppComputeDrawable(R.drawable.ic_achievement_active_first_tongue_twister),
+            iconNotAchieved = context.getAppComputeDrawable(R.drawable.ic_achievement_not_active_first_tongue_twister)
         ),
         Achievement(
             name = AchievementName.FIRST_IMPROVISATION_COMPLETE,
-            iconAchieved = context.getAppComputeDrawable(R.drawable.ic_level_10),
-            iconNotAchieved = context.getAppComputeDrawable(R.drawable.ic_level_20)
+            iconAchieved = context.getAppComputeDrawable(R.drawable.ic_achievement_active_first_improvisation),
+            iconNotAchieved = context.getAppComputeDrawable(R.drawable.ic_achievement_not_active_first_improvisation)
         ),
         Achievement(
             name = AchievementName.FIRST_VOCABULARY_COMPLETE,
-            iconAchieved = context.getAppComputeDrawable(R.drawable.ic_level_10),
-            iconNotAchieved = context.getAppComputeDrawable(R.drawable.ic_level_20)
+            iconAchieved = context.getAppComputeDrawable(R.drawable.ic_achievement_active_first_vocabulary),
+            iconNotAchieved = context.getAppComputeDrawable(R.drawable.ic_achievement_not_active_first_vocabulary)
         ),
         Achievement(
             name = AchievementName.SEVEN_DAILY_TRAININGS_COMPLETE,
