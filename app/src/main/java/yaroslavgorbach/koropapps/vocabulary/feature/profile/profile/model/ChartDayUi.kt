@@ -16,7 +16,7 @@ data class ChartDayUi(private val statisticsDailyTrainingTimeEntity: List<Statis
     val data: ArrayList<ArrayList<Int>> = arrayListOf()
         get() {
             val dataList: ArrayList<Int> =
-                statisticsDailyTrainingTimeEntity.map { it.summaryTrainingTime.toInt() / ONE_MINUTE } as ArrayList<Int>
+                statisticsDailyTrainingTimeEntity.map { it.summaryTrainingTimeMc.toInt() / ONE_MINUTE } as ArrayList<Int>
             field.add(0, dataList)
             return field
         }

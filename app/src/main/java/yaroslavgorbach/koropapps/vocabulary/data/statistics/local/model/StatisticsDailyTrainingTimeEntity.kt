@@ -8,6 +8,9 @@ import java.util.*
 data class StatisticsDailyTrainingTimeEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
-    var summaryTrainingTime: Long,
+    var summaryTrainingTimeMc: Long,
     val date: Date
-)
+){
+    val summaryTrainingTimeMinutes: Long
+        get() = summaryTrainingTimeMc / 60000
+}

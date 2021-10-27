@@ -5,28 +5,34 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import yaroslavgorbach.koropapps.vocabulary.business.achievements.AchieveAchievementInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.achievements.ObserveAchievementsInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.GetAllExercisesStatisticsValueInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.GetStatisticsCommonInfoInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.statistics.ObserveStatisticDaysInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.achievements.local.model.Achievement
 import yaroslavgorbach.koropapps.vocabulary.data.achievements.local.model.AchievementName
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsCommonInfoEntity
+import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsDailyTrainingTimeEntity
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsExerciseValueEntity
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.model.OratorLevelInfoUi
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class LevelViewModel @Inject constructor(
     private val getStatisticsCommonInfoInteractor: GetStatisticsCommonInfoInteractor,
     private val observeAchievementsInteractor: ObserveAchievementsInteractor,
     private val achieveAchievementsInteractor: AchieveAchievementInteractor,
-    private val getAllExercisesStatisticsValueInteractor: GetAllExercisesStatisticsValueInteractor
+    private val getAllExercisesStatisticsValueInteractor: GetAllExercisesStatisticsValueInteractor,
+    private val observeStatisticDaysInteractor: ObserveStatisticDaysInteractor
 ) : ViewModel() {
 
     companion object {
         private const val ALPHABET_NUMBER_OF_LETTERS_FOR_ACHIEVEMENTS = 29
+        private const val ONE_HOUR_IN_MINUTE = 60
     }
 
     private val disposables: CompositeDisposable = CompositeDisposable()
@@ -46,7 +52,8 @@ class LevelViewModel @Inject constructor(
 
     private fun achieveAchievements(
         commonInfo: StatisticsCommonInfoEntity,
-        allExercisesValues: List<StatisticsExerciseValueEntity>
+        allExercisesValues: List<StatisticsExerciseValueEntity>,
+        daysStatisticsDailyTrainingTimeEntities: List<StatisticsDailyTrainingTimeEntity>
     ) {
         val isTongueTwisterEasyCompleted = allExercisesValues.any {
             it.exerciseNameRes == ExerciseName.TONGUE_TWISTERS_EASY.id && it.value > 0
@@ -87,6 +94,10 @@ class LevelViewModel @Inject constructor(
         if (isAlphabetVerbsCompleted && isAlphabetNounsCompleted && isAlphabetAdjectivesCompleted) {
             achieveAchievementsInteractor(AchievementName.ALL_ALPHABET_EXERCISES_COMPLETE)
         }
+
+        if (daysStatisticsDailyTrainingTimeEntities.any { TimeUnit.HOURS.toMinutes(it.summaryTrainingTimeMc) > ONE_HOUR_IN_MINUTE }) {
+            achieveAchievementsInteractor(AchievementName.SPENT_MORE_THEN_HOUR_ON_TRAINING)
+        }
     }
 
     private fun getLevelInfo() {
@@ -98,8 +109,10 @@ class LevelViewModel @Inject constructor(
     }
 
     private fun getStatisticInfoAndAchieveAchievements() {
-        getStatisticsCommonInfoInteractor().zipWith(
+        Single.zip(
+            getStatisticsCommonInfoInteractor(),
             getAllExercisesStatisticsValueInteractor(),
+            observeStatisticDaysInteractor().first(emptyList()),
             this::achieveAchievements
         )
             .observeOn(AndroidSchedulers.mainThread())

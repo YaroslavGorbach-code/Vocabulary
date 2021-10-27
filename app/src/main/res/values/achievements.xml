@@ -10,4 +10,5 @@
     <string name="achievement_dictionary_verbs_over_norm">За выполнение нормы слов в упражнении словарь (глаголы)</string>
     <string name="achievement_all_tongue_twisters">За выполнение скороговорок всех уровней сложности</string>
     <string name="achievement_all_alphabet_exercises_complete">За выполнение всех вариаций упражнения алфавит</string>
+    <string name="achievement_spend_more_then_hour_on_training">За тренеровку которая длилась больше часа</string>
 </resources>

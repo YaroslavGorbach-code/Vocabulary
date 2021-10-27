@@ -16,7 +16,7 @@ class InsertOrUpdateStatisticDayInteractor(
             .map { it.last() }
             .flatMapCompletable { statisticLast ->
                 if (statisticLast.date.isToday()) {
-                    statisticLast.summaryTrainingTime += statisticsDailyTrainingTimeEntity.summaryTrainingTime
+                    statisticLast.summaryTrainingTimeMc += statisticsDailyTrainingTimeEntity.summaryTrainingTimeMc
 
                     repoStatistics.update(statisticLast)
                         .subscribeOn(Schedulers.io())

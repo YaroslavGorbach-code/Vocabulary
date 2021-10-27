@@ -26,7 +26,7 @@ class StatisticsEntityFactory {
 
     fun createDayEntity(timeSpentOnExercise: Long): StatisticsDailyTrainingTimeEntity {
         return StatisticsDailyTrainingTimeEntity(
-            summaryTrainingTime = timeSpentOnExercise,
+            summaryTrainingTimeMc = timeSpentOnExercise,
             date = Date()
         )
     }
