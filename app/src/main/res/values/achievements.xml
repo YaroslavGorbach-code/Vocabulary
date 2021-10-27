@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="achievement_first_daily_training">За первую ежедневную тренеровку</string>
-    <string name="achievement_first_tongue_twister">За первую скороговорку</string>
+    <string name="achievement_first_diction_exercise">За первое упражнение для улутьшения дикции</string>
     <string name="achievement_first_improvisation">За первую импровизацию</string>
     <string name="achievement_first_vocabulary">За первое упражнение для словарного запаса</string>
     <string name="achievement_seven_daily_training">За семь ежедневных тренеровок выполненых подряд</string>

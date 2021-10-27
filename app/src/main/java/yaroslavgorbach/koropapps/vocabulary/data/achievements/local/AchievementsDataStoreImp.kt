@@ -26,7 +26,7 @@ class AchievementsDataStoreImp(private val context: Context) : AchievementsDataS
             iconNotAchieved = context.getAppComputeDrawable(R.drawable.ic_achievement_not_active_first_daily_training)
         ),
         Achievement(
-            name = AchievementName.FIRST_TONGUE_TWISTER_COMPLETE,
+            name = AchievementName.FIRST_DICTION_COMPLETE,
             iconAchieved = context.getAppComputeDrawable(R.drawable.ic_achievement_active_first_tongue_twister),
             iconNotAchieved = context.getAppComputeDrawable(R.drawable.ic_achievement_not_active_first_tongue_twister)
         ),

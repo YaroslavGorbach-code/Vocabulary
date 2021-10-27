@@ -43,5 +43,10 @@ enum class ExerciseName(@StringRes val id: Int) {
     TONGUE_TWISTERS_HARD(R.string.tongue_twisters_hard),
     TONGUE_TWISTERS_VERY_HARD(R.string.tongue_twisters_very_hard),
     SOUND_COMBINATIONS(R.string.sound_combinations),
-    DIFFICULT_WORDS(R.string.difficult_words)
+    DIFFICULT_WORDS(R.string.difficult_words);
+
+}
+
+fun getExerciseName(@StringRes id: Int): ExerciseName {
+    return ExerciseName.values().first { it.id == id }
 }

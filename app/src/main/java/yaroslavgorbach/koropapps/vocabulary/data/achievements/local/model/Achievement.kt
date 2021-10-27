@@ -15,7 +15,7 @@ data class Achievement(
 
 enum class AchievementName(val nameRes: Int) {
     FIRST_DAILY_TRAINING_COMPLETE(R.string.achievement_first_daily_training),
-    FIRST_TONGUE_TWISTER_COMPLETE(R.string.achievement_first_tongue_twister),
+    FIRST_DICTION_COMPLETE(R.string.achievement_first_diction_exercise),
     FIRST_IMPROVISATION_COMPLETE(R.string.achievement_first_improvisation),
     FIRST_VOCABULARY_COMPLETE(R.string.achievement_first_vocabulary),
     SEVEN_DAILY_TRAININGS_COMPLETE(R.string.achievement_seven_daily_training),
@@ -28,4 +28,6 @@ enum class AchievementName(val nameRes: Int) {
     MORE_THEN_THEN_EXERCISES_COMPLETE(R.string.achievement_spend_more_then_hour_on_training),
     MORE_THEN_FIFTY_EXERCISES_COMPLETE(R.string.achievement_spend_more_then_hour_on_training),
     MORE_THEN_ONE_HUNDRED_EXERCISES_COMPLETE(R.string.achievement_spend_more_then_hour_on_training),
+    MORE_THEN_ONE_THOUSAND_EXERCISES_COMPLETE(R.string.achievement_spend_more_then_hour_on_training),
+    THIRTY_DAILY_TRAININGS_COMPLETE(R.string.achievement_seven_daily_training),
 }

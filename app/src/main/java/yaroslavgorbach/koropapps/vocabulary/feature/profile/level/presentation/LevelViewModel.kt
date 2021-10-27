@@ -12,12 +12,16 @@ import yaroslavgorbach.koropapps.vocabulary.business.achievements.ObserveAchieve
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.GetAllExercisesStatisticsValueInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.GetStatisticsCommonInfoInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.ObserveStatisticDaysInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.statistics.SaveStatisticsInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.achievements.local.model.Achievement
 import yaroslavgorbach.koropapps.vocabulary.data.achievements.local.model.AchievementName
+import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseCategory
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
+import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.getExerciseName
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsCommonInfoEntity
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsDailyTrainingTimeEntity
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsExerciseValueEntity
+import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToExerciseCategoryMapper
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.model.OratorLevelInfoUi
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
@@ -33,6 +37,10 @@ class LevelViewModel @Inject constructor(
     companion object {
         private const val ALPHABET_NUMBER_OF_LETTERS_FOR_ACHIEVEMENTS = 29
         private const val ONE_HOUR_IN_MINUTE = 60
+
+        private const val DICTIONARY_ADJECTIVES_WORDS_NORM = 46
+        private const val DICTIONARY_NOUNS_WORDS_NORM = 54
+        private const val DICTIONARY_VERBS_WORDS_NORM = 42
     }
 
     private val disposables: CompositeDisposable = CompositeDisposable()
@@ -79,6 +87,30 @@ class LevelViewModel @Inject constructor(
             it.exerciseNameRes == ExerciseName.ALPHABET_ADJECTIVES.id && it.value > ALPHABET_NUMBER_OF_LETTERS_FOR_ACHIEVEMENTS
         }
 
+        val isAtLeastOneCommunicatingExerciseCompleted = allExercisesValues.any {
+            ExerciseNameToExerciseCategoryMapper().map(getExerciseName(it.exerciseNameRes)) == ExerciseCategory.COMMUNICATION
+        }
+
+        val isAtLeastOneVocabularyExerciseCompleted = allExercisesValues.any {
+            ExerciseNameToExerciseCategoryMapper().map(getExerciseName(it.exerciseNameRes)) == ExerciseCategory.VOCABULARY
+        }
+
+        val isAtLeastOneDictionExerciseCompleted = allExercisesValues.any {
+            ExerciseNameToExerciseCategoryMapper().map(getExerciseName(it.exerciseNameRes)) == ExerciseCategory.DICTION_AND_ARTICULATION
+        }
+
+        val isDictionaryVerbsCompleteOverNorm = allExercisesValues.any {
+            getExerciseName(it.exerciseNameRes) == ExerciseName.DICTIONARY_VERBS && it.value >= DICTIONARY_VERBS_WORDS_NORM
+        }
+
+        val isDictionaryAdjectivesCompleteOverNorm = allExercisesValues.any {
+            getExerciseName(it.exerciseNameRes) == ExerciseName.DICTIONARY_ADJECTIVES && it.value >= DICTIONARY_ADJECTIVES_WORDS_NORM
+        }
+
+        val isDictionaryNounCompleteOverNorm = allExercisesValues.any {
+            getExerciseName(it.exerciseNameRes) == ExerciseName.DICTIONARY_NOUN && it.value >= DICTIONARY_NOUNS_WORDS_NORM
+        }
+
         if (commonInfo.dailyTrainingsCompleted > 0) {
             achieveAchievementsInteractor(AchievementName.FIRST_DAILY_TRAINING_COMPLETE)
         }
@@ -97,6 +129,30 @@ class LevelViewModel @Inject constructor(
 
         if (daysStatisticsDailyTrainingTimeEntities.any { TimeUnit.HOURS.toMinutes(it.summaryTrainingTimeMc) > ONE_HOUR_IN_MINUTE }) {
             achieveAchievementsInteractor(AchievementName.SPENT_MORE_THEN_HOUR_ON_TRAINING)
+        }
+
+        if (isAtLeastOneDictionExerciseCompleted) {
+            achieveAchievementsInteractor(AchievementName.FIRST_DICTION_COMPLETE)
+        }
+
+        if (isAtLeastOneCommunicatingExerciseCompleted) {
+            achieveAchievementsInteractor(AchievementName.FIRST_IMPROVISATION_COMPLETE)
+        }
+
+        if (isAtLeastOneVocabularyExerciseCompleted) {
+            achieveAchievementsInteractor(AchievementName.FIRST_VOCABULARY_COMPLETE)
+        }
+
+        if (isDictionaryVerbsCompleteOverNorm) {
+            achieveAchievementsInteractor(AchievementName.DICTIONARY_VERBS_OVER_NORM)
+        }
+
+        if (isDictionaryNounCompleteOverNorm) {
+            achieveAchievementsInteractor(AchievementName.DICTIONARY_NOUNS_OVER_NORM)
+        }
+
+        if (isDictionaryAdjectivesCompleteOverNorm) {
+            achieveAchievementsInteractor(AchievementName.DICTIONARY_ADJECTIVES_OVER_NORM)
         }
     }
 
