@@ -25,6 +25,10 @@ class LevelViewModel @Inject constructor(
     private val getAllExercisesStatisticsValueInteractor: GetAllExercisesStatisticsValueInteractor
 ) : ViewModel() {
 
+    companion object {
+        private const val ALPHABET_NUMBER_OF_LETTERS_FOR_ACHIEVEMENTS = 29
+    }
+
     private val disposables: CompositeDisposable = CompositeDisposable()
 
     private val _oratorLevelInfo: MutableLiveData<OratorLevelInfoUi> = MutableLiveData()
@@ -56,6 +60,18 @@ class LevelViewModel @Inject constructor(
             it.exerciseNameRes == ExerciseName.TONGUE_TWISTERS_VERY_HARD.id && it.value > 0
         }
 
+        val isAlphabetVerbsCompleted = allExercisesValues.any {
+            it.exerciseNameRes == ExerciseName.ALPHABET_VERBS.id && it.value > ALPHABET_NUMBER_OF_LETTERS_FOR_ACHIEVEMENTS
+        }
+
+        val isAlphabetNounsCompleted = allExercisesValues.any {
+            it.exerciseNameRes == ExerciseName.ALPHABET_NOUN.id && it.value > ALPHABET_NUMBER_OF_LETTERS_FOR_ACHIEVEMENTS
+        }
+
+        val isAlphabetAdjectivesCompleted = allExercisesValues.any {
+            it.exerciseNameRes == ExerciseName.ALPHABET_ADJECTIVES.id && it.value > ALPHABET_NUMBER_OF_LETTERS_FOR_ACHIEVEMENTS
+        }
+
         if (commonInfo.dailyTrainingsCompleted > 0) {
             achieveAchievementsInteractor(AchievementName.FIRST_DAILY_TRAINING_COMPLETE)
         }
@@ -66,6 +82,10 @@ class LevelViewModel @Inject constructor(
 
         if (isTongueTwisterEasyCompleted && isTongueTwisterHardCompleted && isTongueTwisterVeryHardCompleted) {
             achieveAchievementsInteractor(AchievementName.ALL_TONGUE_TWISTERS_COMPLETE)
+        }
+
+        if (isAlphabetVerbsCompleted && isAlphabetNounsCompleted && isAlphabetAdjectivesCompleted) {
+            achieveAchievementsInteractor(AchievementName.ALL_ALPHABET_EXERCISES_COMPLETE)
         }
     }
 

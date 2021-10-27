@@ -64,6 +64,12 @@ class AchievementsDataStoreImp(private val context: Context) : AchievementsDataS
             name = AchievementName.ALL_TONGUE_TWISTERS_COMPLETE,
             iconAchieved = context.getAppComputeDrawable(R.drawable.ic_level_10),
             iconNotAchieved = context.getAppComputeDrawable(R.drawable.ic_level_20)
+        ),
+
+        Achievement(
+            name = AchievementName.ALL_ALPHABET_EXERCISES_COMPLETE,
+            iconAchieved = context.getAppComputeDrawable(R.drawable.ic_level_10),
+            iconNotAchieved = context.getAppComputeDrawable(R.drawable.ic_level_20)
         )
     )
 

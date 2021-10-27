@@ -23,4 +23,5 @@ enum class AchievementName(val nameRes: Int) {
     DICTIONARY_NOUNS_OVER_NORM(R.string.achievement_dictionary_nouns_over_norm),
     DICTIONARY_VERBS_OVER_NORM(R.string.achievement_dictionary_verbs_over_norm),
     ALL_TONGUE_TWISTERS_COMPLETE(R.string.achievement_all_tongue_twisters),
+    ALL_ALPHABET_EXERCISES_COMPLETE(R.string.achievement_all_alphabet_exercises_complete),
 }
