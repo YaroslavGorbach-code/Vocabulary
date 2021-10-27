@@ -21,5 +21,6 @@ enum class AchievementName(val nameRes: Int) {
     SEVEN_DAILY_TRAININGS_COMPLETE(R.string.achievement_seven_daily_training),
     DICTIONARY_ADJECTIVES_OVER_NORM(R.string.achievement_dictionary_adjectives_over_norm),
     DICTIONARY_NOUNS_OVER_NORM(R.string.achievement_dictionary_nouns_over_norm),
-    DICTIONARY_VERBS_OVER_NORM(R.string.achievement_dictionary_verbs_over_norm)
+    DICTIONARY_VERBS_OVER_NORM(R.string.achievement_dictionary_verbs_over_norm),
+    ALL_TONGUE_TWISTERS_COMPLETE(R.string.achievement_all_tongue_twisters),
 }

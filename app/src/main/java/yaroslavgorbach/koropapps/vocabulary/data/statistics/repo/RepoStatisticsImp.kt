@@ -5,10 +5,10 @@ import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.dao.StatisticsDao
+import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsCommonInfoEntity
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsDailyTrainingTimeEntity
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsExerciseTimeEntity
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsExerciseValueEntity
-import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsCommonInfoEntity
 import java.util.*
 
 class RepoStatisticsImp(private val localDataSource: StatisticsDao) : RepoStatistics {
@@ -80,5 +80,10 @@ class RepoStatisticsImp(private val localDataSource: StatisticsDao) : RepoStatis
                 insert(entity).subscribe()
                 Single.just(entity)
             }
+    }
+
+    override fun getAllExercisesValue(): Single<List<StatisticsExerciseValueEntity>> {
+        return localDataSource.getAllExercisesValue()
+            .subscribeOn(Schedulers.io())
     }
 }

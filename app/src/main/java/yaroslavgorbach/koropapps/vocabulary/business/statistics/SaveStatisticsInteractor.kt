@@ -49,6 +49,7 @@ class SaveStatisticsInteractor(
         ).andThen(achieveAchievements(exerciseType.getExerciseName(), passedLettersOrWordsCount))
     }
 
+    // TODO: 27.10.2021 remove achievements out of here to level viewModel
     private fun achieveAchievements(
         exerciseName: ExerciseName,
         passedLettersOrWordsCount: Int

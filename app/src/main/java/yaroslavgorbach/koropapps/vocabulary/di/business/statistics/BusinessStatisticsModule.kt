@@ -11,6 +11,7 @@ import yaroslavgorbach.koropapps.vocabulary.di.data.statistics.DataModuleStatist
 
 @Module(includes = [DataModuleStatistics::class, BusinessAchievementsModule::class])
 class BusinessStatisticsModule {
+
     @Provides
     fun provideInsertValueStatisticsInteractor(
         repoStatistics: RepoStatistics
@@ -60,9 +61,15 @@ class BusinessStatisticsModule {
     @Provides
     fun provideGetStatisticsLevelInteractor(
         repoStatistics: RepoStatistics,
-        achievementInteractor: AchieveAchievementInteractor
     ): GetStatisticsCommonInfoInteractor {
-        return GetStatisticsCommonInfoInteractor(repoStatistics, achievementInteractor)
+        return GetStatisticsCommonInfoInteractor(repoStatistics)
+    }
+
+    @Provides
+    fun provideGetAllExercisesStatisticiansInteractor(
+        repoStatistics: RepoStatistics,
+    ): GetAllExercisesStatisticsValueInteractor {
+        return GetAllExercisesStatisticsValueInteractor(repoStatistics)
     }
 
     @Provides

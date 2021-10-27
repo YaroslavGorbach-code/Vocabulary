@@ -29,4 +29,6 @@ interface RepoStatistics {
     fun observeDays(): Observable<List<StatisticsDailyTrainingTimeEntity>>
 
     fun getCommonInfo(): Single<StatisticsCommonInfoEntity>
+
+    fun getAllExercisesValue(): Single<List<StatisticsExerciseValueEntity>>
 }

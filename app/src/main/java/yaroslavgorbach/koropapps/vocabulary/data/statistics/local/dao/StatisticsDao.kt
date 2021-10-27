@@ -46,4 +46,6 @@ interface StatisticsDao {
     @Query("SELECT * FROM StatisticsCommonInfoEntity LIMIT 1")
     fun getLevel(): Single<StatisticsCommonInfoEntity>
 
+    @Query("SELECT * FROM StatisticsExerciseValueEntity")
+    fun getAllExercisesValue(): Single<List<StatisticsExerciseValueEntity>>
 }
