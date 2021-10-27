@@ -12,12 +12,16 @@ import yaroslavgorbach.koropapps.vocabulary.business.achievements.ObserveAchieve
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.GetAllExercisesStatisticsValueInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.GetStatisticsCommonInfoInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.ObserveStatisticDaysInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.statistics.SaveStatisticsInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.achievements.local.model.Achievement
 import yaroslavgorbach.koropapps.vocabulary.data.achievements.local.model.AchievementName
+import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseCategory
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
+import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.getExerciseName
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsCommonInfoEntity
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsDailyTrainingTimeEntity
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsExerciseValueEntity
+import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToExerciseCategoryMapper
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.model.OratorLevelInfoUi
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
@@ -97,6 +101,30 @@ class LevelViewModel @Inject constructor(
 
         if (daysStatisticsDailyTrainingTimeEntities.any { TimeUnit.HOURS.toMinutes(it.summaryTrainingTimeMc) > ONE_HOUR_IN_MINUTE }) {
             achieveAchievementsInteractor(AchievementName.SPENT_MORE_THEN_HOUR_ON_TRAINING)
+        }
+
+        if (isTongueTwisterEasyCompleted || isTongueTwisterHardCompleted || isTongueTwisterVeryHardCompleted) {
+            achieveAchievementsInteractor(AchievementName.FIRST_TONGUE_TWISTER_COMPLETE)
+        }
+
+        if (allExercisesValues.any { ExerciseNameToExerciseCategoryMapper().map(getExerciseName(it.exerciseNameRes)) == ExerciseCategory.COMMUNICATION }) {
+            achieveAchievementsInteractor(AchievementName.FIRST_IMPROVISATION_COMPLETE)
+        }
+
+        if (ExerciseNameToExerciseCategoryMapper().map(exerciseName) == ExerciseCategory.VOCABULARY) {
+            achieveAchievementInteractor(AchievementName.FIRST_VOCABULARY_COMPLETE)
+        }
+
+        if (exerciseName == ExerciseName.DICTIONARY_VERBS && passedLettersOrWordsCount >= SaveStatisticsInteractor.DICTIONARY_VERBS_WORDS_NORM) {
+            achieveAchievementInteractor(AchievementName.DICTIONARY_VERBS_OVER_NORM)
+        }
+
+        if (exerciseName == ExerciseName.DICTIONARY_NOUN && passedLettersOrWordsCount >= SaveStatisticsInteractor.DICTIONARY_NOUNS_WORDS_NORM) {
+            achieveAchievementInteractor(AchievementName.DICTIONARY_NOUNS_OVER_NORM)
+        }
+
+        if (exerciseName == ExerciseName.DICTIONARY_ADJECTIVES && passedLettersOrWordsCount >= SaveStatisticsInteractor.DICTIONARY_ADJECTIVES_WORDS_NORM) {
+            achieveAchievementInteractor(AchievementName.DICTIONARY_ADJECTIVES_OVER_NORM)
         }
     }
 

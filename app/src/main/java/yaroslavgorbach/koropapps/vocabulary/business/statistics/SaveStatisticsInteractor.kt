@@ -14,7 +14,6 @@ class SaveStatisticsInteractor(
     private val insertStatisticTimeInteractor: InsertStatisticTimeInteractor,
     private val insertOrUpdateStatisticDayInteractor: InsertOrUpdateStatisticDayInteractor,
     private val updateStatisticsCommonInfoInteractor: UpdateStatisticsCommonInfoInteractor,
-    private val achieveAchievementInteractor: AchieveAchievementInteractor
 ) {
     companion object {
         private const val DICTIONARY_ADJECTIVES_WORDS_NORM = 46
@@ -46,46 +45,9 @@ class SaveStatisticsInteractor(
             )
         ).andThen(
             updateStatisticsCommonInfoInteractor.invoke(exerciseType, summaryTimeSpendOnExercise)
-        ).andThen(achieveAchievements(exerciseType.getExerciseName(), passedLettersOrWordsCount))
+        )
     }
 
-    // TODO: 27.10.2021 remove achievements out of here to level viewModel
-    private fun achieveAchievements(
-        exerciseName: ExerciseName,
-        passedLettersOrWordsCount: Int
-    ): Completable {
-        return Completable.create { emitter ->
-            if (exerciseName == ExerciseName.TONGUE_TWISTERS_VERY_HARD
-                || exerciseName == ExerciseName.TONGUE_TWISTERS_HARD
-                || exerciseName == ExerciseName.TONGUE_TWISTERS_EASY
-                && passedLettersOrWordsCount > 0
-            ) {
-                achieveAchievementInteractor(AchievementName.FIRST_TONGUE_TWISTER_COMPLETE)
-            }
-
-            if (ExerciseNameToExerciseCategoryMapper().map(exerciseName) == ExerciseCategory.COMMUNICATION) {
-                achieveAchievementInteractor(AchievementName.FIRST_IMPROVISATION_COMPLETE)
-            }
-
-            if (ExerciseNameToExerciseCategoryMapper().map(exerciseName) == ExerciseCategory.VOCABULARY) {
-                achieveAchievementInteractor(AchievementName.FIRST_VOCABULARY_COMPLETE)
-            }
-
-            if (exerciseName == ExerciseName.DICTIONARY_VERBS && passedLettersOrWordsCount >= DICTIONARY_VERBS_WORDS_NORM) {
-                achieveAchievementInteractor(AchievementName.DICTIONARY_VERBS_OVER_NORM)
-            }
-
-            if (exerciseName == ExerciseName.DICTIONARY_NOUN && passedLettersOrWordsCount >= DICTIONARY_NOUNS_WORDS_NORM) {
-                achieveAchievementInteractor(AchievementName.DICTIONARY_NOUNS_OVER_NORM)
-            }
-
-            if (exerciseName == ExerciseName.DICTIONARY_ADJECTIVES && passedLettersOrWordsCount >= DICTIONARY_ADJECTIVES_WORDS_NORM) {
-                achieveAchievementInteractor(AchievementName.DICTIONARY_ADJECTIVES_OVER_NORM)
-            }
-
-            emitter.onComplete()
-        }
-    }
 }
 
 

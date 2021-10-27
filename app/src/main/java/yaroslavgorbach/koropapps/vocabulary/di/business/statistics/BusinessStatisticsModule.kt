@@ -9,7 +9,7 @@ import yaroslavgorbach.koropapps.vocabulary.data.statistics.repo.RepoStatistics
 import yaroslavgorbach.koropapps.vocabulary.di.business.achievements.BusinessAchievementsModule
 import yaroslavgorbach.koropapps.vocabulary.di.data.statistics.DataModuleStatistics
 
-@Module(includes = [DataModuleStatistics::class, BusinessAchievementsModule::class])
+@Module(includes = [DataModuleStatistics::class])
 class BusinessStatisticsModule {
 
     @Provides
@@ -98,7 +98,6 @@ class BusinessStatisticsModule {
             insertStatisticTimeInteractor = insertStatisticTimeInteractor,
             insertOrUpdateStatisticDayInteractor = insertOrUpdateStatisticDayInteractor,
             updateStatisticsCommonInfoInteractor = updateStatisticDayInteractor,
-            achieveAchievementInteractor = achieveAchievementInteractor
         )
     }
 }

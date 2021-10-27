@@ -28,4 +28,6 @@ enum class AchievementName(val nameRes: Int) {
     MORE_THEN_THEN_EXERCISES_COMPLETE(R.string.achievement_spend_more_then_hour_on_training),
     MORE_THEN_FIFTY_EXERCISES_COMPLETE(R.string.achievement_spend_more_then_hour_on_training),
     MORE_THEN_ONE_HUNDRED_EXERCISES_COMPLETE(R.string.achievement_spend_more_then_hour_on_training),
+    MORE_THEN_ONE_THOUSAND_EXERCISES_COMPLETE(R.string.achievement_spend_more_then_hour_on_training),
+    THIRTY_DAILY_TRAININGS_COMPLETE(R.string.achievement_seven_daily_training),
 }
