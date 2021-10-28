@@ -13,7 +13,8 @@ data class Achievement(
         get() = if (isAchieved) iconAchieved else iconNotAchieved
 }
 
-enum class AchievementName(val nameRes: Int) {
+// TODO: 28.10.2021 improve descriptions
+enum class AchievementName(val descRes: Int) {
     FIRST_DAILY_TRAINING_COMPLETE(R.string.achievement_first_daily_training),
     FIRST_DICTION_COMPLETE(R.string.achievement_first_diction_exercise),
     FIRST_IMPROVISATION_COMPLETE(R.string.achievement_first_improvisation),

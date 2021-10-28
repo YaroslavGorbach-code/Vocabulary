@@ -6,7 +6,8 @@ import yaroslavgorbach.koropapps.vocabulary.data.achievements.local.model.Achiev
 import yaroslavgorbach.koropapps.vocabulary.databinding.ItemAchievementBinding
 import yaroslavgorbach.koropapps.vocabulary.utils.inflateBinding
 
-class AchievementsAdapter : RecyclerView.Adapter<AchievementsAdapter.ViewHolder>() {
+class AchievementsAdapter(private val onAchievement: (Achievement) -> Unit) :
+    RecyclerView.Adapter<AchievementsAdapter.ViewHolder>() {
 
     var items: List<Achievement> = arrayListOf()
         set(value) {
@@ -28,6 +29,12 @@ class AchievementsAdapter : RecyclerView.Adapter<AchievementsAdapter.ViewHolder>
 
     inner class ViewHolder(private val binding: ItemAchievementBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            binding.root.setOnClickListener {
+                onAchievement(getItem(absoluteAdapterPosition))
+            }
+        }
 
         fun bind(item: Achievement) {
             binding.icon.setImageDrawable(item.icon)

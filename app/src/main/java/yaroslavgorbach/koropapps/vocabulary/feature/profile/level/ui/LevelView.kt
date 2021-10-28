@@ -1,6 +1,5 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.profile.level.ui
 
-import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import yaroslavgorbach.koropapps.vocabulary.R
@@ -14,6 +13,7 @@ class LevelView(private val binding: FragmentLevelBinding, private val callback:
 
     interface Callback {
         fun onBack()
+        fun onAchievement(achievement: Achievement)
     }
 
     private var achievementsAdapter: AchievementsAdapter? = null
@@ -24,7 +24,7 @@ class LevelView(private val binding: FragmentLevelBinding, private val callback:
     }
 
     private fun initViews() {
-        achievementsAdapter = AchievementsAdapter()
+        achievementsAdapter = AchievementsAdapter(callback::onAchievement)
 
         binding.achievements.listAchievements.apply {
             adapter = achievementsAdapter
