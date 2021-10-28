@@ -76,6 +76,7 @@
     <string name="record_saved">Запись успешно сохранена</string>
     <string name="cancel">Отмена</string>
     <string name="record_deleted">Запись удалена</string>
+    <string name="achievement">Достижения</string>
 
     <string-array name="empty_array" />
 </resources>

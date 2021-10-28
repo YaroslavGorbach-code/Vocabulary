@@ -31,7 +31,6 @@ class AchievementsAdapter : RecyclerView.Adapter<AchievementsAdapter.ViewHolder>
 
         fun bind(item: Achievement) {
             binding.icon.setImageDrawable(item.icon)
-            binding.name.setText(item.name.nameRes)
         }
     }
 }
