@@ -91,7 +91,6 @@ class BusinessStatisticsModule {
         insertStatisticValueInteractor: InsertStatisticValueInteractor,
         insertOrUpdateStatisticDayInteractor: InsertOrUpdateStatisticDayInteractor,
         updateStatisticDayInteractor: UpdateStatisticsCommonInfoInteractor,
-        achieveAchievementInteractor: AchieveAchievementInteractor
     ): SaveStatisticsInteractor {
         return SaveStatisticsInteractor(
             insertStatisticValueInteractor = insertStatisticValueInteractor,

@@ -12,7 +12,7 @@ import yaroslavgorbach.koropapps.vocabulary.business.achievements.ObserveAchieve
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.GetAllExercisesStatisticsValueInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.GetStatisticsCommonInfoInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.ObserveStatisticDaysInteractor
-import yaroslavgorbach.koropapps.vocabulary.business.statistics.SaveStatisticsInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.training.ObserveCurrentTrainingWithExercisesInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.achievements.local.model.Achievement
 import yaroslavgorbach.koropapps.vocabulary.data.achievements.local.model.AchievementName
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseCategory
@@ -21,8 +21,10 @@ import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.getExerci
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsCommonInfoEntity
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsDailyTrainingTimeEntity
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsExerciseValueEntity
+import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingWithExercisesEntity
 import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToExerciseCategoryMapper
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.model.OratorLevelInfoUi
+import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingWithExercisesUi
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
@@ -31,7 +33,8 @@ class LevelViewModel @Inject constructor(
     private val observeAchievementsInteractor: ObserveAchievementsInteractor,
     private val achieveAchievementsInteractor: AchieveAchievementInteractor,
     private val getAllExercisesStatisticsValueInteractor: GetAllExercisesStatisticsValueInteractor,
-    private val observeStatisticDaysInteractor: ObserveStatisticDaysInteractor
+    private val observeStatisticDaysInteractor: ObserveStatisticDaysInteractor,
+    private val observeCurrentTrainingWithExercisesInteractor: ObserveCurrentTrainingWithExercisesInteractor
 ) : ViewModel() {
 
     companion object {
@@ -61,7 +64,8 @@ class LevelViewModel @Inject constructor(
     private fun achieveAchievements(
         commonInfo: StatisticsCommonInfoEntity,
         allExercisesValues: List<StatisticsExerciseValueEntity>,
-        daysStatisticsDailyTrainingTimeEntities: List<StatisticsDailyTrainingTimeEntity>
+        daysStatisticsDailyTrainingTimeEntities: List<StatisticsDailyTrainingTimeEntity>,
+        trainingWithExercises: TrainingWithExercisesEntity
     ) {
         val isTongueTwisterEasyCompleted = allExercisesValues.any {
             it.exerciseNameRes == ExerciseName.TONGUE_TWISTERS_EASY.id && it.value > 0
@@ -115,8 +119,12 @@ class LevelViewModel @Inject constructor(
             achieveAchievementsInteractor(AchievementName.FIRST_DAILY_TRAINING_COMPLETE)
         }
 
-        if (commonInfo.dailyTrainingsCompleted > 6) {
-            achieveAchievementsInteractor(AchievementName.SEVEN_DAILY_TRAININGS_COMPLETE)
+        if (trainingWithExercises.training.daysWithoutInterruption >= 7) {
+            achieveAchievementsInteractor(AchievementName.SEVEN_DAILY_TRAININGS_IN_A_ROW_COMPLETE)
+        }
+
+        if (trainingWithExercises.training.daysWithoutInterruption >= 30) {
+            achieveAchievementsInteractor(AchievementName.THIRTY_DAILY_TRAININGS_IN_A_ROW_COMPLETE)
         }
 
         if (isTongueTwisterEasyCompleted && isTongueTwisterHardCompleted && isTongueTwisterVeryHardCompleted) {
@@ -154,6 +162,18 @@ class LevelViewModel @Inject constructor(
         if (isDictionaryAdjectivesCompleteOverNorm) {
             achieveAchievementsInteractor(AchievementName.DICTIONARY_ADJECTIVES_OVER_NORM)
         }
+
+        if (commonInfo.exercisesCompleted > 10) {
+            achieveAchievementsInteractor(AchievementName.MORE_THEN_TEN_EXERCISES_COMPLETE)
+        }
+
+        if (commonInfo.exercisesCompleted > 100) {
+            achieveAchievementsInteractor(AchievementName.MORE_THEN_ONE_HUNDRED_EXERCISES_COMPLETE)
+        }
+
+        if (commonInfo.exercisesCompleted > 1000) {
+            achieveAchievementsInteractor(AchievementName.MORE_THEN_ONE_THOUSAND_EXERCISES_COMPLETE)
+        }
     }
 
     private fun getLevelInfo() {
@@ -169,6 +189,7 @@ class LevelViewModel @Inject constructor(
             getStatisticsCommonInfoInteractor(),
             getAllExercisesStatisticsValueInteractor(),
             observeStatisticDaysInteractor().first(emptyList()),
+            observeCurrentTrainingWithExercisesInteractor().firstOrError(),
             this::achieveAchievements
         )
             .observeOn(AndroidSchedulers.mainThread())
