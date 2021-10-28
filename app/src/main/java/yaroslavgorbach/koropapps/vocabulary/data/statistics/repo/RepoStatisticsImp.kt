@@ -75,7 +75,10 @@ class RepoStatisticsImp(private val localDataSource: StatisticsDao) : RepoStatis
                 val entity = StatisticsCommonInfoEntity(
                     summaryTrainingTimeMc = 0,
                     exercisesCompleted = 0,
-                    dailyTrainingsCompleted = 0
+                    dailyTrainingsCompleted = 0,
+                    summaryTrainingTimeCommunicationMc = 0,
+                    summaryTrainingTimeDictionMc = 0,
+                    summaryTrainingTimeVocabularyMc = 0
                 )
                 insert(entity).subscribe()
                 Single.just(entity)

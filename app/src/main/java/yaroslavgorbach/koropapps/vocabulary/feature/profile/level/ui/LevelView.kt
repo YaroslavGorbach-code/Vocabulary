@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.data.achievements.local.model.Achievement
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentLevelBinding
-import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.model.OratorLevelInfoUi
+import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.model.LevelInfoUi
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.ui.recycler.AchievementsAdapter
 import yaroslavgorbach.koropapps.vocabulary.utils.getDrawable
 
@@ -44,9 +44,18 @@ class LevelView(private val binding: FragmentLevelBinding, private val callback:
         }
     }
 
-    fun setLevelInfo(oratorLevelInfoUi: OratorLevelInfoUi) {
-        binding.levels.level.setText(oratorLevelInfoUi.level.level)
-        binding.levels.level.setProgress(oratorLevelInfoUi.progress)
+    fun setLevelInfo(levelInfoUi: LevelInfoUi) {
+        binding.levels.level.setText(levelInfoUi.oratorLevel.level)
+        binding.levels.level.setProgress(levelInfoUi.oratorLevelProgress)
+
+        binding.levels.levelDictionImageProgress.setProgress(levelInfoUi.dictionLevelProgress)
+        binding.levels.levelDictionProgressText.text = levelInfoUi.dictionLevel.level
+
+        binding.levels.levelImprovisationImageProgress.setProgress(levelInfoUi.communicationLevelProgress)
+        binding.levels.levelImprovisationProgressText.text = levelInfoUi.communicationLevel.level
+
+        binding.levels.levelVocabularyImageProgress.setProgress(levelInfoUi.vocabularyLevelProgress)
+        binding.levels.levelVocabularyProgressText.text = levelInfoUi.vocabularyLevel.level
     }
 
     fun setAchievements(achievements: List<Achievement>) {

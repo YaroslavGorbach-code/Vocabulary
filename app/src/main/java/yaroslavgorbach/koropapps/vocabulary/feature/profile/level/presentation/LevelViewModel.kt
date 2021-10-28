@@ -23,8 +23,7 @@ import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.Statisti
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsExerciseValueEntity
 import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingWithExercisesEntity
 import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToExerciseCategoryMapper
-import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.model.OratorLevelInfoUi
-import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingWithExercisesUi
+import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.model.LevelInfoUi
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
@@ -48,10 +47,10 @@ class LevelViewModel @Inject constructor(
 
     private val disposables: CompositeDisposable = CompositeDisposable()
 
-    private val _oratorLevelInfo: MutableLiveData<OratorLevelInfoUi> = MutableLiveData()
+    private val _LevelInfo: MutableLiveData<LevelInfoUi> = MutableLiveData()
 
-    val oratorLevelInfoUi: LiveData<OratorLevelInfoUi>
-        get() = _oratorLevelInfo
+    val levelInfoUi: LiveData<LevelInfoUi>
+        get() = _LevelInfo
 
     val achievements: LiveData<List<Achievement>>
         get() = observeAchievementsInteractor().asLiveData()
@@ -179,8 +178,8 @@ class LevelViewModel @Inject constructor(
     private fun getLevelInfo() {
         getStatisticsCommonInfoInteractor()
             .observeOn(AndroidSchedulers.mainThread())
-            .map(::OratorLevelInfoUi)
-            .subscribe(_oratorLevelInfo::setValue)
+            .map(::LevelInfoUi)
+            .subscribe(_LevelInfo::setValue)
             .let(disposables::add)
     }
 

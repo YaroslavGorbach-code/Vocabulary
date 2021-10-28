@@ -8,10 +8,21 @@ data class StatisticsCommonInfoEntity(
     @PrimaryKey(autoGenerate = false)
     val id: Long = 0,
     var summaryTrainingTimeMc: Long,
+    var summaryTrainingTimeVocabularyMc: Long,
+    var summaryTrainingTimeDictionMc: Long,
+    var summaryTrainingTimeCommunicationMc: Long,
     var exercisesCompleted: Int,
     var dailyTrainingsCompleted: Int,
 ) {
     val summaryTrainingTimeMinutes: Long
         get() = summaryTrainingTimeMc / 60000
 
+    val summaryTrainingTimeCommunicationMinutes: Long
+        get() = summaryTrainingTimeCommunicationMc / 60000
+
+    val summaryTrainingTimeDictionMinutes: Long
+        get() = summaryTrainingTimeDictionMc / 60000
+
+    val summaryTrainingTimeVocabularyMinutes: Long
+        get() = summaryTrainingTimeVocabularyMc / 60000
 }

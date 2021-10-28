@@ -65,7 +65,7 @@ class LevelFragment : Fragment(R.layout.fragment_level), InfoDialog.Host {
     }
 
     private fun initObservers() {
-        viewModel.oratorLevelInfoUi.observe(viewLifecycleOwner, levelView::setLevelInfo)
+        viewModel.levelInfoUi.observe(viewLifecycleOwner, levelView::setLevelInfo)
 
         viewModel.achievements.observe(viewLifecycleOwner, levelView::setAchievements)
     }

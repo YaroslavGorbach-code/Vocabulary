@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/BaseLayoutItem"
+    android:layout_width="match_parent"
     android:layout_height="60dp"
     android:orientation="horizontal">
 
@@ -12,19 +13,22 @@
         android:src="@drawable/ic_school" />
 
     <TextView
+        style="@style/TextPrimary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="8dp"
         android:layout_gravity="center"
+        android:layout_marginHorizontal="8dp"
         android:layout_weight="1"
         android:gravity="center|start"
-        android:text="@string/orator_level"
-        style="@style/TextPrimary" />
+        android:text="@string/orator_level" />
 
-<ImageView
-    android:id="@+id/level_icon"
-    android:layout_width="40dp"
-    android:layout_height="match_parent"
-    android:layout_gravity="center"
-    android:src="@drawable/ic_level_10" />
+    <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.customview.ImageProgressView
+        android:id="@+id/level_progress"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:imageProgress="50"
+        app:imageProgressColor="@color/gold"
+        app:imageProgressOutlineStrokeWidth="2dp"
+        app:imageProgressStrokeWidth="2dp"
+        android:layout_gravity="center" />
 </LinearLayout>
