@@ -30,5 +30,6 @@ enum class AchievementName(val descRes: Int) {
     MORE_THEN_FIFTY_EXERCISES_COMPLETE(R.string.achievement_more_then_fifty_exercises_complete),
     MORE_THEN_ONE_HUNDRED_EXERCISES_COMPLETE(R.string.achievement_more_then_one_hundred_exercises_complete),
     MORE_THEN_ONE_THOUSAND_EXERCISES_COMPLETE(R.string.achievement_more_then_one_thousand_exercises_complete),
+    FIFTEEN_DAILY_TRAININGS_IN_A_ROW_COMPLETE(R.string.achievement_fifteen_daily_training),
     THIRTY_DAILY_TRAININGS_IN_A_ROW_COMPLETE(R.string.achievement_thirty_daily_training),
 }

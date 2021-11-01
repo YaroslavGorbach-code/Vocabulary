@@ -42,8 +42,18 @@ class AchievementsDataStoreImp(private val context: Context) : AchievementsDataS
         ),
         Achievement(
             name = AchievementName.SEVEN_DAILY_TRAININGS_IN_A_ROW_COMPLETE,
-            iconAchieved = context.getAppComputeDrawable(R.drawable.ic_level_10),
-            iconNotAchieved = context.getAppComputeDrawable(R.drawable.ic_level_20)
+            iconAchieved = context.getAppComputeDrawable(R.drawable.ic_achivement_active_7_trainings_in_a_row),
+            iconNotAchieved = context.getAppComputeDrawable(R.drawable.ic_achivement_not_active_7_trainings_in_a_row)
+        ),
+        Achievement(
+            name = AchievementName.FIFTEEN_DAILY_TRAININGS_IN_A_ROW_COMPLETE,
+            iconAchieved = context.getAppComputeDrawable(R.drawable.ic_achivement_active_15_trainings_in_a_row),
+            iconNotAchieved = context.getAppComputeDrawable(R.drawable.ic_achivement_not_active_15_trainings_in_a_row)
+        ),
+        Achievement(
+            name = AchievementName.THIRTY_DAILY_TRAININGS_IN_A_ROW_COMPLETE,
+            iconAchieved = context.getAppComputeDrawable(R.drawable.ic_achivement_active_30_trainings_in_a_row),
+            iconNotAchieved = context.getAppComputeDrawable(R.drawable.ic_achivement_not_active_30_trainings_in_a_row)
         ),
         Achievement(
             name = AchievementName.DICTIONARY_ADJECTIVES_OVER_NORM,

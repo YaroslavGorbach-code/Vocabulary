@@ -122,6 +122,10 @@ class LevelViewModel @Inject constructor(
             achieveAchievementsInteractor(AchievementName.SEVEN_DAILY_TRAININGS_IN_A_ROW_COMPLETE)
         }
 
+        if (trainingWithExercises.training.daysWithoutInterruption >= 15) {
+            achieveAchievementsInteractor(AchievementName.FIFTEEN_DAILY_TRAININGS_IN_A_ROW_COMPLETE)
+        }
+
         if (trainingWithExercises.training.daysWithoutInterruption >= 30) {
             achieveAchievementsInteractor(AchievementName.THIRTY_DAILY_TRAININGS_IN_A_ROW_COMPLETE)
         }
@@ -164,6 +168,10 @@ class LevelViewModel @Inject constructor(
 
         if (commonInfo.exercisesCompleted > 10) {
             achieveAchievementsInteractor(AchievementName.MORE_THEN_TEN_EXERCISES_COMPLETE)
+        }
+
+        if (commonInfo.exercisesCompleted > 50) {
+            achieveAchievementsInteractor(AchievementName.MORE_THEN_FIFTY_EXERCISES_COMPLETE)
         }
 
         if (commonInfo.exercisesCompleted > 100) {
