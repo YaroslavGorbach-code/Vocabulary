@@ -6,7 +6,9 @@ import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.Statisti
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.repo.RepoStatistics
 
 class ObserveStatisticsTimeInteractor(private val repoStatistics: RepoStatistics) {
+
     operator fun invoke(exerciseNameRes: Int): Observable<List<StatisticsExerciseTimeEntity>> {
-        return repoStatistics.observeTime(exerciseNameRes).subscribeOn(Schedulers.io())
+        return repoStatistics.observeTime(exerciseNameRes)
+            .subscribeOn(Schedulers.io())
     }
 }

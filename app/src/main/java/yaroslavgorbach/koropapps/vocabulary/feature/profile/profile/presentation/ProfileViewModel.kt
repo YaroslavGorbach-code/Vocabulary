@@ -1,6 +1,5 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.profile.profile.presentation
 
-import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,7 +7,7 @@ import androidx.lifecycle.asLiveData
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import yaroslavgorbach.koropapps.vocabulary.business.phrase.ObserveTodayPhraseInteractor
-import yaroslavgorbach.koropapps.vocabulary.business.statistics.GetStatisticsLevelInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.statistics.GetStatisticsCommonInfoInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.ObserveStatisticDaysInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.phrase.local.model.Phrase
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.model.ChartValueUi
@@ -19,7 +18,7 @@ import javax.inject.Inject
 
 class ProfileViewModel @Inject constructor(
     private val observeStatisticDaysInteractor: ObserveStatisticDaysInteractor,
-    private val getStatisticsLevelInteractor: GetStatisticsLevelInteractor,
+    private val getStatisticsCommonInfoInteractor: GetStatisticsCommonInfoInteractor,
     private val observeTodayPhraseInteractor: ObserveTodayPhraseInteractor
 ) : ViewModel() {
 
@@ -30,10 +29,10 @@ class ProfileViewModel @Inject constructor(
     val chartDayUi: LiveData<ChartDayUi>
         get() = _chartDayUi
 
-    private val _levelInfoUi: MutableLiveData<LevelInfoUi> = MutableLiveData()
+    private val __levelInfoUi: MutableLiveData<LevelInfoUi> = MutableLiveData()
 
     val levelInfoUi: LiveData<LevelInfoUi>
-        get() = _levelInfoUi
+        get() = __levelInfoUi
 
     init {
         observeDaysStatistics()
@@ -45,10 +44,10 @@ class ProfileViewModel @Inject constructor(
     }
 
     private fun getLevel() {
-        getStatisticsLevelInteractor()
+        getStatisticsCommonInfoInteractor()
             .observeOn(AndroidSchedulers.mainThread())
             .map(::LevelInfoUi)
-            .subscribe(_levelInfoUi::setValue)
+            .subscribe(__levelInfoUi::setValue)
     }
 
     private fun observeDaysStatistics() {

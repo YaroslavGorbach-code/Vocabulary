@@ -117,7 +117,7 @@ class ImageProgressView @JvmOverloads constructor(
         }
     }
 
-    fun set(drawable: Drawable) {
+    fun setImage(drawable: Drawable?) {
         imageView.setImageDrawable(drawable)
     }
 }

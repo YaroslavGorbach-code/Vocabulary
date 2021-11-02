@@ -8,7 +8,7 @@ import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.dao.Statistics
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsDailyTrainingTimeEntity
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsExerciseTimeEntity
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsExerciseValueEntity
-import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsLevelEntity
+import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsCommonInfoEntity
 
 @TypeConverters(DateConverter::class)
 @Database(
@@ -16,7 +16,7 @@ import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.Statisti
         StatisticsExerciseValueEntity::class,
         StatisticsExerciseTimeEntity::class,
         StatisticsDailyTrainingTimeEntity::class,
-        StatisticsLevelEntity::class
+        StatisticsCommonInfoEntity::class
     ],
     version = 1
 )

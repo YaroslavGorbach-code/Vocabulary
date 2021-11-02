@@ -6,7 +6,7 @@ import androidx.annotation.MainThread
 import androidx.recyclerview.widget.RecyclerView
 import yaroslavgorbach.koropapps.vocabulary.databinding.ItemRecordBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.records.model.RecordUi
-import yaroslavgorbach.koropapps.vocabulary.utils.inflateBind
+import yaroslavgorbach.koropapps.vocabulary.utils.inflateBinding
 
 class RecordsListAdapter(private val onRecordClick: (RecordUi) -> Unit) :
     RecyclerView.Adapter<RecordsListAdapter.ViewHolder>() {
@@ -24,7 +24,7 @@ class RecordsListAdapter(private val onRecordClick: (RecordUi) -> Unit) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(parent.inflateBind(ItemRecordBinding::inflate))
+        return ViewHolder(parent.inflateBinding(ItemRecordBinding::inflate))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -69,7 +69,6 @@ class RecordsListAdapter(private val onRecordClick: (RecordUi) -> Unit) :
                 }
             }
         }
-
     }
 
     private fun getItem(position: Int): RecordUi? {

@@ -108,7 +108,6 @@ class ProfileView(private val binding: FragmentProfileBinding, private val callb
     }
 
     fun setLevel(levelInfoUi: LevelInfoUi) {
-        binding.level.levelProgress.setProgress(levelInfoUi.progress)
-        binding.level.levelProgress.setText(levelInfoUi.level.level)
+        binding.level.levelProgress.setProgress(levelInfoUi.oratorLevelProgress)
     }
 }

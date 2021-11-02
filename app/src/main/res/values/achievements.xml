@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="achievement_first_daily_training">За первую ежедневную тренеровку</string>
+    <string name="achievement_first_diction_exercise">За первое упражнение для улутьшения дикции</string>
+    <string name="achievement_first_improvisation">За первую импровизацию</string>
+    <string name="achievement_first_vocabulary">За первое упражнение для словарного запаса</string>
+    <string name="achievement_seven_daily_training">За семь ежедневных тренеровок выполненых подряд</string>
+    <string name="achievement_thirty_daily_training">За тридцать ежедневных тренеровок выполненых подряд</string>
+    <string name="achievement_fifteen_daily_training">За петнадцать ежедневных тренеровок выполненых подряд</string>
+    <string name="achievement_dictionary_adjectives_over_norm">За выполнение нормы слов в упражнении словарь (прилагательные)</string>
+    <string name="achievement_dictionary_nouns_over_norm">За выполнение нормы слов в упражнении словарь (существительные)</string>
+    <string name="achievement_dictionary_verbs_over_norm">За выполнение нормы слов в упражнении словарь (глаголы)</string>
+    <string name="achievement_all_tongue_twisters">За выполнение скороговорок всех уровней сложности</string>
+    <string name="achievement_all_alphabet_exercises_complete">За выполнение всех вариаций упражнения алфавит</string>
+    <string name="achievement_spend_more_then_hour_on_training">За тренеровку которая длилась больше часа</string>
+    <string name="achievement_more_then_ten_exercises_complete">За выполнение больше десяти упражнений</string>
+    <string name="achievement_more_then_fifty_exercises_complete">За выполнение больше пятидесяти упражнений</string>
+    <string name="achievement_more_then_one_hundred_exercises_complete">За выполнение больше ста упражнений</string>
+    <string name="achievement_more_then_one_thousand_exercises_complete">За выполнение больше тысячи упражнений</string>
+</resources>

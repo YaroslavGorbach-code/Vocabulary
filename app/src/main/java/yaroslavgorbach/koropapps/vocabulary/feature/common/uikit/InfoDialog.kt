@@ -15,8 +15,8 @@ class InfoDialog : DialogFragment() {
     }
 
     companion object {
-        const val ARG_TITLE = "ARG_TITLE"
-        const val ARG_MESSAGE = "ARG_MESSAGE"
+        private const val ARG_TITLE = "ARG_TITLE"
+        private const val ARG_MESSAGE = "ARG_MESSAGE"
 
         fun newInstance(title: String?, message: String?) = InfoDialog().apply {
             arguments = bundleOf(

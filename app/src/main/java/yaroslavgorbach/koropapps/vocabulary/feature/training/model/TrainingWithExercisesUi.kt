@@ -25,6 +25,9 @@ class TrainingWithExercisesUi(private val trainingWithExercisesEntity: TrainingW
     val daysWithoutInterruption: Int
         get() = trainingWithExercisesEntity.training.daysWithoutInterruption
 
+    val isTrainingFinished: Boolean
+        get() = trainingWithExercisesEntity.isFinished
+
     val availableFilters: List<TrainingExerciseCategoryFilterUi>
         get() {
             val filters: MutableList<TrainingExerciseCategoryFilterUi> = arrayListOf()

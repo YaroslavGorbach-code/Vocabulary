@@ -2,13 +2,16 @@ package yaroslavgorbach.koropapps.vocabulary.di.business.statistics
 
 import dagger.Module
 import dagger.Provides
+import yaroslavgorbach.koropapps.vocabulary.business.achievements.AchieveAchievementInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.*
 import yaroslavgorbach.koropapps.vocabulary.business.training.GetCurrentTrainingIsFinishedInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.repo.RepoStatistics
+import yaroslavgorbach.koropapps.vocabulary.di.business.achievements.BusinessAchievementsModule
 import yaroslavgorbach.koropapps.vocabulary.di.data.statistics.DataModuleStatistics
 
 @Module(includes = [DataModuleStatistics::class])
 class BusinessStatisticsModule {
+
     @Provides
     fun provideInsertValueStatisticsInteractor(
         repoStatistics: RepoStatistics
@@ -57,19 +60,26 @@ class BusinessStatisticsModule {
 
     @Provides
     fun provideGetStatisticsLevelInteractor(
-        repoStatistics: RepoStatistics
-    ): GetStatisticsLevelInteractor {
-        return GetStatisticsLevelInteractor(repoStatistics)
+        repoStatistics: RepoStatistics,
+    ): GetStatisticsCommonInfoInteractor {
+        return GetStatisticsCommonInfoInteractor(repoStatistics)
+    }
+
+    @Provides
+    fun provideGetAllExercisesStatisticiansInteractor(
+        repoStatistics: RepoStatistics,
+    ): GetAllExercisesStatisticsValueInteractor {
+        return GetAllExercisesStatisticsValueInteractor(repoStatistics)
     }
 
     @Provides
     fun provideUpdateStatisticsLevelInteractor(
         repoStatistics: RepoStatistics,
         getCurrentTrainingIsFinishedInteractor: GetCurrentTrainingIsFinishedInteractor,
-        getStatisticsLevelInteractor: GetStatisticsLevelInteractor
-    ): UpdateStatisticsLevelInteractor {
-        return UpdateStatisticsLevelInteractor(
-            getStatisticsLevelInteractor,
+        getStatisticsCommonInfoInteractor: GetStatisticsCommonInfoInteractor
+    ): UpdateStatisticsCommonInfoInteractor {
+        return UpdateStatisticsCommonInfoInteractor(
+            getStatisticsCommonInfoInteractor,
             getCurrentTrainingIsFinishedInteractor,
             repoStatistics
         )
@@ -80,13 +90,13 @@ class BusinessStatisticsModule {
         insertStatisticTimeInteractor: InsertStatisticTimeInteractor,
         insertStatisticValueInteractor: InsertStatisticValueInteractor,
         insertOrUpdateStatisticDayInteractor: InsertOrUpdateStatisticDayInteractor,
-        updateStatisticDayInteractor: UpdateStatisticsLevelInteractor,
+        updateStatisticDayInteractor: UpdateStatisticsCommonInfoInteractor,
     ): SaveStatisticsInteractor {
         return SaveStatisticsInteractor(
             insertStatisticValueInteractor = insertStatisticValueInteractor,
             insertStatisticTimeInteractor = insertStatisticTimeInteractor,
             insertOrUpdateStatisticDayInteractor = insertOrUpdateStatisticDayInteractor,
-            updateStatisticsLevelInteractor = updateStatisticDayInteractor,
+            updateStatisticsCommonInfoInteractor = updateStatisticDayInteractor,
         )
     }
 }

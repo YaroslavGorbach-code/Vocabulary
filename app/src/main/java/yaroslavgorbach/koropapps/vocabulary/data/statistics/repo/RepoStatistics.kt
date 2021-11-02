@@ -6,7 +6,7 @@ import io.reactivex.rxjava3.core.Single
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsDailyTrainingTimeEntity
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsExerciseTimeEntity
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsExerciseValueEntity
-import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsLevelEntity
+import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsCommonInfoEntity
 
 interface RepoStatistics {
 
@@ -16,9 +16,9 @@ interface RepoStatistics {
 
     fun insert(statisticsDailyTrainingTimeEntity: StatisticsDailyTrainingTimeEntity): Completable
 
-    fun insert(statisticsLevelEntity: StatisticsLevelEntity): Completable
+    fun insert(statisticsCommonInfoEntity: StatisticsCommonInfoEntity): Completable
 
-    fun update(statisticsLevelEntity: StatisticsLevelEntity): Completable
+    fun update(statisticsCommonInfoEntity: StatisticsCommonInfoEntity): Completable
 
     fun update(statisticsDailyTrainingTimeEntity: StatisticsDailyTrainingTimeEntity): Completable
 
@@ -28,5 +28,7 @@ interface RepoStatistics {
 
     fun observeDays(): Observable<List<StatisticsDailyTrainingTimeEntity>>
 
-    fun getLevel(): Single<StatisticsLevelEntity>
+    fun getCommonInfo(): Single<StatisticsCommonInfoEntity>
+
+    fun getAllExercisesValue(): Single<List<StatisticsExerciseValueEntity>>
 }
