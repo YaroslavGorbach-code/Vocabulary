@@ -1,5 +1,6 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.records.ui
 
+import android.view.View
 import com.google.android.material.snackbar.Snackbar
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentRecordsListBinding
@@ -67,7 +68,13 @@ class RecordsView(private val binding: FragmentRecordsListBinding, private val c
     }
 
     fun setRecords(records: List<RecordUi>) {
-        recordsAdapter?.submitList(records)
+        if (records.isEmpty()) {
+            recordsAdapter?.submitList(records)
+
+            binding.icNoRecords.visibility = View.VISIBLE
+        } else {
+            binding.icNoRecords.visibility = View.GONE
+        }
     }
 
 }
