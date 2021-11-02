@@ -57,28 +57,28 @@ class AchievementsDataStoreImp(private val context: Context) : AchievementsDataS
         ),
         Achievement(
             name = AchievementName.DICTIONARY_ADJECTIVES_OVER_NORM,
-            iconAchieved = context.getAppComputeDrawable(R.drawable.ic_level_10),
-            iconNotAchieved = context.getAppComputeDrawable(R.drawable.ic_level_20)
+            iconAchieved = context.getAppComputeDrawable(R.drawable.ic_achivement_active_dictionary_ajectives_over_norm),
+            iconNotAchieved = context.getAppComputeDrawable(R.drawable.ic_achivement_not_active_dictionary_ajectives_over_norm)
         ),
         Achievement(
             name = AchievementName.DICTIONARY_NOUNS_OVER_NORM,
-            iconAchieved = context.getAppComputeDrawable(R.drawable.ic_level_10),
-            iconNotAchieved = context.getAppComputeDrawable(R.drawable.ic_level_20)
+            iconAchieved = context.getAppComputeDrawable(R.drawable.ic_achivement_active_dictionary_nouns_over_norm),
+            iconNotAchieved = context.getAppComputeDrawable(R.drawable.ic_achivement_not_active_dictionary_noun_over_norm)
         ),
         Achievement(
             name = AchievementName.DICTIONARY_VERBS_OVER_NORM,
-            iconAchieved = context.getAppComputeDrawable(R.drawable.ic_level_10),
-            iconNotAchieved = context.getAppComputeDrawable(R.drawable.ic_level_20)
+            iconAchieved = context.getAppComputeDrawable(R.drawable.ic_achivement_active_dictionary_verds_over_norm),
+            iconNotAchieved = context.getAppComputeDrawable(R.drawable.ic_achivement_not_active_dictionary_verds_over_norm)
         ),
         Achievement(
             name = AchievementName.ALL_TONGUE_TWISTERS_COMPLETE,
-            iconAchieved = context.getAppComputeDrawable(R.drawable.ic_level_10),
-            iconNotAchieved = context.getAppComputeDrawable(R.drawable.ic_level_20)
+            iconAchieved = context.getAppComputeDrawable(R.drawable.ic_achivement_active_all_tongue_twisters_complete),
+            iconNotAchieved = context.getAppComputeDrawable(R.drawable.ic_achivement_not_active_all_tongue_twisters_complete)
         ),
         Achievement(
             name = AchievementName.ALL_ALPHABET_EXERCISES_COMPLETE,
-            iconAchieved = context.getAppComputeDrawable(R.drawable.ic_level_10),
-            iconNotAchieved = context.getAppComputeDrawable(R.drawable.ic_level_20)
+            iconAchieved = context.getAppComputeDrawable(R.drawable.ic_achivement_active_all_alphabet_complete),
+            iconNotAchieved = context.getAppComputeDrawable(R.drawable.ic_achivement_not_active_all_alphabet_complete)
         ),
         Achievement(
             name = AchievementName.SPENT_MORE_THEN_HOUR_ON_TRAINING,
