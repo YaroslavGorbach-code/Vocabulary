@@ -99,4 +99,9 @@ class WordExerciseFragment : Fragment(R.layout.fragment_exercise), PermissionDen
     override fun onGrantPermissionClicked() {
         viewModel.onStartStopRecording()
     }
+
+    override fun onStop() {
+        super.onStop()
+        viewModel.onStartStopRecording()
+    }
 }

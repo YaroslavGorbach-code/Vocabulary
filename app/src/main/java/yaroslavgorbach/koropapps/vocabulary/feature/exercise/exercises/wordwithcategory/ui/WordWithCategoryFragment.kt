@@ -94,11 +94,16 @@ class WordWithCategoryFragment : Fragment(R.layout.fragment_exercise), Permissio
 
         viewModel.isVoiceRecorderRecording.observe(viewLifecycleOwner, exerciseView::setIsRecording)
 
-        viewModel.isRecordSavedEvent.consume(viewLifecycleOwner){ exerciseView.showRecordSavedSnack() }
+        viewModel.isRecordSavedEvent.consume(viewLifecycleOwner) { exerciseView.showRecordSavedSnack() }
     }
 
 
     override fun onGrantPermissionClicked() {
+        viewModel.onStartStopRecording()
+    }
+
+    override fun onStop() {
+        super.onStop()
         viewModel.onStartStopRecording()
     }
 }

@@ -68,9 +68,12 @@ class RecordsView(private val binding: FragmentRecordsListBinding, private val c
     }
 
     fun setRecords(records: List<RecordUi>) {
-        if (records.isEmpty()) {
-            recordsAdapter?.submitList(records)
+        recordsAdapter?.submitList(records)
+        showHideIconNoRecords(records)
+    }
 
+    private fun showHideIconNoRecords(records: List<RecordUi>) {
+        if (records.isEmpty()) {
             binding.icNoRecords.visibility = View.VISIBLE
         } else {
             binding.icNoRecords.visibility = View.GONE
