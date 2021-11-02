@@ -104,6 +104,6 @@ class WordWithCategoryFragment : Fragment(R.layout.fragment_exercise), Permissio
 
     override fun onStop() {
         super.onStop()
-        viewModel.onStartStopRecording()
+        viewModel.onStopRecord()
     }
 }
