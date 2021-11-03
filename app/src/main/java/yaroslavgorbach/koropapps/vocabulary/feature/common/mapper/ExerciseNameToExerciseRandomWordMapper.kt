@@ -23,6 +23,28 @@ class ExerciseNameToExerciseRandomWordMapper(resources: Resources) {
         WordCategory.Letters().resArray
     ).toList()
 
+    private val lettersForRememberAll = letters
+        .map { it.lowercase() }
+        .filterNot {
+            it == "е"
+                    || it == "ё"
+                    || it == "е"
+                    || it == "и"
+                    || it == "й"
+                    || it == "о"
+                    || it == "х"
+                    || it == "ч"
+                    || it == "ш"
+                    || it == "ж"
+                    || it == "щ"
+                    || it == "ъ"
+                    || it == "ы"
+                    || it == "ь"
+                    || it == "э"
+                    || it == "ю"
+                    || it == "я"
+        }
+
     private val categories = resources.getStringArray(
         WordCategory.Category().resArray
     ).toList()
@@ -72,11 +94,13 @@ class ExerciseNameToExerciseRandomWordMapper(resources: Resources) {
             ExerciseName.ALPHABET_ADJECTIVES,
             ExerciseName.ALPHABET_NOUN,
             ExerciseName.ALPHABET_VERBS,
-            ExerciseName.REMEMBER_ALL,
             ExerciseName.THREE_LITER_JAR,
             ExerciseName.LIST_OF_CATEGORIES,
             ExerciseName.TAUTOGRAMS -> {
                 letters.random()
+            }
+            ExerciseName.REMEMBER_ALL -> {
+                lettersForRememberAll.random()
             }
             ExerciseName.THREE_LETTERS -> {
                 letters.random() + letters.random() + letters.random()
