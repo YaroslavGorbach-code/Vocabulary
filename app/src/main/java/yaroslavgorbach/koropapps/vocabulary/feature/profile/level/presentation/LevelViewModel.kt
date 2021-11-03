@@ -138,7 +138,7 @@ class LevelViewModel @Inject constructor(
             achieveAchievementsInteractor(AchievementName.ALL_ALPHABET_EXERCISES_COMPLETE)
         }
 
-        if (daysStatisticsDailyTrainingTimeEntities.any { TimeUnit.HOURS.toMinutes(it.summaryTrainingTimeMc) > ONE_HOUR_IN_MINUTE }) {
+        if (daysStatisticsDailyTrainingTimeEntities.any { it.summaryTrainingTimeMinutes > ONE_HOUR_IN_MINUTE }) {
             achieveAchievementsInteractor(AchievementName.SPENT_MORE_THEN_HOUR_ON_TRAINING)
         }
 
