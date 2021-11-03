@@ -65,12 +65,12 @@ class TrainingView(
             binding.noExercisesIcon.visibility = View.VISIBLE
             binding.noExercisesTextOne.visibility = View.VISIBLE
             binding.noExercisesTextTwo.visibility = View.VISIBLE
-
             binding.textProgress.visibility = View.GONE
         } else {
             binding.noExercisesIcon.visibility = View.GONE
             binding.noExercisesTextOne.visibility = View.GONE
             binding.noExercisesTextTwo.visibility = View.GONE
+            binding.textProgress.visibility = View.VISIBLE
         }
     }
 
