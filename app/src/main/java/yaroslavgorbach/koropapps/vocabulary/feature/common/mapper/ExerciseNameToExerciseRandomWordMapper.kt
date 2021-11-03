@@ -120,7 +120,6 @@ class ExerciseNameToExerciseRandomWordMapper(resources: Resources) {
             ExerciseName.MAGIC_NAMING,
             ExerciseName.BUYING_SELLING,
             ExerciseName.RORSCHACH_TEST,
-            ExerciseName.ANTONYMS_AND_SYNONYMS,
             ExerciseName.ASSOCIATIONS -> {
                 nounsNotAlive.random()
             }
@@ -163,6 +162,7 @@ class ExerciseNameToExerciseRandomWordMapper(resources: Resources) {
             ExerciseName.TONGUE_TWISTERS_VERY_HARD -> tongueTwistersVeryHard.random()
             ExerciseName.SOUND_COMBINATIONS -> soundCombination.random()
             ExerciseName.DIFFICULT_WORDS -> difficultWords.random()
+            ExerciseName.ANTONYMS_AND_SYNONYMS -> fillings.random()
         }
     }
 }
