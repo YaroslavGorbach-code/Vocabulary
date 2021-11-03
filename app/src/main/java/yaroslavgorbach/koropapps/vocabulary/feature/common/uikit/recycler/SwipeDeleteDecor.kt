@@ -2,13 +2,15 @@ package yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.recycler
 
 import android.graphics.Canvas
 import android.graphics.drawable.Drawable
+import android.util.Log
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import kotlin.math.abs
 
 class SwipeDeleteDecor(
     itemBackground: Drawable,
-    private val onSwipe: (viewHolder: RecyclerView.ViewHolder) -> Unit
+    private val onSwipe: (viewHolder: RecyclerView.ViewHolder) -> Unit,
+    private val onHalfSwipe: (viewHolder: RecyclerView.ViewHolder) -> Unit
 ) : ItemTouchHelper(object : SimpleCallback(0, START or END) {
 
     private fun drawBackgroundHint(
@@ -17,11 +19,13 @@ class SwipeDeleteDecor(
         canvas: Canvas
     ) {
         val item = viewHolder.itemView
+
         val clipLeft: Int = if (dX >= 0) {
             0
         } else {
             item.width + dX.toInt()
         }
+
         val clipRight: Int = if (dX >= 0) {
             dX.toInt()
         } else {
@@ -56,7 +60,7 @@ class SwipeDeleteDecor(
         isCurrentlyActive: Boolean
     ) {
         drawBackgroundHint(viewHolder, dX, canvas)
-
+        calculateHalfSwipe(dX, viewHolder, onHalfSwipe)
         super.onChildDraw(
             canvas,
             recyclerView,
@@ -66,6 +70,18 @@ class SwipeDeleteDecor(
             actionState,
             isCurrentlyActive
         )
+    }
+
+    private fun calculateHalfSwipe(
+        dX: Float,
+        viewHolder: RecyclerView.ViewHolder,
+        onHalfSwipe: (viewHolder: RecyclerView.ViewHolder) -> Unit
+    ) {
+        val itemWidth = viewHolder.itemView.width
+
+        if (abs(dX) > itemWidth / 2) {
+            onHalfSwipe(viewHolder)
+        }
     }
 
     override fun clearView(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder) {

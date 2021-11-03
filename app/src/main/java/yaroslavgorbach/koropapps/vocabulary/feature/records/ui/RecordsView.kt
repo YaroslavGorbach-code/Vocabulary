@@ -1,6 +1,7 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.records.ui
 
 import android.view.View
+import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentRecordsListBinding
@@ -42,16 +43,27 @@ class RecordsView(private val binding: FragmentRecordsListBinding, private val c
         recordsAdapter = RecordsListAdapter(callback::onRecord)
 
         swipeDecor =
-            SwipeDeleteDecor(binding.getDrawable(R.drawable.bg_delete_record_hint)!!) { viewHolder ->
-                val record = recordsAdapter?.getItemByPosition(viewHolder.absoluteAdapterPosition)!!
+            SwipeDeleteDecor(
+                binding.getDrawable(R.drawable.bg_delete_record_hint)!!,
+                onHalfSwipe = { viewHolder ->
+                    val record =
+                        recordsAdapter?.getItemByPosition(viewHolder.layoutPosition)!!
 
-                callback.onRemoveRecord(record)
+                    if (record.recordState == RecordUi.RecordState.Playing) {
+                        callback.onRecord(record)
+                    }
+                },
+                onSwipe = { viewHolder ->
+                    val record =
+                        recordsAdapter?.getItemByPosition(viewHolder.layoutPosition)!!
 
-                showRestoreRemovedRecordSnack {
-                    callback.onRestoreRemovedRecord()
-                }
+                    callback.onRemoveRecord(record)
 
-            }.also { it.attachToRecyclerView(binding.recordsList) }
+                    showRestoreRemovedRecordSnack {
+                        callback.onRestoreRemovedRecord()
+                    }
+
+                }).also { it.attachToRecyclerView(binding.recordsList) }
 
         binding.recordsList.apply {
             adapter = recordsAdapter
