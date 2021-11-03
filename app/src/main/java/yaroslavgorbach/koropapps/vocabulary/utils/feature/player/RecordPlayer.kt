@@ -6,6 +6,7 @@ import java.io.File
 
 interface RecordPlayer {
     val progress: LiveData<Int>
+    val duration: LiveData<Int>
     val finishEvent: LiveEvent<Unit>
 
     fun play(file: File)

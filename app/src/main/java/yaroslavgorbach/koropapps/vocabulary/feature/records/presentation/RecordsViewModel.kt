@@ -29,6 +29,9 @@ class RecordsViewModel @Inject constructor(
     val currentRecordPlayingProgress: LiveData<Int>
         get() = recordsPlayer.progress
 
+    val currentRecordDuration: LiveData<Int>
+        get() = recordsPlayer.duration
+
     private var previouslyRemovedRecord: RecordUi? = null
 
     init {
@@ -116,5 +119,16 @@ class RecordsViewModel @Inject constructor(
         _records.value = _records.value?.toMutableList()?.map {
             it.apply { this.progress = progress }
         }
+    }
+
+    fun setDurationToAllRecords(duration: Int) {
+        _records.value = _records.value?.toMutableList()?.map {
+            Log.i("prlsdkks", "duration in vm " + duration.toString())
+            it.apply { this.duration = duration }
+        }
+    }
+
+    fun seekRecord(progress: Int) {
+        recordsPlayer.seekToo(progress)
     }
 }

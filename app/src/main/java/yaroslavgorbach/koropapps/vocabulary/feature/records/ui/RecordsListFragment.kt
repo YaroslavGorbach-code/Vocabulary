@@ -3,7 +3,6 @@ package yaroslavgorbach.koropapps.vocabulary.feature.records.ui
 import android.content.Context
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
@@ -56,6 +55,10 @@ class RecordsListFragment : Fragment(R.layout.fragment_records_list) {
                     viewModel.startPauseRecord(record)
                 }
 
+                override fun onSeekRecordTo(progress: Int) {
+                    viewModel.seekRecord(progress)
+                }
+
                 override fun onRemoveRecord(record: RecordUi) {
                     viewModel.removeRecordUi(record)
                 }
@@ -80,6 +83,11 @@ class RecordsListFragment : Fragment(R.layout.fragment_records_list) {
         viewModel.currentRecordPlayingProgress.observe(
             viewLifecycleOwner,
             viewModel::setProgressToAllRecords
+        )
+
+        viewModel.currentRecordDuration.observe(
+            viewLifecycleOwner,
+            viewModel::setDurationToAllRecords
         )
     }
 

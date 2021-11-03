@@ -3,6 +3,7 @@ package yaroslavgorbach.koropapps.vocabulary.utils.feature.player
 import android.media.MediaPlayer
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import androidx.lifecycle.*
 import yaroslavgorbach.koropapps.vocabulary.utils.LiveEvent
 import yaroslavgorbach.koropapps.vocabulary.utils.MutableLiveEvent
@@ -17,6 +18,11 @@ class RecordPlayerImp : RecordPlayer, LifecycleObserver {
     override val progress: LiveData<Int>
         get() = _progress
 
+    private val _duration: MutableLiveData<Int> = MutableLiveData()
+
+    override val duration: LiveData<Int>
+        get() = _duration
+
     private val _finishEvent: MutableLiveEvent<Unit> = MutableLiveEvent()
 
     override val finishEvent: LiveEvent<Unit>
@@ -28,14 +34,13 @@ class RecordPlayerImp : RecordPlayer, LifecycleObserver {
 
     private var progressRunnable: Runnable? = null
 
-
     private fun startProgressRunnable() {
         progressRunnable = object : Runnable {
             override fun run() {
                 progressHandler.postDelayed(this, 100)
                 mediaPlayer?.let {
-                    _progress.value =
-                        ((it.currentPosition.toFloat() / it.duration.toFloat()) * 100f).toInt()
+                    _progress.value = mediaPlayer!!.currentPosition
+                    _duration.value = mediaPlayer!!.duration
                 }
             }
         }
@@ -56,7 +61,6 @@ class RecordPlayerImp : RecordPlayer, LifecycleObserver {
             mediaPlayer = MediaPlayer()
             mediaPlayer!!.setDataSource(file.absolutePath)
             mediaPlayer!!.prepare()
-
             startProgressRunnable()
         } catch (e: IOException) {
             e.printStackTrace()
@@ -74,7 +78,6 @@ class RecordPlayerImp : RecordPlayer, LifecycleObserver {
             mediaPlayer!!.stop()
             mediaPlayer!!.release()
             mediaPlayer = null
-
             _progress.value = 0
             stopProgressRunnable()
         }
@@ -96,6 +99,6 @@ class RecordPlayerImp : RecordPlayer, LifecycleObserver {
     }
 
     override fun seekToo(progress: Int) {
-
+        mediaPlayer!!.seekTo(progress)
     }
 }

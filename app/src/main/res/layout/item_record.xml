@@ -59,7 +59,6 @@
         android:layout_width="0dp"
         android:layout_height="24dp"
         android:clickable="true"
-        android:contextClickable="true"
         android:focusable="true"
         android:thumbTint="?colorPrimaryVariant"
         app:layout_constraintBottom_toBottomOf="parent"

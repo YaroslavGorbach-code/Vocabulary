@@ -1,6 +1,7 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.records.ui
 
 import android.view.View
+import android.widget.SeekBar
 import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
 import yaroslavgorbach.koropapps.vocabulary.R
@@ -16,6 +17,7 @@ class RecordsView(private val binding: FragmentRecordsListBinding, private val c
 
     interface Callback {
         fun onRecord(record: RecordUi)
+        fun onSeekRecordTo(progress: Int)
         fun onRemoveRecord(record: RecordUi)
         fun onRestoreRemovedRecord()
         fun onRemovedRecordSnackDismiss()
@@ -31,7 +33,7 @@ class RecordsView(private val binding: FragmentRecordsListBinding, private val c
 
     private fun showRestoreRemovedRecordSnack(onRestore: () -> Unit) {
         Snackbar.make(binding.root, R.string.record_deleted, Snackbar.LENGTH_LONG)
-            .setAction(binding.getString(R.string.cancel)) { v -> onRestore() }
+            .setAction(binding.getString(R.string.cancel)) { onRestore() }
             .addCallback(object : Snackbar.Callback() {
                 override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {
                     callback.onRemovedRecordSnackDismiss()
@@ -40,27 +42,25 @@ class RecordsView(private val binding: FragmentRecordsListBinding, private val c
     }
 
     private fun initViews() {
-        recordsAdapter = RecordsListAdapter(callback::onRecord)
+        recordsAdapter = RecordsListAdapter(callback::onRecord, callback::onSeekRecordTo)
 
         swipeDecor =
             SwipeDeleteDecor(
                 binding.getDrawable(R.drawable.bg_delete_record_hint)!!,
                 onHalfSwipe = { viewHolder ->
-                    val record =
-                        recordsAdapter?.getItemByPosition(viewHolder.layoutPosition)!!
-
-                    if (record.recordState == RecordUi.RecordState.Playing) {
-                        callback.onRecord(record)
+                    recordsAdapter?.getItemByPosition(viewHolder.layoutPosition)?.let { record ->
+                        if (record.recordState == RecordUi.RecordState.Playing) {
+                            callback.onRecord(record)
+                        }
                     }
                 },
                 onSwipe = { viewHolder ->
-                    val record =
-                        recordsAdapter?.getItemByPosition(viewHolder.layoutPosition)!!
+                    recordsAdapter?.getItemByPosition(viewHolder.layoutPosition)?.let { record ->
+                        callback.onRemoveRecord(record)
 
-                    callback.onRemoveRecord(record)
-
-                    showRestoreRemovedRecordSnack {
-                        callback.onRestoreRemovedRecord()
+                        showRestoreRemovedRecordSnack {
+                            callback.onRestoreRemovedRecord()
+                        }
                     }
 
                 }).also { it.attachToRecyclerView(binding.recordsList) }

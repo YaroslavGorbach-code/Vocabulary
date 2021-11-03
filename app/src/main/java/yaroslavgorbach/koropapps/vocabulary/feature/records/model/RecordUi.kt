@@ -3,13 +3,15 @@ package yaroslavgorbach.koropapps.vocabulary.feature.records.model
 import android.text.format.DateUtils
 import yaroslavgorbach.koropapps.vocabulary.R
 import java.io.File
+import java.time.Duration
 import java.util.*
 import java.util.concurrent.TimeUnit
 
 data class RecordUi(
     val file: File,
     var recordState: RecordState = RecordState.Stop,
-    var progress: Int = 0
+    var progress: Int = 0,
+    var duration: Int = 0
 ) {
 
     sealed class RecordState {
@@ -24,7 +26,7 @@ data class RecordUi(
     val name: String
         get() = file.name
 
-    val duration: String
+    val durationString: String
         get() = getFileDuration(file)
 
     val playIconRes: Int
