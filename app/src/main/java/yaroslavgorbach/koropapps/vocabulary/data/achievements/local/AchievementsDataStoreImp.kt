@@ -82,8 +82,8 @@ class AchievementsDataStoreImp(private val context: Context) : AchievementsDataS
         ),
         Achievement(
             name = AchievementName.SPENT_MORE_THEN_HOUR_ON_TRAINING,
-            iconAchieved = context.getAppComputeDrawable(R.drawable.ic_level_10),
-            iconNotAchieved = context.getAppComputeDrawable(R.drawable.ic_level_20)
+            iconAchieved = context.getAppComputeDrawable(R.drawable.ic_achievement_active_spent_more_then_hour_on_training),
+            iconNotAchieved = context.getAppComputeDrawable(R.drawable.ic_achievement_not_active_spent_more_then_hour_on_training)
         ),
         Achievement(
             name = AchievementName.MORE_THEN_TEN_EXERCISES_COMPLETE,
