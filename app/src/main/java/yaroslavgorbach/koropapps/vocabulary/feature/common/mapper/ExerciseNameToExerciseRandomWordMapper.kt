@@ -23,6 +23,46 @@ class ExerciseNameToExerciseRandomWordMapper(resources: Resources) {
         WordCategory.Letters().resArray
     ).toList()
 
+    private val consonant = letters
+        .map { it.lowercase() }
+        .filter {
+            it == "б"
+                    || it == "в"
+                    || it == "г"
+                    || it == "д"
+                    || it == "ж"
+                    || it == "з"
+                    || it == "й"
+                    || it == "к"
+                    || it == "л"
+                    || it == "м"
+                    || it == "н"
+                    || it == "п"
+                    || it == "р"
+                    || it == "с"
+                    || it == "т"
+                    || it == "ф"
+                    || it == "х"
+                    || it == "ц"
+                    || it == "ч"
+                    || it == "ш"
+                    || it == "щ"
+
+        }
+
+    private val vowels = letters
+        .map { it.lowercase() }
+        .filter {
+            it == "а"
+                    || it == "и"
+                    || it == "о"
+                    || it == "у"
+                    || it == "ы"
+                    || it == "я"
+                    || it == "ю"
+                    || it == "е"
+        }
+
     private val lettersForRememberAll = letters
         .map { it.lowercase() }
         .filterNot {
@@ -124,10 +164,8 @@ class ExerciseNameToExerciseRandomWordMapper(resources: Resources) {
                 nounsNotAlive.random()
             }
             ExerciseName.HALF -> {
-                // TODO: 05.10.2021 доработь этот метод так, чтобы первая буква была не гласная а вторая гласная
-                letters.random() + letters.random()
+                consonant.random() + vowels.random()
             }
-
             ExerciseName.DICTIONARY_ADJECTIVES,
             ExerciseName.DICTIONARY_NOUN,
             ExerciseName.DICTIONARY_VERBS -> {
