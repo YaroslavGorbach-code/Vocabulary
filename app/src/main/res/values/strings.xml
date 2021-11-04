@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Vocabulary</string>
     <string name="description">Описание</string>
-    <string name="end_of_time">Время закончилось</string>
+    <string name="end_of_time">Время вышло</string>
     <string name="result"> Названо слов %1$d</string>
     <string name="finish_of_exercise">Упражнение закончено</string>
     <string name="number_words_for_session">Количествво слов за сессию</string>
