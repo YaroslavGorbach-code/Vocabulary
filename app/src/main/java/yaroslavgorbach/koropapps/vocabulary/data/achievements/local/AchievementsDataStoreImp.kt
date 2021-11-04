@@ -87,23 +87,23 @@ class AchievementsDataStoreImp(private val context: Context) : AchievementsDataS
         ),
         Achievement(
             name = AchievementName.MORE_THEN_TEN_EXERCISES_COMPLETE,
-            iconAchieved = context.getAppComputeDrawable(R.drawable.ic_level_10),
-            iconNotAchieved = context.getAppComputeDrawable(R.drawable.ic_level_20)
+            iconAchieved = context.getAppComputeDrawable(R.drawable.ic_achivement_active_more_then_ten_exercises_complete),
+            iconNotAchieved = context.getAppComputeDrawable(R.drawable.ic_achivement_not_active_more_then_ten_exercises_complete)
         ),
         Achievement(
             name = AchievementName.MORE_THEN_FIFTY_EXERCISES_COMPLETE,
-            iconAchieved = context.getAppComputeDrawable(R.drawable.ic_level_10),
-            iconNotAchieved = context.getAppComputeDrawable(R.drawable.ic_level_20)
+            iconAchieved = context.getAppComputeDrawable(R.drawable.ic_achivement_active_more_then_fifty_exercises_complete),
+            iconNotAchieved = context.getAppComputeDrawable(R.drawable.ic_achivement_not_active_more_then_fifty_exercises_complete)
         ),
         Achievement(
             name = AchievementName.MORE_THEN_ONE_HUNDRED_EXERCISES_COMPLETE,
-            iconAchieved = context.getAppComputeDrawable(R.drawable.ic_level_10),
-            iconNotAchieved = context.getAppComputeDrawable(R.drawable.ic_level_20)
+            iconAchieved = context.getAppComputeDrawable(R.drawable.ic_achivement_active_more_then_one_hundred_exercises_complete),
+            iconNotAchieved = context.getAppComputeDrawable(R.drawable.ic_achivement_not_active_more_then_one_hundred_exercises_complete)
         ),
         Achievement(
             name = AchievementName.MORE_THEN_ONE_THOUSAND_EXERCISES_COMPLETE,
-            iconAchieved = context.getAppComputeDrawable(R.drawable.ic_level_10),
-            iconNotAchieved = context.getAppComputeDrawable(R.drawable.ic_level_20)
+            iconAchieved = context.getAppComputeDrawable(R.drawable.ic_achivement_active_more_then_one_thousand_exercises_complete),
+            iconNotAchieved = context.getAppComputeDrawable(R.drawable.ic_achivement_not_active_more_then_one_thousand_exercises_complete)
         )
     )
 
