@@ -3,6 +3,7 @@ package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.word.pre
 import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import yaroslavgorbach.koropapps.vocabulary.business.settings.ObserveAutoRecordStateInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.SaveStatisticsInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.IncrementExercisePerformedInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.ObserveTrainingExerciseInteractor
@@ -21,16 +22,17 @@ class WordExerciseViewModel @Inject constructor(
     observeTrainingExerciseInteractor: ObserveTrainingExerciseInteractor,
     saveStatisticsInteractor: SaveStatisticsInteractor,
     voiceRecorder: VoiceRecorder,
+    observeAutoRecordStateInteractor: ObserveAutoRecordStateInteractor,
     permissionManager: PermissionManager
 ) : BaseExerciseViewModel(
     exerciseType,
     incrementExercisePerformedInteractor,
     saveStatisticsInteractor,
     observeTrainingExerciseInteractor,
+    observeAutoRecordStateInteractor,
     voiceRecorder,
     permissionManager
 ) {
-
     private val exerciseNameToExerciseRandomWordMapper =
         ExerciseNameToExerciseRandomWordMapper(application.resources)
 
@@ -54,6 +56,6 @@ class WordExerciseViewModel @Inject constructor(
     }
 
     private fun generateWord() {
-     _word.value = exerciseNameToExerciseRandomWordMapper.map(exerciseType.getExerciseName())
+        _word.value = exerciseNameToExerciseRandomWordMapper.map(exerciseType.getExerciseName())
     }
 }

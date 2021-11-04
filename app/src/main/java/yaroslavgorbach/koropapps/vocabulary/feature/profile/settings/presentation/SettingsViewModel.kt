@@ -9,6 +9,7 @@ import yaroslavgorbach.koropapps.vocabulary.business.settings.*
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Notification
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Theme
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.UiMode
+import java.util.*
 import javax.inject.Inject
 
 class SettingsViewModel @Inject constructor(
@@ -18,7 +19,9 @@ class SettingsViewModel @Inject constructor(
     private val observeUiModeInteractor: ObserveUiModeInteractor,
     private val changeUiModeInteractor: ChangeUiModeInteractor,
     private val updateNotificationInteractor: UpdateNotificationInteractor,
-    private val observeNotificationInteractor: ObserveNotificationInteractor
+    private val observeNotificationInteractor: ObserveNotificationInteractor,
+    private val changeAutoRecordStateInteractor: ChangeAutoRecordStateInteractor,
+    private val observeAutoRecordStateInteractor: ObserveAutoRecordStateInteractor
 ) : ViewModel() {
 
     val currentTheme: LiveData<Theme>
@@ -33,6 +36,9 @@ class SettingsViewModel @Inject constructor(
     val notification: LiveData<Notification>
         get() = observeNotificationInteractor().asLiveData()
 
+    val isAutoRecordSettingChecked: LiveData<Boolean>
+        get() = observeAutoRecordStateInteractor().asLiveData()
+
     fun changeTheme(theme: Theme) {
         viewModelScope.launch { changeThemeInteractor(theme) }
     }
@@ -43,6 +49,10 @@ class SettingsViewModel @Inject constructor(
 
     fun updateNotification(notification: Notification) {
         viewModelScope.launch { updateNotificationInteractor(notification) }
+    }
+
+    fun changeAutoRecordingSettingState(isAutoRecordChecked: Boolean) {
+        viewModelScope.launch { changeAutoRecordStateInteractor(isAutoRecordChecked) }
     }
 
 }

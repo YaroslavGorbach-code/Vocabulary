@@ -3,6 +3,7 @@ package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.wordwith
 import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import yaroslavgorbach.koropapps.vocabulary.business.settings.ObserveAutoRecordStateInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.SaveStatisticsInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.IncrementExercisePerformedInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.ObserveTrainingExerciseInteractor
@@ -22,6 +23,7 @@ class WordWithStageViewModel @Inject constructor(
     incrementExercisePerformedInteractor: IncrementExercisePerformedInteractor,
     observeTrainingExerciseInteractor: ObserveTrainingExerciseInteractor,
     saveStatisticsInteractor: SaveStatisticsInteractor,
+    observeAutoRecordStateInteractor: ObserveAutoRecordStateInteractor,
     voiceRecorder: VoiceRecorder,
     permissionManager: PermissionManager
 ) : BaseExerciseViewModel(
@@ -29,6 +31,7 @@ class WordWithStageViewModel @Inject constructor(
     incrementExercisePerformedInteractor,
     saveStatisticsInteractor,
     observeTrainingExerciseInteractor,
+    observeAutoRecordStateInteractor,
     voiceRecorder,
     permissionManager
 ) {

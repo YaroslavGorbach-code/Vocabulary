@@ -93,7 +93,13 @@ class WordExerciseFragment : Fragment(R.layout.fragment_exercise), PermissionDen
 
         viewModel.isVoiceRecorderRecording.observe(viewLifecycleOwner, exerciseView::setIsRecording)
 
-        viewModel.isRecordSavedEvent.consume(viewLifecycleOwner){ exerciseView.showRecordSavedSnack() }
+        viewModel.isRecordSavedEvent.consume(viewLifecycleOwner) { exerciseView.showRecordSavedSnack() }
+
+        viewModel.isAutoRecordStart.observe(viewLifecycleOwner) { isAllow ->
+            if (isAllow) {
+                viewModel.onStartStopRecording()
+            }
+        }
     }
 
     override fun onGrantPermissionClicked() {

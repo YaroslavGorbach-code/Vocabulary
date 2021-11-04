@@ -19,4 +19,8 @@ interface RepoSettings {
     fun observeNotification(): Flow<Notification>
 
     suspend fun updateNotification(notification: Notification)
+
+    suspend fun changeAutoRecordState(isAutoRecordTurnedOn: Boolean)
+
+    fun observeAutoRecordState(): Flow<Boolean>
 }

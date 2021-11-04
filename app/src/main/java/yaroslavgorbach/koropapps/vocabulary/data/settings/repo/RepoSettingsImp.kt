@@ -7,7 +7,8 @@ import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Notificati
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Theme
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.UiMode
 
-class RepoSettingsImp(private val localDataStore: SettingsDataStore, private val context: Context) : RepoSettings {
+class RepoSettingsImp(private val localDataStore: SettingsDataStore, private val context: Context) :
+    RepoSettings {
 
     override fun observeThemes(): Flow<List<Theme>> {
         return localDataStore.observeThemes(context)
@@ -35,5 +36,13 @@ class RepoSettingsImp(private val localDataStore: SettingsDataStore, private val
 
     override suspend fun updateNotification(notification: Notification) {
         return localDataStore.updateNotification(context, notification)
+    }
+
+    override suspend fun changeAutoRecordState(isAutoRecordTurnedOn: Boolean) {
+        localDataStore.changeAutoRecordState(context, isAutoRecordTurnedOn)
+    }
+
+    override fun observeAutoRecordState(): Flow<Boolean> {
+        return localDataStore.observeAutoRecordState(context)
     }
 }

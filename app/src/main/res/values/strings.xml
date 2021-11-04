@@ -51,6 +51,7 @@
     <string name="dark_theme">Темная тема</string>
     <string name="light_theme">Светлая тема</string>
     <string name="notifications">Уведомления</string>
+    <string name="auto_recording">Начинать запись автоматически</string>
     <string name="notifications_settings">Настройка уведомлений</string>
     <string name="notification_text">Текст уведомления</string>
     <string name="ok">Ok</string>

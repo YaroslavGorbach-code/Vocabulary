@@ -1,14 +1,12 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.base
 
 import android.Manifest
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import kotlinx.coroutines.launch
 import yaroslavgorbach.koropapps.vocabulary.business.achievements.AchieveAchievementInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.settings.ObserveAutoRecordStateInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.SaveStatisticsInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.IncrementExercisePerformedInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.ObserveTrainingExerciseInteractor
@@ -27,6 +25,7 @@ open class BaseExerciseViewModel(
     private val incrementExercisePerformedInteractor: IncrementExercisePerformedInteractor,
     private val saveStatisticsInteractor: SaveStatisticsInteractor,
     private val observeTrainingExerciseInteractor: ObserveTrainingExerciseInteractor,
+    private val observeAutoRecordStateInteractor: ObserveAutoRecordStateInteractor,
     private val voiceRecorder: VoiceRecorder,
     private val permissionManager: PermissionManager
 ) : ViewModel() {
@@ -77,6 +76,9 @@ open class BaseExerciseViewModel(
 
     val showPermissionDeniedDialogEvent: LiveEvent<Unit>
         get() = _showPermissionDeniedDialogEvent
+
+    val isAutoRecordStart: LiveData<Boolean>
+        get() = observeAutoRecordStateInteractor().asLiveData()
 
     private fun incrementNumberOnNextClicked() {
         numberOnNextCLicked++
@@ -144,7 +146,7 @@ open class BaseExerciseViewModel(
         incrementExercisePerformed()
     }
 
-    fun onStopRecord(){
+    fun onStopRecord() {
         voiceRecorder.stop()
     }
 

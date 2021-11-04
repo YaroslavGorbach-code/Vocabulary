@@ -3,6 +3,7 @@ package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.wordwith
 import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import yaroslavgorbach.koropapps.vocabulary.business.settings.ObserveAutoRecordStateInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.SaveStatisticsInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.IncrementExercisePerformedInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.ObserveTrainingExerciseInteractor
@@ -26,6 +27,7 @@ class WordWithTimerViewModel @Inject constructor(
     incrementExercisePerformedInteractor: IncrementExercisePerformedInteractor,
     saveStatisticsInteractor: SaveStatisticsInteractor,
     observeTrainingExerciseInteractor: ObserveTrainingExerciseInteractor,
+    observeAutoRecordStateInteractor: ObserveAutoRecordStateInteractor,
     voiceRecorder: VoiceRecorder,
     permissionManager: PermissionManager
 ) : BaseExerciseViewModel(
@@ -33,10 +35,10 @@ class WordWithTimerViewModel @Inject constructor(
     incrementExercisePerformedInteractor,
     saveStatisticsInteractor,
     observeTrainingExerciseInteractor,
+    observeAutoRecordStateInteractor,
     voiceRecorder,
     permissionManager
 ) {
-
     private val letters: MutableLiveData<List<String>> = MutableLiveData(
         application.applicationContext.resources.getStringArray(
             WordCategory.Letters().resArray

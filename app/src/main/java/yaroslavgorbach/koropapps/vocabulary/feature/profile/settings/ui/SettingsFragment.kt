@@ -69,18 +69,14 @@ class SettingsFragment : Fragment(R.layout.fragment_settings), ChoseThemeDialog.
                     showNotificationsSettingsDialog(notification)
                 }
 
+                override fun onAutoRecording(isChecked: Boolean) {
+                    viewModel.changeAutoRecordingSettingState(isChecked)
+                }
+
                 override fun onBack() {
                     onBackPressed()
                 }
             })
-    }
-
-    fun showChoseThemeDialog(themes: List<Theme>, uiMode: UiMode) {
-        ChoseThemeDialog.newInstance(themes, uiMode).show(childFragmentManager, null)
-    }
-
-    fun showNotificationsSettingsDialog(notification: Notification) {
-        NotificationSettingsDialog.newInstance(notification).show(childFragmentManager, null)
     }
 
     private fun initObservers() {
@@ -91,6 +87,19 @@ class SettingsFragment : Fragment(R.layout.fragment_settings), ChoseThemeDialog.
         viewModel.uiMode.observe(viewLifecycleOwner, settingsView::setUiMode)
 
         viewModel.notification.observe(viewLifecycleOwner, settingsView::setNotification)
+
+        viewModel.isAutoRecordSettingChecked.observe(
+            viewLifecycleOwner,
+            settingsView::setAutoRecordStateChecked
+        )
+    }
+
+    fun showChoseThemeDialog(themes: List<Theme>, uiMode: UiMode) {
+        ChoseThemeDialog.newInstance(themes, uiMode).show(childFragmentManager, null)
+    }
+
+    fun showNotificationsSettingsDialog(notification: Notification) {
+        NotificationSettingsDialog.newInstance(notification).show(childFragmentManager, null)
     }
 
     override fun onThemeChanged(theme: Theme) {

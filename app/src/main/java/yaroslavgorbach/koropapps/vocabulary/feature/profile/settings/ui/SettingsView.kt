@@ -10,9 +10,8 @@ class SettingsView(private val binding: FragmentSettingsBinding, private val cal
 
     interface Callback {
         fun onChoseTheme(themes: List<Theme>, uiMode: UiMode)
-
         fun onNotificationSettings(notification: Notification)
-
+        fun onAutoRecording(isChecked: Boolean)
         fun onBack()
     }
 
@@ -38,6 +37,10 @@ class SettingsView(private val binding: FragmentSettingsBinding, private val cal
         binding.settingsToolbar.setNavigationOnClickListener {
             callback.onBack()
         }
+
+        binding.autoRecording.autoRecordCheckBox.setOnCheckedChangeListener { _, isChecked ->
+            callback.onAutoRecording(isChecked)
+        }
     }
 
     fun setThemes(themes: List<Theme>) {
@@ -50,6 +53,10 @@ class SettingsView(private val binding: FragmentSettingsBinding, private val cal
                 theme.colorPrimaryRes
             )
         )
+    }
+
+    fun setAutoRecordStateChecked(isChecked: Boolean) {
+        binding.autoRecording.autoRecordCheckBox.isChecked = isChecked
     }
 
     @SuppressLint("SetTextI18n")

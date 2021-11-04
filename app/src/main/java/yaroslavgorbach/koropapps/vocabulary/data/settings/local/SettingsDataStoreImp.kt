@@ -27,6 +27,8 @@ class SettingsDataStoreImp : SettingsDataStore {
         private const val DEFAULT_NOTIFICATION_MINUTE = 30
         private const val DEFAULT_NOTIFICATION_IS_ACTIVE = true
 
+        private val AUTO_RECORD_STATE = booleanPreferencesKey("AUTO_RECORD_STATE")
+
         private val THEME_RES_KEY = intPreferencesKey("THEME_RES_KEY")
         private val IS_DARK_UI_MODE_KEY = booleanPreferencesKey("IS_DARK_UI_MODE_KEY")
 
@@ -34,7 +36,6 @@ class SettingsDataStoreImp : SettingsDataStore {
         private val NOTIFICATION_MINUTE_KEY = intPreferencesKey("NOTIFICATION_MINUTE_KEY")
         private val NOTIFICATION_IS_ACTIVE_KEY = booleanPreferencesKey("NOTIFICATION_IS_ACTIVE_KEY")
         private val NOTIFICATION_TEXT_KEY = stringPreferencesKey("NOTIFICATION_TEXT_KEY")
-
     }
 
     private var themes: List<Theme> = listOf(
@@ -56,6 +57,19 @@ class SettingsDataStoreImp : SettingsDataStore {
         Theme.Brown(),
         Theme.BlueGray(),
     )
+
+    override fun observeAutoRecordState(context: Context): Flow<Boolean> {
+        return context.settingsDataStore.data
+            .map { prefs ->
+                prefs[AUTO_RECORD_STATE] ?: false
+            }
+    }
+
+    override suspend fun changeAutoRecordState(context: Context, isAutoRecordSwitchedOn: Boolean) {
+        context.settingsDataStore.edit { prefs ->
+            prefs[AUTO_RECORD_STATE] = isAutoRecordSwitchedOn
+        }
+    }
 
     override fun observeThemes(context: Context): Flow<List<Theme>> {
         return observeCurrentTheme(context).map { theme ->

@@ -44,4 +44,14 @@ class BusinessSettingsModule {
     fun provideUpdateNotificationInteractor(repoSettings: RepoSettings): UpdateNotificationInteractor {
         return UpdateNotificationInteractor(repoSettings)
     }
+
+    @Provides
+    fun provideObserveAutoRecordStateInteractor(repoSettings: RepoSettings): ObserveAutoRecordStateInteractor {
+        return ObserveAutoRecordStateInteractor(repoSettings)
+    }
+
+    @Provides
+    fun provideChangeAutoRecordStateInteractor(repoSettings: RepoSettings): ChangeAutoRecordStateInteractor {
+        return ChangeAutoRecordStateInteractor(repoSettings)
+    }
 }

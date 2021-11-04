@@ -11,6 +11,8 @@ interface SettingsDataStore {
 
     fun observeCurrentTheme(context: Context): Flow<Theme>
 
+    suspend fun changeAutoRecordState(context: Context, isAutoRecordSwitchedOn: Boolean)
+
     suspend fun changeTheme(context: Context, theme: Theme)
 
     fun observeUiMode(context: Context): Flow<UiMode>
@@ -21,4 +23,5 @@ interface SettingsDataStore {
 
     suspend fun updateNotification(context: Context, notification: Notification)
 
+    fun observeAutoRecordState(context: Context): Flow<Boolean>
 }

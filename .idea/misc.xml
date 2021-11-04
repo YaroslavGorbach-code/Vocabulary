@@ -10,9 +10,7 @@
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/bg_item_theme.xml" value="0.4453125" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/bg_start_exercise.xml" value="0.43846153846153846" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/bg_theme_example.xml" value="0.43846153846153846" />
-        <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_achievement_active_spent_more_then_hour_on_training.xml" value="0.19537037037037036" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_achievement_not_active_first_improvisation.xml" value="0.20833333333333334" />
-        <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_achievement_not_active_spent_more_then_hour_on_training.xml" value="0.19537037037037036" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_alphabet_a.xml" value="0.2169230769230769" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_arrow_left.xml" value="0.2169230769230769" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_arrow_right.xml" value="0.2169230769230769" />
@@ -90,8 +88,10 @@
         <entry key="..\:/Vocabulary/app/src/main/res/drawable/delete_record_hint_bg.xml" value="0.33611111111111114" />
         <entry key="..\:/Vocabulary/app/src/main/res/drawable/ic_achivement_not_active_15_trainings_in_a_row.xml" value="0.412962962962963" />
         <entry key="..\:/Vocabulary/app/src/main/res/drawable/ic_delete.xml" value="0.33611111111111114" />
+        <entry key="..\:/Vocabulary/app/src/main/res/drawable/ic_notifications.xml" value="0.3425925925925926" />
         <entry key="..\:/Vocabulary/app/src/main/res/drawable/ic_pause_round.xml" value="0.41944444444444445" />
         <entry key="..\:/Vocabulary/app/src/main/res/drawable/ic_play_round.xml" value="0.41944444444444445" />
+        <entry key="..\:/Vocabulary/app/src/main/res/drawable/ic_voice_record_stop.xml" value="0.3425925925925926" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/activity_main.xml" value="0.20871327254305977" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/dialog_notification_settings.xml" value="0.396286231884058" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/fragment_description.xml" value="0.5" />
@@ -105,7 +105,7 @@
         <entry key="..\:/Vocabulary/app/src/main/res/layout/fragment_navigation.xml" value="0.36594202898550726" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/fragment_profile.xml" value="0.20871327254305977" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/fragment_records_list.xml" value="0.396286231884058" />
-        <entry key="..\:/Vocabulary/app/src/main/res/layout/fragment_settings.xml" value="0.396286231884058" />
+        <entry key="..\:/Vocabulary/app/src/main/res/layout/fragment_settings.xml" value="0.44813278008298757" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/fragment_training.xml" value="0.5283540802213001" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/item_achievement.xml" value="0.22" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/item_exercise.xml" value="0.20871327254305977" />
@@ -118,6 +118,7 @@
         <entry key="..\:/Vocabulary/app/src/main/res/layout/layout_empty_favorites.xml" value="0.396286231884058" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/layout_item_notification_settings.xml" value="0.396286231884058" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/layout_item_profile.xml" value="0.396286231884058" />
+        <entry key="..\:/Vocabulary/app/src/main/res/layout/layout_item_record_settings.xml" value="0.5192307692307693" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/layout_level_info_item.xml" value="0.396286231884058" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/layout_level_item.xml" value="0.5" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/layout_levels.xml" value="0.20871327254305977" />

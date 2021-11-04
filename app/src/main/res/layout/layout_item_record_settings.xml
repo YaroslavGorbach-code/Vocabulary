@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/BaseLayoutItem"
+    android:paddingEnd="4dp"
+    android:layout_width="match_parent">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_voice_record_stop"
+        app:tint="?colorControlNormal" />
+
+    <TextView
+        style="@style/TextPrimary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:paddingHorizontal="8dp"
+        android:text="@string/auto_recording" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/auto_record_check_box"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content" />
+</LinearLayout>
