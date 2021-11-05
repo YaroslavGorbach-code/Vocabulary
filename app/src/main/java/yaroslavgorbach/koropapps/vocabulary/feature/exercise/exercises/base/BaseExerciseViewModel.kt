@@ -150,13 +150,13 @@ open class BaseExerciseViewModel(
         voiceRecorder.stop()
     }
 
-    fun onStartStopRecording() {
+    fun onStartStopRecording(exerciseName: String) {
         checkOrRequestRecordAudioPermission {
             isVoiceRecorderRecording.value?.let { isRecording ->
                 if (isRecording) {
                     onStopRecord()
                 } else {
-                    voiceRecorder.start(exerciseType.getExerciseName().name.lowercase())
+                    voiceRecorder.start(exerciseName.lowercase())
                 }
             }
         }

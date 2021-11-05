@@ -71,7 +71,7 @@ class WordWithCategoryFragment : Fragment(R.layout.fragment_exercise), Permissio
                 }
 
                 override fun onStartStopRecording() {
-                    viewModel.onStartStopRecording()
+                    viewModel.onStartStopRecording(getString(exerciseType.getExerciseName().id))
                 }
             })
 
@@ -98,14 +98,14 @@ class WordWithCategoryFragment : Fragment(R.layout.fragment_exercise), Permissio
 
         viewModel.isAutoRecordStart.observe(viewLifecycleOwner) { isAllow ->
             if (isAllow) {
-                viewModel.onStartStopRecording()
+                viewModel.onStartStopRecording(getString(exerciseType.getExerciseName().id))
             }
         }
     }
 
 
     override fun onGrantPermissionClicked() {
-        viewModel.onStartStopRecording()
+        viewModel.onStartStopRecording(getString(exerciseType.getExerciseName().id))
     }
 
     override fun onStop() {
