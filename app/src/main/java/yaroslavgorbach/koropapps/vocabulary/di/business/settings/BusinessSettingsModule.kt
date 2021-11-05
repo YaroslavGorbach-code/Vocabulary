@@ -54,4 +54,16 @@ class BusinessSettingsModule {
     fun provideChangeAutoRecordStateInteractor(repoSettings: RepoSettings): ChangeAutoRecordStateInteractor {
         return ChangeAutoRecordStateInteractor(repoSettings)
     }
+
+    @Provides
+    fun provideObserveIsFirsAppOpen(
+        repoSettings: RepoSettings,
+    ): ObserveIsFirstAppOpenInteractor {
+        return ObserveIsFirstAppOpenInteractor(repoSettings)
+    }
+
+    @Provides
+    fun provideChangeIsFalseAppOpenToFalseInteractor(repoSettings: RepoSettings): ChangeIsFirstAppOpenToFalseInteractor {
+        return ChangeIsFirstAppOpenToFalseInteractor(repoSettings)
+    }
 }

@@ -23,4 +23,8 @@ interface RepoSettings {
     suspend fun changeAutoRecordState(isAutoRecordTurnedOn: Boolean)
 
     fun observeAutoRecordState(): Flow<Boolean>
+
+    fun observeIsFirstAppOpen(): Flow<Boolean>
+
+    suspend fun changeIsFirsAppOpen(isFirstOpen: Boolean)
 }

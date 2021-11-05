@@ -12,7 +12,9 @@ import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import yaroslavgorbach.koropapps.vocabulary.business.settings.ChangeIsFirstAppOpenToFalseInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.settings.ObserveCurrentThemeInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.settings.ObserveIsFirstAppOpenInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.settings.ObserveUiModeInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Theme
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.UiMode
@@ -23,10 +25,7 @@ import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.ui.LevelFragme
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.settings.ui.SettingsFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.feature.training.ui.TrainingFragment
-import yaroslavgorbach.koropapps.vocabulary.utils.colorBackground
-import yaroslavgorbach.koropapps.vocabulary.utils.statusBarColor
 import yaroslavgorbach.koropapps.vocabulary.workflow.ExerciseWorkflow
-import java.util.*
 import javax.inject.Inject
 
 @InternalCoroutinesApi
@@ -40,21 +39,27 @@ class MainActivity : AppCompatActivity(), NavigationFragment.Router,
     @Inject
     lateinit var observeUiModeInteractor: ObserveUiModeInteractor
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        initDagger()
+    @Inject
+    lateinit var observeIsFirsAppOpenInteractor: ObserveIsFirstAppOpenInteractor
 
-        setCurrentTheme {
-            if (savedInstanceState == null) {
-                val fragment = NavigationFragment.newInstance()
+    @Inject
+    lateinit var changeIsFirsAppOpenToFalseInteractor: ChangeIsFirstAppOpenToFalseInteractor
 
-                supportFragmentManager.commit {
-                    add(R.id.main_container, fragment)
-                    setPrimaryNavigationFragment(fragment)
+    private fun getIsFirstAppOpenAndNavigateToTheFirstScreen() {
+        lifecycleScope.launch {
+                if (observeIsFirsAppOpenInteractor().first()) {
+                    changeIsFirsAppOpenToFalseInteractor()
+
+                } else {
+                    val fragment = NavigationFragment.newInstance()
+                    supportFragmentManager.commit {
+                        add(R.id.main_container, fragment)
+                        setPrimaryNavigationFragment(fragment)
+                    }
                 }
             }
         }
-    }
+
 
     private fun setCurrentTheme(doAfterSet: () -> Unit) {
         lifecycleScope.launch {
@@ -67,6 +72,18 @@ class MainActivity : AppCompatActivity(), NavigationFragment.Router,
 
     private fun initDagger() {
         (application as App).appComponent.inject(this)
+    }
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        initDagger()
+
+        setCurrentTheme {
+            if (savedInstanceState == null) {
+                getIsFirstAppOpenAndNavigateToTheFirstScreen()
+            }
+        }
     }
 
     override fun onOpenDescription(exercise: ExerciseUi) {

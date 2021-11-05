@@ -13,6 +13,8 @@ interface SettingsDataStore {
 
     suspend fun changeAutoRecordState(context: Context, isAutoRecordSwitchedOn: Boolean)
 
+    suspend fun changeIsFirstAppOpen(context: Context, isFirstAppOpen: Boolean)
+
     suspend fun changeTheme(context: Context, theme: Theme)
 
     fun observeUiMode(context: Context): Flow<UiMode>
@@ -24,4 +26,7 @@ interface SettingsDataStore {
     suspend fun updateNotification(context: Context, notification: Notification)
 
     fun observeAutoRecordState(context: Context): Flow<Boolean>
+
+    fun observeIsFirstAppOpen(context: Context): Flow<Boolean>
+
 }

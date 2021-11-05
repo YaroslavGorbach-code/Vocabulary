@@ -45,4 +45,12 @@ class RepoSettingsImp(private val localDataStore: SettingsDataStore, private val
     override fun observeAutoRecordState(): Flow<Boolean> {
         return localDataStore.observeAutoRecordState(context)
     }
+
+    override fun observeIsFirstAppOpen(): Flow<Boolean> {
+        return localDataStore.observeIsFirstAppOpen(context)
+    }
+
+    override suspend fun changeIsFirsAppOpen(isFirstOpen: Boolean) {
+        localDataStore.changeIsFirstAppOpen(context, isFirstOpen)
+    }
 }
