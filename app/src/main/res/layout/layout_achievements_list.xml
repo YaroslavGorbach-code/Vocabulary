@@ -18,10 +18,8 @@
         android:id="@+id/list_achievements"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:overScrollMode="never"
         android:layout_marginTop="8dp"
         android:clipToPadding="false"
-        android:paddingVertical="8dp"
-        android:paddingStart="8dp"
-        android:paddingEnd="4dp"
         tools:listitem="@layout/item_achievement" />
 </LinearLayout>
