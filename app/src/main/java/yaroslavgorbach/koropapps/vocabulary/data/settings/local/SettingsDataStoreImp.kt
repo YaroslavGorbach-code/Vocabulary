@@ -25,7 +25,7 @@ class SettingsDataStoreImp : SettingsDataStore {
         private const val DEFAULT_THEME_RES = R.style.BaseAppTheme_Teal
         private const val DEFAULT_NOTIFICATION_HOUR = 12
         private const val DEFAULT_NOTIFICATION_MINUTE = 30
-        private const val DEFAULT_NOTIFICATION_IS_ACTIVE = true
+        private const val DEFAULT_NOTIFICATION_IS_ACTIVE = false
 
         private val AUTO_RECORD_STATE = booleanPreferencesKey("AUTO_RECORD_STATE")
 

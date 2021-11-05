@@ -55,6 +55,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_marginStart="8dp"
+                android:visibility="gone"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -125,14 +126,17 @@
 
                 <include
                     android:id="@+id/remove_ads"
+                    android:visibility="gone"
                     layout="@layout/layout_item_profile" />
 
                 <include
                     android:id="@+id/share"
+                    android:visibility="gone"
                     layout="@layout/layout_item_profile" />
 
                 <include
                     android:id="@+id/rate"
+                    android:visibility="gone"
                     layout="@layout/layout_item_profile" />
             </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
