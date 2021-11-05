@@ -9,5 +9,50 @@
         <item>Напитки</item>
         <item>Имена</item>
         <item>Фильмы</item>
+        <item>Тело человека</item>
+        <item>Семья</item>
+        <item>Внешность и характер</item>
+        <item>Эмоции</item>
+        <item>Деньги</item>
+        <item>Цвета</item>
+        <item>Действия и движения</item>
+        <item>Кулинария</item>
+        <item>Инструменты</item>
+        <item>Канцелярские товары</item>
+        <item>Фрукты</item>
+        <item>Овощи</item>
+        <item>Материалы</item>
+        <item>Природные явления</item>
+        <item>Погода</item>
+        <item>Природа</item>
+        <item>Насекомые</item>
+        <item>Транспорт</item>
+        <item>Аэропорт</item>
+        <item>Одежда</item>
+        <item>Космос</item>
+        <item>Спорт</item>
+        <item>Наука и технология</item>
+        <item>армия</item>
+        <item>безопасность</item>
+        <item>библиотека</item>
+        <item>война</item>
+        <item>животный мир</item>
+        <item>инструменты</item>
+        <item>интернет</item>
+        <item>искусство</item>
+        <item>история</item>
+        <item>кино</item>
+        <item>компьютер</item>
+        <item>математика</item>
+        <item>мебель</item>
+        <item>огород</item>
+        <item>политика</item>
+        <item>путешествия</item>
+        <item>физика</item>
+        <item>хобби</item>
+        <item>химия</item>
+        <item>Оружие</item>
+        <item>Ювелирные украшения</item>
+        <item>бизнес</item>
     </string-array>
 </resources>
