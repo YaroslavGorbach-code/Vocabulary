@@ -45,12 +45,21 @@ class WordWithStageExerciseView(
         startOneWordChronometer()
     }
 
+    private fun setSingleLineWordTextViewMod(word: String) {
+        if (word.length < 30) {
+            binding.cardText.word.maxLines = 1
+        } else {
+            binding.cardText.word.maxLines = Int.MAX_VALUE
+        }
+    }
+
     fun setStages(stageUi: List<StageUi>) {
         stagesAdapter?.submitList(stageUi.toMutableList())
     }
 
     fun setWord(word: String) {
         binding.cardText.word.text = word
+        setSingleLineWordTextViewMod(word)
         startOneWordChronometer()
     }
 
