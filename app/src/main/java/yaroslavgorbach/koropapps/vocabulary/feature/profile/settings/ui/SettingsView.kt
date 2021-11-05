@@ -41,6 +41,11 @@ class SettingsView(private val binding: FragmentSettingsBinding, private val cal
         binding.autoRecording.autoRecordCheckBox.setOnCheckedChangeListener { _, isChecked ->
             callback.onAutoRecording(isChecked)
         }
+
+        binding.autoRecording.root.setOnClickListener {
+            binding.autoRecording.autoRecordCheckBox.isChecked =
+                binding.autoRecording.autoRecordCheckBox.isChecked.not()
+        }
     }
 
     fun setThemes(themes: List<Theme>) {
