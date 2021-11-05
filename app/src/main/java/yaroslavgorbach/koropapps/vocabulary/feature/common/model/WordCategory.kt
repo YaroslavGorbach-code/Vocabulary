@@ -20,6 +20,8 @@ sealed class WordCategory {
 
     class Terms(override val resArray: Int = R.array.terms) : WordCategory()
 
+    class Professions(override val resArray: Int = R.array.professions) : WordCategory()
+
     class Questions(override val resArray: Int = R.array.questions) : WordCategory()
 
     class TongueTwistersEasy(override val resArray: Int = R.array.twisters_easy) : WordCategory()

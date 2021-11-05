@@ -13,18 +13,18 @@ class ExerciseNameToExerciseRandomWordMapper(resources: Resources) {
 
     private val nounsAlive = resources.getStringArray(
         WordCategory.NounsAlive().resArray
-    ).toList()
+    ).toList().map(String::lowercase)
 
     private val nounsNotAlive = resources.getStringArray(
         WordCategory.NounsNotAlive().resArray
-    ).toList()
+    ).toList().map(String::lowercase)
 
     private val letters = resources.getStringArray(
         WordCategory.Letters().resArray
     ).toList()
 
     private val consonant = letters
-        .map { it.lowercase() }
+        .map(String::lowercase)
         .filter {
             it == "б"
                     || it == "в"
@@ -47,11 +47,10 @@ class ExerciseNameToExerciseRandomWordMapper(resources: Resources) {
                     || it == "ч"
                     || it == "ш"
                     || it == "щ"
-
         }
 
     private val vowels = letters
-        .map { it.lowercase() }
+        .map(String::lowercase)
         .filter {
             it == "а"
                     || it == "и"
@@ -64,7 +63,7 @@ class ExerciseNameToExerciseRandomWordMapper(resources: Resources) {
         }
 
     private val lettersForRememberAll = letters
-        .map { it.lowercase() }
+        .map(String::lowercase)
         .filterNot {
             it == "е"
                     || it == "ё"
@@ -85,49 +84,69 @@ class ExerciseNameToExerciseRandomWordMapper(resources: Resources) {
                     || it == "я"
         }
 
+    private val lettersForListOfCategories = letters
+        .map(String::lowercase)
+        .filterNot {
+            it == "е"
+                    || it == "ё"
+                    || it == "г"
+                    || it == "е"
+                    || it == "и"
+                    || it == "й"
+                    || it == "ш"
+                    || it == "ж"
+                    || it == "щ"
+                    || it == "ъ"
+                    || it == "ы"
+                    || it == "ь"
+                    || it == "э"
+                    || it == "ю"
+                    || it == "я"
+        }
+
     private val categories = resources.getStringArray(
         WordCategory.Category().resArray
-    ).toList()
+    ).toList().map(String::lowercase)
 
     private val abbreviations = resources.getStringArray(
         WordCategory.Abbreviations().resArray
-    ).toList()
+    ).toList().map(String::lowercase)
 
     private val terms = resources.getStringArray(
         WordCategory.Terms().resArray
-    ).toList()
+    ).toList().map(String::lowercase)
 
     private val professions = resources.getStringArray(
-        WordCategory.Terms().resArray
-    ).toList()
+        WordCategory.Professions().resArray
+    ).toList().map(String::lowercase)
 
     private val questions = resources.getStringArray(
         WordCategory.Questions().resArray
-    ).toList()
+    ).toList().map(String::lowercase)
 
     private val fillings = resources.getStringArray(
         WordCategory.Fillings().resArray
-    ).toList()
+    ).toList().map(String::lowercase)
 
     private val tongueTwistersEasy = resources.getStringArray(
         WordCategory.TongueTwistersEasy().resArray
-    ).toList()
+    ).toList().map(String::lowercase)
 
     private val tongueTwistersHard = resources.getStringArray(
         WordCategory.TongueTwistersHard().resArray
-    ).toList()
+    ).toList().map(String::lowercase)
 
     private val tongueTwistersVeryHard = resources.getStringArray(
         WordCategory.TongueTwistersVeryHard().resArray
-    ).toList()
+    ).toList().map(String::lowercase)
 
     private val soundCombination = resources.getStringArray(
         WordCategory.SoundCombinations().resArray
-    ).toList()
+    ).toList().map(String::lowercase)
 
     private val difficultWords = resources.getStringArray(
         WordCategory.DifficultWords().resArray
-    ).toList()
+    ).toList().map(String::lowercase)
 
     fun map(exerciseName: ExerciseName): String {
         return when (exerciseName) {
@@ -135,15 +154,17 @@ class ExerciseNameToExerciseRandomWordMapper(resources: Resources) {
             ExerciseName.ALPHABET_NOUN,
             ExerciseName.ALPHABET_VERBS,
             ExerciseName.THREE_LITER_JAR,
-            ExerciseName.LIST_OF_CATEGORIES,
             ExerciseName.TAUTOGRAMS -> {
                 letters.random()
+            }
+            ExerciseName.LIST_OF_CATEGORIES -> {
+                lettersForListOfCategories.random()
             }
             ExerciseName.REMEMBER_ALL -> {
                 lettersForRememberAll.random()
             }
             ExerciseName.THREE_LETTERS -> {
-                letters.random() + letters.random() + letters.random()
+                consonant.random() + consonant.random() + consonant.random()
             }
             ExerciseName.NARRATOR_NOUN,
             ExerciseName.NARRATOR_ADJECTIVES,

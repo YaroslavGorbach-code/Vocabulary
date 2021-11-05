@@ -9,7 +9,7 @@ class ExerciseNameToShortDescriptionResMapper {
         return when (exerciseName) {
             ExerciseName.ALPHABET_ADJECTIVES -> R.string.desc_short_alphabet_a
             ExerciseName.ALPHABET_NOUN -> R.string.desc_short_alphabet_n
-            ExerciseName.ALPHABET_VERBS -> R.string.desc_short_alphabet_n
+            ExerciseName.ALPHABET_VERBS -> R.string.desc_short_alphabet_v
             ExerciseName.TAUTOGRAMS -> R.string.desc_short_tautograms
             ExerciseName.NARRATOR_NOUN -> R.string.desc_short_narrator_noun
             ExerciseName.NARRATOR_ADJECTIVES -> R.string.desc_short_narrator_adjectives
