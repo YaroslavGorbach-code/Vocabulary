@@ -40,6 +40,14 @@ class ExerciseView(
         }
     }
 
+    private fun setSingleLineWordTextViewMod(word: String) {
+        if (word.length < 30) {
+            binding.cardText.word.maxLines = 1
+        } else {
+            binding.cardText.word.maxLines = Int.MAX_VALUE
+        }
+    }
+
     fun setDescriptionText(text: String) {
         binding.descriptionText.text = text
     }
@@ -51,8 +59,10 @@ class ExerciseView(
     }
 
     fun setWord(word: String) {
+        setSingleLineWordTextViewMod(word)
         binding.cardText.word.text = word
     }
+
 
     fun setExercise(exercise: TrainingExerciseUi) {
         if (exercise.isFinished) {

@@ -26,9 +26,9 @@
         android:layout_height="match_parent"
         android:layout_margin="8dp"
         android:gravity="center"
+        android:padding="4dp"
         android:textColor="@android:color/white"
-        app:autoSizeMaxTextSize="50sp"
-        app:autoSizeMinTextSize="12sp"
+        app:autoSizeStepGranularity="8sp"
         app:autoSizeTextType="uniform"
         tools:text="0" />
 </com.google.android.material.card.MaterialCardView>
