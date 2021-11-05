@@ -90,6 +90,7 @@ class ExerciseView(
     }
 
     fun setExerciseName(name: ExerciseName) {
+        setWordDescription(name)
         binding.toolbar.title = binding.getString(name.id)
     }
 
@@ -107,4 +108,14 @@ class ExerciseView(
         binding.aimAndPerformed.setText("$performed/$aim")
     }
 
+    private fun setWordDescription(name: ExerciseName) {
+        binding.cardText.textAtTop.visibility = View.VISIBLE
+
+        binding.cardText.textAtTop.text = when (name) {
+            ExerciseName.NARRATOR_ADJECTIVES, ExerciseName.NARRATOR_NOUN, ExerciseName.NARRATOR_VERBS -> {
+                binding.getString(R.string.number_of_words_in_story)
+            }
+            else -> ""
+        }
+    }
 }

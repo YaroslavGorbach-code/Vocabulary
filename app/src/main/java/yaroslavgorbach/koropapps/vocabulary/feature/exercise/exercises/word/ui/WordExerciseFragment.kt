@@ -76,6 +76,7 @@ class WordExerciseFragment : Fragment(R.layout.fragment_exercise), PermissionDen
             })
 
         exerciseView.setExerciseName(exerciseType.getExerciseName())
+
     }
 
     private fun initObservers() {

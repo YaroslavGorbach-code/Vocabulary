@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -17,7 +16,7 @@
         android:gravity="center|top"
         android:textColor="@android:color/white"
         android:visibility="gone"
-        android:textSize="12sp"
+        android:textSize="16sp"
         tools:text="0" />
 
     <TextView
