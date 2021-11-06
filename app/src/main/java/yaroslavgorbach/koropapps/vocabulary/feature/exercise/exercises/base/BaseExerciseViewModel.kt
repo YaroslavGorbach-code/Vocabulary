@@ -80,8 +80,36 @@ open class BaseExerciseViewModel(
     val isAutoRecordStart: LiveData<Boolean>
         get() = observeAutoRecordStateInteractor().asLiveData()
 
-    private fun incrementNumberOnNextClicked() {
-        numberOnNextCLicked++
+    open fun onNextClick() {
+        incrementNumberOnNextClicked()
+        measureClickInterval()
+        incrementExercisePerformed()
+    }
+
+    fun onStopRecord() {
+        voiceRecorder.stop()
+    }
+
+    fun onStartStopRecording(exerciseName: String) {
+        checkOrRequestRecordAudioPermission {
+            isVoiceRecorderRecording.value?.let { isRecording ->
+                if (isRecording) {
+                    onStopRecord()
+                } else {
+                    voiceRecorder.start(exerciseName.lowercase())
+                }
+            }
+        }
+
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        measureClickInterval()
+
+        saveStatistics {
+            disposeDisposables()
+        }
     }
 
     private fun measureClickInterval() {
@@ -89,6 +117,10 @@ open class BaseExerciseViewModel(
         val interval = currentTime - previousTime
         previousTime = currentTime
         timeIntervals.add(interval)
+    }
+
+    private fun incrementNumberOnNextClicked() {
+        numberOnNextCLicked++
     }
 
     protected fun incrementExercisePerformed() {
@@ -137,38 +169,6 @@ open class BaseExerciseViewModel(
     private fun disposeDisposables() {
         if (disposables.isDisposed.not()) {
             disposables.dispose()
-        }
-    }
-
-    open fun onNextClick() {
-        incrementNumberOnNextClicked()
-        measureClickInterval()
-        incrementExercisePerformed()
-    }
-
-    fun onStopRecord() {
-        voiceRecorder.stop()
-    }
-
-    fun onStartStopRecording(exerciseName: String) {
-        checkOrRequestRecordAudioPermission {
-            isVoiceRecorderRecording.value?.let { isRecording ->
-                if (isRecording) {
-                    onStopRecord()
-                } else {
-                    voiceRecorder.start(exerciseName.lowercase())
-                }
-            }
-        }
-
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        measureClickInterval()
-
-        saveStatistics {
-            disposeDisposables()
         }
     }
 }

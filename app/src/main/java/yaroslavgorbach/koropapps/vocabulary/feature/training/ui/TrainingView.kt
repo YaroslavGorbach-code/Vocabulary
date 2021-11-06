@@ -36,10 +36,26 @@ class TrainingView(
         initActions()
     }
 
+
+    @SuppressLint("SetTextI18n")
+    fun setTrainingWitExercises(trainingWithExercisesUi: TrainingWithExercisesUi) {
+        pagerAdapter.setData(trainingWithExercisesUi.exercises)
+
+        setViewPagerPage(trainingWithExercisesUi.currentViewPagerPage)
+
+        binding.textProgress.setProgress(trainingWithExercisesUi.progress)
+
+        binding.textProgress.setText(
+            binding.getString(R.string.days_without_interruption) + ": ${trainingWithExercisesUi.daysWithoutInterruption}"
+        )
+
+        initFilterChips(trainingWithExercisesUi.availableFilters)
+
+        showNoExercisesAndSetDefaultFilter(trainingWithExercisesUi.exercises.isEmpty())
+    }
+
     private fun initView() {
-        binding.viewPager.apply {
-            adapter = pagerAdapter
-        }
+        binding.viewPager.adapter = pagerAdapter
     }
 
     private fun initActions() {
@@ -71,7 +87,6 @@ class TrainingView(
     private fun initFilterChips(
         availableFilters: List<TrainingExerciseCategoryFilterUi>,
     ) {
-
         if (availableFilters.contains(TrainingExerciseCategoryFilterUi.VOCABULARY)) {
             binding.chipVocabulary.visibility = View.VISIBLE
         } else {
@@ -111,28 +126,10 @@ class TrainingView(
         binding.chipDiction.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) callback.onFilterChanged(TrainingExerciseCategoryFilterUi.DICTION_AND_ARTICULATION)
         }
-
     }
 
     private fun setViewPagerPage(page: Int) {
         binding.viewPager.setCurrentItem(page, false)
-    }
-
-    @SuppressLint("SetTextI18n")
-    fun setTrainingWitExercises(trainingWithExercisesUi: TrainingWithExercisesUi) {
-        pagerAdapter.setData(trainingWithExercisesUi.exercises)
-
-        setViewPagerPage(trainingWithExercisesUi.currentViewPagerPage)
-
-        binding.textProgress.setProgress(trainingWithExercisesUi.progress)
-
-        binding.textProgress.setText(
-            binding.getString(R.string.days_without_interruption) + ": ${trainingWithExercisesUi.daysWithoutInterruption}"
-        )
-
-        initFilterChips(trainingWithExercisesUi.availableFilters)
-
-        showNoExercisesAndSetDefaultFilter(trainingWithExercisesUi.exercises.isEmpty())
     }
 
 }
