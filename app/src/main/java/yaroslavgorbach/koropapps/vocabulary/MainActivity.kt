@@ -18,6 +18,7 @@ import yaroslavgorbach.koropapps.vocabulary.business.settings.ObserveIsFirstAppO
 import yaroslavgorbach.koropapps.vocabulary.business.settings.ObserveUiModeInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Theme
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.UiMode
+import yaroslavgorbach.koropapps.vocabulary.feature.aboutapp.ui.AboutAppPagerFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.ExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.feature.navigation.ui.NavigationFragment
@@ -30,7 +31,7 @@ import javax.inject.Inject
 
 @InternalCoroutinesApi
 @FlowPreview
-class MainActivity : AppCompatActivity(), NavigationFragment.Router,
+class MainActivity : AppCompatActivity(), NavigationFragment.Router, AboutAppPagerFragment.Router,
     TrainingFragment.Router, SettingsFragment.ThemeChangedListener {
 
     @Inject
@@ -49,17 +50,12 @@ class MainActivity : AppCompatActivity(), NavigationFragment.Router,
         lifecycleScope.launch {
                 if (observeIsFirsAppOpenInteractor().first()) {
                     changeIsFirsAppOpenToFalseInteractor()
-
+                    navigateToAboutAppScreen()
                 } else {
-                    val fragment = NavigationFragment.newInstance()
-                    supportFragmentManager.commit {
-                        add(R.id.main_container, fragment)
-                        setPrimaryNavigationFragment(fragment)
-                    }
+                    onNavigationScreen()
                 }
             }
         }
-
 
     private fun setCurrentTheme(doAfterSet: () -> Unit) {
         lifecycleScope.launch {
@@ -73,7 +69,6 @@ class MainActivity : AppCompatActivity(), NavigationFragment.Router,
     private fun initDagger() {
         (application as App).appComponent.inject(this)
     }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -137,6 +132,21 @@ class MainActivity : AppCompatActivity(), NavigationFragment.Router,
             setPrimaryNavigationFragment(fragment)
             addToBackStack(null)
             setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+        }
+    }
+
+    override fun onNavigationScreen() {
+        val fragment = NavigationFragment.newInstance()
+        supportFragmentManager.commit {
+            replace(R.id.main_container, fragment)
+            setPrimaryNavigationFragment(fragment)
+        }
+    }
+
+    private fun navigateToAboutAppScreen() {
+        val fragment = AboutAppPagerFragment.newInstance()
+        supportFragmentManager.commit {
+            replace(R.id.main_container, fragment)
         }
     }
 
