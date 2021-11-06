@@ -33,6 +33,10 @@ class AboutAppPageAdapter(private val onStart: () -> Unit) :
             binding.start.setOnClickListener {
                 onStart()
             }
+
+            binding.icClose.setOnClickListener {
+                onStart()
+            }
         }
 
         fun bind(page: AboutAppPageUi) {

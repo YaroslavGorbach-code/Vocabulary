@@ -7,6 +7,8 @@ import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentAboutAppBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.aboutapp.ui.recycler.AboutAppPageAdapter
 import yaroslavgorbach.koropapps.vocabulary.utils.host
+import yaroslavgorbach.koropapps.vocabulary.utils.setBackgroundStatusBarColor
+import yaroslavgorbach.koropapps.vocabulary.utils.setDefaultStatusBarColor
 
 class AboutAppPagerFragment: Fragment(R.layout.fragment_about_app) {
 
@@ -34,9 +36,7 @@ class AboutAppPagerFragment: Fragment(R.layout.fragment_about_app) {
         binding.pager.adapter = pageAdapter
         binding.wormDotsIndicator.setViewPager2(binding.pager)
 
-        binding.toolbar.setNavigationOnClickListener {
-            host<Router>().onNavigationScreen()
-        }
+        requireActivity().setBackgroundStatusBarColor()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -46,6 +46,7 @@ class AboutAppPagerFragment: Fragment(R.layout.fragment_about_app) {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        requireActivity().setDefaultStatusBarColor()
         _binding = null
     }
 }
