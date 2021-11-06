@@ -1,21 +1,13 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.training.ui
 
 import android.annotation.SuppressLint
-import android.graphics.drawable.ColorDrawable
-import android.util.Log
 import android.view.View
-import android.view.Window
-import android.widget.CompoundButton
-import androidx.core.view.isVisible
-import com.google.android.material.chip.ChipGroup
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentTrainingBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerciseCategoryFilterUi
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingWithExercisesUi
 import yaroslavgorbach.koropapps.vocabulary.feature.training.ui.recycler.TrainingExercisesListAdapter
-import yaroslavgorbach.koropapps.vocabulary.utils.colorBackground
-import yaroslavgorbach.koropapps.vocabulary.utils.getColorPrimary
 import yaroslavgorbach.koropapps.vocabulary.utils.getString
 
 class TrainingView(
@@ -60,8 +52,10 @@ class TrainingView(
         }
     }
 
-    private fun showNoExercises(isShow: Boolean) {
+    private fun showNoExercisesAndSetDefaultFilter(isShow: Boolean) {
         if (isShow) {
+            binding.chipAll.isChecked = true
+
             binding.noExercisesIcon.visibility = View.VISIBLE
             binding.noExercisesTextOne.visibility = View.VISIBLE
             binding.noExercisesTextTwo.visibility = View.VISIBLE
@@ -96,6 +90,12 @@ class TrainingView(
             binding.chipAll.visibility = View.GONE
         }
 
+        if (availableFilters.contains(TrainingExerciseCategoryFilterUi.DICTION_AND_ARTICULATION)) {
+            binding.chipDiction.visibility = View.VISIBLE
+        } else {
+            binding.chipDiction.visibility = View.GONE
+        }
+
         binding.chipAll.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) callback.onFilterChanged(TrainingExerciseCategoryFilterUi.ALL)
         }
@@ -106,6 +106,10 @@ class TrainingView(
 
         binding.chipVocabulary.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) callback.onFilterChanged(TrainingExerciseCategoryFilterUi.VOCABULARY)
+        }
+
+        binding.chipDiction.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) callback.onFilterChanged(TrainingExerciseCategoryFilterUi.DICTION_AND_ARTICULATION)
         }
 
     }
@@ -128,7 +132,7 @@ class TrainingView(
 
         initFilterChips(trainingWithExercisesUi.availableFilters)
 
-        showNoExercises(trainingWithExercisesUi.exercises.isEmpty())
+        showNoExercisesAndSetDefaultFilter(trainingWithExercisesUi.exercises.isEmpty())
     }
 
 }
