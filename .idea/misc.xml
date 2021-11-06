@@ -22,6 +22,7 @@
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_exercise.xml" value="0.2203125" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_impromptu.xml" value="0.2169230769230769" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_lamp.xml" value="0.1814814814814815" />
+        <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.2169230769230769" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_light_mode.xml" value="0.2203125" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_mountain.xml" value="0.2203125" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_narrator_n.xml" value="0.2101851851851852" />
@@ -68,7 +69,8 @@
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/item_achievement.xml" value="0.10371376811594203" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/item_exercise.xml" value="0.14990942028985507" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/item_exercise_tarining.xml" value="0.25" />
-        <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/item_page.xml" value="0.12" />
+        <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/item_page.xml" value="0.15" />
+        <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/item_record.xml" value="0.10643115942028986" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/item_theme.xml" value="0.5" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/iteme_exercise_tarining.xml" value="0.33" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/layout_chart.xml" value="0.22" />

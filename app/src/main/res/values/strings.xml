@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">Vocabulary</string>
+    <string name="app_name">Оратор - искусство общения</string>
+
     <string name="description">Описание</string>
     <string name="end_of_time">Время вышло</string>
     <string name="result"> Названо слов %1$d</string>
