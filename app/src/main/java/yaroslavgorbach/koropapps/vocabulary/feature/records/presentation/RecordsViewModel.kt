@@ -1,6 +1,5 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.records.presentation
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -123,12 +122,16 @@ class RecordsViewModel @Inject constructor(
 
     fun setDurationToAllRecords(duration: Int) {
         _records.value = _records.value?.toMutableList()?.map {
-            Log.i("prlsdkks", "duration in vm " + duration.toString())
             it.apply { this.duration = duration }
         }
     }
 
     fun seekRecord(progress: Int) {
         recordsPlayer.seekToo(progress)
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        recordsPlayer.stop()
     }
 }
