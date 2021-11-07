@@ -14,6 +14,7 @@ import yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.InfoDialog
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.profile.presentation.ProfileViewModel
 import yaroslavgorbach.koropapps.vocabulary.utils.appComponent
 import yaroslavgorbach.koropapps.vocabulary.utils.host
+import yaroslavgorbach.koropapps.vocabulary.utils.setDefaultStatusBarColor
 import javax.inject.Inject
 
 class ProfileFragment : Fragment(R.layout.fragment_profile), InfoDialog.Host {
@@ -43,6 +44,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), InfoDialog.Host {
         super.onViewCreated(view, savedInstanceState)
         initView()
         initObservers()
+        activity?.setDefaultStatusBarColor()
     }
 
     private fun initDagger() {

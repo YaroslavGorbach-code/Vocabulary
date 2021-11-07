@@ -11,6 +11,7 @@ import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentRecordsListBindi
 import yaroslavgorbach.koropapps.vocabulary.feature.records.model.RecordUi
 import yaroslavgorbach.koropapps.vocabulary.feature.records.presentation.RecordsViewModel
 import yaroslavgorbach.koropapps.vocabulary.utils.appComponent
+import yaroslavgorbach.koropapps.vocabulary.utils.setDefaultStatusBarColor
 import javax.inject.Inject
 
 class RecordsListFragment : Fragment(R.layout.fragment_records_list) {
@@ -38,6 +39,7 @@ class RecordsListFragment : Fragment(R.layout.fragment_records_list) {
         super.onViewCreated(view, savedInstanceState)
         initView()
         initObservers()
+        activity?.setDefaultStatusBarColor()
     }
 
     private fun initDagger() {

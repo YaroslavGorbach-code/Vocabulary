@@ -2,6 +2,7 @@ package yaroslavgorbach.koropapps.vocabulary.utils
 
 import android.app.Activity
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
 
@@ -10,8 +11,23 @@ fun <T : ViewBinding> ViewGroup.inflateBinding(inflateFunc: (LayoutInflater, Vie
 
 fun Activity.setBackgroundStatusBarColor() {
     window.statusBarColor = colorBackground
+
+    if (isSystemNightMode().not()){
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+    }
 }
+
+fun Activity.setPrimaryStatusBarColor() {
+    window.statusBarColor = getColorPrimary()
+
+    window.decorView.systemUiVisibility = 0
+}
+
 
 fun Activity.setDefaultStatusBarColor() {
     window.statusBarColor = statusBarColor
+
+    if (isSystemNightMode().not()){
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+    }
 }

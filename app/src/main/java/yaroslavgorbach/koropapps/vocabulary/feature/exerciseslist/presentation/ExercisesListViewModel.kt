@@ -1,12 +1,9 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.presentation
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import android.util.Log
+import androidx.lifecycle.*
 import io.reactivex.rxjava3.disposables.CompositeDisposable
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import yaroslavgorbach.koropapps.vocabulary.business.exercises.GetExercisesInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.ObserveLastFifeTrainingsInteractor
@@ -34,16 +31,18 @@ class ExercisesListViewModel @Inject constructor(
     val training: LiveData<TrainingUi>
         get() = _training
 
+    private val _isChipsVisible: MutableSharedFlow<Int> = MutableSharedFlow()
+
+    val isChipsVisible: LiveData<Boolean>
+        get() = _isChipsVisible
+            .filter { it != 0 }
+            .map { y -> y < 1 }
+            .debounce(50)
+            .asLiveData()
+
     init {
         getAndFilterExercises(ExerciseCategoryFilterUi.ALL)
         getLastFifeTrainings()
-    }
-
-    private fun getLastFifeTrainings() {
-        observeLastFifeTrainingsInteractor()
-            .map(::TrainingUi)
-            .subscribe(_training::postValue)
-            .let(disposables::add)
     }
 
     override fun onCleared() {
@@ -55,6 +54,12 @@ class ExercisesListViewModel @Inject constructor(
 
     fun changeExercisesFilter(filterUi: ExerciseCategoryFilterUi) {
         getAndFilterExercises(filterUi)
+    }
+
+    fun onListScrolled(y: Int) {
+        viewModelScope.launch {
+            _isChipsVisible.emit(y)
+        }
     }
 
     private fun getAndFilterExercises(filterUi: ExerciseCategoryFilterUi) {
@@ -85,5 +90,12 @@ class ExercisesListViewModel @Inject constructor(
                 .map { ExercisesWithFilterUi(it, filterUi) }
                 .collect(_exercisesWithFilter::postValue)
         }
+    }
+
+    private fun getLastFifeTrainings() {
+        observeLastFifeTrainingsInteractor()
+            .map(::TrainingUi)
+            .subscribe(_training::postValue)
+            .let(disposables::add)
     }
 }

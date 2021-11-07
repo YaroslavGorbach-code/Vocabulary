@@ -14,6 +14,9 @@ import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.Exercise
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.ExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.presentation.ExercisesListViewModel
 import yaroslavgorbach.koropapps.vocabulary.utils.host
+import yaroslavgorbach.koropapps.vocabulary.utils.setBackgroundStatusBarColor
+import yaroslavgorbach.koropapps.vocabulary.utils.setDefaultStatusBarColor
+import yaroslavgorbach.koropapps.vocabulary.utils.setPrimaryStatusBarColor
 import javax.inject.Inject
 
 @InternalCoroutinesApi
@@ -60,6 +63,10 @@ class ExercisesListFragment : Fragment(R.layout.fragment_exercises_list) {
                     host<Router>().openDescription(exercise)
                 }
 
+                override fun onScrolled(y: Int) {
+                    viewModel.onListScrolled(y)
+                }
+
                 override fun onTraining() {
                     host<Router>().openTraining()
                 }
@@ -73,6 +80,11 @@ class ExercisesListFragment : Fragment(R.layout.fragment_exercises_list) {
     private fun initObservers() {
         viewModel.training.observe(viewLifecycleOwner, exercisesView::setTraining)
 
-        viewModel.exercisesWithFilter.observe(viewLifecycleOwner, exercisesView::setExercisesWithFilter)
+        viewModel.exercisesWithFilter.observe(
+            viewLifecycleOwner,
+            exercisesView::setExercisesWithFilter
+        )
+
+        viewModel.isChipsVisible.observe(viewLifecycleOwner, exercisesView::setChipsVisibility)
     }
 }
