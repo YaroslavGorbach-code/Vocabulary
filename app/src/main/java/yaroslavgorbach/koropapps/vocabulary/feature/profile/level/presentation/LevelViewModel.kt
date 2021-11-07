@@ -1,5 +1,6 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.profile.level.presentation
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -67,51 +68,51 @@ class LevelViewModel @Inject constructor(
         trainingWithExercises: TrainingWithExercisesEntity
     ) {
         val isTongueTwisterEasyCompleted = allExercisesValues.any {
-            it.exerciseNameRes == ExerciseName.TONGUE_TWISTERS_EASY.id && it.value > 0
+            it.exerciseName == ExerciseName.TONGUE_TWISTERS_EASY && it.value > 0
         }
 
         val isTongueTwisterHardCompleted = allExercisesValues.any {
-            it.exerciseNameRes == ExerciseName.TONGUE_TWISTERS_HARD.id && it.value > 0
+            it.exerciseName == ExerciseName.TONGUE_TWISTERS_HARD && it.value > 0
         }
 
         val isTongueTwisterVeryHardCompleted = allExercisesValues.any {
-            it.exerciseNameRes == ExerciseName.TONGUE_TWISTERS_VERY_HARD.id && it.value > 0
+            it.exerciseName == ExerciseName.TONGUE_TWISTERS_VERY_HARD && it.value > 0
         }
 
         val isAlphabetVerbsCompleted = allExercisesValues.any {
-            it.exerciseNameRes == ExerciseName.ALPHABET_VERBS.id && it.value > ALPHABET_NUMBER_OF_LETTERS_FOR_ACHIEVEMENTS
+            it.exerciseName == ExerciseName.ALPHABET_VERBS && it.value > ALPHABET_NUMBER_OF_LETTERS_FOR_ACHIEVEMENTS
         }
 
         val isAlphabetNounsCompleted = allExercisesValues.any {
-            it.exerciseNameRes == ExerciseName.ALPHABET_NOUN.id && it.value > ALPHABET_NUMBER_OF_LETTERS_FOR_ACHIEVEMENTS
+            it.exerciseName == ExerciseName.ALPHABET_NOUN && it.value > ALPHABET_NUMBER_OF_LETTERS_FOR_ACHIEVEMENTS
         }
 
         val isAlphabetAdjectivesCompleted = allExercisesValues.any {
-            it.exerciseNameRes == ExerciseName.ALPHABET_ADJECTIVES.id && it.value > ALPHABET_NUMBER_OF_LETTERS_FOR_ACHIEVEMENTS
+            it.exerciseName == ExerciseName.ALPHABET_ADJECTIVES && it.value > ALPHABET_NUMBER_OF_LETTERS_FOR_ACHIEVEMENTS
         }
 
         val isAtLeastOneCommunicatingExerciseCompleted = allExercisesValues.any {
-            ExerciseNameToExerciseCategoryMapper().map(getExerciseName(it.exerciseNameRes)) == ExerciseCategory.COMMUNICATION
+            ExerciseNameToExerciseCategoryMapper().map(it.exerciseName) == ExerciseCategory.COMMUNICATION
         }
 
         val isAtLeastOneVocabularyExerciseCompleted = allExercisesValues.any {
-            ExerciseNameToExerciseCategoryMapper().map(getExerciseName(it.exerciseNameRes)) == ExerciseCategory.VOCABULARY
+            ExerciseNameToExerciseCategoryMapper().map(it.exerciseName) == ExerciseCategory.VOCABULARY
         }
 
         val isAtLeastOneDictionExerciseCompleted = allExercisesValues.any {
-            ExerciseNameToExerciseCategoryMapper().map(getExerciseName(it.exerciseNameRes)) == ExerciseCategory.DICTION_AND_ARTICULATION
+            ExerciseNameToExerciseCategoryMapper().map(it.exerciseName) == ExerciseCategory.DICTION_AND_ARTICULATION
         }
 
         val isDictionaryVerbsCompleteOverNorm = allExercisesValues.any {
-            getExerciseName(it.exerciseNameRes) == ExerciseName.DICTIONARY_VERBS && it.value >= DICTIONARY_VERBS_WORDS_NORM
+            it.exerciseName == ExerciseName.DICTIONARY_VERBS && it.value >= DICTIONARY_VERBS_WORDS_NORM
         }
 
         val isDictionaryAdjectivesCompleteOverNorm = allExercisesValues.any {
-            getExerciseName(it.exerciseNameRes) == ExerciseName.DICTIONARY_ADJECTIVES && it.value >= DICTIONARY_ADJECTIVES_WORDS_NORM
+            it.exerciseName == ExerciseName.DICTIONARY_ADJECTIVES && it.value >= DICTIONARY_ADJECTIVES_WORDS_NORM
         }
 
         val isDictionaryNounCompleteOverNorm = allExercisesValues.any {
-            getExerciseName(it.exerciseNameRes) == ExerciseName.DICTIONARY_NOUN && it.value >= DICTIONARY_NOUNS_WORDS_NORM
+            it.exerciseName == ExerciseName.DICTIONARY_NOUN && it.value >= DICTIONARY_NOUNS_WORDS_NORM
         }
 
         if (commonInfo.dailyTrainingsCompleted > 0) {

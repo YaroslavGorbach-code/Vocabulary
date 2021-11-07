@@ -9,7 +9,7 @@ import java.util.*
 data class StatisticsExerciseValueEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
-    val exerciseNameRes: Int,
+    val exerciseName: ExerciseName,
     val value: Int,
     val date: Date
 )

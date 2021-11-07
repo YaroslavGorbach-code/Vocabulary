@@ -3,6 +3,7 @@ package yaroslavgorbach.koropapps.vocabulary.data.statistics.repo
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
+import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsDailyTrainingTimeEntity
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsExerciseTimeEntity
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsExerciseValueEntity
@@ -22,9 +23,9 @@ interface RepoStatistics {
 
     fun update(statisticsDailyTrainingTimeEntity: StatisticsDailyTrainingTimeEntity): Completable
 
-    fun observeValue(exerciseNameRes: Int): Observable<List<StatisticsExerciseValueEntity>>
+    fun observeValue(exerciseName: ExerciseName): Observable<List<StatisticsExerciseValueEntity>>
 
-    fun observeTime(exerciseNameRes: Int): Observable<List<StatisticsExerciseTimeEntity>>
+    fun observeTime(exerciseName: ExerciseName): Observable<List<StatisticsExerciseTimeEntity>>
 
     fun observeDays(): Observable<List<StatisticsDailyTrainingTimeEntity>>
 

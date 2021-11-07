@@ -59,7 +59,7 @@ class DescriptionViewModel @Inject constructor(
     }
 
     private fun observeValueStatistics() {
-        observeStatisticsValueInteractor(exerciseName.id)
+        observeStatisticsValueInteractor(exerciseName)
             .observeOn(AndroidSchedulers.mainThread())
             .map { it.takeLast(ChartValueUi.MAX_ITEMS_COUNT) }
             .map { ChartValueUi(it, exerciseName) }
@@ -68,7 +68,7 @@ class DescriptionViewModel @Inject constructor(
     }
 
     private fun observeTimeStatistics() {
-        observeStatisticsTimeInteractor(exerciseName.id)
+        observeStatisticsTimeInteractor(exerciseName)
             .observeOn(AndroidSchedulers.mainThread())
             .map { it.takeLast(ChartTimeUi.MAX_ITEMS_COUNT) }
             .map { ChartTimeUi(it, exerciseName) }
@@ -84,7 +84,7 @@ class DescriptionViewModel @Inject constructor(
     }
 
     fun onNextChartValue() {
-        observeStatisticsValueInteractor(exerciseName.id)
+        observeStatisticsValueInteractor(exerciseName)
             .observeOn(AndroidSchedulers.mainThread())
             .map { list ->
                 list.filter {
@@ -103,7 +103,7 @@ class DescriptionViewModel @Inject constructor(
     }
 
     fun onPreviousChartValue() {
-        observeStatisticsValueInteractor(exerciseName.id)
+        observeStatisticsValueInteractor(exerciseName)
             .observeOn(AndroidSchedulers.mainThread())
             .map { list ->
                 list.filter {
@@ -122,7 +122,7 @@ class DescriptionViewModel @Inject constructor(
     }
 
     fun onNextChartTime() {
-        observeStatisticsTimeInteractor(exerciseName.id)
+        observeStatisticsTimeInteractor(exerciseName)
             .observeOn(AndroidSchedulers.mainThread())
             .map { list ->
                 list.filter {
@@ -141,7 +141,7 @@ class DescriptionViewModel @Inject constructor(
     }
 
     fun onPreviousChartTime() {
-        observeStatisticsTimeInteractor(exerciseName.id)
+        observeStatisticsTimeInteractor(exerciseName)
             .observeOn(AndroidSchedulers.mainThread())
             .map { list ->
                 list.filter {

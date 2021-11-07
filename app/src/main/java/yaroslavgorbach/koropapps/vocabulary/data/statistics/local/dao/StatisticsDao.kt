@@ -8,6 +8,7 @@ import androidx.room.Update
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
+import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsDailyTrainingTimeEntity
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsExerciseTimeEntity
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsExerciseValueEntity
@@ -34,11 +35,11 @@ interface StatisticsDao {
     @Update
     fun update(statisticsDailyTrainingTimeEntity: StatisticsDailyTrainingTimeEntity): Completable
 
-    @Query("SELECT * FROM StatisticsExerciseValueEntity WHERE exerciseNameRes = :exerciseNameRes")
-    fun observeValue(exerciseNameRes: Int): Observable<List<StatisticsExerciseValueEntity>>
+    @Query("SELECT * FROM StatisticsExerciseValueEntity WHERE exerciseName = :exerciseName")
+    fun observeValue(exerciseName: ExerciseName): Observable<List<StatisticsExerciseValueEntity>>
 
-    @Query("SELECT * FROM StatisticsExerciseTimeEntity WHERE exerciseNameRes = :exerciseNameRes")
-    fun observeTime(exerciseNameRes: Int): Observable<List<StatisticsExerciseTimeEntity>>
+    @Query("SELECT * FROM StatisticsExerciseTimeEntity WHERE exerciseName = :exerciseName")
+    fun observeTime(exerciseName: ExerciseName): Observable<List<StatisticsExerciseTimeEntity>>
 
     @Query("SELECT * FROM StatisticsDailyTrainingTimeEntity")
     fun observeDays(): Observable<List<StatisticsDailyTrainingTimeEntity>>

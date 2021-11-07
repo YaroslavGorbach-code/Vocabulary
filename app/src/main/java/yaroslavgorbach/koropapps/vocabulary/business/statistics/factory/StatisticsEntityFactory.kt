@@ -10,7 +10,7 @@ class StatisticsEntityFactory {
 
     fun createValueEntity(exerciseName: ExerciseName, value: Int): StatisticsExerciseValueEntity {
         return StatisticsExerciseValueEntity(
-            exerciseNameRes = exerciseName.id,
+            exerciseName = exerciseName,
             value = value,
             date = Date()
         )
@@ -18,7 +18,7 @@ class StatisticsEntityFactory {
 
     fun createTimeEntity(exerciseName: ExerciseName, value: Float): StatisticsExerciseTimeEntity {
         return StatisticsExerciseTimeEntity(
-            exerciseNameRes = exerciseName.id,
+            exerciseName = exerciseName,
             value = value,
             date = Date()
         )

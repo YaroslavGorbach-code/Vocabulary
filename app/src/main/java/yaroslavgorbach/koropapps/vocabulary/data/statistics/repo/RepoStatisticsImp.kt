@@ -4,6 +4,8 @@ import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
+import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.Exercise
+import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.dao.StatisticsDao
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsCommonInfoEntity
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsDailyTrainingTimeEntity
@@ -43,13 +45,13 @@ class RepoStatisticsImp(private val localDataSource: StatisticsDao) : RepoStatis
             .subscribeOn(Schedulers.io())
     }
 
-    override fun observeValue(exerciseNameRes: Int): Observable<List<StatisticsExerciseValueEntity>> {
-        return localDataSource.observeValue(exerciseNameRes)
+    override fun observeValue(exerciseName: ExerciseName): Observable<List<StatisticsExerciseValueEntity>> {
+        return localDataSource.observeValue(exerciseName)
             .subscribeOn(Schedulers.io())
     }
 
-    override fun observeTime(exerciseNameRes: Int): Observable<List<StatisticsExerciseTimeEntity>> {
-        return localDataSource.observeTime(exerciseNameRes)
+    override fun observeTime(exerciseName: ExerciseName): Observable<List<StatisticsExerciseTimeEntity>> {
+        return localDataSource.observeTime(exerciseName)
             .subscribeOn(Schedulers.io())
     }
 
