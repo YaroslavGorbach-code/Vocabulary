@@ -1,6 +1,5 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.presentation
 
-import android.util.Log
 import androidx.lifecycle.*
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import kotlinx.coroutines.flow.*
@@ -37,7 +36,7 @@ class ExercisesListViewModel @Inject constructor(
         get() = _isChipsVisible
             .filter { it != 0 }
             .map { y -> y < 1 }
-            .debounce(30)
+            .debounce(300)
             .asLiveData()
 
     init {
@@ -84,7 +83,6 @@ class ExercisesListViewModel @Inject constructor(
                         }
 
                         ExerciseCategoryFilterUi.FAVORITE -> exercisesUi.filter { it.isFavorite }
-
                     }
                 }
                 .map { ExercisesWithFilterUi(it, filterUi) }

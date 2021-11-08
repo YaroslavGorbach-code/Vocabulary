@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <declare-styleable name="Theme.MaterialComponents.DayNight.NoActionBar">
+        <attr name="colorPrimaryAlpha10" format="color" />
+
+    </declare-styleable>
     <declare-styleable name="TextProgressView">
         <attr name="textProgressStrokeWidth" format="dimension" />
         <attr name="textProgressOutlineColor" format="color" />

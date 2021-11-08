@@ -34,6 +34,7 @@
 
     <style name="BaseAppTheme.Teal">
         <item name="colorPrimary">@color/TealPrimary</item>
+        <item name="colorPrimaryAlpha10">@color/TealPrimary10</item>
         <item name="colorPrimaryVariant">@color/TealPrimaryVariant</item>
         <item name="colorSecondary">@color/TealSecondary</item>
         <item name="colorSecondaryVariant">@color/TealSecondaryVariant</item>
@@ -41,6 +42,7 @@
 
     <style name="BaseAppTheme.Blue">
         <item name="colorPrimary">@color/BluePrimary</item>
+        <item name="colorPrimaryAlpha10">@color/BluePrimary10</item>
         <item name="colorPrimaryVariant">@color/BluePrimaryVariant</item>
         <item name="colorSecondary">@color/BlueSecondary</item>
         <item name="colorSecondaryVariant">@color/BlueSecondaryVariant</item>
@@ -48,6 +50,7 @@
 
     <style name="BaseAppTheme.Indigo">
         <item name="colorPrimary">@color/IndigoPrimary</item>
+        <item name="colorPrimaryAlpha10">@color/IndigoPrimary10</item>
         <item name="colorPrimaryVariant">@color/IndigoPrimaryVariant</item>
         <item name="colorSecondary">@color/IndigoSecondary</item>
         <item name="colorSecondaryVariant">@color/IndigoSecondaryVariant</item>
@@ -55,6 +58,7 @@
 
     <style name="BaseAppTheme.DeepPurple">
         <item name="colorPrimary">@color/DeepPurplePrimary</item>
+        <item name="colorPrimaryAlpha10">@color/DeepPurplePrimary10</item>
         <item name="colorPrimaryVariant">@color/DeepPurplePrimaryVariant</item>
         <item name="colorSecondary">@color/DeepPurpleSecondary</item>
         <item name="colorSecondaryVariant">@color/DeepPurpleSecondaryVariant</item>
@@ -62,6 +66,7 @@
 
     <style name="BaseAppTheme.Purple">
         <item name="colorPrimary">@color/PurplePrimary</item>
+        <item name="colorPrimaryAlpha10">@color/PurplePrimary10</item>
         <item name="colorPrimaryVariant">@color/PurplePrimaryVariant</item>
         <item name="colorSecondary">@color/PurplePurpleSecondary</item>
         <item name="colorSecondaryVariant">@color/PurpleSecondaryVariant</item>
@@ -69,6 +74,7 @@
 
     <style name="BaseAppTheme.Pink">
         <item name="colorPrimary">@color/PinkPrimary</item>
+        <item name="colorPrimaryAlpha10">@color/PinkPrimary10</item>
         <item name="colorPrimaryVariant">@color/PinkPrimaryVariant</item>
         <item name="colorSecondary">@color/PinkSecondary</item>
         <item name="colorSecondaryVariant">@color/PinkSecondaryVariant</item>
@@ -76,6 +82,7 @@
 
     <style name="BaseAppTheme.Red">
         <item name="colorPrimary">@color/RedPrimary</item>
+        <item name="colorPrimaryAlpha10">@color/RedPrimary10</item>
         <item name="colorPrimaryVariant">@color/RedPrimaryVariant</item>
         <item name="colorSecondary">@color/RedSecondary</item>
         <item name="colorSecondaryVariant">@color/RedSecondaryVariant</item>
@@ -83,6 +90,7 @@
 
     <style name="BaseAppTheme.LightBlue">
         <item name="colorPrimary">@color/LightBluePrimary</item>
+        <item name="colorPrimaryAlpha10">@color/LightBluePrimary10</item>
         <item name="colorPrimaryVariant">@color/LightBluePrimaryVariant</item>
         <item name="colorSecondary">@color/LightBlueSecondary</item>
         <item name="colorSecondaryVariant">@color/LightBlueSecondaryVariant</item>
@@ -90,6 +98,7 @@
 
     <style name="BaseAppTheme.Green">
         <item name="colorPrimary">@color/GreenPrimary</item>
+        <item name="colorPrimaryAlpha10">@color/GreenPrimary10</item>
         <item name="colorPrimaryVariant">@color/GreenPrimaryVariant</item>
         <item name="colorSecondary">@color/GreenSecondary</item>
         <item name="colorSecondaryVariant">@color/GreenSecondaryVariant</item>
@@ -97,6 +106,7 @@
 
     <style name="BaseAppTheme.LightGreen">
         <item name="colorPrimary">@color/LightGreenPrimary</item>
+        <item name="colorPrimaryAlpha10">@color/LightGreenPrimary10</item>
         <item name="colorPrimaryVariant">@color/LightGreenPrimaryVariant</item>
         <item name="colorSecondary">@color/LightGreenSecondary</item>
         <item name="colorSecondaryVariant">@color/LightGreenSecondaryVariant</item>
@@ -104,6 +114,7 @@
 
     <style name="BaseAppTheme.Lime">
         <item name="colorPrimary">@color/LimePrimary</item>
+        <item name="colorPrimaryAlpha10">@color/LimePrimary10</item>
         <item name="colorPrimaryVariant">@color/LimePrimaryVariant</item>
         <item name="colorSecondary">@color/LimeSecondary</item>
         <item name="colorSecondaryVariant">@color/LimeSecondaryVariant</item>
@@ -111,6 +122,7 @@
 
     <style name="BaseAppTheme.Yellow">
         <item name="colorPrimary">@color/YellowPrimary</item>
+        <item name="colorPrimaryAlpha10">@color/YellowPrimary10</item>
         <item name="colorPrimaryVariant">@color/YellowPrimaryVariant</item>
         <item name="colorSecondary">@color/YellowSecondary</item>
         <item name="colorSecondaryVariant">@color/YellowSecondaryVariant</item>
@@ -118,6 +130,7 @@
 
     <style name="BaseAppTheme.Amber">
         <item name="colorPrimary">@color/AmberPrimary</item>
+        <item name="colorPrimaryAlpha10">@color/AmberPrimary10</item>
         <item name="colorPrimaryVariant">@color/AmberPrimaryVariant</item>
         <item name="colorSecondary">@color/AmberSecondary</item>
         <item name="colorSecondaryVariant">@color/AmberSecondaryVariant</item>
@@ -125,6 +138,7 @@
 
     <style name="BaseAppTheme.Orange">
         <item name="colorPrimary">@color/OrangePrimary</item>
+        <item name="colorPrimaryAlpha10">@color/OrangePrimary10</item>
         <item name="colorPrimaryVariant">@color/OrangePrimaryVariant</item>
         <item name="colorSecondary">@color/OrangeSecondary</item>
         <item name="colorSecondaryVariant">@color/OrangeSecondaryVariant</item>
@@ -132,6 +146,7 @@
 
     <style name="BaseAppTheme.DeepOrange">
         <item name="colorPrimary">@color/DeepOrangePrimary</item>
+        <item name="colorPrimaryAlpha10">@color/DeepOrangePrimary10</item>
         <item name="colorPrimaryVariant">@color/DeepOrangePrimaryVariant</item>
         <item name="colorSecondary">@color/DeepOrangeSecondary</item>
         <item name="colorSecondaryVariant">@color/DeepOrangeSecondaryVariant</item>
@@ -139,6 +154,7 @@
 
     <style name="BaseAppTheme.Brown">
         <item name="colorPrimary">@color/BrownPrimary</item>
+        <item name="colorPrimaryAlpha10">@color/BrownPrimary10</item>
         <item name="colorPrimaryVariant">@color/BrownPrimaryVariant</item>
         <item name="colorSecondary">@color/BrownSecondary</item>
         <item name="colorSecondaryVariant">@color/BrownSecondaryVariant</item>
@@ -146,6 +162,7 @@
 
     <style name="BaseAppTheme.BlueGray">
         <item name="colorPrimary">@color/BlueGrayPrimary</item>
+        <item name="colorPrimaryAlpha10">@color/BlueGrayPrimary10</item>
         <item name="colorPrimaryVariant">@color/BlueGrayPrimaryVariant</item>
         <item name="colorSecondary">@color/BlueGraySecondary</item>
         <item name="colorSecondaryVariant">@color/BlueGraySecondaryVariant</item>

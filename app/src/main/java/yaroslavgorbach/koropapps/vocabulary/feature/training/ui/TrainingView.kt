@@ -36,7 +36,6 @@ class TrainingView(
         initActions()
     }
 
-
     @SuppressLint("SetTextI18n")
     fun setTrainingWitExercises(trainingWithExercisesUi: TrainingWithExercisesUi) {
         pagerAdapter.setData(trainingWithExercisesUi.exercises)
@@ -45,9 +44,10 @@ class TrainingView(
 
         binding.textProgress.setProgress(trainingWithExercisesUi.progress)
 
-        binding.textProgress.setText(
+        binding.textProgress.setText(trainingWithExercisesUi.progress.toString() + "%")
+
+        binding.daysIaARow.text =
             binding.getString(R.string.days_without_interruption) + ": ${trainingWithExercisesUi.daysWithoutInterruption}"
-        )
 
         initFilterChips(trainingWithExercisesUi.availableFilters)
 
