@@ -16,7 +16,6 @@ import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.presentation.E
 import yaroslavgorbach.koropapps.vocabulary.utils.host
 import yaroslavgorbach.koropapps.vocabulary.utils.setBackgroundStatusBarColor
 import yaroslavgorbach.koropapps.vocabulary.utils.setDefaultStatusBarColor
-import yaroslavgorbach.koropapps.vocabulary.utils.setPrimaryStatusBarColor
 import javax.inject.Inject
 
 @InternalCoroutinesApi
@@ -47,6 +46,7 @@ class ExercisesListFragment : Fragment(R.layout.fragment_exercises_list) {
         super.onViewCreated(view, savedInstanceState)
         initView()
         initObservers()
+        activity?.setBackgroundStatusBarColor()
     }
 
     private fun initDagger() {

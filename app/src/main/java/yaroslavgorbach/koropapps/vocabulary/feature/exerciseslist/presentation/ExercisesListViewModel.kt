@@ -37,7 +37,7 @@ class ExercisesListViewModel @Inject constructor(
         get() = _isChipsVisible
             .filter { it != 0 }
             .map { y -> y < 1 }
-            .debounce(50)
+            .debounce(30)
             .asLiveData()
 
     init {
