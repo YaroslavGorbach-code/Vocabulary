@@ -45,7 +45,7 @@ fun Context.showNotification(text: String) {
         this,
         NOTIFICATION_ID,
         currentIntent,
-        PendingIntent.FLAG_UPDATE_CURRENT
+        PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
     )
 
     val builder = NotificationCompat.Builder(this, CHANNEL_ID).apply {
@@ -76,7 +76,7 @@ fun Context.scheduleNotification(notification: Notification) {
         this,
         0,
         notifyIntent,
-        PendingIntent.FLAG_UPDATE_CURRENT,
+        PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
     )
 
     (getSystemService(Context.ALARM_SERVICE) as AlarmManager).setRepeating(
