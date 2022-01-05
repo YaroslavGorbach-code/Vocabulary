@@ -8,9 +8,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="@+id/guideline16"
             app:layout_constraintStart_toStartOf="parent"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/materialCardView2" />
 
         <Constraint android:id="@id/empty_favorites">
             <PropertySet
@@ -31,7 +30,7 @@
             android:scaleX="0"
             android:scaleY="0"
             android:alpha="0"
-            android:translationY="-100dp" />
+            android:translationY="-250dp" />
 
         <Constraint
             android:id="@+id/exercises_list"
@@ -42,17 +41,41 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
+
         <Constraint android:id="@id/empty_favorites">
             <PropertySet
                 app:applyMotionScene="false"
                 app:visibilityMode="ignore" />
         </Constraint>
+        <Constraint
+            android:id="@+id/materialCardView2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </ConstraintSet>
 
     <Transition
         app:constraintSetEnd="@id/end"
         app:constraintSetStart="@+id/start">
+        <KeyFrameSet>
+            <KeyAttribute
+                android:alpha="0"
+                app:framePosition="80"
+                app:motionTarget="@+id/chips" />
+
+            <KeyAttribute
+                android:scaleX="1"
+                android:scaleY="1"
+                app:framePosition="3"
+                app:motionTarget="@+id/chips" />
+        </KeyFrameSet>
+
         <OnSwipe
             app:dragDirection="dragUp"
             app:touchAnchorSide="top"

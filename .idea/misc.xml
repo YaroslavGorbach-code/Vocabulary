@@ -63,7 +63,7 @@
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_exercise_alphabet.xml" value="0.1" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_exercise_dictionary.xml" value="0.22" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_exercise_with_timer.xml" value="0.11730072463768115" />
-        <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_exercises_list.xml" value="0.22" />
+        <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_exercises_list.xml" value="0.18" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_exercises_list_second.xml" value="0.11730072463768115" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_level.xml" value="0.2" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_navigation.xml" value="0.16" />
@@ -94,6 +94,7 @@
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/layout_theme_item.xml" value="0.5" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/layout_training.xml" value="0.25" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/layout_training_days.xml" value="0.22" />
+        <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/layout_training_second.xml" value="0.13722826086956522" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/layout_word_of_the_day.xml" value="0.25" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/workflow_exercise.xml" value="0.10869565217391304" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/menu/menu_navigation.xml" value="0.2" />
