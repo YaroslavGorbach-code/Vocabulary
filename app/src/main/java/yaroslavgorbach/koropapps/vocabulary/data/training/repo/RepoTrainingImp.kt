@@ -8,7 +8,6 @@ import yaroslavgorbach.koropapps.vocabulary.data.training.local.dao.TrainingDao
 import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingEntity
 import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingExerciseEntity
 import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingWithExercisesEntity
-import java.util.*
 
 class RepoTrainingImp(private val localDataSource: TrainingDao) : RepoTraining {
 
@@ -39,6 +38,12 @@ class RepoTrainingImp(private val localDataSource: TrainingDao) : RepoTraining {
 
     override fun updateExercise(trainingExercise: TrainingExerciseEntity): Completable {
         return localDataSource.updateExercise(trainingExercise)
+            .subscribeOn(Schedulers.io())
+    }
+
+    override fun clearTrainings(): Completable {
+        return localDataSource.deleteAllTrainings()
+            .andThen(localDataSource.deleteAllTrainingExercises())
             .subscribeOn(Schedulers.io())
     }
 }

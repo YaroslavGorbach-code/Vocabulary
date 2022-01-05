@@ -9,4 +9,6 @@ interface AchievementsDataStore {
     fun observe(): Flow<List<Achievement>>
 
     fun achieve(name: AchievementName)
+
+    fun clearProgress()
 }

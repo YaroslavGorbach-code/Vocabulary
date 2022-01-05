@@ -19,4 +19,6 @@ interface RepoTraining {
     fun insertExercises(trainingExercises: List<TrainingExerciseEntity>): Completable
 
     fun updateExercise(trainingExercise: TrainingExerciseEntity): Completable
+
+    fun clearTrainings(): Completable
 }

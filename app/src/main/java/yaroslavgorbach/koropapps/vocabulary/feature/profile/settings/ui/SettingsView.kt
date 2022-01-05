@@ -1,6 +1,8 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.profile.settings.ui
 
 import android.annotation.SuppressLint
+import com.google.android.material.snackbar.Snackbar
+import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Notification
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Theme
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.UiMode
@@ -12,6 +14,7 @@ class SettingsView(private val binding: FragmentSettingsBinding, private val cal
         fun onChoseTheme(themes: List<Theme>, uiMode: UiMode)
         fun onNotificationSettings(notification: Notification)
         fun onAutoRecording(isChecked: Boolean)
+        fun onClearAllData()
         fun onBack()
     }
 
@@ -46,6 +49,10 @@ class SettingsView(private val binding: FragmentSettingsBinding, private val cal
             binding.autoRecording.autoRecordCheckBox.isChecked =
                 binding.autoRecording.autoRecordCheckBox.isChecked.not()
         }
+
+        binding.clearData.root.setOnClickListener {
+            callback.onClearAllData()
+        }
     }
 
     fun setThemes(themes: List<Theme>) {
@@ -58,6 +65,10 @@ class SettingsView(private val binding: FragmentSettingsBinding, private val cal
                 theme.colorPrimaryRes
             )
         )
+    }
+
+    fun showAllDataClearedSnack() {
+        Snackbar.make(binding.root, R.string.data_cleared, Snackbar.LENGTH_SHORT).show()
     }
 
     fun setAutoRecordStateChecked(isChecked: Boolean) {

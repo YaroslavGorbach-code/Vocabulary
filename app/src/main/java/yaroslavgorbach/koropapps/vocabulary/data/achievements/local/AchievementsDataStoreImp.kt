@@ -127,4 +127,14 @@ class AchievementsDataStoreImp(private val context: Context) : AchievementsDataS
             }
         }
     }
+
+    override fun clearProgress() {
+        GlobalScope.launch {
+            context.achievementsDataStoreImp.edit { prefs ->
+                achievements.map { it.name }.forEach {
+                    prefs[booleanPreferencesKey(it.name)] = false
+                }
+            }
+        }
+    }
 }

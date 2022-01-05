@@ -1,5 +1,6 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.profile.profile.ui
 
+import android.util.Log
 import android.view.View
 import im.dacer.androidcharts.LineView
 import yaroslavgorbach.koropapps.vocabulary.R

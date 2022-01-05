@@ -3,6 +3,7 @@ package yaroslavgorbach.koropapps.vocabulary.di.business.records
 import dagger.Module
 import dagger.Provides
 import yaroslavgorbach.koropapps.vocabulary.business.phrase.ObserveTodayPhraseInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.records.DeleteAllRecordsInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.records.DeleteRecordFileInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.records.GetRecordFilesInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.phrase.repo.RepoPhrase
@@ -22,5 +23,10 @@ class BusinessRecordsModule {
     @Provides
     fun provideDeleteRecordInteractor(repoRecords: RepoRecords): DeleteRecordFileInteractor {
         return DeleteRecordFileInteractor(repoRecords)
+    }
+
+    @Provides
+    fun provideDeleteAllRecordsInteractor(repoRecords: RepoRecords): DeleteAllRecordsInteractor {
+        return DeleteAllRecordsInteractor(repoRecords)
     }
 }

@@ -81,6 +81,4 @@ class LevelFragment : Fragment(R.layout.fragment_level), InfoDialog.Host {
         super.onDestroyView()
         requireActivity().setDefaultStatusBarColor()
     }
-
-    override fun onInfoDialogCancel() {}
 }

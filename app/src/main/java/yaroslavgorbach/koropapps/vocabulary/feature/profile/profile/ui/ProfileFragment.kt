@@ -133,6 +133,4 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), InfoDialog.Host {
                 .observe(viewLifecycleOwner, profileView::setPhrase)
         }
     }
-
-    override fun onInfoDialogCancel() {}
 }

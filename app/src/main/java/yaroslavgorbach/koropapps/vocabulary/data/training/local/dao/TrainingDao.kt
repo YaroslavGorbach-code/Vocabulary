@@ -29,4 +29,10 @@ interface TrainingDao {
 
     @Query("SELECT * FROM trainingExerciseEntity WHERE id = :exerciseId")
     fun getExercise(exerciseId: Long): Single<TrainingExerciseEntity>
+
+    @Query("DELETE FROM trainingentity")
+    fun deleteAllTrainings(): Completable
+
+    @Query("DELETE FROM trainingexerciseentity")
+    fun deleteAllTrainingExercises(): Completable
 }

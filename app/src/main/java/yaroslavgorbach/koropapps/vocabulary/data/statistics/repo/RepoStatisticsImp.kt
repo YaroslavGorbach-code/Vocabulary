@@ -4,7 +4,6 @@ import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
-import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.Exercise
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.dao.StatisticsDao
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsCommonInfoEntity
@@ -89,6 +88,14 @@ class RepoStatisticsImp(private val localDataSource: StatisticsDao) : RepoStatis
 
     override fun getAllExercisesValue(): Single<List<StatisticsExerciseValueEntity>> {
         return localDataSource.getAllExercisesValue()
+            .subscribeOn(Schedulers.io())
+    }
+
+    override fun clearAll(): Completable {
+        return localDataSource.cleaDailyTrainingTime()
+            .andThen(localDataSource.cleaCommonInfo())
+            .andThen(localDataSource.clearExercisesValue())
+            .andThen(localDataSource.clearExercisesTime())
             .subscribeOn(Schedulers.io())
     }
 }

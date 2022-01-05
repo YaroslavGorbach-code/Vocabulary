@@ -36,4 +36,8 @@
     <include
         android:id="@+id/auto_recording"
         layout="@layout/layout_item_record_settings" />
+
+    <include
+        android:id="@+id/clear_data"
+        layout="@layout/layout_item_clear_data" />
 </LinearLayout>
