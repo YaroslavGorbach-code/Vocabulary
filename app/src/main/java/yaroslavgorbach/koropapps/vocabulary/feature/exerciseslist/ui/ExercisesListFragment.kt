@@ -63,10 +63,6 @@ class ExercisesListFragment : Fragment(R.layout.fragment_exercises_list) {
                     host<Router>().openDescription(exercise)
                 }
 
-                override fun onScrolled(y: Int) {
-                    viewModel.onListScrolled(y)
-                }
-
                 override fun onTraining() {
                     host<Router>().openTraining()
                 }
@@ -84,7 +80,5 @@ class ExercisesListFragment : Fragment(R.layout.fragment_exercises_list) {
             viewLifecycleOwner,
             exercisesView::setExercisesWithFilter
         )
-
-        viewModel.isChipsVisible.observe(viewLifecycleOwner, exercisesView::setChipsVisibility)
     }
 }

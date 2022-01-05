@@ -9,10 +9,10 @@ import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
+import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsCommonInfoEntity
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsDailyTrainingTimeEntity
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsExerciseTimeEntity
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsExerciseValueEntity
-import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsCommonInfoEntity
 
 @Dao
 interface StatisticsDao {
@@ -49,4 +49,16 @@ interface StatisticsDao {
 
     @Query("SELECT * FROM StatisticsExerciseValueEntity")
     fun getAllExercisesValue(): Single<List<StatisticsExerciseValueEntity>>
+
+    @Query("DELETE FROM StatisticsExerciseValueEntity")
+    fun clearExercisesValue(): Completable
+
+    @Query("DELETE FROM StatisticsExerciseTimeEntity")
+    fun clearExercisesTime(): Completable
+
+    @Query("DELETE FROM StatisticsDailyTrainingTimeEntity")
+    fun cleaDailyTrainingTime(): Completable
+
+    @Query("DELETE FROM StatisticsCommonInfoEntity")
+    fun cleaCommonInfo(): Completable
 }

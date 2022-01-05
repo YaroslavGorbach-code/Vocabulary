@@ -1,5 +1,6 @@
 package yaroslavgorbach.koropapps.vocabulary.utils
 
+import android.app.Activity
 import androidx.fragment.app.Fragment
 import yaroslavgorbach.koropapps.vocabulary.App
 

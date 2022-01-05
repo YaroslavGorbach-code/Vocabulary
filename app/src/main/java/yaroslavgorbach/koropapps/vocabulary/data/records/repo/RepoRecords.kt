@@ -7,4 +7,6 @@ interface RepoRecords {
     fun getRecordFiles(): List<File>
 
     fun deleteRecordFile(file: File)
+
+    fun deleteAllRecords()
 }

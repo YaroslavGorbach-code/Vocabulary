@@ -90,4 +90,11 @@ class BusinessTrainingModule {
     ): GetCurrentTrainingIsFinishedInteractor {
         return GetCurrentTrainingIsFinishedInteractor(observeCurrentTrainingWithExercisesInteractor)
     }
+
+    @Provides
+    fun provideDeleteAllTrainingsInteractor(
+        repoTraining: RepoTraining
+    ): DeleteAllTrainingsInteractor {
+        return DeleteAllTrainingsInteractor(repoTraining)
+    }
 }

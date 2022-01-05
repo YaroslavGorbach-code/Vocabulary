@@ -32,4 +32,6 @@ interface RepoStatistics {
     fun getCommonInfo(): Single<StatisticsCommonInfoEntity>
 
     fun getAllExercisesValue(): Single<List<StatisticsExerciseValueEntity>>
+
+    fun clearAll(): Completable
 }

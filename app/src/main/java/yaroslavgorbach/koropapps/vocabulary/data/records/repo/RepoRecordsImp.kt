@@ -13,4 +13,8 @@ class RepoRecordsImp(private val context: Context) : RepoRecords {
     override fun deleteRecordFile(file: File) {
         file.delete()
     }
+
+    override fun deleteAllRecords() {
+        getRecordFiles().forEach(this::deleteRecordFile)
+    }
 }

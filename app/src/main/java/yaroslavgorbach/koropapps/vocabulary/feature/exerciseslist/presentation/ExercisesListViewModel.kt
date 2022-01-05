@@ -30,15 +30,6 @@ class ExercisesListViewModel @Inject constructor(
     val training: LiveData<TrainingUi>
         get() = _training
 
-    private val _isChipsVisible: MutableSharedFlow<Int> = MutableSharedFlow()
-
-    val isChipsVisible: LiveData<Boolean>
-        get() = _isChipsVisible
-            .filter { it != 0 }
-            .map { y -> y < 1 }
-            .debounce(300)
-            .asLiveData()
-
     init {
         getAndFilterExercises(ExerciseCategoryFilterUi.ALL)
         getLastFifeTrainings()
@@ -53,12 +44,6 @@ class ExercisesListViewModel @Inject constructor(
 
     fun changeExercisesFilter(filterUi: ExerciseCategoryFilterUi) {
         getAndFilterExercises(filterUi)
-    }
-
-    fun onListScrolled(y: Int) {
-        viewModelScope.launch {
-            _isChipsVisible.emit(y)
-        }
     }
 
     private fun getAndFilterExercises(filterUi: ExerciseCategoryFilterUi) {

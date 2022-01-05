@@ -29,10 +29,10 @@ class ProfileViewModel @Inject constructor(
     val chartDayUi: LiveData<ChartDayUi>
         get() = _chartDayUi
 
-    private val __levelInfoUi: MutableLiveData<LevelInfoUi> = MutableLiveData()
+    private val _levelInfoUi: MutableLiveData<LevelInfoUi> = MutableLiveData()
 
     val levelInfoUi: LiveData<LevelInfoUi>
-        get() = __levelInfoUi
+        get() = _levelInfoUi
 
     init {
         observeDaysStatistics()
@@ -47,7 +47,7 @@ class ProfileViewModel @Inject constructor(
         getStatisticsCommonInfoInteractor()
             .observeOn(AndroidSchedulers.mainThread())
             .map(::LevelInfoUi)
-            .subscribe(__levelInfoUi::setValue)
+            .subscribe(_levelInfoUi::setValue)
     }
 
     private fun observeDaysStatistics() {

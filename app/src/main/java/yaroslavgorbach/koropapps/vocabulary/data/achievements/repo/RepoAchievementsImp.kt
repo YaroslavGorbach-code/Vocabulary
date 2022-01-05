@@ -14,4 +14,8 @@ class RepoAchievementsImp(private val localDataSource: AchievementsDataStore) : 
     override fun observe(): Flow<List<Achievement>> {
         return localDataSource.observe()
     }
+
+    override fun clearAchievements() {
+        return localDataSource.clearProgress()
+    }
 }

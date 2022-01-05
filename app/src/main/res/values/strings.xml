@@ -53,11 +53,16 @@
     <string name="light_theme">Светлая тема</string>
     <string name="notifications">Уведомления</string>
     <string name="auto_recording">Начинать запись автоматически</string>
+    <string name="clear_all_data">Очистить все данные</string>
     <string name="notifications_settings">Настройка уведомлений</string>
     <string name="notification_text">Текст уведомления</string>
     <string name="ok">Ok</string>
     <string name="empty_field_error">Это поле не может быть пустым</string>
     <string name="save">Сохранить</string>
+    <string name="clear_read"><font fgcolor='#FFFF3B30'>Очистить</font></string>
+    <string name="this_action_is_impossible_to_cancel">Это действие нельзя будет отменить</string>
+    <string name="data_cleared">Данные успешно очищены</string>
+    <string name="clear_all_data_confirmation_message">Вы уверены, что ходите очистить ваш прогресс? Будут удалены достижения, статистика по всем упражениям и записи голоса.</string>
 
     <string name="category_vocabulary">Для увеличения словарного запаса</string>
     <string name="category_diction_and_articulation">Для улучшения дикции и артикуляции</string>

@@ -9,7 +9,7 @@ class TrainingFactory {
     }
 
     fun create(
-        trainingType: TrainingType,
+        trainingType: TrainingType = TrainingType.EMPTY,
         previousTraining: TrainingEntity? = null
     ): TrainingEntity {
         return when (trainingType) {

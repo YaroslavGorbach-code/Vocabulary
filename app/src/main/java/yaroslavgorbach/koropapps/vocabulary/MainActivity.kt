@@ -1,12 +1,14 @@
 package yaroslavgorbach.koropapps.vocabulary
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
 import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.InternalCoroutinesApi
@@ -46,30 +48,6 @@ class MainActivity : AppCompatActivity(), NavigationFragment.Router, AboutAppPag
     @Inject
     lateinit var changeIsFirsAppOpenToFalseInteractor: ChangeIsFirstAppOpenToFalseInteractor
 
-    private fun getIsFirstAppOpenAndNavigateToTheFirstScreen() {
-        lifecycleScope.launch {
-                if (observeIsFirsAppOpenInteractor().first()) {
-                    changeIsFirsAppOpenToFalseInteractor()
-                    navigateToAboutAppScreen()
-                } else {
-                    onNavigationScreen()
-                }
-            }
-        }
-
-    private fun setCurrentTheme(doAfterSet: () -> Unit) {
-        lifecycleScope.launch {
-            onThemeChanged(observeCurrentThemeInteractor().first())
-            onUiModeChanged(observeUiModeInteractor().first())
-            setContentView(R.layout.activity_main)
-            doAfterSet()
-        }
-    }
-
-    private fun initDagger() {
-        (application as App).appComponent.inject(this)
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initDagger()
@@ -79,6 +57,31 @@ class MainActivity : AppCompatActivity(), NavigationFragment.Router, AboutAppPag
                 getIsFirstAppOpenAndNavigateToTheFirstScreen()
             }
         }
+
+    }
+
+    private fun getIsFirstAppOpenAndNavigateToTheFirstScreen() {
+        lifecycleScope.launch {
+            if (observeIsFirsAppOpenInteractor().first()) {
+                changeIsFirsAppOpenToFalseInteractor()
+                navigateToAboutAppScreen()
+            } else {
+                onNavigationScreen()
+            }
+        }
+    }
+
+    private fun setCurrentTheme(doAfterSet: () -> Unit) {
+        lifecycleScope.launch {
+            onThemeChanged(observeCurrentThemeInteractor().first(), false)
+            onUiModeChanged(observeUiModeInteractor().first())
+            setContentView(R.layout.activity_main)
+            doAfterSet()
+        }
+    }
+
+    private fun initDagger() {
+        (application as App).appComponent.inject(this)
     }
 
     override fun onOpenDescription(exercise: ExerciseUi) {
@@ -150,8 +153,12 @@ class MainActivity : AppCompatActivity(), NavigationFragment.Router, AboutAppPag
         }
     }
 
-    override fun onThemeChanged(theme: Theme) {
+    override fun onThemeChanged(theme: Theme, isNeedToRecreate: Boolean) {
         setTheme(theme.res.id)
+
+        if (isNeedToRecreate){
+           recreate()
+        }
     }
 
     override fun onUiModeChanged(uiMode: UiMode) {

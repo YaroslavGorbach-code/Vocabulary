@@ -9,4 +9,5 @@ interface RepoAchievements {
 
     fun observe(): Flow<List<Achievement>>
 
+    fun clearAchievements()
 }

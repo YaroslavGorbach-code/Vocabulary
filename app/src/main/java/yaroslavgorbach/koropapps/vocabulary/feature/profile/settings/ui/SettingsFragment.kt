@@ -13,22 +13,19 @@ import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Theme
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.UiMode
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentSettingsBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.settings.presentation.SettingsViewModel
-import yaroslavgorbach.koropapps.vocabulary.utils.appComponent
-import yaroslavgorbach.koropapps.vocabulary.utils.host
-import yaroslavgorbach.koropapps.vocabulary.utils.onBackPressed
-import yaroslavgorbach.koropapps.vocabulary.utils.scheduleNotification
+import yaroslavgorbach.koropapps.vocabulary.utils.*
 import javax.inject.Inject
 
 @InternalCoroutinesApi
 class SettingsFragment : Fragment(R.layout.fragment_settings), ChoseThemeDialog.Callback,
-    NotificationSettingsDialog.Host {
+    NotificationSettingsDialog.Host, ClearAllDataConfirmationDialog.Host {
 
     companion object {
         fun newInstance() = SettingsFragment()
     }
 
     interface ThemeChangedListener {
-        fun onThemeChanged(theme: Theme)
+        fun onThemeChanged(theme: Theme, isNeedToRecreate: Boolean)
         fun onUiModeChanged(uiMode: UiMode)
     }
 
@@ -73,6 +70,10 @@ class SettingsFragment : Fragment(R.layout.fragment_settings), ChoseThemeDialog.
                     viewModel.changeAutoRecordingSettingState(isChecked)
                 }
 
+                override fun onClearAllData() {
+                    showClearAllDataConfirmationDialog()
+                }
+
                 override fun onBack() {
                     onBackPressed()
                 }
@@ -92,10 +93,16 @@ class SettingsFragment : Fragment(R.layout.fragment_settings), ChoseThemeDialog.
             viewLifecycleOwner,
             settingsView::setAutoRecordStateChecked
         )
+
+        viewModel.allDataCleared.consume(viewLifecycleOwner) { settingsView.showAllDataClearedSnack() }
     }
 
     fun showChoseThemeDialog(themes: List<Theme>, uiMode: UiMode) {
         ChoseThemeDialog.newInstance(themes, uiMode).show(childFragmentManager, null)
+    }
+
+    fun showClearAllDataConfirmationDialog() {
+        ClearAllDataConfirmationDialog.newInstance().show(childFragmentManager, null)
     }
 
     fun showNotificationsSettingsDialog(notification: Notification) {
@@ -103,9 +110,9 @@ class SettingsFragment : Fragment(R.layout.fragment_settings), ChoseThemeDialog.
     }
 
     override fun onThemeChanged(theme: Theme) {
-        viewModel.changeTheme(theme)
-
-        host<ThemeChangedListener>().onThemeChanged(theme)
+        viewModel.changeTheme(theme) {
+            host<ThemeChangedListener>().onThemeChanged(theme, true)
+        }
     }
 
     override fun onUiModeChanged(uiMode: UiMode) {
@@ -118,5 +125,9 @@ class SettingsFragment : Fragment(R.layout.fragment_settings), ChoseThemeDialog.
         viewModel.updateNotification(notification)
 
         requireContext().scheduleNotification(notification)
+    }
+
+    override fun onClearAllData() {
+        viewModel.clearAllData()
     }
 }

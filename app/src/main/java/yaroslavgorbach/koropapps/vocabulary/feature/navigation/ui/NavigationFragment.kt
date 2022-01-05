@@ -76,7 +76,6 @@ class NavigationFragment : Fragment(R.layout.fragment_navigation), ExercisesList
                     }
                 }
             })
-
     }
 
     override fun openDescription(exercise: ExerciseUi) {

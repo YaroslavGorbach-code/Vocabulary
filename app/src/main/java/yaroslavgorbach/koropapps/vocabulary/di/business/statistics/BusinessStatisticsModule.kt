@@ -2,11 +2,9 @@ package yaroslavgorbach.koropapps.vocabulary.di.business.statistics
 
 import dagger.Module
 import dagger.Provides
-import yaroslavgorbach.koropapps.vocabulary.business.achievements.AchieveAchievementInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.*
 import yaroslavgorbach.koropapps.vocabulary.business.training.GetCurrentTrainingIsFinishedInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.repo.RepoStatistics
-import yaroslavgorbach.koropapps.vocabulary.di.business.achievements.BusinessAchievementsModule
 import yaroslavgorbach.koropapps.vocabulary.di.data.statistics.DataModuleStatistics
 
 @Module(includes = [DataModuleStatistics::class])
@@ -63,6 +61,13 @@ class BusinessStatisticsModule {
         repoStatistics: RepoStatistics,
     ): GetStatisticsCommonInfoInteractor {
         return GetStatisticsCommonInfoInteractor(repoStatistics)
+    }
+
+    @Provides
+    fun provideClearStatisticsInteractor(
+        repoStatistics: RepoStatistics,
+    ): ClearAllStatisticsInteractor {
+        return ClearAllStatisticsInteractor(repoStatistics)
     }
 
     @Provides

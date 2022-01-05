@@ -11,7 +11,7 @@ import yaroslavgorbach.koropapps.vocabulary.utils.host
 class InfoDialog : DialogFragment() {
 
     interface Host {
-        fun onInfoDialogCancel()
+        fun onInfoDialogCancel() {}
     }
 
     companion object {
