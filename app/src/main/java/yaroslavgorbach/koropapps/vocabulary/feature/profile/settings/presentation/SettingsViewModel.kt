@@ -9,7 +9,6 @@ import yaroslavgorbach.koropapps.vocabulary.business.settings.*
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Notification
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Theme
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.UiMode
-import java.util.*
 import javax.inject.Inject
 
 class SettingsViewModel @Inject constructor(
@@ -39,8 +38,11 @@ class SettingsViewModel @Inject constructor(
     val isAutoRecordSettingChecked: LiveData<Boolean>
         get() = observeAutoRecordStateInteractor().asLiveData()
 
-    fun changeTheme(theme: Theme) {
-        viewModelScope.launch { changeThemeInteractor(theme) }
+    fun changeTheme(theme: Theme, doAfterChange: () -> Unit) {
+        viewModelScope.launch {
+            changeThemeInteractor(theme)
+            doAfterChange()
+        }
     }
 
     fun changeUiMode(uiMode: UiMode) {

@@ -28,7 +28,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings), ChoseThemeDialog.
     }
 
     interface ThemeChangedListener {
-        fun onThemeChanged(theme: Theme)
+        fun onThemeChanged(theme: Theme, isNeedToRecreate: Boolean)
         fun onUiModeChanged(uiMode: UiMode)
     }
 
@@ -103,9 +103,9 @@ class SettingsFragment : Fragment(R.layout.fragment_settings), ChoseThemeDialog.
     }
 
     override fun onThemeChanged(theme: Theme) {
-        viewModel.changeTheme(theme)
-
-        host<ThemeChangedListener>().onThemeChanged(theme)
+        viewModel.changeTheme(theme){
+            host<ThemeChangedListener>().onThemeChanged(theme, true)
+        }
     }
 
     override fun onUiModeChanged(uiMode: UiMode) {
