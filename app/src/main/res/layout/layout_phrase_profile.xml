@@ -5,6 +5,7 @@
     android:id="@+id/item"
     android:layout_width="match_parent"
     android:layout_height="70dp"
+    android:background="@drawable/bg_selectable_item"
     style="@style/BaseLayoutItem"
     android:orientation="vertical">
 

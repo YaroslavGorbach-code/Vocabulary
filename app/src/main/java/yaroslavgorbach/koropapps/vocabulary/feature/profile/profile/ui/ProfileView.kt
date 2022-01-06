@@ -77,7 +77,7 @@ class ProfileView(private val binding: FragmentProfileBinding, private val callb
             callback.onSettings()
         }
 
-        binding.levelCard.setOnClickListener {
+        binding.level.root.setOnClickListener {
             callback.onLevel()
         }
 

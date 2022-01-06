@@ -4,6 +4,7 @@
     style="@style/BaseLayoutItem"
     android:layout_width="match_parent"
     android:layout_height="60dp"
+    android:background="@drawable/bg_selectable_item"
     android:orientation="horizontal">
 
     <ImageView
