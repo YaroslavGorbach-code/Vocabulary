@@ -19,7 +19,7 @@ import yaroslavgorbach.koropapps.vocabulary.utils.host
 import yaroslavgorbach.koropapps.vocabulary.utils.setDefaultStatusBarColor
 import javax.inject.Inject
 
-class ProfileFragment : Fragment(R.layout.fragment_profile), InfoDialog.Host {
+class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     interface Router {
         fun onOpenLevelClick()
@@ -91,9 +91,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), InfoDialog.Host {
                     host<Router>().onOpenLevelClick()
                 }
 
-                override fun onPhrase(phrase: String) {
-                    showPhraseDialog(phrase)
-                }
             })
     }
 
@@ -116,11 +113,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile), InfoDialog.Host {
 
         val shareIntent = Intent.createChooser(sendIntent, null)
         startActivity(shareIntent)
-    }
-
-    private fun showPhraseDialog(phrase: String) {
-        InfoDialog.newInstance(title = getString(R.string.phrase_of_day), message = phrase)
-            .show(childFragmentManager, null)
     }
 
     fun initObservers() {

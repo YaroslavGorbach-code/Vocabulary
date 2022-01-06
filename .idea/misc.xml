@@ -10,6 +10,7 @@
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/bg_item_exercise_bottom.xml" value="0.2203125" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/bg_item_theme.xml" value="0.4453125" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/bg_selectable_item.xml" value="0.21614583333333334" />
+        <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/bg_selectable_item_on_background.xml" value="0.21614583333333334" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/bg_start_exercise.xml" value="0.43846153846153846" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/bg_theme_example.xml" value="0.43846153846153846" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_achievement_not_active_first_improvisation.xml" value="0.20833333333333334" />
@@ -31,6 +32,7 @@
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_narrator_n.xml" value="0.2101851851851852" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_no_ads.xml" value="0.2101851851851852" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_notifications.xml" value="0.3685185185185185" />
+        <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_open_book.xml" value="0.21614583333333334" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_palms.xml" value="0.2203125" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_person.xml" value="0.21481481481481482" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/drawable/ic_rate.xml" value="0.2101851851851852" />
@@ -95,7 +97,7 @@
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/layout_level_item.xml" value="0.25" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/layout_levels.xml" value="0.2" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/layout_next_button.xml" value="0.14855072463768115" />
-        <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/layout_phrase_profile.xml" value="0.43333333333333335" />
+        <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/layout_phrase_profile.xml" value="0.25" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/layout_theme_item.xml" value="0.5" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/layout_training.xml" value="0.25" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/layout_training_days.xml" value="0.22" />
