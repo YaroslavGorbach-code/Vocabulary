@@ -48,7 +48,6 @@ class ExercisesListViewModel @Inject constructor(
 
     private fun getAndFilterExercises(filterUi: ExerciseCategoryFilterUi) {
         viewModelScope.launch {
-
             getExercisesInteractor()
                 .map { list -> list.map(::ExerciseUi) }
                 .map { exercisesUi ->
@@ -65,6 +64,10 @@ class ExercisesListViewModel @Inject constructor(
 
                         ExerciseCategoryFilterUi.DICTION_AND_ARTICULATION -> exercisesUi.filter {
                             it.category == ExerciseCategory.DICTION_AND_ARTICULATION
+                        }
+
+                        ExerciseCategoryFilterUi.SENSE_OF_HUMOR -> exercisesUi.filter {
+                            it.category == ExerciseCategory.SENSE_OF_HUMOR
                         }
 
                         ExerciseCategoryFilterUi.FAVORITE -> exercisesUi.filter { it.isFavorite }
