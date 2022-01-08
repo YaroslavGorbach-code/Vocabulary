@@ -59,8 +59,8 @@ class ExercisesDataStoreImp : ExercisesDataStore {
         Exercise(ExerciseName.BUYING_SELLING, ExerciseCategory.COMMUNICATION, false),
         Exercise(ExerciseName.CO_AUTHORED_WITH_DAHL, ExerciseCategory.COMMUNICATION, false),
         Exercise(ExerciseName.RORSCHACH_TEST, ExerciseCategory.COMMUNICATION, false),
-        Exercise(ExerciseName.WILL_NOT_BE_WORSE, ExerciseCategory.COMMUNICATION, false),
         Exercise(ExerciseName.QUESTION_ANSWER, ExerciseCategory.COMMUNICATION, false),
+        Exercise(ExerciseName.WILL_NOT_BE_WORSE, ExerciseCategory.SENSE_OF_HUMOR, false),
         Exercise(
             ExerciseName.RAVEN_LOOK_LIKE_A_TABLE_FILINGS,
             ExerciseCategory.COMMUNICATION,

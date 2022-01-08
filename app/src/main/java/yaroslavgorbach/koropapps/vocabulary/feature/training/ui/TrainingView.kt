@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.view.View
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentTrainingBinding
-import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerciseCategoryFilterUi
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingWithExercisesUi
 import yaroslavgorbach.koropapps.vocabulary.feature.training.ui.recycler.TrainingExercisesListAdapter
@@ -17,11 +16,7 @@ class TrainingView(
 
     interface Callback {
         fun onExercise(withExercises: TrainingExerciseUi)
-
         fun onPageChanged(page: Int)
-
-        fun onFilterChanged(filterUi: TrainingExerciseCategoryFilterUi)
-
         fun onBack()
     }
 
@@ -49,9 +44,7 @@ class TrainingView(
         binding.daysIaARow.text =
             binding.getString(R.string.days_without_interruption) + ": ${trainingWithExercisesUi.daysWithoutInterruption}"
 
-        initFilterChips(trainingWithExercisesUi.availableFilters)
-
-        showNoExercisesAndSetDefaultFilter(trainingWithExercisesUi.exercises.isEmpty())
+        showNoExercisesView(trainingWithExercisesUi.exercises.isEmpty())
     }
 
     private fun initView() {
@@ -68,10 +61,8 @@ class TrainingView(
         }
     }
 
-    private fun showNoExercisesAndSetDefaultFilter(isShow: Boolean) {
+    private fun showNoExercisesView(isShow: Boolean) {
         if (isShow) {
-            binding.chipAll.isChecked = true
-
             binding.noExercisesIcon.visibility = View.VISIBLE
             binding.noExercisesTextOne.visibility = View.VISIBLE
             binding.noExercisesTextTwo.visibility = View.VISIBLE
@@ -81,50 +72,6 @@ class TrainingView(
             binding.noExercisesTextOne.visibility = View.GONE
             binding.noExercisesTextTwo.visibility = View.GONE
             binding.textProgress.visibility = View.VISIBLE
-        }
-    }
-
-    private fun initFilterChips(
-        availableFilters: List<TrainingExerciseCategoryFilterUi>,
-    ) {
-        if (availableFilters.contains(TrainingExerciseCategoryFilterUi.VOCABULARY)) {
-            binding.chipVocabulary.visibility = View.VISIBLE
-        } else {
-            binding.chipVocabulary.visibility = View.GONE
-        }
-
-        if (availableFilters.contains(TrainingExerciseCategoryFilterUi.COMMUNICATION)) {
-            binding.chipCommunication.visibility = View.VISIBLE
-        } else {
-            binding.chipCommunication.visibility = View.GONE
-        }
-
-        if (availableFilters.contains(TrainingExerciseCategoryFilterUi.ALL)) {
-            binding.chipAll.visibility = View.VISIBLE
-        } else {
-            binding.chipAll.visibility = View.GONE
-        }
-
-        if (availableFilters.contains(TrainingExerciseCategoryFilterUi.DICTION_AND_ARTICULATION)) {
-            binding.chipDiction.visibility = View.VISIBLE
-        } else {
-            binding.chipDiction.visibility = View.GONE
-        }
-
-        binding.chipAll.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) callback.onFilterChanged(TrainingExerciseCategoryFilterUi.ALL)
-        }
-
-        binding.chipCommunication.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) callback.onFilterChanged(TrainingExerciseCategoryFilterUi.COMMUNICATION)
-        }
-
-        binding.chipVocabulary.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) callback.onFilterChanged(TrainingExerciseCategoryFilterUi.VOCABULARY)
-        }
-
-        binding.chipDiction.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) callback.onFilterChanged(TrainingExerciseCategoryFilterUi.DICTION_AND_ARTICULATION)
         }
     }
 

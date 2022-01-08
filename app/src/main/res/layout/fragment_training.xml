@@ -79,75 +79,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView2"
+        app:layout_constraintTop_toBottomOf="@+id/card"
         app:layout_constraintVertical_bias="1.0" />
 
-
-    <HorizontalScrollView
-        android:id="@+id/horizontalScrollView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:scrollbars="none"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card">
-
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/chipGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingHorizontal="8dp"
-            app:chipSpacingHorizontal="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_progress"
-            app:singleSelection="true">
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_all"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/all"
-                android:visibility="gone"
-                app:shapeAppearanceOverlay="@style/ShapeAppearance.SmallComponent"
-                tools:visibility="visible" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_vocabulary"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/vocabulary"
-                android:visibility="gone"
-                app:shapeAppearanceOverlay="@style/ShapeAppearance.SmallComponent"
-                tools:visibility="visible" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_communication"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/communication"
-                android:visibility="gone"
-                app:shapeAppearanceOverlay="@style/ShapeAppearance.SmallComponent"
-                tools:visibility="visible" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_diction"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/diction"
-                android:visibility="gone"
-                app:shapeAppearanceOverlay="@style/ShapeAppearance.SmallComponent"
-                tools:visibility="visible" />
-        </com.google.android.material.chip.ChipGroup>
-    </HorizontalScrollView>
 
     <ImageView
         android:id="@+id/no_exercises_icon"
