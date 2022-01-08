@@ -1,5 +1,6 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.ui.recycler
 
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import yaroslavgorbach.koropapps.vocabulary.databinding.ItemExerciseBinding
@@ -51,6 +52,8 @@ class ExercisesListAdapter(private val onExercise: (exercise: ExerciseUi) -> Uni
             binding.name.text = binding.getString(exercise.nameRes)
             binding.image.setImageDrawable(binding.getDrawable(exercise.iconRes))
             binding.category.setText(exercise.category.stringRes)
+            if (exercise.isNew) binding.markNew.visibility =
+                View.VISIBLE else binding.markNew.visibility = View.GONE
         }
     }
 }

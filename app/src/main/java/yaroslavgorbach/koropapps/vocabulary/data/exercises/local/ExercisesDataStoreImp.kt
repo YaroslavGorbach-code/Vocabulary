@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.Exercise
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
+import yaroslavgorbach.koropapps.vocabulary.utils.parseStringToDate
 
 private val Context.exercisesDataStore: DataStore<Preferences> by preferencesDataStore(name = "exercises")
 
@@ -61,7 +62,11 @@ class ExercisesDataStoreImp : ExercisesDataStore {
         Exercise(ExerciseName.QUESTION_ANSWER, isFavorite = false),
         Exercise(ExerciseName.RAVEN_LOOK_LIKE_A_TABLE_FILINGS, isFavorite = false),
         Exercise(ExerciseName.WILL_NOT_BE_WORSE, isFavorite = false),
-        Exercise(ExerciseName.COUP_OF_CONSCIOUSNESS, isFavorite = false),
+        Exercise(
+            ExerciseName.COUP_OF_CONSCIOUSNESS,
+            isFavorite = false,
+            createDate = parseStringToDate("8-1-2022") // TODO: 1/8/2022 change date on realise
+        ),
         Exercise(ExerciseName.TONGUE_TWISTERS_EASY, isFavorite = false),
         Exercise(ExerciseName.TONGUE_TWISTERS_HARD, isFavorite = false),
         Exercise(ExerciseName.TONGUE_TWISTERS_VERY_HARD, isFavorite = false),

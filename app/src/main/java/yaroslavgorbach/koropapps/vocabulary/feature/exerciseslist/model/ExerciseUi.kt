@@ -21,4 +21,7 @@ data class ExerciseUi(private val exercise: Exercise) {
 
     val category: ExerciseCategory
         get() = exercise.category
+
+    val isNew: Boolean
+        get() = exercise.isNew
 }

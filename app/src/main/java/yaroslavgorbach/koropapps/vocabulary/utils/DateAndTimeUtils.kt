@@ -1,5 +1,6 @@
 package yaroslavgorbach.koropapps.vocabulary.utils
 
+import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -25,6 +26,22 @@ fun Date?.dayOfWeek(): String {
 fun Date.formatDD(): String {
     val format = SimpleDateFormat("dd", Locale.getDefault())
     return format.format(time)
+}
+
+fun getDifferenceDays(past: Date, feature: Date): Long {
+    val diff = feature.time - past.time
+    return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS)
+}
+
+fun parseStringToDate(
+    string: String,
+    sdf: SimpleDateFormat = SimpleDateFormat("dd-mm-yyyy", Locale.getDefault())
+): Date {
+    return try {
+        sdf.parse(string) ?: Date()
+    } catch (ex: ParseException) {
+        Date()
+    }
 }
 
 fun getTimeAgo(duration: Long): String? {
