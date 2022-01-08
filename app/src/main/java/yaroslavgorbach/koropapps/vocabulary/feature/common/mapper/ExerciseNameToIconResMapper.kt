@@ -45,6 +45,7 @@ class ExerciseNameToIconResMapper {
             ExerciseName.SOUND_COMBINATIONS -> R.drawable.ic_notes
             ExerciseName.DIFFICULT_WORDS -> R.drawable.ic_knot
             ExerciseName.COUP_OF_CONSCIOUSNESS -> R.drawable.ic_coup_of_consciousness
+            ExerciseName.PROBLEM_SOLVING -> R.drawable.ic_problem_solving
         }
     }
 }

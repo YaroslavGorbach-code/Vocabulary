@@ -123,6 +123,8 @@
 
     <string name="desc_short_coup_of_consciousness">Придумайте новое использование данного предмета</string>
 
+    <string name="desc_short_problem_solving">Придумайте решение проблемы</string>
+
     <array name="desc_short_tongue_twisters">
         <item>Проговаривайте текст медленно</item>
         <item>Беззвучно произнесите скороговорку. Движениями губ</item>

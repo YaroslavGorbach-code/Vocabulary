@@ -69,6 +69,7 @@ data class ChartValueUi(
             ExerciseName.NARRATOR_NOUN,
             ExerciseName.NARRATOR_ADJECTIVES,
             ExerciseName.NARRATOR_VERBS,
+            ExerciseName.PROBLEM_SOLVING,
             ExerciseName.TEN -> R.string.number_stores_for_session
             ExerciseName.REMEMBER_ALL -> R.string.number_letters_for_session
             ExerciseName.GAME_I_KNOW_5_NAMES -> R.string.number_categories_for_session

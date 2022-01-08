@@ -45,7 +45,8 @@ enum class ExerciseName(@StringRes val id: Int) {
     SOUND_COMBINATIONS(R.string.sound_combinations),
     DIFFICULT_WORDS(R.string.difficult_words),
 
-    COUP_OF_CONSCIOUSNESS(R.string.coup_of_consciousness)
+    COUP_OF_CONSCIOUSNESS(R.string.coup_of_consciousness),
+    PROBLEM_SOLVING(R.string.problem_solving)
 
 }
 

@@ -69,6 +69,7 @@ data class ChartTimeUi(
             ExerciseName.NARRATOR_NOUN,
             ExerciseName.NARRATOR_ADJECTIVES,
             ExerciseName.NARRATOR_VERBS,
+            ExerciseName.PROBLEM_SOLVING,
             ExerciseName.TEN -> R.string.average_time_on_story
             ExerciseName.REMEMBER_ALL -> R.string.average_time_on_letter
             ExerciseName.GAME_I_KNOW_5_NAMES -> R.string.average_time_on_category

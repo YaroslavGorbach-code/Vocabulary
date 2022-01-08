@@ -23,6 +23,10 @@ class ExerciseNameToExerciseRandomWordMapper(resources: Resources) {
         WordCategory.Letters().resArray
     ).toList()
 
+    private val problems = resources.getStringArray(
+        WordCategory.Problems().resArray
+    ).toList()
+
     private val consonant = letters
         .map(String::lowercase)
         .filter {
@@ -223,6 +227,7 @@ class ExerciseNameToExerciseRandomWordMapper(resources: Resources) {
             ExerciseName.DIFFICULT_WORDS -> difficultWords.random()
             ExerciseName.ANTONYMS_AND_SYNONYMS -> fillings.random()
             ExerciseName.COUP_OF_CONSCIOUSNESS -> nounsNotAlive.random()
+            ExerciseName.PROBLEM_SOLVING -> problems.random()
         }
     }
 }

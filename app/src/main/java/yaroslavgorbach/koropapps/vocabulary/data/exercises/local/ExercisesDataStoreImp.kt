@@ -67,6 +67,11 @@ class ExercisesDataStoreImp : ExercisesDataStore {
             isFavorite = false,
             createDate = parseStringToDate("8-1-2022") // TODO: 1/8/2022 change date on realise
         ),
+        Exercise(
+            ExerciseName.PROBLEM_SOLVING,
+            isFavorite = false,
+            createDate = parseStringToDate("8-1-2022")
+        ),
         Exercise(ExerciseName.TONGUE_TWISTERS_EASY, isFavorite = false),
         Exercise(ExerciseName.TONGUE_TWISTERS_HARD, isFavorite = false),
         Exercise(ExerciseName.TONGUE_TWISTERS_VERY_HARD, isFavorite = false),

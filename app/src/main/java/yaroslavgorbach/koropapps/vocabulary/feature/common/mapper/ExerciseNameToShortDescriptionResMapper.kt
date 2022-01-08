@@ -69,6 +69,7 @@ class ExerciseNameToShortDescriptionResMapper {
             ExerciseName.SOUND_COMBINATIONS -> R.array.desc_short_sound_combinations
             ExerciseName.DIFFICULT_WORDS -> R.array.desc_short_difficult_words
             ExerciseName.COUP_OF_CONSCIOUSNESS -> R.string.desc_short_coup_of_consciousness
+            ExerciseName.PROBLEM_SOLVING -> R.string.desc_short_problem_solving
         }
     }
 }

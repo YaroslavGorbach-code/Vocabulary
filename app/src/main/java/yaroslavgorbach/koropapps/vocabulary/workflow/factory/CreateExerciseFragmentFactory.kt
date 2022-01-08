@@ -49,6 +49,7 @@ class CreateExerciseFragmentFactory {
             ExerciseName.QUESTION_ANSWER,
             ExerciseName.RAVEN_LOOK_LIKE_A_TABLE_FILINGS,
             ExerciseName.COUP_OF_CONSCIOUSNESS,
+            ExerciseName.PROBLEM_SOLVING,
             ExerciseName.TAUTOGRAMS -> {
                 WordExerciseFragment.newInstance(exerciseType)
             }
