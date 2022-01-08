@@ -100,7 +100,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/chart_card"
                 android:layout_width="match_parent"
-                android:layout_height="350dp"
+                android:layout_height="400dp"
                 app:cardCornerRadius="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
