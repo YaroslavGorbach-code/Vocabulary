@@ -111,4 +111,9 @@ class WordExerciseFragment : Fragment(R.layout.fragment_exercise), PermissionDen
         super.onStop()
         viewModel.onStopRecord()
     }
+
+    override fun onDestroy() {
+        viewModel.showInterstitial(requireActivity())
+        super.onDestroy()
+    }
 }

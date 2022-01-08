@@ -112,4 +112,9 @@ class WordWithCategoryFragment : Fragment(R.layout.fragment_exercise), Permissio
         super.onStop()
         viewModel.onStopRecord()
     }
+
+    override fun onDestroy() {
+        viewModel.showInterstitial(requireActivity())
+        super.onDestroy()
+    }
 }

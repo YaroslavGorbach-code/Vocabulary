@@ -1,5 +1,6 @@
 package yaroslavgorbach.koropapps.vocabulary.data.settings.repo
 
+import android.content.Context
 import kotlinx.coroutines.flow.Flow
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Notification
 import yaroslavgorbach.koropapps.vocabulary.data.settings.local.model.Theme
@@ -27,5 +28,13 @@ interface RepoSettings {
     fun observeIsFirstAppOpen(): Flow<Boolean>
 
     suspend fun changeIsFirsAppOpen(isFirstOpen: Boolean)
+
+    fun isAdFeatureAvailable(): Flow<Boolean>
+
+    suspend fun changeAddFeatureAvailability(isAvailable: Boolean)
+
+    fun isInterstitialAvailable(): Flow<Boolean>
+
+    suspend fun incrementInterstatialAdShowCounter()
 
 }

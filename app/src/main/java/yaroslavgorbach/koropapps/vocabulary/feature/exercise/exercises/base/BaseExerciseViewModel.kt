@@ -1,20 +1,21 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.base
 
 import android.Manifest
+import android.app.Activity
 import androidx.lifecycle.*
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import yaroslavgorbach.koropapps.vocabulary.business.achievements.AchieveAchievementInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.settings.ObserveAutoRecordStateInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.SaveStatisticsInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.IncrementExercisePerformedInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.ObserveTrainingExerciseInteractor
-import yaroslavgorbach.koropapps.vocabulary.data.achievements.local.model.AchievementName
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.utils.LiveEvent
 import yaroslavgorbach.koropapps.vocabulary.utils.MutableLiveEvent
+import yaroslavgorbach.koropapps.vocabulary.utils.feature.ad.AdManager
 import yaroslavgorbach.koropapps.vocabulary.utils.feature.permition.PermissionManager
 import yaroslavgorbach.koropapps.vocabulary.utils.feature.voicerecorder.VoiceRecorder
 import yaroslavgorbach.koropapps.vocabulary.utils.send
@@ -27,7 +28,8 @@ open class BaseExerciseViewModel(
     private val observeTrainingExerciseInteractor: ObserveTrainingExerciseInteractor,
     private val observeAutoRecordStateInteractor: ObserveAutoRecordStateInteractor,
     private val voiceRecorder: VoiceRecorder,
-    private val permissionManager: PermissionManager
+    private val permissionManager: PermissionManager,
+    private val addManager: AdManager
 ) : ViewModel() {
     private val disposables: CompositeDisposable = CompositeDisposable()
 
@@ -80,6 +82,12 @@ open class BaseExerciseViewModel(
     val isAutoRecordStart: LiveData<Boolean>
         get() = observeAutoRecordStateInteractor().asLiveData()
 
+    init {
+        viewModelScope.launch {
+            addManager.loadInterstitial()
+        }
+    }
+
     open fun onNextClick() {
         incrementNumberOnNextClicked()
         measureClickInterval()
@@ -101,6 +109,12 @@ open class BaseExerciseViewModel(
             }
         }
 
+    }
+
+    fun showInterstitial(activity: Activity) {
+        GlobalScope.launch {
+            addManager.showInterstitial(activity)
+        }
     }
 
     override fun onCleared() {

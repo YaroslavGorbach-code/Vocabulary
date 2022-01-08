@@ -29,4 +29,12 @@ interface SettingsDataStore {
 
     fun observeIsFirstAppOpen(context: Context): Flow<Boolean>
 
+    fun isAdFeatureAvailable(context: Context): Flow<Boolean>
+
+    suspend fun changeAddFeatureAvailability(context: Context, isAvailable: Boolean)
+
+    fun isInterstitialAvailable(context: Context): Flow<Boolean>
+
+    suspend fun incrementInterstitialAdShowCounter(context: Context)
+
 }

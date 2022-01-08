@@ -1,6 +1,7 @@
 package yaroslavgorbach.koropapps.vocabulary.data.settings.local
 
 import android.content.Context
+import android.util.Log
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.*
 import androidx.datastore.preferences.preferencesDataStore
@@ -26,10 +27,16 @@ class SettingsDataStoreImp : SettingsDataStore {
         private const val DEFAULT_NOTIFICATION_HOUR = 12
         private const val DEFAULT_NOTIFICATION_MINUTE = 30
         private const val DEFAULT_NOTIFICATION_IS_ACTIVE = false
+        private const val INTERSTITIAL_ADD_SHOW_LIMIT = 2
 
         private val AUTO_RECORD_STATE_KEY = booleanPreferencesKey("AUTO_RECORD_STATE")
 
         private val IS_FIRST_APP_OPEN_KEY = booleanPreferencesKey("IS_FIRST_APP_OPEN_KEY")
+
+        private val IS_ADD_FEATURE_AVAILABLE_KEY =
+            booleanPreferencesKey("IS_ADD_FEATURE_AVAILABLE_KEY")
+        private val INTERSTITIAL_AD_SHOW_NUMBER_KEY =
+            intPreferencesKey("IS_INTERSTITIAL_AVAILABLE_KEY")
 
         private val THEME_RES_KEY = intPreferencesKey("THEME_RES_KEY")
         private val IS_DARK_UI_MODE_KEY = booleanPreferencesKey("IS_DARK_UI_MODE_KEY")
@@ -72,6 +79,31 @@ class SettingsDataStoreImp : SettingsDataStore {
             .map { prefs ->
                 prefs[IS_FIRST_APP_OPEN_KEY] ?: true
             }
+    }
+
+    override fun isAdFeatureAvailable(context: Context): Flow<Boolean> {
+        return context.settingsDataStore.data
+            .map { prefs -> prefs[IS_ADD_FEATURE_AVAILABLE_KEY] ?: true }
+    }
+
+    override suspend fun changeAddFeatureAvailability(context: Context, isAvailable: Boolean) {
+        context.settingsDataStore.edit { prefs ->
+            prefs[IS_ADD_FEATURE_AVAILABLE_KEY] = isAvailable
+        }
+    }
+
+    override fun isInterstitialAvailable(context: Context): Flow<Boolean> {
+        return context.settingsDataStore.data
+            .map { prefs ->
+                prefs[INTERSTITIAL_AD_SHOW_NUMBER_KEY]?.rem(INTERSTITIAL_ADD_SHOW_LIMIT) == 0
+            }
+    }
+
+    override suspend fun incrementInterstitialAdShowCounter(context: Context) {
+        context.settingsDataStore.edit { prefs ->
+            prefs[INTERSTITIAL_AD_SHOW_NUMBER_KEY] =
+                prefs[INTERSTITIAL_AD_SHOW_NUMBER_KEY]?.inc() ?: 0
+        }
     }
 
     override suspend fun changeAutoRecordState(context: Context, isAutoRecordSwitchedOn: Boolean) {

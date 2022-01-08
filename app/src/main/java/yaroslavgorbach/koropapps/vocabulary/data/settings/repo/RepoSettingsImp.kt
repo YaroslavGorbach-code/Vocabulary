@@ -53,4 +53,20 @@ class RepoSettingsImp(private val localDataStore: SettingsDataStore, private val
     override suspend fun changeIsFirsAppOpen(isFirstOpen: Boolean) {
         localDataStore.changeIsFirstAppOpen(context, isFirstOpen)
     }
+
+    override fun isAdFeatureAvailable(): Flow<Boolean> {
+        return localDataStore.isAdFeatureAvailable(context)
+    }
+
+    override suspend fun changeAddFeatureAvailability(isAvailable: Boolean) {
+        return localDataStore.changeAddFeatureAvailability(context, isAvailable)
+    }
+
+    override fun isInterstitialAvailable(): Flow<Boolean> {
+       return localDataStore.isInterstitialAvailable(context)
+    }
+
+    override suspend fun incrementInterstatialAdShowCounter() {
+        localDataStore.incrementInterstitialAdShowCounter(context)
+    }
 }
