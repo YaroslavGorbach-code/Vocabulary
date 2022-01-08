@@ -44,6 +44,7 @@ class ExerciseNameToIconResMapper {
             ExerciseName.TONGUE_TWISTERS_VERY_HARD -> R.drawable.ic_lips_read
             ExerciseName.SOUND_COMBINATIONS -> R.drawable.ic_notes
             ExerciseName.DIFFICULT_WORDS -> R.drawable.ic_knot
+            ExerciseName.COUP_OF_CONSCIOUSNESS -> R.drawable.ic_coup_of_consciousness
         }
     }
 }

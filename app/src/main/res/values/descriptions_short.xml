@@ -121,6 +121,8 @@
 
     <string name="desc_short_raven_look_like_a_table_filings">Найдите сходство</string>
 
+    <string name="desc_short_coup_of_consciousness">Придумайте новое использование данного предмета</string>
+
     <array name="desc_short_tongue_twisters">
         <item>Проговаривайте текст медленно</item>
         <item>Беззвучно произнесите скороговорку. Движениями губ</item>

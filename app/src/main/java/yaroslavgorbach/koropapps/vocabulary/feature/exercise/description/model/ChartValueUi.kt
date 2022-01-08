@@ -62,6 +62,7 @@ data class ChartValueUi(
             ExerciseName.QUESTION_ANSWER,
             ExerciseName.RAVEN_LOOK_LIKE_A_TABLE_FILINGS,
             ExerciseName.DIFFICULT_WORDS,
+            ExerciseName.COUP_OF_CONSCIOUSNESS,
             ExerciseName.ANTONYMS_AND_SYNONYMS -> R.string.number_words_for_session
             ExerciseName.THREE_LETTERS,
             ExerciseName.TAUTOGRAMS -> R.string.number_sentences_for_session

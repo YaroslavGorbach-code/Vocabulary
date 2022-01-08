@@ -62,6 +62,7 @@ data class ChartTimeUi(
             ExerciseName.QUESTION_ANSWER,
             ExerciseName.RAVEN_LOOK_LIKE_A_TABLE_FILINGS,
             ExerciseName.DIFFICULT_WORDS,
+            ExerciseName.COUP_OF_CONSCIOUSNESS,
             ExerciseName.ANTONYMS_AND_SYNONYMS -> R.string.average_time_on_word
             ExerciseName.THREE_LETTERS,
             ExerciseName.TAUTOGRAMS -> R.string.average_time_on_sentence
@@ -76,7 +77,6 @@ data class ChartTimeUi(
             ExerciseName.TONGUE_TWISTERS_HARD,
             ExerciseName.TONGUE_TWISTERS_VERY_HARD -> R.string.average_time_on_tongue_twister
             ExerciseName.SOUND_COMBINATIONS -> R.string.average_time_on_sound_combinations
-
         }
 
     fun getColors(context: Context): IntArray {

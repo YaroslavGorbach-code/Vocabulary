@@ -222,6 +222,7 @@ class ExerciseNameToExerciseRandomWordMapper(resources: Resources) {
             ExerciseName.SOUND_COMBINATIONS -> soundCombination.random()
             ExerciseName.DIFFICULT_WORDS -> difficultWords.random()
             ExerciseName.ANTONYMS_AND_SYNONYMS -> fillings.random()
+            ExerciseName.COUP_OF_CONSCIOUSNESS -> nounsNotAlive.random()
         }
     }
 }

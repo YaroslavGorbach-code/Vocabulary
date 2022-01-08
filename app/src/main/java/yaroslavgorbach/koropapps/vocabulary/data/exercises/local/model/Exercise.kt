@@ -1,3 +1,9 @@
 package yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model
 
-data class Exercise(val name: ExerciseName, val category: ExerciseCategory, var isFavorite: Boolean)
+import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToExerciseCategoryMapper
+
+data class Exercise(
+    val name: ExerciseName,
+    val category: ExerciseCategory = ExerciseNameToExerciseCategoryMapper().map(name),
+    var isFavorite: Boolean
+)

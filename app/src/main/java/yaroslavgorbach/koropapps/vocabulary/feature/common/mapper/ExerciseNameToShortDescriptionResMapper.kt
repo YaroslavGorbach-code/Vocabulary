@@ -68,6 +68,7 @@ class ExerciseNameToShortDescriptionResMapper {
             ExerciseName.TONGUE_TWISTERS_VERY_HARD -> R.array.desc_short_tongue_twisters
             ExerciseName.SOUND_COMBINATIONS -> R.array.desc_short_sound_combinations
             ExerciseName.DIFFICULT_WORDS -> R.array.desc_short_difficult_words
+            ExerciseName.COUP_OF_CONSCIOUSNESS -> R.string.desc_short_coup_of_consciousness
         }
     }
 }

@@ -9,7 +9,6 @@ import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.Exercise
-import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseCategory
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 
 private val Context.exercisesDataStore: DataStore<Preferences> by preferencesDataStore(name = "exercises")
@@ -29,68 +28,45 @@ class ExercisesDataStoreImp : ExercisesDataStore {
     }
 
     private val exercises = listOf(
-        Exercise(ExerciseName.ALPHABET_ADJECTIVES, ExerciseCategory.VOCABULARY, false),
-        Exercise(ExerciseName.ALPHABET_NOUN, ExerciseCategory.VOCABULARY, false),
-        Exercise(ExerciseName.ALPHABET_VERBS, ExerciseCategory.VOCABULARY, false),
-        Exercise(ExerciseName.TAUTOGRAMS, ExerciseCategory.VOCABULARY, false),
-        Exercise(ExerciseName.NARRATOR_NOUN, ExerciseCategory.VOCABULARY, false),
-        Exercise(ExerciseName.NARRATOR_ADJECTIVES, ExerciseCategory.VOCABULARY, false),
-        Exercise(ExerciseName.NARRATOR_VERBS, ExerciseCategory.VOCABULARY, false),
-        Exercise(ExerciseName.ANTONYMS_AND_SYNONYMS, ExerciseCategory.VOCABULARY, false),
-        Exercise(ExerciseName.ASSOCIATIONS, ExerciseCategory.VOCABULARY, false),
-        Exercise(ExerciseName.REMEMBER_ALL, ExerciseCategory.VOCABULARY, false),
-        Exercise(ExerciseName.GAME_I_KNOW_5_NAMES, ExerciseCategory.VOCABULARY, false),
-        Exercise(ExerciseName.TEN, ExerciseCategory.VOCABULARY, false),
-        Exercise(ExerciseName.THREE_LITER_JAR, ExerciseCategory.VOCABULARY, false),
-        Exercise(ExerciseName.LIST_OF_CATEGORIES, ExerciseCategory.VOCABULARY, false),
-        Exercise(ExerciseName.THREE_LETTERS, ExerciseCategory.VOCABULARY, false),
-        Exercise(ExerciseName.HALF, ExerciseCategory.VOCABULARY, false),
-        Exercise(ExerciseName.SPECIFICATIONS, ExerciseCategory.VOCABULARY, false),
-        Exercise(ExerciseName.DICTIONARY_NOUN, ExerciseCategory.VOCABULARY, false),
-        Exercise(ExerciseName.DICTIONARY_VERBS, ExerciseCategory.VOCABULARY, false),
-        Exercise(ExerciseName.DICTIONARY_ADJECTIVES, ExerciseCategory.VOCABULARY, false),
-        Exercise(ExerciseName.LINGUISTIC_PYRAMIDS, ExerciseCategory.COMMUNICATION, false),
-        Exercise(ExerciseName.RAVEN_LOOK_LIKE_A_TABLE, ExerciseCategory.COMMUNICATION, false),
-        Exercise(ExerciseName.STORYTELLER_IMPROVISER, ExerciseCategory.COMMUNICATION, false),
-        Exercise(ExerciseName.ADVANCED_BINDING, ExerciseCategory.COMMUNICATION, false),
-        Exercise(ExerciseName.WHAT_I_SEE_I_SING_ABOUT, ExerciseCategory.COMMUNICATION, false),
-        Exercise(ExerciseName.OTHER_ABBREVIATIONS, ExerciseCategory.COMMUNICATION, false),
-        Exercise(ExerciseName.MAGIC_NAMING, ExerciseCategory.COMMUNICATION, false),
-        Exercise(ExerciseName.BUYING_SELLING, ExerciseCategory.COMMUNICATION, false),
-        Exercise(ExerciseName.CO_AUTHORED_WITH_DAHL, ExerciseCategory.COMMUNICATION, false),
-        Exercise(ExerciseName.RORSCHACH_TEST, ExerciseCategory.COMMUNICATION, false),
-        Exercise(ExerciseName.QUESTION_ANSWER, ExerciseCategory.COMMUNICATION, false),
-        Exercise(ExerciseName.WILL_NOT_BE_WORSE, ExerciseCategory.SENSE_OF_HUMOR, false),
-        Exercise(
-            ExerciseName.RAVEN_LOOK_LIKE_A_TABLE_FILINGS,
-            ExerciseCategory.COMMUNICATION,
-            false
-        ),
-        Exercise(
-            ExerciseName.TONGUE_TWISTERS_EASY,
-            ExerciseCategory.DICTION_AND_ARTICULATION,
-            false
-        ),
-        Exercise(
-            ExerciseName.TONGUE_TWISTERS_HARD,
-            ExerciseCategory.DICTION_AND_ARTICULATION,
-            false
-        ),
-        Exercise(
-            ExerciseName.TONGUE_TWISTERS_VERY_HARD,
-            ExerciseCategory.DICTION_AND_ARTICULATION,
-            false
-        ),
-        Exercise(
-            ExerciseName.SOUND_COMBINATIONS,
-            ExerciseCategory.DICTION_AND_ARTICULATION,
-            false
-        ),
-        Exercise(
-            ExerciseName.DIFFICULT_WORDS,
-            ExerciseCategory.DICTION_AND_ARTICULATION,
-            false
-        ),
+        Exercise(ExerciseName.ALPHABET_ADJECTIVES, isFavorite = false),
+        Exercise(ExerciseName.ALPHABET_NOUN, isFavorite = false),
+        Exercise(ExerciseName.ALPHABET_VERBS, isFavorite = false),
+        Exercise(ExerciseName.TAUTOGRAMS, isFavorite = false),
+        Exercise(ExerciseName.NARRATOR_NOUN, isFavorite = false),
+        Exercise(ExerciseName.NARRATOR_ADJECTIVES, isFavorite = false),
+        Exercise(ExerciseName.NARRATOR_VERBS, isFavorite = false),
+        Exercise(ExerciseName.ANTONYMS_AND_SYNONYMS, isFavorite = false),
+        Exercise(ExerciseName.ASSOCIATIONS, isFavorite = false),
+        Exercise(ExerciseName.REMEMBER_ALL, isFavorite = false),
+        Exercise(ExerciseName.GAME_I_KNOW_5_NAMES, isFavorite = false),
+        Exercise(ExerciseName.TEN, isFavorite = false),
+        Exercise(ExerciseName.THREE_LITER_JAR, isFavorite = false),
+        Exercise(ExerciseName.LIST_OF_CATEGORIES, isFavorite = false),
+        Exercise(ExerciseName.THREE_LETTERS, isFavorite = false),
+        Exercise(ExerciseName.HALF, isFavorite = false),
+        Exercise(ExerciseName.SPECIFICATIONS, isFavorite = false),
+        Exercise(ExerciseName.DICTIONARY_NOUN, isFavorite = false),
+        Exercise(ExerciseName.DICTIONARY_VERBS, isFavorite = false),
+        Exercise(ExerciseName.DICTIONARY_ADJECTIVES, isFavorite = false),
+        Exercise(ExerciseName.LINGUISTIC_PYRAMIDS, isFavorite = false),
+        Exercise(ExerciseName.RAVEN_LOOK_LIKE_A_TABLE, isFavorite = false),
+        Exercise(ExerciseName.STORYTELLER_IMPROVISER, isFavorite = false),
+        Exercise(ExerciseName.ADVANCED_BINDING, isFavorite = false),
+        Exercise(ExerciseName.WHAT_I_SEE_I_SING_ABOUT, isFavorite = false),
+        Exercise(ExerciseName.OTHER_ABBREVIATIONS, isFavorite = false),
+        Exercise(ExerciseName.MAGIC_NAMING, isFavorite = false),
+        Exercise(ExerciseName.BUYING_SELLING, isFavorite = false),
+        Exercise(ExerciseName.CO_AUTHORED_WITH_DAHL, isFavorite = false),
+        Exercise(ExerciseName.RORSCHACH_TEST, isFavorite = false),
+        Exercise(ExerciseName.QUESTION_ANSWER, isFavorite = false),
+        Exercise(ExerciseName.RAVEN_LOOK_LIKE_A_TABLE_FILINGS, isFavorite = false),
+        Exercise(ExerciseName.WILL_NOT_BE_WORSE, isFavorite = false),
+        Exercise(ExerciseName.COUP_OF_CONSCIOUSNESS, isFavorite = false),
+        Exercise(ExerciseName.TONGUE_TWISTERS_EASY, isFavorite = false),
+        Exercise(ExerciseName.TONGUE_TWISTERS_HARD, isFavorite = false),
+        Exercise(ExerciseName.TONGUE_TWISTERS_VERY_HARD, isFavorite = false),
+        Exercise(ExerciseName.SOUND_COMBINATIONS, isFavorite = false),
+        Exercise(ExerciseName.DIFFICULT_WORDS, isFavorite = false),
     )
 
     override fun observe(context: Context): Flow<List<Exercise>> {

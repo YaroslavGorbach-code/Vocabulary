@@ -45,6 +45,7 @@ class ExerciseNameToDescriptionResMapper {
             ExerciseName.TONGUE_TWISTERS_VERY_HARD -> R.string.tongue_twisters_description
             ExerciseName.SOUND_COMBINATIONS -> R.string.sound_combinations_description
             ExerciseName.DIFFICULT_WORDS -> R.string.difficult_words_description
+            ExerciseName.COUP_OF_CONSCIOUSNESS -> R.string.coup_of_consciousness_description
         }
     }
 }
