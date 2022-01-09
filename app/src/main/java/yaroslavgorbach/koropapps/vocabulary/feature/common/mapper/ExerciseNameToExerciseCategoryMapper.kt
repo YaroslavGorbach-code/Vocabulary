@@ -47,6 +47,7 @@ class ExerciseNameToExerciseCategoryMapper {
             ExerciseName.DIFFICULT_WORDS -> ExerciseCategory.DICTION_AND_ARTICULATION
             ExerciseName.COUP_OF_CONSCIOUSNESS -> ExerciseCategory.SENSE_OF_HUMOR
             ExerciseName.PROBLEM_SOLVING -> ExerciseCategory.SENSE_OF_HUMOR
+            ExerciseName.COUP -> ExerciseCategory.SENSE_OF_HUMOR
         }
     }
 }

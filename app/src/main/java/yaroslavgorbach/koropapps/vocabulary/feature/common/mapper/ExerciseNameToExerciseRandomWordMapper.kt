@@ -1,6 +1,7 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.common.mapper
 
 import android.content.res.Resources
+import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.ImageUrlsProvider
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.WordCategory
 import kotlin.random.Random
@@ -10,6 +11,8 @@ class ExerciseNameToExerciseRandomWordMapper(resources: Resources) {
     companion object {
         private const val DEFAULT_RETURN_VALUE = ""
     }
+
+    private val images = ImageUrlsProvider.provide()
 
     private val nounsAlive = resources.getStringArray(
         WordCategory.NounsAlive().resArray
@@ -228,6 +231,7 @@ class ExerciseNameToExerciseRandomWordMapper(resources: Resources) {
             ExerciseName.ANTONYMS_AND_SYNONYMS -> fillings.random()
             ExerciseName.COUP_OF_CONSCIOUSNESS -> nounsNotAlive.random()
             ExerciseName.PROBLEM_SOLVING -> problems.random()
+            ExerciseName.COUP -> images.random()
         }
     }
 }

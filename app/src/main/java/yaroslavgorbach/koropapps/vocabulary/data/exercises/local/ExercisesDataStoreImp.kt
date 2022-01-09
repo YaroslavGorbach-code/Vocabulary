@@ -72,6 +72,11 @@ class ExercisesDataStoreImp : ExercisesDataStore {
             isFavorite = false,
             createDate = parseStringToDate("8-1-2022")
         ),
+        Exercise(
+            ExerciseName.COUP,
+            isFavorite = false,
+            createDate = parseStringToDate("8-1-2022")
+        ),
         Exercise(ExerciseName.TONGUE_TWISTERS_EASY, isFavorite = false),
         Exercise(ExerciseName.TONGUE_TWISTERS_HARD, isFavorite = false),
         Exercise(ExerciseName.TONGUE_TWISTERS_VERY_HARD, isFavorite = false),

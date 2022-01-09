@@ -47,6 +47,7 @@ class ExerciseNameToDescriptionResMapper {
             ExerciseName.DIFFICULT_WORDS -> R.string.difficult_words_description
             ExerciseName.COUP_OF_CONSCIOUSNESS -> R.string.coup_of_consciousness_description
             ExerciseName.PROBLEM_SOLVING -> R.string.problem_solving_description
+            ExerciseName.COUP -> R.string.coup_description
         }
     }
 }

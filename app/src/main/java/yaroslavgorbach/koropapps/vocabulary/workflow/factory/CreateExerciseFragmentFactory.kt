@@ -3,6 +3,7 @@ package yaroslavgorbach.koropapps.vocabulary.workflow.factory
 import androidx.fragment.app.Fragment
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.image.ui.ImageExerciseFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.word.ui.WordExerciseFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.wordwithcategory.ui.WordWithCategoryFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.wordwithstage.ui.WordWithStageFragment
@@ -60,6 +61,7 @@ class CreateExerciseFragmentFactory {
             ExerciseName.TONGUE_TWISTERS_VERY_HARD -> {
                 WordWithStageFragment.newInstance(exerciseType)
             }
+            ExerciseName.COUP -> ImageExerciseFragment.newInstance(exerciseType)
         }
     }
 }

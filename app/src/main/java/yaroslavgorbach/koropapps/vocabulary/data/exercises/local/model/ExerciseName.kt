@@ -46,8 +46,8 @@ enum class ExerciseName(@StringRes val id: Int) {
     DIFFICULT_WORDS(R.string.difficult_words),
 
     COUP_OF_CONSCIOUSNESS(R.string.coup_of_consciousness),
-    PROBLEM_SOLVING(R.string.problem_solving)
-
+    PROBLEM_SOLVING(R.string.problem_solving),
+    COUP(R.string.coup)
 }
 
 fun getExerciseName(@StringRes id: Int): ExerciseName {

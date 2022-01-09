@@ -2,10 +2,12 @@ package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.base
 
 import android.Manifest
 import android.app.Activity
+import android.util.Log
 import androidx.lifecycle.*
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import yaroslavgorbach.koropapps.vocabulary.business.settings.ObserveAutoRecordStateInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.SaveStatisticsInteractor
@@ -79,8 +81,10 @@ open class BaseExerciseViewModel(
     val showPermissionDeniedDialogEvent: LiveEvent<Unit>
         get() = _showPermissionDeniedDialogEvent
 
-    val isAutoRecordStart: LiveData<Boolean>
-        get() = observeAutoRecordStateInteractor().asLiveData()
+    val isAutoRecordStart: LiveData<Boolean> =
+        observeAutoRecordStateInteractor()
+            .distinctUntilChanged()
+            .asLiveData()
 
     init {
         viewModelScope.launch {
@@ -101,6 +105,7 @@ open class BaseExerciseViewModel(
     fun onStartStopRecording(exerciseName: String) {
         checkOrRequestRecordAudioPermission {
             isVoiceRecorderRecording.value?.let { isRecording ->
+                Log.i("dasdf", isRecording.toString())
                 if (isRecording) {
                     onStopRecord()
                 } else {
@@ -108,7 +113,6 @@ open class BaseExerciseViewModel(
                 }
             }
         }
-
     }
 
     fun showInterstitial(activity: Activity) {

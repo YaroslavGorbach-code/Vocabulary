@@ -125,6 +125,9 @@
 
     <string name="desc_short_problem_solving">Придумайте решение проблемы</string>
 
+    <string name="desc_short_coup">Придумайте к изображению смешной заголовок,
+        который не будет раскрывать то, что на самом деле «находится» на фотографии</string>
+
     <array name="desc_short_tongue_twisters">
         <item>Проговаривайте текст медленно</item>
         <item>Беззвучно произнесите скороговорку. Движениями губ</item>
