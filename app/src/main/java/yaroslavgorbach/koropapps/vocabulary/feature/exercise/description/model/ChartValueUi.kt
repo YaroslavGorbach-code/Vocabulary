@@ -62,12 +62,14 @@ data class ChartValueUi(
             ExerciseName.QUESTION_ANSWER,
             ExerciseName.RAVEN_LOOK_LIKE_A_TABLE_FILINGS,
             ExerciseName.DIFFICULT_WORDS,
+            ExerciseName.COUP_OF_CONSCIOUSNESS,
             ExerciseName.ANTONYMS_AND_SYNONYMS -> R.string.number_words_for_session
             ExerciseName.THREE_LETTERS,
             ExerciseName.TAUTOGRAMS -> R.string.number_sentences_for_session
             ExerciseName.NARRATOR_NOUN,
             ExerciseName.NARRATOR_ADJECTIVES,
             ExerciseName.NARRATOR_VERBS,
+            ExerciseName.PROBLEM_SOLVING,
             ExerciseName.TEN -> R.string.number_stores_for_session
             ExerciseName.REMEMBER_ALL -> R.string.number_letters_for_session
             ExerciseName.GAME_I_KNOW_5_NAMES -> R.string.number_categories_for_session
@@ -76,6 +78,7 @@ data class ChartValueUi(
             ExerciseName.TONGUE_TWISTERS_HARD,
             ExerciseName.TONGUE_TWISTERS_VERY_HARD -> R.string.number_tongue_twisters
             ExerciseName.SOUND_COMBINATIONS -> R.string.number_sound_combinations
+            ExerciseName.COUP -> R.string.number_images_for_session
         }
 
     fun getColors(context: Context): IntArray {

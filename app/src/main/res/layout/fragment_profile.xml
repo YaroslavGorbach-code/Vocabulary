@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/on_background"
     android:orientation="vertical">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -27,120 +29,147 @@
         android:layout_height="match_parent"
         android:scrollbars="none">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.constraintlayout.motion.widget.MotionLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:layoutDescription="@xml/fragment_profile_scene">
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/statistics_card"
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/phrase_layout"
+                android:layout_width="0dp"
+                android:background="?selectableItemBackground"
+                android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_open_book"
+                    app:layout_constraintEnd_toStartOf="@+id/phrase_title"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/phrase_title"
+                    style="@style/TextPrimary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/phrase_of_day"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/imageView3"
+                    app:layout_constraintTop_toTopOf="@+id/imageView3" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <TextView
+                android:id="@+id/phraseName"
+                style="@style/TextPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/phrase_layout"
+                tools:text="Фраза дня тут" />
+
+            <TextView
+                android:id="@+id/phraseText"
+                style="@style/TextPrimary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="8dp"
+                android:paddingBottom="8dp"
+                android:textSize="18sp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/phraseName"
+                tools:text="Тут текст фразы будет фраза и обяснение к фразе и так дае" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/chart_card"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                app:cardCornerRadius="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/phraseText">
+
                 <include
                     android:id="@+id/chart"
-                    layout="@layout/layout_chart"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="4dp" />
+                    layout="@layout/layout_chart" />
             </com.google.android.material.card.MaterialCardView>
+
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/banner_card"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_marginStart="8dp"
-                android:visibility="gone"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/statistics_card">
+                app:layout_constraintTop_toBottomOf="@+id/chart_card" />
 
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/level_card"
+            <include
+                android:id="@+id/level"
+                layout="@layout/layout_level_item"
                 android:layout_width="0dp"
                 android:layout_height="60dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/banner_card">
-
-                <include
-                    android:id="@+id/level"
-                    layout="@layout/layout_level_item"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
-            </com.google.android.material.card.MaterialCardView>
+                app:layout_constraintTop_toBottomOf="@+id/chart_card" />
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/word_card"
-                android:layout_width="0dp"
-                android:layout_height="70dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:background="?selectableItemBackground"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/level_card">
-
-                <include
-                    android:id="@+id/phrase"
-                    layout="@layout/layout_phrase_profile"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/settings_card"
+                android:id="@+id/items_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
+                android:background="?android:colorBackground"
+                app:cardCornerRadius="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/word_card">
+                app:layout_constraintTop_toBottomOf="@+id/level">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-                <include
-                    android:id="@+id/settings"
-                    layout="@layout/layout_item_profile" />
+                    <include
+                        android:id="@+id/settings"
+                        layout="@layout/layout_item_profile" />
 
-                <include
-                    android:id="@+id/remove_ads"
-                    android:visibility="gone"
-                    layout="@layout/layout_item_profile" />
+                    <include
+                        android:id="@+id/remove_ads"
+                        layout="@layout/layout_item_profile"
+                        android:visibility="gone" />
 
-                <include
-                    android:id="@+id/share"
-                    android:visibility="visible"
-                    layout="@layout/layout_item_profile" />
+                    <include
+                        android:id="@+id/share"
+                        layout="@layout/layout_item_profile"
+                        android:visibility="visible" />
 
-                <include
-                    android:id="@+id/rate"
-                    android:visibility="visible"
-                    layout="@layout/layout_item_profile" />
-            </LinearLayout>
+                    <include
+                        android:id="@+id/rate"
+                        layout="@layout/layout_item_profile"
+                        android:visibility="visible" />
+                </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.motion.widget.MotionLayout>
     </ScrollView>
 </LinearLayout>

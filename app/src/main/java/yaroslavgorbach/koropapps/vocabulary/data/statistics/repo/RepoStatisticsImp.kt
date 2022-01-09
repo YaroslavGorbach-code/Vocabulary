@@ -79,7 +79,8 @@ class RepoStatisticsImp(private val localDataSource: StatisticsDao) : RepoStatis
                     dailyTrainingsCompleted = 0,
                     summaryTrainingTimeCommunicationMc = 0,
                     summaryTrainingTimeDictionMc = 0,
-                    summaryTrainingTimeVocabularyMc = 0
+                    summaryTrainingTimeVocabularyMc = 0,
+                    summaryTrainingTimeSenseOfHumorMc = 0
                 )
                 insert(entity).subscribe()
                 Single.just(entity)

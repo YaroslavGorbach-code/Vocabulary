@@ -112,4 +112,8 @@ class WordWithTimerExerciseFragment : Fragment(R.layout.fragment_exercise_with_t
         onBackPressed()
     }
 
+    override fun onDestroy() {
+        viewModel.showInterstitial(requireActivity())
+        super.onDestroy()
+    }
 }

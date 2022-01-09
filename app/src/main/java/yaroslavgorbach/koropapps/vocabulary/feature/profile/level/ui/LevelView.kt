@@ -49,6 +49,8 @@ class LevelView(private val binding: FragmentLevelBinding, private val callback:
         binding.levels.levelDictionImageProgress.setImage(binding.getDrawable(R.drawable.ic_diction))
 
         binding.levels.levelVocabularyImageProgress.setImage(binding.getDrawable(R.drawable.ic_vocabulary))
+
+        binding.levels.levelSenseOfHumor.setImage(binding.getDrawable(R.drawable.ic_laughter_to_tears))
     }
 
     private fun initActions() {
@@ -69,6 +71,9 @@ class LevelView(private val binding: FragmentLevelBinding, private val callback:
 
         binding.levels.levelVocabularyImageProgress.setProgress(levelInfoUi.vocabularyLevelProgress)
         binding.levels.levelVocabularyProgressText.text = levelInfoUi.vocabularyLevel.level
+
+        binding.levels.levelSenseOfHumor.setProgress(levelInfoUi.senseOfHumorLevelProgress)
+        binding.levels.levelSenseOfHumorProgressText.text = levelInfoUi.senseOfHumorLevel.level
     }
 
     fun setAchievements(achievements: List<Achievement>) {

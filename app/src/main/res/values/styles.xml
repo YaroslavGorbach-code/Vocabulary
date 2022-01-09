@@ -21,7 +21,7 @@
         <item name="android:layout_height">50dp</item>
         <item name="android:paddingStart">8dp</item>
         <item name="android:paddingEnd">8dp</item>
-        <item name="android:background">?selectableItemBackground</item>
+        <item name="android:background">@drawable/bg_selectable_item</item>
     </style>
 
     <style name="BaseLayoutItem.InteractiveItem">

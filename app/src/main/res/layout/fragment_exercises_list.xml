@@ -70,6 +70,13 @@
                 android:text="@string/category_vocabulary" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_sense_of_humor"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/category_sense_of_humor" />
+            
+            <com.google.android.material.chip.Chip
                 android:id="@+id/chip_diction"
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"

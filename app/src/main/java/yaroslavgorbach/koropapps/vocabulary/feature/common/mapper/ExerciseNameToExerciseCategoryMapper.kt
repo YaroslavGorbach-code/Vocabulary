@@ -37,7 +37,7 @@ class ExerciseNameToExerciseCategoryMapper {
             ExerciseName.BUYING_SELLING -> ExerciseCategory.COMMUNICATION
             ExerciseName.CO_AUTHORED_WITH_DAHL -> ExerciseCategory.COMMUNICATION
             ExerciseName.RORSCHACH_TEST -> ExerciseCategory.COMMUNICATION
-            ExerciseName.WILL_NOT_BE_WORSE -> ExerciseCategory.COMMUNICATION
+            ExerciseName.WILL_NOT_BE_WORSE -> ExerciseCategory.SENSE_OF_HUMOR
             ExerciseName.QUESTION_ANSWER -> ExerciseCategory.COMMUNICATION
             ExerciseName.RAVEN_LOOK_LIKE_A_TABLE_FILINGS -> ExerciseCategory.COMMUNICATION
             ExerciseName.TONGUE_TWISTERS_EASY,
@@ -45,6 +45,9 @@ class ExerciseNameToExerciseCategoryMapper {
             ExerciseName.TONGUE_TWISTERS_VERY_HARD -> ExerciseCategory.DICTION_AND_ARTICULATION
             ExerciseName.SOUND_COMBINATIONS -> ExerciseCategory.DICTION_AND_ARTICULATION
             ExerciseName.DIFFICULT_WORDS -> ExerciseCategory.DICTION_AND_ARTICULATION
+            ExerciseName.COUP_OF_CONSCIOUSNESS -> ExerciseCategory.SENSE_OF_HUMOR
+            ExerciseName.PROBLEM_SOLVING -> ExerciseCategory.SENSE_OF_HUMOR
+            ExerciseName.COUP -> ExerciseCategory.SENSE_OF_HUMOR
         }
     }
 }

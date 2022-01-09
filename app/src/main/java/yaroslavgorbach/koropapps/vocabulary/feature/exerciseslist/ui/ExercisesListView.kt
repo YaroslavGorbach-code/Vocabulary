@@ -70,6 +70,12 @@ class ExercisesListView(
                 callback.onExercisesFilterChanged(ExerciseCategoryFilterUi.FAVORITE)
             }
         }
+
+        binding.chipSenseOfHumor.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                callback.onExercisesFilterChanged(ExerciseCategoryFilterUi.SENSE_OF_HUMOR)
+            }
+        }
     }
 
     fun setExercisesWithFilter(exercisesWithFilterUi: ExercisesWithFilterUi) {
@@ -131,6 +137,9 @@ class ExercisesListView(
             }
             ExerciseCategoryFilterUi.DICTION_AND_ARTICULATION -> {
                 binding.chipDiction.isChecked = true
+            }
+            ExerciseCategoryFilterUi.SENSE_OF_HUMOR -> {
+                binding.chipSenseOfHumor.isCheckable = true
             }
         }
     }

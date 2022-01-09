@@ -10,6 +10,7 @@ data class StatisticsCommonInfoEntity(
     var summaryTrainingTimeMc: Long,
     var summaryTrainingTimeVocabularyMc: Long,
     var summaryTrainingTimeDictionMc: Long,
+    var summaryTrainingTimeSenseOfHumorMc: Long,
     var summaryTrainingTimeCommunicationMc: Long,
     var exercisesCompleted: Int,
     var dailyTrainingsCompleted: Int,
@@ -25,4 +26,7 @@ data class StatisticsCommonInfoEntity(
 
     val summaryTrainingTimeVocabularyMinutes: Long
         get() = summaryTrainingTimeVocabularyMc / 60000
+
+    val summaryTrainingTimeSenseOfHumorMinutes: Long
+        get() = summaryTrainingTimeSenseOfHumorMc / 60000
 }

@@ -79,4 +79,9 @@ class WordWithStageFragment : Fragment(R.layout.fragment_exercise_with_stages) {
 
         viewModel.exercise.observe(viewLifecycleOwner, wordWithStageView::setExercise)
     }
+
+    override fun onDestroy() {
+        viewModel.showInterstitial(requireActivity())
+        super.onDestroy()
+    }
 }

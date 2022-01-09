@@ -34,5 +34,7 @@ sealed class WordCategory {
 
     class DifficultWords(override val resArray: Int = R.array.difficult_words) : WordCategory()
 
+    class Problems(override val resArray: Int = R.array.problems) : WordCategory()
+
     class None(override val resArray: Int = R.array.empty_array) : WordCategory()
 }

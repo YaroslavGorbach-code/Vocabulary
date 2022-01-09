@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="yaroslavgorbach.koropapps.vocabulary">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
@@ -27,6 +28,10 @@
             android:name=".feature.common.workers.PeriodicNotificationBroadcast"
             android:enabled="true"
             android:exported="false" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-6043694180023070~9286131410" />
     </application>
 
 </manifest>

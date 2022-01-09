@@ -11,7 +11,6 @@ import kotlinx.coroutines.InternalCoroutinesApi
 import yaroslavgorbach.koropapps.vocabulary.App
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentTrainingBinding
-import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerciseCategoryFilterUi
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.feature.training.presentation.TrainingViewModel
 import yaroslavgorbach.koropapps.vocabulary.utils.host
@@ -77,10 +76,6 @@ class TrainingFragment : Fragment(R.layout.fragment_training) {
 
                 override fun onPageChanged(page: Int) {
                     viewModel.setCurrentPage(page)
-                }
-
-                override fun onFilterChanged(filterUi: TrainingExerciseCategoryFilterUi) {
-                    viewModel.changeFilter(filterUi)
                 }
 
                 override fun onBack() {

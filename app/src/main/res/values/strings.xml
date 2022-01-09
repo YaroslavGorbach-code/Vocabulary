@@ -10,12 +10,14 @@
     <string name="number_stores_for_session">Количество историй за сессию</string>
     <string name="number_letters_for_session">Количество букв за сессию</string>
     <string name="number_categories_for_session">Количество категорий за сессию</string>
+    <string name="number_images_for_session">Количество изображений за сессию</string>
     <string name="number_abbreviations">Количество аббревиатур за сессию</string>
     <string name="number_tongue_twisters">Количество скороговорок за сессию</string>
     <string name="number_sound_combinations">Количество звукосочетаний за сессию</string>
     <string name="average_time_on_sentence">В среднем потрачено секунд на предложение</string>
     <string name="average_time_on_story">В среднем потрачено секунд на историю</string>
     <string name="average_time_on_letter">В среднем потрачено секунд на букву</string>
+    <string name="average_time_on_image">В среднем потрачено секунд на изображение</string>
     <string name="average_time_on_category">В среднем потрачено секунд на категорию</string>
     <string name="average_time_on_abbreviation">В среднем потрачено секунд на аббревиатуру</string>
     <string name="average_time_on_word">В среднем потрачено секунд на слово</string>
@@ -66,6 +68,7 @@
 
     <string name="category_vocabulary">Для увеличения словарного запаса</string>
     <string name="category_diction_and_articulation">Для улучшения дикции и артикуляции</string>
+    <string name="category_sense_of_humor">Для развития чувстава юмора</string>
     <string name="category_communications">Для развития навыков общения</string>
     <string name="category_all_exercise">Все упражнения</string>
     <string name="category_favorite">Избранные</string>
@@ -74,6 +77,7 @@
     <string name="training">тренировка</string>
     <string name="all">Все</string>
     <string name="vocabulary">Словарный запас</string>
+    <string name="sense_of_humor">Чувство юмора</string>
     <string name="communication">Навык общения</string>
     <string name="no_favorites">Избранных упражнений нет</string>
     <string name="permission_denied_error_title">Ошибка доступа</string>

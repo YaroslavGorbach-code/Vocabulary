@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.room.Room
 import dagger.Module
 import dagger.Provides
+import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.STATISTICS_MIGRATION_1_2
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.StatisticsDatabase
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.dao.StatisticsDao
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.repo.RepoStatistics
@@ -26,7 +27,7 @@ class DataModuleStatistics {
     fun provideStatisticsDatabase(context: Application): StatisticsDatabase {
         return Room.databaseBuilder(
             context, StatisticsDatabase::class.java, "databaseStatistics"
-        ).build()
+        ).addMigrations(STATISTICS_MIGRATION_1_2).build()
     }
 
     @Singleton

@@ -5,7 +5,6 @@ import dagger.Provides
 import yaroslavgorbach.koropapps.vocabulary.business.settings.*
 import yaroslavgorbach.koropapps.vocabulary.data.settings.repo.RepoSettings
 import yaroslavgorbach.koropapps.vocabulary.di.data.settings.DataSettingsModule
-import javax.inject.Singleton
 
 @Module(includes = [DataSettingsModule::class])
 class BusinessSettingsModule {
@@ -65,5 +64,20 @@ class BusinessSettingsModule {
     @Provides
     fun provideChangeIsFalseAppOpenToFalseInteractor(repoSettings: RepoSettings): ChangeIsFirstAppOpenToFalseInteractor {
         return ChangeIsFirstAppOpenToFalseInteractor(repoSettings)
+    }
+
+    @Provides
+    fun provideChangeAdFeatureAvailability(repoSettings: RepoSettings): ChangeAdFeatureAvailability {
+        return ChangeAdFeatureAvailability(repoSettings)
+    }
+
+    @Provides
+    fun provideObserveAdFeatureAvailability(repoSettings: RepoSettings): ObserveAdFeatureAvailability {
+        return ObserveAdFeatureAvailability(repoSettings)
+    }
+
+    @Provides
+    fun provideObserveInterstitialShowAvailability(repoSettings: RepoSettings): ObserveInterstitialShowAvailability {
+        return ObserveInterstitialShowAvailability(repoSettings)
     }
 }

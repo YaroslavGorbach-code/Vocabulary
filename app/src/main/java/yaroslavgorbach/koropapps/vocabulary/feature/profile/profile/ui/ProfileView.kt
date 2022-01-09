@@ -1,6 +1,5 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.profile.profile.ui
 
-import android.util.Log
 import android.view.View
 import im.dacer.androidcharts.LineView
 import yaroslavgorbach.koropapps.vocabulary.R
@@ -20,7 +19,6 @@ class ProfileView(private val binding: FragmentProfileBinding, private val callb
         fun onShare()
         fun onRate()
         fun onLevel()
-        fun onPhrase(phrase: String)
     }
 
     private var phrase: Phrase? = null
@@ -77,13 +75,10 @@ class ProfileView(private val binding: FragmentProfileBinding, private val callb
             callback.onSettings()
         }
 
-        binding.levelCard.setOnClickListener {
+        binding.level.root.setOnClickListener {
             callback.onLevel()
         }
 
-        binding.phrase.root.setOnClickListener {
-            callback.onPhrase(phrase?.explanation ?: "")
-        }
     }
 
     fun setChart(chartDayUi: ChartDayUi) {
@@ -100,7 +95,8 @@ class ProfileView(private val binding: FragmentProfileBinding, private val callb
 
     fun setPhrase(phrase: Phrase) {
         this.phrase = phrase
-        binding.phrase.phrase.text = phrase.phrase
+        binding.phraseName.text = phrase.phrase
+        binding.phraseText.text = phrase.explanation
     }
 
     private fun showNoChartValueData() {
