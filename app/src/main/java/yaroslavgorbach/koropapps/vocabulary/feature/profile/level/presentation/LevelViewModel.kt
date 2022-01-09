@@ -59,6 +59,27 @@ class LevelViewModel @Inject constructor(
         getStatisticInfoAndAchieveAchievements()
     }
 
+    private fun getLevelInfo() {
+        getStatisticsCommonInfoInteractor()
+            .observeOn(AndroidSchedulers.mainThread())
+            .map(::LevelInfoUi)
+            .subscribe(_LevelInfo::setValue)
+            .let(disposables::add)
+    }
+
+    private fun getStatisticInfoAndAchieveAchievements() {
+        Single.zip(
+            getStatisticsCommonInfoInteractor(),
+            getAllExercisesStatisticsValueInteractor(),
+            observeStatisticDaysInteractor().first(emptyList()),
+            observeCurrentTrainingWithExercisesInteractor().firstOrError(),
+            this::achieveAchievements
+        )
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe()
+            .let(disposables::add)
+    }
+
     private fun achieveAchievements(
         commonInfo: StatisticsCommonInfoEntity,
         allExercisesValues: List<StatisticsExerciseValueEntity>,
@@ -180,27 +201,6 @@ class LevelViewModel @Inject constructor(
         if (commonInfo.exercisesCompleted > 1000) {
             achieveAchievementsInteractor(AchievementName.MORE_THEN_ONE_THOUSAND_EXERCISES_COMPLETE)
         }
-    }
-
-    private fun getLevelInfo() {
-        getStatisticsCommonInfoInteractor()
-            .observeOn(AndroidSchedulers.mainThread())
-            .map(::LevelInfoUi)
-            .subscribe(_LevelInfo::setValue)
-            .let(disposables::add)
-    }
-
-    private fun getStatisticInfoAndAchieveAchievements() {
-        Single.zip(
-            getStatisticsCommonInfoInteractor(),
-            getAllExercisesStatisticsValueInteractor(),
-            observeStatisticDaysInteractor().first(emptyList()),
-            observeCurrentTrainingWithExercisesInteractor().firstOrError(),
-            this::achieveAchievements
-        )
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe()
-            .let(disposables::add)
     }
 
 

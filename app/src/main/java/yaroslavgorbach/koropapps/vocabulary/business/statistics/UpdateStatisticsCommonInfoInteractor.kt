@@ -29,6 +29,7 @@ class UpdateStatisticsCommonInfoInteractor(
                     ExerciseCategory.COMMUNICATION -> currentStatisticsCommonInfoEntity.summaryTrainingTimeCommunicationMc += summaryTrainingTime
                     ExerciseCategory.VOCABULARY -> currentStatisticsCommonInfoEntity.summaryTrainingTimeVocabularyMc += summaryTrainingTime
                     ExerciseCategory.DICTION_AND_ARTICULATION -> currentStatisticsCommonInfoEntity.summaryTrainingTimeDictionMc += summaryTrainingTime
+                    ExerciseCategory.SENSE_OF_HUMOR -> currentStatisticsCommonInfoEntity.summaryTrainingTimeSenseOfHumorMc += summaryTrainingTime
                 }
 
                 currentStatisticsCommonInfoEntity.exercisesCompleted += 1

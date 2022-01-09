@@ -66,9 +66,20 @@ data class LevelInfoUi(private val commonInfoEntity: StatisticsCommonInfoEntity)
             0
         }
 
+    val senseOfHumorLevelProgress: Int
+        get() = try {
+            (((commonInfoEntity.summaryTrainingTimeSenseOfHumorMc.toFloat() - getCorrectPreviousMaxValue(
+                commonInfoEntity.summaryTrainingTimeSenseOfHumorMc
+            )) / (getCorrectMaxValue(commonInfoEntity.summaryTrainingTimeSenseOfHumorMc))) * 100f).toInt()
+        } catch (ex: Throwable) {
+            0
+        }
+
     val vocabularyLevel: Level
         get() = MapTrainingTimeToLevel().map(commonInfoEntity.summaryTrainingTimeVocabularyMinutes)
 
+    val senseOfHumorLevel: Level
+        get() = MapTrainingTimeToLevel().map(commonInfoEntity.summaryTrainingTimeSenseOfHumorMinutes)
 
     val communicationLevel: Level
         get() = MapTrainingTimeToLevel().map(commonInfoEntity.summaryTrainingTimeCommunicationMinutes)

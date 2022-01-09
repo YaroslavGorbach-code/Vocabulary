@@ -77,6 +77,7 @@
     <string name="training">тренировка</string>
     <string name="all">Все</string>
     <string name="vocabulary">Словарный запас</string>
+    <string name="sense_of_humor">Чувство юмора</string>
     <string name="communication">Навык общения</string>
     <string name="no_favorites">Избранных упражнений нет</string>
     <string name="permission_denied_error_title">Ошибка доступа</string>

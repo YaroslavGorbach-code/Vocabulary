@@ -10,6 +10,7 @@ import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingEx
 
 @TypeConverters(DateConverter::class)
 @Database(
+    exportSchema = false,
     entities = [TrainingEntity::class, TrainingExerciseEntity::class],
     version = 1
 )
