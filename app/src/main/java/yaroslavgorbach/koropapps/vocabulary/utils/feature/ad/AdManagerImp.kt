@@ -26,6 +26,7 @@ class AdManagerImp(
 
     companion object {
         private const val INTERSTITIAL_AD_ID = "ca-app-pub-6043694180023070/1202276190"
+        private const val INTERSTITIAL_TEST_AD_ID = "ca-app-pub-3940256099942544/1033173712"
     }
 
     private var _interstitialAd: InterstitialAd? = null

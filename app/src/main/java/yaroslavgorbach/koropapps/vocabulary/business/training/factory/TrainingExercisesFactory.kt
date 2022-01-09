@@ -8,6 +8,26 @@ import kotlin.random.Random
 
 class TrainingExercisesFactory {
 
+    fun create(trainingEntity: TrainingEntity): List<TrainingExerciseEntity> {
+        return when (trainingEntity.numberOfTraining) {
+            in 1..5 -> createExercises(5, trainingEntity.id, ExerciseName.TONGUE_TWISTERS_EASY)
+            in 5..10 -> createExercises(6, trainingEntity.id, ExerciseName.TONGUE_TWISTERS_EASY)
+            in 10..15 -> createExercises(7, trainingEntity.id, ExerciseName.TONGUE_TWISTERS_HARD)
+            in 15..20 -> createExercises(8, trainingEntity.id, ExerciseName.TONGUE_TWISTERS_HARD)
+            in 20..25 -> createExercises(
+                9,
+                trainingEntity.id,
+                ExerciseName.TONGUE_TWISTERS_VERY_HARD
+            )
+            in 25..30 -> createExercises(
+                10,
+                trainingEntity.id,
+                ExerciseName.TONGUE_TWISTERS_VERY_HARD
+            )
+            else -> createExercises(10, trainingEntity.id, ExerciseName.TONGUE_TWISTERS_VERY_HARD)
+        }
+    }
+
     private fun createExercises(
         anim: Int,
         trainingId: Long,
@@ -122,17 +142,17 @@ class TrainingExercisesFactory {
                     ),
                     TrainingExerciseEntity(
                         trainingId = trainingId,
-                        name = ExerciseName.SOUND_COMBINATIONS,
-                        aim = anim
-                    ),
-                    TrainingExerciseEntity(
-                        trainingId = trainingId,
                         name = ExerciseName.TEN,
                         aim = anim
                     ),
                     TrainingExerciseEntity(
                         trainingId = trainingId,
                         name = ExerciseName.ASSOCIATIONS,
+                        aim = anim
+                    ),
+                    TrainingExerciseEntity(
+                        trainingId = trainingId,
+                        name = ExerciseName.COUP_OF_CONSCIOUSNESS,
                         aim = anim
                     ),
                     TrainingExerciseEntity(
@@ -234,6 +254,11 @@ class TrainingExercisesFactory {
                     ),
                     TrainingExerciseEntity(
                         trainingId = trainingId,
+                        name = ExerciseName.PROBLEM_SOLVING,
+                        aim = anim
+                    ),
+                    TrainingExerciseEntity(
+                        trainingId = trainingId,
                         name = ExerciseName.RAVEN_LOOK_LIKE_A_TABLE_FILINGS,
                         aim = anim
                     ),
@@ -259,6 +284,11 @@ class TrainingExercisesFactory {
                     TrainingExerciseEntity(
                         trainingId = trainingId,
                         name = ExerciseName.SPECIFICATIONS,
+                        aim = anim
+                    ),
+                    TrainingExerciseEntity(
+                        trainingId = trainingId,
+                        name = ExerciseName.COUP,
                         aim = anim
                     ),
                     TrainingExerciseEntity(
@@ -309,25 +339,4 @@ class TrainingExercisesFactory {
             }
         }
     }
-
-    fun create(trainingEntity: TrainingEntity): List<TrainingExerciseEntity> {
-        return when (trainingEntity.numberOfTraining) {
-            in 1..5 -> createExercises(5, trainingEntity.id, ExerciseName.TONGUE_TWISTERS_EASY)
-            in 5..10 -> createExercises(6, trainingEntity.id, ExerciseName.TONGUE_TWISTERS_EASY)
-            in 10..15 -> createExercises(7, trainingEntity.id, ExerciseName.TONGUE_TWISTERS_HARD)
-            in 15..20 -> createExercises(8, trainingEntity.id, ExerciseName.TONGUE_TWISTERS_HARD)
-            in 20..25 -> createExercises(
-                9,
-                trainingEntity.id,
-                ExerciseName.TONGUE_TWISTERS_VERY_HARD
-            )
-            in 25..30 -> createExercises(
-                10,
-                trainingEntity.id,
-                ExerciseName.TONGUE_TWISTERS_VERY_HARD
-            )
-            else -> createExercises(10, trainingEntity.id, ExerciseName.TONGUE_TWISTERS_VERY_HARD)
-        }
-    }
-
 }
