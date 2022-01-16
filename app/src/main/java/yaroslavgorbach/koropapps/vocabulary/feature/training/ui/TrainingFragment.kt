@@ -74,10 +74,6 @@ class TrainingFragment : Fragment(R.layout.fragment_training) {
                     host<Router>().openDescription(withExercises)
                 }
 
-                override fun onPageChanged(page: Int) {
-                    viewModel.setCurrentPage(page)
-                }
-
                 override fun onBack() {
                     onBackPressed()
                 }

@@ -8,7 +8,6 @@ class TrainingWithExercisesUi(private val trainingWithExercisesEntity: TrainingW
         get() = trainingWithExercisesEntity
             .exercises
             .map(::TrainingExerciseUi)
-            .filter { it.isFinished.not() }
 
     val progress: Int
         get() = trainingWithExercisesEntity.progress
@@ -19,5 +18,4 @@ class TrainingWithExercisesUi(private val trainingWithExercisesEntity: TrainingW
     val isTrainingFinished: Boolean
         get() = trainingWithExercisesEntity.isFinished
 
-    var currentViewPagerPage = 0
 }

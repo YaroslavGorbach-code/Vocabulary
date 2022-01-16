@@ -20,13 +20,9 @@ class TrainingViewModel @Inject constructor(
     val trainingWithExercises: LiveData<TrainingWithExercisesUi>
         get() = _trainingWithExercises
 
-    private var currentViewPage = 0
-
-
     fun getCurrentTrainingWithExercises() {
         observeCurrentTrainingWithExercisesInteractor()
             .map(::TrainingWithExercisesUi)
-            .map { training -> training.apply { currentViewPagerPage = currentViewPage } }
             .subscribe(_trainingWithExercises::postValue)
             .let(disposables::add)
     }
@@ -36,9 +32,5 @@ class TrainingViewModel @Inject constructor(
         if (disposables.isDisposed.not()) {
             disposables.dispose()
         }
-    }
-
-    fun setCurrentPage(currentPage: Int) {
-        currentViewPage = currentPage
     }
 }
