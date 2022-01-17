@@ -1,9 +1,11 @@
 package yaroslavgorbach.koropapps.vocabulary.business.training
 
+import android.util.Log
 import io.reactivex.rxjava3.core.Observable
 import yaroslavgorbach.koropapps.vocabulary.business.training.factory.TrainingExercisesFactory
 import yaroslavgorbach.koropapps.vocabulary.business.training.factory.TrainingFactory
 import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingWithExercisesEntity
+import yaroslavgorbach.koropapps.vocabulary.utils.isToday
 
 class ObserveCurrentTrainingWithExercisesInteractor(
     private val observeLastFifeTrainingsInteractor: ObserveLastFifeTrainingsInteractor,
@@ -25,5 +27,6 @@ class ObserveCurrentTrainingWithExercisesInteractor(
                     ).subscribe()
                 }
             }
+
     }
 }

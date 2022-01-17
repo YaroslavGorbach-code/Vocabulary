@@ -97,4 +97,11 @@ class BusinessTrainingModule {
     ): DeleteAllTrainingsInteractor {
         return DeleteAllTrainingsInteractor(repoTraining)
     }
+
+    @Provides
+    fun provideObservePreviousTrainingInteractor(
+        observeTrainingsInteractor: ObserveTrainingsInteractor
+    ): ObservePreviousTrainingInteractor {
+        return ObservePreviousTrainingInteractor(observeTrainingsInteractor)
+    }
 }

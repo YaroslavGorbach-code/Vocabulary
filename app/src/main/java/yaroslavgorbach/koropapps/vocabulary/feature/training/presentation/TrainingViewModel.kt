@@ -3,14 +3,17 @@ package yaroslavgorbach.koropapps.vocabulary.feature.training.presentation
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import yaroslavgorbach.koropapps.vocabulary.business.training.ObserveCurrentTrainingWithExercisesInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.training.ObservePreviousTrainingInteractor
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingWithExercisesUi
 import javax.inject.Inject
 
 
 class TrainingViewModel @Inject constructor(
     private val observeCurrentTrainingWithExercisesInteractor: ObserveCurrentTrainingWithExercisesInteractor,
+    private val observePreviousTrainingInteractor: ObservePreviousTrainingInteractor,
 ) : ViewModel() {
 
     private val disposables: CompositeDisposable = CompositeDisposable()
@@ -21,8 +24,11 @@ class TrainingViewModel @Inject constructor(
         get() = _trainingWithExercises
 
     fun getCurrentTrainingWithExercises() {
-        observeCurrentTrainingWithExercisesInteractor()
-            .map(::TrainingWithExercisesUi)
+        Observable.combineLatest(
+            observeCurrentTrainingWithExercisesInteractor(),
+            observePreviousTrainingInteractor(),
+            ::TrainingWithExercisesUi
+        )
             .subscribe(_trainingWithExercises::postValue)
             .let(disposables::add)
     }

@@ -18,39 +18,55 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
+            <ImageView
+                android:id="@+id/ic_close"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:padding="8dp"
+                android:background="?selectableItemBackgroundBorderless"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/ic_close" />
+
+            <TextView
+                android:id="@+id/days_in_row"
+                style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="16dp"
+                tools:text="Тренеровок подряд: 5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:navigationIcon="@drawable/ic_close" />
+                app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                tools:text="последняя тренировка была 19 янв. 2022"
+                app:layout_constraintStart_toStartOf="@+id/days_in_row"
+                app:layout_constraintTop_toBottomOf="@+id/days_in_row" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/list"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:fadeScrollbars="false"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:scrollbars="none"
-                android:scrollIndicators="top"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/toolbar"
-                app:layout_constraintVertical_bias="1.0"
+                app:layout_constraintTop_toBottomOf="@+id/date"
                 tools:itemCount="3"
                 tools:listitem="@layout/item_exercise_tarining"
                 tools:targetApi="m" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
+        </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
 
