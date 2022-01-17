@@ -47,7 +47,8 @@
                 app:layout_constraintTop_toBottomOf="@id/toolbar"
                 app:layout_constraintVertical_bias="1.0"
                 tools:itemCount="3"
-                tools:listitem="@layout/item_exercise_tarining" />
+                tools:listitem="@layout/item_exercise_tarining"
+                tools:targetApi="m" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -93,31 +94,4 @@
         app:layout_constraintTop_toBottomOf="@+id/no_exercises_text_one"
         tools:visibility="gone" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.23" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.85" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.15" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.05" />
 </androidx.constraintlayout.motion.widget.MotionLayout>
