@@ -1,7 +1,6 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.training.ui
 
 import android.annotation.SuppressLint
-import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.divider.MaterialDividerItemDecoration
 import yaroslavgorbach.koropapps.vocabulary.R
@@ -19,6 +18,7 @@ class TrainingView(
 
     interface Callback {
         fun onExercise(withExercises: TrainingExerciseUi)
+        fun onShowTrainingIsFinishedDialog()
         fun onBack()
     }
 
@@ -32,7 +32,10 @@ class TrainingView(
     @SuppressLint("SetTextI18n")
     fun setTrainingWitExercises(trainingWithExercisesUi: TrainingWithExercisesUi) {
         adapter.setData(trainingWithExercisesUi.exercises)
-        showNoExercisesView(trainingWithExercisesUi.exercises.isEmpty())
+
+        if (trainingWithExercisesUi.isTrainingFinished) {
+            callback.onShowTrainingIsFinishedDialog()
+        }
 
         trainingWithExercisesUi.lastTrainingDate?.let { date ->
             binding.date.text =
@@ -54,22 +57,6 @@ class TrainingView(
     private fun initActions() {
         binding.icClose.setOnClickListener {
             callback.onBack()
-        }
-
-        binding.noExercisesIcon.setOnClickListener {
-            callback.onBack()
-        }
-    }
-
-    private fun showNoExercisesView(isShow: Boolean) {
-        if (isShow) {
-            binding.noExercisesIcon.visibility = View.VISIBLE
-            binding.noExercisesTextOne.visibility = View.VISIBLE
-            binding.noExercisesTextTwo.visibility = View.VISIBLE
-        } else {
-            binding.noExercisesIcon.visibility = View.GONE
-            binding.noExercisesTextOne.visibility = View.GONE
-            binding.noExercisesTextTwo.visibility = View.GONE
         }
     }
 }

@@ -59,6 +59,7 @@
     <string name="notifications_settings">Настройка уведомлений</string>
     <string name="notification_text">Текст уведомления</string>
     <string name="ok">Ok</string>
+    <string name="good">Хорошо</string>
     <string name="empty_field_error">Это поле не может быть пустым</string>
     <string name="save">Сохранить</string>
     <string name="clear_read"><font fgcolor='#FFFF3B30'>Очистить</font></string>
@@ -91,6 +92,8 @@
     <string name="start_daily_training">начать ежедневную тренеровку</string>
     <string name="last_training_was">Последняя тренировка была</string>
     <string name="finished_trainings_in_row">Завершенных тренеровок подряд:</string>
+    <string name="training_is_over">Тренировка закончена</string>
+    <string name="training_is_over_info_text">Ежедневная тренировка выполнена! Следующая будет доступна завтра, отдыхайте</string>
 
     <string-array name="empty_array" />
 </resources>
