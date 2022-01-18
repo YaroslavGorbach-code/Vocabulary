@@ -17,7 +17,7 @@ class TrainingView(
 ) {
 
     interface Callback {
-        fun onExercise(withExercises: TrainingExerciseUi)
+        fun onExercise(exercise: TrainingExerciseUi)
         fun onShowTrainingIsFinishedDialog()
         fun onBack()
     }

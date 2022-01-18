@@ -81,8 +81,10 @@ class TrainingFragment : Fragment(R.layout.fragment_training),
         trainingView = TrainingView(
             FragmentTrainingBinding.bind(view),
             object : TrainingView.Callback {
-                override fun onExercise(withExercises: TrainingExerciseUi) {
-                    host<Router>().openDescription(withExercises)
+                override fun onExercise(exercise: TrainingExerciseUi) {
+                    if (exercise.isFinished.not()){
+                        host<Router>().openDescription(exercise)
+                    }
                 }
 
                 override fun onShowTrainingIsFinishedDialog() {
