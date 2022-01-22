@@ -1,5 +1,7 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.ui
 
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import yaroslavgorbach.koropapps.vocabulary.R
@@ -97,6 +99,9 @@ class ExercisesListView(
 
     fun setTrainings(trainings: List<TrainingUi>) {
         trainingsAdapter.setData(trainings)
+        Handler(Looper.getMainLooper()).post {
+            binding.training.trainings.smoothScrollToPosition(trainings.size)
+        }
     }
 
     private fun setExercisesListData(exercisesWithFilterUi: ExercisesWithFilterUi) {
@@ -107,6 +112,7 @@ class ExercisesListView(
         when (exercisesWithFilterUi.filterUi) {
             ExerciseCategoryFilterUi.ALL -> {
                 binding.chipAll.isChecked = true
+
             }
             ExerciseCategoryFilterUi.VOCABULARY -> {
                 binding.chipVocabulary.isChecked = true
