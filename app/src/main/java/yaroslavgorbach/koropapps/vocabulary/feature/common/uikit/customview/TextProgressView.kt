@@ -26,7 +26,7 @@ class TextProgressView @JvmOverloads constructor(
     private var progressColor: Int = Color.YELLOW
 
     private val textView: TextView = TextView(context, attrs, defStyleAttr).apply {
-        text = "?"
+        text = ""
         gravity = Gravity.CENTER
     }
 

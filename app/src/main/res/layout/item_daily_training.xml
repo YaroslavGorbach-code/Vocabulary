@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.customview.TextProgressView
+        android:id="@+id/text_progress"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        app:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        app:textProgressColor="@color/green"
+        app:textProgressOutlineColor="?colorPrimaryAlpha10"
+        app:textProgressOutlineStrokeWidth="3dp"
+        app:textProgressStrokeWidth="3dp"
+        tools:ignore="SmallSp"
+        tools:progress="30" />
+
+    <TextView
+        android:id="@+id/day_of_weak"
+        style="@style/TextPrimary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ПН"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/text_progress"
+        app:layout_constraintStart_toStartOf="@+id/text_progress"
+        app:layout_constraintTop_toBottomOf="@+id/text_progress" />
+</androidx.constraintlayout.widget.ConstraintLayout>

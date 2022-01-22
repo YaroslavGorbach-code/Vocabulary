@@ -29,8 +29,13 @@ fun Date.formatDefault(): String {
     return dateFormat.format(this)
 }
 
-fun Date.formatDD(): String {
+fun Date.formatDayOfWeek(): String {
     val format = SimpleDateFormat("dd", Locale.getDefault())
+    return format.format(time)
+}
+
+fun Date.formatDayOfWeekText(): String {
+    val format = SimpleDateFormat("EEE", Locale.getDefault())
     return format.format(time)
 }
 

@@ -1,11 +1,15 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.presentation
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import io.reactivex.rxjava3.disposables.CompositeDisposable
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import yaroslavgorbach.koropapps.vocabulary.business.exercises.GetExercisesInteractor
-import yaroslavgorbach.koropapps.vocabulary.business.training.ObserveLastFifeTrainingsInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.training.ObserveTrainingsInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseCategory
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.ExerciseCategoryFilterUi
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.ExerciseUi
@@ -14,7 +18,7 @@ import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.Training
 import javax.inject.Inject
 
 class ExercisesListViewModel @Inject constructor(
-    private val observeLastFifeTrainingsInteractor: ObserveLastFifeTrainingsInteractor,
+    private val observeTrainingsInteractor: ObserveTrainingsInteractor,
     private val getExercisesInteractor: GetExercisesInteractor,
 ) : ViewModel() {
 
@@ -25,14 +29,14 @@ class ExercisesListViewModel @Inject constructor(
     val exercisesWithFilter: LiveData<ExercisesWithFilterUi>
         get() = _exercisesWithFilter
 
-    private val _training: MutableLiveData<TrainingUi> = MutableLiveData()
+    private val _training: MutableLiveData<List<TrainingUi>> = MutableLiveData()
 
-    val training: LiveData<TrainingUi>
+    val training: LiveData<List<TrainingUi>>
         get() = _training
 
     init {
         getAndFilterExercises(ExerciseCategoryFilterUi.ALL)
-        getLastFifeTrainings()
+        getTrainings()
     }
 
     override fun onCleared() {
@@ -78,9 +82,9 @@ class ExercisesListViewModel @Inject constructor(
         }
     }
 
-    private fun getLastFifeTrainings() {
-        observeLastFifeTrainingsInteractor()
-            .map(::TrainingUi)
+    private fun getTrainings() {
+        observeTrainingsInteractor()
+            .map { it.map(::TrainingUi) }
             .subscribe(_training::postValue)
             .let(disposables::add)
     }

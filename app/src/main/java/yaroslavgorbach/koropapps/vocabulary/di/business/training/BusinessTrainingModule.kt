@@ -31,24 +31,22 @@ class BusinessTrainingModule {
     }
 
     @Provides
-    fun provideObserveLastFifeTrainingsInteractor(
-        observeTrainingsInteractor: ObserveTrainingsInteractor,
-        insertTrainingInteractor: InsertTrainingInteractor
-    ): ObserveLastFifeTrainingsInteractor {
-        return ObserveLastFifeTrainingsInteractor(
-            observeTrainingsInteractor,
-            insertTrainingInteractor
-        )
+    fun provideFinishTrainingInteractor(
+        insertTraining: InsertTrainingInteractor
+    ): FinishTrainingInteractor {
+        return FinishTrainingInteractor(insertTraining)
     }
 
     @Provides
     fun provideObserveCurrentTrainingWithExercisesInteractor(
-        observeLastFifeTrainingsInteractor: ObserveLastFifeTrainingsInteractor,
-        insertTrainingExercisesInteractor: InsertTrainingExercisesInteractor
+        observeLastFifeTrainingsInteractor: ObserveTrainingsInteractor,
+        insertTrainingExercisesInteractor: InsertTrainingExercisesInteractor,
+        finishTrainingInteractor: FinishTrainingInteractor,
     ): ObserveCurrentTrainingWithExercisesInteractor {
         return ObserveCurrentTrainingWithExercisesInteractor(
             observeLastFifeTrainingsInteractor,
-            insertTrainingExercisesInteractor
+            insertTrainingExercisesInteractor,
+            finishTrainingInteractor,
         )
     }
 
@@ -61,9 +59,10 @@ class BusinessTrainingModule {
 
     @Provides
     fun provideObserveTrainingsInteractor(
-        repoTraining: RepoTraining
+        repoTraining: RepoTraining,
+        insertTrainingInteractor: InsertTrainingInteractor
     ): ObserveTrainingsInteractor {
-        return ObserveTrainingsInteractor(repoTraining)
+        return ObserveTrainingsInteractor(repoTraining, insertTrainingInteractor)
     }
 
     @Provides

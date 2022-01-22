@@ -1,6 +1,7 @@
 package yaroslavgorbach.koropapps.vocabulary.data.training.local.model
 
 import androidx.room.Embedded
+import androidx.room.Ignore
 import androidx.room.Relation
 
 data class TrainingWithExercisesEntity(
@@ -10,20 +11,15 @@ data class TrainingWithExercisesEntity(
     @Relation(parentColumn = "id", entityColumn = "trainingId")
     val exercises: List<TrainingExerciseEntity>
 ) {
-    val progress: Int
+
+    val exercisesProgress: Int
         get() {
-//            var p = 0
-//            exercises.forEach {
-//                p += it.progress
-//            }
-
-           val p = exercises.map(TrainingExerciseEntity::progress).reduceOrNull { val1, val2 ->
-                val1 + val2
-            }
-
-            return ((p?.toFloat() ?: 0f) / exercises.size.toFloat()).toInt()
+            val process = exercises
+                .map(TrainingExerciseEntity::progress)
+                .reduceOrNull(Int::plus)?.toFloat() ?: 0f
+            return (process / exercises.size.toFloat()).toInt()
         }
 
-    val isFinished: Boolean
-        get() = progress == 100
+    @Ignore
+    val areAllTrainingExercisesFinished = exercisesProgress == 100
 }

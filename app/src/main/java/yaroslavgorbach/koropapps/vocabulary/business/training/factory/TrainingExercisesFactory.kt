@@ -1,6 +1,5 @@
 package yaroslavgorbach.koropapps.vocabulary.business.training.factory
 
-import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.Exercise
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingEntity
 import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingExerciseEntity
@@ -10,7 +9,7 @@ class TrainingExercisesFactory {
 
     fun create(trainingEntity: TrainingEntity): List<TrainingExerciseEntity> {
         return when (trainingEntity.numberOfTraining) {
-            in 1..5 -> createExercises(5, trainingEntity.id, ExerciseName.TONGUE_TWISTERS_EASY)
+            in 0..5 -> createExercises(5, trainingEntity.id, ExerciseName.TONGUE_TWISTERS_EASY)
             in 5..10 -> createExercises(6, trainingEntity.id, ExerciseName.TONGUE_TWISTERS_EASY)
             in 10..15 -> createExercises(7, trainingEntity.id, ExerciseName.TONGUE_TWISTERS_HARD)
             in 15..20 -> createExercises(8, trainingEntity.id, ExerciseName.TONGUE_TWISTERS_HARD)

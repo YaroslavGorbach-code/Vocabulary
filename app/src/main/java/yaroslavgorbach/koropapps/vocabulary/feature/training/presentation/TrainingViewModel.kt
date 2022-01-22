@@ -1,5 +1,6 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.training.presentation
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -24,13 +25,17 @@ class TrainingViewModel @Inject constructor(
         get() = _trainingWithExercises
 
     fun getCurrentTrainingWithExercises() {
-        Observable.combineLatest(
+        Observable.zip(
             observeCurrentTrainingWithExercisesInteractor(),
             observePreviousTrainingInteractor(),
-            ::TrainingWithExercisesUi
-        )
-            .subscribe(_trainingWithExercises::postValue)
-            .let(disposables::add)
+        ) { current, previous ->
+            TrainingWithExercisesUi(
+                trainingWithExercisesEntity = current,
+                previousTrainingWithExercisesEntity = previous
+            )
+        }.subscribe(_trainingWithExercises::postValue) {
+            Log.i("dsxasdc", it.message.toString())
+        }.let(disposables::add)
     }
 
     override fun onCleared() {

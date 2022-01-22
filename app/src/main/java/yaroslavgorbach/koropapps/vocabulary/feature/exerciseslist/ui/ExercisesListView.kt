@@ -10,7 +10,7 @@ import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.Exercise
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.ExercisesWithFilterUi
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.TrainingUi
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.ui.recycler.ExercisesListAdapter
-import yaroslavgorbach.koropapps.vocabulary.utils.dayOfWeek
+import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.ui.recycler.TrainingsListAdapter
 
 class ExercisesListView(
     private val binding: FragmentExercisesListBinding,
@@ -25,6 +25,8 @@ class ExercisesListView(
 
     private val listAdapter = ExercisesListAdapter(callback::onExercise)
 
+    private val trainingsAdapter = TrainingsListAdapter()
+
     init {
         initView()
         initActions()
@@ -35,6 +37,13 @@ class ExercisesListView(
             adapter = listAdapter
             layoutManager = LinearLayoutManager(binding.root.context)
             addItemDecoration(LineDecorator(this.context, R.drawable.line_devider))
+        }
+
+        binding.training.trainings.apply {
+            adapter = trainingsAdapter
+            layoutManager = LinearLayoutManager(
+                binding.root.context, LinearLayoutManager.HORIZONTAL, false
+            )
         }
     }
 
@@ -86,36 +95,9 @@ class ExercisesListView(
         setExercisesListData(exercisesWithFilterUi)
     }
 
-    fun setTraining(trainingUi: TrainingUi) {
-        with(binding.training.days) {
-
-            trainingUi.first?.let { trainingWithExercises ->
-                day1.setProgress(trainingWithExercises.progress)
-                day1.setText(trainingWithExercises.training.date.dayOfWeek())
-            }
-
-            trainingUi.second?.let { trainingWithExercises ->
-                day2.setProgress(trainingWithExercises.progress)
-                day2.setText(trainingWithExercises.training.date.dayOfWeek())
-            }
-
-            trainingUi.third?.let { trainingWithExercises ->
-                day3.setProgress(trainingWithExercises.progress)
-                day3.setText(trainingWithExercises.training.date.dayOfWeek())
-            }
-
-            trainingUi.fourth?.let { trainingWithExercises ->
-                day4.setProgress(trainingWithExercises.progress)
-                day4.setText(trainingWithExercises.training.date.dayOfWeek())
-            }
-
-            trainingUi.fifth?.let { trainingWithExercises ->
-                day5.setProgress(trainingWithExercises.progress)
-                day5.setText(trainingWithExercises.training.date.dayOfWeek())
-            }
-        }
+    fun setTrainings(trainings: List<TrainingUi>) {
+        trainingsAdapter.setData(trainings)
     }
-
 
     private fun setExercisesListData(exercisesWithFilterUi: ExercisesWithFilterUi) {
         listAdapter.setData(exercisesWithFilterUi.exercisesUi)

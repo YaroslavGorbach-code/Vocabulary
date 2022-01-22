@@ -5,17 +5,17 @@ import java.util.*
 
 class TrainingWithExercisesUi(
     trainingWithExercisesEntity: TrainingWithExercisesEntity,
-    previousTrainingWithExercisesEntity: TrainingWithExercisesEntity?,
+    previousTrainingWithExercisesEntity: TrainingWithExercisesEntity,
 ) {
     val exercises: List<TrainingExerciseUi> = trainingWithExercisesEntity
         .exercises
         .map(::TrainingExerciseUi)
 
-    val progress: Int = trainingWithExercisesEntity.progress
+    val progress: Int = trainingWithExercisesEntity.exercisesProgress
 
     val daysWithoutInterruption: Int = trainingWithExercisesEntity.training.daysWithoutInterruption
 
-    val isTrainingFinished: Boolean = trainingWithExercisesEntity.isFinished
+    val isTrainingFinished: Boolean = trainingWithExercisesEntity.areAllTrainingExercisesFinished
 
-    val lastTrainingDate: Date? = previousTrainingWithExercisesEntity?.training?.date
+    val lastTrainingDate: Date? = previousTrainingWithExercisesEntity.training.date
 }

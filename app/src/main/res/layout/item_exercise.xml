@@ -5,7 +5,7 @@
     android:id="@+id/item"
     android:layout_width="match_parent"
     android:layout_height="?android:attr/listPreferredItemHeightLarge"
-    android:background="?selectableItemBackground"
+   style="@style/BaseLayoutItem"
     android:clickable="true"
     android:focusable="true">
 

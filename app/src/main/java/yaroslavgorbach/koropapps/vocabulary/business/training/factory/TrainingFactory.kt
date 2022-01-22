@@ -15,12 +15,12 @@ class TrainingFactory {
         return when (trainingType) {
             TrainingType.EMPTY -> TrainingEntity()
             TrainingType.TODAY -> {
-                var daysWithoutInterrupting = 0
-                var numberOfTrainings = previousTraining!!.numberOfTraining
-                numberOfTrainings++
+                val numberOfTrainings = previousTraining?.numberOfTraining?.inc() ?: 0
 
-                if (previousTraining.isFinished) {
-                    daysWithoutInterrupting = previousTraining.daysWithoutInterruption
+                val daysWithoutInterrupting = if (previousTraining?.isFinished == true) {
+                    previousTraining.daysWithoutInterruption.inc()
+                } else {
+                    0
                 }
 
                 TrainingEntity(
