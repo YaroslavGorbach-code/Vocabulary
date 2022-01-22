@@ -50,6 +50,7 @@ class ExercisesListView(
     }
 
     private fun initActions() {
+        binding.training.start.setOnClickListener { callback.onTraining() }
         binding.training.item.setOnClickListener { callback.onTraining() }
 
         binding.chipAll.setOnCheckedChangeListener { _, isChecked ->
