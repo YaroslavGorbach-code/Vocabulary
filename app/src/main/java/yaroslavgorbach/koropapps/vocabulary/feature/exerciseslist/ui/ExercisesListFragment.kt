@@ -74,7 +74,7 @@ class ExercisesListFragment : Fragment(R.layout.fragment_exercises_list) {
     }
 
     private fun initObservers() {
-        viewModel.training.observe(viewLifecycleOwner, exercisesView::setTraining)
+        viewModel.training.observe(viewLifecycleOwner, exercisesView::setTrainings)
 
         viewModel.exercisesWithFilter.observe(
             viewLifecycleOwner,

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.ItemExerciseTariningBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.utils.getDrawable
@@ -46,9 +47,10 @@ class TrainingExercisesListAdapter(private val onExercise: (exercise: TrainingEx
 
         fun bind(exercise: TrainingExerciseUi) {
             binding.name.text = binding.getString(exercise.name.id)
-            binding.image.setImageDrawable(binding.getDrawable(exercise.iconRes))
-            binding.imageProgress.setProgress(exercise.progress)
             binding.category.text = binding.getString(exercise.category.stringRes)
+            binding.image.setImageDrawable(binding.getDrawable(exercise.iconRes))
+            binding.progress.progress = exercise.progress.toFloat()
+            if (exercise.isFinished) binding.finishMark.setImageResource(R.drawable.ic_circle_done)
         }
     }
 }

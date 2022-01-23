@@ -1,27 +1,25 @@
 package yaroslavgorbach.koropapps.vocabulary.data.training.local.model
 
-import android.util.Log
 import androidx.room.Embedded
+import androidx.room.Ignore
 import androidx.room.Relation
 
 data class TrainingWithExercisesEntity(
     @Embedded
     val training: TrainingEntity,
-    @Relation(
-        parentColumn = "id",
-        entityColumn = "trainingId"
-    )
+
+    @Relation(parentColumn = "id", entityColumn = "trainingId")
     val exercises: List<TrainingExerciseEntity>
 ) {
-    val progress: Int
+
+    val exercisesProgress: Int
         get() {
-            var p = 0
-            exercises.forEach {
-                p += it.progress
-            }
-            return (p.toFloat() / exercises.size.toFloat()).toInt()
+            val process = exercises
+                .map(TrainingExerciseEntity::progress)
+                .reduceOrNull(Int::plus)?.toFloat() ?: 0f
+            return (process / exercises.size.toFloat()).toInt()
         }
 
-    val isFinished: Boolean
-        get() = progress == 100
+    @Ignore
+    val areAllTrainingExercisesFinished = exercisesProgress == 100
 }

@@ -4,7 +4,7 @@ import android.content.Context
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsExerciseValueEntity
-import yaroslavgorbach.koropapps.vocabulary.utils.formatDD
+import yaroslavgorbach.koropapps.vocabulary.utils.formatDayOfWeek
 import yaroslavgorbach.koropapps.vocabulary.utils.getColorPrimary
 import java.util.*
 
@@ -27,7 +27,7 @@ data class ChartValueUi(
 
     val labels: ArrayList<String>
         get() {
-            return statisticsExerciseValueEntities.map { it.date.formatDD() } as ArrayList<String>
+            return statisticsExerciseValueEntities.map { it.date.formatDayOfWeek() } as ArrayList<String>
         }
 
     val dates: List<Date>

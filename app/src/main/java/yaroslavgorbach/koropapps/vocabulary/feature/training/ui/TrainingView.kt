@@ -1,12 +1,14 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.training.ui
 
 import android.annotation.SuppressLint
-import android.view.View
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.divider.MaterialDividerItemDecoration
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentTrainingBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingWithExercisesUi
 import yaroslavgorbach.koropapps.vocabulary.feature.training.ui.recycler.TrainingExercisesListAdapter
+import yaroslavgorbach.koropapps.vocabulary.utils.formatDefault
 import yaroslavgorbach.koropapps.vocabulary.utils.getString
 
 class TrainingView(
@@ -15,68 +17,46 @@ class TrainingView(
 ) {
 
     interface Callback {
-        fun onExercise(withExercises: TrainingExerciseUi)
-        fun onPageChanged(page: Int)
+        fun onExercise(exercise: TrainingExerciseUi)
+        fun onShowTrainingIsFinishedDialog()
         fun onBack()
     }
 
-    private val pagerAdapter = TrainingExercisesListAdapter { exercise ->
-        callback.onExercise(exercise)
-
-        callback.onPageChanged(binding.viewPager.currentItem)
-    }
+    private val adapter = TrainingExercisesListAdapter(callback::onExercise)
 
     init {
-        initView()
+        initRecycler()
         initActions()
     }
 
     @SuppressLint("SetTextI18n")
     fun setTrainingWitExercises(trainingWithExercisesUi: TrainingWithExercisesUi) {
-        pagerAdapter.setData(trainingWithExercisesUi.exercises)
+        adapter.setData(trainingWithExercisesUi.exercises)
 
-        setViewPagerPage(trainingWithExercisesUi.currentViewPagerPage)
+        if (trainingWithExercisesUi.isTrainingFinished) {
+            callback.onShowTrainingIsFinishedDialog()
+        }
 
-        binding.textProgress.setProgress(trainingWithExercisesUi.progress)
+        trainingWithExercisesUi.lastTrainingDate?.let { date ->
+            binding.date.text =
+                binding.getString(R.string.last_training_was) + " " + date.formatDefault()
+        }
 
-        binding.textProgress.setText(trainingWithExercisesUi.progress.toString() + "%")
-
-        binding.daysIaARow.text =
-            binding.getString(R.string.days_without_interruption) + ": ${trainingWithExercisesUi.daysWithoutInterruption}"
-
-        showNoExercisesView(trainingWithExercisesUi.exercises.isEmpty())
+        binding.daysInRow.text =
+            binding.getString(R.string.finished_trainings_in_row) + " " + trainingWithExercisesUi.daysWithoutInterruption
     }
 
-    private fun initView() {
-        binding.viewPager.adapter = pagerAdapter
+    private fun initRecycler() {
+        val divider =
+            MaterialDividerItemDecoration(binding.root.context, LinearLayoutManager.VERTICAL)
+        divider.dividerInsetStart = 160
+        binding.list.addItemDecoration(divider)
+        binding.list.adapter = adapter
     }
 
     private fun initActions() {
         binding.icClose.setOnClickListener {
             callback.onBack()
         }
-
-        binding.noExercisesIcon.setOnClickListener {
-            callback.onBack()
-        }
     }
-
-    private fun showNoExercisesView(isShow: Boolean) {
-        if (isShow) {
-            binding.noExercisesIcon.visibility = View.VISIBLE
-            binding.noExercisesTextOne.visibility = View.VISIBLE
-            binding.noExercisesTextTwo.visibility = View.VISIBLE
-            binding.textProgress.visibility = View.GONE
-        } else {
-            binding.noExercisesIcon.visibility = View.GONE
-            binding.noExercisesTextOne.visibility = View.GONE
-            binding.noExercisesTextTwo.visibility = View.GONE
-            binding.textProgress.visibility = View.VISIBLE
-        }
-    }
-
-    private fun setViewPagerPage(page: Int) {
-        binding.viewPager.setCurrentItem(page, false)
-    }
-
 }

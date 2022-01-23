@@ -1,23 +1,21 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.training.model
 
 import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingWithExercisesEntity
+import java.util.*
 
-class TrainingWithExercisesUi(private val trainingWithExercisesEntity: TrainingWithExercisesEntity) {
+class TrainingWithExercisesUi(
+    trainingWithExercisesEntity: TrainingWithExercisesEntity,
+    previousTrainingWithExercisesEntity: TrainingWithExercisesEntity,
+) {
+    val exercises: List<TrainingExerciseUi> = trainingWithExercisesEntity
+        .exercises
+        .map(::TrainingExerciseUi)
 
-    val exercises: List<TrainingExerciseUi>
-        get() = trainingWithExercisesEntity
-            .exercises
-            .map(::TrainingExerciseUi)
-            .filter { it.isFinished.not() }
+    val progress: Int = trainingWithExercisesEntity.exercisesProgress
 
-    val progress: Int
-        get() = trainingWithExercisesEntity.progress
+    val daysWithoutInterruption: Int = trainingWithExercisesEntity.training.daysWithoutInterruption
 
-    val daysWithoutInterruption: Int
-        get() = trainingWithExercisesEntity.training.daysWithoutInterruption
+    val isTrainingFinished: Boolean = trainingWithExercisesEntity.areAllTrainingExercisesFinished
 
-    val isTrainingFinished: Boolean
-        get() = trainingWithExercisesEntity.isFinished
-
-    var currentViewPagerPage = 0
+    val lastTrainingDate: Date? = previousTrainingWithExercisesEntity.training.date
 }

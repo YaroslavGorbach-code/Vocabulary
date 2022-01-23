@@ -2,7 +2,7 @@ package yaroslavgorbach.koropapps.vocabulary.feature.profile.profile.model
 
 import android.content.Context
 import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.StatisticsDailyTrainingTimeEntity
-import yaroslavgorbach.koropapps.vocabulary.utils.formatDD
+import yaroslavgorbach.koropapps.vocabulary.utils.formatDayOfWeek
 import yaroslavgorbach.koropapps.vocabulary.utils.getColorPrimary
 import java.util.*
 
@@ -22,7 +22,7 @@ data class ChartDayUi(private val statisticsDailyTrainingTimeEntity: List<Statis
         }
 
     val labels: ArrayList<String>
-        get() = statisticsDailyTrainingTimeEntity.map { it.date.formatDD() } as ArrayList<String>
+        get() = statisticsDailyTrainingTimeEntity.map { it.date.formatDayOfWeek() } as ArrayList<String>
 
     val isEmpty: Boolean
         get() = data.isEmpty() || labels.isEmpty()

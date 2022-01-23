@@ -27,6 +27,7 @@
     <string name="number_of_words_in_story">Количество слов в истории</string>
     <string name="statistic">Статистика</string>
     <string name="start">НАЧАТЬ</string>
+    <string name="start_training">начать тренировку</string>
     <string name="daily_training">Ежедневная тренировка</string>
     <string name="no_data">Нет данных</string>
     <string name="title_exercises">Упражнения</string>
@@ -59,6 +60,7 @@
     <string name="notifications_settings">Настройка уведомлений</string>
     <string name="notification_text">Текст уведомления</string>
     <string name="ok">Ok</string>
+    <string name="good">Хорошо</string>
     <string name="empty_field_error">Это поле не может быть пустым</string>
     <string name="save">Сохранить</string>
     <string name="clear_read"><font fgcolor='#FFFF3B30'>Очистить</font></string>
@@ -89,6 +91,10 @@
     <string name="record_deleted">Запись удалена</string>
     <string name="achievement">Достижения</string>
     <string name="start_daily_training">начать ежедневную тренеровку</string>
+    <string name="last_training_was">Последняя тренировка была</string>
+    <string name="finished_trainings_in_row">Завершенных тренеровок подряд:</string>
+    <string name="training_is_over">Тренировка закончена</string>
+    <string name="training_is_over_info_text">Ежедневная тренировка выполнена! Следующая будет доступна завтра, отдыхайте</string>
 
     <string-array name="empty_array" />
 </resources>

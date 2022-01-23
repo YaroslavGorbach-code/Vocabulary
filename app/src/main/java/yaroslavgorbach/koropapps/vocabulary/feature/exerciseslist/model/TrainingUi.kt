@@ -1,21 +1,16 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model
 
 import yaroslavgorbach.koropapps.vocabulary.data.training.local.model.TrainingWithExercisesEntity
+import yaroslavgorbach.koropapps.vocabulary.utils.formatDayOfWeek
+import yaroslavgorbach.koropapps.vocabulary.utils.formatDayOfWeekText
 
 
-data class TrainingUi(private val trainingWithExerciseEntities: List<TrainingWithExercisesEntity>) {
-    val first: TrainingWithExercisesEntity?
-        get() = trainingWithExerciseEntities.getOrNull(0)
+data class TrainingUi(private val trainingWithExerciseEntities: TrainingWithExercisesEntity) {
+    val id = trainingWithExerciseEntities.training.id
 
-    val second: TrainingWithExercisesEntity?
-        get() = trainingWithExerciseEntities.getOrNull(1)
+    val progress = trainingWithExerciseEntities.exercisesProgress
 
-    val third: TrainingWithExercisesEntity?
-        get() = trainingWithExerciseEntities.getOrNull(2)
+    val dayOfWeek = trainingWithExerciseEntities.training.date?.formatDayOfWeek().toString()
 
-    val fourth: TrainingWithExercisesEntity?
-        get() = trainingWithExerciseEntities.getOrNull(3)
-
-    val fifth: TrainingWithExercisesEntity?
-        get() = trainingWithExerciseEntities.getOrNull(4)
+    val dayOfWeekText = trainingWithExerciseEntities.training.date?.formatDayOfWeekText().toString()
 }

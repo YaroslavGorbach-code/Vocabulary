@@ -2,6 +2,7 @@ package yaroslavgorbach.koropapps.vocabulary.feature.training.ui
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -21,7 +22,8 @@ import javax.inject.Inject
 
 @InternalCoroutinesApi
 @FlowPreview
-class TrainingFragment : Fragment(R.layout.fragment_training) {
+class TrainingFragment : Fragment(R.layout.fragment_training),
+    TrainingIsOverDialog.DismissListener {
 
     interface Router {
         fun openDescription(exercise: TrainingExerciseUi)
@@ -43,6 +45,13 @@ class TrainingFragment : Fragment(R.layout.fragment_training) {
         initDagger()
     }
 
+    private fun initDagger() {
+        (requireActivity().application as App).appComponent
+            .trainingComponent()
+            .create()
+            .inject(this)
+    }
+
     override fun onStart() {
         super.onStart()
         requireActivity().setBackgroundStatusBarColor()
@@ -59,23 +68,27 @@ class TrainingFragment : Fragment(R.layout.fragment_training) {
         initObservers()
     }
 
-    private fun initDagger() {
-        (requireActivity().application as App).appComponent
-            .trainingComponent()
-            .create()
-            .inject(this)
+    private fun initObservers() {
+        viewModel.getCurrentTrainingWithExercises()
+
+        viewModel.trainingWithExercises.observe(
+            viewLifecycleOwner,
+            trainingView::setTrainingWitExercises
+        )
     }
 
     private fun initView(view: View) {
         trainingView = TrainingView(
             FragmentTrainingBinding.bind(view),
             object : TrainingView.Callback {
-                override fun onExercise(withExercises: TrainingExerciseUi) {
-                    host<Router>().openDescription(withExercises)
+                override fun onExercise(exercise: TrainingExerciseUi) {
+                    if (exercise.isFinished.not()){
+                        host<Router>().openDescription(exercise)
+                    }
                 }
 
-                override fun onPageChanged(page: Int) {
-                    viewModel.setCurrentPage(page)
+                override fun onShowTrainingIsFinishedDialog() {
+                    showTrainingIsFinishedDialog()
                 }
 
                 override fun onBack() {
@@ -84,12 +97,11 @@ class TrainingFragment : Fragment(R.layout.fragment_training) {
             })
     }
 
-    private fun initObservers() {
-        viewModel.getCurrentTrainingWithExercises()
+    private fun showTrainingIsFinishedDialog() {
+        TrainingIsOverDialog.newInstance().show(childFragmentManager, null)
+    }
 
-        viewModel.trainingWithExercises.observe(
-            viewLifecycleOwner,
-            trainingView::setTrainingWitExercises
-        )
+    override fun onDismiss() {
+        onBackPressed()
     }
 }
