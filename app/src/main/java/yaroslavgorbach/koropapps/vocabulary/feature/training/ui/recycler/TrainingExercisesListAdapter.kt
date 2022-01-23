@@ -50,7 +50,9 @@ class TrainingExercisesListAdapter(private val onExercise: (exercise: TrainingEx
             binding.category.text = binding.getString(exercise.category.stringRes)
             binding.image.setImageDrawable(binding.getDrawable(exercise.iconRes))
             binding.progress.progress = exercise.progress.toFloat()
-            if (exercise.isFinished) binding.finishMark.setImageResource(R.drawable.ic_circle_done)
+            if (exercise.isFinished) binding.finishMark.setImageResource(R.drawable.ic_circle_done) else binding.finishMark.setImageResource(
+                R.drawable.ic_circle_outline
+            )
         }
     }
 }
