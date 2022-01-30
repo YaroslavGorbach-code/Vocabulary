@@ -1,5 +1,6 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.common.ui
 
+import android.annotation.SuppressLint
 import android.os.SystemClock
 import android.view.View
 import com.google.android.material.snackbar.Snackbar
@@ -40,36 +41,25 @@ class ExerciseView(
         }
     }
 
-    private fun setSingleLineWordTextViewMod(word: String) {
-        if (word.length < 30) {
-            binding.cardText.word.maxLines = 1
-        } else {
-            binding.cardText.word.maxLines = Int.MAX_VALUE
-        }
-    }
-
     fun setDescriptionText(text: String) {
         binding.descriptionText.text = text
     }
 
     fun setShortDescriptionAboveWord(text: String) {
         binding.cardText.textAtTop.visibility = View.VISIBLE
-
         binding.cardText.textAtTop.text = text
     }
 
     fun setWord(word: String) {
-        setSingleLineWordTextViewMod(word)
         binding.cardText.word.text = word
     }
-
 
     fun setExercise(exercise: TrainingExerciseUi) {
         if (exercise.isFinished) {
             callback.onBack()
         }
 
-        setAimAndPerformed(exercise.aim, exercise.performed)
+        setAimAndPerformed(exercise.aim, exercise.performed, exercise.progress.toFloat())
     }
 
     fun setIsRecording(isRecording: Boolean) {
@@ -85,15 +75,26 @@ class ExerciseView(
             binding.startStopRecord.setImageResource(R.drawable.ic_voice_recording)
         } else {
             binding.startStopRecord.setImageResource(R.drawable.ic_voice_record_stop)
-
         }
     }
 
     fun setExerciseName(name: ExerciseName) {
         setWordDescription(name)
+        formatWordLines(name)
         binding.toolbar.title = binding.getString(name.id)
     }
 
+    private fun formatWordLines(exerciseName: ExerciseName) {
+        when (exerciseName) {
+            ExerciseName.STORYTELLER_IMPROVISER -> binding.cardText.word.maxLines = 2
+            ExerciseName.TONGUE_TWISTERS_EASY,
+            ExerciseName.TONGUE_TWISTERS_HARD,
+            ExerciseName.TONGUE_TWISTERS_VERY_HARD,
+            ExerciseName.PROBLEM_SOLVING,
+            ExerciseName.QUESTION_ANSWER -> binding.cardText.word.maxLines = Int.MAX_VALUE
+            else -> binding.cardText.word.maxLines = 1
+        }
+    }
     private fun startOneWordChronometer() {
         binding.chronometerOneWord.base = SystemClock.elapsedRealtime()
         binding.chronometerOneWord.start()
@@ -103,9 +104,11 @@ class ExerciseView(
         binding.chronometer.start()
     }
 
-    private fun setAimAndPerformed(aim: Int, performed: Int) {
-        binding.aimAndPerformed.visibility = View.VISIBLE
-        binding.aimAndPerformed.setText("$performed/$aim")
+    @SuppressLint("SetTextI18n")
+    private fun setAimAndPerformed(aim: Int, performed: Int, process: Float) {
+        binding.performedAndAnim.root.visibility = View.VISIBLE
+        binding.performedAndAnim.performedAnim.text = "$performed / $aim"
+        binding.performedAndAnim.progress.progress = process
     }
 
     private fun setWordDescription(name: ExerciseName) {
