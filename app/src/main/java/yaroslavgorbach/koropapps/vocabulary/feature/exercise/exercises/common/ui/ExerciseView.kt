@@ -7,6 +7,7 @@ import com.google.android.material.snackbar.Snackbar
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseBinding
+import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToMaxLinesMapper
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.utils.getString
 
@@ -85,16 +86,9 @@ class ExerciseView(
     }
 
     private fun formatWordLines(exerciseName: ExerciseName) {
-        when (exerciseName) {
-            ExerciseName.STORYTELLER_IMPROVISER -> binding.cardText.word.maxLines = 2
-            ExerciseName.TONGUE_TWISTERS_EASY,
-            ExerciseName.TONGUE_TWISTERS_HARD,
-            ExerciseName.TONGUE_TWISTERS_VERY_HARD,
-            ExerciseName.PROBLEM_SOLVING,
-            ExerciseName.QUESTION_ANSWER -> binding.cardText.word.maxLines = Int.MAX_VALUE
-            else -> binding.cardText.word.maxLines = 1
-        }
+        binding.cardText.word.maxLines = ExerciseNameToMaxLinesMapper().map(exerciseName)
     }
+
     private fun startOneWordChronometer() {
         binding.chronometerOneWord.base = SystemClock.elapsedRealtime()
         binding.chronometerOneWord.start()

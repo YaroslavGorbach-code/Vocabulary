@@ -5,11 +5,11 @@ import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.wordwiths
 class ExerciseShortDescriptionsToListStagesMapper {
 
     fun map(descriptions: List<String>): List<StageUi> {
-
         return descriptions.flatMapIndexed { index, element ->
             listOf(
                 StageUi(
-                    number = index + 1,
+                    number = index,
+                    numberOfAllStages = descriptions.size,
                     text = element,
                     isActive = index == 0,
                     isFinished = false,

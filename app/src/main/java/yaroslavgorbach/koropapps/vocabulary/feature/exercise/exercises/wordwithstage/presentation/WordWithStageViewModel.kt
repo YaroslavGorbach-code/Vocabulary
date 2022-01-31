@@ -1,6 +1,7 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.wordwithstage.presentation
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import yaroslavgorbach.koropapps.vocabulary.business.settings.ObserveAutoRecordStateInteractor
@@ -46,12 +47,14 @@ class WordWithStageViewModel @Inject constructor(
             ExerciseNameToShortDescriptionResMapper().map(exerciseType.getExerciseName())
         ).toList()
 
-    private val _stages: MutableLiveData<List<StageUi>> = MutableLiveData()
+    private var stages: MutableList<StageUi> = emptyList<StageUi>().toMutableList()
 
-    val stages: LiveData<List<StageUi>>
-        get() = _stages
+    private val _stage: MutableLiveData<StageUi> = MutableLiveData()
 
-    private val _word = MutableLiveData<String>()
+    val stage: LiveData<StageUi>
+        get() = _stage
+
+    val _word = MutableLiveData<String>()
 
     val word: LiveData<String>
         get() = _word
@@ -62,7 +65,9 @@ class WordWithStageViewModel @Inject constructor(
     }
 
     private fun refreshStages() {
-        _stages.value = ExerciseShortDescriptionsToListStagesMapper().map(shortDescriptions)
+        stages = ExerciseShortDescriptionsToListStagesMapper()
+            .map(shortDescriptions).toMutableList()
+        _stage.value = stages.first()
     }
 
     private fun generateWord() {
@@ -70,16 +75,14 @@ class WordWithStageViewModel @Inject constructor(
     }
 
     fun onNextStageClick() {
-        _stages.value.orEmpty().toMutableList().apply {
-            val currentIndex = indexOfFirst { it.isActive }
+        Log.i("sdclvsdf", "onNext")
+        Log.i("sdclvsdf", stages.toString())
+        Log.i("sdclvsdf", stages.first().toString())
 
-            if (getOrNull(currentIndex + 1) != null) {
-                find { it.isActive }!!.isFinished = true
-                find { it.isActive }!!.isActive = false
-
-                getOrNull(currentIndex + 1)!!.isActive = true
-
-                _stages.value = this
+       stages.apply {
+            removeFirst()
+            if (firstOrNull() != null) {
+                _stage.value = first()
             } else {
                 generateWord()
                 refreshStages()
