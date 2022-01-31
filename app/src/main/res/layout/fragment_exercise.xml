@@ -64,7 +64,7 @@
 
         <include
             android:id="@+id/performed_and_anim"
-            layout="@layout/layout_training_exercise_progress"
+            layout="@layout/layout_performed_and_anim"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"

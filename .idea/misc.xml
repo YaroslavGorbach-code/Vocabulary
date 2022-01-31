@@ -69,23 +69,22 @@
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_description.xml" value="0.22" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_description_new.xml" value="0.1539855072463768" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_dictionary.xml" value="0.38632246376811596" />
-        <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_exercise.xml" value="0.25" />
+        <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_exercise.xml" value="0.14" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_exercise_alphabet.xml" value="0.1" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_exercise_dictionary.xml" value="0.22" />
-        <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_exercise_with_stages.xml" value="0.1" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_exercise_with_timer.xml" value="0.11730072463768115" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_exercises_list.xml" value="0.22" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_exercises_list_second.xml" value="0.11730072463768115" />
-        <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_image_exercise.xml" value="0.18" />
+        <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_image_exercise.xml" value="0.12" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_level.xml" value="0.2" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_navigation.xml" value="0.16" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_page_two.xml" value="0.16" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_profile.xml" value="0.21" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_settings.xml" value="0.12" />
-        <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_training.xml" value="0.1" />
+        <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/fragment_training.xml" value="0.33" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/ic_touch.xml" value="0.1" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/item_achievement.xml" value="0.10371376811594203" />
-        <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/item_daily_training.xml" value="0.2" />
+        <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/item_daily_training.xml" value="0.33" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/item_exercise.xml" value="0.2" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/item_exercise_tarining.xml" value="0.33" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/item_page.xml" value="0.18" />
@@ -110,7 +109,6 @@
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/layout_theme_item.xml" value="0.5" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/layout_training.xml" value="0.25" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/layout_training_days.xml" value="0.22" />
-        <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/layout_training_exercise_progress.xml" value="0.18" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/layout_training_second.xml" value="0.13722826086956522" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/layout_word_of_the_day.xml" value="0.25" />
         <entry key="..\:/Projects/Vocabulary/app/src/main/res/layout/workflow_exercise.xml" value="0.10869565217391304" />
@@ -130,12 +128,13 @@
         <entry key="..\:/Vocabulary/app/src/main/res/layout/dialog_notification_settings.xml" value="0.396286231884058" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/fragment_about_app.xml" value="0.2644927536231884" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/fragment_description.xml" value="0.5" />
-        <entry key="..\:/Vocabulary/app/src/main/res/layout/fragment_exercise.xml" value="0.43983402489626555" />
+        <entry key="..\:/Vocabulary/app/src/main/res/layout/fragment_exercise.xml" value="0.1" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/fragment_exercise_alphabet.xml" value="0.3645833333333333" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/fragment_exercise_dictionary.xml" value="0.3645833333333333" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/fragment_exercise_with_stages.xml" value="0.396286231884058" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/fragment_exercise_with_timer.xml" value="0.5162187210379982" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/fragment_exercises_list.xml" value="0.20871327254305977" />
+        <entry key="..\:/Vocabulary/app/src/main/res/layout/fragment_image_exercise.xml" value="0.12" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/fragment_level.xml" value="0.12222222222222222" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/fragment_navigation.xml" value="0.36594202898550726" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/fragment_profile.xml" value="0.20871327254305977" />
@@ -166,7 +165,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

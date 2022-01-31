@@ -1,5 +1,6 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.image.ui
 
+import android.annotation.SuppressLint
 import android.os.SystemClock
 import android.util.Log
 import android.view.View
@@ -55,7 +56,7 @@ class ImageExerciseView(
             callback.onBack()
         }
 
-        setAimAndPerformed(exercise.aim, exercise.performed)
+        setAimAndPerformed(exercise.aim, exercise.performed, exercise.progress.toFloat())
     }
 
     fun setIsRecording(isRecording: Boolean) {
@@ -89,8 +90,10 @@ class ImageExerciseView(
         binding.chronometer.start()
     }
 
-    private fun setAimAndPerformed(aim: Int, performed: Int) {
-        binding.aimAndPerformed.visibility = View.VISIBLE
-        binding.aimAndPerformed.setText("$performed/$aim")
+    @SuppressLint("SetTextI18n")
+    private fun setAimAndPerformed(aim: Int, performed: Int, progress: Float) {
+        binding.performedAndAnim.root.visibility = View.VISIBLE
+        binding.performedAndAnim.performedAnim.text = "$performed/$aim"
+        binding.performedAndAnim.progress.progress = progress
     }
 }
