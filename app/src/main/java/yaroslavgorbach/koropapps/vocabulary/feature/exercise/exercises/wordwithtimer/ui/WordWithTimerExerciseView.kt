@@ -25,7 +25,7 @@ class WordWithTimerExerciseView(
     private var exerciseName: ExerciseName? = null
 
     private fun initActions() {
-        binding.clickSurface.setOnClickListener {
+        binding.root.setOnClickListener {
             callback.onClick()
             stopClickHelperAnimation()
         }
