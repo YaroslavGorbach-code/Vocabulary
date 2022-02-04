@@ -1,6 +1,7 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.common.ui
 
 import android.annotation.SuppressLint
+import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.SystemClock
 import android.view.View
 import com.google.android.material.snackbar.Snackbar
@@ -9,6 +10,7 @@ import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseN
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToMaxLinesMapper
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerciseUi
+import yaroslavgorbach.koropapps.vocabulary.utils.animate
 import yaroslavgorbach.koropapps.vocabulary.utils.getString
 
 class ExerciseView(
@@ -61,6 +63,11 @@ class ExerciseView(
         }
 
         setAimAndPerformed(exercise.aim, exercise.performed, exercise.progress.toFloat())
+        setUpNextTaskButton(exercise.isLastTask)
+    }
+
+    private fun setUpNextTaskButton(lastTask: Boolean) {
+        //binding.next.s
     }
 
     fun setIsRecording(isRecording: Boolean) {
@@ -73,9 +80,11 @@ class ExerciseView(
 
     private fun setRecordingButtonIcon(isRecording: Boolean) {
         if (isRecording) {
-            binding.startStopRecord.setImageResource(R.drawable.ic_voice_recording)
+            binding.startStopRecord.setImageResource(R.drawable.anim_micro_to_active)
+            binding.startStopRecord.drawable.animate()
         } else {
-            binding.startStopRecord.setImageResource(R.drawable.ic_voice_record_stop)
+            binding.startStopRecord.setImageResource(R.drawable.anim_micro_to_not_active)
+            binding.startStopRecord.drawable.animate()
         }
     }
 

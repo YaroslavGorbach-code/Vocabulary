@@ -32,4 +32,7 @@ class TrainingExerciseUi(private val trainingExerciseEntity: TrainingExerciseEnt
     val performed: Int
         get() = trainingExerciseEntity.performed
 
+    val isLastTask: Boolean
+        get() = performed == aim.dec()
+
 }

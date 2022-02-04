@@ -116,6 +116,9 @@
         <entry key="..\:/Vocabulary/app/src/main/res/drawable-night/ic_rocket_daily_training.xml" value="0.41944444444444445" />
         <entry key="..\:/Vocabulary/app/src/main/res/drawable-v24/ic_no_records.xml" value="0.412962962962963" />
         <entry key="..\:/Vocabulary/app/src/main/res/drawable-v24/ic_star_yellow.xml" value="0.412962962962963" />
+        <entry key="..\:/Vocabulary/app/src/main/res/drawable/anim_arrw_right_to_done.xml" value="0.26615384615384613" />
+        <entry key="..\:/Vocabulary/app/src/main/res/drawable/anim_micro.xml" value="0.2703125" />
+        <entry key="..\:/Vocabulary/app/src/main/res/drawable/anim_micro_to_not_active.xml" value="0.26615384615384613" />
         <entry key="..\:/Vocabulary/app/src/main/res/drawable/bg_item_achievement.xml" value="0.43846153846153846" />
         <entry key="..\:/Vocabulary/app/src/main/res/drawable/delete_record_hint_bg.xml" value="0.33611111111111114" />
         <entry key="..\:/Vocabulary/app/src/main/res/drawable/ic_achivement_not_active_15_trainings_in_a_row.xml" value="0.412962962962963" />
@@ -126,6 +129,7 @@
         <entry key="..\:/Vocabulary/app/src/main/res/drawable/ic_voice_record_stop.xml" value="0.3425925925925926" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/activity_main.xml" value="0.20871327254305977" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/dialog_notification_settings.xml" value="0.396286231884058" />
+        <entry key="..\:/Vocabulary/app/src/main/res/layout/dialog_training_is_over.xml" value="0.34646739130434784" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/fragment_about_app.xml" value="0.2644927536231884" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/fragment_description.xml" value="0.5" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/fragment_exercise.xml" value="0.1" />
