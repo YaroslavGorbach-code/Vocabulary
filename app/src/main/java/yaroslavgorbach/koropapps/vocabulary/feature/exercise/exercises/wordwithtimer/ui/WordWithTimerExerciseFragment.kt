@@ -16,6 +16,7 @@ import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.wordwitht
 import yaroslavgorbach.koropapps.vocabulary.utils.appComponent
 import yaroslavgorbach.koropapps.vocabulary.utils.consume
 import yaroslavgorbach.koropapps.vocabulary.utils.onBackPressed
+import yaroslavgorbach.koropapps.vocabulary.utils.setKeepScreenOn
 import javax.inject.Inject
 
 class WordWithTimerExerciseFragment : Fragment(R.layout.fragment_exercise_with_timer),
@@ -98,6 +99,10 @@ class WordWithTimerExerciseFragment : Fragment(R.layout.fragment_exercise_with_t
             showFinishExerciseDialog()
             viewModel.onTimerFinished()
         }
+
+        viewModel.isNeedToKeepScreenOn.observe(viewLifecycleOwner) { isNeedToKeepScreenOn ->
+            requireActivity().setKeepScreenOn(isNeedToKeepScreenOn)
+        }
     }
 
     private fun showFinishExerciseDialog() {
@@ -110,6 +115,11 @@ class WordWithTimerExerciseFragment : Fragment(R.layout.fragment_exercise_with_t
 
     override fun onDialogCancelled() {
         onBackPressed()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        requireActivity().setKeepScreenOn(false)
     }
 
     override fun onDestroy() {

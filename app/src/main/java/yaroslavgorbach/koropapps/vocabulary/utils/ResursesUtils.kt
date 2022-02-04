@@ -3,6 +3,7 @@ package yaroslavgorbach.koropapps.vocabulary.utils
 import android.content.Context
 import android.content.res.Configuration
 import android.content.res.TypedArray
+import android.graphics.drawable.AnimatedVectorDrawable
 import android.graphics.drawable.Drawable
 import android.util.TypedValue
 import androidx.annotation.DrawableRes
@@ -60,3 +61,7 @@ fun Context.isSystemNightMode() =
         Configuration.UI_MODE_NIGHT_YES -> true
         else -> error("can not get system night mode")
     }
+
+fun Drawable.animate(){
+    (this as AnimatedVectorDrawable).start()
+}

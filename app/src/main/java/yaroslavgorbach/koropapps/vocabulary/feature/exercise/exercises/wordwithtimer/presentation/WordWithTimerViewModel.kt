@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import yaroslavgorbach.koropapps.vocabulary.business.settings.ObserveAutoRecordStateInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.settings.ObserveKeepScreenSettingInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.SaveStatisticsInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.IncrementExercisePerformedInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.ObserveTrainingExerciseInteractor
@@ -29,6 +30,7 @@ class WordWithTimerViewModel @Inject constructor(
     saveStatisticsInteractor: SaveStatisticsInteractor,
     observeTrainingExerciseInteractor: ObserveTrainingExerciseInteractor,
     observeAutoRecordStateInteractor: ObserveAutoRecordStateInteractor,
+    observeKeepScreenSettingInteractor: ObserveKeepScreenSettingInteractor,
     voiceRecorder: VoiceRecorder,
     permissionManager: PermissionManager,
     adManager: AdManager
@@ -38,6 +40,7 @@ class WordWithTimerViewModel @Inject constructor(
     saveStatisticsInteractor,
     observeTrainingExerciseInteractor,
     observeAutoRecordStateInteractor,
+    observeKeepScreenSettingInteractor,
     voiceRecorder,
     permissionManager,
     adManager
@@ -90,7 +93,7 @@ class WordWithTimerViewModel @Inject constructor(
                 val letter: String? = letters.value?.firstOrNull()
 
                 if (letter != null) {
-                    _letter.value = letter
+                    _letter.value = letter ?: ""
                     letters.value = letters.value?.filter { it != letter }
                 } else {
                     _finisExerciseEvent.send(Unit)

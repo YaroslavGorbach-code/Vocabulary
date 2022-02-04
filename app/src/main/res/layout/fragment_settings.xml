@@ -38,6 +38,10 @@
         layout="@layout/layout_item_record_settings" />
 
     <include
+        android:id="@+id/keep_screen_on_setting"
+        layout="@layout/layout_item_keep_screen_on_settings" />
+
+    <include
         android:id="@+id/clear_data"
         layout="@layout/layout_item_clear_data" />
 </LinearLayout>

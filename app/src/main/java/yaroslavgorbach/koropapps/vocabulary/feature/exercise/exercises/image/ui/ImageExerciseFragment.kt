@@ -16,6 +16,7 @@ import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.image.pre
 import yaroslavgorbach.koropapps.vocabulary.utils.appComponent
 import yaroslavgorbach.koropapps.vocabulary.utils.consume
 import yaroslavgorbach.koropapps.vocabulary.utils.onBackPressed
+import yaroslavgorbach.koropapps.vocabulary.utils.setKeepScreenOn
 import javax.inject.Inject
 
 class ImageExerciseFragment : Fragment(R.layout.fragment_image_exercise),
@@ -98,16 +99,23 @@ class ImageExerciseFragment : Fragment(R.layout.fragment_image_exercise),
         viewModel.isRecordSavedEvent.consume(viewLifecycleOwner) { exerciseView.showRecordSavedSnack() }
 
         viewModel.isAutoRecordStart.observe(viewLifecycleOwner) { isAllow ->
-
-            Log.i("dasdf", "isallow " + isAllow)
             if (isAllow) {
                 viewModel.onStartStopRecording(getString(exerciseType.getExerciseName().id))
             }
+        }
+
+        viewModel.isNeedToKeepScreenOn.observe(viewLifecycleOwner) { isNeedToKeepScreenOn ->
+            requireActivity().setKeepScreenOn(isNeedToKeepScreenOn)
         }
     }
 
     override fun onGrantPermissionClicked() {
         viewModel.onStartStopRecording(getString(exerciseType.getExerciseName().id))
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        requireActivity().setKeepScreenOn(false)
     }
 
     override fun onStop() {

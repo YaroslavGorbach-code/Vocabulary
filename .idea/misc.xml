@@ -124,6 +124,7 @@
         <entry key="..\:/Vocabulary/app/src/main/res/drawable/ic_delete.xml" value="0.33611111111111114" />
         <entry key="..\:/Vocabulary/app/src/main/res/drawable/ic_notifications.xml" value="0.3425925925925926" />
         <entry key="..\:/Vocabulary/app/src/main/res/drawable/ic_pause_round.xml" value="0.41944444444444445" />
+        <entry key="..\:/Vocabulary/app/src/main/res/drawable/ic_phone.xml" value="0.36574074074074076" />
         <entry key="..\:/Vocabulary/app/src/main/res/drawable/ic_play_round.xml" value="0.41944444444444445" />
         <entry key="..\:/Vocabulary/app/src/main/res/drawable/ic_voice_record_stop.xml" value="0.3425925925925926" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/activity_main.xml" value="0.20871327254305977" />
@@ -141,7 +142,7 @@
         <entry key="..\:/Vocabulary/app/src/main/res/layout/fragment_navigation.xml" value="0.36594202898550726" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/fragment_profile.xml" value="0.20871327254305977" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/fragment_records_list.xml" value="0.396286231884058" />
-        <entry key="..\:/Vocabulary/app/src/main/res/layout/fragment_settings.xml" value="0.44813278008298757" />
+        <entry key="..\:/Vocabulary/app/src/main/res/layout/fragment_settings.xml" value="0.22" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/fragment_training.xml" value="0.5283540802213001" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/item_achievement.xml" value="0.22" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/item_exercise.xml" value="0.20871327254305977" />
@@ -153,9 +154,10 @@
         <entry key="..\:/Vocabulary/app/src/main/res/layout/layout_card_with_auto_size_text.xml" value="0.20871327254305977" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/layout_chart.xml" value="0.396286231884058" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/layout_empty_favorites.xml" value="0.396286231884058" />
+        <entry key="..\:/Vocabulary/app/src/main/res/layout/layout_item_keep_screen_on_settings.xml" value="0.27943840579710144" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/layout_item_notification_settings.xml" value="0.396286231884058" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/layout_item_profile.xml" value="0.396286231884058" />
-        <entry key="..\:/Vocabulary/app/src/main/res/layout/layout_item_record_settings.xml" value="0.5192307692307693" />
+        <entry key="..\:/Vocabulary/app/src/main/res/layout/layout_item_record_settings.xml" value="0.22" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/layout_level_info_item.xml" value="0.396286231884058" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/layout_level_item.xml" value="0.5" />
         <entry key="..\:/Vocabulary/app/src/main/res/layout/layout_levels.xml" value="0.20871327254305977" />

@@ -56,6 +56,7 @@
     <string name="light_theme">Светлая тема</string>
     <string name="notifications">Уведомления</string>
     <string name="auto_recording">Начинать запись автоматически</string>
+    <string name="keep_screen_on">Не выключать экран во время вполнения упражнений</string>
     <string name="clear_all_data">Очистить все данные</string>
     <string name="notifications_settings">Настройка уведомлений</string>
     <string name="notification_text">Текст уведомления</string>

@@ -37,4 +37,7 @@ interface RepoSettings {
 
     suspend fun incrementInterstatialAdShowCounter()
 
+    suspend fun changeKeepSeenOn(isNeedToKeepScreenOn: Boolean)
+
+    fun observeKeepScreenOnState(): Flow<Boolean>
 }

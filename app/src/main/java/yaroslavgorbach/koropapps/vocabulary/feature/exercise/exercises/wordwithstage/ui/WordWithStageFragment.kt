@@ -13,6 +13,7 @@ import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.wordwithstage.presentation.WordWithStageViewModel
 import yaroslavgorbach.koropapps.vocabulary.utils.appComponent
 import yaroslavgorbach.koropapps.vocabulary.utils.onBackPressed
+import yaroslavgorbach.koropapps.vocabulary.utils.setKeepScreenOn
 import javax.inject.Inject
 
 class WordWithStageFragment : Fragment(R.layout.fragment_exercise_with_stages) {
@@ -76,6 +77,14 @@ class WordWithStageFragment : Fragment(R.layout.fragment_exercise_with_stages) {
         viewModel.word.observe(viewLifecycleOwner, wordWithStageView::setWord)
         viewModel.stage.observe(viewLifecycleOwner, wordWithStageView::setCurrentStage)
         viewModel.exercise.observe(viewLifecycleOwner, wordWithStageView::setExercise)
+        viewModel.isNeedToKeepScreenOn.observe(viewLifecycleOwner) { isNeedToKeepScreenOn ->
+            requireActivity().setKeepScreenOn(isNeedToKeepScreenOn)
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        requireActivity().setKeepScreenOn(false)
     }
 
     override fun onDestroy() {

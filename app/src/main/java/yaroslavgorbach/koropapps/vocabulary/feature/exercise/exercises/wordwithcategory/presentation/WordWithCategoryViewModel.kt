@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import yaroslavgorbach.koropapps.vocabulary.business.settings.ObserveAutoRecordStateInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.settings.ObserveKeepScreenSettingInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.SaveStatisticsInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.IncrementExercisePerformedInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.ObserveTrainingExerciseInteractor
@@ -22,6 +23,7 @@ class WordWithCategoryViewModel @Inject constructor(
     private val application: Application,
     incrementExercisePerformedInteractor: IncrementExercisePerformedInteractor,
     observeTrainingExerciseInteractor: ObserveTrainingExerciseInteractor,
+    observeKeepScreenSettingInteractor: ObserveKeepScreenSettingInteractor,
     saveStatisticsInteractor: SaveStatisticsInteractor,
     voiceRecorder: VoiceRecorder,
     observeAutoRecordStateInteractor: ObserveAutoRecordStateInteractor,
@@ -33,6 +35,7 @@ class WordWithCategoryViewModel @Inject constructor(
     saveStatisticsInteractor,
     observeTrainingExerciseInteractor,
     observeAutoRecordStateInteractor,
+    observeKeepScreenSettingInteractor,
     voiceRecorder,
     permissionManager,
     adManager
