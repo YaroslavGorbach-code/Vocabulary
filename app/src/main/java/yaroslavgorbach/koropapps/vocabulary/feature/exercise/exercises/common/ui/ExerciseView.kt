@@ -67,7 +67,9 @@ class ExerciseView(
     }
 
     private fun setUpNextTaskButton(lastTask: Boolean) {
-        //binding.next.s
+        if (lastTask) {
+            binding.next.drawable.animate()
+        }
     }
 
     fun setIsRecording(isRecording: Boolean) {

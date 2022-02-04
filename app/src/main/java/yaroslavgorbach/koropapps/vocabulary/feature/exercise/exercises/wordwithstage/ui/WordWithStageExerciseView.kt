@@ -8,6 +8,7 @@ import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseWithStag
 import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToMaxLinesMapper
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.wordwithstage.model.StageUi
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerciseUi
+import yaroslavgorbach.koropapps.vocabulary.utils.animate
 import yaroslavgorbach.koropapps.vocabulary.utils.getString
 
 class WordWithStageExerciseView(
@@ -57,6 +58,13 @@ class WordWithStageExerciseView(
         }
 
         setAimAndPerformed(exercise.aim, exercise.performed, exercise.progress.toFloat())
+        setUpNextTaskButton(exercise.isLastTask)
+    }
+
+    private fun setUpNextTaskButton(lastTask: Boolean) {
+        if (lastTask) {
+            binding.next.drawable.animate()
+        }
     }
 
     fun setExerciseName(name: ExerciseName) {
