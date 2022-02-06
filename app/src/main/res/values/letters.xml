@@ -6,12 +6,8 @@
         <item name="letter_3">В</item>
         <item name="letter_4">Г</item>
         <item name="letter_5">Д</item>
-        <item name="letter_6">Е</item>
-        <item name="letter_7">Ё</item>
         <item name="letter_8">Ж</item>
         <item name="letter_9">З</item>
-        <item name="letter_10">И</item>
-        <item name="letter_11">Й</item>
         <item name="letter_12">К</item>
         <item name="letter_13">Л</item>
         <item name="letter_14">М</item>
@@ -27,8 +23,6 @@
         <item name="letter_24">Ц</item>
         <item name="letter_25">Ч</item>
         <item name="letter_26">Ш</item>
-        <item name="letter_27">Щ</item>
-        <item name="letter_28">Э</item>
         <item name="letter_29">Ю</item>
         <item name="letter_30">Я</item>
     </string-array>

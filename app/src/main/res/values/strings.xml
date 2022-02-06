@@ -3,7 +3,7 @@
 
     <string name="description">Описание</string>
     <string name="end_of_time">Время вышло</string>
-    <string name="result"> Названо слов %1$d</string>
+    <string name="result"> Названо слов: %1$d</string>
     <string name="finish_of_exercise">Упражнение закончено</string>
     <string name="number_words_for_session">Количество слов за сессию</string>
     <string name="number_sentences_for_session">Количество предложений за сессию</string>
@@ -95,6 +95,7 @@
     <string name="finished_trainings_in_row">Завершенных тренеровок подряд:</string>
     <string name="training_is_over">Тренировка закончена</string>
     <string name="training_is_over_info_text">Ежедневная тренировка выполнена! Следующая будет доступна завтра, отдыхайте</string>
+    <string name="time_is_over">Время вышло</string>
 
     <string-array name="empty_array" />
 </resources>

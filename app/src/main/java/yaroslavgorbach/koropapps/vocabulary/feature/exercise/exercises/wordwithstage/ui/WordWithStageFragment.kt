@@ -74,9 +74,7 @@ class WordWithStageFragment : Fragment(R.layout.fragment_exercise_with_stages) {
 
     private fun initObservers() {
         viewModel.word.observe(viewLifecycleOwner, wordWithStageView::setWord)
-
-        viewModel.stages.observe(viewLifecycleOwner, wordWithStageView::setStages)
-
+        viewModel.stage.observe(viewLifecycleOwner, wordWithStageView::setCurrentStage)
         viewModel.exercise.observe(viewLifecycleOwner, wordWithStageView::setExercise)
     }
 

@@ -1,6 +1,8 @@
 package yaroslavgorbach.koropapps.vocabulary.utils
 
 import android.app.Activity
+import android.graphics.drawable.AnimatedVectorDrawable
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,4 +32,8 @@ fun Activity.setDefaultStatusBarColor() {
     if (isSystemNightMode().not()){
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
     }
+}
+
+fun Drawable.animate(){
+    (this as AnimatedVectorDrawable).start()
 }

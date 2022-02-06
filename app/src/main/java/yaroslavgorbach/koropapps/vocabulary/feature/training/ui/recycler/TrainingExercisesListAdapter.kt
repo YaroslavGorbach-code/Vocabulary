@@ -1,6 +1,8 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.training.ui.recycler
 
 import android.annotation.SuppressLint
+import android.graphics.drawable.AnimatedVectorDrawable
+import android.graphics.drawable.AnimationDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -50,9 +52,13 @@ class TrainingExercisesListAdapter(private val onExercise: (exercise: TrainingEx
             binding.category.text = binding.getString(exercise.category.stringRes)
             binding.image.setImageDrawable(binding.getDrawable(exercise.iconRes))
             binding.progress.progress = exercise.progress.toFloat()
-            if (exercise.isFinished) binding.finishMark.setImageResource(R.drawable.ic_circle_done) else binding.finishMark.setImageResource(
-                R.drawable.ic_circle_outline
-            )
+
+            if (exercise.isFinished) {
+                binding.finishMark.setBackgroundResource(R.drawable.ic_check_animation)
+                (binding.finishMark.background as AnimatedVectorDrawable).start()
+            }else{
+                binding.finishMark.setBackgroundResource(R.drawable.ic_circle_outline)
+            }
         }
     }
 }

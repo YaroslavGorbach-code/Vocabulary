@@ -55,7 +55,7 @@ class TrainingView(
     }
 
     private fun initActions() {
-        binding.icClose.setOnClickListener {
+        binding.toolbar.setNavigationOnClickListener {
             callback.onBack()
         }
     }

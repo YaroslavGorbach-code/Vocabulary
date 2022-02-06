@@ -1,5 +1,6 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.image.ui
 
+import android.annotation.SuppressLint
 import android.os.SystemClock
 import android.util.Log
 import android.view.View
@@ -9,6 +10,7 @@ import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentImageExerciseBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerciseUi
+import yaroslavgorbach.koropapps.vocabulary.utils.animate
 import yaroslavgorbach.koropapps.vocabulary.utils.getString
 
 class ImageExerciseView(
@@ -55,7 +57,14 @@ class ImageExerciseView(
             callback.onBack()
         }
 
-        setAimAndPerformed(exercise.aim, exercise.performed)
+        setAimAndPerformed(exercise.aim, exercise.performed, exercise.progress.toFloat())
+        setUpNextTaskButton(exercise.isLastTask)
+    }
+
+    private fun setUpNextTaskButton(lastTask: Boolean) {
+        if (lastTask) {
+            binding.next.drawable.animate()
+        }
     }
 
     fun setIsRecording(isRecording: Boolean) {
@@ -67,12 +76,12 @@ class ImageExerciseView(
     }
 
     private fun setRecordingButtonIcon(isRecording: Boolean) {
-        Log.i("dasdf", "view " + isRecording.toString())
         if (isRecording) {
-            binding.startStopRecord.setImageResource(R.drawable.ic_voice_recording)
+            binding.startStopRecord.setImageResource(R.drawable.anim_micro_to_active)
+            binding.startStopRecord.drawable.animate()
         } else {
-            binding.startStopRecord.setImageResource(R.drawable.ic_voice_record_stop)
-
+            binding.startStopRecord.setImageResource(R.drawable.anim_micro_to_not_active)
+            binding.startStopRecord.drawable.animate()
         }
     }
 
@@ -89,8 +98,10 @@ class ImageExerciseView(
         binding.chronometer.start()
     }
 
-    private fun setAimAndPerformed(aim: Int, performed: Int) {
-        binding.aimAndPerformed.visibility = View.VISIBLE
-        binding.aimAndPerformed.setText("$performed/$aim")
+    @SuppressLint("SetTextI18n")
+    private fun setAimAndPerformed(aim: Int, performed: Int, progress: Float) {
+        binding.performedAndAnim.root.visibility = View.VISIBLE
+        binding.performedAndAnim.performedAnim.text = "$performed/$aim"
+        binding.performedAndAnim.progress.progress = progress
     }
 }

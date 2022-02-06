@@ -5,16 +5,16 @@
     android:id="@+id/materialCardView"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    app:cardBackgroundColor="?colorPrimary"
+    app:cardElevation="0dp"
     app:cardCornerRadius="6dp">
 
     <TextView
         android:id="@+id/text_at_top"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="8dp"
+        android:layout_marginTop="16dp"
         android:gravity="center|top"
-        android:textColor="@android:color/white"
+        android:textColor="?colorPrimary"
         android:visibility="gone"
         android:textSize="16sp"
         tools:text="0" />
@@ -26,9 +26,9 @@
         android:layout_margin="8dp"
         android:gravity="center"
         android:padding="4dp"
-        android:textColor="@android:color/white"
-        app:autoSizeMinTextSize="10sp"
-        app:autoSizeStepGranularity="8sp"
+        android:textColor="?colorPrimary"
+        app:autoSizeMinTextSize="12sp"
+        app:autoSizeStepGranularity="1sp"
         app:autoSizeTextType="uniform"
         tools:text="0" />
 </com.google.android.material.card.MaterialCardView>

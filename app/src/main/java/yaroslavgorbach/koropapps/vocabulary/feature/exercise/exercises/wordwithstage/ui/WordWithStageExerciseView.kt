@@ -1,13 +1,14 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.wordwithstage.ui
 
+import android.annotation.SuppressLint
 import android.os.SystemClock
-import android.util.Log
 import android.view.View
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseWithStagesBinding
+import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToMaxLinesMapper
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.wordwithstage.model.StageUi
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.wordwithstage.ui.recycler.StagesAdapter
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerciseUi
+import yaroslavgorbach.koropapps.vocabulary.utils.animate
 import yaroslavgorbach.koropapps.vocabulary.utils.getString
 
 class WordWithStageExerciseView(
@@ -19,17 +20,8 @@ class WordWithStageExerciseView(
         fun onBack()
     }
 
-    private var stagesAdapter: StagesAdapter? = null
-
     init {
-        initViews()
         initEvents()
-    }
-
-    private fun initViews() {
-        stagesAdapter = StagesAdapter()
-
-        binding.stages.adapter = stagesAdapter
     }
 
     private fun initEvents() {
@@ -45,21 +37,18 @@ class WordWithStageExerciseView(
         startOneWordChronometer()
     }
 
-    private fun setSingleLineWordTextViewMod(word: String) {
-        if (word.length < 30) {
-            binding.cardText.word.maxLines = 1
-        } else {
-            binding.cardText.word.maxLines = Int.MAX_VALUE
-        }
+    private fun formatWordLines(exerciseName: ExerciseName) {
+        binding.cardText.word.maxLines = ExerciseNameToMaxLinesMapper().map(exerciseName)
     }
 
-    fun setStages(stageUi: List<StageUi>) {
-        stagesAdapter?.submitList(stageUi.toMutableList())
+    @SuppressLint("SetTextI18n")
+    fun setCurrentStage(stageUi: StageUi) {
+        binding.stageTask.performedAnim.text = "${stageUi.number}/${stageUi.numberOfAllStages}"
+        binding.stageTask.task.text = stageUi.text
     }
 
     fun setWord(word: String) {
         binding.cardText.word.text = word
-        setSingleLineWordTextViewMod(word)
         startOneWordChronometer()
     }
 
@@ -68,11 +57,19 @@ class WordWithStageExerciseView(
             callback.onBack()
         }
 
-        setAimAndPerformed(exercise.aim, exercise.performed)
+        setAimAndPerformed(exercise.aim, exercise.performed, exercise.progress.toFloat())
+        setUpNextTaskButton(exercise.isLastTask)
+    }
+
+    private fun setUpNextTaskButton(lastTask: Boolean) {
+        if (lastTask) {
+            binding.next.drawable.animate()
+        }
     }
 
     fun setExerciseName(name: ExerciseName) {
         binding.toolbar.title = binding.getString(name.id)
+        formatWordLines(name)
     }
 
     private fun startOneWordChronometer() {
@@ -84,8 +81,10 @@ class WordWithStageExerciseView(
         binding.chronometer.start()
     }
 
-    private fun setAimAndPerformed(aim: Int, performed: Int) {
-        binding.aimAndPerformed.visibility = View.VISIBLE
-        binding.aimAndPerformed.setText("$performed/$aim")
+    @SuppressLint("SetTextI18n")
+    private fun setAimAndPerformed(aim: Int, performed: Int, progress: Float) {
+        binding.performedAndAnim.root.visibility = View.VISIBLE
+        binding.performedAndAnim.performedAnim.text = "$performed/$aim"
+        binding.performedAndAnim.progress.progress = progress
     }
 }
