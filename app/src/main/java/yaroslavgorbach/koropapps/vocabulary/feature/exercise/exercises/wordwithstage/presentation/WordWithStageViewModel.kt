@@ -75,10 +75,6 @@ class WordWithStageViewModel @Inject constructor(
     }
 
     fun onNextStageClick() {
-        Log.i("sdclvsdf", "onNext")
-        Log.i("sdclvsdf", stages.toString())
-        Log.i("sdclvsdf", stages.first().toString())
-
        stages.apply {
             removeFirst()
             if (firstOrNull() != null) {

@@ -11,7 +11,7 @@ import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseWithTimerBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.InfoDialog
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.common.ui.ExerciseTimeEndDialog
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.common.ui.ExerciseTimeIsOverDialog
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.wordwithtimer.presentation.WordWithTimerViewModel
 import yaroslavgorbach.koropapps.vocabulary.utils.appComponent
 import yaroslavgorbach.koropapps.vocabulary.utils.consume
@@ -19,7 +19,7 @@ import yaroslavgorbach.koropapps.vocabulary.utils.onBackPressed
 import javax.inject.Inject
 
 class WordWithTimerExerciseFragment : Fragment(R.layout.fragment_exercise_with_timer),
-    ExerciseTimeEndDialog.Host, InfoDialog.Host {
+    ExerciseTimeIsOverDialog.Host, InfoDialog.Host {
 
     companion object {
         private const val ARG_EXERCISE_TYPE = "ARG_EXERCISE_TYPE"
@@ -67,7 +67,7 @@ class WordWithTimerExerciseFragment : Fragment(R.layout.fragment_exercise_with_t
                 }
 
                 override fun onTimeEnd() {
-                    showTimeEndDialog()
+                    showTimeIsOverDialog()
                     viewModel.onTimerFinished()
                 }
 
@@ -81,9 +81,11 @@ class WordWithTimerExerciseFragment : Fragment(R.layout.fragment_exercise_with_t
         wordWithTimerExerciseView.setExerciseName(exerciseType.getExerciseName())
     }
 
-    private fun showTimeEndDialog() {
-        ExerciseTimeEndDialog.newInstance(viewModel.numberOnNextCLicked)
-            .show(childFragmentManager, null)
+    private fun showTimeIsOverDialog() {
+        ExerciseTimeIsOverDialog.newInstance(
+            title = getString(R.string.time_is_over),
+            message = getString(R.string.result, viewModel.numberOnNextCLicked)
+        ).show(childFragmentManager, null)
     }
 
     private fun initObservers() {

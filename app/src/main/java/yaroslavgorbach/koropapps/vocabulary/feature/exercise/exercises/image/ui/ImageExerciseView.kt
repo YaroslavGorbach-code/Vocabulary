@@ -10,6 +10,7 @@ import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.data.exercises.local.model.ExerciseName
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentImageExerciseBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerciseUi
+import yaroslavgorbach.koropapps.vocabulary.utils.animate
 import yaroslavgorbach.koropapps.vocabulary.utils.getString
 
 class ImageExerciseView(
@@ -57,6 +58,13 @@ class ImageExerciseView(
         }
 
         setAimAndPerformed(exercise.aim, exercise.performed, exercise.progress.toFloat())
+        setUpNextTaskButton(exercise.isLastTask)
+    }
+
+    private fun setUpNextTaskButton(lastTask: Boolean) {
+        if (lastTask) {
+            binding.next.drawable.animate()
+        }
     }
 
     fun setIsRecording(isRecording: Boolean) {
@@ -68,12 +76,12 @@ class ImageExerciseView(
     }
 
     private fun setRecordingButtonIcon(isRecording: Boolean) {
-        Log.i("dasdf", "view " + isRecording.toString())
         if (isRecording) {
-            binding.startStopRecord.setImageResource(R.drawable.ic_voice_recording)
+            binding.startStopRecord.setImageResource(R.drawable.anim_micro_to_active)
+            binding.startStopRecord.drawable.animate()
         } else {
-            binding.startStopRecord.setImageResource(R.drawable.ic_voice_record_stop)
-
+            binding.startStopRecord.setImageResource(R.drawable.anim_micro_to_not_active)
+            binding.startStopRecord.drawable.animate()
         }
     }
 

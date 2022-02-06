@@ -95,6 +95,7 @@
     <string name="finished_trainings_in_row">Завершенных тренеровок подряд:</string>
     <string name="training_is_over">Тренировка закончена</string>
     <string name="training_is_over_info_text">Ежедневная тренировка выполнена! Следующая будет доступна завтра, отдыхайте</string>
+    <string name="time_is_over">Время вышло</string>
 
     <string-array name="empty_array" />
 </resources>
