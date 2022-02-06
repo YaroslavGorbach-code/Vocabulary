@@ -11,7 +11,7 @@ import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentExerciseWithTimerBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
 import yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.InfoDialog
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.common.ui.ExerciseTimeIsOverDialog
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.common.ui.ExerciseFinishDialog
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.wordwithtimer.presentation.WordWithTimerViewModel
 import yaroslavgorbach.koropapps.vocabulary.utils.appComponent
 import yaroslavgorbach.koropapps.vocabulary.utils.consume
@@ -19,7 +19,7 @@ import yaroslavgorbach.koropapps.vocabulary.utils.onBackPressed
 import javax.inject.Inject
 
 class WordWithTimerExerciseFragment : Fragment(R.layout.fragment_exercise_with_timer),
-    ExerciseTimeIsOverDialog.Host, InfoDialog.Host {
+    ExerciseFinishDialog.Host, InfoDialog.Host {
 
     companion object {
         private const val ARG_EXERCISE_TYPE = "ARG_EXERCISE_TYPE"
@@ -82,9 +82,10 @@ class WordWithTimerExerciseFragment : Fragment(R.layout.fragment_exercise_with_t
     }
 
     private fun showTimeIsOverDialog() {
-        ExerciseTimeIsOverDialog.newInstance(
+        ExerciseFinishDialog.newInstance(
             title = getString(R.string.time_is_over),
-            message = getString(R.string.result, viewModel.numberOnNextCLicked)
+            message = getString(R.string.result, viewModel.numberOnNextCLicked),
+            iconRes = R.drawable.ic_clock
         ).show(childFragmentManager, null)
     }
 
@@ -100,17 +101,14 @@ class WordWithTimerExerciseFragment : Fragment(R.layout.fragment_exercise_with_t
     }
 
     private fun showFinishExerciseDialog() {
-        InfoDialog.newInstance(
+        ExerciseFinishDialog.newInstance(
             title = getString(R.string.finish_of_exercise),
-            message = getString(R.string.average_time_on_word) + " ${viewModel.averageTimeOnWord}"
+            message = getString(R.string.average_time_on_word) + ": ${viewModel.averageTimeOnWord}",
+            iconRes = R.drawable.ic_win
         ).show(childFragmentManager, null)
     }
 
-    override fun onTimeEndDialogCancel() {
-        onBackPressed()
-    }
-
-    override fun onInfoDialogCancel() {
+    override fun onDialogCancelled() {
         onBackPressed()
     }
 
