@@ -69,6 +69,22 @@ class ExerciseNameToExerciseRandomWordMapper(resources: Resources) {
                     || it == "е"
         }
 
+    private val lettersForStartOfWord = letters
+        .map(String::lowercase)
+        .filterNot {
+            it == "е"
+                    || it == "ё"
+                    || it == "е"
+                    || it == "и"
+                    || it == "й"
+                    || it == "о"
+                    || it == "щ"
+                    || it == "ъ"
+                    || it == "ы"
+                    || it == "ь"
+                    || it == "э"
+        }
+
     private val lettersForRememberAll = letters
         .map(String::lowercase)
         .filterNot {
@@ -159,14 +175,14 @@ class ExerciseNameToExerciseRandomWordMapper(resources: Resources) {
         return when (exerciseName) {
             ExerciseName.ALPHABET_ADJECTIVES,
             ExerciseName.ALPHABET_NOUN,
-            ExerciseName.ALPHABET_VERBS,
-            ExerciseName.THREE_LITER_JAR,
-            ExerciseName.TAUTOGRAMS -> {
-                letters.random()
+            ExerciseName.ALPHABET_VERBS -> {
+                lettersForStartOfWord.random()
             }
             ExerciseName.LIST_OF_CATEGORIES -> {
                 lettersForListOfCategories.random()
             }
+            ExerciseName.THREE_LITER_JAR,
+            ExerciseName.TAUTOGRAMS,
             ExerciseName.REMEMBER_ALL -> {
                 lettersForRememberAll.random()
             }
