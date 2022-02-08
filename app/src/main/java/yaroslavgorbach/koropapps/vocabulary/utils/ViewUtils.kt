@@ -22,10 +22,13 @@ fun Activity.setBackgroundStatusBarColor() {
 
 fun Activity.setPrimaryStatusBarColor() {
     window.statusBarColor = getColorPrimary()
-
     window.decorView.systemUiVisibility = 0
 }
 
+fun Activity.setStatusBarColor(color: Int) {
+    window.statusBarColor = color
+    window.decorView.systemUiVisibility = 0
+}
 
 fun Activity.setDefaultStatusBarColor() {
     window.statusBarColor = statusBarColor
@@ -41,5 +44,4 @@ fun Activity.setKeepScreenOn(isNeedToKeep: Boolean) {
     } else {
         window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
     }
-
 }
