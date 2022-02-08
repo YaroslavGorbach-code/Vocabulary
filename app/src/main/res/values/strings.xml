@@ -92,7 +92,7 @@
     <string name="record_deleted">Запись удалена</string>
     <string name="achievement">Достижения</string>
     <string name="start_daily_training">начать ежедневную тренеровку</string>
-    <string name="last_training_was">Последняя тренировка была</string>
+    <string name="last_training_was">Предыдущая тренировка была</string>
     <string name="finished_trainings_in_row">Завершенных тренеровок подряд:</string>
     <string name="training_is_over">Тренировка закончена</string>
     <string name="training_is_over_info_text">Ежедневная тренировка выполнена! Следующая будет доступна завтра, отдыхайте</string>

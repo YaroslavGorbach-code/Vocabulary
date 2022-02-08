@@ -18,6 +18,7 @@ import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameTo
 import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToIconResMapper
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.model.ChartTimeUi
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.model.ChartValueUi
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.model.DescriptionState
 import java.util.*
 import javax.inject.Inject
 
@@ -51,6 +52,11 @@ class DescriptionViewModel @Inject constructor(
 
     val isExerciseFavorite: LiveData<Boolean>
         get() = _isExerciseFavorite
+
+    private val _descriptionState: MutableLiveData<DescriptionState> = MutableLiveData(DescriptionState.COLLAPSED)
+
+    val descriptionState: LiveData<DescriptionState>
+        get() = _descriptionState
 
     init {
         observeValueStatistics()
@@ -162,6 +168,14 @@ class DescriptionViewModel @Inject constructor(
     fun changeExerciseFavorite() {
         viewModelScope.launch {
             changeExerciseFavoriteInteractor(exerciseName)
+        }
+    }
+
+    fun changeDescriptionState() {
+        when(descriptionState.value){
+            DescriptionState.COLLAPSED -> _descriptionState.value = DescriptionState.OPENED
+            DescriptionState.OPENED -> _descriptionState.value = DescriptionState.COLLAPSED
+            null -> {}
         }
     }
 
