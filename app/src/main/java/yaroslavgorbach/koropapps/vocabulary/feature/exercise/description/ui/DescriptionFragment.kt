@@ -7,10 +7,12 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentDescriptionBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToExerciseIconColorMapper
 import yaroslavgorbach.koropapps.vocabulary.feature.common.model.ExerciseType
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.model.StatisticItemUi
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.presentation.DescriptionViewModel
 import yaroslavgorbach.koropapps.vocabulary.utils.*
 import javax.inject.Inject
@@ -84,28 +86,16 @@ class DescriptionFragment : Fragment(R.layout.fragment_description) {
                     onBackPressed()
                 }
 
-                override fun onNextChartValue() {
-                    viewModel.onNextChartValue()
-                }
-
-                override fun onPreviousChartValue() {
-                    viewModel.onPreviousChartValue()
-                }
-
-                override fun onNextChartTime() {
-                    viewModel.onNextChartTime()
-                }
-
-                override fun onPreviousChartTime() {
-                    viewModel.onPreviousChartTime()
-                }
-
                 override fun onAddToFavorite() {
                     viewModel.changeExerciseFavorite()
                 }
 
                 override fun onChangeDescriptionState() {
                     viewModel.changeDescriptionState()
+                }
+
+                override fun onStatisticItemChosen(statisticItemUi: StatisticItemUi) {
+                    viewModel.choseStatisticItem(statisticItemUi)
                 }
             })
 
@@ -118,15 +108,12 @@ class DescriptionFragment : Fragment(R.layout.fragment_description) {
     }
 
     private fun initObservers() {
-        viewModel.chartValueUi.observe(viewLifecycleOwner, descriptionView::setChartValue)
-
-        viewModel.chartTimeUi.observe(viewLifecycleOwner, descriptionView::setChartTime)
-
+        viewModel.statisticItems.observe(viewLifecycleOwner, descriptionView::setStatisticItems)
+        viewModel.chosenStatisticItem.observe(viewLifecycleOwner, descriptionView::setCurrentStatisticItem)
         viewModel.isExerciseFavorite.observe(
             viewLifecycleOwner,
             descriptionView::setExerciseFavorite
         )
-
         viewModel.descriptionState.observe(viewLifecycleOwner, descriptionView::setDescriptionState)
     }
 

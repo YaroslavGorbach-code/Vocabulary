@@ -1,10 +1,12 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.ui
 
+import androidx.recyclerview.widget.LinearLayoutManager
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentDescriptionBinding
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.model.ChartTimeUi
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.model.ChartValueUi
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.model.DescriptionState
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.model.StatisticItemUi
+import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.ui.recycler.StatisticItemsAdapter
 import yaroslavgorbach.koropapps.vocabulary.utils.getDrawable
 import yaroslavgorbach.koropapps.vocabulary.utils.getString
 
@@ -15,27 +17,34 @@ class DescriptionView(
     interface Callback {
         fun onOpenExercise()
         fun onBack()
-        fun onNextChartValue()
-        fun onPreviousChartValue()
-        fun onNextChartTime()
-        fun onPreviousChartTime()
         fun onAddToFavorite()
         fun onChangeDescriptionState()
+        fun onStatisticItemChosen(statisticItemUi: StatisticItemUi)
     }
 
-    companion object {
-        private const val DESCRIPTION_MAX_LINES = 4
+    private val statisticItemsAdapter: StatisticItemsAdapter by lazy {
+        StatisticItemsAdapter(callback::onStatisticItemChosen)
     }
 
     init {
+        initRecycler()
         initActions()
     }
 
+    private fun initRecycler() {
+        binding.statisticDaysList.apply {
+            adapter = statisticItemsAdapter
+            layoutManager = LinearLayoutManager(
+                binding.root.context, LinearLayoutManager.HORIZONTAL, false
+            )
+        }
+    }
+
     private fun initActions() {
-//        binding.openExercise.setOnClickListener {
-//            callback.onOpenExercise()
-//        }
-//
+        binding.start.setOnClickListener {
+            callback.onOpenExercise()
+        }
+
 //        binding.toolbar.setNavigationOnClickListener {
 //            callback.onBack()
 //        }
@@ -103,18 +112,15 @@ class DescriptionView(
         binding.exerciseName.text = binding.getString(exerciseNameRes)
     }
 
-    fun setChartValue(chartValueUi: ChartValueUi) {
-//        binding.chart.statisticsText.text = binding.getString(chartValueUi.nameRes)
-//
-//        if (chartValueUi.isEmpty) {
-//            showNoChartValueData()
-//        } else {
-//            binding.chart.chart.setDrawDotLine(false)
-//            binding.chart.chart.setShowPopup(LineView.SHOW_POPUPS_All)
-//            binding.chart.chart.setBottomTextList(chartValueUi.labels)
-//            binding.chart.chart.setColorArray(chartValueUi.getColors(binding.root.context))
-//            binding.chart.chart.setDataList(chartValueUi.data)
-//        }
+    fun setStatisticItems(statisticItems: List<StatisticItemUi>) {
+        statisticItemsAdapter.setData(statisticItems)
+    }
+
+    fun setCurrentStatisticItem(item: StatisticItemUi) {
+        binding.statisticsValueTitle.text = binding.getString(item.valueTitleRes)
+        binding.statisticsTimeTitle.text = binding.getString(item.timeTitleRes)
+        binding.statisticsValueValue.text = item.value.toString()
+        binding.statisticsTimeValue.text = item.time.toString()
     }
 
     private fun showNoChartValueData() {

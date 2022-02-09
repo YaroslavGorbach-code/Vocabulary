@@ -12,6 +12,7 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.viewbinding.ViewBinding
 import yaroslavgorbach.koropapps.vocabulary.R
+import java.security.AccessController
 
 
 fun ViewBinding.getString(@StringRes id: Int): String {
@@ -31,6 +32,12 @@ fun Context.getColorPrimary(): Int {
     val color = a.getColor(0, 0)
     a.recycle()
     return color
+}
+
+fun Context.selectableItemBackgroundBorderless(): Int{
+    val outValue = TypedValue()
+    theme.resolveAttribute(android.R.attr.selectableItemBackgroundBorderless, outValue, true)
+    return outValue.resourceId
 }
 
 val Context.colorBackground: Int

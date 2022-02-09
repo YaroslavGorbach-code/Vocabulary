@@ -36,51 +36,6 @@ data class ChartTimeUi(
     val dates: List<Date>
         get() = statisticsExerciseTimeEntities.map { it.date }
 
-    val nameRes: Int
-        get() = when (exerciseName) {
-            ExerciseName.ALPHABET_ADJECTIVES,
-            ExerciseName.ALPHABET_NOUN,
-            ExerciseName.ALPHABET_VERBS,
-            ExerciseName.ASSOCIATIONS,
-            ExerciseName.THREE_LITER_JAR,
-            ExerciseName.LIST_OF_CATEGORIES,
-            ExerciseName.HALF,
-            ExerciseName.SPECIFICATIONS,
-            ExerciseName.DICTIONARY_ADJECTIVES,
-            ExerciseName.DICTIONARY_NOUN,
-            ExerciseName.DICTIONARY_VERBS,
-            ExerciseName.LINGUISTIC_PYRAMIDS,
-            ExerciseName.RAVEN_LOOK_LIKE_A_TABLE,
-            ExerciseName.ADVANCED_BINDING,
-            ExerciseName.STORYTELLER_IMPROVISER,
-            ExerciseName.WHAT_I_SEE_I_SING_ABOUT,
-            ExerciseName.MAGIC_NAMING,
-            ExerciseName.BUYING_SELLING,
-            ExerciseName.CO_AUTHORED_WITH_DAHL,
-            ExerciseName.RORSCHACH_TEST,
-            ExerciseName.WILL_NOT_BE_WORSE,
-            ExerciseName.QUESTION_ANSWER,
-            ExerciseName.RAVEN_LOOK_LIKE_A_TABLE_FILINGS,
-            ExerciseName.DIFFICULT_WORDS,
-            ExerciseName.COUP_OF_CONSCIOUSNESS,
-            ExerciseName.ANTONYMS_AND_SYNONYMS -> R.string.average_time_on_word
-            ExerciseName.THREE_LETTERS,
-            ExerciseName.TAUTOGRAMS -> R.string.average_time_on_sentence
-            ExerciseName.NARRATOR_NOUN,
-            ExerciseName.NARRATOR_ADJECTIVES,
-            ExerciseName.NARRATOR_VERBS,
-            ExerciseName.PROBLEM_SOLVING,
-            ExerciseName.TEN -> R.string.average_time_on_story
-            ExerciseName.REMEMBER_ALL -> R.string.average_time_on_letter
-            ExerciseName.GAME_I_KNOW_5_NAMES -> R.string.average_time_on_category
-            ExerciseName.OTHER_ABBREVIATIONS -> R.string.average_time_on_abbreviation
-            ExerciseName.TONGUE_TWISTERS_EASY,
-            ExerciseName.TONGUE_TWISTERS_HARD,
-            ExerciseName.TONGUE_TWISTERS_VERY_HARD -> R.string.average_time_on_tongue_twister
-            ExerciseName.SOUND_COMBINATIONS -> R.string.average_time_on_sound_combinations
-            ExerciseName.COUP -> R.string.average_time_on_image
-        }
-
     fun getColors(context: Context): IntArray {
         return intArrayOf(
             context.getColorPrimary(),
