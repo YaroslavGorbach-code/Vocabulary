@@ -47,15 +47,14 @@ class StatisticItemsAdapter(
 
         init {
             binding.root.setOnClickListener {
-                onItemChosen(list[absoluteAdapterPosition])
+                if (absoluteAdapterPosition >= 0)
+                    onItemChosen(list[absoluteAdapterPosition])
             }
         }
 
         fun bind(item: StatisticItemUi) {
             binding.dayNumber.text = item.dayOfWeek
             binding.dayString.text = item.dayOfWeekText
-            val outValue = TypedValue()
-
             when (item.isChosen) {
                 true -> {
                     binding.dayString.setTextColor(Color.WHITE)

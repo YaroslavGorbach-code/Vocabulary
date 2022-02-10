@@ -32,6 +32,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
+
             <TextView
                 android:id="@+id/exercise_name"
                 style="@style/TextAppearance.MaterialComponents.Subtitle2"
@@ -91,6 +92,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/materialDivider3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/statistic_days_list" />
+
             <TextView
                 android:id="@+id/textView9"
                 android:layout_width="0dp"
@@ -104,12 +114,14 @@
 
             <TextView
                 android:id="@+id/textView10"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
+                android:background="@color/on_background"
+                android:gravity="center"
+                android:padding="8dp"
                 android:text="@string/statistic"
                 android:textSize="16sp"
-                style="@style/TextAppearance.MaterialComponents.Headline6"
                 android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -139,8 +151,8 @@
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:gravity="center"
                 android:background="@drawable/bg_statistic_value"
+                android:gravity="center"
                 android:paddingHorizontal="16dp"
                 android:paddingVertical="4dp"
                 android:text="25"
@@ -167,15 +179,25 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/bg_statistic_value"
+                android:gravity="center"
                 android:paddingHorizontal="16dp"
                 android:paddingVertical="4dp"
                 android:text="5"
-                android:gravity="center"
                 android:textSize="16dp"
                 android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="@+id/statistics_time_title"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/statistics_time_title" />
+
+            <androidx.constraintlayout.helper.widget.Layer
+                android:id="@+id/statistic_layer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="textView10, statistics_time_value, statistics_time_title, statistics_value_value, statistics_value_title, statistic_days_list,materialDivider3, textView9, materialDivider2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialDivider2" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
@@ -207,17 +229,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-<!--    <com.google.android.material.button.MaterialButton-->
-<!--        android:id="@+id/materialButton"-->
-<!--        style="@style/Widget.MaterialComponents.Button.TextButton"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="избранное"-->
-<!--        android:textColor="@color/YellowPrimary"-->
-<!--        android:textSize="12sp"-->
-<!--        app:icon="@drawable/ic_star"-->
-<!--        app:iconTint="@color/YellowPrimary"-->
-<!--        app:layout_constraintEnd_toEndOf="parent" />-->
+    <!--    <com.google.android.material.button.MaterialButton-->
+    <!--        android:id="@+id/materialButton"-->
+    <!--        style="@style/Widget.MaterialComponents.Button.TextButton"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="избранное"-->
+    <!--        android:textColor="@color/YellowPrimary"-->
+    <!--        android:textSize="12sp"-->
+    <!--        app:icon="@drawable/ic_star"-->
+    <!--        app:iconTint="@color/YellowPrimary"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -42,9 +42,9 @@ class DescriptionViewModel @Inject constructor(
     val statisticItems: LiveData<List<StatisticItemUi>>
         get() = _statisticItems
 
-    private val _chosenStatisticItem: MutableLiveData<StatisticItemUi> = MutableLiveData()
+    private val _chosenStatisticItem: MutableLiveData<StatisticItemUi?> = MutableLiveData()
 
-    val chosenStatisticItem: LiveData<StatisticItemUi>
+    val chosenStatisticItem: LiveData<StatisticItemUi?>
         get() = _chosenStatisticItem
 
     private val _isExerciseFavorite: MutableLiveData<Boolean> = MutableLiveData()
@@ -68,9 +68,15 @@ class DescriptionViewModel @Inject constructor(
             .zipWith(observeStatisticsValueInteractor(exerciseName)) { timeList, valueList ->
                 timeList.zip(valueList, ::StatisticItemUi)
             }
+            .map { statistics ->
+                statistics.mapIndexed { index, statisticItemUi ->
+                    statisticItemUi.copy(isChosen = index == statistics.size - 1)
+                }
+            }
+            .doOnNext { statistics -> _chosenStatisticItem.postValue(statistics.firstOrNull { it.isChosen }) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(_statisticItems::setValue)
+            .subscribe(_statisticItems::postValue)
             .let(disposables::add)
     }
 

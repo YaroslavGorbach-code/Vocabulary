@@ -1,9 +1,11 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.ui
 
+import android.os.Handler
+import android.os.Looper
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentDescriptionBinding
-import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.model.ChartTimeUi
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.model.DescriptionState
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.model.StatisticItemUi
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.ui.recycler.StatisticItemsAdapter
@@ -114,46 +116,41 @@ class DescriptionView(
 
     fun setStatisticItems(statisticItems: List<StatisticItemUi>) {
         statisticItemsAdapter.setData(statisticItems)
+        scrollToCorrectPosition(statisticItems)
+        setStatisticsVisibility(statisticItems)
     }
 
-    fun setCurrentStatisticItem(item: StatisticItemUi) {
-        binding.statisticsValueTitle.text = binding.getString(item.valueTitleRes)
-        binding.statisticsTimeTitle.text = binding.getString(item.timeTitleRes)
-        binding.statisticsValueValue.text = item.value.toString()
-        binding.statisticsTimeValue.text = item.time.toString()
+    private fun setStatisticsVisibility(statisticItems: List<StatisticItemUi>) {
+        if (statisticItems.isEmpty()) {
+            binding.statisticLayer.visibility = View.GONE
+        } else {
+            binding.statisticLayer.visibility = View.VISIBLE
+        }
     }
 
-    private fun showNoChartValueData() {
-//        binding.chart.noData.visibility = View.VISIBLE
-//        binding.chart.chart.visibility = View.GONE
+    private fun scrollToCorrectPosition(statisticItems: List<StatisticItemUi>) {
+        Handler(Looper.getMainLooper()).post {
+            if (statisticItems.isNotEmpty()) {
+                binding.statisticDaysList.smoothScrollToPosition(statisticItems.indexOfFirst { it.isChosen })
+            }
+        }
     }
 
-    fun setChartTime(chartTimeUi: ChartTimeUi) {
-//        binding.chartTime.statisticsText.text = binding.getString(chartTimeUi.nameRes)
-//
-//        if (chartTimeUi.isEmpty) {
-//            showNoChartTimeData()
-//        } else {
-//            binding.chartTime.chart.setDrawDotLine(false)
-//            binding.chartTime.chart.setShowPopup(LineView.SHOW_POPUPS_All)
-//            binding.chartTime.chart.setBottomTextList(chartTimeUi.labels)
-//            binding.chartTime.chart.setColorArray(chartTimeUi.getColors(binding.root.context))
-//            binding.chartTime.chart.setDataList(chartTimeUi.data)
-//        }
-    }
-
-    private fun showNoChartTimeData() {
-//        binding.chartTime.noData.visibility = View.VISIBLE
-//        binding.chartTime.chart.visibility = View.GONE
+    fun setCurrentStatisticItem(item: StatisticItemUi?) {
+        item?.let {
+            binding.statisticsValueTitle.text = binding.getString(item.valueTitleRes)
+            binding.statisticsTimeTitle.text = binding.getString(item.timeTitleRes)
+            binding.statisticsValueValue.text = item.value.toString()
+            binding.statisticsTimeValue.text = item.time.toString()
+        }
     }
 
     fun setDescriptionState(state: DescriptionState) {
         binding.exerciseDescription.maxLines = state.maxLines
 
-        when(state){
+        when (state) {
             DescriptionState.COLLAPSED -> binding.showHideDescription.setImageResource(R.drawable.ic_arrow_down)
             DescriptionState.OPENED -> binding.showHideDescription.setImageResource(R.drawable.ic_arrow_up)
         }
     }
-
 }
