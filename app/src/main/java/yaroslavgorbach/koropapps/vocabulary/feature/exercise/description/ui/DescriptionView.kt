@@ -138,10 +138,10 @@ class DescriptionView(
 
     fun setCurrentStatisticItem(item: StatisticItemUi?) {
         item?.let {
-            binding.statisticsValueTitle.text = binding.getString(item.valueTitleRes)
-            binding.statisticsTimeTitle.text = binding.getString(item.timeTitleRes)
-            binding.statisticsValueValue.text = item.value.toString()
-            binding.statisticsTimeValue.text = item.time.toString()
+//            binding.statisticsValueTitle.text = binding.getString(item.valueTitleRes)
+//            binding.statisticsTimeTitle.text = binding.getString(item.timeTitleRes)
+//            binding.statisticsValueValue.text = item.value.toString()
+//            binding.statisticsTimeValue.text = item.time.toString()
         }
     }
 

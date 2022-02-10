@@ -120,8 +120,9 @@
                 android:background="@color/on_background"
                 android:gravity="center"
                 android:padding="8dp"
+                android:textAllCaps="true"
                 android:text="@string/statistic"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -135,65 +136,98 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
-            <TextView
-                android:id="@+id/statistics_value_title"
+            <!--            <TextView-->
+<!--                android:id="@+id/statistics_value_title"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:padding="16dp"-->
+<!--                android:text="First 1"-->
+<!--                android:textSize="16dp"-->
+<!--                android:visibility="visible"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/statistic_days_list" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/statistics_value_value"-->
+<!--                android:layout_width="60dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginEnd="8dp"-->
+<!--                android:background="@drawable/bg_statistic_value"-->
+<!--                android:gravity="center"-->
+<!--                android:paddingHorizontal="16dp"-->
+<!--                android:paddingVertical="4dp"-->
+<!--                android:text="25"-->
+<!--                android:textSize="16dp"-->
+<!--                android:visibility="visible"-->
+<!--                app:layout_constraintBottom_toBottomOf="@+id/statistics_value_title"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="@+id/statistics_value_title" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/statistics_time_title"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:padding="16dp"-->
+<!--                android:text="Second 2"-->
+<!--                android:textSize="16dp"-->
+<!--                android:visibility="visible"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/statistics_value_title" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/statistics_time_value"-->
+<!--                android:layout_width="60dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginEnd="8dp"-->
+<!--                android:background="@drawable/bg_statistic_value"-->
+<!--                android:gravity="center"-->
+<!--                android:paddingHorizontal="16dp"-->
+<!--                android:paddingVertical="4dp"-->
+<!--                android:text="5"-->
+<!--                android:textSize="16dp"-->
+<!--                android:visibility="visible"-->
+<!--                app:layout_constraintBottom_toBottomOf="@+id/statistics_time_title"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="@+id/statistics_time_title" />-->
+
+            <LinearLayout
+                android:id="@+id/cards"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:text="First 1"
-                android:textSize="16dp"
-                android:visibility="visible"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/statistic_days_list" />
-
-            <TextView
-                android:id="@+id/statistics_value_value"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/bg_statistic_value"
-                android:gravity="center"
-                android:paddingHorizontal="16dp"
-                android:paddingVertical="4dp"
-                android:text="25"
-                android:textSize="16dp"
-                android:visibility="visible"
-                app:layout_constraintBottom_toBottomOf="@+id/statistics_value_title"
+                android:layout_height="200dp"
+                android:orientation="horizontal"
+                android:background="@color/on_background"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/statistics_value_title" />
-
-            <TextView
-                android:id="@+id/statistics_time_title"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:text="Second 2"
-                android:textSize="16dp"
-                android:visibility="visible"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/statistics_value_title" />
+                app:layout_constraintTop_toBottomOf="@+id/statistic_days_list">
 
-            <TextView
-                android:id="@+id/statistics_time_value"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/bg_statistic_value"
-                android:gravity="center"
-                android:paddingHorizontal="16dp"
-                android:paddingVertical="4dp"
-                android:text="5"
-                android:textSize="16dp"
-                android:visibility="visible"
-                app:layout_constraintBottom_toBottomOf="@+id/statistics_time_title"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/statistics_time_title" />
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cart_statistic_value"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    app:cardElevation="0dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cart_statistic_time"
+                    android:layout_width="match_parent"
+                    android:layout_marginStart="8dp"
+                    app:cardElevation="0dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5" />
+            </LinearLayout>
 
             <androidx.constraintlayout.helper.widget.Layer
                 android:id="@+id/statistic_layer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:constraint_referenced_ids="textView10, statistics_time_value, statistics_time_title, statistics_value_value, statistics_value_title, statistic_days_list,materialDivider3, textView9, materialDivider2"
+                app:constraint_referenced_ids="textView10,materialDivider3, textView9, materialDivider2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/materialDivider2" />

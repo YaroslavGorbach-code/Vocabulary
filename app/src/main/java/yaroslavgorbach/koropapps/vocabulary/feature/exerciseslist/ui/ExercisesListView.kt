@@ -92,9 +92,7 @@ class ExercisesListView(
 
     fun setExercisesWithFilter(exercisesWithFilterUi: ExercisesWithFilterUi) {
         initFilterChips(exercisesWithFilterUi)
-
         showEmptyFavoritesIcon(exercisesWithFilterUi.areFavoritesEmpty)
-
         setExercisesListData(exercisesWithFilterUi)
     }
 
