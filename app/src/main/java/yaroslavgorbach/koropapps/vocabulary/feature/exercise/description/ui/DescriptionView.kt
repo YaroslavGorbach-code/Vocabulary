@@ -1,5 +1,6 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.ui
 
+import android.annotation.SuppressLint
 import android.os.Handler
 import android.os.Looper
 import android.view.View
@@ -136,12 +137,15 @@ class DescriptionView(
         }
     }
 
+    @SuppressLint("SetTextI18n")
     fun setCurrentStatisticItem(item: StatisticItemUi?) {
         item?.let {
-//            binding.statisticsValueTitle.text = binding.getString(item.valueTitleRes)
-//            binding.statisticsTimeTitle.text = binding.getString(item.timeTitleRes)
-//            binding.statisticsValueValue.text = item.value.toString()
-//            binding.statisticsTimeValue.text = item.time.toString()
+            binding.textStatisticValueTitle.text = binding.getString(item.valueSubtitleRes)
+            binding.textStatisticValueValue.text =
+                binding.getString(item.valueTitleRes) + " " + item.value.toString()
+            binding.textStatisticTimeTitle.text = binding.getString(item.timeTitleRes)
+            binding.textStatisticTimeValue.text =
+                item.time.toString() + " " + binding.getString(R.string.seconds_short)
         }
     }
 
@@ -149,8 +153,8 @@ class DescriptionView(
         binding.exerciseDescription.maxLines = state.maxLines
 
         when (state) {
-            DescriptionState.COLLAPSED -> binding.showHideDescription.setImageResource(R.drawable.ic_arrow_down)
-            DescriptionState.OPENED -> binding.showHideDescription.setImageResource(R.drawable.ic_arrow_up)
+            DescriptionState.COLLAPSED -> binding.showHideDescriptionImage.setImageResource(R.drawable.ic_arrow_down)
+            DescriptionState.OPENED -> binding.showHideDescriptionImage.setImageResource(R.drawable.ic_arrow_up)
         }
     }
 }
