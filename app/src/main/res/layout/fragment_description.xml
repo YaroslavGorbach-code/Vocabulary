@@ -7,11 +7,24 @@
     app:layoutDescription="@xml/fragment_description_scene">
 
     <ImageView
+        android:id="@+id/close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:elevation="1dp"
+        android:padding="6dp"
+        android:background="@drawable/bg_ic_close_description"
+        android:src="@drawable/ic_close"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
         android:id="@+id/icon"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/ic_phone"
+        android:src="@drawable/ic_alphabet_a"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -303,17 +316,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <!--    <com.google.android.material.button.MaterialButton-->
-    <!--        android:id="@+id/materialButton"-->
-    <!--        style="@style/Widget.MaterialComponents.Button.TextButton"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:text="избранное"-->
-    <!--        android:textColor="@color/YellowPrimary"-->
-    <!--        android:textSize="12sp"-->
-    <!--        app:icon="@drawable/ic_star"-->
-    <!--        app:iconTint="@color/YellowPrimary"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent" />-->
-
+    <ImageView
+        android:id="@+id/favorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/bg_ic_close_description"
+        android:elevation="1dp"
+        android:padding="6dp"
+        android:src="@drawable/ic_star"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 

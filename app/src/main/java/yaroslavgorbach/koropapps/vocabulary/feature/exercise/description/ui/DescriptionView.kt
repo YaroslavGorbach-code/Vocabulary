@@ -49,43 +49,13 @@ class DescriptionView(
             callback.onOpenExercise()
         }
 
-//        binding.toolbar.setNavigationOnClickListener {
-//            callback.onBack()
-//        }
-//
-//        binding.toolbar.setOnMenuItemClickListener {
-//            when (it.itemId) {
-//                R.id.menu_add_to_favorite -> {
-//                    callback.onAddToFavorite()
-//                }
-//            }
-//            true
-//        }
-//
-//        binding.chart.nextData.setOnClickListener {
-//            callback.onNextChartValue()
-//        }
-//
-//        binding.chart.prevData.setOnClickListener {
-//            callback.onPreviousChartValue()
-//        }
-//
-//        binding.chartTime.nextData.setOnClickListener {
-//            callback.onNextChartTime()
-//        }
-//
-//        binding.chartTime.prevData.setOnClickListener {
-//            callback.onPreviousChartTime()
-//        }
-//
-//        binding.scrollView.setOnScrollChangeListener(
-//            NestedScrollView.OnScrollChangeListener { _, _, scrollY, _, oldScrollY ->
-//                if (scrollY > oldScrollY) {
-//                    binding.openExercise.hide()
-//                } else {
-//                    binding.openExercise.show()
-//                }
-//            })
+        binding.close.setOnClickListener {
+            callback.onBack()
+        }
+
+        binding.favorite.setOnClickListener {
+            callback.onAddToFavorite()
+        }
 
         binding.showHideDescription.setOnClickListener {
             callback.onChangeDescriptionState()
@@ -103,13 +73,11 @@ class DescriptionView(
     }
 
     fun setExerciseFavorite(isFavorite: Boolean) {
-//        val menuItem = binding.toolbar.menu[0]
-//
-//        if (isFavorite) {
-//            menuItem.icon = binding.getDrawable(R.drawable.ic_star_yellow)
-//        } else {
-//            menuItem.icon = binding.getDrawable(R.drawable.ic_star)
-//        }
+        if (isFavorite) {
+            binding.favorite.setImageDrawable(binding.getDrawable(R.drawable.ic_star_yellow))
+        } else {
+            binding.favorite.setImageDrawable(binding.getDrawable(R.drawable.ic_star))
+        }
     }
 
     fun setExerciseNameRes(exerciseNameRes: Int) {
