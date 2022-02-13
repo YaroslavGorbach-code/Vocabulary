@@ -10,6 +10,7 @@ import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentDescriptionBindi
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.model.DescriptionState
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.model.StatisticItemUi
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.ui.recycler.StatisticItemsAdapter
+import yaroslavgorbach.koropapps.vocabulary.utils.formatDefault
 import yaroslavgorbach.koropapps.vocabulary.utils.getDrawable
 import yaroslavgorbach.koropapps.vocabulary.utils.getString
 
@@ -117,8 +118,17 @@ class DescriptionView(
 
     fun setStatisticItems(statisticItems: List<StatisticItemUi>) {
         statisticItemsAdapter.setData(statisticItems)
+        setLastTrainingDate(statisticItems.lastOrNull())
         scrollToCorrectPosition(statisticItems)
         setStatisticsVisibility(statisticItems)
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun setLastTrainingDate(last: StatisticItemUi?) {
+        last?.date?.let { date ->
+            binding.lastTraining.text =
+                binding.getString(R.string.last_training_was) + " " + date.formatDefault()
+        }
     }
 
     private fun setStatisticsVisibility(statisticItems: List<StatisticItemUi>) {

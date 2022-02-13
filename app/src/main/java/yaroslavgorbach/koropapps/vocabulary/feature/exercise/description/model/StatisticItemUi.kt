@@ -22,6 +22,8 @@ data class StatisticItemUi(
 
     val time = timeEntity.value
 
+    val date = timeEntity.date
+
     val valueSubtitleRes
         get() = when (timeEntity.exerciseName) {
             ExerciseName.NARRATOR_NOUN,
@@ -53,6 +55,7 @@ data class StatisticItemUi(
             ExerciseName.SOUND_COMBINATIONS,
             ExerciseName.DIFFICULT_WORDS,
             ExerciseName.OTHER_ABBREVIATIONS,
+            ExerciseName.ANTONYMS_AND_SYNONYMS,
             ExerciseName.ASSOCIATIONS -> R.string.passed_subtitle
             else -> R.string.told_subtitle
         }
