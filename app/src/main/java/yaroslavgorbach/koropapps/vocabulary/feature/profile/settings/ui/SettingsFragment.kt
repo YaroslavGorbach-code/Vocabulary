@@ -70,6 +70,10 @@ class SettingsFragment : Fragment(R.layout.fragment_settings), ChoseThemeDialog.
                     viewModel.changeAutoRecordingSettingState(isChecked)
                 }
 
+                override fun onKeepScreenOn(isChecked: Boolean) {
+                    viewModel.changeKeepScreenOnSettingState(isChecked)
+                }
+
                 override fun onClearAllData() {
                     showClearAllDataConfirmationDialog()
                 }
@@ -92,6 +96,11 @@ class SettingsFragment : Fragment(R.layout.fragment_settings), ChoseThemeDialog.
         viewModel.isAutoRecordSettingChecked.observe(
             viewLifecycleOwner,
             settingsView::setAutoRecordStateChecked
+        )
+
+        viewModel.isKeepScreenOnSettingChecked.observe(
+            viewLifecycleOwner,
+            settingsView::setKeepScreenOnStateChecked
         )
 
         viewModel.allDataCleared.consume(viewLifecycleOwner) { settingsView.showAllDataClearedSnack() }

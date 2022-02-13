@@ -80,4 +80,14 @@ class BusinessSettingsModule {
     fun provideObserveInterstitialShowAvailability(repoSettings: RepoSettings): ObserveInterstitialShowAvailability {
         return ObserveInterstitialShowAvailability(repoSettings)
     }
+
+    @Provides
+    fun provideObserveKeepScreenOnStateInteractor(repoSettings: RepoSettings): ObserveKeepScreenSettingInteractor {
+        return ObserveKeepScreenSettingInteractor(repoSettings)
+    }
+
+    @Provides
+    fun provideChangeKeepScreenOnInteractor(repoSettings: RepoSettings): ChangeKeepScreenOnInteractor {
+        return ChangeKeepScreenOnInteractor(repoSettings)
+    }
 }

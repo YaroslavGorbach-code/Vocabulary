@@ -3,6 +3,7 @@ package yaroslavgorbach.koropapps.vocabulary.utils
 import android.content.Context
 import android.content.res.Configuration
 import android.content.res.TypedArray
+import android.graphics.drawable.AnimatedVectorDrawable
 import android.graphics.drawable.Drawable
 import android.util.TypedValue
 import androidx.annotation.DrawableRes
@@ -11,6 +12,7 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.viewbinding.ViewBinding
 import yaroslavgorbach.koropapps.vocabulary.R
+import java.security.AccessController
 
 
 fun ViewBinding.getString(@StringRes id: Int): String {
@@ -30,6 +32,12 @@ fun Context.getColorPrimary(): Int {
     val color = a.getColor(0, 0)
     a.recycle()
     return color
+}
+
+fun Context.selectableItemBackgroundBorderless(): Int{
+    val outValue = TypedValue()
+    theme.resolveAttribute(android.R.attr.selectableItemBackgroundBorderless, outValue, true)
+    return outValue.resourceId
 }
 
 val Context.colorBackground: Int
@@ -60,3 +68,7 @@ fun Context.isSystemNightMode() =
         Configuration.UI_MODE_NIGHT_YES -> true
         else -> error("can not get system night mode")
     }
+
+fun Drawable.animate(){
+    (this as AnimatedVectorDrawable).start()
+}

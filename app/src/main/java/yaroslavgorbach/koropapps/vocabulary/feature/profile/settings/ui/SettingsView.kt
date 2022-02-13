@@ -14,6 +14,7 @@ class SettingsView(private val binding: FragmentSettingsBinding, private val cal
         fun onChoseTheme(themes: List<Theme>, uiMode: UiMode)
         fun onNotificationSettings(notification: Notification)
         fun onAutoRecording(isChecked: Boolean)
+        fun onKeepScreenOn(isChecked: Boolean)
         fun onClearAllData()
         fun onBack()
     }
@@ -45,9 +46,18 @@ class SettingsView(private val binding: FragmentSettingsBinding, private val cal
             callback.onAutoRecording(isChecked)
         }
 
+        binding.keepScreenOnSetting.keepScreenOnCheckBox.setOnCheckedChangeListener { _, isChecked ->
+            callback.onKeepScreenOn(isChecked)
+        }
+
         binding.autoRecording.root.setOnClickListener {
             binding.autoRecording.autoRecordCheckBox.isChecked =
                 binding.autoRecording.autoRecordCheckBox.isChecked.not()
+        }
+
+        binding.keepScreenOnSetting.root.setOnClickListener {
+            binding.keepScreenOnSetting.keepScreenOnCheckBox.isChecked =
+                binding.keepScreenOnSetting.keepScreenOnCheckBox.isChecked.not()
         }
 
         binding.clearData.root.setOnClickListener {
@@ -73,6 +83,10 @@ class SettingsView(private val binding: FragmentSettingsBinding, private val cal
 
     fun setAutoRecordStateChecked(isChecked: Boolean) {
         binding.autoRecording.autoRecordCheckBox.isChecked = isChecked
+    }
+
+    fun setKeepScreenOnStateChecked(isChecked: Boolean) {
+        binding.keepScreenOnSetting.keepScreenOnCheckBox.isChecked = isChecked
     }
 
     @SuppressLint("SetTextI18n")

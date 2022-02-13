@@ -13,6 +13,10 @@ interface SettingsDataStore {
 
     suspend fun changeAutoRecordState(context: Context, isAutoRecordSwitchedOn: Boolean)
 
+    suspend fun changeKeepSeenOn(context: Context, isNeedToKeepScreenOn: Boolean)
+
+    fun observeKeepScreenOnState(context: Context): Flow<Boolean>
+
     suspend fun changeIsFirstAppOpen(context: Context, isFirstAppOpen: Boolean)
 
     suspend fun changeTheme(context: Context, theme: Theme)

@@ -16,6 +16,7 @@ import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.word.pres
 import yaroslavgorbach.koropapps.vocabulary.utils.appComponent
 import yaroslavgorbach.koropapps.vocabulary.utils.consume
 import yaroslavgorbach.koropapps.vocabulary.utils.onBackPressed
+import yaroslavgorbach.koropapps.vocabulary.utils.setKeepScreenOn
 import javax.inject.Inject
 
 class WordExerciseFragment : Fragment(R.layout.fragment_exercise), PermissionDeniedDialog.Host {
@@ -101,10 +102,18 @@ class WordExerciseFragment : Fragment(R.layout.fragment_exercise), PermissionDen
                 viewModel.onStartStopRecording(getString(exerciseType.getExerciseName().id))
             }
         }
+        viewModel.isNeedToKeepScreenOn.observe(viewLifecycleOwner) { isNeedToKeepScreenOn ->
+            requireActivity().setKeepScreenOn(isNeedToKeepScreenOn)
+        }
     }
 
     override fun onGrantPermissionClicked() {
         viewModel.onStartStopRecording(getString(exerciseType.getExerciseName().id))
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        requireActivity().setKeepScreenOn(false)
     }
 
     override fun onStop() {

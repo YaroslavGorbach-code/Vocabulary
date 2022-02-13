@@ -32,7 +32,9 @@ class SettingsViewModel @Inject constructor(
     private val clearAllStatisticsInteractor: ClearAllStatisticsInteractor,
     private val clearAchievementsInteractor: ClearAchievementsInteractor,
     private val deleteAllRecordsInteractor: DeleteAllRecordsInteractor,
-    private val deleteAllTrainingsInteractor: DeleteAllTrainingsInteractor
+    private val deleteAllTrainingsInteractor: DeleteAllTrainingsInteractor,
+    private val observeKeepScreenSettingInteractor: ObserveKeepScreenSettingInteractor,
+    private val changeKeepScreenOnInteractor: ChangeKeepScreenOnInteractor
 ) : ViewModel() {
 
     val currentTheme: LiveData<Theme>
@@ -46,6 +48,9 @@ class SettingsViewModel @Inject constructor(
 
     val notification: LiveData<Notification>
         get() = observeNotificationInteractor().asLiveData()
+
+    val isKeepScreenOnSettingChecked: LiveData<Boolean>
+        get() = observeKeepScreenSettingInteractor().asLiveData()
 
     val isAutoRecordSettingChecked: LiveData<Boolean>
         get() = observeAutoRecordStateInteractor().asLiveData()
@@ -74,15 +79,18 @@ class SettingsViewModel @Inject constructor(
         viewModelScope.launch { changeAutoRecordStateInteractor(isAutoRecordChecked) }
     }
 
+    fun changeKeepScreenOnSettingState(isChecked: Boolean) {
+        viewModelScope.launch { changeKeepScreenOnInteractor(isChecked) }
+    }
     fun clearAllData() {
         clearAllStatisticsInteractor()
             .andThen(deleteAllTrainingsInteractor())
             .doOnComplete {
                 clearAchievementsInteractor()
                 deleteAllRecordsInteractor()
-
                 _allDataCleared.send(Event(Unit))
             }
             .subscribe()
     }
+
 }

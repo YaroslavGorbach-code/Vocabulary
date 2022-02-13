@@ -69,4 +69,12 @@ class RepoSettingsImp(private val localDataStore: SettingsDataStore, private val
     override suspend fun incrementInterstatialAdShowCounter() {
         localDataStore.incrementInterstitialAdShowCounter(context)
     }
+
+    override suspend fun changeKeepSeenOn(isNeedToKeepScreenOn: Boolean) {
+        localDataStore.changeKeepSeenOn(context, isNeedToKeepScreenOn)
+    }
+
+    override fun observeKeepScreenOnState(): Flow<Boolean> {
+        return localDataStore.observeKeepScreenOnState(context)
+    }
 }

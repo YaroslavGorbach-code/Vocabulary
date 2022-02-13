@@ -10,6 +10,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import yaroslavgorbach.koropapps.vocabulary.business.settings.ObserveAutoRecordStateInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.settings.ObserveKeepScreenSettingInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.SaveStatisticsInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.IncrementExercisePerformedInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.training.ObserveTrainingExerciseInteractor
@@ -29,11 +30,15 @@ open class BaseExerciseViewModel(
     private val saveStatisticsInteractor: SaveStatisticsInteractor,
     private val observeTrainingExerciseInteractor: ObserveTrainingExerciseInteractor,
     private val observeAutoRecordStateInteractor: ObserveAutoRecordStateInteractor,
+    private val observeKeepScreenSettingInteractor: ObserveKeepScreenSettingInteractor,
     private val voiceRecorder: VoiceRecorder,
     private val permissionManager: PermissionManager,
     private val addManager: AdManager
 ) : ViewModel() {
     private val disposables: CompositeDisposable = CompositeDisposable()
+
+    val isNeedToKeepScreenOn: LiveData<Boolean> =
+        observeKeepScreenSettingInteractor.invoke().asLiveData()
 
     var numberOnNextCLicked: Int = 0
         private set
@@ -105,7 +110,6 @@ open class BaseExerciseViewModel(
     fun onStartStopRecording(exerciseName: String) {
         checkOrRequestRecordAudioPermission {
             isVoiceRecorderRecording.value?.let { isRecording ->
-                Log.i("dasdf", isRecording.toString())
                 if (isRecording) {
                     onStopRecord()
                 } else {

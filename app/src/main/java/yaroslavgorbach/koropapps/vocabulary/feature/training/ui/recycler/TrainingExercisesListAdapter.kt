@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.graphics.drawable.AnimationDrawable
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import yaroslavgorbach.koropapps.vocabulary.R
@@ -54,10 +55,12 @@ class TrainingExercisesListAdapter(private val onExercise: (exercise: TrainingEx
             binding.progress.progress = exercise.progress.toFloat()
 
             if (exercise.isFinished) {
+                binding.startArrow.visibility = View.GONE
                 binding.finishMark.setBackgroundResource(R.drawable.ic_check_animation)
                 (binding.finishMark.background as AnimatedVectorDrawable).start()
             }else{
                 binding.finishMark.setBackgroundResource(R.drawable.ic_circle_outline)
+                binding.startArrow.visibility = View.VISIBLE
             }
         }
     }

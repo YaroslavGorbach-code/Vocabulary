@@ -33,6 +33,8 @@ class SettingsDataStoreImp : SettingsDataStore {
 
         private val IS_FIRST_APP_OPEN_KEY = booleanPreferencesKey("IS_FIRST_APP_OPEN_KEY")
 
+        private val KEEP_SCREEN_ON_KEY = booleanPreferencesKey("KEEP_SCREEN_ON_KEY")
+
         private val IS_ADD_FEATURE_AVAILABLE_KEY =
             booleanPreferencesKey("IS_ADD_FEATURE_AVAILABLE_KEY")
         private val INTERSTITIAL_AD_SHOW_NUMBER_KEY =
@@ -110,6 +112,19 @@ class SettingsDataStoreImp : SettingsDataStore {
         context.settingsDataStore.edit { prefs ->
             prefs[AUTO_RECORD_STATE_KEY] = isAutoRecordSwitchedOn
         }
+    }
+
+    override suspend fun changeKeepSeenOn(context: Context, isNeedToKeepScreenOn: Boolean) {
+        context.settingsDataStore.edit { prefs ->
+            prefs[KEEP_SCREEN_ON_KEY] = isNeedToKeepScreenOn
+        }
+    }
+
+    override fun observeKeepScreenOnState(context: Context): Flow<Boolean> {
+        return context.settingsDataStore.data
+            .map { prefs ->
+                prefs[KEEP_SCREEN_ON_KEY] ?: true
+            }
     }
 
     override suspend fun changeIsFirstAppOpen(context: Context, isFirstAppOpen: Boolean) {
