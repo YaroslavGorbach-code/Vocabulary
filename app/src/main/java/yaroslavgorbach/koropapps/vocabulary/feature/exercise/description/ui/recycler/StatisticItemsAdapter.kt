@@ -2,7 +2,6 @@ package yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.ui.rec
 
 import android.annotation.SuppressLint
 import android.graphics.Color
-import android.util.TypedValue
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import yaroslavgorbach.koropapps.vocabulary.R
@@ -62,9 +61,9 @@ class StatisticItemsAdapter(
                     binding.root.background = binding.getDrawable(R.drawable.bg_statistic_selected)
                 }
                 false -> {
-                    binding.dayString.setTextColor(Color.GRAY)
-                    binding.dayNumber.setTextColor(Color.BLACK)
-                    binding.root.setBackgroundResource(binding.root.context.selectableItemBackgroundBorderless())
+                    binding.dayString.setTextColor((binding.root.context.resources.getColor(R.color.gray_white)))
+                    binding.dayNumber.setTextColor((binding.root.context.resources.getColor(R.color.black_white)))
+                    binding.root.setBackgroundResource((binding.root.context.selectableItemBackgroundBorderless()))
                 }
             }
         }

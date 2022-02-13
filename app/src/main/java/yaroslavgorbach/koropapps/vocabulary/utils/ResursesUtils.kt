@@ -25,7 +25,6 @@ fun ViewBinding.getDrawable(@DrawableRes id: Int): Drawable? {
 
 fun Context.getAppComputeDrawable(resId: Int): Drawable? = AppCompatResources.getDrawable(this, resId)
 
-
 fun Context.getColorPrimary(): Int {
     val typedValue = TypedValue()
     val a: TypedArray = obtainStyledAttributes(typedValue.data, intArrayOf(R.attr.colorPrimary))
