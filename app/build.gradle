@@ -6,6 +6,14 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        sign {
+            storeFile file('D:\\KeyStore\\vocabulary.jks')
+            storePassword 'zhjckfd2001'
+            keyAlias 'voc_key'
+            keyPassword 'zhjckfd2001'
+        }
+    }
     compileSdkVersion 32
     buildToolsVersion "30.0.3"
 
@@ -28,6 +36,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.sign
         }
     }
     compileOptions {
