@@ -6,15 +6,15 @@ plugins {
 }
 
 android {
-    compileSdkVersion 32
+    compileSdkVersion 34
     buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "yaroslavgorbach.andersen.vocabulary"
         minSdkVersion 21
-        targetSdkVersion 32
-        versionCode 12
-        versionName "1.1.6"
+        targetSdkVersion 34
+        versionCode 14
+        versionName "1.3.6"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         javaCompileOptions {
@@ -44,7 +44,7 @@ android {
 }
 
 dependencies {
-    implementation 'com.google.android.gms:play-services-ads-lite:20.5.0'
+    implementation 'com.google.android.gms:play-services-ads-lite:22.2.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
@@ -56,7 +56,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.5.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
 
-    implementation 'androidx.work:work-runtime-ktx:2.7.1'
+    implementation 'androidx.work:work-runtime-ktx:2.8.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
     implementation "androidx.lifecycle:lifecycle-common-java8:2.4.0"
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.0'
@@ -68,11 +68,11 @@ dependencies {
     implementation 'io.reactivex.rxjava3:rxjava:3.0.13'
 
     implementation "androidx.datastore:datastore-preferences:1.0.0"
-    implementation 'com.google.code.gson:gson:2.8.8'
-    implementation "androidx.room:room-runtime:2.4.1"
-    kapt "androidx.room:room-compiler:2.4.1"
-    implementation "androidx.room:room-rxjava3:2.4.1"
-    implementation "androidx.room:room-ktx:2.4.1"
+    implementation 'com.google.code.gson:gson:2.9.0'
+    implementation "androidx.room:room-runtime:2.5.2"
+    kapt "androidx.room:room-compiler:2.5.2"
+    implementation "androidx.room:room-rxjava3:2.5.2"
+    implementation "androidx.room:room-ktx:2.5.2"
 
     implementation 'com.google.dagger:dagger:2.40'
     kapt 'com.google.dagger:dagger-compiler:2.40'

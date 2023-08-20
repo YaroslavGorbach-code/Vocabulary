@@ -1,7 +1,6 @@
 package yaroslavgorbach.koropapps.vocabulary.data.training.local.dao
 
 import androidx.room.*
-import androidx.room.OnConflictStrategy.REPLACE
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
@@ -15,7 +14,7 @@ interface TrainingDao {
     @Query("SELECT * FROM TrainingEntity")
     fun observeTrainingWithExercisesEntity(): Observable<List<TrainingWithExercisesEntity>>
 
-    @Insert(onConflict = REPLACE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertTraining(trainingEntity: TrainingEntity): Completable
 
     @Insert

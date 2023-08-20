@@ -2,7 +2,7 @@ package yaroslavgorbach.koropapps.vocabulary.data.statistics.local.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
-import androidx.room.OnConflictStrategy.REPLACE
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import io.reactivex.rxjava3.core.Completable
@@ -17,16 +17,16 @@ import yaroslavgorbach.koropapps.vocabulary.data.statistics.local.model.Statisti
 @Dao
 interface StatisticsDao {
 
-    @Insert(onConflict = REPLACE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE )
     fun insert(statisticsExerciseValueEntity: StatisticsExerciseValueEntity): Completable
 
-    @Insert(onConflict = REPLACE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE )
     fun insert(statisticsExerciseTimeEntity: StatisticsExerciseTimeEntity): Completable
 
-    @Insert(onConflict = REPLACE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE )
     fun insert(statisticsDailyTrainingTimeEntity: StatisticsDailyTrainingTimeEntity): Completable
 
-    @Insert(onConflict = REPLACE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE )
     fun insert(statisticsCommonInfoEntity: StatisticsCommonInfoEntity): Completable
 
     @Update
