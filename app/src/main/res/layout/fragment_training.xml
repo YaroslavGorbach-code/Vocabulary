@@ -2,10 +2,11 @@
 <androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:id="@+id/constraint"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animationCache="true"
+    android:fitsSystemWindows="true"
     app:layoutDescription="@xml/fragment_training_scene">
 
     <androidx.core.widget.NestedScrollView
@@ -26,9 +27,9 @@
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 app:navigationIcon="@drawable/ic_close"
-                app:title="@string/daily_training"
-                android:layout_height="wrap_content"/>
+                app:title="@string/daily_training" />
 
             <TextView
                 android:id="@+id/days_in_row"
@@ -36,9 +37,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                tools:text="Тренеровок подряд: 5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Тренеровок подряд: 5" />
 
             <TextView
                 android:id="@+id/date"
@@ -46,9 +47,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="4dp"
-                tools:text="последняя тренировка была 19 янв. 2022"
                 app:layout_constraintStart_toStartOf="@+id/days_in_row"
-                app:layout_constraintTop_toBottomOf="@+id/days_in_row" />
+                app:layout_constraintTop_toBottomOf="@+id/days_in_row"
+                tools:text="последняя тренировка была 19 янв. 2022" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/list"

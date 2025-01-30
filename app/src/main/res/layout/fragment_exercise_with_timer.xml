@@ -4,8 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?selectableItemBackgroundBorderless"
-    android:animateLayoutChanges="true">
+    android:animateLayoutChanges="true"
+    android:fitsSystemWindows="true"
+    android:background="?selectableItemBackgroundBorderless">
+
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
@@ -31,90 +33,90 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
         tools:text="Description kkkkkkkkkkkkkkkk kkkkkkkkkkkkkkkkkkkkkkshort" />
 
-        <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.customview.CardTextView
-            android:id="@+id/number_of_words"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:gravity="center"
-            android:visibility="gone"
-            app:autoTextSize="false"
-            app:cardBackgroundColor="?colorPrimary"
-            app:cardCornerRadius="6dp"
-            app:layout_constraintBottom_toTopOf="@+id/progress"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/description_text"
-            app:textSize="7sp"
-            tools:ignore="SmallSp"
-            tools:text="1/20"
-            tools:visibility="visible" />
+    <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.customview.CardTextView
+        android:id="@+id/number_of_words"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:visibility="gone"
+        app:autoTextSize="false"
+        app:cardBackgroundColor="?colorPrimary"
+        app:cardCornerRadius="6dp"
+        app:layout_constraintBottom_toTopOf="@+id/progress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/description_text"
+        app:textSize="7sp"
+        tools:ignore="SmallSp"
+        tools:text="1/20"
+        tools:visibility="visible" />
 
-        <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.customview.TextProgressView
-            android:id="@+id/progress"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline10"
-            app:layout_constraintEnd_toStartOf="@+id/guideline8"
-            app:layout_constraintStart_toStartOf="@+id/guideline7"
-            app:layout_constraintTop_toTopOf="@+id/guideline9"
-            app:textProgress="50"
-            app:textProgressColor="?colorPrimary"
-            app:textProgressOutlineColor="?colorControlHighlight"
-            app:textProgressOutlineStrokeWidth="15dp"
-            app:textProgressStrokeWidth="15dp"
-            app:textProgressTextSize="30sp"
-            app:textSize="20sp">
+    <yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.customview.TextProgressView
+        android:id="@+id/progress"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline10"
+        app:layout_constraintEnd_toStartOf="@+id/guideline8"
+        app:layout_constraintStart_toStartOf="@+id/guideline7"
+        app:layout_constraintTop_toTopOf="@+id/guideline9"
+        app:textProgress="50"
+        app:textProgressColor="?colorPrimary"
+        app:textProgressOutlineColor="?colorControlHighlight"
+        app:textProgressOutlineStrokeWidth="15dp"
+        app:textProgressStrokeWidth="15dp"
+        app:textProgressTextSize="30sp"
+        app:textSize="20sp">
 
-        </yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.customview.TextProgressView>
+    </yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.customview.TextProgressView>
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.2" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.8" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.4" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.8" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.8" />
 
-        <ImageView
-            android:id="@+id/click_helper_icon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/ic_touch"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/progress" />
+    <ImageView
+        android:id="@+id/click_helper_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_touch"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progress" />
 
-        <TextView
-            android:id="@+id/click_helper_text"
-            style="@style/TextPrimary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/click_on_screen"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/click_helper_icon" />
+    <TextView
+        android:id="@+id/click_helper_text"
+        style="@style/TextPrimary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/click_on_screen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/click_helper_icon" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 

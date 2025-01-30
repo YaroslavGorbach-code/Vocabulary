@@ -11,10 +11,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:background="@drawable/bg_ic_close_description"
         android:elevation="1dp"
         android:padding="6dp"
-        android:background="@drawable/bg_ic_close_description"
         android:src="@drawable/ic_close"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -44,8 +44,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
-            android:layout_marginBottom="32dp"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp">
 
             <TextView
                 android:id="@+id/exercise_name"
@@ -141,8 +141,8 @@
                 android:background="@color/on_background"
                 android:gravity="center"
                 android:padding="8dp"
-                android:textAllCaps="true"
                 android:text="@string/statistic"
+                android:textAllCaps="true"
                 android:textSize="12sp"
                 android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -161,8 +161,8 @@
                 android:id="@+id/cards"
                 android:layout_width="0dp"
                 android:layout_height="200dp"
-                android:orientation="horizontal"
                 android:background="@color/on_background"
+                android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/statistic_days_list">
@@ -170,13 +170,13 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cart_statistic_value"
                     android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="8dp"
-                    app:cardElevation="0dp"
-                    android:layout_marginStart="16dp"
                     android:layout_marginBottom="16dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.5">
+                    android:layout_weight="0.5"
+                    app:cardElevation="0dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -225,13 +225,13 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cart_statistic_time"
                     android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="8dp"
-                    app:cardElevation="0dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="16dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.5">
+                    android:layout_weight="0.5"
+                    app:cardElevation="0dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -320,7 +320,7 @@
         android:id="@+id/favorite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="?attr/actionBarSize"
         android:layout_marginEnd="16dp"
         android:background="@drawable/bg_ic_close_description"
         android:elevation="1dp"
