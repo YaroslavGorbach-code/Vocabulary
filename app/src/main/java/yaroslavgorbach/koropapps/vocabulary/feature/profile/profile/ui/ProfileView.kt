@@ -1,6 +1,7 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.profile.profile.ui
 
 import android.view.View
+import androidx.core.view.isGone
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.data.phrase.local.model.Phrase
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentProfileBinding
@@ -35,7 +36,7 @@ class ProfileView(private val binding: FragmentProfileBinding, private val callb
         }
 
         with(binding.removeAds) {
-            icon.setImageDrawable(getDrawable(R.drawable.ic_no_ads))
+            icon.setImageDrawable(getDrawable(R.drawable.ic_remove_ads))
             text.setText(R.string.remove_ads)
         }
 
@@ -97,6 +98,10 @@ class ProfileView(private val binding: FragmentProfileBinding, private val callb
         this.phrase = phrase
         binding.phraseName.text = phrase.phrase
         binding.phraseText.text = phrase.explanation
+    }
+
+    fun isRemoveAdFeatureVisible(isVisible: Boolean){
+        binding.removeAds.root.isGone = isVisible.not()
     }
 
     private fun showNoChartValueData() {

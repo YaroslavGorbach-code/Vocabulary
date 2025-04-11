@@ -13,6 +13,7 @@ import yaroslavgorbach.koropapps.vocabulary.di.business.records.BusinessRecordsM
 import yaroslavgorbach.koropapps.vocabulary.di.business.settings.BusinessSettingsModule
 import yaroslavgorbach.koropapps.vocabulary.di.business.statistics.BusinessStatisticsModule
 import yaroslavgorbach.koropapps.vocabulary.di.business.training.BusinessTrainingModule
+import yaroslavgorbach.koropapps.vocabulary.di.common.SingletonModule
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.di.DescriptionComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.image.di.ImageExerciseComponent
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.exercises.word.di.WordExerciseComponent
@@ -36,7 +37,8 @@ import javax.inject.Singleton
         BusinessPhraseModule::class,
         BusinessSettingsModule::class,
         BusinessRecordsModule::class,
-        BusinessAchievementsModule::class
+        BusinessAchievementsModule::class,
+        SingletonModule::class
     ]
 )
 interface AppComponent {

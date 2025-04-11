@@ -1,5 +1,6 @@
 package yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.presentation
 
+import android.app.Activity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,7 +8,6 @@ import androidx.lifecycle.viewModelScope
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import yaroslavgorbach.koropapps.vocabulary.business.exercises.ChangeExerciseFavoriteInteractor
@@ -19,6 +19,7 @@ import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameTo
 import yaroslavgorbach.koropapps.vocabulary.feature.common.mapper.ExerciseNameToIconResMapper
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.model.DescriptionState
 import yaroslavgorbach.koropapps.vocabulary.feature.exercise.description.model.StatisticItemUi
+import yaroslavgorbach.koropapps.vocabulary.utils.feature.ad.AdManager
 import javax.inject.Inject
 
 class DescriptionViewModel @Inject constructor(
@@ -26,7 +27,8 @@ class DescriptionViewModel @Inject constructor(
     private val observeStatisticsTimeInteractor: ObserveStatisticsTimeInteractor,
     private val changeExerciseFavoriteInteractor: ChangeExerciseFavoriteInteractor,
     private val observeExerciseInteractor: ObserveExerciseInteractor,
-    private val exerciseName: ExerciseName
+    private val exerciseName: ExerciseName,
+    private val addManager: AdManager
 ) : ViewModel() {
 
     private val disposables: CompositeDisposable = CompositeDisposable()
@@ -61,6 +63,12 @@ class DescriptionViewModel @Inject constructor(
     init {
         observeIsExerciseFavorite()
         observeStatistic()
+    }
+
+    fun showAd(activity: Activity){
+        viewModelScope.launch {
+            addManager.showInterstitial(activity)
+        }
     }
 
     private fun observeStatistic() {

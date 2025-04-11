@@ -1,19 +1,21 @@
 package yaroslavgorbach.koropapps.vocabulary
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
 import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
+import com.android.billingclient.api.Purchase
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import yaroslavgorbach.koropapps.vocabulary.business.settings.ChangeAdFeatureAvailability
 import yaroslavgorbach.koropapps.vocabulary.business.settings.ChangeIsFirstAppOpenToFalseInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.settings.ObserveCurrentThemeInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.settings.ObserveIsFirstAppOpenInteractor
@@ -28,6 +30,7 @@ import yaroslavgorbach.koropapps.vocabulary.feature.profile.level.ui.LevelFragme
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.settings.ui.SettingsFragment
 import yaroslavgorbach.koropapps.vocabulary.feature.training.model.TrainingExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.feature.training.ui.TrainingFragment
+import yaroslavgorbach.koropapps.vocabulary.utils.feature.billing.BillingManager
 import yaroslavgorbach.koropapps.vocabulary.workflow.ExerciseWorkflow
 import javax.inject.Inject
 
@@ -48,9 +51,34 @@ class MainActivity : AppCompatActivity(), NavigationFragment.Router, AboutAppPag
     @Inject
     lateinit var changeIsFirsAppOpenToFalseInteractor: ChangeIsFirstAppOpenToFalseInteractor
 
+    @Inject
+    lateinit var changeAdFeatureAvailability: ChangeAdFeatureAvailability
+
+    @Inject
+    lateinit var billingManager: BillingManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initDagger()
+
+        billingManager.queryPurchases()
+        billingManager.setOnAcknowledgedListener(object : BillingManager.PurchaseListener {
+            override fun onPurchaseAcknowledged(purchase: Purchase) {
+                lifecycleScope.launch {
+                    withContext(Dispatchers.IO) {
+                        changeAdFeatureAvailability.invoke(true)
+                    }
+                }
+            }
+
+            override fun onUserHasNoPurchases() {
+                lifecycleScope.launch {
+                    withContext(Dispatchers.IO) {
+                        changeAdFeatureAvailability.invoke(false)
+                    }
+                }
+            }
+        })
 
         setCurrentTheme {
             if (savedInstanceState == null) {
@@ -156,8 +184,8 @@ class MainActivity : AppCompatActivity(), NavigationFragment.Router, AboutAppPag
     override fun onThemeChanged(theme: Theme, isNeedToRecreate: Boolean) {
         setTheme(theme.res.id)
 
-        if (isNeedToRecreate){
-           recreate()
+        if (isNeedToRecreate) {
+            recreate()
         }
     }
 

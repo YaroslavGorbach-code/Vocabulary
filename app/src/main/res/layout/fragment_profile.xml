@@ -150,15 +150,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
+                    <include
+                        android:id="@+id/remove_ads"
+                        layout="@layout/layout_item_profile"
+                        android:visibility="visible" />
 
                     <include
                         android:id="@+id/settings"
                         layout="@layout/layout_item_profile" />
-
-                    <include
-                        android:id="@+id/remove_ads"
-                        layout="@layout/layout_item_profile"
-                        android:visibility="gone" />
 
                     <include
                         android:id="@+id/share"

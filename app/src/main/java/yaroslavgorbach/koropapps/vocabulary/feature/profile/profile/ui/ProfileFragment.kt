@@ -9,12 +9,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.android.billingclient.api.Purchase
 import kotlinx.coroutines.launch
 import yaroslavgorbach.koropapps.vocabulary.R
 import yaroslavgorbach.koropapps.vocabulary.databinding.FragmentProfileBinding
-import yaroslavgorbach.koropapps.vocabulary.feature.common.uikit.InfoDialog
 import yaroslavgorbach.koropapps.vocabulary.feature.profile.profile.presentation.ProfileViewModel
 import yaroslavgorbach.koropapps.vocabulary.utils.appComponent
+import yaroslavgorbach.koropapps.vocabulary.utils.feature.billing.BillingManager
 import yaroslavgorbach.koropapps.vocabulary.utils.host
 import yaroslavgorbach.koropapps.vocabulary.utils.setDefaultStatusBarColor
 import javax.inject.Inject
@@ -35,6 +36,9 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    @Inject
+    lateinit var billingManager: BillingManager
 
     private val viewModel by viewModels<ProfileViewModel> { viewModelFactory }
 
@@ -76,7 +80,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 }
 
                 override fun onRemoveAds() {
-
+                    billingManager.showPurchasesDialog(requireActivity())
                 }
 
                 override fun onShare() {
@@ -90,7 +94,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 override fun onLevel() {
                     host<Router>().onOpenLevelClick()
                 }
-
             })
     }
 
@@ -116,6 +119,16 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
 
     fun initObservers() {
+        billingManager.setOnAcknowledgedListener(object : BillingManager.PurchaseListener {
+            override fun onPurchaseAcknowledged(purchase: Purchase) {
+                viewModel.onChangeAdsAvailable(false)
+            }
+
+            override fun onUserHasNoPurchases() {
+                viewModel.onChangeAdsAvailable(true)
+            }
+        })
+
         viewModel.chartDayUi.observe(viewLifecycleOwner, profileView::setChart)
 
         viewModel.levelInfoUi.observe(viewLifecycleOwner, profileView::setLevel)
@@ -123,6 +136,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         lifecycleScope.launch {
             viewModel.observePhrase()
                 .observe(viewLifecycleOwner, profileView::setPhrase)
+        }
+
+        lifecycleScope.launch {
+            viewModel.observeAdsAvailability()
+                .observe(viewLifecycleOwner, profileView::isRemoveAdFeatureVisible)
         }
     }
 }

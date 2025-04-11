@@ -82,6 +82,7 @@ class SettingsViewModel @Inject constructor(
     fun changeKeepScreenOnSettingState(isChecked: Boolean) {
         viewModelScope.launch { changeKeepScreenOnInteractor(isChecked) }
     }
+
     fun clearAllData() {
         clearAllStatisticsInteractor()
             .andThen(deleteAllTrainingsInteractor())

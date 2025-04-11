@@ -4,9 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
+import kotlinx.coroutines.launch
 import yaroslavgorbach.koropapps.vocabulary.business.phrase.ObserveTodayPhraseInteractor
+import yaroslavgorbach.koropapps.vocabulary.business.settings.ChangeAdFeatureAvailability
+import yaroslavgorbach.koropapps.vocabulary.business.settings.ObserveAdFeatureAvailability
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.GetStatisticsCommonInfoInteractor
 import yaroslavgorbach.koropapps.vocabulary.business.statistics.ObserveStatisticDaysInteractor
 import yaroslavgorbach.koropapps.vocabulary.data.phrase.local.model.Phrase
@@ -19,7 +23,9 @@ import javax.inject.Inject
 class ProfileViewModel @Inject constructor(
     private val observeStatisticDaysInteractor: ObserveStatisticDaysInteractor,
     private val getStatisticsCommonInfoInteractor: GetStatisticsCommonInfoInteractor,
-    private val observeTodayPhraseInteractor: ObserveTodayPhraseInteractor
+    private val observeTodayPhraseInteractor: ObserveTodayPhraseInteractor,
+    private val changeAdFeatureAvailability: ChangeAdFeatureAvailability,
+    private val observeAdsFeatureAvailability: ObserveAdFeatureAvailability
 ) : ViewModel() {
 
     private val disposables: CompositeDisposable = CompositeDisposable()
@@ -43,11 +49,16 @@ class ProfileViewModel @Inject constructor(
         return observeTodayPhraseInteractor().asLiveData()
     }
 
+    suspend fun observeAdsAvailability(): LiveData<Boolean> {
+        return observeAdsFeatureAvailability().asLiveData()
+    }
+
     private fun getLevel() {
         getStatisticsCommonInfoInteractor()
             .observeOn(AndroidSchedulers.mainThread())
             .map(::LevelInfoUi)
             .subscribe(_levelInfoUi::setValue)
+            .let(disposables::add)
     }
 
     private fun observeDaysStatistics() {
@@ -101,6 +112,12 @@ class ProfileViewModel @Inject constructor(
         super.onCleared()
         if (disposables.isDisposed.not()) {
             disposables.dispose()
+        }
+    }
+
+    fun onChangeAdsAvailable(isAvailable: Boolean) {
+        viewModelScope.launch {
+            changeAdFeatureAvailability.invoke(isAvailable)
         }
     }
 }

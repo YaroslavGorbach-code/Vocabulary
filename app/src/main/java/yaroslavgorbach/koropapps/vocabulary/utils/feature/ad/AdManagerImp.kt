@@ -2,8 +2,6 @@ package yaroslavgorbach.koropapps.vocabulary.utils.feature.ad
 
 import android.app.Activity
 import android.app.Application
-import android.util.Log
-import android.widget.Toast
 import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.FullScreenContentCallback
@@ -13,7 +11,6 @@ import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.zip
 import kotlinx.coroutines.withContext
 import yaroslavgorbach.koropapps.vocabulary.business.settings.ObserveAdFeatureAvailability
 import yaroslavgorbach.koropapps.vocabulary.business.settings.ObserveInterstitialShowAvailability
@@ -30,17 +27,14 @@ class AdManagerImp(
     }
 
     private var _interstitialAd: InterstitialAd? = null
-    private var available: Boolean = false
 
     override suspend fun loadInterstitial() {
         observeAdFeatureAvailability().combine(observeInterstitialShowAvailability()) { isAdFeatureAvailable, isInterstitialAdAvailable ->
             if (isAdFeatureAvailable && isInterstitialAdAvailable) {
-                available = true
-                val adRequest: AdRequest = AdRequest.Builder().build()
                 InterstitialAd.load(
                     app,
                     INTERSTITIAL_AD_ID,
-                    adRequest,
+                    AdRequest.Builder().build(),
                     object : InterstitialAdLoadCallback() {
                         override fun onAdLoaded(interstitialAd: InterstitialAd) {
                             _interstitialAd = interstitialAd
@@ -67,12 +61,12 @@ class AdManagerImp(
                     })
             }
         }.collect()
-
     }
 
     override suspend fun showInterstitial(activity: Activity) {
         withContext(Dispatchers.Main) {
             _interstitialAd?.show(activity)
+            loadInterstitial()
         }
     }
 }

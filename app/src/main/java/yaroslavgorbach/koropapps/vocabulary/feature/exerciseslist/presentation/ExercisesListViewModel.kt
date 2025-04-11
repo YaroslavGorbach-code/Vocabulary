@@ -15,11 +15,13 @@ import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.Exercise
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.ExerciseUi
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.ExercisesWithFilterUi
 import yaroslavgorbach.koropapps.vocabulary.feature.exerciseslist.model.TrainingUi
+import yaroslavgorbach.koropapps.vocabulary.utils.feature.ad.AdManager
 import javax.inject.Inject
 
 class ExercisesListViewModel @Inject constructor(
     private val observeTrainingsInteractor: ObserveTrainingsInteractor,
     private val getExercisesInteractor: GetExercisesInteractor,
+    private val addManager: AdManager
 ) : ViewModel() {
 
     private val disposables: CompositeDisposable = CompositeDisposable()
@@ -37,6 +39,8 @@ class ExercisesListViewModel @Inject constructor(
     init {
         getAndFilterExercises(ExerciseCategoryFilterUi.ALL)
         getTrainings()
+
+        viewModelScope.launch { addManager.loadInterstitial() }
     }
 
     override fun onCleared() {

@@ -60,6 +60,7 @@ class DescriptionFragment : Fragment(R.layout.fragment_description) {
                 exerciseType.getExerciseName()
             )
         )
+        activity?.let(viewModel::showAd)
     }
 
     override fun onPause() {
