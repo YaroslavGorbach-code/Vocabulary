@@ -102,6 +102,11 @@
     <string name="training_is_over">Тренировка закончена</string>
     <string name="training_is_over_info_text">Ежедневная тренировка выполнена! Следующая будет доступна завтра, отдыхайте</string>
     <string name="time_is_over">Время вышло</string>
+    <string name="new_talksy_message">
+Switch to the new Talksy app and boost your communication skills even more effectively!\n\nWe created Talksy to make learning communication modern, convenient, and truly effective.\nIn the new app, you’ll find a full course that guides you step by step to speak confidently in any situation.\n\n✅ Modern design — easy and pleasant to use.\n✅ More exercises and real-life scenarios — practice exactly the situations you’ll face in life.\n✅ Achievements and levels — track your progress and stay motivated to keep going.\n✅ Fast and stable performance — no lags or crashes.\n\nThis app will no longer be updated or supported.\n\nTo keep improving, switch to Talksy and unlock even more opportunities!
+</string>
+    <string name="talksy_welcome">Talksy is here! 🎉</string>
+    <string name="go_to_talksy">Go to Talksy</string>
 
     <string-array name="empty_array" />
 </resources>

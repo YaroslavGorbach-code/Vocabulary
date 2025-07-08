@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/BaseAppTheme.Teal">
         <activity
-            android:name="yaroslavgorbach.koropapps.vocabulary.MainActivity"
+            android:name="yaroslavgorbach.koropapps.vocabulary.RedirectActivity"
             android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
