@@ -1,6 +1,7 @@
 package yaroslavgorbach.koropapps.vocabulary
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
@@ -8,9 +9,11 @@ import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
+import com.android.billingclient.api.ConsumeParams
 import com.android.billingclient.api.Purchase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
@@ -61,24 +64,20 @@ class MainActivity : AppCompatActivity(), NavigationFragment.Router, AboutAppPag
         super.onCreate(savedInstanceState)
         initDagger()
 
-        billingManager.queryPurchases()
-        billingManager.setOnAcknowledgedListener(object : BillingManager.PurchaseListener {
-            override fun onPurchaseAcknowledged(purchase: Purchase) {
-                lifecycleScope.launch {
-                    withContext(Dispatchers.IO) {
-                        changeAdFeatureAvailability.invoke(true)
-                    }
-                }
+        GlobalScope.launch {
+//            //         FOR TEST ONLY
+//            billingManager.billingClient?.consumeAsync(
+//                ConsumeParams.newBuilder()
+//                    .setPurchaseToken(billingManager.getAllActivePurchases(this@MainActivity).get(0).purchaseToken)
+//                    .build(),
+//                { _, _ -> })
+//
+            if (billingManager.getAllActivePurchases(this@MainActivity).isEmpty()) {
+                changeAdFeatureAvailability.invoke(false)
+            } else {
+                changeAdFeatureAvailability.invoke(true)
             }
-
-            override fun onUserHasNoPurchases() {
-                lifecycleScope.launch {
-                    withContext(Dispatchers.IO) {
-                        changeAdFeatureAvailability.invoke(false)
-                    }
-                }
-            }
-        })
+        }
 
         setCurrentTheme {
             if (savedInstanceState == null) {

@@ -11,9 +11,11 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.coroutines.InternalCoroutinesApi
 
 class RedirectActivity : AppCompatActivity() {
 
+    @OptIn(InternalCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.redirect_screen)
@@ -36,6 +38,10 @@ class RedirectActivity : AppCompatActivity() {
             }
             startActivity(intent)
             finishAffinity()
+        }
+        findViewById<Button>(R.id.skip).setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
     }
 

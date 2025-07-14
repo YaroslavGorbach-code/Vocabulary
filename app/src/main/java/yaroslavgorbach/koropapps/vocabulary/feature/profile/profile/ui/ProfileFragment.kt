@@ -80,7 +80,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 }
 
                 override fun onRemoveAds() {
-                    billingManager.showPurchasesDialog(requireActivity())
+                    billingManager.showOneTimeProduct(requireActivity())
                 }
 
                 override fun onShare() {

@@ -24,6 +24,12 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name="yaroslavgorbach.koropapps.vocabulary.MainActivity"
+            android:screenOrientation="portrait"
+            android:exported="false">
+        </activity>
+
         <receiver
             android:name=".feature.common.workers.PeriodicNotificationBroadcast"
             android:enabled="true"

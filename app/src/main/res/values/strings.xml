@@ -107,6 +107,7 @@ Switch to the new Talksy app and boost your communication skills even more effec
 </string>
     <string name="talksy_welcome">Talksy is here! 🎉</string>
     <string name="go_to_talksy">Go to Talksy</string>
+    <string name="go_to_app">Stay here</string>
 
     <string-array name="empty_array" />
 </resources>

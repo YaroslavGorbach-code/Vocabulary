@@ -101,7 +101,7 @@ class ProfileView(private val binding: FragmentProfileBinding, private val callb
     }
 
     fun isRemoveAdFeatureVisible(isVisible: Boolean){
-        binding.removeAds.root.isGone = isVisible.not()
+        binding.removeAds.root.isGone = true
     }
 
     private fun showNoChartValueData() {
